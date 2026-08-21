@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Leadership &amp; Team — BHB Family Support and Development Foundation</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/bhb-logo.png" alt="BHB Foundation Logo" class="nav-brand-logo">
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="work.html">Our Work</a>
+        <a href="projects.html">Projects</a>
+        <a href="impact.html">Impact</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="stories.html">News &amp; Stories</a>
+        <a href="team.html" class="active">Our Team</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html" class="nav-admin-link" onclick="localStorage.setItem('openAdmin', 'true')">Admin</a>
+        <button class="btn btn-primary btn-sm" onclick="openDonateModal()">Support Our Mission</button>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="work.html">Our Work</a>
+    <a href="projects.html">Projects &amp; Programs</a>
+    <a href="impact.html">Impact Metrics</a>
+    <a href="gallery.html">Photo Gallery</a>
+    <a href="stories.html">News &amp; Stories</a>
+    <a href="team.html">Our Team</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <!-- Page Header Banner -->
+  <div class="page-header-banner">
+    <div class="container">
+      <span class="section-label" style="color: #60A5FA;">Governance &amp; Staff</span>
+      <h1>Our Trustees, Directors &amp; Field Specialists</h1>
+      <p>
+        Experienced leaders, healthcare practitioners, and community mobilizers steering our institutional mission with accountability.
+      </p>
+    </div>
+  </div>
+
+  <!-- Team Grid -->
+  <section>
+    <div class="container">
+      <div class="team-editorial-grid" id="teamEditorialGrid">
+        <div class="team-member-item">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Dr. Bashir H. Bello" class="team-member-photo">
+          <h3>Dr. Bashir H. Bello</h3>
+          <div class="team-member-role">Founder &amp; Chairman, Board of Trustees</div>
+          <p class="team-member-bio">Dr. Bashir established BHB Foundation to advance human dignity, social resilience, and structured opportunity across Northern Nigeria.</p>
+        </div>
+        <div class="team-member-item">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Hajiya Fatima A. Yusuf" class="team-member-photo">
+          <h3>Hajiya Fatima A. Yusuf</h3>
+          <div class="team-member-role">Executive Director</div>
+          <p class="team-member-bio">Fatima leads the foundation's strategic direction, partner alignment, and program execution across participating local governments.</p>
+        </div>
+        <div class="team-member-item">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Malam Ibrahim Al-Hassan" class="team-member-photo">
+          <h3>Malam Ibrahim Al-Hassan</h3>
+          <div class="team-member-role">Director of Programs &amp; Inclusive Tech</div>
+          <p class="team-member-bio">Ibrahim oversees BHB's digital inclusion and educational programs, including our disability tech boot camps.</p>
+        </div>
+        <div class="team-member-item">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80" alt="Dr. Aisha Kwaku" class="team-member-photo">
+          <h3>Dr. Aisha Kwaku</h3>
+          <div class="team-member-role">Lead Strategic Health Advisor</div>
+          <p class="team-member-bio">Dr. Aisha guides BHB's maternal health outreach strategy and primary care partnerships across Kano State.</p>
+        </div>
+        <div class="team-member-item">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80" alt="Engr. Usman Farouk" class="team-member-photo">
+          <h3>Engr. Usman Farouk</h3>
+          <div class="team-member-role">Head of Field Operations</div>
+          <p class="team-member-bio">Usman coordinates ground logistics, community liaison town halls, and resource delivery across all target LGAs.</p>
+        </div>
+        <div class="team-member-item">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Zainab S. Umar" class="team-member-photo">
+          <h3>Zainab S. Umar</h3>
+          <div class="team-member-role">Head of Youth &amp; Gender Initiatives</div>
+          <p class="team-member-bio">Zainab oversees women's enterprise incubation, girl-child mentorship networks, and safeguarding protocols.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <img src="assets/images/bhb-logo.png" alt="BHB mark" style="height: 38px;">
+          <p>Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State, Nigeria.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>About</h5>
+          <a href="about.html">Who We Are</a>
+          <a href="about.html#mission">Mission &amp; Vision</a>
+          <a href="team.html">Our Leadership</a>
+          <a href="impact.html">Impact Report</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Programs</h5>
+          <a href="work.html">Focus Areas</a>
+          <a href="projects.html">Active Projects</a>
+          <a href="gallery.html">Field Gallery</a>
+          <a href="stories.html">Publications</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 12px;">Receive quarterly field updates and governance reports:</p>
+          <form onsubmit="event.preventDefault(); showToast('Subscribed to BHB Foundation updates!', 'success'); this.reset();" style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Your email address" style="padding: 9px 12px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; font-size: 0.88rem; outline: none; flex: 1;" required>
+            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. 9670692. All rights reserved.</span>
+        <a href="index.html" style="color: #94A3B8; text-decoration: underline;">Return to Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Generic Modal -->
+  <div class="modal-backdrop" id="genericModal">
+    <div class="modal-window">
+      <div style="position: absolute; top: 18px; right: 20px;">
+        <button onclick="closeModal('genericModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy);">×</button>
+      </div>
+      <div id="genericModalContent"></div>
+    </div>
+  </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

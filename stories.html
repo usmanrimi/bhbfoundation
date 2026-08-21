@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News &amp; Stories — BHB Family Support and Development Foundation</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/bhb-logo.png" alt="BHB Foundation Logo" class="nav-brand-logo">
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="work.html">Our Work</a>
+        <a href="projects.html">Projects</a>
+        <a href="impact.html">Impact</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="stories.html" class="active">News &amp; Stories</a>
+        <a href="team.html">Our Team</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html" class="nav-admin-link" onclick="localStorage.setItem('openAdmin', 'true')">Admin</a>
+        <button class="btn btn-primary btn-sm" onclick="openDonateModal()">Support Our Mission</button>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="work.html">Our Work</a>
+    <a href="projects.html">Projects &amp; Programs</a>
+    <a href="impact.html">Impact Metrics</a>
+    <a href="gallery.html">Photo Gallery</a>
+    <a href="stories.html">News &amp; Stories</a>
+    <a href="team.html">Our Team</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <!-- Page Header Banner -->
+  <div class="page-header-banner">
+    <div class="container">
+      <span class="section-label" style="color: #60A5FA;">Editorial Dispatches</span>
+      <h1>News, Field Reports &amp; Community Voices</h1>
+      <p>
+        Verified publications, press releases, and qualitative stories of transformation told directly by the people experiencing sustainable change.
+      </p>
+    </div>
+  </div>
+
+  <!-- News & Stories Main Layout -->
+  <section>
+    <div class="container">
+      <div class="news-stories-layout">
+        
+        <!-- Lead Article -->
+        <div id="newsLeadContainer">
+          <div class="news-lead-article" onclick="openStoryModal('lead', 'post-1')" style="cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80" alt="Girls with Disabilities" class="news-lead-image">
+            <span class="section-label">Program Highlights · August 18, 2026</span>
+            <h3>Breaking Barriers: How 10 Young Girls with Disabilities Mastered Coding in Kano</h3>
+            <p style="font-size: 1.05rem; color: var(--text-body);">
+              Inside the landmark Holiday Digital Skills Boot Camp funded directly by BHB Foundation in collaboration with The Ability First Tech Hub.
+            </p>
+            <div style="margin-top: 14px;">
+              <span style="color: var(--blue); font-weight: 600; font-size: 0.95rem;">Read full dispatch →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side Stories -->
+        <div class="news-side-list" id="newsSideList">
+          <div class="news-side-item" onclick="openStoryModal('story', 'story-1')">
+            <div class="news-meta">Maternal Health · Community Case Study</div>
+            <h4>Amina’s Story: Safe Care Within Reach</h4>
+            <p style="font-size: 0.92rem; color: var(--text-muted);">
+              Expecting her third child, Amina delayed health checks due to distance. BHB’s mobile health team delivered prenatal care and connected her to a local clinic.
+            </p>
+          </div>
+          <div class="news-side-item" onclick="openStoryModal('story', 'story-2')">
+            <div class="news-meta">Youth Empowerment · Community Case Study</div>
+            <h4>Ibrahim’s Story: From Searching to Leading</h4>
+            <p style="font-size: 0.92rem; color: var(--text-muted);">
+              After two years of job hunting, Ibrahim gained practical digital training through BHB and now works as an IT assistant and youth mentor.
+            </p>
+          </div>
+          <div class="news-side-item" onclick="openStoryModal('story', 'story-3')">
+            <div class="news-meta">Women's Livelihoods · Community Case Study</div>
+            <h4>Fatima’s Story: A Sustainable Business</h4>
+            <p style="font-size: 0.92rem; color: var(--text-muted);">
+              Fatima, a widowed mother of four, expanded her tailoring workshop through BHB’s seed grant and now comfortably pays her children’s school fees.
+            </p>
+          </div>
+          <div class="news-side-item" onclick="openStoryModal('story', 'story-4')">
+            <div class="news-meta">Community Action · Case Study</div>
+            <h4>The Neighborhood Water Committee: Community-Led Action</h4>
+            <p style="font-size: 0.92rem; color: var(--text-muted);">
+              When a critical borehole pump broke down, BHB facilitated a local meeting where residents formed a committee, raised maintenance funds, and repaired it.
+            </p>
+          </div>
+          <div class="news-side-item" onclick="openStoryModal('story', 'story-5')">
+            <div class="news-meta">Education &amp; Resilience · Case Study</div>
+            <h4>The Usman Family: Restoring Hope and Education</h4>
+            <p style="font-size: 0.92rem; color: var(--text-muted);">
+              When seasonal flooding destroyed their farm yield, BHB provided social support and resilient farming methods, re-enrolling 14-year-old Zainab in school.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <img src="assets/images/bhb-logo.png" alt="BHB mark" style="height: 38px;">
+          <p>Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State, Nigeria.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>About</h5>
+          <a href="about.html">Who We Are</a>
+          <a href="about.html#mission">Mission &amp; Vision</a>
+          <a href="team.html">Our Leadership</a>
+          <a href="impact.html">Impact Report</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Programs</h5>
+          <a href="work.html">Focus Areas</a>
+          <a href="projects.html">Active Projects</a>
+          <a href="gallery.html">Field Gallery</a>
+          <a href="stories.html">Publications</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 12px;">Receive quarterly field updates and governance reports:</p>
+          <form onsubmit="event.preventDefault(); showToast('Subscribed to BHB Foundation updates!', 'success'); this.reset();" style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Your email address" style="padding: 9px 12px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; font-size: 0.88rem; outline: none; flex: 1;" required>
+            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. 9670692. All rights reserved.</span>
+        <a href="index.html" style="color: #94A3B8; text-decoration: underline;">Return to Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Generic Modal -->
+  <div class="modal-backdrop" id="genericModal">
+    <div class="modal-window">
+      <div style="position: absolute; top: 18px; right: 20px;">
+        <button onclick="closeModal('genericModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy);">×</button>
+      </div>
+      <div id="genericModalContent"></div>
+    </div>
+  </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

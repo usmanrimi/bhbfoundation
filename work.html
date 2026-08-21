@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Work &amp; Focus Areas — BHB Family Support and Development Foundation</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/bhb-logo.png" alt="BHB Foundation Logo" class="nav-brand-logo">
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="work.html" class="active">Our Work</a>
+        <a href="projects.html">Projects</a>
+        <a href="impact.html">Impact</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="stories.html">News &amp; Stories</a>
+        <a href="team.html">Our Team</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html" class="nav-admin-link" onclick="localStorage.setItem('openAdmin', 'true')">Admin</a>
+        <button class="btn btn-primary btn-sm" onclick="openDonateModal()">Support Our Mission</button>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="work.html">Our Work</a>
+    <a href="projects.html">Projects &amp; Programs</a>
+    <a href="impact.html">Impact Metrics</a>
+    <a href="gallery.html">Photo Gallery</a>
+    <a href="stories.html">News &amp; Stories</a>
+    <a href="team.html">Our Team</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <!-- Page Header Banner -->
+  <div class="page-header-banner">
+    <div class="container">
+      <span class="section-label" style="color: #60A5FA;">Programmatic Focus</span>
+      <h1>The Four Interconnected Pillars of Sustainable Development</h1>
+      <p>
+        Holistic interventions designed to address systemic poverty, health inequities, and socio-economic exclusion across Kano State and Northern Nigeria.
+      </p>
+    </div>
+  </div>
+
+  <!-- Focus Areas Detailed Section -->
+  <section>
+    <div class="container">
+      <div class="focus-areas-grid" id="focusAreasGrid">
+        <!-- Injected via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Grassroots Philosophy Section -->
+  <section class="bg-off">
+    <div class="container">
+      <div class="about-split-grid">
+        <div>
+          <span class="section-label">Our Grassroots Philosophy</span>
+          <h2>Active Partners, Not Passive Recipients</h2>
+          <p>
+            We reject traditional top-down development models. Every program serving these populations is co-designed with community leaders, local families, and program participants.
+          </p>
+          <div class="about-pull-quote">
+            “By respecting local knowledge, listening to lived experiences, and establishing self-reliant community management structures, we turn vulnerability into lasting agency.”
+          </div>
+          <p>
+            From the formation of localized Water Management Committees to community-based healthcare mobilizing circles, our grassroots philosophy ensures local ownership that outlasts initial project seed funding.
+          </p>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80" alt="Community Co-Design" style="border-radius: var(--radius-md); width: 100%; height: 420px; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5-Step Process -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Methodology</span>
+        <h2>The 5-Step Process</h2>
+        <p class="lead">How we implement lasting change from initial assessment to sustained community ownership.</p>
+      </div>
+
+      <div class="focus-areas-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+        <div class="focus-area-item" style="background: var(--bg-off); padding: 24px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+          <span class="section-label">01. LISTEN</span>
+          <h4>Community Insight</h4>
+          <p>We start by understanding real experiences, cultural context, and grassroots priorities directly from residents.</p>
+        </div>
+        <div class="focus-area-item" style="background: var(--bg-off); padding: 24px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+          <span class="section-label">02. EMPOWER</span>
+          <h4>Skills &amp; Tools</h4>
+          <p>We provide the vocational coaching, confidence, assistive tech, and starter kits required for economic self-reliance.</p>
+        </div>
+        <div class="focus-area-item" style="background: var(--bg-off); padding: 24px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+          <span class="section-label">03. CONNECT</span>
+          <h4>Institutional Links</h4>
+          <p>We link individuals to certified health clinics, municipal agencies, microfinance circles, and employer networks.</p>
+        </div>
+        <div class="focus-area-item" style="background: var(--bg-off); padding: 24px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+          <span class="section-label">04. STRENGTHEN</span>
+          <h4>Household Capacity</h4>
+          <p>We build long-term capacity within households and local committee leadership.</p>
+        </div>
+        <div class="focus-area-item" style="background: var(--bg-off); padding: 24px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+          <span class="section-label">05. SUSTAIN</span>
+          <h4>Lasting Models</h4>
+          <p>We create autonomous models that continue operating long after initial seed interventions conclude.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="bg-navy">
+    <div class="container" style="text-align: center;">
+      <span class="section-label" style="color: #60A5FA;">Get Involved</span>
+      <h2 style="color: #FFFFFF; margin-bottom: 16px;">Together, We Can Build a More Inclusive Future</h2>
+      <p style="color: #CBD5E1; max-width: 640px; margin: 0 auto 30px;">
+        Are you a government institution representative, philanthropic foundation, corporate CSR program, or civil society group? Partner with us to scale measurable community impact.
+      </p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="contact.html" class="btn btn-primary">Become a Partner →</a>
+        <button class="btn btn-outline-white" onclick="openDonateModal()">Support Our Programs</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <img src="assets/images/bhb-logo.png" alt="BHB mark" style="height: 38px;">
+          <p>Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State, Nigeria.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>About</h5>
+          <a href="about.html">Who We Are</a>
+          <a href="about.html#mission">Mission &amp; Vision</a>
+          <a href="team.html">Our Leadership</a>
+          <a href="impact.html">Impact Report</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Programs</h5>
+          <a href="work.html">Focus Areas</a>
+          <a href="projects.html">Active Projects</a>
+          <a href="gallery.html">Field Gallery</a>
+          <a href="stories.html">Publications</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 12px;">Receive quarterly field updates and governance reports:</p>
+          <form onsubmit="event.preventDefault(); showToast('Subscribed to BHB Foundation updates!', 'success'); this.reset();" style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Your email address" style="padding: 9px 12px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; font-size: 0.88rem; outline: none; flex: 1;" required>
+            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. 9670692. All rights reserved.</span>
+        <a href="index.html" style="color: #94A3B8; text-decoration: underline;">Return to Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Generic Modal -->
+  <div class="modal-backdrop" id="genericModal">
+    <div class="modal-window">
+      <div style="position: absolute; top: 18px; right: 20px;">
+        <button onclick="closeModal('genericModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy);">×</button>
+      </div>
+      <div id="genericModalContent"></div>
+    </div>
+  </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

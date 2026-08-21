@@ -1,0 +1,132 @@
+/* ==========================================================================
+   BHB FOUNDATION — VISIBLE BY DEFAULT & SUBTLE TRANSITIONS
+   ========================================================================== */
+
+/* Ensure everything is 100% visible immediately (Never hide content!) */
+.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+/* Hero Carousel / Slider Transitions */
+.hero-slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #0F1E36;
+}
+
+.hero-slide {
+  display: none;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.hero-slide.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Slider Controls & Dots */
+.hero-slider-arrows {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.slider-arrow-btn {
+  pointer-events: auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(15, 30, 54, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.slider-arrow-btn:hover {
+  background: #1D4ED8;
+  border-color: #1D4ED8;
+  color: #FFFFFF;
+}
+
+.hero-slider-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.slider-dot.active {
+  width: 32px;
+  border-radius: 6px;
+  background: #FFFFFF;
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  background: #0F1E36;
+  color: #FFFFFF;
+  padding: 14px 20px;
+  border-radius: 4px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  pointer-events: auto;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  border-left: 3px solid #1D4ED8;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast.toast-success {
+  border-left-color: #059669;
+}

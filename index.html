@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BHB Family Support and Development Foundation — Empowering Families, Building Resilient Communities</title>
+  
+  <!-- Professional Fonts: Plus Jakarta Sans + Newsreader + Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+
+  <!-- Chart.js for Admin Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- =========================================================================
+       PUBLIC FOUNDATION PORTAL
+       ========================================================================= -->
+  <div id="publicPortalView">
+    
+    <!-- Header: Official Logo Only + Single-Line Clean Navigation -->
+    <header class="site-header">
+      <div class="container nav-container">
+        <a href="index.html" class="nav-brand">
+          <img src="assets/images/bhb-logo.png" alt="BHB Foundation Logo" class="nav-brand-logo">
+        </a>
+
+        <nav class="nav-links">
+          <a href="index.html" class="active">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="work.html">Our Work</a>
+          <a href="projects.html">Projects</a>
+          <a href="impact.html">Impact</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="stories.html">News &amp; Stories</a>
+          <a href="team.html">Our Team</a>
+          <a href="contact.html">Contact Us</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="nav-admin-link" onclick="toggleAdminView(true)" title="Access Super Admin Dashboard">
+            Admin
+          </button>
+
+          <button class="btn btn-primary btn-sm" onclick="openDonateModal()">
+            Support Our Mission
+          </button>
+
+          <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="work.html">Our Work</a>
+      <a href="projects.html">Projects &amp; Programs</a>
+      <a href="impact.html">Impact Metrics</a>
+      <a href="gallery.html">Photo Gallery</a>
+      <a href="stories.html">News &amp; Stories</a>
+      <a href="team.html">Our Team</a>
+      <a href="contact.html">Contact Us</a>
+      <button class="btn btn-navy" onclick="toggleAdminView(true)" style="width: 100%; margin-top: 8px;">Super Admin Portal</button>
+    </div>
+
+    <!-- =========================================================================
+         HOMEPAGE HERO SLIDER (MULTI-SLIDE CAROUSEL)
+         ========================================================================= -->
+    <section class="hero-slider-section" id="top">
+      <div class="hero-slider-container">
+        
+        <!-- Slide 1 -->
+        <div class="hero-slide active">
+          <div class="hero-slide-item">
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80" alt="Empowering Families" class="hero-slide-bg">
+            <div class="hero-slide-overlay"></div>
+            <div class="container">
+              <div class="hero-slide-content">
+                <span class="section-label" style="color: #60A5FA;">Non-Governmental Organization · Kano State</span>
+                <h1>Empowering Families. Building Resilient Communities.</h1>
+                <p class="lead">
+                  We walk alongside individuals, families, and underserved communities to overcome barriers, restore dignity, and create sustainable futures across Northern Nigeria.
+                </p>
+                <div class="hero-cta-group">
+                  <a href="work.html" class="btn btn-primary">Explore Our Work →</a>
+                  <button class="btn btn-outline-white" onclick="openDonateModal()">Support Our Mission</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="hero-slide">
+          <div class="hero-slide-item">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80" alt="Inclusive Education" class="hero-slide-bg">
+            <div class="hero-slide-overlay"></div>
+            <div class="container">
+              <div class="hero-slide-content">
+                <span class="section-label" style="color: #60A5FA;">Inclusive Technology &amp; Education</span>
+                <h1>Turning Vulnerability into Lasting Opportunity.</h1>
+                <p class="lead">
+                  Equipping adolescent girls with disabilities with foundational digital literacy, screen reader fluency, and technological self-reliance in partnership with The Ability First Tech Hub.
+                </p>
+                <div class="hero-cta-group">
+                  <a href="projects.html" class="btn btn-primary">View Flagship Project →</a>
+                  <button class="btn btn-outline-white" onclick="openDonateModal()">Support Our Mission</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="hero-slide">
+          <div class="hero-slide-item">
+            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1600&q=80" alt="Maternal Health" class="hero-slide-bg">
+            <div class="hero-slide-overlay"></div>
+            <div class="container">
+              <div class="hero-slide-content">
+                <span class="section-label" style="color: #60A5FA;">Community Healthcare Outreach</span>
+                <h1>Safe Healthcare &amp; Maternal Care Within Reach.</h1>
+                <p class="lead">
+                  Deploying mobile diagnostic clinics and community healthcare mobilizers to deliver preventative prenatal checkups and nutritional support directly to rural settlements.
+                </p>
+                <div class="hero-cta-group">
+                  <a href="work.html" class="btn btn-primary">Our Health Initiatives →</a>
+                  <a href="contact.html" class="btn btn-outline-white">Partner With Us</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="hero-slide">
+          <div class="hero-slide-item">
+            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1600&q=80" alt="Women Enterprise" class="hero-slide-bg">
+            <div class="hero-slide-overlay"></div>
+            <div class="container">
+              <div class="hero-slide-content">
+                <span class="section-label" style="color: #60A5FA;">Sustainable Livelihoods</span>
+                <h1>Fostering Economic Independence for Women &amp; Youth.</h1>
+                <p class="lead">
+                  Providing seed grants, agricultural processing machinery, and financial literacy workshops that empower female-headed households with viable income streams.
+                </p>
+                <div class="hero-cta-group">
+                  <a href="projects.html" class="btn btn-primary">Explore Livelihoods →</a>
+                  <button class="btn btn-outline-white" onclick="openDonateModal()">Get Involved</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrows -->
+        <div class="hero-slider-arrows">
+          <button class="slider-arrow-btn" onclick="prevSlide()" aria-label="Previous Slide">‹</button>
+          <button class="slider-arrow-btn" onclick="nextSlide()" aria-label="Next Slide">›</button>
+        </div>
+
+        <!-- Dots -->
+        <div class="hero-slider-dots" id="heroSliderDots"></div>
+
+      </div>
+    </section>
+
+    <!-- Partners Strip -->
+    <div style="border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); background: var(--bg-off);">
+      <div class="container">
+        <div class="partner-logo-strip" id="partnersStrip">
+          <div class="partner-logo-item">The Ability First Tech Hub</div>
+          <div class="partner-logo-item">Aisha Kwaku &amp; Associates</div>
+          <div class="partner-logo-item">Kano State Ministry of Women Affairs</div>
+          <div class="partner-logo-item">Sahel Health Initiative</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section Overview -->
+    <section id="about">
+      <div class="container">
+        <div class="about-split-grid">
+          
+          <div class="about-image-column">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80" alt="About BHB Foundation">
+          </div>
+
+          <div class="about-text-column">
+            <span class="section-label">Who We Are</span>
+            <h2>Every individual deserves the chance to live a healthy, safe, and dignified life.</h2>
+            <p>
+              BHB Family Support and Development Foundation is a registered not-for-profit non-governmental organization (CAC Reg. No. 9670692) established in July 2026 to advance the welfare, empowerment, and self-reliance of individuals and underserved communities.
+            </p>
+
+            <div class="about-pull-quote">
+              “People are not defined by their circumstances. With the right support, opportunities, and partnerships, communities can build resilience and shape their own destinies.”
+            </div>
+
+            <div class="about-vision-mission-grid">
+              <div class="mission-box">
+                <h4>Our Mission</h4>
+                <p>To walk alongside vulnerable and underserved individuals by improving access to essential health, education, and economic opportunities.</p>
+              </div>
+              <div class="vision-box">
+                <h4>Our Vision</h4>
+                <p>To build inclusive, resilient, and empowered communities where every individual can live with dignity and realize their full potential.</p>
+              </div>
+            </div>
+
+            <div style="margin-top: 28px;">
+              <a href="about.html" class="btn btn-outline">Read Full Organizational Philosophy &amp; Values →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Focus Areas Section Overview -->
+    <section id="work" class="bg-off">
+      <div class="container">
+        <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <span class="section-label">Our Focus Areas</span>
+            <h2>How We Drive Sustainable Change</h2>
+            <p class="lead">Integrated development pillars designed to address systemic poverty, health inequities, and socio-economic exclusion.</p>
+          </div>
+          <div>
+            <a href="work.html" class="btn btn-outline">View All Focus Areas →</a>
+          </div>
+        </div>
+
+        <div class="focus-areas-grid" id="focusAreasGrid">
+          <div class="focus-area-item">
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" alt="Family Support &amp; Welfare" class="focus-area-thumb">
+            <h3>Family Support &amp; Welfare</h3>
+            <p>Direct household interventions, emergency relief, and social protection safety nets for vulnerable and female-headed households.</p>
+          </div>
+          <div class="focus-area-item">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Youth Empowerment &amp; Livelihoods" class="focus-area-thumb">
+            <h3>Youth Empowerment &amp; Livelihoods</h3>
+            <p>Market-aligned vocational apprenticeships, digital skills incubation, and mentorship programs for young people seeking self-reliance.</p>
+          </div>
+          <div class="focus-area-item">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Women &amp; Vulnerable Groups" class="focus-area-thumb">
+            <h3>Women &amp; Vulnerable Groups</h3>
+            <p>Micro-enterprise seed grants, financial literacy, and protective safe spaces for widows, young mothers, and caregivers.</p>
+          </div>
+          <div class="focus-area-item">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" alt="Digital Skills &amp; Inclusive Education" class="focus-area-thumb">
+            <h3>Digital Skills &amp; Inclusive Education</h3>
+            <p>Foundational digital literacy, assistive tools, and inclusive learning environments for girls and persons with disabilities.</p>
+          </div>
+          <div class="focus-area-item">
+            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" alt="Community Health &amp; Well-being" class="focus-area-thumb">
+            <h3>Community Health &amp; Well-being</h3>
+            <p>Mobile prenatal diagnostics, primary healthcare awareness, and hygiene education in underserved settlements.</p>
+          </div>
+          <div class="focus-area-item">
+            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80" alt="Community Resilience &amp; Sustainability" class="focus-area-thumb">
+            <h3>Community Resilience &amp; Sustainability</h3>
+            <p>Grassroots leadership committees, water and sanitation maintenance, and climate-resilient agricultural methods.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="bg-navy">
+      <div class="container">
+        <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <span class="section-label" style="color: #60A5FA;">Measurable Impact</span>
+            <h2>Delivering Tangible Outcomes Across Communities</h2>
+            <p style="color: #94A3B8; font-size: 1.15rem; max-width: 680px;">
+              We measure our success by genuine qualitative and quantitative improvements in people’s lives, tracking accountability at every program stage.
+            </p>
+          </div>
+          <div>
+            <a href="impact.html" class="btn btn-outline-white">View Full Impact Report &amp; Calculator →</a>
+          </div>
+        </div>
+
+        <div class="impact-stats-container">
+          <div class="stat-metric-block">
+            <div class="stat-metric-number">12,450+</div>
+            <div class="stat-metric-label">People Directly Reached</div>
+          </div>
+          <div class="stat-metric-block">
+            <div class="stat-metric-number">18</div>
+            <div class="stat-metric-label">Programs &amp; Outreach Drives</div>
+          </div>
+          <div class="stat-metric-block">
+            <div class="stat-metric-number">14</div>
+            <div class="stat-metric-label">Communities Impacted</div>
+          </div>
+          <div class="stat-metric-block">
+            <div class="stat-metric-number">45+</div>
+            <div class="stat-metric-label">Volunteers &amp; Local Partners</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section Overview -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <span class="section-label">Programs &amp; Initiatives</span>
+            <h2>Featured Projects &amp; Field Deployments</h2>
+            <p class="lead">Targeted initiatives implemented with local stakeholders and strategic partners.</p>
+          </div>
+          <div>
+            <a href="projects.html" class="btn btn-outline">Explore All Projects →</a>
+          </div>
+        </div>
+
+        <!-- Featured Major Project Card -->
+        <div id="projectFeaturedContainer">
+          <div class="project-featured-card">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="Digital Skills Boot Camp" class="project-featured-image">
+            <div class="project-featured-body">
+              <div>
+                <span class="project-category-tag">Featured Initiative · Digital Skills &amp; Education</span>
+                <h3>Holiday Digital Skills Boot Camp for Girls with Disabilities</h3>
+                <p style="color: var(--text-body); margin-bottom: 20px; font-size: 1.05rem;">
+                  Directly funded by BHB Foundation in collaboration with The Ability First Tech Hub. An intensive digital literacy and assistive technology program empowering adolescent girls with visual, hearing, and physical disabilities with foundational computing, screen-reader fluency, and web design skills.
+                </p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;"><b>Location:</b> Kano Metropolitan &nbsp;|&nbsp; <b>Impact:</b> 10 Girls</p>
+              </div>
+              <div>
+                <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('proj-1')">View Project Details →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary Structured Projects Grid -->
+        <div class="project-secondary-grid" id="projectSecondaryGrid">
+          <div class="project-item">
+            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" alt="Maternal Health" class="project-item-thumb">
+            <div class="project-item-content">
+              <div>
+                <span class="project-category-tag">Community Health</span>
+                <h4>Mobile Primary &amp; Maternal Care Access Initiative</h4>
+                <p>Providing rural settlements across Kano with routine mobile health clinics, prenatal checkups, and nutritional packages...</p>
+              </div>
+              <div>
+                <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('proj-2')" style="width: 100%;">View Project →</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-item">
+            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80" alt="Widows Agro Fund" class="project-item-thumb">
+            <div class="project-item-content">
+              <div>
+                <span class="project-category-tag">Livelihoods</span>
+                <h4>Widows &amp; Vulnerable Women Agro-Business Seed Fund</h4>
+                <p>Seed grants, grain processing equipment, and financial literacy training empowering widowed mothers with sustainable income...</p>
+              </div>
+              <div>
+                <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('proj-3')" style="width: 100%;">View Project →</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-item">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Youth Technical Hub" class="project-item-thumb">
+            <div class="project-item-content">
+              <div>
+                <span class="project-category-tag">Youth Empowerment</span>
+                <h4>Kano Youth Technical &amp; Apprenticeship Hub</h4>
+                <p>6-month practical vocational and IT hardware repair apprenticeship connecting underprivileged youth to market placements...</p>
+              </div>
+              <div>
+                <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('proj-4')" style="width: 100%;">View Project →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Field Gallery Preview -->
+    <section id="gallery" class="bg-off">
+      <div class="container">
+        <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <span class="section-label">Field Gallery</span>
+            <h2>Moments from Our Community Activities</h2>
+            <p class="lead">Photographic documentation of our training sessions, medical outreaches, and stakeholder engagements.</p>
+          </div>
+          <div>
+            <a href="gallery.html" class="btn btn-outline">View Full Gallery →</a>
+          </div>
+        </div>
+
+        <div class="gallery-editorial-grid" id="galleryEditorialGrid">
+          <div class="gallery-photo-card" onclick="openGalleryModal('gal-1')">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" alt="Digital Boot Camp" class="gallery-photo-img">
+            <div class="gallery-photo-caption">
+              <b>Digital Boot Camp for Girls with Disabilities</b>
+              <span>Kano Metropolitan Hub · Inclusive Tech</span>
+            </div>
+          </div>
+          <div class="gallery-photo-card" onclick="openGalleryModal('gal-2')">
+            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=900&q=80" alt="Health Outreach" class="gallery-photo-img">
+            <div class="gallery-photo-caption">
+              <b>Mobile Primary Healthcare Outreach</b>
+              <span>Nasarawa LGA · Health Outreach</span>
+            </div>
+          </div>
+          <div class="gallery-photo-card" onclick="openGalleryModal('gal-3')">
+            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=80" alt="Seed Distribution" class="gallery-photo-img">
+            <div class="gallery-photo-caption">
+              <b>Women Agro-Enterprise Seed Distribution</b>
+              <span>Fagge Community Center · Livelihoods</span>
+            </div>
+          </div>
+          <div class="gallery-photo-card" onclick="openGalleryModal('gal-4')">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Youth Workshop" class="gallery-photo-img">
+            <div class="gallery-photo-caption">
+              <b>Youth Technical &amp; Mentorship Workshop</b>
+              <span>Kano Municipal Center · Youth Empowerment</span>
+            </div>
+          </div>
+          <div class="gallery-photo-card" onclick="openGalleryModal('gal-5')">
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="Town Hall" class="gallery-photo-img">
+            <div class="gallery-photo-caption">
+              <b>Community Stakeholder Town Hall</b>
+              <span>Dala Outreach Post · Resilience</span>
+            </div>
+          </div>
+          <div class="gallery-photo-card" onclick="openGalleryModal('gal-6')">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" alt="Learning Drive" class="gallery-photo-img">
+            <div class="gallery-photo-caption">
+              <b>Inclusive Classroom Learning Drive</b>
+              <span>Tarauni LGA School · Education</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News & Stories Overview -->
+    <section id="stories">
+      <div class="container">
+        <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <span class="section-label">Stories &amp; Publications</span>
+            <h2>News, Field Reports &amp; Community Voices</h2>
+            <p class="lead">First-hand accounts and verified updates from program participants and medical staff.</p>
+          </div>
+          <div>
+            <a href="stories.html" class="btn btn-outline">Read All Stories &amp; News →</a>
+          </div>
+        </div>
+
+        <div class="news-stories-layout">
+          <div id="newsLeadContainer">
+            <div class="news-lead-article" onclick="openStoryModal('lead', 'post-1')" style="cursor: pointer;">
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80" alt="Girls with Disabilities" class="news-lead-image">
+              <span class="section-label">Program Highlights · August 18, 2026</span>
+              <h3>Breaking Barriers: How 10 Young Girls with Disabilities Mastered Coding in Kano</h3>
+              <p style="font-size: 1.05rem; color: var(--text-body);">
+                Inside the landmark Holiday Digital Skills Boot Camp funded directly by BHB Foundation in collaboration with The Ability First Tech Hub.
+              </p>
+              <div style="margin-top: 14px;">
+                <span style="color: var(--blue); font-weight: 600; font-size: 0.95rem;">Read full dispatch →</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="news-side-list" id="newsSideList">
+            <div class="news-side-item" onclick="openStoryModal('story', 'story-1')">
+              <div class="news-meta">Maternal Health · Community Case Study</div>
+              <h4>Amina’s Story: Safe Care Within Reach</h4>
+              <p style="font-size: 0.92rem; color: var(--text-muted);">
+                Expecting her third child, Amina delayed health checks due to distance. BHB’s mobile health team delivered prenatal care and connected her to a local clinic.
+              </p>
+            </div>
+            <div class="news-side-item" onclick="openStoryModal('story', 'story-2')">
+              <div class="news-meta">Youth Empowerment · Community Case Study</div>
+              <h4>Ibrahim’s Story: From Searching to Leading</h4>
+              <p style="font-size: 0.92rem; color: var(--text-muted);">
+                After two years of job hunting, Ibrahim gained practical digital training through BHB and now works as an IT assistant and youth mentor.
+              </p>
+            </div>
+            <div class="news-side-item" onclick="openStoryModal('story', 'story-3')">
+              <div class="news-meta">Women's Livelihoods · Community Case Study</div>
+              <h4>Fatima’s Story: A Sustainable Business</h4>
+              <p style="font-size: 0.92rem; color: var(--text-muted);">
+                Fatima, a widowed mother of four, expanded her tailoring workshop through BHB’s seed grant and now comfortably pays her children’s school fees.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership Section Preview -->
+    <section id="team" class="bg-off">
+      <div class="container">
+        <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <span class="section-label">Our Leadership</span>
+            <h2>Trustees, Directors &amp; Field Specialists</h2>
+            <p class="lead">Experienced practitioners dedicated to transparent governance and community-led development.</p>
+          </div>
+          <div>
+            <a href="team.html" class="btn btn-outline">Meet Full Leadership Team →</a>
+          </div>
+        </div>
+
+        <div class="team-editorial-grid" id="teamEditorialGrid">
+          <div class="team-member-item">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Dr. Bashir H. Bello" class="team-member-photo">
+            <h3>Dr. Bashir H. Bello</h3>
+            <div class="team-member-role">Founder &amp; Chairman, Board of Trustees</div>
+            <p class="team-member-bio">Dr. Bashir established BHB Foundation to advance human dignity, social resilience, and structured opportunity across Northern Nigeria.</p>
+          </div>
+          <div class="team-member-item">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Hajiya Fatima A. Yusuf" class="team-member-photo">
+            <h3>Hajiya Fatima A. Yusuf</h3>
+            <div class="team-member-role">Executive Director</div>
+            <p class="team-member-bio">Fatima leads the foundation's strategic direction, partner alignment, and program execution across participating local governments.</p>
+          </div>
+          <div class="team-member-item">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Malam Ibrahim Al-Hassan" class="team-member-photo">
+            <h3>Malam Ibrahim Al-Hassan</h3>
+            <div class="team-member-role">Director of Programs &amp; Inclusive Tech</div>
+            <p class="team-member-bio">Ibrahim oversees BHB's digital inclusion and educational programs, including our disability tech boot camps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section Overview -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-editorial-grid">
+          
+          <div class="contact-info-col">
+            <span class="section-label">Contact Us</span>
+            <h2>Start a Conversation with BHB Foundation</h2>
+            <p style="margin-top: 12px;">
+              Whether you are an institutional partner, philanthropic donor, CSR representative, or community volunteer, reach out to explore collaborative pathways.
+            </p>
+
+            <div class="contact-detail-list">
+              <div class="contact-detail-item">
+                <b>Headquarters Office</b>
+                <span>66/77 Sulaiman Crescent, Nasarawa, Kano State, Nigeria</span>
+              </div>
+              <div class="contact-detail-item">
+                <b>Telephone</b>
+                <span>+234 201 454 5878</span>
+              </div>
+              <div class="contact-detail-item">
+                <b>Email Inquiries</b>
+                <span>info@bhbfoundation.com / contact@bhborganization.org</span>
+              </div>
+              <div class="contact-detail-item">
+                <b>Office Hours</b>
+                <span>Monday – Friday, 8:00 AM – 5:00 PM (WAT)</span>
+              </div>
+              <div class="contact-detail-item">
+                <b>Legal Registration</b>
+                <span>CAC Corporate Registration No. 9670692</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-col">
+            <h3 style="margin-bottom: 20px; font-size: 1.3rem;">Send Us a Message</h3>
+            <form onsubmit="submitContactForm(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Full Name *</label>
+                  <input type="text" name="contact_name" required placeholder="e.g. Alhaji Ibrahim Danladi">
+                </div>
+                <div class="form-group">
+                  <label>Email Address *</label>
+                  <input type="email" name="contact_email" required placeholder="name@organization.org">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Organization Type</label>
+                  <select name="contact_org" required>
+                    <option value="Government institution">Government institution</option>
+                    <option value="Philanthropic foundation">Philanthropic foundation</option>
+                    <option value="Corporate CSR program">Corporate CSR program</option>
+                    <option value="Civil society / NGO">Civil society / NGO</option>
+                    <option value="Individual">Individual Supporter</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Inquiry Subject</label>
+                  <select name="contact_subject" required>
+                    <option value="Partnership inquiry">Partnership inquiry</option>
+                    <option value="Program collaboration">Program collaboration</option>
+                    <option value="Funding & Grants">Funding &amp; Grants</option>
+                    <option value="General question">General question</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Your Message *</label>
+                <textarea name="contact_message" rows="4" placeholder="How can we work together to empower communities?" required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-navy" style="width: 100%; padding: 14px;">
+                Submit Inquiry →
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top-grid">
+          
+          <div class="footer-brand">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <img src="assets/images/bhb-logo.png" alt="BHB mark" style="height: 38px;">
+            </div>
+            <p>Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State, Nigeria.</p>
+          </div>
+
+          <div class="footer-col">
+            <h5>About</h5>
+            <a href="about.html">Who We Are</a>
+            <a href="about.html#mission">Mission &amp; Vision</a>
+            <a href="team.html">Our Leadership</a>
+            <a href="impact.html">Impact Report</a>
+          </div>
+
+          <div class="footer-col">
+            <h5>Programs</h5>
+            <a href="work.html">Focus Areas</a>
+            <a href="projects.html">Active Projects</a>
+            <a href="gallery.html">Field Gallery</a>
+            <a href="stories.html">Publications</a>
+          </div>
+
+          <div class="footer-col">
+            <h5>Newsletter</h5>
+            <p style="font-size: 0.85rem; margin-bottom: 12px;">Receive quarterly field updates and governance reports:</p>
+            <form onsubmit="event.preventDefault(); showToast('Subscribed to BHB Foundation updates!', 'success'); this.reset();" style="display: flex; gap: 8px;">
+              <input type="email" placeholder="Your email address" style="padding: 9px 12px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; font-size: 0.88rem; outline: none; flex: 1;" required>
+              <button type="submit" class="btn btn-primary btn-sm">Join</button>
+            </form>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom-bar">
+          <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. 9670692. All rights reserved.</span>
+          <button onclick="toggleAdminView(true)" style="background: none; border: none; color: #94A3B8; font-size: 0.82rem; cursor: pointer; text-decoration: underline;">
+            Super Admin Controller
+          </button>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <!-- =========================================================================
+       SUPER ADMIN DASHBOARD VIEW (EQUIPPED WITH HERO SLIDER & DIRECT MEDIA UPLOADS)
+       ========================================================================= -->
+  <div id="adminDashboardView">
+    <div class="admin-layout">
+      
+      <aside class="admin-sidebar">
+        <div>
+          <div class="admin-brand">
+            <img src="assets/images/bhb-logo.png" alt="BHB Logo" class="admin-brand-logo" style="height: 38px;">
+            <div class="admin-brand-text" style="margin-left: 8px;">
+              <span class="admin-brand-title">BHB Admin</span>
+              <span class="admin-badge-tag">Super Controller</span>
+            </div>
+          </div>
+
+          <ul class="admin-nav-menu">
+            <li class="admin-nav-item active">
+              <button data-admin-tab="overview">
+                <span class="nav-item-left">📊 Analytics Overview</span>
+              </button>
+            </li>
+            <li class="admin-nav-item">
+              <button data-admin-tab="slides">
+                <span class="nav-item-left">🖼️ Hero Carousel Slides</span>
+              </button>
+            </li>
+            <li class="admin-nav-item">
+              <button data-admin-tab="projects">
+                <span class="nav-item-left">🎯 Projects &amp; Milestones</span>
+              </button>
+            </li>
+            <li class="admin-nav-item">
+              <button data-admin-tab="blog">
+                <span class="nav-item-left">📰 News &amp; Stories CMS</span>
+              </button>
+            </li>
+            <li class="admin-nav-item">
+              <button data-admin-tab="gallery">
+                <span class="nav-item-left">📸 Photo Gallery Manager</span>
+              </button>
+            </li>
+            <li class="admin-nav-item">
+              <button data-admin-tab="team">
+                <span class="nav-item-left">👥 Leadership &amp; Team</span>
+              </button>
+            </li>
+            <li class="admin-nav-item">
+              <button data-admin-tab="partners">
+                <span class="nav-item-left">🤝 Partner Organizations</span>
+              </button>
+            </li>
+            <li class="admin-nav-item">
+              <button data-admin-tab="donations">
+                <span class="nav-item-left">💳 Donations Ledger</span>
+              </button>
+            </li>
+            <li class="admin-nav-item">
+              <button data-admin-tab="volunteers">
+                <span class="nav-item-left">🙋 Volunteers</span>
+                <span class="admin-badge-count" id="adminSidebarVolCount">0</span>
+              </button>
+            </li>
+            <li class="admin-nav-item">
+              <button data-admin-tab="inquiries">
+                <span class="nav-item-left">📩 Inquiries Inbox</span>
+                <span class="admin-badge-count" id="adminSidebarInqCount">0</span>
+              </button>
+            </li>
+            <li class="admin-nav-item">
+              <button data-admin-tab="settings">
+                <span class="nav-item-left">⚙️ Platform Settings</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="admin-sidebar-footer">
+          <button class="exit-admin-btn" onclick="toggleAdminView(false)">
+            ← Return to Public Website
+          </button>
+        </div>
+      </aside>
+
+      <main class="admin-main">
+        <header class="admin-topbar">
+          <div class="admin-topbar-title" id="adminCurrentTabTitle">
+            Executive Analytics &amp; KPI Overview
+          </div>
+          <div class="admin-topbar-right">
+            <div class="admin-live-clock" id="adminLiveClock">🕒 Loading WAT...</div>
+            <div class="admin-user-pill">
+              <div class="admin-user-avatar">AD</div>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF;">Super Administrator</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="admin-content">
+
+          <!-- TAB 1: OVERVIEW -->
+          <div class="admin-tab-pane active" id="adminTab-overview">
+            <div class="kpi-cards-grid">
+              <div class="kpi-card">
+                <div class="kpi-header">
+                  <span class="kpi-title">Total Funds Mobilized</span>
+                  <span class="kpi-icon">💰</span>
+                </div>
+                <div class="kpi-value" id="kpiTotalDonations">₦0</div>
+                <span class="kpi-trend trend-up">↑ +28% vs Last Month</span>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-header">
+                  <span class="kpi-title">People Directly Reached</span>
+                  <span class="kpi-icon">👥</span>
+                </div>
+                <div class="kpi-value" id="kpiTotalBeneficiaries">12,450+</div>
+                <span class="kpi-trend trend-up">Across 14 Communities</span>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-header">
+                  <span class="kpi-title">Active Programmes</span>
+                  <span class="kpi-icon">🎯</span>
+                </div>
+                <div class="kpi-value" id="kpiActiveProjects">0</div>
+                <span class="kpi-trend trend-neutral">6 Focus Pillars</span>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-header">
+                  <span class="kpi-title">Pending Volunteer Reviews</span>
+                  <span class="kpi-icon">🙋</span>
+                </div>
+                <div class="kpi-value" id="kpiPendingVolunteers">0</div>
+                <span class="kpi-trend trend-neutral">Awaiting Review</span>
+              </div>
+            </div>
+
+            <div class="admin-charts-grid">
+              <div class="chart-card">
+                <div class="chart-header">
+                  <span class="chart-title">Monthly Donation Trends (₦ Millions)</span>
+                  <span class="status-pill success">Live Sync</span>
+                </div>
+                <div class="chart-container-box">
+                  <canvas id="adminDonationsChart"></canvas>
+                </div>
+              </div>
+
+              <div class="chart-card">
+                <div class="chart-header">
+                  <span class="chart-title">Beneficiary Allocation by Program</span>
+                </div>
+                <div class="chart-container-box">
+                  <canvas id="adminBeneficiariesChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: HERO SLIDES -->
+          <div class="admin-tab-pane" id="adminTab-slides">
+            <div class="admin-table-card">
+              <div class="table-action-bar">
+                <div>
+                  <h3 style="color: #FFFFFF; font-size: 1.2rem;">Hero Carousel Slides Manager</h3>
+                  <p style="color: #94A3B8; font-size: 0.85rem; margin-top: 4px;">Customize carousel slides, background photos, and calls to action.</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openNewHeroSlideModal()">+ Add Carousel Slide</button>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="admin-data-table">
+                  <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Headline Title</th>
+                      <th>Category Label</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminHeroSlidesTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: PROJECTS -->
+          <div class="admin-tab-pane" id="adminTab-projects">
+            <div class="admin-table-card">
+              <div class="table-action-bar">
+                <div>
+                  <h3 style="color: #FFFFFF; font-size: 1.2rem;">Projects &amp; Initiatives Manager</h3>
+                  <p style="color: #94A3B8; font-size: 0.85rem; margin-top: 4px;">Upload project banners and update beneficiary milestones.</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openNewProjectModal()">+ Launch Project (With Photo)</button>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="admin-data-table">
+                  <thead>
+                    <tr>
+                      <th>Project Title</th>
+                      <th>Category</th>
+                      <th>Raised / Goal</th>
+                      <th>Beneficiaries</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminProjectsTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: BLOG CMS -->
+          <div class="admin-tab-pane" id="adminTab-blog">
+            <div class="admin-table-card">
+              <div class="table-action-bar">
+                <div>
+                  <h3 style="color: #FFFFFF; font-size: 1.2rem;">News &amp; Field Updates Manager</h3>
+                  <p style="color: #94A3B8; font-size: 0.85rem; margin-top: 4px;">Upload photos directly from your device and publish live.</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openNewPostModal()">+ Create Article (With Photo Upload)</button>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="admin-data-table">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Category</th>
+                      <th>Author</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminBlogTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: GALLERY -->
+          <div class="admin-tab-pane" id="adminTab-gallery">
+            <div class="admin-table-card">
+              <div class="table-action-bar">
+                <div>
+                  <h3 style="color: #FFFFFF; font-size: 1.2rem;">Photo Gallery Manager</h3>
+                  <p style="color: #94A3B8; font-size: 0.85rem; margin-top: 4px;">Upload authentic field photographs from events and outreaches.</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openNewGalleryModal()">+ Upload Field Photo</button>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="admin-data-table">
+                  <thead>
+                    <tr>
+                      <th>Photo</th>
+                      <th>Title</th>
+                      <th>Category</th>
+                      <th>Location</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminGalleryTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 6: TEAM ROSTER -->
+          <div class="admin-tab-pane" id="adminTab-team">
+            <div class="admin-table-card">
+              <div class="table-action-bar">
+                <div>
+                  <h3 style="color: #FFFFFF; font-size: 1.2rem;">Leadership &amp; Staff Roster</h3>
+                  <p style="color: #94A3B8; font-size: 0.85rem; margin-top: 4px;">Upload portrait images for leadership and field personnel.</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openNewTeamModal()">+ Add Member (With Photo Upload)</button>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="admin-data-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Department</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminTeamTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 7: PARTNERS -->
+          <div class="admin-tab-pane" id="adminTab-partners">
+            <div class="admin-table-card">
+              <div class="table-action-bar">
+                <h3 style="color: #FFFFFF; font-size: 1.2rem;">Partner Organizations</h3>
+                <button class="btn btn-primary btn-sm" onclick="openNewPartnerModal()">+ Add Partner</button>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="admin-data-table">
+                  <thead>
+                    <tr>
+                      <th>Organization</th>
+                      <th>Tier</th>
+                      <th>Sector</th>
+                      <th>Website</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminPartnersTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 8: DONATIONS -->
+          <div class="admin-tab-pane" id="adminTab-donations">
+            <div class="admin-table-card">
+              <div class="table-action-bar">
+                <h3 style="color: #FFFFFF; font-size: 1.2rem;">Donations Transactions Ledger</h3>
+                <button class="btn btn-primary btn-sm" onclick="exportDonationsCSV()">📥 Export to CSV</button>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="admin-data-table">
+                  <thead>
+                    <tr>
+                      <th>Ref ID</th>
+                      <th>Donor</th>
+                      <th>Amount</th>
+                      <th>Method</th>
+                      <th>Project Designation</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminDonationsTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 9: VOLUNTEERS -->
+          <div class="admin-tab-pane" id="adminTab-volunteers">
+            <div class="admin-table-card">
+              <div class="table-action-bar">
+                <h3 style="color: #FFFFFF; font-size: 1.2rem;">Volunteer &amp; Fellowship Applications</h3>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="admin-data-table">
+                  <thead>
+                    <tr>
+                      <th>Applicant</th>
+                      <th>Role Preference</th>
+                      <th>Target LGA</th>
+                      <th>Applied Date</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminVolunteersTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 10: INQUIRIES -->
+          <div class="admin-tab-pane" id="adminTab-inquiries">
+            <div class="admin-table-card">
+              <div class="table-action-bar">
+                <h3 style="color: #FFFFFF; font-size: 1.2rem;">Contact Form Inquiries</h3>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="admin-data-table">
+                  <thead>
+                    <tr>
+                      <th>Sender</th>
+                      <th>Subject &amp; Message</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminInquiriesTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 11: SETTINGS -->
+          <div class="admin-tab-pane" id="adminTab-settings">
+            <div class="settings-grid">
+              
+              <div class="settings-card">
+                <h3>Foundation Metadata</h3>
+                <p>Update official registration and contact details synced with the public website.</p>
+                <form id="adminSettingsForm" class="admin-modal-form" onsubmit="handleSaveSettings(event)" style="padding: 0;">
+                  <div class="form-group">
+                    <label>CAC Registration Number</label>
+                    <input type="text" name="cac_num" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Headquarters Address</label>
+                    <input type="text" name="office_address" required>
+                  </div>
+                  <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div class="form-group">
+                      <label>Telephone</label>
+                      <input type="text" name="contact_phone" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input type="email" name="contact_email" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Zenith Bank Account Number</label>
+                    <input type="text" name="zenith_acc" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary" style="margin-top: 12px;">Save Foundation Metadata</button>
+                </form>
+              </div>
+
+              <div class="settings-card">
+                <h3>Database Backup &amp; Live Restore</h3>
+                <p>Export all live platform data as a portable JSON file, or restore from a previous backup.</p>
+                <div style="display: grid; gap: 14px;">
+                  <button class="btn btn-primary" onclick="exportDatabaseJSON()" style="width: 100%;">
+                    💾 Download JSON Database Backup
+                  </button>
+                  <label class="btn btn-ghost-dark" style="width: 100%; cursor: pointer;">
+                    📂 Restore Database from JSON Backup
+                    <input type="file" accept=".json" onchange="importDatabaseJSON(event)" style="display: none;">
+                  </label>
+                  <button class="btn btn-ghost" onclick="resetToDemoData()" style="width: 100%; color: #F87171; border-color: rgba(239, 68, 68, 0.4);">
+                    ⚠️ Reset to Factory Foundation Data
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+
+  <!-- Modals -->
+  <div class="modal-backdrop" id="genericModal">
+    <div class="modal-window">
+      <div style="position: absolute; top: 18px; right: 20px;">
+        <button onclick="closeModal('genericModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy);">×</button>
+      </div>
+      <div id="genericModalContent"></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="adminCrudModal">
+    <div class="modal-window" style="background: #0F172A; color: #FFFFFF; border: 1px solid rgba(255,255,255,0.15);">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 20px 24px;">
+        <h3 id="adminCrudModalTitle" style="color: #FFFFFF; font-size: 1.25rem;">Manage Item</h3>
+        <button onclick="closeModal('adminCrudModal')" style="background:none; border:none; font-size:1.6rem; color:#94A3B8; cursor:pointer;">×</button>
+      </div>
+      <div id="adminCrudModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/store.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+</html>

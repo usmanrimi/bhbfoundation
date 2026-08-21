@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects &amp; Programs — BHB Family Support and Development Foundation</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/bhb-logo.png" alt="BHB Foundation Logo" class="nav-brand-logo">
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="work.html">Our Work</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="impact.html">Impact</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="stories.html">News &amp; Stories</a>
+        <a href="team.html">Our Team</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html" class="nav-admin-link" onclick="localStorage.setItem('openAdmin', 'true')">Admin</a>
+        <button class="btn btn-primary btn-sm" onclick="openDonateModal()">Support Our Mission</button>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="work.html">Our Work</a>
+    <a href="projects.html">Projects &amp; Programs</a>
+    <a href="impact.html">Impact Metrics</a>
+    <a href="gallery.html">Photo Gallery</a>
+    <a href="stories.html">News &amp; Stories</a>
+    <a href="team.html">Our Team</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <!-- Page Header Banner -->
+  <div class="page-header-banner">
+    <div class="container">
+      <span class="section-label" style="color: #60A5FA;">Deployments &amp; Initiatives</span>
+      <h1>Active Projects &amp; Field Programs</h1>
+      <p>
+        Documented milestones, impact data, and grassroots deployments executed across local government areas in Kano State.
+      </p>
+    </div>
+  </div>
+
+  <!-- Projects Container -->
+  <section>
+    <div class="container">
+      <!-- Featured Major Project Card -->
+      <div id="projectFeaturedContainer">
+        <div class="project-featured-card">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="Digital Skills Boot Camp" class="project-featured-image">
+          <div class="project-featured-body">
+            <div>
+              <span class="project-category-tag">Featured Initiative · Digital Skills &amp; Education</span>
+              <h3>Holiday Digital Skills Boot Camp for Girls with Disabilities</h3>
+              <p style="color: var(--text-body); margin-bottom: 20px; font-size: 1.05rem;">
+                Directly funded by BHB Foundation in collaboration with The Ability First Tech Hub. An intensive digital literacy and assistive technology program empowering adolescent girls with visual, hearing, and physical disabilities with foundational computing, screen-reader fluency, and web design skills.
+              </p>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;"><b>Location:</b> Kano Metropolitan &nbsp;|&nbsp; <b>Impact:</b> 10 Girls</p>
+            </div>
+            <div>
+              <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('proj-1')">View Project Details →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary Projects Grid -->
+      <div class="project-secondary-grid" id="projectSecondaryGrid">
+        <div class="project-item">
+          <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" alt="Maternal Health" class="project-item-thumb">
+          <div class="project-item-content">
+            <div>
+              <span class="project-category-tag">Community Health</span>
+              <h4>Mobile Primary &amp; Maternal Care Access Initiative</h4>
+              <p>Providing rural settlements across Kano with routine mobile health clinics, prenatal checkups, and nutritional packages...</p>
+            </div>
+            <div>
+              <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('proj-2')" style="width: 100%;">View Project →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80" alt="Widows Agro Fund" class="project-item-thumb">
+          <div class="project-item-content">
+            <div>
+              <span class="project-category-tag">Livelihoods</span>
+              <h4>Widows &amp; Vulnerable Women Agro-Business Seed Fund</h4>
+              <p>Seed grants, grain processing equipment, and financial literacy training empowering widowed mothers with sustainable income...</p>
+            </div>
+            <div>
+              <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('proj-3')" style="width: 100%;">View Project →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Youth Technical Hub" class="project-item-thumb">
+          <div class="project-item-content">
+            <div>
+              <span class="project-category-tag">Youth Empowerment</span>
+              <h4>Kano Youth Technical &amp; Apprenticeship Hub</h4>
+              <p>6-month practical vocational and IT hardware repair apprenticeship connecting underprivileged youth to market placements...</p>
+            </div>
+            <div>
+              <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('proj-4')" style="width: 100%;">View Project →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <img src="assets/images/bhb-logo.png" alt="BHB mark" style="height: 38px;">
+          <p>Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State, Nigeria.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>About</h5>
+          <a href="about.html">Who We Are</a>
+          <a href="about.html#mission">Mission &amp; Vision</a>
+          <a href="team.html">Our Leadership</a>
+          <a href="impact.html">Impact Report</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Programs</h5>
+          <a href="work.html">Focus Areas</a>
+          <a href="projects.html">Active Projects</a>
+          <a href="gallery.html">Field Gallery</a>
+          <a href="stories.html">Publications</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 12px;">Receive quarterly field updates and governance reports:</p>
+          <form onsubmit="event.preventDefault(); showToast('Subscribed to BHB Foundation updates!', 'success'); this.reset();" style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Your email address" style="padding: 9px 12px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; font-size: 0.88rem; outline: none; flex: 1;" required>
+            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. 9670692. All rights reserved.</span>
+        <a href="index.html" style="color: #94A3B8; text-decoration: underline;">Return to Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Generic Modal -->
+  <div class="modal-backdrop" id="genericModal">
+    <div class="modal-window">
+      <div style="position: absolute; top: 18px; right: 20px;">
+        <button onclick="closeModal('genericModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy);">×</button>
+      </div>
+      <div id="genericModalContent"></div>
+    </div>
+  </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
