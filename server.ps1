@@ -1,5 +1,5 @@
 $port = 8080
-$root = $PSScriptRoot
+$root = "C:\Users\USER\.gemini\antigravity\scratch\bhb-foundation"
 $listener = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Any, $port)
 $listener.Start()
 Write-Host "BHB Foundation server running on http://localhost:$port"
@@ -43,6 +43,7 @@ while ($true) {
             '.js'   { 'application/javascript; charset=utf-8' }
             '.png'  { 'image/png' }
             '.jpg'  { 'image/jpeg' }
+            '.jpeg' { 'image/jpeg' }
             '.svg'  { 'image/svg+xml' }
             '.json' { 'application/json; charset=utf-8' }
             default { 'application/octet-stream' }
@@ -61,6 +62,6 @@ while ($true) {
         $stream.Flush()
         $client.Close()
     } catch {
-        # ignore client disconnects
+        # continue loop
     }
 }

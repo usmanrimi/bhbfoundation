@@ -1,13 +1,12 @@
 /**
  * BHB FAMILY SUPPORT AND DEVELOPMENT FOUNDATION
- * EDITORIAL NGO PORTAL CONTROLLER (With Full Hero Slider & Fallback Pre-rendering)
+ * EDITORIAL NGO PORTAL CONTROLLER (FULLY REACTIVE WITH STORE)
  */
 
 let heroCurrentSlide = 0;
 let heroSlideTimer = null;
 
 document.addEventListener('DOMContentLoaded', () => {
-  initHeroSlider();
   renderAllSections();
   setupNavigation();
 
@@ -23,11 +22,52 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// 1. Full-Featured Hero Slider
+// 1. Full Dynamic Hero Slider
+function renderHeroSlider() {
+  const sliderContainer = document.querySelector('.hero-slider-container');
+  if (!sliderContainer) return;
+
+  const slides = BHBStore.getHeroSlides();
+  if (!slides || !slides.length) return;
+
+  const slidesHtml = slides.map((s, idx) => `
+    <div class="hero-slide ${idx === 0 ? 'active' : ''}">
+      <div class="hero-slide-item">
+        <img src="${s.image}" alt="${s.title}" class="hero-slide-bg">
+        <div class="hero-slide-overlay"></div>
+        <div class="container">
+          <div class="hero-slide-content">
+            <span class="section-label label-light">${s.label || 'Non-Governmental Organization'}</span>
+            <h1>${s.title}</h1>
+            <p class="lead">${s.lead}</p>
+            <div class="hero-cta-group">
+              <a href="${s.primaryCtaLink || 'work.html'}" class="btn btn-primary">${s.primaryCtaText || 'Explore Our Work →'}</a>
+              <button class="btn btn-outline-white" onclick="openDonateModal()">Support Our Mission</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  sliderContainer.innerHTML = `
+    ${slidesHtml}
+    <div class="hero-slider-arrows">
+      <button class="slider-arrow-btn" onclick="prevSlide()" aria-label="Previous Slide">‹</button>
+      <button class="slider-arrow-btn" onclick="nextSlide()" aria-label="Next Slide">›</button>
+    </div>
+    <div class="hero-slider-dots" id="heroSliderDots"></div>
+  `;
+
+  initHeroSlider();
+}
+
 function initHeroSlider() {
   const slides = document.querySelectorAll('.hero-slide');
   const dotsContainer = document.getElementById('heroSliderDots');
   if (!slides.length) return;
+
+  heroCurrentSlide = 0;
 
   if (dotsContainer) {
     dotsContainer.innerHTML = '';
@@ -42,9 +82,10 @@ function initHeroSlider() {
 
   startHeroAutoPlay();
 
-  // Pause on hover
   const sliderContainer = document.querySelector('.hero-slider-container');
   if (sliderContainer) {
+    sliderContainer.removeEventListener('mouseenter', stopHeroAutoPlay);
+    sliderContainer.removeEventListener('mouseleave', startHeroAutoPlay);
     sliderContainer.addEventListener('mouseenter', stopHeroAutoPlay);
     sliderContainer.addEventListener('mouseleave', startHeroAutoPlay);
   }
@@ -84,12 +125,14 @@ window.prevSlide = function() {
 
 // 2. Render All Dynamic Sections
 function renderAllSections() {
+  renderHeroSlider();
   renderFocusAreas();
   renderProjects();
   renderGallery();
   renderStoriesAndNews();
   renderTeam();
   renderPartners();
+  renderSettingsMetadata();
 }
 
 // 3. Navigation & Mobile Drawer
@@ -127,7 +170,7 @@ function renderProjects() {
 
   const projects = BHBStore.getProjects();
   const featured = projects.find(p => p.featured) || projects[0];
-  const secondaries = projects.filter(p => p.id !== featured.id);
+  const secondaries = projects.filter(p => !featured || p.id !== featured.id);
 
   if (featuredContainer && featured) {
     featuredContainer.innerHTML = `
@@ -255,6 +298,25 @@ function renderPartners() {
   `).join('');
 }
 
+// 10. Settings & Metadata
+function renderSettingsMetadata() {
+  const settings = BHBStore.getSettings();
+  if (!settings) return;
+
+  document.querySelectorAll('[data-bind="cacNumber"]').forEach(el => {
+    el.textContent = settings.cacNumber;
+  });
+  document.querySelectorAll('[data-bind="officeAddress"]').forEach(el => {
+    el.textContent = settings.officeAddress;
+  });
+  document.querySelectorAll('[data-bind="phone"]').forEach(el => {
+    el.textContent = settings.phone;
+  });
+  document.querySelectorAll('[data-bind="email"]').forEach(el => {
+    el.textContent = settings.email;
+  });
+}
+
 // Modals
 window.openModal = function(modalId) {
   const modal = document.getElementById(modalId);
@@ -348,7 +410,7 @@ window.openGalleryModal = function(galId) {
         <img src="${item.image}" alt="${item.title}" style="width: 100%; max-height: 480px; object-fit: contain; border-radius: var(--radius-sm); margin-bottom: 16px;">
         <h3 style="color: var(--navy); margin-bottom: 6px;">${item.title}</h3>
         <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 4px;">${item.caption}</p>
-        <span style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">${item.location} · ${item.category}</span>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">${item.location} · ${item.category}</span>
       </div>
     `;
   }

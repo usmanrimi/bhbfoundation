@@ -1,6 +1,6 @@
 /**
  * BHB FAMILY SUPPORT AND DEVELOPMENT FOUNDATION
- * SUPER ADMIN CONTROLLER (FULL POWER & DIRECT MEDIA UPLOAD)
+ * SUPER ADMIN CONTROLLER (LIGHT PROFESSIONAL CORPORATE THEME)
  */
 
 let donationsChartInstance = null;
@@ -32,6 +32,9 @@ window.toggleAdminView = function(showAdmin) {
   } else {
     if (adminView) adminView.style.display = 'none';
     if (publicView) publicView.style.display = 'block';
+    if (typeof renderAllSections === 'function') {
+      renderAllSections();
+    }
     window.scrollTo(0, 0);
   }
 };
@@ -123,48 +126,76 @@ function setupImageDropzones() {
 
     zone.addEventListener('drop', (e) => {
       const dt = e.dataTransfer;
-      const file = dt.files[0];
+      const files = dt.files;
       const fileInput = zone.querySelector('input[type="file"]');
-      if (fileInput && file) {
-        fileInput.files = dt.files;
-        const previewId = fileInput.getAttribute('data-preview-id');
-        const hiddenName = fileInput.getAttribute('data-hidden-name');
-        window.handleImageUpload(fileInput, previewId, hiddenName);
+      if (files.length && fileInput) {
+        fileInput.files = files;
+        fileInput.dispatchEvent(new Event('change'));
       }
-    });
+    }, false);
   });
 }
 
-// Master Render
+// Global Toast Notifications
+window.showToast = function(msg, type = 'info') {
+  const toast = document.createElement('div');
+  const bg = type === 'success' ? '#10B981' : type === 'warning' ? '#F59E0B' : '#2563EB';
+  toast.style.cssText = `
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: ${bg};
+    color: #FFFFFF;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+    z-index: 9999;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  `;
+  toast.innerHTML = `<span>${type === 'success' ? '✓' : 'ℹ'}</span> ${msg}`;
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(10px)';
+    setTimeout(() => toast.remove(), 300);
+  }, 3500);
+};
+
+// Main Dashboard Render
 function renderAdminDashboard() {
-  renderAdminKPIs();
+  renderAdminOverviewMetrics();
+  renderAdminCharts();
   renderAdminHeroSlidesTable();
   renderAdminProjectsTable();
   renderAdminBlogTable();
-  renderAdminTeamTable();
   renderAdminGalleryTable();
+  renderAdminTeamTable();
   renderAdminPartnersTable();
   renderAdminDonationsTable();
   renderAdminVolunteersTable();
   renderAdminInquiriesTable();
   renderAdminSettingsForm();
-  renderAdminCharts();
 }
 
-// 1. KPIs
-function renderAdminKPIs() {
+// 1. Overview KPIs
+function renderAdminOverviewMetrics() {
   const donations = BHBStore.getDonations();
   const projects = BHBStore.getProjects();
   const volunteers = BHBStore.getVolunteers();
   const inquiries = BHBStore.getInquiries();
 
-  const totalFunds = donations.reduce((sum, d) => sum + (d.currency === 'USD' ? d.amount * 1550 : d.amount), 0);
-  
-  const fundsEl = document.getElementById('kpiTotalDonations');
-  if (fundsEl) fundsEl.textContent = `₦${totalFunds.toLocaleString()}`;
+  const totalDonations = donations.reduce((sum, d) => sum + (d.amount || 0), 0);
+  const donEl = document.getElementById('kpiTotalDonations');
+  if (donEl) donEl.textContent = `₦${totalDonations.toLocaleString()}`;
 
   const projEl = document.getElementById('kpiActiveProjects');
-  if (projEl) projEl.textContent = projects.length;
+  if (projEl) projEl.textContent = projects.filter(p => p.status === 'Active').length || projects.length;
 
   const volEl = document.getElementById('kpiPendingVolunteers');
   const volCount = volunteers.filter(v => v.status === 'Pending').length;
@@ -178,7 +209,7 @@ function renderAdminKPIs() {
   if (sidebarInq) sidebarInq.textContent = unreadInq;
 }
 
-// 2. Charts
+// 2. Charts (Clean Light Corporate Theme)
 function renderAdminCharts() {
   const donCanvas = document.getElementById('adminDonationsChart');
   const benCanvas = document.getElementById('adminBeneficiariesChart');
@@ -194,8 +225,8 @@ function renderAdminCharts() {
       datasets: [{
         label: 'Funds Mobilized (₦ Millions)',
         data: [2.5, 4.8, 8.2, 14.5, 19.8],
-        borderColor: '#3B82F6',
-        backgroundColor: 'rgba(59, 130, 246, 0.12)',
+        borderColor: '#2563EB',
+        backgroundColor: 'rgba(37, 99, 235, 0.08)',
         fill: true,
         tension: 0.35
       }]
@@ -203,10 +234,10 @@ function renderAdminCharts() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: { legend: { labels: { color: '#CBD5E1' } } },
+      plugins: { legend: { labels: { color: '#0F172A', font: { weight: '600' } } } },
       scales: {
-        x: { ticks: { color: '#94A3B8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-        y: { ticks: { color: '#94A3B8' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+        x: { ticks: { color: '#64748B' }, grid: { color: '#F1F5F9' } },
+        y: { ticks: { color: '#64748B' }, grid: { color: '#F1F5F9' } }
       }
     }
   });
@@ -217,13 +248,13 @@ function renderAdminCharts() {
       labels: ['Healthcare', 'Disability Tech', 'Women Agrobiz', 'Youth Skills'],
       datasets: [{
         data: [42, 18, 25, 15],
-        backgroundColor: ['#3B82F6', '#10B981', '#F59E0B', '#8B5CF6']
+        backgroundColor: ['#2563EB', '#10B981', '#F59E0B', '#8B5CF6']
       }]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: { legend: { position: 'bottom', labels: { color: '#CBD5E1' } } }
+      plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { weight: '600' } } } }
     }
   });
 }
@@ -237,13 +268,15 @@ function renderAdminHeroSlidesTable() {
   tbody.innerHTML = slides.map(s => `
     <tr>
       <td>
-        <img src="${s.image}" style="width: 70px; height: 42px; object-fit: cover; border-radius: 4px;">
+        <img src="${s.image}" style="width: 70px; height: 42px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;">
       </td>
-      <td><b style="color: #FFFFFF;">${s.title}</b></td>
-      <td style="font-size: 0.85rem; color: #94A3B8;">${s.label}</td>
+      <td><b style="color: #0F172A;">${s.title}</b></td>
+      <td style="font-size: 0.85rem; color: #64748B;">${s.label}</td>
       <td>
-        <button class="btn btn-ghost btn-sm" onclick="editHeroSlideModal('${s.id}')">Edit</button>
-        <button class="btn btn-ghost btn-sm" onclick="BHBStore.deleteHeroSlide('${s.id}')" style="color: #F87171;">Delete</button>
+        <div class="action-btn-group">
+          <button class="btn-icon-sm" onclick="editHeroSlideModal('${s.id}')">Edit</button>
+          <button class="btn-icon-sm danger" onclick="BHBStore.deleteHeroSlide('${s.id}')">Delete</button>
+        </div>
       </td>
     </tr>
   `).join('');
@@ -275,9 +308,9 @@ window.openNewHeroSlideModal = function() {
 
         <div class="form-group">
           <label>Slide Background Photo (Upload directly)</label>
-          <div class="admin-dropzone" style="border: 2px dashed rgba(255,255,255,0.2); padding: 20px; text-align: center; border-radius: 6px;">
+          <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'heroSlideImgPreview', 'slide_image')" style="margin-bottom: 8px;">
-            <img id="heroSlideImgPreview" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: block;">
+            <img id="heroSlideImgPreview" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
 
@@ -317,9 +350,9 @@ window.editHeroSlideModal = function(id) {
 
         <div class="form-group">
           <label>Slide Background Photo</label>
-          <div class="admin-dropzone" style="border: 2px dashed rgba(255,255,255,0.2); padding: 20px; text-align: center; border-radius: 6px;">
+          <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'heroSlideImgPreview', 'slide_image')" style="margin-bottom: 8px;">
-            <img id="heroSlideImgPreview" src="${slide.image}" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: block;">
+            <img id="heroSlideImgPreview" src="${slide.image}" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
 
@@ -344,7 +377,7 @@ window.handleSaveHeroSlide = function(e) {
   };
   BHBStore.saveHeroSlide(slide);
   closeModal('adminCrudModal');
-  showToast('Hero slide saved successfully!', 'success');
+  showToast('Hero slide saved and synced live to public website!', 'success');
 };
 
 // 4. Projects CRUD
@@ -357,20 +390,22 @@ function renderAdminProjectsTable() {
     <tr>
       <td>
         <div style="display: flex; gap: 12px; align-items: center;">
-          <img src="${p.image}" style="width: 44px; height: 44px; object-fit: cover; border-radius: 4px;">
+          <img src="${p.image}" style="width: 44px; height: 44px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;">
           <div>
-            <b style="color: #FFFFFF;">${p.title}</b>
-            <div style="font-size: 0.78rem; color: #94A3B8;">${p.location}</div>
+            <b style="color: #0F172A;">${p.title}</b>
+            <div style="font-size: 0.78rem; color: #64748B;">${p.location}</div>
           </div>
         </div>
       </td>
       <td>${p.category}</td>
       <td>₦${(p.raised || 0).toLocaleString()} / ₦${(p.goal || 0).toLocaleString()}</td>
       <td>${p.beneficiaries}</td>
-      <td><span class="status-pill ${p.status === 'Active' ? 'success' : 'neutral'}">${p.status}</span></td>
+      <td><span class="status-pill ${p.status === 'Active' ? 'success' : 'pending'}">${p.status}</span></td>
       <td>
-        <button class="btn btn-ghost btn-sm" onclick="editProjectModal('${p.id}')">Edit</button>
-        <button class="btn btn-ghost btn-sm" onclick="BHBStore.deleteProject('${p.id}')" style="color: #F87171;">Delete</button>
+        <div class="action-btn-group">
+          <button class="btn-icon-sm" onclick="editProjectModal('${p.id}')">Edit</button>
+          <button class="btn-icon-sm danger" onclick="BHBStore.deleteProject('${p.id}')">Delete</button>
+        </div>
       </td>
     </tr>
   `).join('');
@@ -413,9 +448,9 @@ window.openNewProjectModal = function() {
 
         <div class="form-group">
           <label>Project Banner Photo (Upload Directly)</label>
-          <div class="admin-dropzone" style="border: 2px dashed rgba(255,255,255,0.2); padding: 18px; text-align: center; border-radius: 6px;">
+          <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'projImgPreview', 'proj_image')" style="margin-bottom: 8px;">
-            <img id="projImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block;">
+            <img id="projImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
 
@@ -466,9 +501,9 @@ window.editProjectModal = function(id) {
 
         <div class="form-group">
           <label>Project Banner Photo</label>
-          <div class="admin-dropzone" style="border: 2px dashed rgba(255,255,255,0.2); padding: 18px; text-align: center; border-radius: 6px;">
+          <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'projImgPreview', 'proj_image')" style="margin-bottom: 8px;">
-            <img id="projImgPreview" src="${proj.image}" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block;">
+            <img id="projImgPreview" src="${proj.image}" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
 
@@ -494,7 +529,7 @@ window.handleSaveProject = function(e) {
   };
   BHBStore.saveProject(proj);
   closeModal('adminCrudModal');
-  showToast('Project saved successfully!', 'success');
+  showToast('Project saved and updated live on public website!', 'success');
 };
 
 // 5. Blog / News Manager
@@ -507,8 +542,8 @@ function renderAdminBlogTable() {
     <tr>
       <td>
         <div style="display: flex; gap: 10px; align-items: center;">
-          <img src="${p.image}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
-          <b style="color: #FFFFFF;">${p.title}</b>
+          <img src="${p.image}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;">
+          <b style="color: #0F172A;">${p.title}</b>
         </div>
       </td>
       <td>${p.category}</td>
@@ -516,8 +551,10 @@ function renderAdminBlogTable() {
       <td>${p.date}</td>
       <td><span class="status-pill success">Published</span></td>
       <td>
-        <button class="btn btn-ghost btn-sm" onclick="editPostModal('${p.id}')">Edit</button>
-        <button class="btn btn-ghost btn-sm" onclick="BHBStore.deletePost('${p.id}')" style="color: #F87171;">Delete</button>
+        <div class="action-btn-group">
+          <button class="btn-icon-sm" onclick="editPostModal('${p.id}')">Edit</button>
+          <button class="btn-icon-sm danger" onclick="BHBStore.deletePost('${p.id}')">Delete</button>
+        </div>
       </td>
     </tr>
   `).join('');
@@ -560,9 +597,9 @@ window.openNewPostModal = function() {
 
         <div class="form-group">
           <label>Featured Image (Upload directly)</label>
-          <div class="admin-dropzone" style="border: 2px dashed rgba(255,255,255,0.2); padding: 16px; text-align: center; border-radius: 6px;">
+          <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'postImgPreview', 'post_image')" style="margin-bottom: 8px;">
-            <img id="postImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block;">
+            <img id="postImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
 
@@ -613,9 +650,9 @@ window.editPostModal = function(id) {
 
         <div class="form-group">
           <label>Featured Image</label>
-          <div class="admin-dropzone" style="border: 2px dashed rgba(255,255,255,0.2); padding: 16px; text-align: center; border-radius: 6px;">
+          <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'postImgPreview', 'post_image')" style="margin-bottom: 8px;">
-            <img id="postImgPreview" src="${post.image}" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block;">
+            <img id="postImgPreview" src="${post.image}" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
 
@@ -641,7 +678,7 @@ window.handleSavePost = function(e) {
   };
   BHBStore.savePost(post);
   closeModal('adminCrudModal');
-  showToast('Article updated live!', 'success');
+  showToast('Article published and updated live!', 'success');
 };
 
 // 6. Team CRUD
@@ -654,15 +691,17 @@ function renderAdminTeamTable() {
     <tr>
       <td>
         <div style="display: flex; gap: 10px; align-items: center;">
-          <img src="${m.image}" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover;">
-          <b style="color: #FFFFFF;">${m.name}</b>
+          <img src="${m.image}" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1px solid #E2E8F0;">
+          <b style="color: #0F172A;">${m.name}</b>
         </div>
       </td>
       <td>${m.position}</td>
       <td>${m.department}</td>
       <td>
-        <button class="btn btn-ghost btn-sm" onclick="editTeamModal('${m.id}')">Edit</button>
-        <button class="btn btn-ghost btn-sm" onclick="BHBStore.deleteTeamMember('${m.id}')" style="color: #F87171;">Delete</button>
+        <div class="action-btn-group">
+          <button class="btn-icon-sm" onclick="editTeamModal('${m.id}')">Edit</button>
+          <button class="btn-icon-sm danger" onclick="BHBStore.deleteTeamMember('${m.id}')">Delete</button>
+        </div>
       </td>
     </tr>
   `).join('');
@@ -700,9 +739,9 @@ window.openNewTeamModal = function() {
 
         <div class="form-group">
           <label>Portrait Photo (Upload directly)</label>
-          <div class="admin-dropzone" style="border: 2px dashed rgba(255,255,255,0.2); padding: 16px; text-align: center; border-radius: 6px;">
+          <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image')" style="margin-bottom: 8px;">
-            <img id="teamImgPreview" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" style="max-height: 100px; width: 100px; border-radius: 50%; object-fit: cover; margin: 8px auto; display: block;">
+            <img id="teamImgPreview" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" style="max-height: 100px; width: 100px; border-radius: 50%; object-fit: cover; margin: 8px auto; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
 
@@ -748,9 +787,9 @@ window.editTeamModal = function(id) {
 
         <div class="form-group">
           <label>Portrait Photo</label>
-          <div class="admin-dropzone" style="border: 2px dashed rgba(255,255,255,0.2); padding: 16px; text-align: center; border-radius: 6px;">
+          <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image')" style="margin-bottom: 8px;">
-            <img id="teamImgPreview" src="${member.image}" style="max-height: 100px; width: 100px; border-radius: 50%; object-fit: cover; margin: 8px auto; display: block;">
+            <img id="teamImgPreview" src="${member.image}" style="max-height: 100px; width: 100px; border-radius: 50%; object-fit: cover; margin: 8px auto; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
 
@@ -774,7 +813,7 @@ window.handleSaveTeam = function(e) {
   };
   BHBStore.saveTeamMember(member);
   closeModal('adminCrudModal');
-  showToast('Team roster updated!', 'success');
+  showToast('Team roster updated and synchronized live!', 'success');
 };
 
 // 7. Gallery Manager
@@ -786,13 +825,15 @@ function renderAdminGalleryTable() {
   tbody.innerHTML = gallery.map(g => `
     <tr>
       <td>
-        <img src="${g.image}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
+        <img src="${g.image}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;">
       </td>
-      <td><b style="color: #FFFFFF;">${g.title}</b></td>
+      <td><b style="color: #0F172A;">${g.title}</b></td>
       <td>${g.category}</td>
       <td>${g.location}</td>
       <td>
-        <button class="btn btn-ghost btn-sm" onclick="BHBStore.deleteGalleryItem('${g.id}')" style="color: #F87171;">Delete</button>
+        <div class="action-btn-group">
+          <button class="btn-icon-sm danger" onclick="BHBStore.deleteGalleryItem('${g.id}')">Delete</button>
+        </div>
       </td>
     </tr>
   `).join('');
@@ -829,9 +870,9 @@ window.openNewGalleryModal = function() {
 
         <div class="form-group">
           <label>Field Photo (Upload directly)</label>
-          <div class="admin-dropzone" style="border: 2px dashed rgba(255,255,255,0.2); padding: 16px; text-align: center; border-radius: 6px;">
+          <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'galImgPreview', 'gal_image')" style="margin-bottom: 8px;">
-            <img id="galImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block;">
+            <img id="galImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
 
@@ -854,7 +895,7 @@ window.handleSaveGallery = function(e) {
   };
   BHBStore.saveGalleryItem(item);
   closeModal('adminCrudModal');
-  showToast('Photo added to gallery!', 'success');
+  showToast('Photo added to gallery and synced live!', 'success');
 };
 
 // 8. Partners Manager
@@ -865,12 +906,14 @@ function renderAdminPartnersTable() {
   const partners = BHBStore.getPartners();
   tbody.innerHTML = partners.map(p => `
     <tr>
-      <td><b style="color: #FFFFFF;">${p.name}</b></td>
+      <td><b style="color: #0F172A;">${p.name}</b></td>
       <td>${p.tier}</td>
       <td>${p.category}</td>
-      <td><a href="${p.website}" target="_blank" style="color: #3B82F6;">${p.website}</a></td>
+      <td><a href="${p.website}" target="_blank" style="color: #2563EB; text-decoration: underline;">${p.website}</a></td>
       <td>
-        <button class="btn btn-ghost btn-sm" onclick="BHBStore.deletePartner('${p.id}')" style="color: #F87171;">Delete</button>
+        <div class="action-btn-group">
+          <button class="btn-icon-sm danger" onclick="BHBStore.deletePartner('${p.id}')">Delete</button>
+        </div>
       </td>
     </tr>
   `).join('');
@@ -915,7 +958,7 @@ window.handleSavePartner = function(e) {
     website: form.part_web.value
   });
   closeModal('adminCrudModal');
-  showToast('Partner added!', 'success');
+  showToast('Partner added and synced live!', 'success');
 };
 
 // 9. Donations Ledger
@@ -926,10 +969,10 @@ function renderAdminDonationsTable() {
   const donations = BHBStore.getDonations();
   tbody.innerHTML = donations.map(d => `
     <tr>
-      <td style="font-family: var(--font-mono); font-size: 0.8rem;">#${d.id}</td>
+      <td style="font-family: var(--font-mono); font-size: 0.8rem; color: #64748B;">#${d.id}</td>
       <td>
-        <b style="color: #FFFFFF;">${d.donorName}</b>
-        <div style="font-size: 0.78rem; color: #94A3B8;">${d.email}</div>
+        <b style="color: #0F172A;">${d.donorName}</b>
+        <div style="font-size: 0.78rem; color: #64748B;">${d.email}</div>
       </td>
       <td><b>${d.currency === 'USD' ? '$' : '₦'}${d.amount.toLocaleString()}</b></td>
       <td>${d.method}</td>
@@ -964,16 +1007,18 @@ function renderAdminVolunteersTable() {
   tbody.innerHTML = volunteers.map(v => `
     <tr>
       <td>
-        <b style="color: #FFFFFF;">${v.name}</b>
-        <div style="font-size: 0.78rem; color: #94A3B8;">${v.email} | ${v.phone}</div>
+        <b style="color: #0F172A;">${v.name}</b>
+        <div style="font-size: 0.78rem; color: #64748B;">${v.email} | ${v.phone}</div>
       </td>
       <td>${v.rolePreference}</td>
       <td>${v.lga}</td>
       <td>${v.appliedDate}</td>
-      <td><span class="status-pill ${v.status === 'Approved' ? 'success' : 'neutral'}">${v.status}</span></td>
+      <td><span class="status-pill ${v.status === 'Approved' ? 'success' : 'pending'}">${v.status}</span></td>
       <td>
-        <button class="btn btn-ghost btn-sm" onclick="BHBStore.updateVolunteerStatus('${v.id}', 'Approved')" style="color: #34D399;">Approve</button>
-        <button class="btn btn-ghost btn-sm" onclick="BHBStore.updateVolunteerStatus('${v.id}', 'Archived')" style="color: #94A3B8;">Archive</button>
+        <div class="action-btn-group">
+          <button class="btn-icon-sm" onclick="BHBStore.updateVolunteerStatus('${v.id}', 'Approved')" style="color: #15803D;">Approve</button>
+          <button class="btn-icon-sm danger" onclick="BHBStore.updateVolunteerStatus('${v.id}', 'Archived')">Archive</button>
+        </div>
       </td>
     </tr>
   `).join('');
@@ -988,17 +1033,19 @@ function renderAdminInquiriesTable() {
   tbody.innerHTML = inquiries.map(i => `
     <tr>
       <td>
-        <b style="color: #FFFFFF;">${i.name}</b>
-        <div style="font-size: 0.78rem; color: #94A3B8;">${i.email} (${i.orgType})</div>
+        <b style="color: #0F172A;">${i.name}</b>
+        <div style="font-size: 0.78rem; color: #64748B;">${i.email} (${i.orgType})</div>
       </td>
       <td>
         <b>${i.subject}</b>
-        <p style="font-size: 0.82rem; color: #94A3B8; margin-top: 4px;">${i.message}</p>
+        <p style="font-size: 0.82rem; color: #64748B; margin-top: 4px;">${i.message}</p>
       </td>
       <td>${i.date}</td>
-      <td><span class="status-pill ${i.status === 'Replied' ? 'success' : 'neutral'}">${i.status}</span></td>
+      <td><span class="status-pill ${i.status === 'Replied' ? 'success' : 'pending'}">${i.status}</span></td>
       <td>
-        <button class="btn btn-ghost btn-sm" onclick="BHBStore.updateInquiryStatus('${i.id}', 'Replied')" style="color: #38BDF8;">Mark Replied</button>
+        <div class="action-btn-group">
+          <button class="btn-icon-sm" onclick="BHBStore.updateInquiryStatus('${i.id}', 'Replied')" style="color: #0369A1;">Mark Replied</button>
+        </div>
       </td>
     </tr>
   `).join('');
@@ -1030,7 +1077,7 @@ window.handleSaveSettings = function(e) {
       accountNumber: form.zenith_acc.value
     }
   });
-  showToast('Settings successfully updated!', 'success');
+  showToast('Settings saved and synchronized live!', 'success');
 };
 
 window.exportDatabaseJSON = function() {
