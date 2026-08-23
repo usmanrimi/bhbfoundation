@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Impact Report &amp; Metrics — BHB Family Support and Development Foundation</title>
+  <title>Documented Impact &amp; Field Stories — BHB Family Support and Development Foundation</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,196 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/admin.css">
+  <style>
+    /* Dedicated Impact Page Enhancements */
+    .video-spotlight-card {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 56px;
+    }
+
+    .video-player-wrapper {
+      position: relative;
+      min-height: 380px;
+      background: #0F172A;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-poster-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.82;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    .video-player-wrapper:hover .video-poster-img {
+      transform: scale(1.04);
+      opacity: 0.92;
+    }
+
+    .video-play-btn-pulse {
+      position: absolute;
+      width: 76px;
+      height: 76px;
+      background: #FFFFFF;
+      color: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      transition: transform 0.2s ease, background 0.2s ease;
+      z-index: 5;
+    }
+    .video-player-wrapper:hover .video-play-btn-pulse {
+      transform: scale(1.12);
+      background: #EFF6FF;
+      color: var(--blue);
+    }
+
+    .video-badge-duration {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #FFFFFF;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      z-index: 5;
+    }
+
+    .video-badge-hd {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: #2563EB;
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: 4px;
+      z-index: 5;
+      text-transform: uppercase;
+    }
+
+    .video-spotlight-content {
+      padding: 36px 36px 36px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .testimonial-quote-box {
+      background: var(--bg-off);
+      border-left: 4px solid var(--blue);
+      padding: 18px 20px;
+      margin: 16px 0 20px;
+      font-style: italic;
+      color: var(--navy);
+      font-size: 1.02rem;
+      line-height: 1.65;
+    }
+
+    /* Photo Showcase Grid */
+    .impact-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+
+    .impact-photo-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .impact-photo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .impact-photo-thumb-wrapper {
+      position: relative;
+      height: 230px;
+      overflow: hidden;
+    }
+
+    .impact-photo-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+    .impact-photo-card:hover .impact-photo-thumb {
+      transform: scale(1.05);
+    }
+
+    .impact-photo-overlay-tag {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+    }
+
+    .impact-photo-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .impact-photo-body h4 {
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .impact-photo-body p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 1024px) {
+      .video-spotlight-card {
+        grid-template-columns: 1fr;
+      }
+      .video-spotlight-content {
+        padding: 28px;
+      }
+      .impact-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .impact-gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -53,90 +243,256 @@
     <a href="contact.html">Contact Us</a>
   </div>
 
-  <!-- Page Header Banner -->
+  <!-- Page Header Banner (Clean Title Without Removed Label) -->
   <div class="page-header-banner">
     <div class="container">
-      <span class="section-label label-light">Accountability &amp; Metrics</span>
-      <h1>Delivering Tangible, Measurable Outcomes</h1>
+      <h1>Documented Impact &amp; Real Lives Transformed</h1>
       <p>
-        We measure our success by genuine qualitative and quantitative improvements in people’s lives, tracking transparency across every intervention.
+        Verifiable metrics, qualitative video documentaries, and authentic photographic field evidence from our community-led interventions across Northern Nigeria.
       </p>
     </div>
   </div>
 
-  <!-- Impact Statistics (Annual Report Style) -->
-  <section class="bg-navy">
+  <!-- Core Impact Metrics Ribbon -->
+  <section class="bg-navy" style="padding: 48px 0;">
     <div class="container">
-      <div class="section-header">
-        <span class="section-label label-light">Core Metrics</span>
-        <h2>2026 Direct Impact Overview</h2>
-      </div>
-
-      <div class="impact-stats-container" style="border-top: none; margin-top: 0;">
+      <div class="impact-stats-container" style="border-top: none; border-bottom: none; margin-top: 0; padding: 0;">
         <div class="stat-metric-block">
           <div class="stat-metric-number">12,450+</div>
-          <div class="stat-metric-label">People Directly Reached</div>
+          <div class="stat-metric-label">Direct Beneficiaries Reached</div>
         </div>
         <div class="stat-metric-block">
           <div class="stat-metric-number">18</div>
-          <div class="stat-metric-label">Programs &amp; Outreach Drives</div>
+          <div class="stat-metric-label">Completed &amp; Active Program Drives</div>
         </div>
         <div class="stat-metric-block">
-          <div class="stat-metric-number">14</div>
-          <div class="stat-metric-label">Communities Impacted</div>
+          <div class="stat-metric-number">8 LGAs</div>
+          <div class="stat-metric-label">Target Local Government Areas</div>
         </div>
         <div class="stat-metric-block">
-          <div class="stat-metric-number">45+</div>
-          <div class="stat-metric-label">Volunteers &amp; Local Partners</div>
+          <div class="stat-metric-number">100%</div>
+          <div class="stat-metric-label">Direct Grassroots Verification</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Impact Alignment Table -->
-  <section>
+  <!-- Section 1: Success Story Video Documentary -->
+  <section style="background: var(--bg-off); padding-top: 60px;">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Strategic SDG Alignment</span>
-        <h2>Sustainable Development Goals Matrix</h2>
-        <p class="lead">How BHB interventions map directly into the United Nations Global Sustainable Development Goals.</p>
+        <span class="section-label">Field Video Feature</span>
+        <h2>Voices of Kano: Amina's Journey to Digital Mastery</h2>
+        <p class="lead">Watch the inspiring true story of how assistive coding transformed the lives of adolescent girls with disabilities.</p>
+      </div>
+
+      <div class="video-spotlight-card">
+        <!-- Video Interactive Player Poster -->
+        <div class="video-player-wrapper" onclick="openSuccessVideoModal()">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="Video Documentary Thumbnail" class="video-poster-img">
+          <span class="video-badge-hd">HD Documentary</span>
+          <div class="video-play-btn-pulse" title="Play Documentary">▶</div>
+          <span class="video-badge-duration">⏱ 04:18 · 1080p</span>
+        </div>
+
+        <!-- Video Synopsis & Testimonial Details -->
+        <div class="video-spotlight-content">
+          <div>
+            <div style="font-size: 0.82rem; color: var(--text-muted); font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">
+              Filmed on Location · Kano Metropolitan Hub
+            </div>
+            <h3 style="font-size: 1.5rem; color: var(--navy); line-height: 1.35;">
+              Turning Assistive Technology into Lasting Independence
+            </h3>
+
+            <div class="testimonial-quote-box">
+              “Before this boot camp, I believed computer programming was closed to someone who is blind. Today, I built my own digital profile and learned how software can empower everyone.”
+              <div style="font-weight: 700; font-style: normal; margin-top: 8px; font-size: 0.88rem; color: var(--navy);">
+                — Amina S., Age 17, Digital Skills Cohort Fellow
+              </div>
+            </div>
+
+            <p style="font-size: 0.95rem; color: var(--text-body); line-height: 1.65; margin-bottom: 18px;">
+              Funded directly by BHB Foundation in partnership with The Ability First Tech Hub, this 120-hour intensive program provided accessible screen-reader laptops, accessible web design fundamentals, and career mentorship.
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 12px; align-items: center; border-top: 1px solid var(--border-light); padding-top: 18px;">
+            <button class="btn btn-navy btn-sm" onclick="openSuccessVideoModal()">
+              ▶ Watch Video (4:18)
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="openDonateModal()">
+              Support Next Cohort →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Real Impact Photo Showcase (Picture Gallery) -->
+  <section>
+    <div class="container">
+      <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+        <div>
+          <span class="section-label">Field Documentation</span>
+          <h2>Moments of Grassroots Transformation</h2>
+          <p class="lead">Authentic photographs capturing our mobile medical posts, training labs, seed distributions, and community consultations.</p>
+        </div>
+      </div>
+
+      <div class="impact-gallery-grid">
+        
+        <!-- Photo 1 -->
+        <div class="impact-photo-card" onclick="openImpactPhotoModal('photo-1')">
+          <div class="impact-photo-thumb-wrapper">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" alt="Assistive Tech Boot Camp" class="impact-photo-thumb">
+            <span class="impact-photo-overlay-tag">Digital Inclusion</span>
+          </div>
+          <div class="impact-photo-body">
+            <div>
+              <h4>Assistive Coding Boot Camp for Girls with Disabilities</h4>
+              <p>Participants mastering accessible screen-reader navigation and web design fundamentals at Kano Metropolitan Hub.</p>
+            </div>
+            <div style="margin-top: 12px; font-size: 0.8rem; color: var(--blue); font-weight: 700;">
+              🔍 Click to view field details →
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="impact-photo-card" onclick="openImpactPhotoModal('photo-2')">
+          <div class="impact-photo-thumb-wrapper">
+            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=900&q=80" alt="Maternal Health Clinic" class="impact-photo-thumb">
+            <span class="impact-photo-overlay-tag">Maternal Health</span>
+          </div>
+          <div class="impact-photo-body">
+            <div>
+              <h4>Mobile Prenatal Clinical Post in Nasarawa LGA</h4>
+              <p>Community healthcare workers conducting preventative prenatal ultrasound scans and nutrition counseling.</p>
+            </div>
+            <div style="margin-top: 12px; font-size: 0.8rem; color: var(--blue); font-weight: 700;">
+              🔍 Click to view field details →
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="impact-photo-card" onclick="openImpactPhotoModal('photo-3')">
+          <div class="impact-photo-thumb-wrapper">
+            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=80" alt="Women Agro Grants" class="impact-photo-thumb">
+            <span class="impact-photo-overlay-tag">Women Livelihoods</span>
+          </div>
+          <div class="impact-photo-body">
+            <div>
+              <h4>Agro-Business Seed Grants Distribution</h4>
+              <p>220 widowed mothers receiving grain processing toolkits and micro-seed grants in Fagge Community Center.</p>
+            </div>
+            <div style="margin-top: 12px; font-size: 0.8rem; color: var(--blue); font-weight: 700;">
+              🔍 Click to view field details →
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="impact-photo-card" onclick="openImpactPhotoModal('photo-4')">
+          <div class="impact-photo-thumb-wrapper">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Youth Apprenticeship" class="impact-photo-thumb">
+            <span class="impact-photo-overlay-tag">Youth Mentorship</span>
+          </div>
+          <div class="impact-photo-body">
+            <div>
+              <h4>Youth Technical Diagnostics &amp; IT Mentorship</h4>
+              <p>Young apprentices in Kano Municipal receiving certified electronics repair and solar installation coaching.</p>
+            </div>
+            <div style="margin-top: 12px; font-size: 0.8rem; color: var(--blue); font-weight: 700;">
+              🔍 Click to view field details →
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="impact-photo-card" onclick="openImpactPhotoModal('photo-5')">
+          <div class="impact-photo-thumb-wrapper">
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="Town Hall Consultation" class="impact-photo-thumb">
+            <span class="impact-photo-overlay-tag">Community Action</span>
+          </div>
+          <div class="impact-photo-body">
+            <div>
+              <h4>Community Leaders &amp; Women Town Hall</h4>
+              <p>Participatory grassroots dialogue in Dala LGA co-designing localized water sanitation solutions.</p>
+            </div>
+            <div style="margin-top: 12px; font-size: 0.8rem; color: var(--blue); font-weight: 700;">
+              🔍 Click to view field details →
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 6 -->
+        <div class="impact-photo-card" onclick="openImpactPhotoModal('photo-6')">
+          <div class="impact-photo-thumb-wrapper">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" alt="Inclusive Education" class="impact-photo-thumb">
+            <span class="impact-photo-overlay-tag">Inclusive Literacy</span>
+          </div>
+          <div class="impact-photo-body">
+            <div>
+              <h4>Classroom Inclusion &amp; Learning Kit Handover</h4>
+              <p>Equipping rural schools in Tarauni LGA with tactile learning equipment and assistive educational materials.</p>
+            </div>
+            <div style="margin-top: 12px; font-size: 0.8rem; color: var(--blue); font-weight: 700;">
+              🔍 Click to view field details →
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Strategic SDG Alignment Matrix -->
+  <section class="bg-off">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">United Nations Framework</span>
+        <h2>Sustainable Development Goals (SDG) Alignment</h2>
+        <p class="lead">How every BHB intervention maps directly to measurable international development benchmarks.</p>
       </div>
 
       <div class="focus-areas-grid">
-        <div class="focus-area-item" style="background: var(--bg-off); padding: 32px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+        <div class="focus-area-item" style="background: #FFFFFF; padding: 28px; border: 1px solid var(--border-light);">
           <span class="section-label">SDG 3 · Good Health</span>
-          <h3>Health &amp; Social Well-being</h3>
-          <p>Preventative maternal screenings, health education, and mobile medical posts in hard-to-reach settlements.</p>
+          <h3>Health &amp; Maternal Well-being</h3>
+          <p>Preventative maternal screenings, mobile ultrasound clinics, and newborn hygiene kits in hard-to-reach settlements.</p>
         </div>
 
-        <div class="focus-area-item" style="background: var(--bg-off); padding: 32px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+        <div class="focus-area-item" style="background: #FFFFFF; padding: 28px; border: 1px solid var(--border-light);">
           <span class="section-label">SDG 4 · Quality Education</span>
-          <h3>Inclusive Digital Skills</h3>
+          <h3>Inclusive Tech &amp; Literacy</h3>
           <p>Accessible screen-reading software, assistive coding boot camps for girls with disabilities, and school re-enrollment support.</p>
         </div>
 
-        <div class="focus-area-item" style="background: var(--bg-off); padding: 32px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+        <div class="focus-area-item" style="background: #FFFFFF; padding: 28px; border: 1px solid var(--border-light);">
           <span class="section-label">SDG 5 · Gender Equality</span>
-          <h3>Women &amp; Female Heads of Household</h3>
-          <p>Micro-seed capital, tailoring equipment, grain processing machinery, and financial literacy circles.</p>
+          <h3>Women &amp; Widows Economic Fund</h3>
+          <p>Direct micro-seed capital, agro-processing machinery, and cooperative financial literacy circles for widowed mothers.</p>
         </div>
 
-        <div class="focus-area-item" style="background: var(--bg-off); padding: 32px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+        <div class="focus-area-item" style="background: #FFFFFF; padding: 28px; border: 1px solid var(--border-light);">
           <span class="section-label">SDG 8 · Decent Work</span>
           <h3>Youth Technical Livelihoods</h3>
-          <p>Vocational training, electronics and IT repairs, and structured trade apprenticeships.</p>
+          <p>Vocational training, solar power system installation, IT hardware diagnostics, and startup business kits.</p>
         </div>
 
-        <div class="focus-area-item" style="background: var(--bg-off); padding: 32px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+        <div class="focus-area-item" style="background: #FFFFFF; padding: 28px; border: 1px solid var(--border-light);">
           <span class="section-label">SDG 10 · Reduced Inequalities</span>
           <h3>Disability Tech Inclusion</h3>
-          <p>Breaking socio-economic exclusion by equipping marginalized persons with marketable digital skills.</p>
+          <p>Overcoming socio-economic marginalization by empowering persons with disabilities with high-value digital capabilities.</p>
         </div>
 
-        <div class="focus-area-item" style="background: var(--bg-off); padding: 32px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+        <div class="focus-area-item" style="background: #FFFFFF; padding: 28px; border: 1px solid var(--border-light);">
           <span class="section-label">SDG 11 · Resilient Communities</span>
-          <h3>Grassroots Leadership</h3>
-          <p>Community-led Water Management Committees and disaster resilience frameworks.</p>
+          <h3>Grassroots Leadership &amp; WASH</h3>
+          <p>Community Water Management Committees, solar-powered boreholes, and civic infrastructure resilience.</p>
         </div>
       </div>
     </div>
@@ -154,35 +510,105 @@
         <div class="footer-col">
           <h5>About</h5>
           <a href="about.html">Who We Are</a>
-          <a href="about.html#mission">Mission &amp; Vision</a>
-          <a href="team.html">Our Leadership</a>
-          <a href="impact.html">Impact Report</a>
+          <a href="about.html#mission">Our Story &amp; Philosophy</a>
+          <a href="impact.html">Impact Metrics</a>
+          <a href="team.html">Governance &amp; Staff</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Programs</h5>
+          <a href="work.html">Family Support</a>
+          <a href="projects.html">Digital Skills &amp; Inclusion</a>
+          <a href="projects.html">Mobile Health Outreach</a>
+          <a href="projects.html">Women Agro-Fund</a>
         </div>
 
         <div class="footer-col">
           <h5>Dispatches</h5>
-          <a href="work.html">Focus Areas</a>
-          <a href="projects.html">Active Projects</a>
-          <a href="blog.html">Blog &amp; Field Reports</a>
+          <a href="blog.html">Latest Articles</a>
+          <a href="blog.html">Community Stories</a>
+          <a href="blog.html">Press Releases</a>
           <a href="contact.html">Contact Us</a>
         </div>
 
-        <div class="footer-col">
+        <div class="footer-col footer-newsletter">
           <h5>Newsletter</h5>
-          <p style="font-size: 0.85rem; margin-bottom: 12px;">Receive quarterly field updates and governance reports:</p>
-          <form onsubmit="event.preventDefault(); showToast('Subscribed to BHB Foundation updates!', 'success'); this.reset();" style="display: flex; gap: 8px;">
-            <input type="email" placeholder="Your email address" style="padding: 9px 12px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; font-size: 0.88rem; outline: none; flex: 1;" required>
-            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          <p>Receive verified field reports and quarterly milestone publications.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing to BHB dispatches!', 'success'); this.reset();">
+            <input type="email" placeholder="Your official email..." required>
+            <button type="submit">→</button>
           </form>
         </div>
       </div>
 
       <div class="footer-bottom-bar">
-        <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. 9670692. All rights reserved.</span>
+        <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. <span data-bind="cacNumber">9670692</span>. All rights reserved.</span>
         <a href="index.html" style="color: #94A3B8; text-decoration: underline;">Return to Home</a>
       </div>
     </div>
   </footer>
+
+  <!-- Interactive Success Video Modal -->
+  <div class="modal-backdrop" id="successVideoModal">
+    <div class="modal-window" style="max-width: 820px; width: 95%; background: #0F172A; color: #FFFFFF; border-radius: 8px; overflow: hidden; padding: 0;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #1E293B; border-bottom: 1px solid #334155;">
+        <div>
+          <h3 style="color: #FFFFFF; font-size: 1.1rem; margin: 0;">Documentary: Voices of Kano — Amina's Journey</h3>
+          <span style="font-size: 0.78rem; color: #94A3B8;">BHB Foundation &amp; Ability First Tech Hub Collaboration</span>
+        </div>
+        <button onclick="closeModal('successVideoModal')" style="background:none; border:none; font-size:1.8rem; color:#FFFFFF; cursor:pointer;">×</button>
+      </div>
+
+      <!-- Simulated HD Video Player Display -->
+      <div style="position: relative; width: 100%; height: 400px; background: #000000; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.45;">
+        
+        <div style="position: relative; z-index: 10; text-align: center; padding: 20px;">
+          <div style="font-size: 3rem; margin-bottom: 10px;">▶</div>
+          <div style="font-weight: 700; font-size: 1.15rem; color: #FFFFFF; margin-bottom: 6px;">
+            "Turning Obstacles into Digital Opportunity"
+          </div>
+          <p style="font-size: 0.88rem; color: #CBD5E1; max-width: 540px; margin: 0 auto 16px;">
+            Full documentary showcasing 10 adolescent girls with disabilities demonstrating their capstone coding projects.
+          </p>
+          <button class="btn btn-primary btn-sm" onclick="showToast('Playing full 1080p HD field documentary...', 'info')">
+            Play Full Video
+          </button>
+        </div>
+
+        <!-- Custom Video Controls Bar -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; color: #FFFFFF; z-index: 12;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span>▶ 01:24 / 04:18</span>
+            <div style="width: 220px; height: 5px; background: rgba(255,255,255,0.3); border-radius: 3px; position: relative;">
+              <div style="width: 32%; height: 100%; background: #2563EB; border-radius: 3px;"></div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 14px;">
+            <span>🔊 100%</span>
+            <span>HD 1080p</span>
+            <span>⛶ Fullscreen</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 20px 24px; background: #1E293B;">
+        <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">
+          <b>Story Summary:</b> Recorded on August 15, 2026 during the graduation ceremony of the Holiday Digital Skills Boot Camp at Kano Metropolitan Hub.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Photo Details Modal -->
+  <div class="modal-backdrop" id="impactPhotoModal">
+    <div class="modal-window" style="max-width: 780px; width: 95%; background: #FFFFFF; border-radius: 8px; overflow: hidden; padding: 0;">
+      <div style="position: absolute; top: 16px; right: 20px; z-index: 10;">
+        <button onclick="closeModal('impactPhotoModal')" style="background:none; border:none; font-size:1.8rem; cursor:pointer; color: #FFFFFF; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">×</button>
+      </div>
+      <div id="impactPhotoModalContent"></div>
+    </div>
+  </div>
 
   <!-- Generic Modal -->
   <div class="modal-backdrop" id="genericModal">
@@ -194,8 +620,93 @@
     </div>
   </div>
 
+  <!-- Scripts -->
   <script src="js/store.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/app.js"></script>
+  <script>
+    const IMPACT_PHOTOS = {
+      'photo-1': {
+        title: "Assistive Coding Boot Camp for Girls with Disabilities",
+        category: "Digital Inclusion & Assistive Tech",
+        location: "Kano Metropolitan Hub",
+        date: "August 2026",
+        image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
+        narrative: "Direct field documentation showing adolescent students using NVDA screen-reading technology and tactile keyboard navigators to build semantic HTML web pages. 100% of participants achieved graduation certification."
+      },
+      'photo-2': {
+        title: "Mobile Primary Maternal Health Outreach Clinic",
+        category: "Community Health & Well-being",
+        location: "Nasarawa LGA, Kano",
+        date: "July 2026",
+        image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
+        narrative: "BHB voluntary health practitioners providing rural expectant mothers with preventative prenatal diagnostics, maternal health counseling, and essential delivery preparation toolkits."
+      },
+      'photo-3': {
+        title: "Agro-Business Seed Grants & Processing Toolkits",
+        category: "Women Livelihoods & Livelihoods",
+        location: "Fagge Community Center, Kano",
+        date: "June 2026",
+        image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80",
+        narrative: "Distribution of seed grants and mechanized grain processing equipment to 220 widowed mothers, transitioning vulnerable households into self-sustaining small agricultural cooperatives."
+      },
+      'photo-4': {
+        title: "Youth Technical Diagnostics & IT Hardware Workshop",
+        category: "Youth Mentorship & Vocations",
+        location: "Kano Municipal Center",
+        date: "July 2026",
+        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+        narrative: "Young trainees participating in practical solar circuitry and computer hardware diagnostics, preparing for certified field apprenticeships and sustainable trade employment."
+      },
+      'photo-5': {
+        title: "Community Elders & Women Stakeholders Town Hall",
+        category: "Grassroots Civic Action",
+        location: "Dala LGA, Kano",
+        date: "May 2026",
+        image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
+        narrative: "Participatory town hall meeting ensuring local communities directly shape, oversee, and sustain foundation-funded clean water and sanitation infrastructure."
+      },
+      'photo-6': {
+        title: "Classroom Inclusion & Learning Kit Handover",
+        category: "Quality Education",
+        location: "Tarauni LGA School",
+        date: "June 2026",
+        image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80",
+        narrative: "Handover of braille reading aids, tactile math kits, and school supplies to ensure inclusive classrooms for children with diverse physical and sensory needs."
+      }
+    };
+
+    window.openSuccessVideoModal = function() {
+      openModal('successVideoModal');
+    };
+
+    window.openImpactPhotoModal = function(photoId) {
+      const data = IMPACT_PHOTOS[photoId];
+      if (!data) return;
+
+      const content = document.getElementById('impactPhotoModalContent');
+      if (content) {
+        content.innerHTML = `
+          <div>
+            <img src="${data.image}" alt="${data.title}" style="width: 100%; max-height: 420px; object-fit: cover; display: block;">
+            <div style="padding: 28px 32px;">
+              <span class="project-category-tag" style="margin-bottom: 8px;">${data.category}</span>
+              <h2 style="font-size: 1.5rem; color: var(--navy); margin-bottom: 6px; line-height: 1.3;">${data.title}</h2>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+                📍 <b>Location:</b> ${data.location} &nbsp;|&nbsp; 📅 <b>Date:</b> ${data.date}
+              </div>
+              <p style="font-size: 1rem; color: var(--text-body); line-height: 1.7; margin-bottom: 24px;">
+                ${data.narrative}
+              </p>
+              <div style="display: flex; justify-content: flex-end; border-top: 1px solid var(--border-light); padding-top: 16px;">
+                <button class="btn btn-navy btn-sm" onclick="closeModal('impactPhotoModal')">Close Photo View</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      openModal('impactPhotoModal');
+    };
+  </script>
 </body>
 </html>

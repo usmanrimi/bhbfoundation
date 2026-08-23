@@ -39,7 +39,7 @@ function renderHeroSlider() {
         <div class="hero-slide-overlay"></div>
         <div class="container">
           <div class="hero-slide-content">
-            <span class="section-label label-light">${s.label || 'Non-Governmental Organization'}</span>
+            ${s.label ? `<span class="section-label label-light">${s.label}</span>` : ''}
             <h1>${s.title}</h1>
             <p class="lead">${s.lead}</p>
             <div class="hero-cta-group">

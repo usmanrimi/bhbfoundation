@@ -4,7 +4,7 @@
  * (WITH BLOG CMS, LIKES, COMMENTS, ENGAGEMENT & ADMIN MODERATION)
  */
 
-const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V4';
+const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V5';
 
 const DEFAULT_STORE_DATA = {
   settings: {
@@ -30,7 +30,7 @@ const DEFAULT_STORE_DATA = {
   heroSlides: [
     {
       id: "slide-1",
-      label: "Non-Governmental Organization · Kano State",
+      label: "",
       title: "Empowering Families. Building Resilient Communities.",
       lead: "We walk alongside individuals, families, and underserved communities to overcome barriers, restore dignity, and create sustainable futures across Northern Nigeria.",
       image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80",
@@ -101,13 +101,16 @@ const DEFAULT_STORE_DATA = {
       summary: "Mobile prenatal diagnostics, primary healthcare awareness, and hygiene education in underserved settlements.",
       image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
       details: "Delivering preventative screening, maternal support kits, and hygiene education to rural settlements."
+      summary: "Delivering mobile prenatal checkups, preventative health education, hygiene outreach, and routine medical referrals in rural settlements.",
+      icon: "heart-pulse",
+      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80"
     },
     {
-      id: "focus-6",
-      title: "Community Engagement & Resilience",
-      summary: "Participatory town halls, grassroots community action committees, and long-term civic resilience infrastructure.",
-      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80",
-      details: "Empowering residents to co-design and self-manage infrastructure, including localized water committees."
+      id: "fa-4",
+      title: "Youth Empowerment & Livelihoods",
+      summary: "Hands-on vocational apprenticeships, financial literacy circles, and trade entrepreneurship grants for young adults across Kano.",
+      icon: "award",
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
     }
   ],
 
@@ -115,9 +118,10 @@ const DEFAULT_STORE_DATA = {
     {
       id: "proj-1",
       title: "Holiday Digital Skills Boot Camp for Girls with Disabilities",
-      category: "Digital Skills & Education",
-      location: "Kano Metropolitan",
+      category: "Digital Inclusion",
+      location: "Kano Metropolitan Hub",
       beneficiaries: "10 Girls (Adolescents with visual & physical disabilities)",
+      timeline: "July 2026 – Present (Cohort 1 Graduated / Cohort 2 Active)",
       goal: 3500000,
       raised: 3500000,
       image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
@@ -128,14 +132,15 @@ const DEFAULT_STORE_DATA = {
         "100% capstone project completion rate with web portfolio exhibitions"
       ],
       featured: true,
-      status: "Active"
+      status: "Ongoing"
     },
     {
       id: "proj-2",
       title: "Mobile Primary & Maternal Care Access Initiative",
       category: "Community Health",
-      location: "Nasarawa LGA, Kano",
+      location: "Nasarawa & Dala LGAs, Kano",
       beneficiaries: "1,450+ Mothers & Infants",
+      timeline: "May 2026 – Ongoing Field Rounds",
       goal: 6000000,
       raised: 4800000,
       image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
@@ -146,14 +151,15 @@ const DEFAULT_STORE_DATA = {
         "Trained 18 volunteer community healthcare mobilizers"
       ],
       featured: false,
-      status: "Active"
+      status: "Ongoing"
     },
     {
       id: "proj-3",
       title: "Widows & Vulnerable Women Agro-Business Seed Fund",
-      category: "Livelihoods",
-      location: "Fagge & Dala LGAs, Kano",
+      category: "Women Livelihoods",
+      location: "Fagge & Bichi LGAs, Kano",
       beneficiaries: "220 Female-Headed Households",
+      timeline: "Jan 2026 – June 2026 (Completed)",
       goal: 5000000,
       raised: 5000000,
       image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80",
@@ -164,16 +170,17 @@ const DEFAULT_STORE_DATA = {
         "Achieved 94% business sustainability rate after 6 months"
       ],
       featured: false,
-      status: "Active"
+      status: "Completed"
     },
     {
       id: "proj-4",
       title: "Kano Youth Technical & Apprenticeship Hub",
-      category: "Youth Empowerment",
-      location: "Kano Municipal",
+      category: "Youth Mentorship",
+      location: "Kano Municipal Center",
       beneficiaries: "350 Young Persons",
+      timeline: "February 2026 – July 2026 (Completed)",
       goal: 4500000,
-      raised: 3900000,
+      raised: 4500000,
       image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
       description: "Structured technical apprenticeships in solar installation, IT hardware diagnostics, tailoring, and electrical repairs paired with professional mentorship and soft skills.",
       milestones: [
@@ -182,7 +189,45 @@ const DEFAULT_STORE_DATA = {
         "Equipped each graduate with a startup toolkit"
       ],
       featured: false,
-      status: "Active"
+      status: "Completed"
+    },
+    {
+      id: "proj-5",
+      title: "Solar-Powered Community Borehole & WASH Hygiene Post",
+      category: "WASH & Hygiene",
+      location: "Gwale & Kumbotso LGAs",
+      beneficiaries: "2,500+ Community Residents",
+      timeline: "Pipeline · Target Q4 2026",
+      goal: 6000000,
+      raised: 1800000,
+      image: "https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=800&q=80",
+      description: "Construction of deep solar-powered industrial boreholes, overhead storage reservoirs, and community sanitation filtration points providing potable water to underserved settlements.",
+      milestones: [
+        "Hydrogeological geophysical surveying completed",
+        "Community Water Management Committee established",
+        "Procurement underway for solar pumps and filtration arrays"
+      ],
+      featured: false,
+      status: "Upcoming"
+    },
+    {
+      id: "proj-6",
+      title: "Inclusive Assistive Tech Center of Excellence",
+      category: "Digital Inclusion",
+      location: "Kano Central Innovation Campus",
+      beneficiaries: "300+ Persons with Disabilities Annually",
+      timeline: "Pipeline · Target 2027",
+      goal: 15000000,
+      raised: 4500000,
+      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
+      description: "Establishing a permanent accessible computing and digital media academy equipped with braille display terminals, tactile graphics printers, and specialized software workstations.",
+      milestones: [
+        "Curriculum alignment with national assistive tech standards",
+        "Facility partnership secured with metropolitan vocational board",
+        "Initial hardware donation pledged by CSR partners"
+      ],
+      featured: false,
+      status: "Upcoming"
     }
   ],
 

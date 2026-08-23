@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects &amp; Programs — BHB Family Support and Development Foundation</title>
+  <title>Initiatives &amp; Strategic Programs — BHB Family Support and Development Foundation</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,303 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/admin.css">
+  <style>
+    /* Dedicated Enhanced Projects Layout */
+    .project-kpi-ribbon {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: -40px;
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .project-kpi-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .project-kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .project-kpi-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .project-kpi-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Filter Toolbar */
+    .project-filter-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 36px;
+      gap: 20px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 20px;
+    }
+
+    .project-status-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .project-status-btn {
+      background: var(--bg-off);
+      border: 1px solid var(--border-light);
+      color: var(--text-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 9px 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-status-btn:hover {
+      background: #E2E8F0;
+      color: var(--navy);
+    }
+
+    .project-status-btn.active {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
+    }
+
+    .project-category-filter {
+      padding: 9px 14px;
+      border: 1px solid var(--border-light);
+      background: #FFFFFF;
+      color: var(--navy);
+      font-size: 0.88rem;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Project Cards & Status Badges */
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .badge-status.ongoing {
+      background: #DCFCE7;
+      color: #15803D;
+      border: 1px solid #86EFAC;
+    }
+    .badge-status.completed {
+      background: #E0F2FE;
+      color: #0369A1;
+      border: 1px solid #BAE6FD;
+    }
+    .badge-status.upcoming {
+      background: #FEF3C7;
+      color: #B45309;
+      border: 1px solid #FDE68A;
+    }
+
+    /* Flagship Showcase Card */
+    .flagship-project-card {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      margin-bottom: 48px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .flagship-project-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .flagship-thumb-col {
+      position: relative;
+      min-height: 380px;
+    }
+
+    .flagship-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .flagship-body-col {
+      padding: 36px 36px 36px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-timeline-tag {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: block;
+      font-weight: 600;
+    }
+
+    /* Portfolio 3-Column Grid */
+    .projects-portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .portfolio-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .portfolio-card-thumb-wrapper {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .portfolio-card-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .portfolio-card:hover .portfolio-card-thumb {
+      transform: scale(1.03);
+    }
+
+    .portfolio-card-badges {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .portfolio-card-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .portfolio-meta-list {
+      margin: 16px 0;
+      padding: 12px 0;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .portfolio-meta-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .portfolio-meta-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Co-funding CTA Banner */
+    .cofunding-cta-banner {
+      background: var(--navy);
+      color: #FFFFFF;
+      padding: 50px 40px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .cofunding-cta-text h3 {
+      color: #FFFFFF;
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .cofunding-cta-text p {
+      color: #CBD5E1;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .project-kpi-ribbon {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 20px;
+      }
+      .flagship-project-card {
+        grid-template-columns: 1fr;
+      }
+      .flagship-body-col {
+        padding: 28px;
+      }
+      .projects-portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .project-kpi-ribbon {
+        grid-template-columns: 1fr;
+      }
+      .projects-portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      .cofunding-cta-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -53,84 +350,88 @@
     <a href="contact.html">Contact Us</a>
   </div>
 
-  <!-- Page Header Banner -->
+  <!-- Page Header Banner (Clean Title Without Removed Label) -->
   <div class="page-header-banner">
     <div class="container">
-      <span class="section-label label-light">Deployments &amp; Initiatives</span>
-      <h1>Active Projects &amp; Field Programs</h1>
+      <h1>Initiatives, Milestones &amp; Strategic Programs</h1>
       <p>
-        Documented milestones, impact data, and grassroots deployments executed across local government areas in Kano State.
+        A comprehensive portfolio of completed milestones, ongoing field deployments, and upcoming interventions executed across Kano State and Northern Nigeria.
       </p>
     </div>
   </div>
 
-  <!-- Projects Container -->
-  <section>
+  <!-- Main Content Area -->
+  <section style="padding-top: 0;">
     <div class="container">
-      <!-- Featured Major Project Card -->
-      <div id="projectFeaturedContainer">
-        <div class="project-featured-card">
-          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="Digital Skills Boot Camp" class="project-featured-image">
-          <div class="project-featured-body">
-            <div>
-              <span class="project-category-tag">Featured Initiative · Digital Skills &amp; Education</span>
-              <h3>Holiday Digital Skills Boot Camp for Girls with Disabilities</h3>
-              <p style="color: var(--text-body); margin-bottom: 20px; font-size: 1.05rem;">
-                Directly funded by BHB Foundation in collaboration with The Ability First Tech Hub. An intensive digital literacy and assistive technology program empowering adolescent girls with visual, hearing, and physical disabilities with foundational computing, screen-reader fluency, and web design skills.
-              </p>
-              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;"><b>Location:</b> Kano Metropolitan &nbsp;|&nbsp; <b>Impact:</b> 10 Girls</p>
-            </div>
-            <div>
-              <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('proj-1')">View Project Details →</button>
-            </div>
-          </div>
+
+      <!-- Impact KPI Ribbon -->
+      <div class="project-kpi-ribbon">
+        <div class="project-kpi-card">
+          <div class="project-kpi-number">1,840+</div>
+          <div class="project-kpi-label">Direct Beneficiaries Reached</div>
+        </div>
+        <div class="project-kpi-card">
+          <div class="project-kpi-number">8 LGAs</div>
+          <div class="project-kpi-label">Active &amp; Past Intervention Zones</div>
+        </div>
+        <div class="project-kpi-card">
+          <div class="project-kpi-number">100%</div>
+          <div class="project-kpi-label">Milestone Delivery Rate</div>
+        </div>
+        <div class="project-kpi-card">
+          <div class="project-kpi-number">₦18.5M+</div>
+          <div class="project-kpi-label">Community Grants &amp; Disbursed Aid</div>
         </div>
       </div>
 
-      <!-- Secondary Projects Grid -->
-      <div class="project-secondary-grid" id="projectSecondaryGrid">
-        <div class="project-item">
-          <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" alt="Maternal Health" class="project-item-thumb">
-          <div class="project-item-content">
-            <div>
-              <span class="project-category-tag">Community Health</span>
-              <h4>Mobile Primary &amp; Maternal Care Access Initiative</h4>
-              <p>Providing rural settlements across Kano with routine mobile health clinics, prenatal checkups, and nutritional packages...</p>
-            </div>
-            <div>
-              <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('proj-2')" style="width: 100%;">View Project →</button>
-            </div>
-          </div>
+      <!-- Filter Toolbar (Ongoing, Completed, Upcoming & Categories) -->
+      <div class="project-filter-toolbar">
+        <div class="project-status-tabs">
+          <button class="project-status-btn active" data-status="All" onclick="filterPortfolioStatus('All')">
+            All Programs (6)
+          </button>
+          <button class="project-status-btn" data-status="Ongoing" onclick="filterPortfolioStatus('Ongoing')">
+            <span style="color: #15803D;">🟢</span> Ongoing Initiatives
+          </button>
+          <button class="project-status-btn" data-status="Completed" onclick="filterPortfolioStatus('Completed')">
+            <span style="color: #0369A1;">🔵</span> Completed Milestones
+          </button>
+          <button class="project-status-btn" data-status="Upcoming" onclick="filterPortfolioStatus('Upcoming')">
+            <span style="color: #B45309;">🟡</span> Upcoming Interventions
+          </button>
         </div>
 
-        <div class="project-item">
-          <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80" alt="Widows Agro Fund" class="project-item-thumb">
-          <div class="project-item-content">
-            <div>
-              <span class="project-category-tag">Livelihoods</span>
-              <h4>Widows &amp; Vulnerable Women Agro-Business Seed Fund</h4>
-              <p>Seed grants, grain processing equipment, and financial literacy training empowering widowed mothers with sustainable income...</p>
-            </div>
-            <div>
-              <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('proj-3')" style="width: 100%;">View Project →</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-item">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Youth Technical Hub" class="project-item-thumb">
-          <div class="project-item-content">
-            <div>
-              <span class="project-category-tag">Youth Empowerment</span>
-              <h4>Kano Youth Technical &amp; Apprenticeship Hub</h4>
-              <p>6-month practical vocational and IT hardware repair apprenticeship connecting underprivileged youth to market placements...</p>
-            </div>
-            <div>
-              <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('proj-4')" style="width: 100%;">View Project →</button>
-            </div>
-          </div>
+        <div>
+          <select class="project-category-filter" id="projectCategoryFilter" onchange="filterPortfolioCategory(this.value)">
+            <option value="All">All Focus Sectors</option>
+            <option value="Digital Inclusion">Digital Inclusion &amp; Assistive Tech</option>
+            <option value="Community Health">Community Health &amp; Maternal Care</option>
+            <option value="Women Livelihoods">Women Livelihoods &amp; Seed Grants</option>
+            <option value="Youth Mentorship">Youth Mentorship &amp; Apprenticeships</option>
+            <option value="WASH & Hygiene">WASH, Solar Water &amp; Sanitation</option>
+          </select>
         </div>
       </div>
+
+      <!-- Flagship Spotlight Card -->
+      <div id="projectFeaturedShowcase"></div>
+
+      <!-- 3-Column Portfolio Grid -->
+      <div class="projects-portfolio-grid" id="projectPortfolioGrid"></div>
+
+      <!-- Co-Funding & Institutional Partnership Callout -->
+      <div class="cofunding-cta-banner">
+        <div class="cofunding-cta-text">
+          <h3>Partner with BHB Foundation on Grassroots Initiatives</h3>
+          <p>
+            We co-design, implement, and rigorously audit social impact programs alongside institutional donors, international development agencies, and corporate CSR partners.
+          </p>
+        </div>
+        <div>
+          <a href="contact.html" class="btn btn-primary">Discuss Co-Funding / Grants →</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -146,35 +447,53 @@
         <div class="footer-col">
           <h5>About</h5>
           <a href="about.html">Who We Are</a>
-          <a href="about.html#mission">Mission &amp; Vision</a>
-          <a href="team.html">Our Leadership</a>
-          <a href="impact.html">Impact Report</a>
+          <a href="about.html#mission">Our Story &amp; Philosophy</a>
+          <a href="impact.html">Impact Metrics</a>
+          <a href="team.html">Governance &amp; Staff</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Programs</h5>
+          <a href="work.html">Family Support</a>
+          <a href="projects.html">Digital Skills &amp; Inclusion</a>
+          <a href="projects.html">Mobile Health Outreach</a>
+          <a href="projects.html">Women Agro-Fund</a>
         </div>
 
         <div class="footer-col">
           <h5>Dispatches</h5>
-          <a href="work.html">Focus Areas</a>
-          <a href="projects.html">Active Projects</a>
-          <a href="blog.html">Blog &amp; Field Reports</a>
+          <a href="blog.html">Latest Articles</a>
+          <a href="blog.html">Community Stories</a>
+          <a href="blog.html">Press Releases</a>
           <a href="contact.html">Contact Us</a>
         </div>
 
-        <div class="footer-col">
+        <div class="footer-col footer-newsletter">
           <h5>Newsletter</h5>
-          <p style="font-size: 0.85rem; margin-bottom: 12px;">Receive quarterly field updates and governance reports:</p>
-          <form onsubmit="event.preventDefault(); showToast('Subscribed to BHB Foundation updates!', 'success'); this.reset();" style="display: flex; gap: 8px;">
-            <input type="email" placeholder="Your email address" style="padding: 9px 12px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; font-size: 0.88rem; outline: none; flex: 1;" required>
-            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          <p>Receive verified field reports and quarterly milestone publications.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing to BHB dispatches!', 'success'); this.reset();">
+            <input type="email" placeholder="Your official email..." required>
+            <button type="submit">→</button>
           </form>
         </div>
       </div>
 
       <div class="footer-bottom-bar">
-        <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. 9670692. All rights reserved.</span>
+        <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. <span data-bind="cacNumber">9670692</span>. All rights reserved.</span>
         <a href="index.html" style="color: #94A3B8; text-decoration: underline;">Return to Home</a>
       </div>
     </div>
   </footer>
+
+  <!-- Interactive Project Dossier Modal -->
+  <div class="modal-backdrop" id="projectDossierModal">
+    <div class="modal-window" style="max-width: 860px; width: 95%; background: #FFFFFF; border-radius: 8px;">
+      <div style="position: absolute; top: 18px; right: 22px; z-index: 10;">
+        <button onclick="closeModal('projectDossierModal')" style="background:none; border:none; font-size:1.8rem; cursor:pointer; color: var(--navy);">×</button>
+      </div>
+      <div id="projectDossierModalContent"></div>
+    </div>
+  </div>
 
   <!-- Generic Modal -->
   <div class="modal-backdrop" id="genericModal">
@@ -186,8 +505,193 @@
     </div>
   </div>
 
+  <!-- Scripts -->
   <script src="js/store.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/app.js"></script>
+  <script>
+    // Dedicated Projects Page Filtering & Rendering
+    let currentStatusFilter = 'All';
+    let currentCategoryFilter = 'All';
+
+    function renderProjectsPortfolio() {
+      const allProjects = BHBStore.getProjects();
+      let filtered = allProjects;
+
+      if (currentStatusFilter !== 'All') {
+        filtered = filtered.filter(p => p.status === currentStatusFilter);
+      }
+      if (currentCategoryFilter !== 'All') {
+        filtered = filtered.filter(p => p.category === currentCategoryFilter);
+      }
+
+      const featured = filtered.find(p => p.featured) || filtered[0];
+      const secondaries = filtered.filter(p => !featured || p.id !== featured.id);
+
+      // Render Flagship Card
+      const featuredContainer = document.getElementById('projectFeaturedShowcase');
+      if (featuredContainer) {
+        if (featured) {
+          const statusClass = featured.status ? featured.status.toLowerCase() : 'ongoing';
+          featuredContainer.innerHTML = `
+            <div class="flagship-project-card">
+              <div class="flagship-thumb-col">
+                <img src="${featured.image}" alt="${featured.title}" class="flagship-thumb-img">
+              </div>
+              <div class="flagship-body-col">
+                <div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px;">
+                    <span class="project-category-tag" style="margin: 0;">${featured.category}</span>
+                    <span class="badge-status ${statusClass}">● ${featured.status}</span>
+                  </div>
+                  <h2 style="font-size: 1.7rem; color: var(--navy); margin-bottom: 12px; line-height: 1.3;">${featured.title}</h2>
+                  <span class="project-timeline-tag">📅 Timeline: ${featured.timeline || 'Ongoing Program'}</span>
+                  <p style="color: var(--text-body); font-size: 1rem; line-height: 1.65; margin-bottom: 20px;">
+                    ${featured.description}
+                  </p>
+                  
+                  <div style="background: var(--bg-off); padding: 14px 18px; border: 1px solid var(--border-light); margin-bottom: 20px;">
+                    <div style="font-size: 0.85rem; color: var(--navy); font-weight: 700; margin-bottom: 6px;">
+                      Key Milestone Focus:
+                    </div>
+                    <ul style="padding-left: 18px; margin: 0; font-size: 0.88rem; color: var(--text-body);">
+                      ${(featured.milestones || []).slice(0, 2).map(m => `<li style="margin-bottom: 4px;">${m}</li>`).join('')}
+                    </ul>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-light); padding-top: 18px; flex-wrap: wrap; gap: 12px;">
+                  <div style="font-size: 0.88rem; color: var(--text-muted);">
+                    📍 <b>${featured.location}</b> &nbsp;|&nbsp; 👥 <b>${featured.beneficiaries}</b>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-outline btn-sm" onclick="openProjectDossierModal('${featured.id}')">View Full Dossier →</button>
+                    <button class="btn btn-primary btn-sm" onclick="openDonateModal()">Support Initiative</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        } else {
+          featuredContainer.innerHTML = `<div style="padding: 40px; text-align: center; color: var(--text-muted); background: #fff; border: 1px solid var(--border-light); margin-bottom: 30px;">No initiatives found under this filter.</div>`;
+        }
+      }
+
+      // Render Secondary Grid
+      const gridContainer = document.getElementById('projectPortfolioGrid');
+      if (gridContainer) {
+        gridContainer.innerHTML = secondaries.map(p => {
+          const statusClass = p.status ? p.status.toLowerCase() : 'ongoing';
+          return `
+            <div class="portfolio-card">
+              <div>
+                <div class="portfolio-card-thumb-wrapper">
+                  <img src="${p.image}" alt="${p.title}" class="portfolio-card-thumb">
+                  <div class="portfolio-card-badges">
+                    <span class="project-category-tag" style="background: rgba(15,23,42,0.85); color: #fff; border: none; margin: 0;">${p.category}</span>
+                    <span class="badge-status ${statusClass}">● ${p.status}</span>
+                  </div>
+                </div>
+
+                <div class="portfolio-card-body">
+                  <div>
+                    <h3 style="font-size: 1.22rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35;">${p.title}</h3>
+                    <p style="font-size: 0.92rem; color: var(--text-body); line-height: 1.6;">${p.description.substring(0, 125)}...</p>
+                  </div>
+
+                  <div class="portfolio-meta-list">
+                    <div class="portfolio-meta-item">
+                      <span>Timeline:</span>
+                      <b>${p.timeline || 'Active'}</b>
+                    </div>
+                    <div class="portfolio-meta-item">
+                      <span>Location:</span>
+                      <b>${p.location}</b>
+                    </div>
+                    <div class="portfolio-meta-item">
+                      <span>Beneficiaries:</span>
+                      <b>${p.beneficiaries}</b>
+                    </div>
+                  </div>
+
+                  <button class="btn btn-outline btn-sm" onclick="openProjectDossierModal('${p.id}')" style="width: 100%;">
+                    View Program Dossier →
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    function filterPortfolioStatus(status) {
+      currentStatusFilter = status;
+      document.querySelectorAll('.project-status-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-status') === status);
+      });
+      renderProjectsPortfolio();
+    }
+
+    function filterPortfolioCategory(cat) {
+      currentCategoryFilter = cat;
+      renderProjectsPortfolio();
+    }
+
+    window.openProjectDossierModal = function(id) {
+      const proj = BHBStore.getProjects().find(p => p.id === id);
+      if (!proj) return;
+
+      const modalContent = document.getElementById('projectDossierModalContent');
+      if (modalContent) {
+        const statusClass = proj.status ? proj.status.toLowerCase() : 'ongoing';
+        modalContent.innerHTML = `
+          <div style="padding: 36px 40px; max-height: 85vh; overflow-y: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="project-category-tag" style="margin: 0;">${proj.category}</span>
+              <span class="badge-status ${statusClass}">● ${proj.status}</span>
+            </div>
+            
+            <h1 style="font-size: 1.9rem; color: var(--navy); margin-bottom: 8px; line-height: 1.25;">${proj.title}</h1>
+            <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">
+              📍 <b>Location:</b> ${proj.location} &nbsp;|&nbsp; 👥 <b>Reach:</b> ${proj.beneficiaries} &nbsp;|&nbsp; 📅 <b>Timeline:</b> ${proj.timeline || 'Ongoing'}
+            </div>
+
+            <img src="${proj.image}" alt="${proj.title}" style="width: 100%; height: 320px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 24px;">
+
+            <h3 style="color: var(--navy); font-size: 1.2rem; margin-bottom: 10px;">Program Summary &amp; Scope</h3>
+            <p style="font-size: 1.05rem; line-height: 1.75; color: var(--text-body); margin-bottom: 28px;">
+              ${proj.description}
+            </p>
+
+            <h3 style="color: var(--navy); font-size: 1.2rem; margin-bottom: 12px;">Key Milestones, Deliverables &amp; Outcomes</h3>
+            <div style="background: var(--bg-off); border: 1px solid var(--border-light); padding: 20px 24px; margin-bottom: 30px;">
+              <ul style="padding-left: 20px; margin: 0; color: var(--text-body); font-size: 0.98rem; line-height: 1.7;">
+                ${(proj.milestones || []).map(m => `<li style="margin-bottom: 8px;">${m}</li>`).join('')}
+              </ul>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); padding-top: 20px; flex-wrap: wrap; gap: 14px;">
+              <div style="font-size: 0.92rem; color: var(--text-muted);">
+                Audit Transparency: <b>Direct Grassroots Field Verification</b>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <button class="btn btn-outline btn-sm" onclick="closeModal('projectDossierModal')">Close Dossier</button>
+                <button class="btn btn-primary btn-sm" onclick="closeModal('projectDossierModal'); openDonateModal();">Support This Program →</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      openModal('projectDossierModal');
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProjectsPortfolio();
+      BHBStore.subscribe(() => {
+        renderProjectsPortfolio();
+      });
+    });
+  </script>
 </body>
 </html>
