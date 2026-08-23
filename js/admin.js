@@ -1,6 +1,7 @@
 /**
  * BHB FAMILY SUPPORT AND DEVELOPMENT FOUNDATION
  * SUPER ADMIN CONTROLLER (LIGHT PROFESSIONAL CORPORATE THEME)
+ * EQUIPPED WITH BLOG CMS, COMMENTS MODERATION, AND IMAGE CROPPER
  */
 
 let donationsChartInstance = null;
@@ -80,33 +81,6 @@ function initAdminNavigation() {
   });
 }
 
-// Global Image Upload Handler (FileReader -> base64 Data URL)
-window.handleImageUpload = function(inputEl, previewImgId, hiddenInputName) {
-  const file = inputEl.files[0];
-  if (!file) return;
-
-  if (file.size > 5 * 1024 * 1024) {
-    showToast('Image file too large! Please choose an image under 5MB.', 'warning');
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const base64Data = e.target.result;
-    const previewEl = document.getElementById(previewImgId);
-    if (previewEl) {
-      previewEl.src = base64Data;
-      previewEl.style.display = 'block';
-    }
-    const hiddenInput = document.querySelector(`input[name="${hiddenInputName}"]`);
-    if (hiddenInput) {
-      hiddenInput.value = base64Data;
-    }
-    showToast('Image uploaded and preview ready!', 'success');
-  };
-  reader.readAsDataURL(file);
-};
-
 // Drag & Drop Setup
 function setupImageDropzones() {
   document.querySelectorAll('.admin-dropzone').forEach(zone => {
@@ -174,7 +148,7 @@ function renderAdminDashboard() {
   renderAdminHeroSlidesTable();
   renderAdminProjectsTable();
   renderAdminBlogTable();
-  renderAdminGalleryTable();
+  renderAdminCommentsTable();
   renderAdminTeamTable();
   renderAdminPartnersTable();
   renderAdminDonationsTable();
@@ -189,6 +163,7 @@ function renderAdminOverviewMetrics() {
   const projects = BHBStore.getProjects();
   const volunteers = BHBStore.getVolunteers();
   const inquiries = BHBStore.getInquiries();
+  const comments = BHBStore.getAllComments();
 
   const totalDonations = donations.reduce((sum, d) => sum + (d.amount || 0), 0);
   const donEl = document.getElementById('kpiTotalDonations');
@@ -198,68 +173,103 @@ function renderAdminOverviewMetrics() {
   if (projEl) projEl.textContent = projects.filter(p => p.status === 'Active').length || projects.length;
 
   const volEl = document.getElementById('kpiPendingVolunteers');
-  const volCount = volunteers.filter(v => v.status === 'Pending').length;
-  if (volEl) volEl.textContent = volCount;
+  const pendingVol = volunteers.filter(v => v.status === 'Pending').length;
+  if (volEl) volEl.textContent = pendingVol;
 
-  const sidebarVol = document.getElementById('adminSidebarVolCount');
-  if (sidebarVol) sidebarVol.textContent = volCount;
+  const inqEl = document.getElementById('kpiInquiries');
+  const pendingInq = inquiries.filter(i => i.status === 'Unread').length;
+  if (inqEl) inqEl.textContent = pendingInq;
 
-  const sidebarInq = document.getElementById('adminSidebarInqCount');
-  const unreadInq = inquiries.filter(i => i.status === 'Unread').length;
-  if (sidebarInq) sidebarInq.textContent = unreadInq;
+  // Sidebar counters
+  const sideVol = document.getElementById('adminSidebarVolCount');
+  if (sideVol) sideVol.textContent = pendingVol;
+
+  const sideInq = document.getElementById('adminSidebarInqCount');
+  if (sideInq) sideInq.textContent = pendingInq;
+
+  const sideComm = document.getElementById('adminSidebarCommCount');
+  if (sideComm) sideComm.textContent = comments.length;
 }
 
-// 2. Charts (Clean Light Corporate Theme)
+// 2. Light Theme Analytics Charts
 function renderAdminCharts() {
-  const donCanvas = document.getElementById('adminDonationsChart');
-  const benCanvas = document.getElementById('adminBeneficiariesChart');
-  if (!donCanvas || !benCanvas) return;
+  if (typeof Chart === 'undefined') return;
 
-  if (donationsChartInstance) donationsChartInstance.destroy();
-  if (beneficiariesChartInstance) beneficiariesChartInstance.destroy();
+  const ctxDon = document.getElementById('donationsChart');
+  const ctxBen = document.getElementById('beneficiariesChart');
 
-  donationsChartInstance = new Chart(donCanvas.getContext('2d'), {
-    type: 'line',
-    data: {
-      labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug 2026'],
-      datasets: [{
-        label: 'Funds Mobilized (₦ Millions)',
-        data: [2.5, 4.8, 8.2, 14.5, 19.8],
-        borderColor: '#2563EB',
-        backgroundColor: 'rgba(37, 99, 235, 0.08)',
-        fill: true,
-        tension: 0.35
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: { legend: { labels: { color: '#0F172A', font: { weight: '600' } } } },
-      scales: {
-        x: { ticks: { color: '#64748B' }, grid: { color: '#F1F5F9' } },
-        y: { ticks: { color: '#64748B' }, grid: { color: '#F1F5F9' } }
+  if (ctxDon) {
+    if (donationsChartInstance) donationsChartInstance.destroy();
+    donationsChartInstance = new Chart(ctxDon, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+        datasets: [{
+          label: 'Disbursed Program Funds (₦ Millions)',
+          data: [1.2, 1.8, 2.5, 3.1, 4.0, 4.8, 5.9, 7.5],
+          borderColor: '#2563EB',
+          backgroundColor: 'rgba(37, 99, 235, 0.08)',
+          fill: true,
+          tension: 0.35,
+          pointRadius: 4,
+          pointBackgroundColor: '#2563EB'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          x: {
+            grid: { color: '#F1F5F9' },
+            ticks: { color: '#64748B', font: { family: 'Plus Jakarta Sans' } }
+          },
+          y: {
+            grid: { color: '#F1F5F9' },
+            ticks: { color: '#64748B', font: { family: 'Plus Jakarta Sans' } }
+          }
+        }
       }
-    }
-  });
+    });
+  }
 
-  beneficiariesChartInstance = new Chart(benCanvas.getContext('2d'), {
-    type: 'doughnut',
-    data: {
-      labels: ['Healthcare', 'Disability Tech', 'Women Agrobiz', 'Youth Skills'],
-      datasets: [{
-        data: [42, 18, 25, 15],
-        backgroundColor: ['#2563EB', '#10B981', '#F59E0B', '#8B5CF6']
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { weight: '600' } } } }
-    }
-  });
+  if (ctxBen) {
+    if (beneficiariesChartInstance) beneficiariesChartInstance.destroy();
+    beneficiariesChartInstance = new Chart(ctxBen, {
+      type: 'bar',
+      data: {
+        labels: ['Digital Boot Camp', 'Mobile Health', 'Agro-Seeds', 'Youth Mentorship', 'WASH Outreach'],
+        datasets: [{
+          label: 'Direct Beneficiaries Reached',
+          data: [250, 680, 420, 310, 180],
+          backgroundColor: ['#1E3A8A', '#0284C7', '#0D9488', '#F59E0B', '#64748B'],
+          borderRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { color: '#64748B', font: { family: 'Plus Jakarta Sans', size: 11 } }
+          },
+          y: {
+            grid: { color: '#F1F5F9' },
+            ticks: { color: '#64748B', font: { family: 'Plus Jakarta Sans' } }
+          }
+        }
+      }
+    });
+  }
 }
 
-// 3. Hero Slides Manager
+// 3. Hero Carousel Slides CRUD
 function renderAdminHeroSlidesTable() {
   const tbody = document.getElementById('adminHeroSlidesTableBody');
   if (!tbody) return;
@@ -268,10 +278,13 @@ function renderAdminHeroSlidesTable() {
   tbody.innerHTML = slides.map(s => `
     <tr>
       <td>
-        <img src="${s.image}" style="width: 70px; height: 42px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;">
+        <img src="${s.image}" style="width: 70px; height: 42px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1;">
       </td>
-      <td><b style="color: #0F172A;">${s.title}</b></td>
-      <td style="font-size: 0.85rem; color: #64748B;">${s.label}</td>
+      <td>
+        <b style="color: #0F172A;">${s.title}</b>
+        <div style="font-size: 0.78rem; color: #64748B;">${s.label || ''}</div>
+      </td>
+      <td style="max-width: 260px; font-size: 0.85rem; color: #475569;">${s.lead}</td>
       <td>
         <div class="action-btn-group">
           <button class="btn-icon-sm" onclick="editHeroSlideModal('${s.id}')">Edit</button>
@@ -289,32 +302,32 @@ window.openNewHeroSlideModal = function() {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSaveHeroSlide(event)">
         <input type="hidden" name="slide_id" value="">
-        <input type="hidden" name="slide_image" id="slideImageHidden" value="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80">
+        <input type="hidden" name="slide_image" id="heroSlideImageHidden" value="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80">
         
         <div class="form-group">
-          <label>Slide Headline / Title</label>
-          <input type="text" name="slide_title" required placeholder="e.g. Empowering Families. Building Resilient Communities.">
+          <label>Eyebrow Label</label>
+          <input type="text" name="slide_label" placeholder="e.g. Grassroots Empowerment" required value="Non-Governmental Organization">
         </div>
 
         <div class="form-group">
-          <label>Category Label (Top Eyebrow)</label>
-          <input type="text" name="slide_label" required placeholder="e.g. Inclusive Technology & Education">
+          <label>Main Headline</label>
+          <input type="text" name="slide_title" placeholder="e.g. Empowering Kano Communities" required>
         </div>
 
         <div class="form-group">
-          <label>Supporting Lead Statement</label>
-          <textarea name="slide_lead" rows="3" required placeholder="Short mission text"></textarea>
+          <label>Lead Paragraph</label>
+          <textarea name="slide_lead" rows="3" placeholder="Brief description visible on slide" required></textarea>
         </div>
 
         <div class="form-group">
-          <label>Slide Background Photo (Upload directly)</label>
+          <label>Slide Background Photo (Interactive Cropper)</label>
           <div class="admin-dropzone">
-            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'heroSlideImgPreview', 'slide_image')" style="margin-bottom: 8px;">
-            <img id="heroSlideImgPreview" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'heroSlideImgPreview', 'slide_image', '16:9')" style="margin-bottom: 8px;">
+            <img id="heroSlideImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Save Hero Slide</button>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Save Slide to Homepage</button>
       </form>
     `;
   }
@@ -331,27 +344,27 @@ window.editHeroSlideModal = function(id) {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSaveHeroSlide(event)">
         <input type="hidden" name="slide_id" value="${slide.id}">
-        <input type="hidden" name="slide_image" id="slideImageHidden" value="${slide.image}">
+        <input type="hidden" name="slide_image" id="heroSlideImageHidden" value="${slide.image}">
         
         <div class="form-group">
-          <label>Slide Headline / Title</label>
+          <label>Eyebrow Label</label>
+          <input type="text" name="slide_label" value="${slide.label || ''}" required>
+        </div>
+
+        <div class="form-group">
+          <label>Main Headline</label>
           <input type="text" name="slide_title" value="${slide.title}" required>
         </div>
 
         <div class="form-group">
-          <label>Category Label (Top Eyebrow)</label>
-          <input type="text" name="slide_label" value="${slide.label}" required>
-        </div>
-
-        <div class="form-group">
-          <label>Supporting Lead Statement</label>
+          <label>Lead Paragraph</label>
           <textarea name="slide_lead" rows="3" required>${slide.lead}</textarea>
         </div>
 
         <div class="form-group">
-          <label>Slide Background Photo</label>
+          <label>Slide Background Photo (Interactive Cropper)</label>
           <div class="admin-dropzone">
-            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'heroSlideImgPreview', 'slide_image')" style="margin-bottom: 8px;">
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'heroSlideImgPreview', 'slide_image', '16:9')" style="margin-bottom: 8px;">
             <img id="heroSlideImgPreview" src="${slide.image}" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
@@ -447,9 +460,9 @@ window.openNewProjectModal = function() {
         </div>
 
         <div class="form-group">
-          <label>Project Banner Photo (Upload Directly)</label>
+          <label>Project Banner Photo (Interactive Cropper)</label>
           <div class="admin-dropzone">
-            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'projImgPreview', 'proj_image')" style="margin-bottom: 8px;">
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'projImgPreview', 'proj_image', '16:9')" style="margin-bottom: 8px;">
             <img id="projImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
@@ -500,9 +513,9 @@ window.editProjectModal = function(id) {
         </div>
 
         <div class="form-group">
-          <label>Project Banner Photo</label>
+          <label>Project Banner Photo (Interactive Cropper)</label>
           <div class="admin-dropzone">
-            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'projImgPreview', 'proj_image')" style="margin-bottom: 8px;">
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'projImgPreview', 'proj_image', '16:9')" style="margin-bottom: 8px;">
             <img id="projImgPreview" src="${proj.image}" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
@@ -532,78 +545,118 @@ window.handleSaveProject = function(e) {
   showToast('Project saved and updated live on public website!', 'success');
 };
 
-// 5. Blog / News Manager
+// 5. Blog Articles CMS (With Cropper, Likes & Comments Tracking)
 function renderAdminBlogTable() {
   const tbody = document.getElementById('adminBlogTableBody');
   if (!tbody) return;
 
   const posts = BHBStore.getPosts();
-  tbody.innerHTML = posts.map(p => `
-    <tr>
-      <td>
-        <div style="display: flex; gap: 10px; align-items: center;">
-          <img src="${p.image}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;">
+  tbody.innerHTML = posts.map(p => {
+    const comments = BHBStore.getCommentsByPost(p.id);
+    return `
+      <tr>
+        <td>
+          <img src="${p.image}" style="width: 50px; height: 35px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1;">
+        </td>
+        <td>
           <b style="color: #0F172A;">${p.title}</b>
-        </div>
-      </td>
-      <td>${p.category}</td>
-      <td>${p.author}</td>
-      <td>${p.date}</td>
-      <td><span class="status-pill success">Published</span></td>
-      <td>
-        <div class="action-btn-group">
-          <button class="btn-icon-sm" onclick="editPostModal('${p.id}')">Edit</button>
-          <button class="btn-icon-sm danger" onclick="BHBStore.deletePost('${p.id}')">Delete</button>
-        </div>
-      </td>
-    </tr>
-  `).join('');
+          <div style="font-size: 0.78rem; color: #64748B;">${p.date} · ${p.readTime || '4 min read'}</div>
+        </td>
+        <td><span class="project-category-tag" style="margin: 0;">${p.category}</span></td>
+        <td>${p.author}</td>
+        <td><b style="color: #DC2626;">❤️ ${p.likes || 0}</b></td>
+        <td><b style="color: #2563EB;">💬 ${comments.length}</b></td>
+        <td><span class="status-pill success">Published</span></td>
+        <td>
+          <div class="action-btn-group">
+            <button class="btn-icon-sm" onclick="editPostModal('${p.id}')">Edit</button>
+            <button class="btn-icon-sm danger" onclick="deletePostAdmin('${p.id}')">Delete</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
 }
+
+window.deletePostAdmin = function(id) {
+  if (confirm('Are you sure you want to delete this article and its comments?')) {
+    BHBStore.deletePost(id);
+    showToast('Article deleted successfully!', 'info');
+  }
+};
 
 window.openNewPostModal = function() {
   const content = document.getElementById('adminCrudModalContent');
-  document.getElementById('adminCrudModalTitle').textContent = 'Create News Article';
+  document.getElementById('adminCrudModalTitle').textContent = 'Write New Blog Article';
   if (content) {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSavePost(event)">
         <input type="hidden" name="post_id" value="">
-        <input type="hidden" name="post_image" id="postImageHidden" value="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80">
+        <input type="hidden" name="post_image" id="postImageHidden" value="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80">
         
         <div class="form-group">
-          <label>Article Title</label>
-          <input type="text" name="post_title" required placeholder="e.g. Expanding Maternal Health Clinics">
+          <label>Article Title *</label>
+          <input type="text" name="post_title" required placeholder="e.g. Empowering 500 Widows Through Agricultural Seed Capital">
         </div>
 
         <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <div class="form-group">
-            <label>Category</label>
-            <input type="text" name="post_category" required placeholder="Program Highlights">
+            <label>Category *</label>
+            <select name="post_category" required>
+              <option value="Digital Inclusion">Digital Inclusion</option>
+              <option value="Health & Maternal Care">Health & Maternal Care</option>
+              <option value="Community Stories">Community Stories</option>
+              <option value="Press Releases">Press Releases</option>
+              <option value="Livelihoods">Livelihoods</option>
+              <option value="General">General</option>
+            </select>
           </div>
           <div class="form-group">
-            <label>Author</label>
-            <input type="text" name="post_author" required value="BHB Communications">
+            <label>Author Full Name *</label>
+            <input type="text" name="post_author" required value="BHB Editorial Team">
+          </div>
+        </div>
+
+        <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Author Role / Department</label>
+            <input type="text" name="post_author_role" placeholder="e.g. Field Operations Specialist" value="Communications & Field Operations">
+          </div>
+          <div class="form-group">
+            <label>Reading Time</label>
+            <input type="text" name="post_read_time" placeholder="e.g. 4 min read" value="4 min read">
           </div>
         </div>
 
         <div class="form-group">
-          <label>Short Excerpt</label>
-          <input type="text" name="post_excerpt" required placeholder="Brief one-sentence summary">
+          <label>Article Tags (Comma separated)</label>
+          <input type="text" name="post_tags" placeholder="e.g. Kano, Digital Skills, Inclusion, Youth">
         </div>
 
         <div class="form-group">
-          <label>Article Content</label>
-          <textarea name="post_content" rows="5" required placeholder="Full article body"></textarea>
+          <label>Lead Excerpt (Summary for Cards) *</label>
+          <input type="text" name="post_excerpt" required placeholder="Brief 1-2 sentence overview shown in blog feeds">
         </div>
 
         <div class="form-group">
-          <label>Featured Image (Upload directly)</label>
+          <label>Full Article Content *</label>
+          <textarea name="post_content" rows="6" required placeholder="Write the complete article dispatch here..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Article Banner Photo (Crop before Uploading)</label>
           <div class="admin-dropzone">
-            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'postImgPreview', 'post_image')" style="margin-bottom: 8px;">
-            <img id="postImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'postImgPreview', 'post_image', '16:9')" style="margin-bottom: 8px;">
+            <img id="postImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" style="max-height: 140px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Publish Article</button>
+        <div class="form-group" style="display: flex; align-items: center; gap: 8px;">
+          <input type="checkbox" name="post_featured" id="postFeaturedCheck" style="width: auto;">
+          <label for="postFeaturedCheck" style="margin: 0; cursor: pointer; font-weight: 600;">Set as Featured Lead Article</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Publish Article Live</button>
       </form>
     `;
   }
@@ -611,11 +664,11 @@ window.openNewPostModal = function() {
 };
 
 window.editPostModal = function(id) {
-  const post = BHBStore.getPosts().find(p => p.id === id);
+  const post = BHBStore.getPostById(id);
   if (!post) return;
 
   const content = document.getElementById('adminCrudModalContent');
-  document.getElementById('adminCrudModalTitle').textContent = 'Edit Article';
+  document.getElementById('adminCrudModalTitle').textContent = 'Edit Blog Article';
   if (content) {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSavePost(event)">
@@ -623,40 +676,68 @@ window.editPostModal = function(id) {
         <input type="hidden" name="post_image" id="postImageHidden" value="${post.image}">
         
         <div class="form-group">
-          <label>Article Title</label>
+          <label>Article Title *</label>
           <input type="text" name="post_title" value="${post.title}" required>
         </div>
 
         <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <div class="form-group">
-            <label>Category</label>
-            <input type="text" name="post_category" value="${post.category}" required>
+            <label>Category *</label>
+            <select name="post_category" required>
+              <option value="Digital Inclusion" ${post.category === 'Digital Inclusion' ? 'selected' : ''}>Digital Inclusion</option>
+              <option value="Health & Maternal Care" ${post.category === 'Health & Maternal Care' ? 'selected' : ''}>Health & Maternal Care</option>
+              <option value="Community Stories" ${post.category === 'Community Stories' ? 'selected' : ''}>Community Stories</option>
+              <option value="Press Releases" ${post.category === 'Press Releases' ? 'selected' : ''}>Press Releases</option>
+              <option value="Livelihoods" ${post.category === 'Livelihoods' ? 'selected' : ''}>Livelihoods</option>
+              <option value="General" ${post.category === 'General' ? 'selected' : ''}>General</option>
+            </select>
           </div>
           <div class="form-group">
-            <label>Author</label>
+            <label>Author Full Name *</label>
             <input type="text" name="post_author" value="${post.author}" required>
           </div>
         </div>
 
+        <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Author Role / Department</label>
+            <input type="text" name="post_author_role" value="${post.authorRole || ''}">
+          </div>
+          <div class="form-group">
+            <label>Reading Time</label>
+            <input type="text" name="post_read_time" value="${post.readTime || '4 min read'}">
+          </div>
+        </div>
+
         <div class="form-group">
-          <label>Short Excerpt</label>
+          <label>Article Tags (Comma separated)</label>
+          <input type="text" name="post_tags" value="${(post.tags || []).join(', ')}">
+        </div>
+
+        <div class="form-group">
+          <label>Lead Excerpt *</label>
           <input type="text" name="post_excerpt" value="${post.excerpt}" required>
         </div>
 
         <div class="form-group">
-          <label>Article Content</label>
-          <textarea name="post_content" rows="5" required>${post.content || ''}</textarea>
+          <label>Full Article Content *</label>
+          <textarea name="post_content" rows="6" required>${post.content || ''}</textarea>
         </div>
 
         <div class="form-group">
-          <label>Featured Image</label>
+          <label>Article Banner Photo (Crop before Uploading)</label>
           <div class="admin-dropzone">
-            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'postImgPreview', 'post_image')" style="margin-bottom: 8px;">
-            <img id="postImgPreview" src="${post.image}" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'postImgPreview', 'post_image', '16:9')" style="margin-bottom: 8px;">
+            <img id="postImgPreview" src="${post.image}" style="max-height: 140px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Update Article</button>
+        <div class="form-group" style="display: flex; align-items: center; gap: 8px;">
+          <input type="checkbox" name="post_featured" id="postFeaturedCheck" ${post.featured ? 'checked' : ''} style="width: auto;">
+          <label for="postFeaturedCheck" style="margin: 0; cursor: pointer; font-weight: 600;">Set as Featured Lead Article</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Save &amp; Update Article</button>
       </form>
     `;
   }
@@ -666,22 +747,79 @@ window.editPostModal = function(id) {
 window.handleSavePost = function(e) {
   e.preventDefault();
   const form = e.target;
+  const tags = form.post_tags.value.split(',').map(t => t.trim()).filter(Boolean);
+
   const post = {
     id: form.post_id.value || undefined,
     title: form.post_title.value,
     category: form.post_category.value,
     author: form.post_author.value,
+    authorRole: form.post_author_role.value,
+    readTime: form.post_read_time.value,
+    tags,
     excerpt: form.post_excerpt.value,
     content: form.post_content.value,
     image: form.post_image.value,
+    featured: form.post_featured.checked,
     status: 'published'
   };
+
   BHBStore.savePost(post);
   closeModal('adminCrudModal');
-  showToast('Article published and updated live!', 'success');
+  showToast('Blog article saved and synchronized live across public website!', 'success');
 };
 
-// 6. Team CRUD
+// 6. Comments Moderation Center
+function renderAdminCommentsTable() {
+  const tbody = document.getElementById('adminCommentsTableBody');
+  if (!tbody) return;
+
+  const comments = BHBStore.getAllComments();
+  if (!comments.length) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #64748B; padding: 24px;">No visitor comments submitted yet.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = comments.map(c => `
+    <tr>
+      <td>
+        <b style="color: #0F172A;">${c.authorName}</b>
+      </td>
+      <td style="font-size: 0.85rem; color: #475569;">${c.authorEmail}</td>
+      <td style="max-width: 180px; font-size: 0.85rem;"><b style="color: #1E3A8A;">${c.postTitle}</b></td>
+      <td style="max-width: 260px; font-size: 0.88rem; color: #334155;">${c.content}</td>
+      <td style="font-size: 0.8rem; color: #64748B;">${c.date}</td>
+      <td>
+        <span class="status-pill ${c.status === 'approved' ? 'success' : 'danger'}">
+          ${c.status}
+        </span>
+      </td>
+      <td>
+        <div class="action-btn-group">
+          <button class="btn-icon-sm" onclick="toggleCommentStatusAdmin('${c.id}', '${c.status}')" style="color: ${c.status === 'approved' ? '#B45309' : '#15803D'};">
+            ${c.status === 'approved' ? 'Flag' : 'Approve'}
+          </button>
+          <button class="btn-icon-sm danger" onclick="deleteCommentAdmin('${c.id}')">Delete</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+window.toggleCommentStatusAdmin = function(id, currentStatus) {
+  const newStatus = currentStatus === 'approved' ? 'flagged' : 'approved';
+  BHBStore.updateCommentStatus(id, newStatus);
+  showToast(`Comment status updated to "${newStatus}"!`, 'success');
+};
+
+window.deleteCommentAdmin = function(id) {
+  if (confirm('Delete this comment permanently?')) {
+    BHBStore.deleteComment(id);
+    showToast('Comment removed from moderation center.', 'info');
+  }
+};
+
+// 7. Team CRUD (With Cropper for 1:1 Portraits)
 function renderAdminTeamTable() {
   const tbody = document.getElementById('adminTeamTableBody');
   if (!tbody) return;
@@ -738,9 +876,9 @@ window.openNewTeamModal = function() {
         </div>
 
         <div class="form-group">
-          <label>Portrait Photo (Upload directly)</label>
+          <label>Portrait Photo (Crop with 1:1 Portrait Tool)</label>
           <div class="admin-dropzone">
-            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image')" style="margin-bottom: 8px;">
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image', '1:1')" style="margin-bottom: 8px;">
             <img id="teamImgPreview" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" style="max-height: 100px; width: 100px; border-radius: 50%; object-fit: cover; margin: 8px auto; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
@@ -786,9 +924,9 @@ window.editTeamModal = function(id) {
         </div>
 
         <div class="form-group">
-          <label>Portrait Photo</label>
+          <label>Portrait Photo (Crop with 1:1 Portrait Tool)</label>
           <div class="admin-dropzone">
-            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image')" style="margin-bottom: 8px;">
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image', '1:1')" style="margin-bottom: 8px;">
             <img id="teamImgPreview" src="${member.image}" style="max-height: 100px; width: 100px; border-radius: 50%; object-fit: cover; margin: 8px auto; display: block; border: 1px solid #CBD5E1;">
           </div>
         </div>
@@ -814,88 +952,6 @@ window.handleSaveTeam = function(e) {
   BHBStore.saveTeamMember(member);
   closeModal('adminCrudModal');
   showToast('Team roster updated and synchronized live!', 'success');
-};
-
-// 7. Gallery Manager
-function renderAdminGalleryTable() {
-  const tbody = document.getElementById('adminGalleryTableBody');
-  if (!tbody) return;
-
-  const gallery = BHBStore.getGallery();
-  tbody.innerHTML = gallery.map(g => `
-    <tr>
-      <td>
-        <img src="${g.image}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;">
-      </td>
-      <td><b style="color: #0F172A;">${g.title}</b></td>
-      <td>${g.category}</td>
-      <td>${g.location}</td>
-      <td>
-        <div class="action-btn-group">
-          <button class="btn-icon-sm danger" onclick="BHBStore.deleteGalleryItem('${g.id}')">Delete</button>
-        </div>
-      </td>
-    </tr>
-  `).join('');
-}
-
-window.openNewGalleryModal = function() {
-  const content = document.getElementById('adminCrudModalContent');
-  document.getElementById('adminCrudModalTitle').textContent = 'Upload Field Photo';
-  if (content) {
-    content.innerHTML = `
-      <form class="admin-modal-form" onsubmit="handleSaveGallery(event)">
-        <input type="hidden" name="gal_image" id="galImageHidden" value="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80">
-        
-        <div class="form-group">
-          <label>Photo Title</label>
-          <input type="text" name="gal_title" required placeholder="e.g. Assistive Computing Training Session">
-        </div>
-
-        <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <div class="form-group">
-            <label>Category</label>
-            <input type="text" name="gal_category" required placeholder="Inclusive Tech">
-          </div>
-          <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="gal_location" required placeholder="Kano Metropolitan">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Caption</label>
-          <input type="text" name="gal_caption" required placeholder="Short descriptive caption">
-        </div>
-
-        <div class="form-group">
-          <label>Field Photo (Upload directly)</label>
-          <div class="admin-dropzone">
-            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'galImgPreview', 'gal_image')" style="margin-bottom: 8px;">
-            <img id="galImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
-          </div>
-        </div>
-
-        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Upload Photo to Gallery</button>
-      </form>
-    `;
-  }
-  openModal('adminCrudModal');
-};
-
-window.handleSaveGallery = function(e) {
-  e.preventDefault();
-  const form = e.target;
-  const item = {
-    title: form.gal_title.value,
-    category: form.gal_category.value,
-    location: form.gal_location.value,
-    caption: form.gal_caption.value,
-    image: form.gal_image.value
-  };
-  BHBStore.saveGalleryItem(item);
-  closeModal('adminCrudModal');
-  showToast('Photo added to gallery and synced live!', 'success');
 };
 
 // 8. Partners Manager

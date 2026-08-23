@@ -1,10 +1,12 @@
 /**
  * BHB FAMILY SUPPORT AND DEVELOPMENT FOUNDATION
- * EDITORIAL NGO PORTAL CONTROLLER (FULLY REACTIVE WITH STORE)
+ * EDITORIAL NGO PORTAL CONTROLLER (WITH BLOG, LIKES, COMMENTS & SOCIAL SHARING)
  */
 
 let heroCurrentSlide = 0;
 let heroSlideTimer = null;
+let currentBlogCategory = 'All';
+let currentBlogSearchQuery = '';
 
 document.addEventListener('DOMContentLoaded', () => {
   renderAllSections();
@@ -128,8 +130,7 @@ function renderAllSections() {
   renderHeroSlider();
   renderFocusAreas();
   renderProjects();
-  renderGallery();
-  renderStoriesAndNews();
+  renderBlogPage();
   renderTeam();
   renderPartners();
   renderSettingsMetadata();
@@ -210,66 +211,333 @@ function renderProjects() {
   }
 }
 
-// 6. Photo Gallery
-function renderGallery() {
-  const container = document.getElementById('galleryEditorialGrid');
-  if (!container) return;
+// 6. Full Dynamic Blog Rendering (Supports blog.html and homepage index.html)
+function renderBlogPage() {
+  const allPosts = BHBStore.getPosts();
 
-  const items = BHBStore.getGallery();
-  container.innerHTML = items.map(g => `
-    <div class="gallery-photo-card" onclick="openGalleryModal('${g.id}')">
-      <img src="${g.image}" alt="${g.title}" class="gallery-photo-img">
-      <div class="gallery-photo-caption">
-        <b>${g.title}</b>
-        <span>${g.location} · ${g.category}</span>
-      </div>
-    </div>
-  `).join('');
-}
+  // Filter by category and search query
+  let filtered = allPosts;
+  if (currentBlogCategory && currentBlogCategory !== 'All') {
+    filtered = filtered.filter(p => p.category.toLowerCase().includes(currentBlogCategory.toLowerCase()));
+  }
+  if (currentBlogSearchQuery.trim()) {
+    const q = currentBlogSearchQuery.toLowerCase();
+    filtered = filtered.filter(p => 
+      p.title.toLowerCase().includes(q) || 
+      (p.content && p.content.toLowerCase().includes(q)) ||
+      (p.author && p.author.toLowerCase().includes(q)) ||
+      (p.category && p.category.toLowerCase().includes(q))
+    );
+  }
 
-// 7. Stories & News
-function renderStoriesAndNews() {
-  const leadContainer = document.getElementById('newsLeadContainer');
-  const sideContainer = document.getElementById('newsSideList');
+  const featured = filtered.find(p => p.featured) || filtered[0];
+  const secondaries = filtered.filter(p => !featured || p.id !== featured.id);
 
-  const posts = BHBStore.getPosts();
-  const stories = BHBStore.getStories();
+  // A. Dedicated blog.html containers
+  const blogLeadContainer = document.getElementById('blogLeadContainer');
+  const blogSecondaryGrid = document.getElementById('blogSecondaryGrid');
 
-  const lead = posts[0] || {
-    id: "post-1",
-    title: "Breaking Barriers: How 10 Young Girls with Disabilities Mastered Coding in Kano",
-    category: "Program Highlights",
-    date: "August 18, 2026",
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80",
-    excerpt: "Inside the landmark Holiday Digital Skills Boot Camp funded directly by BHB Foundation in collaboration with The Ability First Tech Hub."
-  };
+  if (blogLeadContainer) {
+    if (featured) {
+      const comments = BHBStore.getCommentsByPost(featured.id);
+      blogLeadContainer.innerHTML = `
+        <div class="blog-lead-article" onclick="openBlogPostReader('${featured.id}')">
+          <img src="${featured.image}" alt="${featured.title}" class="blog-lead-thumb">
+          <div class="blog-lead-content">
+            <div>
+              <span class="section-label">${featured.category} · ${featured.date}</span>
+              <h2 style="font-size: 1.85rem; color: var(--navy); margin: 12px 0 16px; line-height: 1.3;">${featured.title}</h2>
+              <p style="font-size: 1.05rem; color: var(--text-body); margin-bottom: 20px;">${featured.excerpt}</p>
+            </div>
+            <div>
+              <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
+                By <b>${featured.author}</b> · ${featured.readTime || '4 min read'}
+              </div>
+              <div class="blog-engagement-strip">
+                <span>❤️ ${featured.likes || 0} Likes</span>
+                <span>💬 ${comments.length} Comments</span>
+                <span style="margin-left: auto; color: var(--blue); font-weight: 700;">Read Full Article →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      blogLeadContainer.innerHTML = `<div style="padding: 40px; text-align: center; color: var(--text-muted);">No articles found matching "${currentBlogSearchQuery}".</div>`;
+    }
+  }
 
-  if (leadContainer) {
-    leadContainer.innerHTML = `
-      <div class="news-lead-article" onclick="openStoryModal('lead', '${lead.id}')" style="cursor: pointer;">
-        <img src="${lead.image}" alt="${lead.title}" class="news-lead-image">
-        <span class="section-label">${lead.category} · ${lead.date}</span>
-        <h3>${lead.title}</h3>
-        <p style="font-size: 1.05rem; color: var(--text-body);">${lead.excerpt}</p>
-        <div style="margin-top: 14px;">
-          <span style="color: var(--blue); font-weight: 600; font-size: 0.95rem;">Read full dispatch →</span>
+  if (blogSecondaryGrid) {
+    blogSecondaryGrid.innerHTML = secondaries.map(p => {
+      const comments = BHBStore.getCommentsByPost(p.id);
+      return `
+        <div class="blog-card" onclick="openBlogPostReader('${p.id}')">
+          <img src="${p.image}" alt="${p.title}" class="blog-card-thumb">
+          <div class="blog-card-body">
+            <div>
+              <div class="blog-card-meta">
+                <span class="project-category-tag">${p.category}</span>
+                <span>${p.readTime || '3 min read'}</span>
+              </div>
+              <h3 style="font-size: 1.2rem; color: var(--navy); margin-bottom: 10px; line-height: 1.4;">${p.title}</h3>
+              <p style="font-size: 0.92rem; color: var(--text-body);">${p.excerpt.substring(0, 115)}...</p>
+            </div>
+            <div>
+              <div class="blog-engagement-strip">
+                <span>❤️ ${p.likes || 0}</span>
+                <span>💬 ${comments.length}</span>
+                <span style="margin-left: auto; color: var(--blue); font-weight: 600;">Read →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // B. Homepage index.html containers
+  const homeLeadContainer = document.getElementById('homeBlogLeadContainer');
+  const homeSecondaryGrid = document.getElementById('homeBlogSecondaryGrid');
+
+  if (homeLeadContainer && featured) {
+    const comments = BHBStore.getCommentsByPost(featured.id);
+    homeLeadContainer.innerHTML = `
+      <div class="blog-lead-article" onclick="openBlogPostReader('${featured.id}')" style="background: #FFFFFF;">
+        <img src="${featured.image}" alt="${featured.title}" class="blog-lead-thumb">
+        <div class="blog-lead-content">
+          <div>
+            <span class="section-label">${featured.category} · ${featured.date}</span>
+            <h2 style="font-size: 1.8rem; color: var(--navy); margin: 12px 0 16px;">${featured.title}</h2>
+            <p style="font-size: 1.05rem; color: var(--text-body); margin-bottom: 20px;">${featured.excerpt}</p>
+          </div>
+          <div>
+            <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">By <b>${featured.author}</b></div>
+            <div class="blog-engagement-strip">
+              <span>❤️ ${featured.likes || 0} Likes</span>
+              <span>💬 ${comments.length} Comments</span>
+              <span style="margin-left: auto; color: var(--blue); font-weight: 700;">Read Full Article →</span>
+            </div>
+          </div>
         </div>
       </div>
     `;
   }
 
-  if (sideContainer) {
-    sideContainer.innerHTML = stories.map(s => `
-      <div class="news-side-item" onclick="openStoryModal('story', '${s.id}')">
-        <div class="news-meta">${s.category} · Community Case Study</div>
-        <h4>${s.title}</h4>
-        <p style="font-size: 0.92rem; color: var(--text-muted);">${s.summary}</p>
-      </div>
-    `).join('');
+  if (homeSecondaryGrid) {
+    homeSecondaryGrid.innerHTML = secondaries.slice(0, 3).map(p => {
+      const comments = BHBStore.getCommentsByPost(p.id);
+      return `
+        <div class="blog-card" onclick="openBlogPostReader('${p.id}')">
+          <img src="${p.image}" alt="${p.title}" class="blog-card-thumb">
+          <div class="blog-card-body">
+            <div>
+              <div class="blog-card-meta">
+                <span class="project-category-tag">${p.category}</span>
+                <span>${p.readTime || '3 min read'}</span>
+              </div>
+              <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px;">${p.title}</h3>
+              <p style="font-size: 0.92rem; color: var(--text-body);">${p.excerpt.substring(0, 110)}...</p>
+            </div>
+            <div>
+              <div class="blog-engagement-strip">
+                <span>❤️ ${p.likes || 0}</span>
+                <span>💬 ${comments.length}</span>
+                <span style="margin-left: auto; color: var(--blue); font-weight: 600;">Read →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
   }
 }
 
-// 8. Team
+// Blog Category & Search Event Handlers
+window.filterBlogCategory = function(cat) {
+  currentBlogCategory = cat;
+  document.querySelectorAll('.blog-filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-category') === cat);
+  });
+  renderBlogPage();
+};
+
+window.handleBlogSearch = function(query) {
+  currentBlogSearchQuery = query;
+  renderBlogPage();
+};
+
+// Interactive Blog Post Reader (With Likes, Social Sharing, Comments)
+window.openBlogPostReader = function(postId) {
+  const post = BHBStore.getPostById(postId);
+  if (!post) return;
+
+  const comments = BHBStore.getCommentsByPost(postId);
+  const content = document.getElementById('blogReaderModalContent');
+  if (!content) return;
+
+  const currentUrl = window.location.origin + window.location.pathname;
+
+  content.innerHTML = `
+    <div class="blog-reader-container">
+      <div class="blog-reader-header">
+        <span class="section-label">${post.category} · ${post.date}</span>
+        <h1 class="blog-reader-title">${post.title}</h1>
+        
+        <div class="blog-author-row">
+          <div class="blog-author-info">
+            <div class="blog-author-avatar">${post.author.charAt(0)}</div>
+            <div>
+              <div style="font-weight: 700; color: var(--navy); font-size: 0.95rem;">${post.author}</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">${post.authorRole || 'BHB Editorial Team'} · ${post.readTime || '4 min read'}</div>
+            </div>
+          </div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            Published in Kano, Nigeria
+          </div>
+        </div>
+      </div>
+
+      <img src="${post.image}" alt="${post.title}" class="blog-reader-banner">
+
+      <div class="blog-reader-content">${post.content || post.excerpt}</div>
+
+      ${(post.tags && post.tags.length) ? `
+        <div class="blog-tags-list">
+          ${post.tags.map(t => `<span class="blog-tag-pill">#${t}</span>`).join('')}
+        </div>
+      ` : ''}
+
+      <!-- Interactive Actions Bar (Like & Share) -->
+      <div class="blog-actions-bar">
+        <div>
+          <button class="like-btn-action ${post.likedByUser ? 'liked' : ''}" id="readerLikeBtn" onclick="toggleLikePost('${post.id}')">
+            <span>${post.likedByUser ? '❤️' : '🤍'}</span>
+            <span id="readerLikeCount">${post.likes || 0}</span> Likes
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <span style="font-size: 0.84rem; font-weight: 700; color: var(--navy);">Share Article:</span>
+          <div class="share-btn-group">
+            <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(post.title + ' - ' + currentUrl)}" target="_blank" class="share-icon-btn" title="Share on WhatsApp">
+              🟢 WhatsApp
+            </a>
+            <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(currentUrl)}" target="_blank" class="share-icon-btn" title="Share on X / Twitter">
+              ✖️ X
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}" target="_blank" class="share-icon-btn" title="Share on Facebook">
+              🔵 Facebook
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}" target="_blank" class="share-icon-btn" title="Share on LinkedIn">
+              💼 LinkedIn
+            </a>
+            <button class="share-icon-btn" onclick="copyArticleLink('${currentUrl}')" title="Copy Link">
+              🔗 Copy Link
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Comments Section -->
+      <div class="blog-comments-container">
+        <h3 style="font-size: 1.3rem; color: var(--navy); margin-bottom: 20px;">
+          Community Discussion (${comments.length})
+        </h3>
+
+        <!-- Comments List -->
+        <div id="blogPostCommentsList">
+          ${comments.length ? comments.map(c => `
+            <div class="comment-item">
+              <div class="comment-header">
+                <span class="comment-author">👤 ${c.authorName}</span>
+                <span class="comment-date">${c.date}</span>
+              </div>
+              <div class="comment-body">${c.content}</div>
+            </div>
+          `).join('') : `
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">No comments yet. Be the first to join the discussion!</p>
+          `}
+        </div>
+
+        <!-- Leave a Comment Form -->
+        <div style="background: var(--bg-off); border: 1px solid var(--border-light); padding: 24px; margin-top: 24px;">
+          <h4 style="color: var(--navy); margin-bottom: 14px; font-size: 1.1rem;">Leave a Comment</h4>
+          <form onsubmit="submitBlogComment(event, '${post.id}')">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Your Name *</label>
+                <input type="text" id="commentAuthorName" required placeholder="e.g. Dr. Aminu Kano">
+              </div>
+              <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" id="commentAuthorEmail" required placeholder="name@email.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Your Thoughts &amp; Feedback *</label>
+              <textarea id="commentBody" rows="3" required placeholder="Share your perspective on this initiative..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-navy btn-sm" style="margin-top: 10px;">Post Comment →</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  `;
+
+  openModal('blogReaderModal');
+};
+
+// Like Toggle Handler
+window.toggleLikePost = function(postId) {
+  const newCount = BHBStore.likePost(postId);
+  const post = BHBStore.getPostById(postId);
+  const btn = document.getElementById('readerLikeBtn');
+  const countEl = document.getElementById('readerLikeCount');
+
+  if (btn && post) {
+    btn.classList.toggle('liked', post.likedByUser);
+    btn.querySelector('span').textContent = post.likedByUser ? '❤️' : '🤍';
+  }
+  if (countEl) countEl.textContent = newCount;
+
+  showToast(post.likedByUser ? 'Thank you for liking this dispatch!' : 'Removed like', 'info');
+  renderBlogPage();
+};
+
+// Copy Article Link
+window.copyArticleLink = function(url) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(() => {
+      showToast('Article link copied to clipboard!', 'success');
+    });
+  } else {
+    showToast('Link copied: ' + url, 'info');
+  }
+};
+
+// Comment Submission Handler
+window.submitBlogComment = function(e, postId) {
+  e.preventDefault();
+  const name = document.getElementById('commentAuthorName').value;
+  const email = document.getElementById('commentAuthorEmail').value;
+  const body = document.getElementById('commentBody').value;
+
+  BHBStore.addComment({
+    postId,
+    authorName: name,
+    authorEmail: email,
+    content: body
+  });
+
+  showToast('Your comment has been posted live!', 'success');
+  // Refresh modal reader view
+  openBlogPostReader(postId);
+  renderBlogPage();
+};
+
+// 7. Team
 function renderTeam() {
   const container = document.getElementById('teamEditorialGrid');
   if (!container) return;
@@ -285,7 +553,7 @@ function renderTeam() {
   `).join('');
 }
 
-// 9. Partners
+// 8. Partners
 function renderPartners() {
   const container = document.getElementById('partnersStrip');
   if (!container) return;
@@ -298,7 +566,7 @@ function renderPartners() {
   `).join('');
 }
 
-// 10. Settings & Metadata
+// 9. Settings & Metadata
 function renderSettingsMetadata() {
   const settings = BHBStore.getSettings();
   if (!settings) return;
@@ -353,64 +621,6 @@ window.openProjectDetailsModal = function(projId) {
           <span style="font-size: 0.9rem; color: var(--text-muted);">Status: <b>${proj.status}</b> | Beneficiaries: <b>${proj.beneficiaries}</b></span>
           <button class="btn btn-navy btn-sm" onclick="openDonateModal()">Support This Initiative →</button>
         </div>
-      </div>
-    `;
-  }
-  openModal('genericModal');
-};
-
-// Story & News Reader Modal
-window.openStoryModal = function(type, id) {
-  let title = '', category = '', date = '', image = '', body = '';
-
-  if (type === 'lead') {
-    const p = BHBStore.getPosts().find(post => post.id === id) || BHBStore.getPosts()[0];
-    title = p.title;
-    category = p.category;
-    date = p.date;
-    image = p.image;
-    body = p.content || p.excerpt;
-  } else {
-    const s = BHBStore.getStories().find(story => story.id === id) || BHBStore.getStories()[0];
-    title = s.title;
-    category = s.category;
-    date = "Field Documentation";
-    image = s.image;
-    body = s.content || s.summary;
-  }
-
-  const content = document.getElementById('genericModalContent');
-  if (content) {
-    content.innerHTML = `
-      <div style="padding: 36px;">
-        <span class="section-label">${category} · ${date}</span>
-        <h2 style="font-size: 1.8rem; color: var(--navy); margin: 8px 0 16px;">${title}</h2>
-        <img src="${image}" alt="${title}" style="width: 100%; height: 320px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 20px;">
-        <div style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body); white-space: pre-line;">
-          ${body}
-        </div>
-        <div style="margin-top: 28px; text-align: right;">
-          <button class="btn btn-outline btn-sm" onclick="closeModal('genericModal')">Close</button>
-        </div>
-      </div>
-    `;
-  }
-  openModal('genericModal');
-};
-
-// Gallery Modal
-window.openGalleryModal = function(galId) {
-  const item = BHBStore.getGallery().find(g => g.id === galId);
-  if (!item) return;
-
-  const content = document.getElementById('genericModalContent');
-  if (content) {
-    content.innerHTML = `
-      <div style="padding: 24px;">
-        <img src="${item.image}" alt="${item.title}" style="width: 100%; max-height: 480px; object-fit: contain; border-radius: var(--radius-sm); margin-bottom: 16px;">
-        <h3 style="color: var(--navy); margin-bottom: 6px;">${item.title}</h3>
-        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 4px;">${item.caption}</p>
-        <span style="font-size: 0.8rem; color: var(--text-muted);">${item.location} · ${item.category}</span>
       </div>
     `;
   }

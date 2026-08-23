@@ -1,0 +1,4 @@
+sync.ps1
+server.ps1
+.env
+*.log

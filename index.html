@@ -38,8 +38,7 @@
           <a href="work.html">Our Work</a>
           <a href="projects.html">Projects</a>
           <a href="impact.html">Impact</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="stories.html">News &amp; Stories</a>
+          <a href="blog.html">Blog</a>
           <a href="team.html">Our Team</a>
           <a href="contact.html">Contact Us</a>
         </nav>
@@ -65,8 +64,7 @@
       <a href="work.html">Our Work</a>
       <a href="projects.html">Projects &amp; Programs</a>
       <a href="impact.html">Impact Metrics</a>
-      <a href="gallery.html">Photo Gallery</a>
-      <a href="stories.html">News &amp; Stories</a>
+      <a href="blog.html">Blog &amp; Dispatches</a>
       <a href="team.html">Our Team</a>
       <a href="contact.html">Contact Us</a>
       <button class="btn btn-navy" onclick="toggleAdminView(true)" style="width: 100%; margin-top: 8px;">Super Admin Portal</button>
@@ -394,120 +392,22 @@
       </div>
     </section>
 
-    <!-- Field Gallery Preview -->
-    <section id="gallery" class="bg-off">
+    <!-- From Our Blog & Field Reports -->
+    <section id="blog" class="bg-off">
       <div class="container">
         <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
           <div>
-            <span class="section-label">Field Gallery</span>
-            <h2>Moments from Our Community Activities</h2>
-            <p class="lead">Photographic documentation of our training sessions, medical outreaches, and stakeholder engagements.</p>
+            <span class="section-label">Field Reports &amp; Publications</span>
+            <h2>From Our Blog &amp; Field Reports</h2>
+            <p class="lead">First-hand accounts, program milestones, and qualitative stories of transformation across Northern Nigeria.</p>
           </div>
           <div>
-            <a href="gallery.html" class="btn btn-outline">View Full Gallery →</a>
+            <a href="blog.html" class="btn btn-outline">Explore Full Blog &amp; Articles →</a>
           </div>
         </div>
 
-        <div class="gallery-editorial-grid" id="galleryEditorialGrid">
-          <div class="gallery-photo-card" onclick="openGalleryModal('gal-1')">
-            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" alt="Digital Boot Camp" class="gallery-photo-img">
-            <div class="gallery-photo-caption">
-              <b>Digital Boot Camp for Girls with Disabilities</b>
-              <span>Kano Metropolitan Hub · Inclusive Tech</span>
-            </div>
-          </div>
-          <div class="gallery-photo-card" onclick="openGalleryModal('gal-2')">
-            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=900&q=80" alt="Health Outreach" class="gallery-photo-img">
-            <div class="gallery-photo-caption">
-              <b>Mobile Primary Healthcare Outreach</b>
-              <span>Nasarawa LGA · Health Outreach</span>
-            </div>
-          </div>
-          <div class="gallery-photo-card" onclick="openGalleryModal('gal-3')">
-            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=80" alt="Seed Distribution" class="gallery-photo-img">
-            <div class="gallery-photo-caption">
-              <b>Women Agro-Enterprise Seed Distribution</b>
-              <span>Fagge Community Center · Livelihoods</span>
-            </div>
-          </div>
-          <div class="gallery-photo-card" onclick="openGalleryModal('gal-4')">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Youth Workshop" class="gallery-photo-img">
-            <div class="gallery-photo-caption">
-              <b>Youth Technical &amp; Mentorship Workshop</b>
-              <span>Kano Municipal Center · Youth Empowerment</span>
-            </div>
-          </div>
-          <div class="gallery-photo-card" onclick="openGalleryModal('gal-5')">
-            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="Town Hall" class="gallery-photo-img">
-            <div class="gallery-photo-caption">
-              <b>Community Stakeholder Town Hall</b>
-              <span>Dala Outreach Post · Resilience</span>
-            </div>
-          </div>
-          <div class="gallery-photo-card" onclick="openGalleryModal('gal-6')">
-            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" alt="Learning Drive" class="gallery-photo-img">
-            <div class="gallery-photo-caption">
-              <b>Inclusive Classroom Learning Drive</b>
-              <span>Tarauni LGA School · Education</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- News & Stories Overview -->
-    <section id="stories">
-      <div class="container">
-        <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
-          <div>
-            <span class="section-label">Stories &amp; Publications</span>
-            <h2>News, Field Reports &amp; Community Voices</h2>
-            <p class="lead">First-hand accounts and verified updates from program participants and medical staff.</p>
-          </div>
-          <div>
-            <a href="stories.html" class="btn btn-outline">Read All Stories &amp; News →</a>
-          </div>
-        </div>
-
-        <div class="news-stories-layout">
-          <div id="newsLeadContainer">
-            <div class="news-lead-article" onclick="openStoryModal('lead', 'post-1')" style="cursor: pointer;">
-              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80" alt="Girls with Disabilities" class="news-lead-image">
-              <span class="section-label">Program Highlights · August 18, 2026</span>
-              <h3>Breaking Barriers: How 10 Young Girls with Disabilities Mastered Coding in Kano</h3>
-              <p style="font-size: 1.05rem; color: var(--text-body);">
-                Inside the landmark Holiday Digital Skills Boot Camp funded directly by BHB Foundation in collaboration with The Ability First Tech Hub.
-              </p>
-              <div style="margin-top: 14px;">
-                <span style="color: var(--blue); font-weight: 600; font-size: 0.95rem;">Read full dispatch →</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="news-side-list" id="newsSideList">
-            <div class="news-side-item" onclick="openStoryModal('story', 'story-1')">
-              <div class="news-meta">Maternal Health · Community Case Study</div>
-              <h4>Amina’s Story: Safe Care Within Reach</h4>
-              <p style="font-size: 0.92rem; color: var(--text-muted);">
-                Expecting her third child, Amina delayed health checks due to distance. BHB’s mobile health team delivered prenatal care and connected her to a local clinic.
-              </p>
-            </div>
-            <div class="news-side-item" onclick="openStoryModal('story', 'story-2')">
-              <div class="news-meta">Youth Empowerment · Community Case Study</div>
-              <h4>Ibrahim’s Story: From Searching to Leading</h4>
-              <p style="font-size: 0.92rem; color: var(--text-muted);">
-                After two years of job hunting, Ibrahim gained practical digital training through BHB and now works as an IT assistant and youth mentor.
-              </p>
-            </div>
-            <div class="news-side-item" onclick="openStoryModal('story', 'story-3')">
-              <div class="news-meta">Women's Livelihoods · Community Case Study</div>
-              <h4>Fatima’s Story: A Sustainable Business</h4>
-              <p style="font-size: 0.92rem; color: var(--text-muted);">
-                Fatima, a widowed mother of four, expanded her tailoring workshop through BHB’s seed grant and now comfortably pays her children’s school fees.
-              </p>
-            </div>
-          </div>
-        </div>
+        <div id="homeBlogLeadContainer"></div>
+        <div class="blog-grid-3" id="homeBlogSecondaryGrid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px;"></div>
       </div>
     </section>
 
@@ -657,11 +557,11 @@
           </div>
 
           <div class="footer-col">
-            <h5>Programs</h5>
+            <h5>Dispatches</h5>
             <a href="work.html">Focus Areas</a>
             <a href="projects.html">Active Projects</a>
-            <a href="gallery.html">Field Gallery</a>
-            <a href="stories.html">Publications</a>
+            <a href="blog.html">Blog &amp; Field Reports</a>
+            <a href="contact.html">Contact Us</a>
           </div>
 
           <div class="footer-col">
@@ -676,7 +576,7 @@
         </div>
 
         <div class="footer-bottom-bar">
-          <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. 9670692. All rights reserved.</span>
+          <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. <span data-bind="cacNumber">9670692</span>. All rights reserved.</span>
           <button onclick="toggleAdminView(true)" style="background: none; border: none; color: #94A3B8; font-size: 0.82rem; cursor: pointer; text-decoration: underline;">
             Super Admin Controller
           </button>
@@ -721,12 +621,13 @@
             </li>
             <li class="admin-nav-item">
               <button data-admin-tab="blog">
-                <span class="nav-item-left">📰 News &amp; Stories CMS</span>
+                <span class="nav-item-left">📰 Blog Articles CMS</span>
               </button>
             </li>
             <li class="admin-nav-item">
-              <button data-admin-tab="gallery">
-                <span class="nav-item-left">📸 Photo Gallery Manager</span>
+              <button data-admin-tab="comments">
+                <span class="nav-item-left">💬 Comments Moderation</span>
+                <span class="admin-badge-count" id="adminSidebarCommCount">0</span>
               </button>
             </li>
             <li class="admin-nav-item">
@@ -908,19 +809,21 @@
             <div class="admin-table-card">
               <div class="table-action-bar">
                 <div>
-                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">News &amp; Field Updates Manager</h3>
-                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Upload photos directly from your device and publish live.</p>
+                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Blog Articles &amp; Field Reports CMS</h3>
+                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Publish articles with custom author, categories, tags, and interactive image cropper.</p>
                 </div>
-                <button class="btn btn-primary btn-sm" onclick="openNewPostModal()">+ Create Article (With Photo Upload)</button>
+                <button class="btn btn-primary btn-sm" onclick="openNewPostModal()">+ Write New Article</button>
               </div>
               <div style="overflow-x: auto;">
                 <table class="admin-data-table">
                   <thead>
                     <tr>
-                      <th>Title</th>
+                      <th>Image</th>
+                      <th>Article Title</th>
                       <th>Category</th>
                       <th>Author</th>
-                      <th>Date</th>
+                      <th>Likes</th>
+                      <th>Comments</th>
                       <th>Status</th>
                       <th>Actions</th>
                     </tr>
@@ -931,28 +834,29 @@
             </div>
           </div>
 
-          <!-- TAB 5: GALLERY -->
-          <div class="admin-tab-pane" id="adminTab-gallery">
+          <!-- TAB 5: COMMENTS MODERATION -->
+          <div class="admin-tab-pane" id="adminTab-comments">
             <div class="admin-table-card">
               <div class="table-action-bar">
                 <div>
-                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Photo Gallery Manager</h3>
-                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Upload authentic field photographs from events and outreaches.</p>
+                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Community Comments Moderation Center</h3>
+                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Review, approve, flag, or delete visitor comments across all blog publications.</p>
                 </div>
-                <button class="btn btn-primary btn-sm" onclick="openNewGalleryModal()">+ Upload Field Photo</button>
               </div>
               <div style="overflow-x: auto;">
                 <table class="admin-data-table">
                   <thead>
                     <tr>
-                      <th>Photo</th>
-                      <th>Title</th>
-                      <th>Category</th>
-                      <th>Location</th>
-                      <th>Action</th>
+                      <th>Commenter</th>
+                      <th>Email</th>
+                      <th>Article</th>
+                      <th>Comment Message</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
-                  <tbody id="adminGalleryTableBody"></tbody>
+                  <tbody id="adminCommentsTableBody"></tbody>
                 </table>
               </div>
             </div>
@@ -1142,6 +1046,16 @@
   </div>
 
 
+  <!-- Interactive Blog Reader Modal -->
+  <div class="modal-backdrop" id="blogReaderModal">
+    <div class="modal-window" style="max-width: 860px; width: 95%; background: #FFFFFF; border-radius: 8px;">
+      <div style="position: absolute; top: 20px; right: 24px; z-index: 10;">
+        <button onclick="closeModal('blogReaderModal')" style="background:none; border:none; font-size:1.8rem; cursor:pointer; color: var(--navy);">×</button>
+      </div>
+      <div id="blogReaderModalContent"></div>
+    </div>
+  </div>
+
   <!-- Modals -->
   <div class="modal-backdrop" id="genericModal">
     <div class="modal-window">
@@ -1165,6 +1079,7 @@
   <!-- Scripts -->
   <script src="js/store.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/cropper.js"></script>
   <script src="js/app.js"></script>
   <script src="js/admin.js"></script>
 

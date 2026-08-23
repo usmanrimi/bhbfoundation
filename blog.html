@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog &amp; Field Reports — BHB Family Support and Development Foundation</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <style>
+    /* Dedicated Blog Page Styles */
+    .blog-controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 36px;
+      gap: 20px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 20px;
+    }
+
+    .blog-filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .blog-filter-btn {
+      background: var(--bg-off);
+      border: 1px solid var(--border-light);
+      color: var(--text-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .blog-filter-btn:hover {
+      background: #E2E8F0;
+      color: var(--navy);
+    }
+
+    .blog-filter-btn.active {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
+    }
+
+    .blog-search-box {
+      position: relative;
+      min-width: 260px;
+    }
+
+    .blog-search-input {
+      width: 100%;
+      padding: 9px 14px 9px 36px;
+      border: 1px solid var(--border-light);
+      background: #FFFFFF;
+      font-size: 0.9rem;
+      color: var(--navy);
+      outline: none;
+    }
+    .blog-search-input:focus {
+      border-color: var(--blue);
+    }
+
+    .blog-search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .blog-lead-article {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      margin-bottom: 48px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+    .blog-lead-article:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .blog-lead-thumb {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+    }
+
+    .blog-lead-content {
+      padding: 36px 36px 36px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .blog-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .blog-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .blog-card-thumb {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .blog-card-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .blog-engagement-strip {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 14px;
+      margin-top: 16px;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Interactive Blog Reader Modal */
+    .blog-reader-container {
+      padding: 36px 40px;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .blog-reader-header {
+      margin-bottom: 24px;
+    }
+
+    .blog-reader-title {
+      font-size: 2.1rem;
+      color: var(--navy);
+      line-height: 1.25;
+      margin: 12px 0 16px;
+      font-family: var(--font-heading);
+    }
+
+    .blog-author-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .blog-author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .blog-author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .blog-reader-banner {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      margin-bottom: 28px;
+    }
+
+    .blog-reader-content {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: var(--text-body);
+      white-space: pre-line;
+      margin-bottom: 36px;
+    }
+
+    .blog-tags-list {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .blog-tag-pill {
+      background: var(--bg-off);
+      border: 1px solid var(--border-light);
+      color: var(--navy);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 4px 10px;
+    }
+
+    /* Social Share & Like Bar */
+    .blog-actions-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-off);
+      padding: 18px 24px;
+      border: 1px solid var(--border-light);
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .like-btn-action {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      color: var(--navy);
+      padding: 8px 18px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .like-btn-action:hover,
+    .like-btn-action.liked {
+      background: #FEF2F2;
+      color: #DC2626;
+      border-color: #FCA5A5;
+    }
+
+    .share-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .share-icon-btn {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      color: var(--navy);
+      padding: 8px 14px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+    .share-icon-btn:hover {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
+    }
+
+    /* Comments Box */
+    .blog-comments-container {
+      border-top: 1px solid var(--border-light);
+      padding-top: 36px;
+    }
+
+    .comment-item {
+      padding: 16px 20px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      margin-bottom: 16px;
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+    }
+
+    .comment-author {
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .comment-date {
+      color: var(--text-muted);
+    }
+
+    .comment-body {
+      font-size: 0.95rem;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1024px) {
+      .blog-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .blog-lead-article {
+        grid-template-columns: 1fr;
+      }
+      .blog-lead-content {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .blog-grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .blog-reader-container {
+        padding: 20px;
+      }
+      .blog-actions-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/bhb-logo.png" alt="BHB Foundation Logo" class="nav-brand-logo">
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="work.html">Our Work</a>
+        <a href="projects.html">Projects</a>
+        <a href="impact.html">Impact</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="team.html">Our Team</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html" class="nav-admin-link" onclick="localStorage.setItem('openAdmin', 'true')">Admin</a>
+        <button class="btn btn-primary btn-sm" onclick="openDonateModal()">Support Our Mission</button>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="work.html">Our Work</a>
+    <a href="projects.html">Projects</a>
+    <a href="impact.html">Impact Metrics</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="team.html">Our Team</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <!-- Page Header Banner -->
+  <div class="page-header-banner">
+    <div class="container">
+      <span class="section-label label-light">Field Reports &amp; Insights</span>
+      <h1>BHB Foundation Blog &amp; Dispatches</h1>
+      <p>
+        Verified publications, program milestones, and qualitative stories of transformation told directly from our grassroots interventions across Northern Nigeria.
+      </p>
+    </div>
+  </div>
+
+  <!-- Blog Main Section -->
+  <section>
+    <div class="container">
+
+      <!-- Filter Tabs & Search Bar -->
+      <div class="blog-controls-bar">
+        <div class="blog-filter-tabs">
+          <button class="blog-filter-btn active" data-category="All" onclick="filterBlogCategory('All')">All Articles</button>
+          <button class="blog-filter-btn" data-category="Digital Inclusion" onclick="filterBlogCategory('Digital Inclusion')">Digital Inclusion</button>
+          <button class="blog-filter-btn" data-category="Health &amp; Maternal Care" onclick="filterBlogCategory('Health &amp; Maternal Care')">Health &amp; Maternal</button>
+          <button class="blog-filter-btn" data-category="Community Stories" onclick="filterBlogCategory('Community Stories')">Community Stories</button>
+          <button class="blog-filter-btn" data-category="Press Releases" onclick="filterBlogCategory('Press Releases')">Press Releases</button>
+        </div>
+
+        <div class="blog-search-box">
+          <span class="blog-search-icon">🔍</span>
+          <input type="text" class="blog-search-input" id="blogSearchInput" placeholder="Search dispatches &amp; stories..." oninput="handleBlogSearch(this.value)">
+        </div>
+      </div>
+
+      <!-- Lead Featured Post Container -->
+      <div id="blogLeadContainer"></div>
+
+      <!-- Secondary Posts 3-Column Grid -->
+      <div class="blog-grid-3" id="blogSecondaryGrid"></div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <img src="assets/images/bhb-logo.png" alt="BHB mark" style="height: 38px;">
+          <p>Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State, Nigeria.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>About</h5>
+          <a href="about.html">Who We Are</a>
+          <a href="about.html#mission">Our Story &amp; Philosophy</a>
+          <a href="impact.html">Impact Metrics</a>
+          <a href="team.html">Governance &amp; Staff</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Programs</h5>
+          <a href="work.html">Family Support</a>
+          <a href="projects.html">Digital Skills &amp; Inclusion</a>
+          <a href="projects.html">Mobile Health Outreach</a>
+          <a href="projects.html">Women Agro-Fund</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Dispatches</h5>
+          <a href="blog.html">Latest Articles</a>
+          <a href="blog.html">Community Stories</a>
+          <a href="blog.html">Press Releases</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+
+        <div class="footer-col footer-newsletter">
+          <h5>Newsletter</h5>
+          <p>Receive verified field reports and quarterly milestone publications.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing to BHB dispatches!', 'success'); this.reset();">
+            <input type="email" placeholder="Your official email..." required>
+            <button type="submit">→</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. <span data-bind="cacNumber">9670692</span>. All rights reserved.</span>
+        <a href="index.html" style="color: #94A3B8; text-decoration: underline;">Return to Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Blog Reader Modal -->
+  <div class="modal-backdrop" id="blogReaderModal">
+    <div class="modal-window" style="max-width: 860px; width: 95%; background: #FFFFFF; border-radius: 8px;">
+      <div style="position: absolute; top: 20px; right: 24px; z-index: 10;">
+        <button onclick="closeModal('blogReaderModal')" style="background:none; border:none; font-size:1.8rem; cursor:pointer; color: var(--navy);">×</button>
+      </div>
+      <div id="blogReaderModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Generic Modal -->
+  <div class="modal-backdrop" id="genericModal">
+    <div class="modal-window">
+      <div style="position: absolute; top: 18px; right: 20px;">
+        <button onclick="closeModal('genericModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy);">×</button>
+      </div>
+      <div id="genericModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/store.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

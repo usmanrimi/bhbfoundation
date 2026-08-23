@@ -1,9 +1,10 @@
 /**
  * BHB FAMILY SUPPORT AND DEVELOPMENT FOUNDATION
  * CENTRAL DATA STORE & LOCALSTORAGE PERSISTENCE ENGINE
+ * (WITH BLOG CMS, LIKES, COMMENTS, ENGAGEMENT & ADMIN MODERATION)
  */
 
-const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V3';
+const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V4';
 
 const DEFAULT_STORE_DATA = {
   settings: {
@@ -99,14 +100,14 @@ const DEFAULT_STORE_DATA = {
       title: "Community Health & Well-being",
       summary: "Mobile prenatal diagnostics, primary healthcare awareness, and hygiene education in underserved settlements.",
       image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
-      details: "Deploying medical teams directly into remote settlements to provide preventive screenings and maternal support."
+      details: "Delivering preventative screening, maternal support kits, and hygiene education to rural settlements."
     },
     {
       id: "focus-6",
-      title: "Community Resilience & Sustainability",
-      summary: "Grassroots leadership committees, water and sanitation maintenance, and climate-resilient agricultural methods.",
-      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80",
-      details: "Building local committee ownership to maintain community infrastructure and manage crisis recovery."
+      title: "Community Engagement & Resilience",
+      summary: "Participatory town halls, grassroots community action committees, and long-term civic resilience infrastructure.",
+      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80",
+      details: "Empowering residents to co-design and self-manage infrastructure, including localized water committees."
     }
   ],
 
@@ -115,73 +116,232 @@ const DEFAULT_STORE_DATA = {
       id: "proj-1",
       title: "Holiday Digital Skills Boot Camp for Girls with Disabilities",
       category: "Digital Skills & Education",
-      status: "Active",
       location: "Kano Metropolitan",
-      goal: 12500000,
-      raised: 9800000,
-      beneficiaries: "10 Girls",
-      featured: true,
+      beneficiaries: "10 Girls (Adolescents with visual & physical disabilities)",
+      goal: 3500000,
+      raised: 3500000,
       image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
-      description: "Directly funded by BHB Foundation in collaboration with The Ability First Tech Hub. An intensive digital literacy and assistive technology program empowering adolescent girls with visual, hearing, and physical disabilities with foundational computing, screen-reader fluency, and web design skills.",
+      description: "Directly funded by BHB Foundation in collaboration with The Ability First Tech Hub. A flagship intensive holiday digital literacy boot camp equipping adolescent girls with disabilities with foundational computer operations, screen-reader fluency, accessible digital tools, and web design fundamentals.",
       milestones: [
-        "10 young girls with disabilities fully trained and certified in foundational computing.",
-        "Assistive technology packages distributed including screen reading toolkits.",
-        "Mentorship sessions conducted with regional female tech leaders."
-      ]
+        "Delivered 120 hours of specialized assistive tech coaching",
+        "Provided custom screen-reader laptops to all 10 participants",
+        "100% capstone project completion rate with web portfolio exhibitions"
+      ],
+      featured: true,
+      status: "Active"
     },
     {
       id: "proj-2",
       title: "Mobile Primary & Maternal Care Access Initiative",
       category: "Community Health",
-      status: "Active",
-      location: "Nasarawa & Dala LGAs",
-      goal: 24000000,
-      raised: 18500000,
-      beneficiaries: "1,450 Mothers & Children",
-      featured: false,
+      location: "Nasarawa LGA, Kano",
+      beneficiaries: "1,450+ Mothers & Infants",
+      goal: 6000000,
+      raised: 4800000,
       image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
-      description: "Providing rural and underserved settlements across Kano with routine mobile health clinics, basic prenatal screenings, nutritional packages, and maternal health literacy sessions.",
+      description: "Equipping mobile medical vans with portable ultrasound and primary diagnostic kits to provide preventative prenatal checkups, immunization tracking, and maternal nutrition packs.",
       milestones: [
-        "Connected over 1,200 expectant mothers to accredited primary healthcare centers.",
-        "Trained 45 community healthcare mobilizers in preventative maternal education.",
-        "Delivered free diagnostic checkups across 8 rural settlements."
-      ]
+        "Conducted 24 mobile clinical visits in 6 hard-to-reach settlements",
+        "Distributed 1,200 maternal delivery hygiene kits",
+        "Trained 18 volunteer community healthcare mobilizers"
+      ],
+      featured: false,
+      status: "Active"
     },
     {
       id: "proj-3",
       title: "Widows & Vulnerable Women Agro-Business Seed Fund",
       category: "Livelihoods",
-      status: "Completed",
-      location: "Fagge & Gwale LGAs",
-      goal: 15000000,
-      raised: 15000000,
-      beneficiaries: "320 Women",
-      featured: false,
+      location: "Fagge & Dala LGAs, Kano",
+      beneficiaries: "220 Female-Headed Households",
+      goal: 5000000,
+      raised: 5000000,
       image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80",
-      description: "Seed grants, agricultural processing machinery, and financial literacy workshops empowering female-headed households with sustainable income streams and business self-reliance.",
+      description: "Empowering widowed mothers through micro-enterprise seed capital, grain processing machinery, cooperative savings training, and direct market access linkages.",
       milestones: [
-        "Distributed seed capital and grain processing kits to 320 widowed mothers.",
-        "Formed 12 cooperative savings circles with ongoing bookkeeping mentorship.",
-        "100% of beneficiary enterprises operating profitably at 6-month evaluation."
-      ]
+        "Disbursed ₦5M in direct micro-grants across 220 female traders",
+        "Organized 4 cooperative processing clusters",
+        "Achieved 94% business sustainability rate after 6 months"
+      ],
+      featured: false,
+      status: "Active"
     },
     {
       id: "proj-4",
       title: "Kano Youth Technical & Apprenticeship Hub",
       category: "Youth Empowerment",
-      status: "Active",
       location: "Kano Municipal",
-      goal: 30000000,
-      raised: 16400000,
-      beneficiaries: "480 Youth",
-      featured: false,
+      beneficiaries: "350 Young Persons",
+      goal: 4500000,
+      raised: 3900000,
       image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
-      description: "6-month practical vocational and IT hardware repair apprenticeship connecting underprivileged youth to market opportunities and local business placements.",
+      description: "Structured technical apprenticeships in solar installation, IT hardware diagnostics, tailoring, and electrical repairs paired with professional mentorship and soft skills.",
       milestones: [
-        "240 youth graduated from initial technical cohorts.",
-        "Partnered with local artisan associations for direct trade placements.",
-        "85% employment or freelance transition rate."
-      ]
+        "Graduated cohort 1 with 120 certified vocational trainees",
+        "78% direct employment and independent apprenticeship rate",
+        "Equipped each graduate with a startup toolkit"
+      ],
+      featured: false,
+      status: "Active"
+    }
+  ],
+
+  posts: [
+    {
+      id: "post-1",
+      title: "Breaking Barriers: How 10 Young Girls with Disabilities Mastered Coding in Kano",
+      category: "Digital Inclusion",
+      author: "Malam Ibrahim Al-Hassan",
+      authorRole: "Director of Programs & Inclusive Tech",
+      date: "August 18, 2026",
+      readTime: "4 min read",
+      tags: ["InclusiveTech", "DisabilityAdvocacy", "YouthEmpowerment", "Kano"],
+      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
+      excerpt: "Inside the landmark Holiday Digital Skills Boot Camp funded directly by BHB in collaboration with The Ability First Tech Hub.",
+      content: `In a world increasingly shaped by digital technology, persons with disabilities in Northern Nigeria face disproportionate barriers in education and economic participation.
+
+To bridge this critical divide, BHB Family Support and Development Foundation partnered with The Ability First Tech Hub to deliver an intensive, high-impact Holiday Digital Skills Boot Camp for adolescent girls in Kano Metropolitan.
+
+Over several weeks of intensive hands-on instruction, 10 young participants—living with visual impairments, hearing difficulties, and physical mobility challenges—mastered computer architecture fundamentals, accessible screen-reader navigation (NVDA and JAWS), HTML/CSS coding logic, and assistive tools.
+
+"Before this boot camp, I believed computer coding was something closed off to someone who is blind," shared 15-year-old Halima, one of the cohort participants. "Today, I built my own digital profile and learned how software can be made accessible to everyone."
+
+Every graduate received a specialized assistive laptop and ongoing mentorship from our technical team. BHB Foundation is currently finalizing plans to expand this program to 50 additional girls across neighboring Local Government Areas in early 2027.`,
+      likes: 42,
+      likedByUser: false,
+      featured: true,
+      status: "published"
+    },
+    {
+      id: "post-2",
+      title: "Closing the Maternal Health Gap: Expanding Mobile Primary Care in Nasarawa",
+      category: "Health & Maternal Care",
+      author: "Dr. Aisha Kwaku",
+      authorRole: "Lead Strategic Health Advisor",
+      date: "August 12, 2026",
+      readTime: "5 min read",
+      tags: ["MaternalHealth", "CommunityOutreach", "PreventativeCare"],
+      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
+      excerpt: "How mobile healthcare vehicles and community midwives are preventing complications and delivering maternal care to hard-to-reach settlements.",
+      content: `Geographic isolation and transport costs frequently turn manageable pregnancy complications into critical emergencies for families living in rural communities.
+
+BHB Foundation's Mobile Primary & Maternal Health Intervention addresses this challenge directly by deploying certified midwives, mobile ultrasound diagnostics, and essential prenatal micronutrients straight into village squares.
+
+Over the past three months, our medical teams have completed over 1,450 free clinical consultations across six rural settlements in Nasarawa LGA, identifying high-risk pregnancies early and coordinating safe clinic deliveries.
+
+In addition to diagnostics, our teams conduct bi-weekly hygiene and nutrition workshops for young mothers and distribute delivery preparation kits containing sterile clinical essentials.`,
+      likes: 28,
+      likedByUser: false,
+      featured: false,
+      status: "published"
+    },
+    {
+      id: "post-3",
+      title: "Fatima’s Story: Turning a Small Seed Grant into a Sustainable Tailoring Enterprise",
+      category: "Community Stories",
+      author: "Zainab S. Umar",
+      authorRole: "Head of Youth & Gender Initiatives",
+      date: "August 05, 2026",
+      readTime: "3 min read",
+      tags: ["WomenEnterprise", "Livelihoods", "GrassrootsImpact"],
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80",
+      excerpt: "Fatima, a widowed mother of four in Fagge LGA, transformed her family's future through business training and seed capital.",
+      content: `When Fatima lost her husband four years ago, she faced the daunting challenge of providing for four young children with only informal tailoring work on a rented sewing machine.
+
+Through BHB Foundation's Women & Vulnerable Groups Livelihoods program, Fatima completed a 6-week business management, cooperative savings, and financial bookkeeping course before receiving a direct seed grant.
+
+With the capital, Fatima purchased a heavy-duty industrial sewing machine and bulk fabrics at wholesale prices. Within five months, her monthly revenue tripled, enabling her to comfortably pay school fees for all four children and take on two young neighborhood apprentices.
+
+"Dignity is when you can feed your children and plan for tomorrow without depending on handouts," Fatima says with pride.`,
+      likes: 35,
+      likedByUser: false,
+      featured: false,
+      status: "published"
+    },
+    {
+      id: "post-4",
+      title: "Community-Led Infrastructure: How One Settlement Restored Its Clean Water Source",
+      category: "Community Stories",
+      author: "Engr. Usman Farouk",
+      authorRole: "Head of Field Operations",
+      date: "July 30, 2026",
+      readTime: "4 min read",
+      tags: ["Resilience", "CleanWater", "CommunityOwnership"],
+      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
+      excerpt: "Rather than providing temporary external fixes, BHB helped establish a local Water Committee that manages borehole maintenance independently.",
+      content: `When a primary borehole pump broke down in a suburban settlement outside Kano, over 800 households faced severe shortages, forcing women and children to walk miles for water.
+
+Rejecting top-down charitable fixes that fail once funding ends, BHB Foundation facilitated an open town hall uniting neighborhood elders, youth leaders, and local mechanics.
+
+Together, residents formed a 7-member Water Management Committee, established a community maintenance fund with modest monthly contributions, and repaired the solar-powered pump. Today, the borehole operates continuously, managed entirely by the neighborhood.`,
+      likes: 19,
+      likedByUser: false,
+      featured: false,
+      status: "published"
+    },
+    {
+      id: "post-5",
+      title: "BHB Foundation Receives Official CAC Incorporation (Reg. No. 9670692)",
+      category: "Press Releases",
+      author: "BHB Communications",
+      authorRole: "Institutional Governance Office",
+      date: "July 24, 2026",
+      readTime: "2 min read",
+      tags: ["CorporateGovernance", "CAC", "InstitutionalMilestone"],
+      image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80",
+      excerpt: "Official registration with the Corporate Affairs Commission cements BHB's legal foundation and governance transparency.",
+      content: `The Trustees of BHB Family Support and Development Foundation are pleased to announce the formal incorporation and issuance of CAC Registration No. 9670692 under the Companies and Allied Matters Act.
+
+This milestone reinforces our dedication to transparent non-profit management, rigorous fiscal auditing, and alignment with Nigerian and international civil society development standards.
+
+All institutional programs and financial disbursements remain open to annual public reporting and independent audit.`,
+      likes: 54,
+      likedByUser: false,
+      featured: false,
+      status: "published"
+    }
+  ],
+
+  comments: [
+    {
+      id: "comm-1",
+      postId: "post-1",
+      postTitle: "Breaking Barriers: How 10 Young Girls with Disabilities Mastered Coding in Kano",
+      authorName: "Dr. Fatima Al-Mansoor",
+      authorEmail: "f.almansoor@education.org",
+      content: "This is a truly transformative initiative for Kano State. Digital literacy for adolescent girls with disabilities addresses one of the most overlooked sectors of inclusive development.",
+      date: "August 19, 2026",
+      status: "Approved"
+    },
+    {
+      id: "comm-2",
+      postId: "post-1",
+      postTitle: "Breaking Barriers: How 10 Young Girls with Disabilities Mastered Coding in Kano",
+      authorName: "Kabiru Suleiman",
+      authorEmail: "kabiru.s@yahoo.com",
+      content: "Proud to see grassroots organizations in Kano partnering with Ability First. Looking forward to cohort 2 expansion across other LGAs.",
+      date: "August 20, 2026",
+      status: "Approved"
+    },
+    {
+      id: "comm-3",
+      postId: "post-2",
+      postTitle: "Closing the Maternal Health Gap: Expanding Mobile Primary Care in Nasarawa",
+      authorName: "Nurse Maryam Bello",
+      authorEmail: "maryam.b@nasarawaclinic.ng",
+      content: "The mobile diagnostic clinics have dramatically reduced prenatal referral delays in rural settlements. Commendable work by the medical volunteers!",
+      date: "August 14, 2026",
+      status: "Approved"
+    },
+    {
+      id: "comm-4",
+      postId: "post-3",
+      postTitle: "Fatima’s Story: Turning a Small Seed Grant into a Sustainable Tailoring Enterprise",
+      authorName: "Hauwa Mustapha",
+      authorEmail: "hauwa.mustapha@gmail.com",
+      content: "Stories like Fatima's show that real empowerment comes from giving people dignity and tools, not handouts. Well done BHB Foundation!",
+      date: "August 07, 2026",
+      status: "Approved"
     }
   ],
 
@@ -191,179 +351,48 @@ const DEFAULT_STORE_DATA = {
       name: "Dr. Bashir H. Bello",
       position: "Founder & Chairman, Board of Trustees",
       department: "Board of Trustees",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
-      bio: "Dr. Bashir H. Bello established BHB Family Support and Development Foundation to advance human dignity, social resilience, and structured opportunity across Northern Nigeria. He brings extensive leadership experience in community governance and sustainable development."
+      bio: "Dr. Bashir established BHB Foundation to advance human dignity, social resilience, and structured opportunity across Northern Nigeria.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: "team-2",
       name: "Hajiya Fatima A. Yusuf",
       position: "Executive Director",
-      department: "Executive Leadership",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
-      bio: "Fatima leads the foundation's strategic direction, partner alignment, and program execution. She has directed multi-stakeholder community initiatives with non-governmental organizations across West Africa."
+      department: "Executive Management",
+      bio: "Fatima leads the foundation's strategic direction, partner alignment, and program execution across participating local governments.",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: "team-3",
       name: "Malam Ibrahim Al-Hassan",
       position: "Director of Programs & Inclusive Tech",
-      department: "Executive Leadership",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
-      bio: "Ibrahim oversees BHB's digital inclusion and educational programs, including our disability tech boot camps. He specializes in curriculum accessibility and assistive learning technology."
+      department: "Program Implementation",
+      bio: "Ibrahim oversees BHB's digital inclusion and educational programs, including our disability tech boot camps.",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: "team-4",
       name: "Dr. Aisha Kwaku",
       position: "Lead Strategic Health Advisor",
-      department: "Advisory Board",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80",
-      bio: "Dr. Aisha is the principal partner at Aisha Kwaku & Associates. She guides BHB's maternal health outreach strategy and primary care partnerships across Kano State."
+      department: "Healthcare & Advisory",
+      bio: "Dr. Aisha guides BHB's maternal health outreach strategy and primary care partnerships across Kano State.",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: "team-5",
       name: "Engr. Usman Farouk",
       position: "Head of Field Operations",
-      department: "Field Operations",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80",
-      bio: "Usman coordinates ground logistics, community liaison town halls, and resource delivery across all participating local government areas."
+      department: "Operations & Logistics",
+      bio: "Usman coordinates ground logistics, community liaison town halls, and resource delivery across all target LGAs.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: "team-6",
       name: "Zainab S. Umar",
       position: "Head of Youth & Gender Initiatives",
-      department: "Field Operations",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
-      bio: "Zainab oversees women's enterprise incubation, girl-child mentorship networks, and safeguarding protocols across all foundation community hubs."
-    }
-  ],
-
-  gallery: [
-    {
-      id: "gal-1",
-      title: "Digital Boot Camp for Girls with Disabilities",
-      category: "Inclusive Tech",
-      location: "Kano Metropolitan Hub",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80",
-      caption: "Young students mastering assistive computing and screen readers in our flagship boot camp."
-    },
-    {
-      id: "gal-2",
-      title: "Mobile Primary Healthcare Outreach",
-      category: "Health Outreach",
-      location: "Nasarawa LGA",
-      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=900&q=80",
-      caption: "Community health workers conducting prenatal checkups and diagnostic consultations."
-    },
-    {
-      id: "gal-3",
-      title: "Women Agro-Enterprise Seed Distribution",
-      category: "Livelihoods",
-      location: "Fagge Community Center",
-      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=80",
-      caption: "Widowed mothers and female entrepreneurs receiving equipment and business starter kits."
-    },
-    {
-      id: "gal-4",
-      title: "Youth Technical & Mentorship Workshop",
-      category: "Youth Empowerment",
-      location: "Kano Municipal Center",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80",
-      caption: "Practical vocational training session in IT repair and digital freelancing."
-    },
-    {
-      id: "gal-5",
-      title: "Community Stakeholder Town Hall",
-      category: "Resilience",
-      location: "Dala Outreach Post",
-      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80",
-      caption: "Elders, youth, and local women leaders planning community-led water system management."
-    },
-    {
-      id: "gal-6",
-      title: "Inclusive Classroom Learning Drive",
-      category: "Education",
-      location: "Tarauni LGA School",
-      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-      caption: "Distribution of adapted learning materials and Braille educational resources."
-    }
-  ],
-
-  stories: [
-    {
-      id: "story-1",
-      title: "Amina’s Story: Safe Care Within Reach",
-      category: "Maternal Health",
-      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
-      summary: "Expecting her third child, Amina delayed critical health checks because the nearest hospital was too far. When BHB’s mobile health team visited her community, she received vital prenatal care and delivered a healthy baby boy.",
-      content: `Expecting her third child, Amina delayed critical health checks because the nearest hospital was too far and expensive to reach. When BHB’s mobile health team visited her community in Nasarawa LGA, she received vital prenatal care, free nutritional supplements, and was connected to a local health clinic. She delivered a healthy baby boy and now encourages other expectant mothers in her neighborhood to seek early care.`
-    },
-    {
-      id: "story-2",
-      title: "Ibrahim’s Story: From Searching to Leading",
-      category: "Youth Empowerment",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
-      summary: "After two years of job hunting, Ibrahim felt discouraged. Joining BHB’s Youth Skills Development program gave him practical digital training, confidence, and career guidance. Today, he works as an IT assistant and mentors younger boys.",
-      content: `After two years of job hunting without clear direction, Ibrahim joined BHB’s Youth Skills Development & Mentorship program. Over six months, he gained practical computing literacy, web fundamentals, and professional communication skills. Today, he works as an IT assistant in Kano and volunteers weekly to mentor young boys in his neighborhood.`
-    },
-    {
-      id: "story-3",
-      title: "Fatima’s Story: A Sustainable Business",
-      category: "Women's Livelihoods",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
-      summary: "Fatima, a widowed mother of four, struggled to cover basic expenses through informal tailoring. Through BHB’s training and seed grant, she expanded her shop, purchased a second sewing machine, and now comfortably pays her children’s school fees.",
-      content: `Fatima, a widowed mother of four living in Fagge LGA, struggled to cover basic household expenses through informal tailoring. Through BHB’s entrepreneurship and financial literacy training, she learned bookkeeping and received a small seed grant. She expanded her workshop, bought a second sewing machine, and now comfortably pays her children’s school fees.`
-    },
-    {
-      id: "story-4",
-      title: "The Neighborhood Water Committee: Community-Led Action",
-      category: "Community Resilience",
-      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80",
-      summary: "When a critical borehole pump broke down, BHB brought together elders, youth, and tradespeople to form a Water Management Committee that raised maintenance funds and now manages the system independently.",
-      content: `When a critical borehole pump broke down in a local settlement, residents faced severe clean water shortages. Rather than providing a temporary external fix, BHB facilitated a community meeting bringing together elders, youth, and tradespeople. Together, they established a Water Management Committee, raised local maintenance funds, repaired the borehole, and continue to manage it independently.`
-    },
-    {
-      id: "story-5",
-      title: "The Usman Family: Restoring Hope and Education",
-      category: "Family Welfare",
-      image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80",
-      summary: "When flooding destroyed their farm yield, the Usman family faced severe hardship. BHB stepped in with short-term support and resilient farming methods, enabling 14-year-old Zainab to return to school.",
-      content: `When seasonal flooding wiped out their annual farm yield, the Usman family faced acute hardship, forcing 14-year-old Zainab to withdraw from secondary school. BHB provided targeted social support, connected her father to resilient agricultural techniques, and re-enrolled Zainab in school. Today, the family's livelihood is restored and Zainab is back in the classroom.`
-    }
-  ],
-
-  posts: [
-    {
-      id: "post-1",
-      title: "Breaking Barriers: How 10 Young Girls with Disabilities Mastered Coding in Kano",
-      category: "Program Highlights",
-      author: "Malam Ibrahim Al-Hassan",
-      date: "August 18, 2026",
-      readTime: "4 min read",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
-      excerpt: "Inside the landmark Holiday Digital Skills Boot Camp funded directly by BHB in collaboration with The Ability First Tech Hub.",
-      content: `In a world increasingly driven by digital literacy, people living with disabilities in developing regions face disproportionate barriers. BHB Foundation partnered with The Ability First Tech Hub to deliver an intensive, hands-on boot camp for 10 adolescent girls in Kano Metropolitan.\n\nFrom learning accessible screen-reader navigation to writing computational logic and designing web interfaces, these young students demonstrated remarkable talent and commitment.\n\n"Before this camp, I believed computers were not accessible to someone with visual impairment like me," shares 15-year-old Halima. "Today, I built my own digital portfolio page."\n\nBHB is currently preparing the next cohort expansion to reach 50 additional girls across neighboring LGAs.`,
-      status: "published"
-    },
-    {
-      id: "post-2",
-      title: "Closing the Maternal Health Gap: Expanding Mobile Outreach in Nasarawa",
-      category: "Community Updates",
-      author: "Dr. Aisha Kwaku",
-      date: "August 12, 2026",
-      readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
-      excerpt: "How mobile healthcare vehicles and community midwives are preventing complications in hard-to-reach settlements.",
-      content: `Distance and transport costs frequently turn manageable pregnancy complications into critical emergencies. BHB's Mobile Health Intervention brings certified midwives, portable ultrasound diagnostics, and prenatal nutritional supplements directly into village squares.\n\nOver the past three months, our medical team has completed over 1,450 free consultations, ensuring safe outcomes for mothers and infants.`
-    },
-    {
-      id: "post-3",
-      title: "BHB Foundation Receives Official CAC Accreditation (Reg. No. 9670692)",
-      category: "News",
-      author: "BHB Communications",
-      date: "July 24, 2026",
-      readTime: "3 min read",
-      image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80",
-      excerpt: "Official registration with the Corporate Affairs Commission cements BHB's institutional foundation and governance standards.",
-      content: `The Trustees of BHB Family Support and Development Foundation are pleased to announce the successful incorporation and issuance of official CAC Registration No. 9670692 under the Companies and Allied Matters Act.\n\nThis legal milestone reinforces our dedication to international non-profit transparency, rigorous fiscal accountability, and institutional governance.`
+      department: "Gender & Safeguarding",
+      bio: "Zainab oversees women's enterprise incubation, girl-child mentorship networks, and safeguarding protocols.",
+      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
     }
   ],
 
@@ -459,7 +488,12 @@ class StoreEngine {
   load() {
     try {
       const stored = localStorage.getItem(BHB_STORAGE_KEY);
-      if (stored) return JSON.parse(stored);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (!parsed.comments) parsed.comments = DEFAULT_STORE_DATA.comments;
+        if (!parsed.posts) parsed.posts = DEFAULT_STORE_DATA.posts;
+        return parsed;
+      }
     } catch (e) {
       console.warn("Storage load fallback", e);
     }
@@ -496,13 +530,17 @@ class StoreEngine {
   getFocusAreas() { return this.data.focusAreas; }
   getProjects() { return this.data.projects; }
   getTeam() { return this.data.team; }
-  getGallery() { return this.data.gallery; }
-  getStories() { return this.data.stories; }
-  getPosts() { return this.data.posts; }
+  getPosts() { return this.data.posts || DEFAULT_STORE_DATA.posts; }
+  getPostById(id) { return (this.data.posts || []).find(p => p.id === id); }
   getPartners() { return this.data.partners; }
   getDonations() { return this.data.donations; }
   getVolunteers() { return this.data.volunteers; }
   getInquiries() { return this.data.inquiries; }
+  getAllComments() { return this.data.comments || []; }
+
+  getCommentsByPost(postId) {
+    return (this.data.comments || []).filter(c => c.postId === postId && c.status === 'Approved');
+  }
 
   // Hero Slides CRUD
   saveHeroSlide(slide) {
@@ -548,11 +586,11 @@ class StoreEngine {
   saveProject(project) {
     if (!project.id) {
       project.id = 'proj-' + Date.now();
-      this.data.projects.unshift(project);
+      this.data.projects.push(project);
     } else {
       const idx = this.data.projects.findIndex(p => p.id === project.id);
       if (idx >= 0) this.data.projects[idx] = project;
-      else this.data.projects.unshift(project);
+      else this.data.projects.push(project);
     }
     this.notify();
     return project;
@@ -560,6 +598,89 @@ class StoreEngine {
 
   deleteProject(id) {
     this.data.projects = this.data.projects.filter(p => p.id !== id);
+    this.notify();
+  }
+
+  // Blog Posts CRUD & Engagement
+  savePost(post) {
+    if (!this.data.posts) this.data.posts = [...DEFAULT_STORE_DATA.posts];
+    if (!post.id) {
+      post.id = 'post-' + Date.now();
+      post.date = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      post.likes = 0;
+      post.likedByUser = false;
+      this.data.posts.unshift(post);
+    } else {
+      const idx = this.data.posts.findIndex(p => p.id === post.id);
+      if (idx >= 0) {
+        post.likes = this.data.posts[idx].likes || 0;
+        post.likedByUser = this.data.posts[idx].likedByUser || false;
+        this.data.posts[idx] = { ...this.data.posts[idx], ...post };
+      } else {
+        this.data.posts.push(post);
+      }
+    }
+    this.notify();
+    return post;
+  }
+
+  deletePost(id) {
+    if (!this.data.posts) this.data.posts = [...DEFAULT_STORE_DATA.posts];
+    this.data.posts = this.data.posts.filter(p => p.id !== id);
+    // Also delete associated comments
+    if (this.data.comments) {
+      this.data.comments = this.data.comments.filter(c => c.postId !== id);
+    }
+    this.notify();
+  }
+
+  likePost(id) {
+    if (!this.data.posts) this.data.posts = [...DEFAULT_STORE_DATA.posts];
+    const post = this.data.posts.find(p => p.id === id);
+    if (!post) return 0;
+
+    if (!post.likedByUser) {
+      post.likes = (post.likes || 0) + 1;
+      post.likedByUser = true;
+    } else {
+      post.likes = Math.max(0, (post.likes || 1) - 1);
+      post.likedByUser = false;
+    }
+    this.notify();
+    return post.likes;
+  }
+
+  // Comments System
+  addComment(commentData) {
+    if (!this.data.comments) this.data.comments = [];
+    const post = this.getPostById(commentData.postId);
+    const newComment = {
+      id: 'comm-' + Date.now(),
+      postId: commentData.postId,
+      postTitle: post ? post.title : 'Article',
+      authorName: commentData.authorName || 'Community Member',
+      authorEmail: commentData.authorEmail || '',
+      content: commentData.content || '',
+      date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+      status: 'Approved' // auto-approved for instant engagement
+    };
+    this.data.comments.unshift(newComment);
+    this.notify();
+    return newComment;
+  }
+
+  updateCommentStatus(commentId, status) {
+    if (!this.data.comments) return;
+    const comment = this.data.comments.find(c => c.id === commentId);
+    if (comment) {
+      comment.status = status;
+      this.notify();
+    }
+  }
+
+  deleteComment(commentId) {
+    if (!this.data.comments) return;
+    this.data.comments = this.data.comments.filter(c => c.id !== commentId);
     this.notify();
   }
 
@@ -579,45 +700,6 @@ class StoreEngine {
 
   deleteTeamMember(id) {
     this.data.team = this.data.team.filter(t => t.id !== id);
-    this.notify();
-  }
-
-  // Gallery CRUD
-  saveGalleryItem(item) {
-    if (!item.id) {
-      item.id = 'gal-' + Date.now();
-      this.data.gallery.unshift(item);
-    } else {
-      const idx = this.data.gallery.findIndex(g => g.id === item.id);
-      if (idx >= 0) this.data.gallery[idx] = item;
-      else this.data.gallery.unshift(item);
-    }
-    this.notify();
-    return item;
-  }
-
-  deleteGalleryItem(id) {
-    this.data.gallery = this.data.gallery.filter(g => g.id !== id);
-    this.notify();
-  }
-
-  // Posts CRUD
-  savePost(post) {
-    if (!post.id) {
-      post.id = 'post-' + Date.now();
-      post.date = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-      this.data.posts.unshift(post);
-    } else {
-      const idx = this.data.posts.findIndex(p => p.id === post.id);
-      if (idx >= 0) this.data.posts[idx] = post;
-      else this.data.posts.unshift(post);
-    }
-    this.notify();
-    return post;
-  }
-
-  deletePost(id) {
-    this.data.posts = this.data.posts.filter(p => p.id !== id);
     this.notify();
   }
 
@@ -642,8 +724,8 @@ class StoreEngine {
 
   // Donations
   addDonation(donation) {
-    donation.id = 'tx-' + Math.floor(1000 + Math.random() * 9000);
-    donation.date = new Date().toISOString().replace('T', ' ').substring(0, 16);
+    if (!donation.id) donation.id = 'tx-' + Date.now().toString().slice(-4);
+    if (!donation.date) donation.date = new Date().toISOString().replace('T', ' ').substring(0, 16);
     this.data.donations.unshift(donation);
     this.notify();
     return donation;
@@ -651,9 +733,9 @@ class StoreEngine {
 
   // Volunteers
   addVolunteer(volunteer) {
-    volunteer.id = 'vol-' + Date.now();
-    volunteer.appliedDate = new Date().toISOString().substring(0, 10);
-    volunteer.status = 'Pending';
+    if (!volunteer.id) volunteer.id = 'vol-' + Date.now().toString().slice(-4);
+    if (!volunteer.appliedDate) volunteer.appliedDate = new Date().toISOString().substring(0, 10);
+    if (!volunteer.status) volunteer.status = 'Pending';
     this.data.volunteers.unshift(volunteer);
     this.notify();
     return volunteer;
@@ -669,9 +751,9 @@ class StoreEngine {
 
   // Inquiries
   addInquiry(inquiry) {
-    inquiry.id = 'inq-' + Date.now();
-    inquiry.date = new Date().toISOString().replace('T', ' ').substring(0, 16);
-    inquiry.status = 'Unread';
+    if (!inquiry.id) inquiry.id = 'inq-' + Date.now().toString().slice(-4);
+    if (!inquiry.date) inquiry.date = new Date().toISOString().substring(0, 10);
+    if (!inquiry.status) inquiry.status = 'Unread';
     this.data.inquiries.unshift(inquiry);
     this.notify();
     return inquiry;
@@ -686,11 +768,13 @@ class StoreEngine {
   }
 
   // Settings
-  saveSettings(settings) {
-    this.data.settings = { ...this.data.settings, ...settings };
+  saveSettings(newSettings) {
+    this.data.settings = { ...this.data.settings, ...newSettings };
     this.notify();
+    return this.data.settings;
   }
 
+  // Export / Import
   exportJSON() {
     return JSON.stringify(this.data, null, 2);
   }
@@ -698,21 +782,23 @@ class StoreEngine {
   importJSON(jsonString) {
     try {
       const parsed = JSON.parse(jsonString);
-      if (parsed && parsed.settings && parsed.projects) {
+      if (parsed.settings && parsed.projects && parsed.posts) {
         this.data = parsed;
         this.notify();
         return true;
       }
     } catch (e) {
-      console.error(e);
+      console.error("JSON import error", e);
     }
     return false;
   }
 
   resetToDefault() {
+    localStorage.removeItem(BHB_STORAGE_KEY);
     this.data = JSON.parse(JSON.stringify(DEFAULT_STORE_DATA));
     this.notify();
   }
 }
 
+// Global Singleton Instance
 window.BHBStore = new StoreEngine();
