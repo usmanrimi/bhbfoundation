@@ -4,7 +4,7 @@
  * (WITH BLOG CMS, LIKES, COMMENTS, ENGAGEMENT & ADMIN MODERATION)
  */
 
-const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V5';
+const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V6';
 
 const DEFAULT_STORE_DATA = {
   settings: {
@@ -50,18 +50,9 @@ const DEFAULT_STORE_DATA = {
       id: "slide-3",
       label: "Community Healthcare Outreach",
       title: "Safe Healthcare & Maternal Care Within Reach.",
-      lead: "Deploying mobile diagnostic clinics and community healthcare mobilizers to deliver preventative prenatal checkups and nutritional support directly to rural settlements.",
+      lead: "Delivering mobile clinical screenings, prenatal assistance, and health worker training to hard-to-reach settlements across Kano State.",
       image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1600&q=80",
-      primaryCtaText: "Our Health Initiatives →",
-      primaryCtaLink: "work.html"
-    },
-    {
-      id: "slide-4",
-      label: "Sustainable Livelihoods",
-      title: "Fostering Economic Independence for Women & Youth.",
-      lead: "Providing seed grants, agricultural processing machinery, and financial literacy workshops that empower female-headed households with viable income streams.",
-      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1600&q=80",
-      primaryCtaText: "Explore Livelihoods →",
+      primaryCtaText: "Support Healthcare Fund →",
       primaryCtaLink: "projects.html"
     }
   ],
@@ -69,48 +60,45 @@ const DEFAULT_STORE_DATA = {
   focusAreas: [
     {
       id: "focus-1",
-      title: "Family Support & Welfare",
-      summary: "Direct household interventions, emergency relief, and social protection safety nets for vulnerable and female-headed households.",
-      image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80",
-      details: "Strengthening household stability through emergency support packages, nutritional assistance, and direct links to municipal social protection schemes."
+      title: "Support for Widows and Vulnerable Women",
+      summary: "Direct financial assistance, seed capital, food security packages, and psychosocial counseling.",
+      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80",
+      details: "Empowering vulnerable women and widows through micro-enterprise seed funding, grain processing equipment, and mentorship circles."
     },
     {
       id: "focus-2",
-      title: "Youth Empowerment & Livelihoods",
-      summary: "Market-aligned vocational apprenticeships, digital skills incubation, and mentorship programs for young people seeking self-reliance.",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
-      details: "Providing structured pathways into formal and informal economic opportunities through technical coaching and mentorship."
+      title: "Child Welfare, Education and Girl-Child Support",
+      summary: "Scholarship grants, learning supplies, school re-entry facilitation, and specialized girl-child empowerment programs.",
+      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
+      details: "Supporting vulnerable children through basic education kits, school fee subventions, and assistive learning aids."
     },
     {
       id: "focus-3",
-      title: "Women & Vulnerable Groups",
-      summary: "Micro-enterprise seed grants, financial literacy, and protective safe spaces for widows, young mothers, and caregivers.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
-      details: "Equipping women with business management tools, cooperative savings literacy, and capital linkages."
+      title: "Disability Inclusion and Support",
+      summary: "Assistive devices, tailored digital literacy, accessibility advocacy, and vocational training designed for persons with disabilities.",
+      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
+      details: "Championing full digital, educational, and social inclusion for persons living with disabilities."
     },
     {
       id: "focus-4",
-      title: "Digital Skills & Inclusive Education",
-      summary: "Foundational digital literacy, assistive tools, and inclusive learning environments for girls and persons with disabilities.",
-      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
-      details: "Breaking technological exclusion by delivering adapted computer training and screen reader literacy."
+      title: "Skills Acquisition and Livelihoods Development",
+      summary: "Tailoring, computer literacy, agro-processing, trade crafts, and micro-grant seed funding.",
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
+      details: "Vocational apprenticeship pathways equipping youths and women with marketable economic skills."
     },
     {
       id: "focus-5",
-      title: "Community Health & Well-being",
+      title: "Health, Well-being and Humanitarian Support",
       summary: "Mobile prenatal diagnostics, primary healthcare awareness, and hygiene education in underserved settlements.",
       image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
       details: "Delivering preventative screening, maternal support kits, and hygiene education to rural settlements."
-      summary: "Delivering mobile prenatal checkups, preventative health education, hygiene outreach, and routine medical referrals in rural settlements.",
-      icon: "heart-pulse",
-      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80"
     },
     {
-      id: "fa-4",
-      title: "Youth Empowerment & Livelihoods",
-      summary: "Hands-on vocational apprenticeships, financial literacy circles, and trade entrepreneurship grants for young adults across Kano.",
-      icon: "award",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+      id: "focus-6",
+      title: "Community Engagement & Resilience",
+      summary: "Participatory town halls, grassroots community action committees, and long-term civic resilience infrastructure.",
+      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80",
+      details: "Empowering residents to co-design and self-manage infrastructure, including localized water committees."
     }
   ],
 
@@ -265,7 +253,7 @@ Every graduate received a specialized assistive laptop and ongoing mentorship fr
       authorRole: "Lead Strategic Health Advisor",
       date: "August 12, 2026",
       readTime: "5 min read",
-      tags: ["MaternalHealth", "CommunityOutreach", "PreventativeCare"],
+      tags: ["MaternalHealth", "MobileClinics", "PrimaryCare", "Kano"],
       image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
       excerpt: "How mobile healthcare vehicles and community midwives are preventing complications and delivering maternal care to hard-to-reach settlements.",
       content: `Geographic isolation and transport costs frequently turn manageable pregnancy complications into critical emergencies for families living in rural communities.
@@ -356,7 +344,7 @@ All institutional programs and financial disbursements remain open to annual pub
       authorEmail: "f.almansoor@education.org",
       content: "This is a truly transformative initiative for Kano State. Digital literacy for adolescent girls with disabilities addresses one of the most overlooked sectors of inclusive development.",
       date: "August 19, 2026",
-      status: "Approved"
+      status: "approved"
     },
     {
       id: "comm-2",
@@ -366,7 +354,7 @@ All institutional programs and financial disbursements remain open to annual pub
       authorEmail: "kabiru.s@yahoo.com",
       content: "Proud to see grassroots organizations in Kano partnering with Ability First. Looking forward to cohort 2 expansion across other LGAs.",
       date: "August 20, 2026",
-      status: "Approved"
+      status: "approved"
     },
     {
       id: "comm-3",
@@ -376,7 +364,7 @@ All institutional programs and financial disbursements remain open to annual pub
       authorEmail: "maryam.b@nasarawaclinic.ng",
       content: "The mobile diagnostic clinics have dramatically reduced prenatal referral delays in rural settlements. Commendable work by the medical volunteers!",
       date: "August 14, 2026",
-      status: "Approved"
+      status: "approved"
     },
     {
       id: "comm-4",
@@ -386,7 +374,7 @@ All institutional programs and financial disbursements remain open to annual pub
       authorEmail: "hauwa.mustapha@gmail.com",
       content: "Stories like Fatima's show that real empowerment comes from giving people dignity and tools, not handouts. Well done BHB Foundation!",
       date: "August 07, 2026",
-      status: "Approved"
+      status: "approved"
     }
   ],
 
@@ -477,7 +465,7 @@ All institutional programs and financial disbursements remain open to annual pub
       id: "tx-1001",
       donorName: "Alhaji Garba Danladi",
       email: "g.danladi@kanoagric.ng",
-      amount: 500000,
+      amount: 3500000,
       currency: "NGN",
       method: "Bank Transfer",
       project: "Holiday Digital Skills Boot Camp for Girls with Disabilities",
@@ -486,13 +474,57 @@ All institutional programs and financial disbursements remain open to annual pub
     },
     {
       id: "tx-1002",
-      donorName: "Sarah Jenkins",
+      donorName: "Sarah Jenkins Philanthropic Trust",
       email: "s.jenkins@philanthropy.org",
-      amount: 500,
-      currency: "USD",
-      method: "Stripe",
+      amount: 4800000,
+      currency: "NGN",
+      method: "Direct Wire",
       project: "Mobile Primary & Maternal Care Access Initiative",
       date: "2026-08-19 16:45",
+      status: "Completed"
+    },
+    {
+      id: "tx-1003",
+      donorName: "Kano Agro-Enterprise Development Fund",
+      email: "csr@kanoenterprise.com",
+      amount: 5000000,
+      currency: "NGN",
+      method: "Bank Transfer",
+      project: "Widows & Vulnerable Women Agro-Business Seed Fund",
+      date: "2026-08-15 09:20",
+      status: "Completed"
+    },
+    {
+      id: "tx-1004",
+      donorName: "Alhaji Mustapha Bello & Family",
+      email: "m.bello@investments.ng",
+      amount: 4500000,
+      currency: "NGN",
+      method: "Zenith Bank Transfer",
+      project: "Kano Youth Technical & Apprenticeship Hub",
+      date: "2026-08-12 14:10",
+      status: "Completed"
+    },
+    {
+      id: "tx-1005",
+      donorName: "Dr. Aminu Kano Memorial Trust",
+      email: "grants@aminutrust.org",
+      amount: 1800000,
+      currency: "NGN",
+      method: "Direct Grant",
+      project: "Solar-Powered Community Borehole & WASH Hygiene Post",
+      date: "2026-08-08 10:05",
+      status: "Completed"
+    },
+    {
+      id: "tx-1006",
+      donorName: "Sahel Health Initiative Partner Contribution",
+      email: "finance@sahelhealth.org",
+      amount: 4500000,
+      currency: "NGN",
+      method: "Co-Funding Transfer",
+      project: "Inclusive Assistive Tech Center of Excellence",
+      date: "2026-08-02 17:30",
       status: "Completed"
     }
   ],
@@ -505,8 +537,38 @@ All institutional programs and financial disbursements remain open to annual pub
       phone: "+234 803 219 0041",
       rolePreference: "Assistive Tech Trainer",
       lga: "Nasarawa LGA",
+      status: "Pending",
+      appliedDate: "2026-08-22"
+    },
+    {
+      id: "vol-2",
+      name: "Dr. Yusuf Al-Hassan",
+      email: "y.alhassan@kanohealth.org",
+      phone: "+234 802 884 1920",
+      rolePreference: "Volunteer Physician / Medical Outreach",
+      lga: "Dala LGA",
       status: "Approved",
-      appliedDate: "2026-08-15"
+      appliedDate: "2026-08-18"
+    },
+    {
+      id: "vol-3",
+      name: "Fatima Sani",
+      email: "fatima.sani@vocational.ng",
+      phone: "+234 814 550 3391",
+      rolePreference: "Women Agro-Fund Field Mobilizer",
+      lga: "Fagge LGA",
+      status: "Pending",
+      appliedDate: "2026-08-21"
+    },
+    {
+      id: "vol-4",
+      name: "Ibrahim Abdullahi",
+      email: "ibrahim.a@techhub.ng",
+      phone: "+234 806 771 9022",
+      rolePreference: "Youth Coding Mentor",
+      lga: "Kano Municipal",
+      status: "Approved",
+      appliedDate: "2026-08-14"
     }
   ],
 
@@ -518,7 +580,27 @@ All institutional programs and financial disbursements remain open to annual pub
       orgType: "Government institution",
       subject: "Partnership inquiry",
       message: "We would like to explore state-level collaboration for maternal clinic deployment across rural LGAs.",
-      date: "2026-08-18 10:15",
+      date: "2026-08-22 10:15",
+      status: "Unread"
+    },
+    {
+      id: "inq-2",
+      name: "Clara O'Connor",
+      email: "clara@globalphilanthropy.org",
+      orgType: "Philanthropic foundation",
+      subject: "Grant co-funding",
+      message: "Our international foundation is interested in scaling the Disability Coding Boot Camp across Northern Nigeria.",
+      date: "2026-08-21 15:40",
+      status: "Unread"
+    },
+    {
+      id: "inq-3",
+      name: "Malam Sanusi Dangote",
+      email: "sanusi@kcci.org.ng",
+      orgType: "Corporate CSR program",
+      subject: "CSR Solar Borehole sponsorship",
+      message: "We have budgeted CSR funds for clean water infrastructure in Gwale and Kumbotso LGAs.",
+      date: "2026-08-19 11:20",
       status: "Replied"
     }
   ]
@@ -537,6 +619,9 @@ class StoreEngine {
         const parsed = JSON.parse(stored);
         if (!parsed.comments) parsed.comments = DEFAULT_STORE_DATA.comments;
         if (!parsed.posts) parsed.posts = DEFAULT_STORE_DATA.posts;
+        if (!parsed.donations || !parsed.donations.length) parsed.donations = DEFAULT_STORE_DATA.donations;
+        if (!parsed.volunteers || !parsed.volunteers.length) parsed.volunteers = DEFAULT_STORE_DATA.volunteers;
+        if (!parsed.inquiries || !parsed.inquiries.length) parsed.inquiries = DEFAULT_STORE_DATA.inquiries;
         return parsed;
       }
     } catch (e) {
@@ -548,140 +633,113 @@ class StoreEngine {
 
   persist(dataToSave) {
     try {
-      localStorage.setItem(BHB_STORAGE_KEY, JSON.stringify(dataToSave || this.data));
+      localStorage.setItem(BHB_STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (e) {
-      console.error("Storage persist error", e);
+      console.error("Storage save failed", e);
     }
+  }
+
+  notify() {
+    this.persist(this.data);
+    this.subscribers.forEach(cb => {
+      try {
+        cb(this.data);
+      } catch (err) {
+        console.error("Subscriber notification error", err);
+      }
+    });
   }
 
   subscribe(callback) {
     this.subscribers.push(callback);
     return () => {
-      this.subscribers = this.subscribers.filter(sub => sub !== callback);
+      this.subscribers = this.subscribers.filter(cb => cb !== callback);
     };
   }
 
-  notify() {
-    this.persist();
-    this.subscribers.forEach(cb => {
-      try { cb(this.data); } catch(err) { console.error(err); }
-    });
-  }
-
   // Getters
-  getData() { return this.data; }
   getSettings() { return this.data.settings; }
-  getHeroSlides() { return this.data.heroSlides || DEFAULT_STORE_DATA.heroSlides; }
-  getFocusAreas() { return this.data.focusAreas; }
-  getProjects() { return this.data.projects; }
-  getTeam() { return this.data.team; }
-  getPosts() { return this.data.posts || DEFAULT_STORE_DATA.posts; }
+  getHeroSlides() { return this.data.heroSlides || []; }
+  getFocusAreas() { return this.data.focusAreas || []; }
+  getProjects() { return this.data.projects || []; }
+  getPosts() { return this.data.posts || []; }
   getPostById(id) { return (this.data.posts || []).find(p => p.id === id); }
-  getPartners() { return this.data.partners; }
-  getDonations() { return this.data.donations; }
-  getVolunteers() { return this.data.volunteers; }
-  getInquiries() { return this.data.inquiries; }
+  getTeam() { return this.data.team || []; }
+  getPartners() { return this.data.partners || []; }
+  getDonations() { return this.data.donations || []; }
+  getVolunteers() { return this.data.volunteers || []; }
+  getInquiries() { return this.data.inquiries || []; }
   getAllComments() { return this.data.comments || []; }
-
   getCommentsByPost(postId) {
-    return (this.data.comments || []).filter(c => c.postId === postId && c.status === 'Approved');
+    return (this.data.comments || []).filter(c => c.postId === postId && c.status === 'approved');
   }
 
-  // Hero Slides CRUD
+  // Setters / Mutators
+  saveSettings(newSettings) {
+    this.data.settings = { ...this.data.settings, ...newSettings };
+    this.notify();
+  }
+
   saveHeroSlide(slide) {
-    if (!this.data.heroSlides) this.data.heroSlides = [...DEFAULT_STORE_DATA.heroSlides];
+    if (!this.data.heroSlides) this.data.heroSlides = [];
     if (!slide.id) {
-      slide.id = 'slide-' + Date.now();
+      slide.id = `slide-${Date.now()}`;
       this.data.heroSlides.push(slide);
     } else {
       const idx = this.data.heroSlides.findIndex(s => s.id === slide.id);
-      if (idx >= 0) this.data.heroSlides[idx] = slide;
+      if (idx !== -1) this.data.heroSlides[idx] = { ...this.data.heroSlides[idx], ...slide };
       else this.data.heroSlides.push(slide);
     }
     this.notify();
-    return slide;
   }
 
   deleteHeroSlide(id) {
-    if (!this.data.heroSlides) this.data.heroSlides = [...DEFAULT_STORE_DATA.heroSlides];
-    this.data.heroSlides = this.data.heroSlides.filter(s => s.id !== id);
+    this.data.heroSlides = (this.data.heroSlides || []).filter(s => s.id !== id);
     this.notify();
   }
 
-  // Focus Areas CRUD
-  saveFocusArea(area) {
-    if (!area.id) {
-      area.id = 'focus-' + Date.now();
-      this.data.focusAreas.push(area);
-    } else {
-      const idx = this.data.focusAreas.findIndex(a => a.id === area.id);
-      if (idx >= 0) this.data.focusAreas[idx] = area;
-      else this.data.focusAreas.push(area);
-    }
-    this.notify();
-    return area;
-  }
-
-  deleteFocusArea(id) {
-    this.data.focusAreas = this.data.focusAreas.filter(a => a.id !== id);
-    this.notify();
-  }
-
-  // Projects CRUD
   saveProject(project) {
+    if (!this.data.projects) this.data.projects = [];
     if (!project.id) {
-      project.id = 'proj-' + Date.now();
+      project.id = `proj-${Date.now()}`;
       this.data.projects.push(project);
     } else {
       const idx = this.data.projects.findIndex(p => p.id === project.id);
-      if (idx >= 0) this.data.projects[idx] = project;
+      if (idx !== -1) this.data.projects[idx] = { ...this.data.projects[idx], ...project };
       else this.data.projects.push(project);
     }
     this.notify();
-    return project;
   }
 
   deleteProject(id) {
-    this.data.projects = this.data.projects.filter(p => p.id !== id);
+    this.data.projects = (this.data.projects || []).filter(p => p.id !== id);
     this.notify();
   }
 
-  // Blog Posts CRUD & Engagement
   savePost(post) {
-    if (!this.data.posts) this.data.posts = [...DEFAULT_STORE_DATA.posts];
+    if (!this.data.posts) this.data.posts = [];
     if (!post.id) {
-      post.id = 'post-' + Date.now();
-      post.date = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      post.id = `post-${Date.now()}`;
+      post.date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
       post.likes = 0;
       post.likedByUser = false;
       this.data.posts.unshift(post);
     } else {
       const idx = this.data.posts.findIndex(p => p.id === post.id);
-      if (idx >= 0) {
-        post.likes = this.data.posts[idx].likes || 0;
-        post.likedByUser = this.data.posts[idx].likedByUser || false;
-        this.data.posts[idx] = { ...this.data.posts[idx], ...post };
-      } else {
-        this.data.posts.push(post);
-      }
+      if (idx !== -1) this.data.posts[idx] = { ...this.data.posts[idx], ...post };
+      else this.data.posts.unshift(post);
     }
     this.notify();
-    return post;
   }
 
   deletePost(id) {
-    if (!this.data.posts) this.data.posts = [...DEFAULT_STORE_DATA.posts];
-    this.data.posts = this.data.posts.filter(p => p.id !== id);
-    // Also delete associated comments
-    if (this.data.comments) {
-      this.data.comments = this.data.comments.filter(c => c.postId !== id);
-    }
+    this.data.posts = (this.data.posts || []).filter(p => p.id !== id);
+    this.data.comments = (this.data.comments || []).filter(c => c.postId !== id);
     this.notify();
   }
 
-  likePost(id) {
-    if (!this.data.posts) this.data.posts = [...DEFAULT_STORE_DATA.posts];
-    const post = this.data.posts.find(p => p.id === id);
+  likePost(postId) {
+    const post = this.getPostById(postId);
     if (!post) return 0;
 
     if (!post.likedByUser) {
@@ -695,131 +753,129 @@ class StoreEngine {
     return post.likes;
   }
 
-  // Comments System
-  addComment(commentData) {
+  addComment(comment) {
     if (!this.data.comments) this.data.comments = [];
-    const post = this.getPostById(commentData.postId);
+    const post = this.getPostById(comment.postId);
     const newComment = {
-      id: 'comm-' + Date.now(),
-      postId: commentData.postId,
-      postTitle: post ? post.title : 'Article',
-      authorName: commentData.authorName || 'Community Member',
-      authorEmail: commentData.authorEmail || '',
-      content: commentData.content || '',
-      date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
-      status: 'Approved' // auto-approved for instant engagement
+      id: `comm-${Date.now()}`,
+      postId: comment.postId,
+      postTitle: post ? post.title : 'Field Article',
+      authorName: comment.authorName || 'Community Member',
+      authorEmail: comment.authorEmail || '',
+      content: comment.content || '',
+      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+      status: 'approved'
     };
     this.data.comments.unshift(newComment);
     this.notify();
     return newComment;
   }
 
-  updateCommentStatus(commentId, status) {
-    if (!this.data.comments) return;
-    const comment = this.data.comments.find(c => c.id === commentId);
-    if (comment) {
-      comment.status = status;
+  updateCommentStatus(commentId, newStatus) {
+    const comm = (this.data.comments || []).find(c => c.id === commentId);
+    if (comm) {
+      comm.status = newStatus;
       this.notify();
     }
   }
 
   deleteComment(commentId) {
-    if (!this.data.comments) return;
-    this.data.comments = this.data.comments.filter(c => c.id !== commentId);
+    this.data.comments = (this.data.comments || []).filter(c => c.id !== commentId);
     this.notify();
   }
 
-  // Team CRUD
   saveTeamMember(member) {
+    if (!this.data.team) this.data.team = [];
     if (!member.id) {
-      member.id = 'team-' + Date.now();
+      member.id = `team-${Date.now()}`;
       this.data.team.push(member);
     } else {
       const idx = this.data.team.findIndex(t => t.id === member.id);
-      if (idx >= 0) this.data.team[idx] = member;
+      if (idx !== -1) this.data.team[idx] = { ...this.data.team[idx], ...member };
       else this.data.team.push(member);
     }
     this.notify();
-    return member;
   }
 
   deleteTeamMember(id) {
-    this.data.team = this.data.team.filter(t => t.id !== id);
+    this.data.team = (this.data.team || []).filter(t => t.id !== id);
     this.notify();
   }
 
-  // Partners CRUD
   savePartner(partner) {
+    if (!this.data.partners) this.data.partners = [];
     if (!partner.id) {
-      partner.id = 'part-' + Date.now();
+      partner.id = `part-${Date.now()}`;
       this.data.partners.push(partner);
     } else {
       const idx = this.data.partners.findIndex(p => p.id === partner.id);
-      if (idx >= 0) this.data.partners[idx] = partner;
+      if (idx !== -1) this.data.partners[idx] = { ...this.data.partners[idx], ...partner };
       else this.data.partners.push(partner);
     }
     this.notify();
-    return partner;
   }
 
   deletePartner(id) {
-    this.data.partners = this.data.partners.filter(p => p.id !== id);
+    this.data.partners = (this.data.partners || []).filter(p => p.id !== id);
     this.notify();
   }
 
-  // Donations
   addDonation(donation) {
-    if (!donation.id) donation.id = 'tx-' + Date.now().toString().slice(-4);
-    if (!donation.date) donation.date = new Date().toISOString().replace('T', ' ').substring(0, 16);
-    this.data.donations.unshift(donation);
+    if (!this.data.donations) this.data.donations = [];
+    const newDonation = {
+      id: `tx-${Date.now().toString().slice(-6)}`,
+      date: new Date().toISOString().replace('T', ' ').slice(0, 16),
+      status: 'Completed',
+      ...donation
+    };
+    this.data.donations.unshift(newDonation);
     this.notify();
-    return donation;
+    return newDonation;
   }
 
-  // Volunteers
   addVolunteer(volunteer) {
-    if (!volunteer.id) volunteer.id = 'vol-' + Date.now().toString().slice(-4);
-    if (!volunteer.appliedDate) volunteer.appliedDate = new Date().toISOString().substring(0, 10);
-    if (!volunteer.status) volunteer.status = 'Pending';
-    this.data.volunteers.unshift(volunteer);
+    if (!this.data.volunteers) this.data.volunteers = [];
+    const newVol = {
+      id: `vol-${Date.now()}`,
+      appliedDate: new Date().toISOString().slice(0, 10),
+      status: 'Pending',
+      ...volunteer
+    };
+    this.data.volunteers.unshift(newVol);
     this.notify();
-    return volunteer;
+    return newVol;
   }
 
   updateVolunteerStatus(id, status) {
-    const vol = this.data.volunteers.find(v => v.id === id);
+    const vol = (this.data.volunteers || []).find(v => v.id === id);
     if (vol) {
       vol.status = status;
       this.notify();
     }
   }
 
-  // Inquiries
   addInquiry(inquiry) {
-    if (!inquiry.id) inquiry.id = 'inq-' + Date.now().toString().slice(-4);
-    if (!inquiry.date) inquiry.date = new Date().toISOString().substring(0, 10);
-    if (!inquiry.status) inquiry.status = 'Unread';
-    this.data.inquiries.unshift(inquiry);
+    if (!this.data.inquiries) this.data.inquiries = [];
+    const newInq = {
+      id: `inq-${Date.now()}`,
+      date: new Date().toISOString().replace('T', ' ').slice(0, 16),
+      status: 'Unread',
+      ...inquiry
+    };
+    this.data.inquiries.unshift(newInq);
     this.notify();
-    return inquiry;
+    return newInq;
   }
 
   updateInquiryStatus(id, status) {
-    const inq = this.data.inquiries.find(i => i.id === id);
+    const inq = (this.data.inquiries || []).find(i => i.id === id);
     if (inq) {
       inq.status = status;
       this.notify();
     }
   }
 
-  // Settings
-  saveSettings(newSettings) {
-    this.data.settings = { ...this.data.settings, ...newSettings };
-    this.notify();
-    return this.data.settings;
-  }
-
-  // Export / Import
+  // Full Database JSON Backup & Restore
   exportJSON() {
     return JSON.stringify(this.data, null, 2);
   }
@@ -827,19 +883,18 @@ class StoreEngine {
   importJSON(jsonString) {
     try {
       const parsed = JSON.parse(jsonString);
-      if (parsed.settings && parsed.projects && parsed.posts) {
+      if (parsed.settings && parsed.projects) {
         this.data = parsed;
         this.notify();
         return true;
       }
     } catch (e) {
-      console.error("JSON import error", e);
+      console.error("Invalid database JSON", e);
     }
     return false;
   }
 
   resetToDefault() {
-    localStorage.removeItem(BHB_STORAGE_KEY);
     this.data = JSON.parse(JSON.stringify(DEFAULT_STORE_DATA));
     this.notify();
   }
