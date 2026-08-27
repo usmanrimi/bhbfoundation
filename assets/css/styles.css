@@ -88,16 +88,10 @@ h2 { font-size: clamp(2.0rem, 3.8vw, 3.2rem); font-weight: 800; line-height: 1.1
 h3 { font-size: 1.45rem; font-weight: 700; }
 h4 { font-size: 1.15rem; font-weight: 700; }
 
-/* Two-Color Method Typography (Inspired by User's Reference Websites) */
+/* Two-Color Method Typography (Strict Brand Colors: Navy & Royal Blue) */
 .text-accent,
-.text-accent-green {
-  color: #16A34A !important; /* Vibrant high-impact green */
-  font-weight: 800;
-  display: inline;
-}
-
 .text-accent-blue {
-  color: #2563EB !important;
+  color: var(--blue) !important; /* #2563EB - Royal Brand Blue */
   font-weight: 800;
   display: inline;
 }
@@ -772,10 +766,10 @@ nav.nav-links a.active {
 }
 
 .marquee-pill.pill-accent {
-  background: #16A34A;
+  background: #2563EB;
   color: #FFFFFF;
-  border-color: #16A34A;
-  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.25);
+  border-color: #2563EB;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
 }
 
 .marquee-pill.pill-navy {
@@ -801,110 +795,328 @@ nav.nav-links a.active {
 }
 
 /* ==========================================================================
-   2x2 PASTEL MODERN CARDS GRID (IMAGE 4 STYLE)
+   INSTITUTIONAL OPERATIONAL PILLARS (REPLACING 2x2 PASTEL CARDS)
    ========================================================================== */
-.pastel-features-section {
+.institutional-pillars-section {
+  padding: 88px 0;
+  background: #F8FAFC;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.institutional-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 44px;
+}
+
+.institutional-pillar-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-top: 3px solid var(--blue);
+  border-radius: 0;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+}
+
+.institutional-pillar-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--blue);
+  border-top: 3px solid var(--navy);
+  box-shadow: 0 16px 32px -8px rgba(37, 99, 235, 0.16);
+}
+
+.pillar-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.pillar-number {
+  font-family: monospace;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--blue);
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  padding: 4px 10px;
+}
+
+.pillar-icon-box {
+  width: 44px;
+  height: 44px;
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  transition: all 0.3s ease;
+}
+
+.institutional-pillar-card:hover .pillar-icon-box {
+  background: var(--blue);
+  color: #FFFFFF;
+  border-color: var(--blue);
+}
+
+.pillar-icon-box svg {
+  width: 22px;
+  height: 22px;
+}
+
+.institutional-pillar-card h3 {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.institutional-pillar-card p {
+  font-size: 0.94rem;
+  color: #475569;
+  line-height: 1.65;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.pillar-card-footer {
+  border-top: 1px solid #F1F5F9;
+  padding-top: 14px;
+}
+
+.pillar-footer-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   EXECUTIVE LEADERSHIP & GOVERNANCE ARCHITECTURE
+   ========================================================================== */
+.leadership-showcase-section {
   padding: 96px 0;
   background: #FFFFFF;
 }
 
-.pastel-cards-grid {
+/* Featured Chairman Spotlight */
+.executive-spotlight-card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-  margin-top: 48px;
-}
-
-.pastel-card {
-  padding: 38px 42px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  border-radius: 12px;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
+  grid-template-columns: 360px 1fr;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-top: 4px solid var(--blue);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  margin-bottom: 40px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+  transition: all 0.35s ease;
 }
 
-.pastel-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.12);
+.executive-spotlight-card:hover {
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.12);
+  border-color: #94A3B8;
+  border-top-color: var(--navy);
 }
 
-/* Mint Green (Image 4 top left) */
-.pastel-card.card-mint {
-  background: #ECFDF5;
-  border: 1px solid #A7F3D0;
-}
-.pastel-card.card-mint:hover {
-  border-color: #34D399;
+.executive-spotlight-photo-frame {
+  position: relative;
+  height: 100%;
+  min-height: 380px;
+  background: var(--navy);
 }
 
-/* Soft Lavender (Image 4 top right) */
-.pastel-card.card-lavender {
-  background: #F5F3FF;
-  border: 1px solid #DDD6FE;
-}
-.pastel-card.card-lavender:hover {
-  border-color: #A78BFA;
+.executive-spotlight-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-/* Soft Ice Blue (Image 4 bottom left) */
-.pastel-card.card-blue {
-  background: #EFF6FF;
-  border: 1px solid #BFDBFE;
-}
-.pastel-card.card-blue:hover {
-  border-color: #60A5FA;
-}
-
-/* Warm Honey Yellow (Image 4 bottom right) */
-.pastel-card.card-honey {
-  background: #FFFBEB;
-  border: 1px solid #FDE68A;
-}
-.pastel-card.card-honey:hover {
-  border-color: #FBBF24;
+.executive-badge-ribbon {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 18, 32, 0.88);
+  backdrop-filter: blur(4px);
+  padding: 10px 16px;
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-top: 2px solid var(--blue);
 }
 
-.pastel-card-content {
-  flex: 1;
-}
-
-.pastel-card-content h3 {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: #0F172A;
-  margin-bottom: 10px;
-  line-height: 1.35;
-}
-
-.pastel-card-content p {
-  font-size: 0.98rem;
-  color: #475569;
-  line-height: 1.6;
-  margin-bottom: 0;
-}
-
-.pastel-card-icon-wrapper {
-  flex-shrink: 0;
-  width: 76px;
-  height: 76px;
+.executive-spotlight-details {
+  padding: 40px 44px;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.executive-tier-tag {
+  display: inline-block;
+  background: #EFF6FF;
+  color: var(--blue);
+  border: 1px solid #BFDBFE;
+  padding: 4px 12px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.executive-name {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.executive-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 16px;
+}
+
+.executive-quote {
+  background: #F8FAFC;
+  border-left: 3px solid var(--blue);
+  padding: 14px 18px;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: #334155;
+  font-style: italic;
+  margin-bottom: 18px;
+}
+
+.executive-bio-text {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-body);
+  margin-bottom: 22px;
+}
+
+.executive-purview-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   align-items: center;
-  justify-content: center;
-  transition: transform 0.35s ease;
 }
 
-.pastel-card:hover .pastel-card-icon-wrapper {
-  transform: scale(1.14) rotate(4deg);
+.purview-tag {
+  background: #F1F5F9;
+  color: var(--navy);
+  border: 1px solid #CBD5E1;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
-.pastel-svg {
-  width: 68px;
-  height: 68px;
+/* Secondary Directorate Grid */
+.leadership-directorate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.director-profile-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-top: 3px solid var(--navy);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.director-profile-card:hover {
+  transform: translateY(-6px);
+  border-top-color: var(--blue);
+  box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.12);
+}
+
+.director-photo-container {
+  height: 250px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #0F172A;
+}
+
+.director-photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.director-profile-card:hover .director-photo-container img {
+  transform: scale(1.04);
+}
+
+.director-profile-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.director-dept-tag {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+.director-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.director-role {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+
+.director-summary {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-body);
+  margin-bottom: 18px;
+}
+
+.director-footer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--navy);
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  padding: 6px 12px;
+  width: fit-content;
 }
 
 /* ==========================================================================
@@ -1507,13 +1719,15 @@ footer.site-footer {
 
   .about-split-grid,
   .about-overview-grid,
-  .pastel-cards-grid,
+  .executive-spotlight-card,
   .project-featured-card,
   .news-stories-layout,
   .contact-editorial-grid {
     grid-template-columns: 1fr;
   }
   
+  .institutional-pillars-grid,
+  .leadership-directorate-grid,
   .focus-areas-grid,
   .project-secondary-grid,
   .gallery-editorial-grid,
@@ -1540,13 +1754,16 @@ footer.site-footer {
     padding: 60px 0;
   }
 
-  .pastel-card {
-    padding: 28px 24px;
-    flex-direction: column-reverse;
-    align-items: flex-start;
-    gap: 16px;
+  .executive-spotlight-photo-frame {
+    min-height: 280px;
   }
 
+  .executive-spotlight-details {
+    padding: 28px 20px;
+  }
+
+  .institutional-pillars-grid,
+  .leadership-directorate-grid,
   .focus-areas-grid,
   .project-secondary-grid,
   .gallery-editorial-grid,
