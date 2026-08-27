@@ -1,9 +1,10 @@
 /**
- * BHB FOUNDATION — CLEAN EDITORIAL ANIMATIONS & INTERACTION ENGINE
+ * BHB FOUNDATION — COMPREHENSIVE INTERACTION & ANIMATION ENGINE
+ * Smooth scroll reveals, dynamic counters, marquee controls, and micro-interactions
  */
 
 // 1. Subtle Eased Number Counter for Impact Section
-function animateValue(element, start, end, duration = 1400, prefix = '', suffix = '') {
+function animateValue(element, start, end, duration = 1600, prefix = '', suffix = '') {
   let startTimestamp = null;
   const step = (timestamp) => {
     if (!startTimestamp) startTimestamp = timestamp;
@@ -20,9 +21,10 @@ function animateValue(element, start, end, duration = 1400, prefix = '', suffix 
   window.requestAnimationFrame(step);
 }
 
-// 2. IntersectionObserver for Gentle Scroll Reveals
+// 2. IntersectionObserver for Dynamic Scroll Reveals
 function initScrollReveals() {
-  const revealElements = document.querySelectorAll('.reveal');
+  const revealSelectors = '.reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-scale, .pastel-card, .focus-area-item, .stat-metric-block, .about-mv-item-card';
+  const revealElements = document.querySelectorAll(revealSelectors);
   
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -37,22 +39,51 @@ function initScrollReveals() {
             const target = parseFloat(counter.getAttribute('data-counter-end')) || 0;
             const prefix = counter.getAttribute('data-prefix') || '';
             const suffix = counter.getAttribute('data-suffix') || '';
-            animateValue(counter, 0, target, 1400, prefix, suffix);
+            animateValue(counter, 0, target, 1600, prefix, suffix);
           }
         });
+
+        // Also check if the element itself has counter data
+        if (entry.target.hasAttribute('data-counter-end') && !entry.target.dataset.animated) {
+          entry.target.dataset.animated = 'true';
+          const target = parseFloat(entry.target.getAttribute('data-counter-end')) || 0;
+          const prefix = entry.target.getAttribute('data-prefix') || '';
+          const suffix = entry.target.getAttribute('data-suffix') || '';
+          animateValue(entry.target, 0, target, 1600, prefix, suffix);
+        }
 
         observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -40px 0px'
+    threshold: 0.12,
+    rootMargin: '0px 0px -50px 0px'
   });
 
-  revealElements.forEach(el => observer.observe(el));
+  revealElements.forEach((el, index) => {
+    // Stagger delay if inside a grid
+    if (el.parentElement && (el.parentElement.classList.contains('pastel-cards-grid') || el.parentElement.classList.contains('focus-areas-grid') || el.parentElement.classList.contains('impact-stats-container'))) {
+      const childIndex = Array.from(el.parentElement.children).indexOf(el);
+      el.style.transitionDelay = `${(childIndex % 4) * 0.12}s`;
+    }
+    if (!el.classList.contains('reveal-up') && !el.classList.contains('reveal-left') && !el.classList.contains('reveal-right') && !el.classList.contains('reveal-scale')) {
+      el.classList.add('reveal-up');
+    }
+    observer.observe(el);
+  });
 }
 
-// 3. Toast Notification Helper
+// 3. Interactive Subtle Card Hover Effects
+function initCardInteractions() {
+  const cards = document.querySelectorAll('.pastel-card, .about-mv-item-card, .portfolio-card, .blog-card');
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease';
+    });
+  });
+}
+
+// 4. Toast Notification Helper
 window.showToast = function(message, type = 'info') {
   let container = document.getElementById('toastContainer');
   if (!container) {
@@ -76,4 +107,5 @@ window.showToast = function(message, type = 'info') {
 
 document.addEventListener('DOMContentLoaded', () => {
   initScrollReveals();
+  initCardInteractions();
 });
