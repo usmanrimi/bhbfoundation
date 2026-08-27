@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us — BHB Family Support and Development Foundation</title>
   
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,6 +13,442 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/admin.css">
+
+  <style>
+    /* ==========================================================================
+       DEDICATED ENHANCED ABOUT US STYLING (STRUCTURE & ALIGNMENT)
+       ========================================================================== */
+
+    /* Institutional Header Meta Bar */
+    .about-meta-ribbon {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: -36px;
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .about-meta-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      padding: 18px 22px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-radius: 0;
+    }
+
+    .about-meta-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--bg-off);
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .about-meta-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .about-meta-value {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-top: 2px;
+    }
+
+    /* Section 1: Story & Philosophy */
+    .about-story-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .story-tenets-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .story-tenet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--bg-off);
+      border: 1px solid var(--border-light);
+      padding: 16px 20px;
+      border-radius: 0;
+    }
+
+    .story-tenet-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .story-tenet-text h4 {
+      font-size: 0.98rem;
+      color: var(--navy);
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .story-tenet-text p {
+      font-size: 0.9rem;
+      color: var(--text-body);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .story-image-wrapper {
+      position: relative;
+    }
+
+    .story-image-main {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+      border: 1px solid var(--border-light);
+      border-radius: 0;
+    }
+
+    .story-floating-badge {
+      position: absolute;
+      bottom: -24px;
+      left: -24px;
+      background: var(--navy);
+      color: #FFFFFF;
+      padding: 24px 28px;
+      max-width: 280px;
+      box-shadow: var(--shadow-md);
+      border-left: 4px solid var(--blue);
+      border-radius: 0;
+    }
+
+    .story-floating-badge .number {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .story-floating-badge .text {
+      font-size: 0.82rem;
+      color: #CBD5E1;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    /* Section 2: Master Mission & Vision Layout */
+    .mission-vision-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 10px;
+    }
+
+    .mv-master-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: 0;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mv-master-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .mv-card-header-bar {
+      height: 6px;
+      width: 100%;
+    }
+    .mv-vision-bar {
+      background: linear-gradient(90deg, #1E3A8A, #2563EB);
+    }
+    .mv-mission-bar {
+      background: linear-gradient(90deg, #0284C7, #0D9488);
+    }
+
+    .mv-card-body {
+      padding: 38px 36px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .mv-top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .mv-badge-button {
+      display: inline-block;
+      padding: 6px 14px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-radius: 0;
+      border: 1px solid;
+    }
+
+    .mv-badge-vision {
+      background: #EFF6FF;
+      color: #1E40AF;
+      border-color: #BFDBFE;
+    }
+
+    .mv-badge-mission {
+      background: #F0FDFA;
+      color: #0F766E;
+      border-color: #99F6E4;
+    }
+
+    .mv-card-title {
+      font-size: 1.65rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .mv-statement-box {
+      background: var(--bg-off);
+      border-left: 4px solid;
+      padding: 20px 22px;
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+      line-height: 1.68;
+      color: var(--navy);
+      font-weight: 500;
+      border-radius: 0;
+    }
+
+    .mv-statement-vision {
+      border-left-color: #2563EB;
+    }
+
+    .mv-statement-mission {
+      border-left-color: #0D9488;
+    }
+
+    .mv-pillars-header {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .mv-pillars-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mv-pillar-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.55;
+    }
+
+    .mv-pillar-bullet {
+      width: 22px;
+      height: 22px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      border-radius: 0;
+      margin-top: 2px;
+    }
+    .mv-pillar-bullet.blue { color: #2563EB; }
+    .mv-pillar-bullet.teal { color: #0D9488; }
+
+    /* Section 3: Core Values with 4-Corner Rectangular Badges */
+    .values-grid-3x2 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 10px;
+    }
+
+    .value-card-rect {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 0;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .value-card-rect:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: #CBD5E1;
+    }
+
+    .value-rect-badge {
+      display: inline-block;
+      padding: 7px 16px;
+      background: var(--navy);
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 0;
+      margin-bottom: 16px;
+      align-self: flex-start;
+    }
+
+    .value-tagline {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .value-description {
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* Section 4: Commitments 4-Column Strip */
+    .commitments-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .commitment-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 28px 24px;
+      border-radius: 0;
+    }
+
+    .commitment-number {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #60A5FA;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .commitment-card h3 {
+      font-size: 1.18rem;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+
+    .commitment-card p {
+      font-size: 0.9rem;
+      color: #CBD5E1;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Section 5: Co-Funding / Action Banner */
+    .about-action-banner {
+      background: var(--bg-off);
+      border: 1px solid var(--border-light);
+      padding: 44px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 30px;
+      border-radius: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .about-meta-ribbon {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 20px;
+      }
+      .about-story-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .story-floating-badge {
+        position: static;
+        margin-top: 16px;
+        max-width: 100%;
+      }
+      .mission-vision-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .values-grid-3x2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .commitments-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-meta-ribbon {
+        grid-template-columns: 1fr;
+      }
+      .values-grid-3x2 {
+        grid-template-columns: 1fr;
+      }
+      .commitments-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-action-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -35,7 +472,7 @@
 
       <div class="nav-actions">
         <a href="index.html" class="nav-admin-link" onclick="localStorage.setItem('openAdmin', 'true')">Admin</a>
-        <button class="btn btn-primary btn-sm" onclick="openDonateModal()">Support Our Mission</button>
+        <button class="btn btn-primary btn-sm" onclick="openDonateModal()" style="border-radius: 0;">Support Our Mission</button>
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">☰</button>
       </div>
     </div>
@@ -53,128 +490,337 @@
     <a href="contact.html">Contact Us</a>
   </div>
 
-  <!-- Page Header Banner -->
+  <!-- Page Header Banner (Clean Title Without Removed Label) -->
   <div class="page-header-banner">
     <div class="container">
       <h1>Driven by Dignity. Built on Community Trust.</h1>
       <p>
-        Walking alongside individuals, families, and underserved communities to overcome barriers, restore dignity, and create sustainable futures across Northern Nigeria.
+        Walking alongside individuals, families, and underserved communities to overcome systemic barriers, restore human dignity, and cultivate sustainable futures across Northern Nigeria.
       </p>
     </div>
   </div>
 
-  <!-- Section 1: Our Story & Philosophy -->
-  <section>
+  <!-- Main Content Wrapper -->
+  <section style="padding-top: 0;">
     <div class="container">
-      <div class="about-split-grid">
-        <div>
-          <span class="section-label">Our Story &amp; Philosophy</span>
-          <h2>Walking Alongside Those Facing Difficult Circumstances</h2>
-          <p>
-            BHB Family Support and Development Foundation is a non-governmental organization built on a simple belief: <b>People are not defined by their circumstances.</b>
-          </p>
-          <p>
-            We believe that lasting change isn't achieved by giving handouts, but by strengthening human capabilities, connecting people to institutional resources, and establishing conditions where individuals can thrive on their own terms.
-          </p>
-          <div class="about-pull-quote">
-            “With the right support, opportunities, and partnerships, individuals and communities can overcome barriers, build resilience, and create better futures.”
+
+      <!-- Institutional Metadata Bar -->
+      <div class="about-meta-ribbon">
+        <div class="about-meta-card">
+          <div class="about-meta-icon">🏛️</div>
+          <div>
+            <div class="about-meta-label">Corporate Status</div>
+            <div class="about-meta-value">CAC Reg. No. <span data-bind="cacNumber">9670692</span></div>
           </div>
-          <p>
-            Established in July 2026 and officially registered with the Corporate Affairs Commission (CAC Reg. No. <span data-bind="cacNumber">9670692</span>), BHB Foundation operates from its headquarters in Kano State, partnering with grassroots leaders, healthcare professionals, and technical educators.
-          </p>
         </div>
-        <div>
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80" alt="BHB Community Engagement" style="border-radius: var(--radius-md); width: 100%; height: 480px; object-fit: cover;">
+
+        <div class="about-meta-card">
+          <div class="about-meta-icon">📅</div>
+          <div>
+            <div class="about-meta-label">Incorporated</div>
+            <div class="about-meta-value">July 2026 · Nigeria</div>
+          </div>
+        </div>
+
+        <div class="about-meta-card">
+          <div class="about-meta-icon">📍</div>
+          <div>
+            <div class="about-meta-label">Headquarters</div>
+            <div class="about-meta-value">Nasarawa, Kano State</div>
+          </div>
+        </div>
+
+        <div class="about-meta-card">
+          <div class="about-meta-icon">🛡️</div>
+          <div>
+            <div class="about-meta-label">Governance</div>
+            <div class="about-meta-value">Board of Trustees Directed</div>
+          </div>
         </div>
       </div>
+
+      <!-- Section 1: Our Story & Philosophy -->
+      <div class="about-story-grid">
+        <div>
+          <span class="section-label" style="border-radius: 0; font-weight: 800; text-transform: uppercase;">Our Story &amp; Philosophy</span>
+          <h2 style="font-size: 2rem; color: var(--navy); margin-top: 8px; margin-bottom: 16px; line-height: 1.3;">
+            Walking Alongside Those Facing Difficult Circumstances
+          </h2>
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-body); margin-bottom: 16px;">
+            <b>BHB Family Support and Development Foundation</b> is a non-governmental organization built on a profound conviction: <b>People are not defined by their circumstances.</b>
+          </p>
+          <p style="font-size: 0.98rem; line-height: 1.7; color: var(--text-body); margin-bottom: 20px;">
+            We believe that enduring progress is never created through temporary handouts. True transformation occurs when we strengthen human capabilities, connect vulnerable individuals to essential healthcare and digital education, and foster self-sustaining conditions where every person can flourish with independence.
+          </p>
+
+          <div class="about-pull-quote" style="border-radius: 0; background: var(--bg-off); padding: 18px 22px; margin: 20px 0;">
+            “With the right support, tailored tools, and genuine community solidarity, individuals and families can overcome any barrier, build resilience, and shape their own destinies.”
+          </div>
+
+          <!-- Structured Philosophy Highlights -->
+          <div class="story-tenets-list">
+            <div class="story-tenet-item">
+              <div class="story-tenet-icon">🤝</div>
+              <div class="story-tenet-text">
+                <h4>Solidarity, Not Top-Down Charity</h4>
+                <p>We work in direct partnership with local residents and families, listening before designing solutions.</p>
+              </div>
+            </div>
+
+            <div class="story-tenet-item">
+              <div class="story-tenet-icon">🌱</div>
+              <div class="story-tenet-text">
+                <h4>Capability Building &amp; Self-Reliance</h4>
+                <p>We equip youths, widows, and persons with disabilities with practical skills, tech literacy, and startup toolkits.</p>
+              </div>
+            </div>
+
+            <div class="story-tenet-item">
+              <div class="story-tenet-icon">🔗</div>
+              <div class="story-tenet-text">
+                <h4>Systemic Grassroots Linkages</h4>
+                <p>Bridging hard-to-reach settlements with institutional healthcare, legal identity, and certified vocational pipelines.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80" alt="BHB Grassroots Community Engagement" class="story-image-main">
+          <div class="story-floating-badge">
+            <div class="number">100%</div>
+            <div class="text">Grassroots Verified Interventions Across Kano State</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- Section 2: Vision & Mission -->
+  <!-- Section 2: Master Mission & Vision Section (Balanced, Beautifully Aligned) -->
   <section class="bg-off" id="mission">
     <div class="container">
       <div class="section-header center">
-        <span class="section-label">Our Guiding Compass</span>
+        <span class="section-label" style="border-radius: 0; font-weight: 800; text-transform: uppercase;">Our Guiding Compass</span>
         <h2>Guiding Our Path Forward</h2>
-        <p class="lead">Clear institutional objectives steering our non-profit governance.</p>
+        <p class="lead">The institutional blueprint and ethical commitment steering our interventions across Northern Nigeria.</p>
       </div>
 
-      <div class="about-vision-mission-grid" style="border-top: none; padding-top: 0; max-width: 900px; margin: 0 auto; gap: 40px;">
-        <div style="background: #FFFFFF; padding: 36px; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-          <h3 style="margin-bottom: 12px; color: var(--navy); font-size: 1.35rem;">Our Vision</h3>
-          <p style="color: var(--text-body); font-size: 1.05rem;">
-            To build inclusive, resilient, and empowered communities where every individual can live with dignity and realize their full potential.
-          </p>
+      <!-- Symmetrical 2-Column Master Grid -->
+      <div class="mission-vision-wrapper">
+        
+        <!-- CARD 1: VISION -->
+        <div class="mv-master-card">
+          <div class="mv-card-header-bar mv-vision-bar"></div>
+          <div class="mv-card-body">
+            <div>
+              <div class="mv-top-meta">
+                <span class="mv-badge-button mv-badge-vision">🌟 The Horizon We Aspire to Build</span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Strategic Direction</span>
+              </div>
+
+              <h3 class="mv-card-title">Our Vision</h3>
+
+              <div class="mv-statement-box mv-statement-vision">
+                “To build inclusive, resilient, and empowered communities where every individual can live with dignity and realize their full potential.”
+              </div>
+            </div>
+
+            <div>
+              <div class="mv-pillars-header">Strategic Vision Anchors:</div>
+              <ul class="mv-pillars-list">
+                <li class="mv-pillar-item">
+                  <div class="mv-pillar-bullet blue">✓</div>
+                  <div><b>Universal Human Dignity:</b> Guaranteeing that every family, regardless of vulnerability, is treated with unconditional compassion and respect.</div>
+                </li>
+                <li class="mv-pillar-item">
+                  <div class="mv-pillar-bullet blue">✓</div>
+                  <div><b>Disability &amp; Gender Inclusion:</b> Eliminating institutional barriers so adolescent girls and persons with disabilities access high-value digital opportunities.</div>
+                </li>
+                <li class="mv-pillar-item">
+                  <div class="mv-pillar-bullet blue">✓</div>
+                  <div><b>Enduring Community Resilience:</b> Establishing self-governing local committees capable of maintaining progress long into the future.</div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <div style="background: #FFFFFF; padding: 36px; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-          <h3 style="margin-bottom: 12px; color: var(--navy); font-size: 1.35rem;">Our Mission</h3>
-          <p style="color: var(--text-body); font-size: 1.05rem;">
-            To walk alongside vulnerable and underserved individuals and communities by improving access to essential health and social services, education, and economic opportunities, while supporting sustainable solutions that promote dignity, resilience, inclusion, and self-reliance.
-          </p>
+        <!-- CARD 2: MISSION -->
+        <div class="mv-master-card">
+          <div class="mv-card-header-bar mv-mission-bar"></div>
+          <div class="mv-card-body">
+            <div>
+              <div class="mv-top-meta">
+                <span class="mv-badge-button mv-badge-mission">🎯 How We Take Action Today</span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Field Deployment</span>
+              </div>
+
+              <h3 class="mv-card-title">Our Mission</h3>
+
+              <div class="mv-statement-box mv-statement-mission">
+                “To walk alongside vulnerable and underserved individuals and communities by improving access to essential health and social services, education, and economic opportunities, while supporting sustainable solutions that promote dignity, resilience, inclusion, and self-reliance.”
+              </div>
+            </div>
+
+            <div>
+              <div class="mv-pillars-header">Core Mission Action Directives:</div>
+              <ul class="mv-pillars-list">
+                <li class="mv-pillar-item">
+                  <div class="mv-pillar-bullet teal">✓</div>
+                  <div><b>Primary &amp; Maternal Care Access:</b> Deploying mobile prenatal clinics, diagnostic kits, and medical volunteers to hard-to-reach settlements.</div>
+                </li>
+                <li class="mv-pillar-item">
+                  <div class="mv-pillar-bullet teal">✓</div>
+                  <div><b>Assistive Technology &amp; Education:</b> Delivering specialized coding boot camps and screen-reader laptops to girls with disabilities.</div>
+                </li>
+                <li class="mv-pillar-item">
+                  <div class="mv-pillar-bullet teal">✓</div>
+                  <div><b>Livelihoods &amp; Micro-Grants:</b> Providing direct seed capital, grain processing machinery, and cooperative savings for widowed mothers.</div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Core Values -->
+  <!-- Section 3: Core Values (Rectangular 4-Corner Badges, Perfectly Symmetrical) -->
   <section>
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Core Values</span>
-        <h2>The Principles That Guide Our Action</h2>
-        <p class="lead">Non-negotiable ethical standards embedded across all foundation operations.</p>
+        <span class="section-label" style="border-radius: 0; font-weight: 800; text-transform: uppercase;">Core Values</span>
+        <h2>The Principles That Guide Every Action</h2>
+        <p class="lead">Non-negotiable ethical standards embedded in every project deployment, field clinic, and community partnership.</p>
       </div>
 
-      <div class="focus-areas-grid">
-        <div class="focus-area-item" style="background: var(--bg-off); padding: 32px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
-          <h3 style="font-size: 1.35rem; margin-bottom: 12px;">Dignity</h3>
-          <p>
-            <b>Every person matters.</b> We treat every individual with respect, compassion, and understanding. We listen to lived experiences and ensure no one feels less worthy because of their socio-economic situation.
-          </p>
+      <!-- 3x2 Rectangular Values Grid -->
+      <div class="values-grid-3x2">
+        
+        <!-- Value 1 -->
+        <div class="value-card-rect">
+          <div>
+            <div class="value-rect-badge">Dignity</div>
+            <div class="value-tagline">Every Person Matters</div>
+            <p class="value-description">
+              We treat every individual with compassion, empathy, and active listening. We honor lived experiences and guarantee that no one feels lesser or marginalized due to their socio-economic standing.
+            </p>
+          </div>
         </div>
 
-        <div class="focus-area-item" style="background: var(--bg-off); padding: 32px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
-          <h3 style="font-size: 1.35rem; margin-bottom: 12px;">Empowerment</h3>
-          <p>
-            <b>People shape their own destinies.</b> Our role is to build confidence, practical skills, and knowledge so individuals become autonomous and self-reliant.
-          </p>
+        <!-- Value 2 -->
+        <div class="value-card-rect">
+          <div>
+            <div class="value-rect-badge">Empowerment</div>
+            <div class="value-tagline">People Shape Their Destinies</div>
+            <p class="value-description">
+              Rather than fostering dependence, our role is to build confidence, practical vocational skills, and access to capital so families achieve genuine economic self-reliance.
+            </p>
+          </div>
         </div>
 
-        <div class="focus-area-item" style="background: var(--bg-off); padding: 32px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
-          <h3 style="font-size: 1.35rem; margin-bottom: 12px;">Integrity</h3>
-          <p>
-            <b>Trust is our foundation.</b> We maintain transparency, financial accountability, and ethical stewardship with our partners, supporters, and the communities we serve.
-          </p>
+        <!-- Value 3 -->
+        <div class="value-card-rect">
+          <div>
+            <div class="value-rect-badge">Integrity &amp; Trust</div>
+            <div class="value-tagline">Accountability is Paramount</div>
+            <p class="value-description">
+              Trust is our foundation. We maintain open financial reporting, strict grant stewardship, and rigorous ethical compliance with all partners and community beneficiaries.
+            </p>
+          </div>
+        </div>
+
+        <!-- Value 4 -->
+        <div class="value-card-rect">
+          <div>
+            <div class="value-rect-badge">Inclusion &amp; Equity</div>
+            <div class="value-tagline">Leaving No One Behind</div>
+            <p class="value-description">
+              We intentionally design all programs to be accessible to persons with physical, sensory, and cognitive disabilities, widowed caregivers, and marginalized rural populations.
+            </p>
+          </div>
+        </div>
+
+        <!-- Value 5 -->
+        <div class="value-card-rect">
+          <div>
+            <div class="value-rect-badge">Community Ownership</div>
+            <div class="value-tagline">Grassroots Co-Design</div>
+            <p class="value-description">
+              Interventions are never imposed from the outside. We establish local action committees, work directly with traditional elders, and ensure local leaders steer their own development.
+            </p>
+          </div>
+        </div>
+
+        <!-- Value 6 -->
+        <div class="value-card-rect">
+          <div>
+            <div class="value-rect-badge">Measurable Impact</div>
+            <div class="value-tagline">Verifiable Field Outcomes</div>
+            <p class="value-description">
+              We evaluate success not by intentions or activity counts, but by authenticated qualitative and quantitative milestones that permanently improve lives.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Responsible Development Commitments -->
+  <section class="bg-navy" style="padding: 60px 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label label-light" style="border-radius: 0; font-weight: 800; text-transform: uppercase;">Our Commitments</span>
+        <h2>Institutional Commitments to Responsible Governance</h2>
+        <p class="lead" style="color: #94A3B8;">How we translate our vision and values into transparent non-profit operations.</p>
+      </div>
+
+      <div class="commitments-grid">
+        <div class="commitment-card">
+          <div class="commitment-number">01</div>
+          <h3>People First</h3>
+          <p>We listen before acting, respect local customs, and prioritize grassroots community choices at all decision levels.</p>
+        </div>
+
+        <div class="commitment-card">
+          <div class="commitment-number">02</div>
+          <h3>Active Inclusion</h3>
+          <p>We actively champion marginalized groups—specifically persons with disabilities and widowed mothers—in every program.</p>
+        </div>
+
+        <div class="commitment-card">
+          <div class="commitment-number">03</div>
+          <h3>Stewardship &amp; Audit</h3>
+          <p>We maintain full fiscal accountability under CAC standards, providing transparent reporting on every naira deployed.</p>
+        </div>
+
+        <div class="commitment-card">
+          <div class="commitment-number">04</div>
+          <h3>Sustainable Futures</h3>
+          <p>We design interventions that create self-sustaining community structures capable of continuing without ongoing external aid.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Commitments -->
-  <section class="bg-navy">
+  <!-- Section 5: Collaborative Call to Action Banner -->
+  <section style="padding: 50px 0 60px;">
     <div class="container">
-      <div class="section-header">
-        <span class="section-label label-light">Our Commitments</span>
-        <h2>Our Commitment to Responsible Development</h2>
-      </div>
-
-      <div class="impact-stats-container" style="margin-top: 20px;">
-        <div class="stat-metric-block">
-          <h3 style="color: #FFFFFF; font-size: 1.3rem; margin-bottom: 8px;">People First</h3>
-          <p style="color: #CBD5E1; font-size: 0.95rem;">We listen before acting and respect community choices at all decision levels.</p>
+      <div class="about-action-banner">
+        <div>
+          <h3 style="font-size: 1.55rem; color: var(--navy); margin-bottom: 6px; font-weight: 800;">
+            Collaborate with BHB Foundation for Grassroots Impact
+          </h3>
+          <p style="font-size: 1rem; color: var(--text-body); margin: 0; max-width: 650px;">
+            Whether you are an institutional donor, international development partner, or corporate CSR leader, explore collaborative opportunities to transform communities together.
+          </p>
         </div>
-        <div class="stat-metric-block">
-          <h3 style="color: #FFFFFF; font-size: 1.3rem; margin-bottom: 8px;">Inclusion</h3>
-          <p style="color: #CBD5E1; font-size: 0.95rem;">We prioritize marginalized groups who are frequently overlooked by traditional schemes.</p>
-        </div>
-        <div class="stat-metric-block">
-          <h3 style="color: #FFFFFF; font-size: 1.3rem; margin-bottom: 8px;">Accountability</h3>
-          <p style="color: #CBD5E1; font-size: 0.95rem;">We take full responsibility for our choices, resources, and programmatic outcomes.</p>
-        </div>
-        <div class="stat-metric-block">
-          <h3 style="color: #FFFFFF; font-size: 1.3rem; margin-bottom: 8px;">Measurable Impact</h3>
-          <p style="color: #CBD5E1; font-size: 0.95rem;">We measure success by genuine qualitative and quantitative changes in people's lives.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="projects.html" class="btn btn-navy btn-sm" style="border-radius: 0;">Explore Projects →</a>
+          <a href="contact.html" class="btn btn-primary btn-sm" style="border-radius: 0;">Partner With Us</a>
         </div>
       </div>
     </div>
@@ -193,30 +839,38 @@
           <h5>About</h5>
           <a href="about.html">Who We Are</a>
           <a href="about.html#mission">Mission &amp; Vision</a>
-          <a href="team.html">Our Leadership</a>
-          <a href="impact.html">Impact Report</a>
+          <a href="team.html">Governance &amp; Staff</a>
+          <a href="impact.html">Impact Metrics</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Programs</h5>
+          <a href="work.html">Focus Areas</a>
+          <a href="projects.html">Projects &amp; Milestones</a>
+          <a href="projects.html">Digital Skills &amp; Inclusion</a>
+          <a href="projects.html">Mobile Health Outreach</a>
         </div>
 
         <div class="footer-col">
           <h5>Dispatches</h5>
-          <a href="work.html">Focus Areas</a>
-          <a href="projects.html">Active Projects</a>
-          <a href="blog.html">Blog &amp; Field Reports</a>
+          <a href="blog.html">Latest Articles</a>
+          <a href="blog.html">Community Stories</a>
+          <a href="blog.html">Press Releases</a>
           <a href="contact.html">Contact Us</a>
         </div>
 
-        <div class="footer-col">
+        <div class="footer-col footer-newsletter">
           <h5>Newsletter</h5>
-          <p style="font-size: 0.85rem; margin-bottom: 12px;">Receive quarterly field updates and governance reports:</p>
-          <form onsubmit="event.preventDefault(); showToast('Subscribed to BHB Foundation updates!', 'success'); this.reset();" style="display: flex; gap: 8px;">
-            <input type="email" placeholder="Your email address" style="padding: 9px 12px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; font-size: 0.88rem; outline: none; flex: 1;" required>
-            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          <p>Receive verified field reports and quarterly milestone publications.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing to BHB dispatches!', 'success'); this.reset();">
+            <input type="email" placeholder="Your official email..." required>
+            <button type="submit" style="border-radius: 0;">→</button>
           </form>
         </div>
       </div>
 
       <div class="footer-bottom-bar">
-        <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. 9670692. All rights reserved.</span>
+        <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. <span data-bind="cacNumber">9670692</span>. All rights reserved.</span>
         <a href="index.html" style="color: #94A3B8; text-decoration: underline;">Return to Home</a>
       </div>
     </div>
@@ -232,6 +886,7 @@
     </div>
   </div>
 
+  <!-- Scripts -->
   <script src="js/store.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/app.js"></script>

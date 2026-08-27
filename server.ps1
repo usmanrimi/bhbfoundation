@@ -1,8 +1,9 @@
 $port = 8080
 $root = "C:\Users\USER\.gemini\antigravity\scratch\bhb-foundation"
-$listener = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Any, $port)
+$listener = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::IPv6Any, $port)
+$listener.Server.DualMode = $true
 $listener.Start()
-Write-Host "BHB Foundation server running on http://localhost:$port"
+Write-Host "BHB Foundation server running on http://localhost:$port and http://127.0.0.1:$port"
 
 while ($true) {
     try {
@@ -41,27 +42,25 @@ while ($true) {
             '.html' { 'text/html; charset=utf-8' }
             '.css'  { 'text/css; charset=utf-8' }
             '.js'   { 'application/javascript; charset=utf-8' }
+            '.json' { 'application/json; charset=utf-8' }
             '.png'  { 'image/png' }
             '.jpg'  { 'image/jpeg' }
             '.jpeg' { 'image/jpeg' }
+            '.gif'  { 'image/gif' }
             '.svg'  { 'image/svg+xml' }
-            '.json' { 'application/json; charset=utf-8' }
+            '.ico'  { 'image/x-icon' }
             default { 'application/octet-stream' }
         }
 
         $bytes = [System.IO.File]::ReadAllBytes($fullPath)
-        $writer.WriteLine("HTTP/1.1 200 OK")
-        $writer.WriteLine("Content-Type: $contentType")
-        $writer.WriteLine("Content-Length: $($bytes.Length)")
-        $writer.WriteLine("Connection: close")
-        $writer.WriteLine("Access-Control-Allow-Origin: *")
-        $writer.WriteLine("")
-        $writer.Flush()
+        $header = "HTTP/1.1 200 OK`r`nContent-Type: $contentType`r`nContent-Length: $($bytes.Length)`r`nAccess-Control-Allow-Origin: *`r`nConnection: close`r`n`r`n"
+        $headerBytes = [System.Text.Encoding]::UTF8.GetBytes($header)
 
+        $stream.Write($headerBytes, 0, $headerBytes.Length)
         $stream.Write($bytes, 0, $bytes.Length)
         $stream.Flush()
         $client.Close()
     } catch {
-        # continue loop
+        # ignore client disconnects
     }
 }
