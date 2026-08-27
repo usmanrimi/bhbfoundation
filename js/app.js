@@ -254,8 +254,8 @@ function renderBlogPage() {
                 By <b>${featured.author}</b> · ${featured.readTime || '4 min read'}
               </div>
               <div class="blog-engagement-strip">
-                <span>❤️ ${featured.likes || 0} Likes</span>
-                <span>💬 ${comments.length} Comments</span>
+                <span>Likes: ${featured.likes || 0}</span>
+                <span>Comments: ${comments.length}</span>
                 <span style="margin-left: auto; color: var(--blue); font-weight: 700;">Read Full Article →</span>
               </div>
             </div>
@@ -284,8 +284,8 @@ function renderBlogPage() {
             </div>
             <div>
               <div class="blog-engagement-strip">
-                <span>❤️ ${p.likes || 0}</span>
-                <span>💬 ${comments.length}</span>
+                <span>Likes: ${p.likes || 0}</span>
+                <span>Comments: ${comments.length}</span>
                 <span style="margin-left: auto; color: var(--blue); font-weight: 600;">Read →</span>
               </div>
             </div>
@@ -313,8 +313,8 @@ function renderBlogPage() {
           <div>
             <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">By <b>${featured.author}</b></div>
             <div class="blog-engagement-strip">
-              <span>❤️ ${featured.likes || 0} Likes</span>
-              <span>💬 ${comments.length} Comments</span>
+              <span>Likes: ${featured.likes || 0}</span>
+              <span>Comments: ${comments.length}</span>
               <span style="margin-left: auto; color: var(--blue); font-weight: 700;">Read Full Article →</span>
             </div>
           </div>
@@ -340,8 +340,8 @@ function renderBlogPage() {
             </div>
             <div>
               <div class="blog-engagement-strip">
-                <span>❤️ ${p.likes || 0}</span>
-                <span>💬 ${comments.length}</span>
+                <span>Likes: ${p.likes || 0}</span>
+                <span>Comments: ${comments.length}</span>
                 <span style="margin-left: auto; color: var(--blue); font-weight: 600;">Read →</span>
               </div>
             </div>
@@ -411,7 +411,7 @@ window.openBlogPostReader = function(postId) {
       <div class="blog-actions-bar">
         <div>
           <button class="like-btn-action ${post.likedByUser ? 'liked' : ''}" id="readerLikeBtn" onclick="toggleLikePost('${post.id}')">
-            <span>${post.likedByUser ? '❤️' : '🤍'}</span>
+            <span>${post.likedByUser ? '[Liked]' : '[Like]'}</span>
             <span id="readerLikeCount">${post.likes || 0}</span> Likes
           </button>
         </div>
@@ -420,19 +420,19 @@ window.openBlogPostReader = function(postId) {
           <span style="font-size: 0.84rem; font-weight: 700; color: var(--navy);">Share Article:</span>
           <div class="share-btn-group">
             <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(post.title + ' - ' + currentUrl)}" target="_blank" class="share-icon-btn" title="Share on WhatsApp">
-              🟢 WhatsApp
+              WhatsApp
             </a>
             <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(currentUrl)}" target="_blank" class="share-icon-btn" title="Share on X / Twitter">
-              ✖️ X
+              X (Twitter)
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}" target="_blank" class="share-icon-btn" title="Share on Facebook">
-              🔵 Facebook
+              Facebook
             </a>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}" target="_blank" class="share-icon-btn" title="Share on LinkedIn">
-              💼 LinkedIn
+              LinkedIn
             </a>
             <button class="share-icon-btn" onclick="copyArticleLink('${currentUrl}')" title="Copy Link">
-              🔗 Copy Link
+              Copy Link
             </button>
           </div>
         </div>
@@ -449,7 +449,7 @@ window.openBlogPostReader = function(postId) {
           ${comments.length ? comments.map(c => `
             <div class="comment-item">
               <div class="comment-header">
-                <span class="comment-author">👤 ${c.authorName}</span>
+                <span class="comment-author">${c.authorName}</span>
                 <span class="comment-date">${c.date}</span>
               </div>
               <div class="comment-body">${c.content}</div>
@@ -498,7 +498,7 @@ window.toggleLikePost = function(postId) {
 
   if (btn && post) {
     btn.classList.toggle('liked', post.likedByUser);
-    btn.querySelector('span').textContent = post.likedByUser ? '❤️' : '🤍';
+    btn.querySelector('span').textContent = post.likedByUser ? '[Liked]' : '[Like]';
   }
   if (countEl) countEl.textContent = newCount;
 

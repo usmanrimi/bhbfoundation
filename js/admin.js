@@ -48,7 +48,7 @@ function initAdminLiveClock() {
 
   function update() {
     const now = new Date();
-    clock.textContent = `🕒 ${now.toLocaleTimeString('en-US', { timeZone: 'Africa/Lagos', hour12: true })} WAT`;
+    clock.textContent = `${now.toLocaleTimeString('en-US', { timeZone: 'Africa/Lagos', hour12: true })} WAT`;
   }
   update();
   setInterval(update, 1000);
@@ -132,7 +132,7 @@ window.showToast = function(msg, type = 'info') {
     align-items: center;
     gap: 8px;
   `;
-  toast.innerHTML = `<span>${type === 'success' ? '✓' : 'ℹ'}</span> ${msg}`;
+  toast.innerHTML = `<span>[${type.toUpperCase()}]</span> ${msg}`;
   document.body.appendChild(toast);
 
   setTimeout(() => {
@@ -666,8 +666,8 @@ function renderAdminBlogTable() {
         </td>
         <td><span class="project-category-tag" style="margin: 0;">${p.category}</span></td>
         <td>${p.author}</td>
-        <td><b style="color: #DC2626;">❤️ ${p.likes || 0}</b></td>
-        <td><b style="color: #2563EB;">💬 ${comments.length}</b></td>
+        <td><b style="color: #DC2626;">Likes: ${p.likes || 0}</b></td>
+        <td><b style="color: #2563EB;">Comments: ${comments.length}</b></td>
         <td><span class="status-pill success">Published</span></td>
         <td>
           <div class="action-btn-group">

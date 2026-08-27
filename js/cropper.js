@@ -87,7 +87,7 @@ class AdminImageCropper {
             <button type="button" class="btn btn-outline btn-sm" onclick="adminCropper.useOriginal()">Use Original (No Crop)</button>
             <div style="display: flex; gap: 10px;">
               <button type="button" class="btn btn-outline btn-sm" onclick="adminCropper.close()">Cancel</button>
-              <button type="button" class="btn btn-primary btn-sm" onclick="adminCropper.applyCrop()">✓ Apply &amp; Save Crop</button>
+              <button type="button" class="btn btn-primary btn-sm" onclick="adminCropper.applyCrop()">Apply &amp; Save Crop</button>
             </div>
           </div>
         </div>
