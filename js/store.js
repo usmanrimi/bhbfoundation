@@ -4,7 +4,7 @@
  * (WITH BLOG CMS, LIKES, COMMENTS, ENGAGEMENT & ADMIN MODERATION)
  */
 
-const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V6';
+const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V7';
 
 const DEFAULT_STORE_DATA = {
   settings: {
@@ -384,48 +384,60 @@ All institutional programs and financial disbursements remain open to annual pub
       name: "Dr. Bashir H. Bello",
       position: "Founder & Chairman, Board of Trustees",
       department: "Board of Trustees",
+      purview: "Strategic Governance & Institutional Oversight",
+      tier: "Trustees",
       bio: "Dr. Bashir established BHB Foundation to advance human dignity, social resilience, and structured opportunity across Northern Nigeria.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: "team-2",
       name: "Hajiya Fatima A. Yusuf",
       position: "Executive Director",
-      department: "Executive Management",
-      bio: "Fatima leads the foundation's strategic direction, partner alignment, and program execution across participating local governments.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
+      department: "Executive Directorate",
+      purview: "Strategic Direction & Compliance",
+      tier: "Executive",
+      bio: "Fatima leads the foundation's strategic direction, partner alignment, and program execution across participating local governments in Kano.",
+      image: "assets/images/team-director.jpg"
     },
     {
       id: "team-3",
       name: "Malam Ibrahim Al-Hassan",
       position: "Director of Programs & Inclusive Tech",
-      department: "Program Implementation",
-      bio: "Ibrahim oversees BHB's digital inclusion and educational programs, including our disability tech boot camps.",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80"
+      department: "Programs & Inclusion",
+      purview: "Assistive Tech & Youth Skills",
+      tier: "Directorate",
+      bio: "Ibrahim oversees digital inclusion initiatives, screen-reader coding boot camps for girls with disabilities, and technical apprenticeships.",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: "team-4",
       name: "Dr. Aisha Kwaku",
       position: "Lead Strategic Health Advisor",
-      department: "Healthcare & Advisory",
-      bio: "Dr. Aisha guides BHB's maternal health outreach strategy and primary care partnerships across Kano State.",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80"
+      department: "Health & Clinical Advisory",
+      purview: "Primary Care & Maternal Health",
+      tier: "Advisory",
+      bio: "Dr. Aisha guides maternal health outreach strategy, mobile diagnostic clinics, and primary care partnerships across underserved rural communities.",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: "team-5",
       name: "Engr. Usman Farouk",
       position: "Head of Field Operations",
-      department: "Operations & Logistics",
-      bio: "Usman coordinates ground logistics, community liaison town halls, and resource delivery across all target LGAs.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80"
+      department: "Field Logistics & Security",
+      purview: "Field Operations & Logistics",
+      tier: "Operations",
+      bio: "Coordinates ground logistics, community liaison town halls, and resource delivery across all target LGAs in Kano State.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: "team-6",
       name: "Zainab S. Umar",
       position: "Head of Youth & Gender Initiatives",
-      department: "Gender & Safeguarding",
-      bio: "Zainab oversees women's enterprise incubation, girl-child mentorship networks, and safeguarding protocols.",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
+      department: "Women & Youth Directorate",
+      purview: "Women Enterprise & Safeguarding",
+      tier: "Operations",
+      bio: "Oversees women's enterprise incubation, girl-child mentorship networks, and safeguarding protocols across rural districts.",
+      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
     }
   ],
 

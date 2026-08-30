@@ -537,20 +537,69 @@ window.submitBlogComment = function(e, postId) {
   renderBlogPage();
 };
 
-// 7. Team
+// 7. Team & Leadership Showcase (Dynamic Live Rendering from Store)
 function renderTeam() {
-  const container = document.getElementById('teamEditorialGrid');
-  if (!container) return;
-
   const team = BHBStore.getTeam();
-  container.innerHTML = team.map(m => `
-    <div class="team-member-item">
-      <img src="${m.image}" alt="${m.name}" class="team-member-photo">
-      <h3>${m.name}</h3>
-      <div class="team-member-role">${m.position}</div>
-      <p class="team-member-bio">${m.bio}</p>
-    </div>
-  `).join('');
+  if (!team || !team.length) return;
+
+  const chairman = team.find(m => m.tier === 'Trustees' || m.position.toLowerCase().includes('chairman') || m.id === 'team-1') || team[0];
+  const others = team.filter(m => m.id !== chairman.id);
+
+  // 1. Render Chairman Spotlight on both index.html and team.html
+  const spotlightContainers = document.querySelectorAll('.dynamic-team-spotlight');
+  spotlightContainers.forEach(container => {
+    container.innerHTML = `
+      <div class="executive-spotlight-photo-frame">
+        <img src="${chairman.image}" alt="${chairman.name}" class="executive-spotlight-photo">
+        <div class="executive-badge-ribbon">Board of Trustees · Institutional Founder</div>
+      </div>
+      <div class="executive-spotlight-details">
+        <div>
+          <span class="executive-tier-tag">Executive Leadership</span>
+          <h3 class="executive-name">${chairman.name}</h3>
+          <div class="executive-title">${chairman.position}</div>
+          <div class="executive-quote">
+            “Our mandate is to build self-sustaining community structures where every family, woman, and youth is treated with unconditional dignity and given the practical tools to thrive.”
+          </div>
+          <p class="executive-bio-text">${chairman.bio}</p>
+        </div>
+        <div class="executive-purview-tags">
+          <span class="purview-tag">Strategic Governance</span>
+          <span class="purview-tag">Health Equity</span>
+          <span class="purview-tag">Grassroots Mobilization</span>
+          <span class="purview-tag">Northern Nigeria Focus</span>
+        </div>
+      </div>
+    `;
+  });
+
+  // 2. Render Directorate & Staff Grid on both index.html and team.html
+  const gridContainers = document.querySelectorAll('.dynamic-team-grid');
+  gridContainers.forEach(container => {
+    const isHomePage = container.hasAttribute('data-home-limit');
+    const displayList = isHomePage ? others.slice(0, 3) : others;
+
+    container.innerHTML = displayList.map(m => `
+      <div class="director-profile-card interactive-lift reveal-up">
+        <div class="director-photo-container">
+          <img src="${m.image}" alt="${m.name}">
+          <div class="director-photo-gradient"></div>
+          <div class="director-photo-badge">${m.department || 'Directorate'}</div>
+        </div>
+        <div class="director-profile-body">
+          <div>
+            <div class="director-dept-tag">${m.department || 'Leadership Directorate'}</div>
+            <h4 class="director-name">${m.name}</h4>
+            <div class="director-role">${m.position}</div>
+            <p class="director-summary">${m.bio}</p>
+          </div>
+          <div class="director-footer-badge">
+            <span>•</span> ${m.purview || m.department || 'Operational Strategy'}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  });
 }
 
 // 8. Partners

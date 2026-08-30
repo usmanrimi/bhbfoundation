@@ -51,11 +51,13 @@ class AdminImageCropper {
           <div style="padding: 20px 24px;">
             <!-- Aspect Ratio Selector -->
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
-              <div style="display: flex; align-items: center; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                 <span style="font-size: 0.82rem; font-weight: 700; color: #475569;">Aspect Ratio:</span>
+                <button type="button" class="crop-aspect-btn" data-aspect="3:4" onclick="adminCropper.setAspect('3:4', 3/4)">3:4 Headshot</button>
+                <button type="button" class="crop-aspect-btn" data-aspect="4:5" onclick="adminCropper.setAspect('4:5', 4/5)">4:5 Portrait</button>
                 <button type="button" class="crop-aspect-btn active" data-aspect="16:9" onclick="adminCropper.setAspect('16:9', 16/9)">16:9 Banner</button>
                 <button type="button" class="crop-aspect-btn" data-aspect="4:3" onclick="adminCropper.setAspect('4:3', 4/3)">4:3 Editorial</button>
-                <button type="button" class="crop-aspect-btn" data-aspect="1:1" onclick="adminCropper.setAspect('1:1', 1)">1:1 Portrait</button>
+                <button type="button" class="crop-aspect-btn" data-aspect="1:1" onclick="adminCropper.setAspect('1:1', 1)">1:1 Square</button>
                 <button type="button" class="crop-aspect-btn" data-aspect="free" onclick="adminCropper.setAspect('free', null)">Freeform</button>
               </div>
 
@@ -156,7 +158,7 @@ class AdminImageCropper {
     }, { passive: false });
   }
 
-  open(file, previewElId, hiddenInputName, preferredAspect = '16:9') {
+  open(file, previewElId, hiddenInputName, preferredAspect = '3:4') {
     this.currentFile = file;
     this.previewElId = previewElId;
     this.hiddenInputName = hiddenInputName;
@@ -166,8 +168,11 @@ class AdminImageCropper {
       this.image = new Image();
       this.image.onload = () => {
         this.resetPosition();
-        if (preferredAspect === '1:1') this.setAspect('1:1', 1);
+        if (preferredAspect === '3:4') this.setAspect('3:4', 3/4);
+        else if (preferredAspect === '4:5') this.setAspect('4:5', 4/5);
+        else if (preferredAspect === '1:1') this.setAspect('1:1', 1);
         else if (preferredAspect === '4:3') this.setAspect('4:3', 4/3);
+        else if (preferredAspect === 'free') this.setAspect('free', null);
         else this.setAspect('16:9', 16/9);
 
         if (this.modal) this.modal.classList.add('active');

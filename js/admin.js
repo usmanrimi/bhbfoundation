@@ -921,71 +921,115 @@ window.deleteCommentAdmin = function(id) {
   }
 };
 
-// 7. Team CRUD (With Cropper for 1:1 Portraits)
+// 7. Team & Leadership CRUD (With 3:4 Portrait Cropper & Live Site Sync)
 function renderAdminTeamTable() {
   const tbody = document.getElementById('adminTeamTableBody');
   if (!tbody) return;
 
   const team = BHBStore.getTeam();
+  if (!team.length) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #64748B; padding: 24px;">No team members registered yet. Click "+ Add Member" to create one.</td></tr>`;
+    return;
+  }
+
   tbody.innerHTML = team.map(m => `
     <tr>
       <td>
-        <div style="display: flex; gap: 10px; align-items: center;">
-          <img src="${m.image}" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1px solid #E2E8F0;">
-          <b style="color: #0F172A;">${m.name}</b>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <img src="${m.image}" alt="${m.name}" style="width: 48px; height: 60px; border-radius: 4px; object-fit: cover; object-position: center 15%; border: 1px solid #CBD5E1; box-shadow: 0 2px 6px rgba(15,23,42,0.08);">
+          <div>
+            <b style="color: #0F172A; font-size: 0.95rem;">${m.name}</b>
+            <div style="font-size: 0.78rem; color: #2563EB; font-weight: 600; margin-top: 2px;">• ${m.purview || m.department || 'Governance'}</div>
+          </div>
         </div>
       </td>
-      <td>${m.position}</td>
-      <td>${m.department}</td>
+      <td><b style="color: #334155; font-size: 0.9rem;">${m.position}</b></td>
+      <td><span class="project-category-tag" style="margin: 0;">${m.department || 'Directorate'}</span></td>
+      <td>
+        <span class="status-pill success" style="font-size: 0.75rem;">${m.tier || 'Active Leader'}</span>
+      </td>
       <td>
         <div class="action-btn-group">
-          <button class="btn-icon-sm" onclick="editTeamModal('${m.id}')">Edit</button>
-          <button class="btn-icon-sm danger" onclick="BHBStore.deleteTeamMember('${m.id}')">Delete</button>
+          <button class="btn-icon-sm" onclick="editTeamModal('${m.id}')" title="Edit Member Profile">Edit</button>
+          <button class="btn-icon-sm danger" onclick="deleteTeamMemberAdmin('${m.id}')" title="Delete Member">Delete</button>
         </div>
       </td>
     </tr>
   `).join('');
 }
 
+window.deleteTeamMemberAdmin = function(id) {
+  if (confirm('Are you sure you want to remove this team member from the public website?')) {
+    BHBStore.deleteTeamMember(id);
+    showToast('Team member removed successfully!', 'info');
+  }
+};
+
 window.openNewTeamModal = function() {
   const content = document.getElementById('adminCrudModalContent');
-  document.getElementById('adminCrudModalTitle').textContent = 'Add Team Member';
+  document.getElementById('adminCrudModalTitle').textContent = 'Add Leadership Team Member';
   if (content) {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSaveTeam(event)">
         <input type="hidden" name="team_id" value="">
-        <input type="hidden" name="team_image" id="teamImageHidden" value="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80">
+        <input type="hidden" name="team_image" id="teamImageHidden" value="assets/images/team-director.jpg">
         
         <div class="form-group">
-          <label>Full Name *</label>
-          <input type="text" name="team_name" required placeholder="e.g. Dr. Aminu Kano">
+          <label>Full Name &amp; Title *</label>
+          <input type="text" name="team_name" required placeholder="e.g. Hajiya Fatima A. Yusuf">
         </div>
 
         <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <div class="form-group">
-            <label>Position / Role *</label>
-            <input type="text" name="team_pos" required placeholder="Executive Director">
+            <label>Position / Official Role *</label>
+            <input type="text" name="team_pos" required placeholder="e.g. Executive Director">
           </div>
           <div class="form-group">
-            <label>Department *</label>
-            <input type="text" name="team_dept" required placeholder="Executive Leadership">
+            <label>Department / Category *</label>
+            <input type="text" name="team_dept" required placeholder="e.g. Executive Directorate" list="deptSuggestions">
+            <datalist id="deptSuggestions">
+              <option value="Board of Trustees">
+              <option value="Executive Directorate">
+              <option value="Programs & Inclusion">
+              <option value="Health & Clinical Advisory">
+              <option value="Field Logistics & Security">
+              <option value="Women & Youth Directorate">
+            </datalist>
+          </div>
+        </div>
+
+        <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Purview / Focus Badge Tag *</label>
+            <input type="text" name="team_purview" required placeholder="e.g. Strategic Direction & Compliance" value="Strategic Direction & Compliance">
+          </div>
+          <div class="form-group">
+            <label>Governance Hierarchy Tier</label>
+            <select name="team_tier" required>
+              <option value="Executive">Executive Directorate</option>
+              <option value="Trustees">Board of Trustees</option>
+              <option value="Directorate">Program Directorate</option>
+              <option value="Advisory">Strategic Advisory</option>
+              <option value="Operations">Field Operations</option>
+            </select>
           </div>
         </div>
 
         <div class="form-group">
-          <label>Biography *</label>
-          <textarea name="team_bio" rows="3" required placeholder="Short professional background"></textarea>
+          <label>Professional Biography / Scope *</label>
+          <textarea name="team_bio" rows="3" required placeholder="Brief professional background, operational purview, and leadership scope across Kano State."></textarea>
         </div>
 
         <div class="form-group">
-          <label>Portrait Photo (Crop with 1:1 Portrait Tool)</label>
+          <label>Portrait Headshot (3:4 Ratio Interactive Cropper)</label>
           <div class="admin-dropzone">
-            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image', '1:1')" style="margin-bottom: 8px;">
-            <img id="teamImgPreview" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" style="max-height: 100px; width: 100px; border-radius: 50%; object-fit: cover; margin: 8px auto; display: block; border: 1px solid #CBD5E1;">
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image', '3:4')" style="margin-bottom: 8px;">
+            <p style="font-size: 0.78rem; color: #64748B; margin-bottom: 8px;">Supports passport, ID, and vertical portrait photos with auto-centering.</p>
+            <img id="teamImgPreview" src="assets/images/team-director.jpg" style="height: 150px; width: 120px; border-radius: 4px; object-fit: cover; object-position: center 15%; margin: 8px auto; display: block; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Save Member</button>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Save &amp; Publish Member</button>
       </form>
     `;
   }
@@ -997,7 +1041,7 @@ window.editTeamModal = function(id) {
   if (!member) return;
 
   const content = document.getElementById('adminCrudModalContent');
-  document.getElementById('adminCrudModalTitle').textContent = 'Edit Team Member';
+  document.getElementById('adminCrudModalTitle').textContent = 'Edit Team Member Profile';
   if (content) {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSaveTeam(event)">
@@ -1005,35 +1049,61 @@ window.editTeamModal = function(id) {
         <input type="hidden" name="team_image" id="teamImageHidden" value="${member.image}">
         
         <div class="form-group">
-          <label>Full Name *</label>
+          <label>Full Name &amp; Title *</label>
           <input type="text" name="team_name" value="${member.name}" required>
         </div>
 
         <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <div class="form-group">
-            <label>Position / Role *</label>
+            <label>Position / Official Role *</label>
             <input type="text" name="team_pos" value="${member.position}" required>
           </div>
           <div class="form-group">
-            <label>Department *</label>
-            <input type="text" name="team_dept" value="${member.department}" required>
+            <label>Department / Category *</label>
+            <input type="text" name="team_dept" value="${member.department || 'Executive Directorate'}" required list="deptSuggestions">
+            <datalist id="deptSuggestions">
+              <option value="Board of Trustees">
+              <option value="Executive Directorate">
+              <option value="Programs & Inclusion">
+              <option value="Health & Clinical Advisory">
+              <option value="Field Logistics & Security">
+              <option value="Women & Youth Directorate">
+            </datalist>
+          </div>
+        </div>
+
+        <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Purview / Focus Badge Tag *</label>
+            <input type="text" name="team_purview" value="${member.purview || member.department || 'Operational Strategy'}" required>
+          </div>
+          <div class="form-group">
+            <label>Governance Hierarchy Tier</label>
+            <select name="team_tier" required>
+              <option value="Executive" ${member.tier === 'Executive' ? 'selected' : ''}>Executive Directorate</option>
+              <option value="Trustees" ${member.tier === 'Trustees' ? 'selected' : ''}>Board of Trustees</option>
+              <option value="Directorate" ${member.tier === 'Directorate' ? 'selected' : ''}>Program Directorate</option>
+              <option value="Advisory" ${member.tier === 'Advisory' ? 'selected' : ''}>Strategic Advisory</option>
+              <option value="Operations" ${member.tier === 'Operations' ? 'selected' : ''}>Field Operations</option>
+            </select>
           </div>
         </div>
 
         <div class="form-group">
-          <label>Biography *</label>
+          <label>Professional Biography / Scope *</label>
           <textarea name="team_bio" rows="3" required>${member.bio}</textarea>
         </div>
 
         <div class="form-group">
-          <label>Portrait Photo (Crop with 1:1 Portrait Tool)</label>
+          <label>Portrait Headshot (3:4 Ratio Interactive Cropper)</label>
           <div class="admin-dropzone">
-            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image', '1:1')" style="margin-bottom: 8px;">
-            <img id="teamImgPreview" src="${member.image}" style="max-height: 100px; width: 100px; border-radius: 50%; object-fit: cover; margin: 8px auto; display: block; border: 1px solid #CBD5E1;">
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image', '3:4')" style="margin-bottom: 8px;">
+            <p style="font-size: 0.78rem; color: #64748B; margin-bottom: 8px;">Supports passport, ID, and vertical portrait photos with auto-centering.</p>
+            <img id="teamImgPreview" src="${member.image}" style="height: 150px; width: 120px; border-radius: 4px; object-fit: cover; object-position: center 15%; margin: 8px auto; display: block; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Update Member</button>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Save &amp; Update Member</button>
       </form>
     `;
   }
@@ -1048,12 +1118,14 @@ window.handleSaveTeam = function(e) {
     name: form.team_name.value,
     position: form.team_pos.value,
     department: form.team_dept.value,
+    purview: form.team_purview ? form.team_purview.value : form.team_dept.value,
+    tier: form.team_tier ? form.team_tier.value : 'Executive',
     bio: form.team_bio.value,
     image: form.team_image.value
   };
   BHBStore.saveTeamMember(member);
   closeModal('adminCrudModal');
-  showToast('Team roster updated and synchronized live!', 'success');
+  showToast('Team roster updated and synchronized live across public website!', 'success');
 };
 
 // 8. Partners Manager
