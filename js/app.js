@@ -640,6 +640,12 @@ function renderSettingsMetadata() {
   document.querySelectorAll('[data-bind="email"]').forEach(el => {
     el.textContent = settings.email;
   });
+
+  // Dynamic About Section Feature Image
+  const aboutImg = settings.aboutImage || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80";
+  document.querySelectorAll('[data-bind-src="aboutImage"], #aboutShowcaseImg, #aboutStoryImg').forEach(el => {
+    el.src = aboutImg;
+  });
 }
 
 // Modals

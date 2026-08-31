@@ -242,7 +242,7 @@
           <!-- Left Column: Institutional Field Showcase -->
           <div class="about-showcase-column">
             <div class="about-showcase-frame interactive-lift">
-              <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80" alt="BHB Foundation Grassroots Community Outreach in Kano State" class="about-showcase-img">
+              <img id="aboutShowcaseImg" data-bind-src="aboutImage" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80" alt="BHB Foundation Grassroots Community Outreach in Kano State" class="about-showcase-img">
               <div class="about-showcase-badge">
                 <div class="reg-title">Incorporated Non-Governmental Organization</div>
                 <div class="reg-desc">Headquarters: Nasarawa LGA, Kano State · Grassroots Verified Interventions</div>
@@ -252,9 +252,6 @@
 
           <!-- Right Column: Institutional Mandate & Symmetrical Mission/Vision Cards -->
           <div class="about-narrative-column">
-            <div>
-              <span class="about-kicker-tag">Organizational Profile</span>
-            </div>
             <h2 class="section-title-twotone">Every Individual Deserves A <br><span class="text-accent-blue">Healthy &amp; Dignified Life</span></h2>
             <p class="about-lead-p">
               BHB Foundation is an incorporated non-governmental organization established to <b>advance welfare and self-reliance</b>, expand maternal and primary health access, and equip youths and persons with disabilities with sustainable livelihood tools across Kano State.
@@ -1228,11 +1225,12 @@
 
           <!-- TAB 11: SETTINGS -->
           <div class="admin-tab-pane" id="adminTab-settings">
-            <div class="admin-settings-grid">
-              
-              <div class="settings-card">
-                <h3>Institutional Profile &amp; Banking</h3>
-                <form class="admin-modal-form" id="adminSettingsForm" onsubmit="handleSaveSettings(event)">
+            <form class="admin-modal-form" id="adminSettingsForm" onsubmit="handleSaveSettings(event)">
+              <div class="admin-settings-grid">
+                
+                <!-- Card 1: Institutional Profile & Banking -->
+                <div class="settings-card">
+                  <h3 style="color: #0F172A; font-size: 1.1rem; margin-bottom: 14px; font-weight: 700;">Institutional Profile &amp; Banking</h3>
                   <div class="form-group">
                     <label>CAC Registration Number</label>
                     <input type="text" name="cac_num" required>
@@ -1253,28 +1251,49 @@
                     <label>Zenith Bank Account Number (NGN)</label>
                     <input type="text" name="zenith_acc" required>
                   </div>
-                  <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Save Settings</button>
-                </form>
-              </div>
-
-              <div class="settings-card">
-                <h3>Database Backup &amp; Live Restore</h3>
-                <p>Export all live platform data as a portable JSON file, or restore from a previous backup.</p>
-                <div style="display: grid; gap: 14px;">
-                  <button class="btn btn-primary" onclick="exportDatabaseJSON()" style="width: 100%;">
-                    Download JSON Database Backup
-                  </button>
-                  <label class="btn btn-ghost-dark" style="width: 100%; cursor: pointer;">
-                    Restore Database from JSON Backup
-                    <input type="file" accept=".json" onchange="importDatabaseJSON(event)" style="display: none;">
-                  </label>
-                  <button class="btn btn-ghost" onclick="resetToDemoData()" style="width: 100%; color: #DC2626; border-color: rgba(220, 38, 38, 0.4);">
-                    Reset to Factory Foundation Data
-                  </button>
+                  <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Save All Settings &amp; Media</button>
                 </div>
-              </div>
 
-            </div>
+                <!-- Card 2: About Us Section Feature Picture -->
+                <div class="settings-card">
+                  <h3 style="color: #0F172A; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">About Section Feature Picture</h3>
+                  <p style="color: #64748B; font-size: 0.84rem; margin-bottom: 14px;">Change the official image displayed on both the Homepage About section and the About Us story page.</p>
+                  
+                  <input type="hidden" name="about_image" id="admin_about_img_hidden" value="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80">
+                  
+                  <div style="margin-bottom: 14px; border: 1px solid #CBD5E1; border-radius: 4px; overflow: hidden; background: #0F172A;">
+                    <img id="adminAboutImgPreview" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80" alt="About Section Preview" style="width: 100%; height: 210px; object-fit: cover; display: block;">
+                  </div>
+
+                  <div class="admin-dropzone" style="padding: 16px; margin-bottom: 14px;">
+                    <label style="font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 6px; display: block;">Upload New About Image (Crop with Interactive Tool):</label>
+                    <input type="file" accept="image/*" onchange="handleImageUpload(this, 'adminAboutImgPreview', 'about_image', '4:3')" style="margin-bottom: 6px;">
+                    <p style="font-size: 0.76rem; color: #64748B; margin: 0;">Supports 4:3, 16:9, or freeform cropping with zoom and pan.</p>
+                  </div>
+
+                  <button type="submit" class="btn btn-navy" style="width: 100%;">Update &amp; Sync About Image</button>
+                </div>
+
+                <!-- Card 3: Database Backup & Live Restore -->
+                <div class="settings-card">
+                  <h3 style="color: #0F172A; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Database Backup &amp; Live Restore</h3>
+                  <p style="color: #64748B; font-size: 0.84rem; margin-bottom: 14px;">Export all live platform data as a portable JSON file, or restore from a previous backup.</p>
+                  <div style="display: grid; gap: 12px;">
+                    <button type="button" class="btn btn-primary" onclick="exportDatabaseJSON()" style="width: 100%;">
+                      Download JSON Database Backup
+                    </button>
+                    <label class="btn btn-ghost-dark" style="width: 100%; cursor: pointer; text-align: center;">
+                      Restore Database from JSON Backup
+                      <input type="file" accept=".json" onchange="importDatabaseJSON(event)" style="display: none;">
+                    </label>
+                    <button type="button" class="btn btn-ghost" onclick="resetToDemoData()" style="width: 100%; color: #DC2626; border-color: rgba(220, 38, 38, 0.4);">
+                      Reset to Factory Foundation Data
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </form>
           </div>
 
         </div>

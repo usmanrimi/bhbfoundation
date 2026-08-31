@@ -17,6 +17,7 @@ const DEFAULT_STORE_DATA = {
     email: "info@bhbfoundation.com",
     contactEmail: "contact@bhborganization.org",
     tagline: "Empowering Families. Strengthening Communities. Creating Sustainable Futures.",
+    aboutImage: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80",
     primaryCurrency: "NGN",
     usdRate: 1550,
     zenithBank: {
@@ -630,6 +631,7 @@ class StoreEngine {
       if (stored) {
         const parsed = JSON.parse(stored);
         if (!parsed.settings) parsed.settings = DEFAULT_STORE_DATA.settings;
+        if (!parsed.settings.aboutImage) parsed.settings.aboutImage = DEFAULT_STORE_DATA.settings.aboutImage;
         if (!parsed.team || !parsed.team.length) parsed.team = DEFAULT_STORE_DATA.team;
         if (!parsed.heroSlides || !parsed.heroSlides.length) parsed.heroSlides = DEFAULT_STORE_DATA.heroSlides;
         if (!parsed.focusAreas || !parsed.focusAreas.length) parsed.focusAreas = DEFAULT_STORE_DATA.focusAreas;

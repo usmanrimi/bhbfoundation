@@ -1281,33 +1281,41 @@ function renderAdminInquiriesTable() {
   `).join('');
 }
 
-// 12. Settings
+// 12. Settings & Media Controls
 function renderAdminSettingsForm() {
   const form = document.getElementById('adminSettingsForm');
   if (!form) return;
 
   const settings = BHBStore.getSettings();
-  form.cac_num.value = settings.cacNumber;
-  form.office_address.value = settings.officeAddress;
-  form.contact_phone.value = settings.phone;
-  form.contact_email.value = settings.email;
-  form.zenith_acc.value = settings.zenithBank.accountNumber;
+  if (form.cac_num) form.cac_num.value = settings.cacNumber || '';
+  if (form.office_address) form.office_address.value = settings.officeAddress || '';
+  if (form.contact_phone) form.contact_phone.value = settings.phone || '';
+  if (form.contact_email) form.contact_email.value = settings.email || '';
+  if (form.zenith_acc && settings.zenithBank) form.zenith_acc.value = settings.zenithBank.accountNumber || '';
+
+  const aboutPreview = document.getElementById('adminAboutImgPreview');
+  const aboutHidden = document.getElementById('admin_about_img_hidden');
+  const currentImg = settings.aboutImage || 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80';
+  if (aboutPreview) aboutPreview.src = currentImg;
+  if (aboutHidden) aboutHidden.value = currentImg;
 }
 
 window.handleSaveSettings = function(e) {
   e.preventDefault();
   const form = e.target;
+  const currentSettings = BHBStore.getSettings();
   BHBStore.saveSettings({
-    cacNumber: form.cac_num.value,
-    officeAddress: form.office_address.value,
-    phone: form.contact_phone.value,
-    email: form.contact_email.value,
+    cacNumber: form.cac_num ? form.cac_num.value : currentSettings.cacNumber,
+    officeAddress: form.office_address ? form.office_address.value : currentSettings.officeAddress,
+    phone: form.contact_phone ? form.contact_phone.value : currentSettings.phone,
+    email: form.contact_email ? form.contact_email.value : currentSettings.email,
+    aboutImage: form.about_image ? form.about_image.value : (currentSettings.aboutImage || 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80'),
     zenithBank: {
-      ...BHBStore.getSettings().zenithBank,
-      accountNumber: form.zenith_acc.value
+      ...currentSettings.zenithBank,
+      accountNumber: form.zenith_acc ? form.zenith_acc.value : (currentSettings.zenithBank ? currentSettings.zenithBank.accountNumber : '')
     }
   });
-  showToast('Settings saved and synchronized live!', 'success');
+  showToast('Profile settings & About section picture updated live across platform!', 'success');
 };
 
 window.exportDatabaseJSON = function() {
