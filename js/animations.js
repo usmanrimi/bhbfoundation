@@ -23,9 +23,14 @@ function animateValue(element, start, end, duration = 1600, prefix = '', suffix 
 
 // 2. IntersectionObserver for Dynamic Scroll Reveals
 function initScrollReveals() {
-  const revealSelectors = '.reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-scale, .pastel-card, .focus-area-item, .stat-metric-block, .about-mv-item-card';
+  const revealSelectors = '.reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-scale, .pastel-card, .focus-area-item, .stat-metric-block, .about-mv-item-card, .director-profile-card, .executive-spotlight-card';
   const revealElements = document.querySelectorAll(revealSelectors);
   
+  if (!('IntersectionObserver' in window)) {
+    revealElements.forEach(el => el.classList.add('in'));
+    return;
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -56,22 +61,22 @@ function initScrollReveals() {
       }
     });
   }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.05,
+    rootMargin: '0px 0px 50px 0px'
   });
 
-  revealElements.forEach((el, index) => {
-    // Stagger delay if inside a grid
-    if (el.parentElement && (el.parentElement.classList.contains('pastel-cards-grid') || el.parentElement.classList.contains('focus-areas-grid') || el.parentElement.classList.contains('impact-stats-container'))) {
-      const childIndex = Array.from(el.parentElement.children).indexOf(el);
-      el.style.transitionDelay = `${(childIndex % 4) * 0.12}s`;
+  revealElements.forEach((el) => {
+    // Check if element is already in viewport
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+      el.classList.add('in');
+    } else {
+      observer.observe(el);
     }
-    if (!el.classList.contains('reveal-up') && !el.classList.contains('reveal-left') && !el.classList.contains('reveal-right') && !el.classList.contains('reveal-scale')) {
-      el.classList.add('reveal-up');
-    }
-    observer.observe(el);
   });
 }
+
+window.initScrollReveals = initScrollReveals;
 
 // 3. Interactive Subtle Card Hover Effects
 function initCardInteractions() {

@@ -134,6 +134,10 @@ function renderAllSections() {
   renderTeam();
   renderPartners();
   renderSettingsMetadata();
+
+  if (typeof window.initScrollReveals === 'function') {
+    window.initScrollReveals();
+  }
 }
 
 // 3. Navigation & Mobile Drawer
@@ -539,7 +543,10 @@ window.submitBlogComment = function(e, postId) {
 
 // 7. Team & Leadership Showcase (Dynamic Live Rendering from Store)
 function renderTeam() {
-  const team = BHBStore.getTeam();
+  let team = BHBStore.getTeam();
+  if (!team || !team.length) {
+    team = (typeof DEFAULT_STORE_DATA !== 'undefined' && DEFAULT_STORE_DATA.team) ? DEFAULT_STORE_DATA.team : [];
+  }
   if (!team || !team.length) return;
 
   const chairman = team.find(m => m.tier === 'Trustees' || m.position.toLowerCase().includes('chairman') || m.id === 'team-1') || team[0];
@@ -548,6 +555,7 @@ function renderTeam() {
   // 1. Render Chairman Spotlight on both index.html and team.html
   const spotlightContainers = document.querySelectorAll('.dynamic-team-spotlight');
   spotlightContainers.forEach(container => {
+    container.classList.add('in');
     container.innerHTML = `
       <div class="executive-spotlight-photo-frame">
         <img src="${chairman.image}" alt="${chairman.name}" class="executive-spotlight-photo">
@@ -580,7 +588,7 @@ function renderTeam() {
     const displayList = isHomePage ? others.slice(0, 3) : others;
 
     container.innerHTML = displayList.map(m => `
-      <div class="director-profile-card interactive-lift reveal-up">
+      <div class="director-profile-card interactive-lift reveal-up in">
         <div class="director-photo-container">
           <img src="${m.image}" alt="${m.name}">
           <div class="director-photo-gradient"></div>

@@ -4,7 +4,7 @@
  * (WITH BLOG CMS, LIKES, COMMENTS, ENGAGEMENT & ADMIN MODERATION)
  */
 
-const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V7';
+const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V8';
 
 const DEFAULT_STORE_DATA = {
   settings: {
@@ -629,8 +629,14 @@ class StoreEngine {
       const stored = localStorage.getItem(BHB_STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
+        if (!parsed.settings) parsed.settings = DEFAULT_STORE_DATA.settings;
+        if (!parsed.team || !parsed.team.length) parsed.team = DEFAULT_STORE_DATA.team;
+        if (!parsed.heroSlides || !parsed.heroSlides.length) parsed.heroSlides = DEFAULT_STORE_DATA.heroSlides;
+        if (!parsed.focusAreas || !parsed.focusAreas.length) parsed.focusAreas = DEFAULT_STORE_DATA.focusAreas;
+        if (!parsed.projects || !parsed.projects.length) parsed.projects = DEFAULT_STORE_DATA.projects;
+        if (!parsed.partners || !parsed.partners.length) parsed.partners = DEFAULT_STORE_DATA.partners;
         if (!parsed.comments) parsed.comments = DEFAULT_STORE_DATA.comments;
-        if (!parsed.posts) parsed.posts = DEFAULT_STORE_DATA.posts;
+        if (!parsed.posts || !parsed.posts.length) parsed.posts = DEFAULT_STORE_DATA.posts;
         if (!parsed.donations || !parsed.donations.length) parsed.donations = DEFAULT_STORE_DATA.donations;
         if (!parsed.volunteers || !parsed.volunteers.length) parsed.volunteers = DEFAULT_STORE_DATA.volunteers;
         if (!parsed.inquiries || !parsed.inquiries.length) parsed.inquiries = DEFAULT_STORE_DATA.inquiries;
