@@ -930,8 +930,8 @@ nav.nav-links a.active {
 .executive-spotlight-photo-frame {
   position: relative;
   height: 100%;
-  min-height: 420px;
-  background: var(--navy);
+  min-height: 480px;
+  background: #0A1220;
   overflow: hidden;
 }
 
@@ -939,7 +939,7 @@ nav.nav-links a.active {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center 8%;
   display: block;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -953,20 +953,20 @@ nav.nav-links a.active {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(10, 18, 32, 0.92);
+  background: rgba(10, 18, 32, 0.94);
   backdrop-filter: blur(6px);
-  padding: 12px 18px;
+  padding: 12px 20px;
   color: #FFFFFF;
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   border-top: 2px solid var(--blue);
   z-index: 2;
 }
 
 .executive-spotlight-details {
-  padding: 40px 44px;
+  padding: 44px 48px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -986,7 +986,7 @@ nav.nav-links a.active {
 }
 
 .executive-name {
-  font-size: 1.85rem;
+  font-size: 1.95rem;
   font-weight: 800;
   color: var(--navy);
   margin-bottom: 6px;
@@ -994,7 +994,7 @@ nav.nav-links a.active {
 }
 
 .executive-title {
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-weight: 700;
   color: var(--blue);
   margin-bottom: 16px;
@@ -1003,9 +1003,9 @@ nav.nav-links a.active {
 .executive-quote {
   background: #F8FAFC;
   border-left: 3px solid var(--blue);
-  padding: 14px 18px;
-  font-size: 0.96rem;
-  line-height: 1.65;
+  padding: 16px 20px;
+  font-size: 0.98rem;
+  line-height: 1.68;
   color: #334155;
   font-style: italic;
   margin-bottom: 18px;
@@ -1034,43 +1034,59 @@ nav.nav-links a.active {
   font-weight: 700;
 }
 
-/* Secondary Directorate Grid - Optimized for Portrait Headshots */
+/* Secondary Directorate Grid - Spacious, Luxury Headshot Formation */
 .leadership-directorate-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+@media (max-width: 1024px) {
+  .leadership-directorate-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .leadership-directorate-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .director-profile-card {
   background: #FFFFFF;
-  border: 1px solid var(--border-light);
-  border-top: 3px solid var(--navy);
+  border: 1px solid #E2E8F0;
+  border-top: 4px solid var(--blue);
+  border-radius: 0;
   display: flex;
   flex-direction: column;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   position: relative;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
 .director-profile-card:hover {
-  transform: translateY(-8px);
-  border-top-color: var(--blue);
-  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.14), 0 0 0 1px rgba(37, 99, 235, 0.15);
+  transform: translateY(-10px);
+  border-top-color: #1D4ED8;
+  box-shadow: 0 24px 48px -12px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(37, 99, 235, 0.2);
 }
 
 .director-photo-container {
-  height: 310px;
+  height: 390px;
   width: 100%;
   overflow: hidden;
   position: relative;
-  background: #0F172A;
+  background: #0A1220;
 }
 
 .director-photo-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center 8%;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   display: block;
 }
@@ -1078,33 +1094,33 @@ nav.nav-links a.active {
 .director-photo-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.65) 0%, rgba(15, 23, 42, 0.1) 40%, transparent 100%);
+  background: linear-gradient(to top, rgba(10, 18, 32, 0.8) 0%, rgba(10, 18, 32, 0.2) 35%, transparent 65%);
   pointer-events: none;
   z-index: 1;
 }
 
 .director-photo-badge {
   position: absolute;
-  bottom: 12px;
-  left: 14px;
-  background: rgba(10, 18, 32, 0.88);
-  backdrop-filter: blur(4px);
+  bottom: 14px;
+  left: 16px;
+  background: rgba(10, 18, 32, 0.92);
+  backdrop-filter: blur(6px);
   color: #38BDF8;
   font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   padding: 4px 10px;
   border-left: 3px solid var(--blue);
   z-index: 2;
 }
 
 .director-profile-card:hover .director-photo-container img {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 .director-profile-body {
-  padding: 24px;
+  padding: 26px 24px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -1112,49 +1128,41 @@ nav.nav-links a.active {
   background: #FFFFFF;
 }
 
-.director-dept-tag {
-  font-size: 0.74rem;
-  font-weight: 800;
-  color: var(--blue);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 6px;
-}
-
 .director-name {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--navy);
   margin-bottom: 4px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
 }
 
 .director-role {
-  font-size: 0.9rem;
+  font-size: 0.94rem;
   font-weight: 700;
   color: var(--blue);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+}
+
+.director-purview-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  color: #1E40AF;
+  font-size: 0.76rem;
+  font-weight: 700;
+  width: fit-content;
+  margin-bottom: 14px;
 }
 
 .director-summary {
   font-size: 0.92rem;
-  line-height: 1.62;
+  line-height: 1.65;
   color: var(--text-body);
-  margin-bottom: 18px;
-}
-
-.director-footer-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--navy);
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  border-left: 3px solid var(--blue);
-  padding: 6px 12px;
-  width: fit-content;
+  margin: 0;
 }
 
 /* ==========================================================================

@@ -1025,7 +1025,7 @@ window.openNewTeamModal = function() {
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image', '3:4')" style="margin-bottom: 8px;">
             <p style="font-size: 0.78rem; color: #64748B; margin-bottom: 8px;">Supports passport, ID, and vertical portrait photos with auto-centering.</p>
-            <img id="teamImgPreview" src="assets/images/team-director.jpg" style="height: 150px; width: 120px; border-radius: 4px; object-fit: cover; object-position: center 15%; margin: 8px auto; display: block; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
+            <img id="teamImgPreview" src="assets/images/team-director.jpg" style="height: 160px; width: 128px; border-radius: 4px; object-fit: cover; object-position: center 8%; margin: 8px auto; display: block; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
           </div>
         </div>
 
@@ -1099,7 +1099,7 @@ window.editTeamModal = function(id) {
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image', '3:4')" style="margin-bottom: 8px;">
             <p style="font-size: 0.78rem; color: #64748B; margin-bottom: 8px;">Supports passport, ID, and vertical portrait photos with auto-centering.</p>
-            <img id="teamImgPreview" src="${member.image}" style="height: 150px; width: 120px; border-radius: 4px; object-fit: cover; object-position: center 15%; margin: 8px auto; display: block; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
+            <img id="teamImgPreview" src="${member.image}" style="height: 160px; width: 128px; border-radius: 4px; object-fit: cover; object-position: center 8%; margin: 8px auto; display: block; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
           </div>
         </div>
 

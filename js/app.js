@@ -590,19 +590,18 @@ function renderTeam() {
     container.innerHTML = displayList.map(m => `
       <div class="director-profile-card interactive-lift reveal-up in">
         <div class="director-photo-container">
-          <img src="${m.image}" alt="${m.name}">
+          <img src="${m.image}" alt="${m.name}" loading="lazy">
           <div class="director-photo-gradient"></div>
           <div class="director-photo-badge">${m.department || 'Directorate'}</div>
         </div>
         <div class="director-profile-body">
           <div>
-            <div class="director-dept-tag">${m.department || 'Leadership Directorate'}</div>
             <h4 class="director-name">${m.name}</h4>
             <div class="director-role">${m.position}</div>
+            <div class="director-purview-pill">
+              <span>•</span> ${m.purview || m.department || 'Operational Strategy'}
+            </div>
             <p class="director-summary">${m.bio}</p>
-          </div>
-          <div class="director-footer-badge">
-            <span>•</span> ${m.purview || m.department || 'Operational Strategy'}
           </div>
         </div>
       </div>
