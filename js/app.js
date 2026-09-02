@@ -588,20 +588,35 @@ function renderTeam() {
     const displayList = isHomePage ? others.slice(0, 3) : others;
 
     container.innerHTML = displayList.map(m => `
-      <div class="director-profile-card interactive-lift reveal-up in">
-        <div class="director-photo-container">
-          <img src="${m.image}" alt="${m.name}" loading="lazy">
-          <div class="director-photo-gradient"></div>
-          <div class="director-photo-badge">${m.department || 'Directorate'}</div>
-        </div>
-        <div class="director-profile-body">
-          <div>
-            <h4 class="director-name">${m.name}</h4>
-            <div class="director-role">${m.position}</div>
-            <div class="director-purview-pill">
-              <span>•</span> ${m.purview || m.department || 'Operational Strategy'}
+      <div class="team-card-cinematic interactive-lift reveal-up in">
+        <div class="team-card-photo-wrapper">
+          <img src="${m.image}" alt="${m.name}" loading="lazy" class="team-card-portrait">
+          <div class="team-card-photo-vignette"></div>
+          
+          <!-- Default Base Info (Name & Role) -->
+          <div class="team-card-default-info">
+            <span class="team-card-dept-badge">${m.department || 'Directorate'}</span>
+            <h4 class="team-card-name">${m.name}</h4>
+            <div class="team-card-role">${m.position}</div>
+            <div class="team-hover-hint">Hover for bio <span>→</span></div>
+          </div>
+
+          <!-- Cinematic Slide-Up Hover Overlay (Reveals "About You") -->
+          <div class="team-card-hover-overlay">
+            <div>
+              <span class="team-hover-dept">${m.department || 'Leadership Directorate'}</span>
+              <h4 class="team-hover-name">${m.name}</h4>
+              <div class="team-hover-role">${m.position}</div>
             </div>
-            <p class="director-summary">${m.bio}</p>
+
+            <div class="team-hover-about">
+              <div class="team-hover-about-label">About &amp; Leadership Scope</div>
+              <p class="team-hover-bio">${m.bio}</p>
+            </div>
+
+            <div class="team-hover-purview">
+              <span>•</span> ${m.purview || m.department || 'Strategic Leadership'}
+            </div>
           </div>
         </div>
       </div>

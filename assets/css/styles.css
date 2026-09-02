@@ -1034,7 +1034,147 @@ nav.nav-links a.active {
   font-weight: 700;
 }
 
-/* Secondary Directorate Grid - Spacious, Luxury Headshot Formation */
+/* ==========================================================================
+   INTERACTIVE PHILOSOPHY TENETS (HOVER REVEAL & COLORFUL ACCENTS)
+   ========================================================================== */
+.story-tenets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.story-tenet-item {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 18px 22px;
+  border-radius: 6px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-left: 5px solid var(--blue);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Card 1: Sky Cyan Theme */
+.story-tenet-item.tenet-cyan {
+  border-left-color: #0284C7;
+  background: linear-gradient(135deg, #F0F9FF 0%, #FFFFFF 100%);
+  border-color: #BAE6FD;
+}
+.story-tenet-item.tenet-cyan .story-tenet-icon {
+  background: #0284C7;
+  color: #FFFFFF;
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+}
+.story-tenet-item.tenet-cyan:hover {
+  border-color: #0284C7;
+  background: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 100%);
+  box-shadow: 0 12px 28px -6px rgba(2, 132, 199, 0.18);
+  transform: translateY(-4px) translateX(6px);
+}
+
+/* Card 2: Royal Blue Theme */
+.story-tenet-item.tenet-blue {
+  border-left-color: #2563EB;
+  background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%);
+  border-color: #BFDBFE;
+}
+.story-tenet-item.tenet-blue .story-tenet-icon {
+  background: #2563EB;
+  color: #FFFFFF;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+.story-tenet-item.tenet-blue:hover {
+  border-color: #2563EB;
+  background: linear-gradient(135deg, #DBEAFE 0%, #EFF6FF 100%);
+  box-shadow: 0 12px 28px -6px rgba(37, 99, 235, 0.18);
+  transform: translateY(-4px) translateX(6px);
+}
+
+/* Card 3: Deep Navy Theme */
+.story-tenet-item.tenet-navy {
+  border-left-color: #0F172A;
+  background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
+  border-color: #CBD5E1;
+}
+.story-tenet-item.tenet-navy .story-tenet-icon {
+  background: #0F172A;
+  color: #38BDF8;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);
+}
+.story-tenet-item.tenet-navy:hover {
+  border-color: #0F172A;
+  background: linear-gradient(135deg, #E2E8F0 0%, #F1F5F9 100%);
+  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.18);
+  transform: translateY(-4px) translateX(6px);
+}
+
+.story-tenet-icon {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  transition: transform 0.3s ease;
+}
+.story-tenet-item:hover .story-tenet-icon {
+  transform: scale(1.1);
+}
+
+.story-tenet-text {
+  flex: 1;
+}
+
+.story-tenet-text h4 {
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.story-tenet-toggle-icon {
+  font-size: 0.85rem;
+  color: #64748B;
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+.story-tenet-item:hover .story-tenet-toggle-icon {
+  transform: rotate(90deg);
+  color: #2563EB;
+}
+
+/* Collapsible Description - Hidden by default, expands on hover */
+.story-tenet-text p {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin: 0;
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.6;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, margin 0.35s ease;
+}
+
+.story-tenet-item:hover .story-tenet-text p {
+  max-height: 120px;
+  opacity: 1;
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   CINEMATIC TEAM SECTION (FULL PORTRAIT & HOVER REVEAL "ABOUT")
+   ========================================================================== */
 .leadership-directorate-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1055,114 +1195,356 @@ nav.nav-links a.active {
   }
 }
 
-.director-profile-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-top: 4px solid var(--blue);
-  border-radius: 0;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
+.team-card-cinematic {
   position: relative;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0A1220;
+  border: 1px solid #334155;
+  box-shadow: 0 8px 24px -4px rgba(10, 18, 32, 0.25);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
 }
 
-.director-profile-card:hover {
+.team-card-cinematic:hover {
   transform: translateY(-10px);
-  border-top-color: #1D4ED8;
-  box-shadow: 0 24px 48px -12px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(37, 99, 235, 0.2);
+  border-color: #38BDF8;
+  box-shadow: 0 24px 48px -10px rgba(10, 18, 32, 0.5), 0 0 0 1px rgba(56, 189, 248, 0.4);
 }
 
-.director-photo-container {
-  height: 390px;
-  width: 100%;
-  overflow: hidden;
+.team-card-photo-wrapper {
   position: relative;
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
   background: #0A1220;
 }
 
-.director-photo-container img {
+.team-card-portrait {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 8%;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  object-position: top center;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
 }
 
-.director-photo-gradient {
+.team-card-cinematic:hover .team-card-portrait {
+  transform: scale(1.06);
+  filter: brightness(0.9);
+}
+
+.team-card-photo-vignette {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10, 18, 32, 0.8) 0%, rgba(10, 18, 32, 0.2) 35%, transparent 65%);
+  background: linear-gradient(to top, rgba(10, 18, 32, 0.95) 0%, rgba(10, 18, 32, 0.6) 35%, rgba(10, 18, 32, 0.1) 65%, transparent 100%);
   pointer-events: none;
   z-index: 1;
 }
 
-.director-photo-badge {
+/* Default Base Info at Card Bottom */
+.team-card-default-info {
   position: absolute;
-  bottom: 14px;
-  left: 16px;
-  background: rgba(10, 18, 32, 0.92);
-  backdrop-filter: blur(6px);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 22px 20px;
+  z-index: 2;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.team-card-cinematic:hover .team-card-default-info {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.team-card-dept-badge {
+  display: inline-block;
+  background: rgba(37, 99, 235, 0.9);
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.team-card-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.team-card-role {
+  font-size: 0.94rem;
+  font-weight: 700;
   color: #38BDF8;
+  margin-bottom: 6px;
+}
+
+.team-hover-hint {
+  font-size: 0.74rem;
+  color: #94A3B8;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Cinematic Hover Overlay (Slides up and reveals About You) */
+.team-card-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 18, 32, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 28px 24px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  border-top: 4px solid #38BDF8;
+}
+
+.team-card-cinematic:hover .team-card-hover-overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.team-hover-dept {
   font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  padding: 4px 10px;
-  border-left: 3px solid var(--blue);
-  z-index: 2;
+  color: #38BDF8;
+  display: block;
+  margin-bottom: 4px;
 }
 
-.director-profile-card:hover .director-photo-container img {
-  transform: scale(1.05);
+.team-hover-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 4px;
 }
 
-.director-profile-body {
-  padding: 26px 24px;
+.team-hover-role {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #93C5FD;
+}
+
+.team-hover-about {
+  margin: 14px 0;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 3px solid #2563EB;
+  border-radius: 4px;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  flex: 1;
-  justify-content: space-between;
-  background: #FFFFFF;
+  justify-content: center;
 }
 
-.director-name {
-  font-size: 1.35rem;
+.team-hover-about-label {
+  font-size: 0.72rem;
   font-weight: 800;
-  color: var(--navy);
-  margin-bottom: 4px;
-  letter-spacing: -0.015em;
-  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #38BDF8;
+  margin-bottom: 6px;
 }
 
-.director-role {
-  font-size: 0.94rem;
+.team-hover-bio {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #E2E8F0;
+  margin: 0;
+}
+
+.team-hover-purview {
+  font-size: 0.78rem;
   font-weight: 700;
-  color: var(--blue);
-  margin-bottom: 10px;
+  color: #38BDF8;
+  background: rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  width: fit-content;
 }
 
-.director-purview-pill {
+/* ==========================================================================
+   COLORFUL IMPACT VERIFICATION CARDS
+   ========================================================================== */
+.impact-verification-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 36px;
+}
+
+@media (max-width: 1024px) {
+  .impact-verification-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.verification-pillar-card {
+  border-radius: 8px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+/* Card 1: Cyan Theme */
+.verification-pillar-card.verif-cyan {
+  border-top: 5px solid #0284C7;
+  background: linear-gradient(180deg, #F0F9FF 0%, #FFFFFF 30%);
+}
+.verification-pillar-card.verif-cyan:hover {
+  transform: translateY(-8px);
+  border-color: #0284C7;
+  box-shadow: 0 20px 40px -10px rgba(2, 132, 199, 0.18);
+}
+.verification-pillar-card.verif-cyan .verif-icon-box {
+  background: #E0F2FE;
+  color: #0284C7;
+}
+.verification-pillar-card.verif-cyan .verif-pill {
+  background: #E0F2FE;
+  color: #0369A1;
+  border: 1px solid #BAE6FD;
+}
+
+/* Card 2: Royal Blue Theme */
+.verification-pillar-card.verif-blue {
+  border-top: 5px solid #2563EB;
+  background: linear-gradient(180deg, #EFF6FF 0%, #FFFFFF 30%);
+}
+.verification-pillar-card.verif-blue:hover {
+  transform: translateY(-8px);
+  border-color: #2563EB;
+  box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.18);
+}
+.verification-pillar-card.verif-blue .verif-icon-box {
+  background: #DBEAFE;
+  color: #2563EB;
+}
+.verification-pillar-card.verif-blue .verif-pill {
+  background: #EFF6FF;
+  color: #1E40AF;
+  border: 1px solid #BFDBFE;
+}
+
+/* Card 3: Deep Navy / Sky Accent Theme */
+.verification-pillar-card.verif-navy {
+  border-top: 5px solid #0F172A;
+  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 30%);
+}
+.verification-pillar-card.verif-navy:hover {
+  transform: translateY(-8px);
+  border-color: #0F172A;
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.18);
+}
+.verification-pillar-card.verif-navy .verif-icon-box {
+  background: #0F172A;
+  color: #38BDF8;
+}
+.verification-pillar-card.verif-navy .verif-pill {
+  background: #F1F5F9;
+  color: #0F172A;
+  border: 1px solid #CBD5E1;
+}
+
+.verif-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.verif-num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  color: #64748B;
+  opacity: 0.7;
+}
+
+.verif-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+.verification-pillar-card:hover .verif-icon-box {
+  transform: scale(1.1);
+}
+.verif-icon-box svg {
+  width: 24px;
+  height: 24px;
+}
+
+.verif-tag {
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+
+.verification-pillar-card h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.verification-pillar-card p {
+  font-size: 0.94rem;
+  color: #475569;
+  line-height: 1.68;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.verif-footer {
+  border-top: 1px solid #F1F5F9;
+  padding-top: 16px;
+}
+
+.verif-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 10px;
-  background: #EFF6FF;
-  border: 1px solid #BFDBFE;
-  color: #1E40AF;
   font-size: 0.76rem;
-  font-weight: 700;
-  width: fit-content;
-  margin-bottom: 14px;
-}
-
-.director-summary {
-  font-size: 0.92rem;
-  line-height: 1.65;
-  color: var(--text-body);
-  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 4px;
 }
 
 /* ==========================================================================
