@@ -114,91 +114,12 @@
       line-height: 1.65;
     }
 
-    /* Photo Showcase Grid */
-    .impact-gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 56px;
-    }
-
-    .impact-photo-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .impact-photo-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .impact-photo-thumb-wrapper {
-      position: relative;
-      height: 230px;
-      overflow: hidden;
-    }
-
-    .impact-photo-thumb {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.35s ease;
-    }
-    .impact-photo-card:hover .impact-photo-thumb {
-      transform: scale(1.05);
-    }
-
-    .impact-photo-overlay-tag {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
-      background: rgba(15, 23, 42, 0.85);
-      color: #FFFFFF;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 4px 10px;
-    }
-
-    .impact-photo-body {
-      padding: 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .impact-photo-body h4 {
-      font-size: 1.1rem;
-      color: var(--navy);
-      margin-bottom: 6px;
-      line-height: 1.4;
-    }
-
-    .impact-photo-body p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
     @media (max-width: 1024px) {
       .video-spotlight-card {
         grid-template-columns: 1fr;
       }
       .video-spotlight-content {
         padding: 28px;
-      }
-      .impact-gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .impact-gallery-grid {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -246,9 +167,9 @@
   <!-- Page Header Banner (Clean Title Without Removed Label) -->
   <div class="page-header-banner">
     <div class="container">
-      <h1>Documented Impact &amp; <br><span class="hero-two-color">Real Lives Transformed</span></h1>
+      <h1>Documented Impact &amp; <br><span class="hero-two-color">Direct Grassroots Interventions</span></h1>
       <p>
-        Verifiable metrics, qualitative video documentaries, and authentic photographic field evidence from our community-led interventions across Northern Nigeria.
+        Verifiable metrics, direct community engagement, and accountable stewardship advancing welfare and self-reliance across Kano State.
       </p>
     </div>
   </div>
@@ -330,121 +251,57 @@
     </div>
   </section>
 
-  <!-- Section 2: Real Impact Photo Showcase (Picture Gallery) -->
+  <!-- Section 2: Impact Measurement & Accountability Framework -->
   <section>
     <div class="container">
-      <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
-        <div>
-          <span class="section-label">Field Documentation</span>
-          <h2>Moments of Grassroots Transformation</h2>
-          <p class="lead">Authentic photographs capturing our mobile medical posts, training labs, seed distributions, and community consultations.</p>
-        </div>
+      <div class="section-header">
+        <span class="section-label">Accountability &amp; Governance</span>
+        <h2>How We Measure &amp; Verify Impact</h2>
+        <p class="lead">Every project undertaken by BHB Foundation follows strict verification protocols to ensure real, transparent community benefits.</p>
       </div>
 
-      <div class="impact-gallery-grid">
-        
-        <!-- Photo 1 -->
-        <div class="impact-photo-card" onclick="openImpactPhotoModal('photo-1')">
-          <div class="impact-photo-thumb-wrapper">
-            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" alt="Assistive Tech Boot Camp" class="impact-photo-thumb">
-            <span class="impact-photo-overlay-tag">Digital Inclusion</span>
+      <div class="about-pillars-grid">
+        <div class="pillar-card interactive-lift">
+          <div class="pillar-card-header">
+            <span class="pillar-num-badge">01</span>
+            <div class="pillar-category-tag">Field Verification</div>
           </div>
-          <div class="impact-photo-body">
-            <div>
-              <h4>Assistive Coding Boot Camp for Girls with Disabilities</h4>
-              <p>Participants mastering accessible screen-reader navigation and web design fundamentals at Kano Metropolitan Hub.</p>
-            </div>
-            <div style="margin-top: 12px; font-size: 0.8rem; color: var(--blue); font-weight: 700;">
-              Click to view field details →
-            </div>
+          <div class="pillar-card-body">
+            <h3>Direct Baseline Assessments</h3>
+            <p>Before launching any intervention, our field team conducts in-person household surveys across Kano communities to identify immediate needs and establish measurable baseline targets.</p>
+          </div>
+          <div class="pillar-card-footer">
+            <span class="pillar-footer-tag">Community Surveyed</span>
           </div>
         </div>
 
-        <!-- Photo 2 -->
-        <div class="impact-photo-card" onclick="openImpactPhotoModal('photo-2')">
-          <div class="impact-photo-thumb-wrapper">
-            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=900&q=80" alt="Maternal Health Clinic" class="impact-photo-thumb">
-            <span class="impact-photo-overlay-tag">Maternal Health</span>
+        <div class="pillar-card interactive-lift">
+          <div class="pillar-card-header">
+            <span class="pillar-num-badge">02</span>
+            <div class="pillar-category-tag">Transparent Stewardship</div>
           </div>
-          <div class="impact-photo-body">
-            <div>
-              <h4>Mobile Prenatal Clinical Post in Nasarawa LGA</h4>
-              <p>Community healthcare workers conducting preventative prenatal ultrasound scans and nutrition counseling.</p>
-            </div>
-            <div style="margin-top: 12px; font-size: 0.8rem; color: var(--blue); font-weight: 700;">
-              Click to view field details →
-            </div>
+          <div class="pillar-card-body">
+            <h3>Accountable Resource Delivery</h3>
+            <p>Every naira received and deployed is accounted for with detailed milestone tracking, vendor audits, and direct handover verification to beneficiaries and partner institutions.</p>
+          </div>
+          <div class="pillar-card-footer">
+            <span class="pillar-footer-tag">Audited Allocation</span>
           </div>
         </div>
 
-        <!-- Photo 3 -->
-        <div class="impact-photo-card" onclick="openImpactPhotoModal('photo-3')">
-          <div class="impact-photo-thumb-wrapper">
-            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=80" alt="Women Agro Grants" class="impact-photo-thumb">
-            <span class="impact-photo-overlay-tag">Women Livelihoods</span>
+        <div class="pillar-card interactive-lift">
+          <div class="pillar-card-header">
+            <span class="pillar-num-badge">03</span>
+            <div class="pillar-category-tag">Long-Term Impact</div>
           </div>
-          <div class="impact-photo-body">
-            <div>
-              <h4>Agro-Business Seed Grants Distribution</h4>
-              <p>220 widowed mothers receiving grain processing toolkits and micro-seed grants in Fagge Community Center.</p>
-            </div>
-            <div style="margin-top: 12px; font-size: 0.8rem; color: var(--blue); font-weight: 700;">
-              Click to view field details →
-            </div>
+          <div class="pillar-card-body">
+            <h3>Post-Deployment Monitoring</h3>
+            <p>Our commitment extends beyond initial deployment. We conduct 3-month and 6-month follow-up evaluations to ensure sustainable skills adoption, health outcomes, and family welfare.</p>
+          </div>
+          <div class="pillar-card-footer">
+            <span class="pillar-footer-tag">Sustained Results</span>
           </div>
         </div>
-
-        <!-- Photo 4 -->
-        <div class="impact-photo-card" onclick="openImpactPhotoModal('photo-4')">
-          <div class="impact-photo-thumb-wrapper">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Youth Apprenticeship" class="impact-photo-thumb">
-            <span class="impact-photo-overlay-tag">Youth Mentorship</span>
-          </div>
-          <div class="impact-photo-body">
-            <div>
-              <h4>Youth Technical Diagnostics &amp; IT Mentorship</h4>
-              <p>Young apprentices in Kano Municipal receiving certified electronics repair and solar installation coaching.</p>
-            </div>
-            <div style="margin-top: 12px; font-size: 0.8rem; color: var(--blue); font-weight: 700;">
-              Click to view field details →
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 5 -->
-        <div class="impact-photo-card" onclick="openImpactPhotoModal('photo-5')">
-          <div class="impact-photo-thumb-wrapper">
-            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="Town Hall Consultation" class="impact-photo-thumb">
-            <span class="impact-photo-overlay-tag">Community Action</span>
-          </div>
-          <div class="impact-photo-body">
-            <div>
-              <h4>Community Leaders &amp; Women Town Hall</h4>
-              <p>Participatory grassroots dialogue in Dala LGA co-designing localized water sanitation solutions.</p>
-            </div>
-            <div style="margin-top: 12px; font-size: 0.8rem; color: var(--blue); font-weight: 700;">
-              Click to view field details →
-            </div>
-          </div>
-        </div>
-
-        <!-- Photo 6 -->
-        <div class="impact-photo-card" onclick="openImpactPhotoModal('photo-6')">
-          <div class="impact-photo-thumb-wrapper">
-            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" alt="Inclusive Education" class="impact-photo-thumb">
-            <span class="impact-photo-overlay-tag">Inclusive Literacy</span>
-          </div>
-          <div class="impact-photo-body">
-            <div>
-              <h4>Classroom Inclusion &amp; Learning Kit Handover</h4>
-              <p>Equipping rural schools in Tarauni LGA with tactile learning equipment and assistive educational materials.</p>
-            </div>
-            <div style="margin-top: 12px; font-size: 0.8rem; color: var(--blue); font-weight: 700;">
-              Click to view field details →
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -600,16 +457,6 @@
     </div>
   </div>
 
-  <!-- Interactive Photo Details Modal -->
-  <div class="modal-backdrop" id="impactPhotoModal">
-    <div class="modal-window" style="max-width: 780px; width: 95%; background: #FFFFFF; border-radius: 8px; overflow: hidden; padding: 0;">
-      <div style="position: absolute; top: 16px; right: 20px; z-index: 10;">
-        <button onclick="closeModal('impactPhotoModal')" style="background:none; border:none; font-size:1.8rem; cursor:pointer; color: #FFFFFF; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">×</button>
-      </div>
-      <div id="impactPhotoModalContent"></div>
-    </div>
-  </div>
-
   <!-- Generic Modal -->
   <div class="modal-backdrop" id="genericModal">
     <div class="modal-window">
@@ -625,87 +472,8 @@
   <script src="js/animations.js"></script>
   <script src="js/app.js"></script>
   <script>
-    const IMPACT_PHOTOS = {
-      'photo-1': {
-        title: "Assistive Coding Boot Camp for Girls with Disabilities",
-        category: "Digital Inclusion & Assistive Tech",
-        location: "Kano Metropolitan Hub",
-        date: "August 2026",
-        image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
-        narrative: "Direct field documentation showing adolescent students using NVDA screen-reading technology and tactile keyboard navigators to build semantic HTML web pages. 100% of participants achieved graduation certification."
-      },
-      'photo-2': {
-        title: "Mobile Primary Maternal Health Outreach Clinic",
-        category: "Community Health & Well-being",
-        location: "Nasarawa LGA, Kano",
-        date: "July 2026",
-        image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
-        narrative: "BHB voluntary health practitioners providing rural expectant mothers with preventative prenatal diagnostics, maternal health counseling, and essential delivery preparation toolkits."
-      },
-      'photo-3': {
-        title: "Agro-Business Seed Grants & Processing Toolkits",
-        category: "Women Livelihoods & Livelihoods",
-        location: "Fagge Community Center, Kano",
-        date: "June 2026",
-        image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80",
-        narrative: "Distribution of seed grants and mechanized grain processing equipment to 220 widowed mothers, transitioning vulnerable households into self-sustaining small agricultural cooperatives."
-      },
-      'photo-4': {
-        title: "Youth Technical Diagnostics & IT Hardware Workshop",
-        category: "Youth Mentorship & Vocations",
-        location: "Kano Municipal Center",
-        date: "July 2026",
-        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-        narrative: "Young trainees participating in practical solar circuitry and computer hardware diagnostics, preparing for certified field apprenticeships and sustainable trade employment."
-      },
-      'photo-5': {
-        title: "Community Elders & Women Stakeholders Town Hall",
-        category: "Grassroots Civic Action",
-        location: "Dala LGA, Kano",
-        date: "May 2026",
-        image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
-        narrative: "Participatory town hall meeting ensuring local communities directly shape, oversee, and sustain foundation-funded clean water and sanitation infrastructure."
-      },
-      'photo-6': {
-        title: "Classroom Inclusion & Learning Kit Handover",
-        category: "Quality Education",
-        location: "Tarauni LGA School",
-        date: "June 2026",
-        image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80",
-        narrative: "Handover of braille reading aids, tactile math kits, and school supplies to ensure inclusive classrooms for children with diverse physical and sensory needs."
-      }
-    };
-
     window.openSuccessVideoModal = function() {
       openModal('successVideoModal');
-    };
-
-    window.openImpactPhotoModal = function(photoId) {
-      const data = IMPACT_PHOTOS[photoId];
-      if (!data) return;
-
-      const content = document.getElementById('impactPhotoModalContent');
-      if (content) {
-        content.innerHTML = `
-          <div>
-            <img src="${data.image}" alt="${data.title}" style="width: 100%; max-height: 420px; object-fit: cover; display: block;">
-            <div style="padding: 28px 32px;">
-              <span class="project-category-tag" style="margin-bottom: 8px;">${data.category}</span>
-              <h2 style="font-size: 1.5rem; color: var(--navy); margin-bottom: 6px; line-height: 1.3;">${data.title}</h2>
-              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
-                <b>Location:</b> ${data.location} &nbsp;|&nbsp; <b>Date:</b> ${data.date}
-              </div>
-              <p style="font-size: 1rem; color: var(--text-body); line-height: 1.7; margin-bottom: 24px;">
-                ${data.narrative}
-              </p>
-              <div style="display: flex; justify-content: flex-end; border-top: 1px solid var(--border-light); padding-top: 16px;">
-                <button class="btn btn-navy btn-sm" onclick="closeModal('impactPhotoModal')">Close Photo View</button>
-              </div>
-            </div>
-          </div>
-        `;
-      }
-      openModal('impactPhotoModal');
     };
   </script>
 </body>
