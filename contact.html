@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/admin.css">
+
+  <!-- Core Store Synchronous Load for Instant Rendering -->
+  <script src="js/store.js"></script>
 </head>
 <body>
 
@@ -155,44 +158,73 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Executive Institutional Footer (Balanced 4-Column Design) -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top-grid">
-        <div class="footer-brand">
-          <img src="assets/images/bhb-logo.png" alt="BHB mark" style="height: 38px;">
-          <p>Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State, Nigeria.</p>
+        
+        <!-- Column 1: Institutional Brand & Legal Identity -->
+        <div class="footer-brand-col">
+          <div class="footer-brand-header">
+            <img src="assets/images/bhb-logo.png" alt="BHB Foundation" class="footer-logo">
+          </div>
+          <p class="footer-brand-desc">
+            Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State and Northern Nigeria.
+          </p>
+          <div class="footer-legal-badge">
+            <span>CAC Reg. No. <b>9670692</b></span>
+            <span>·</span>
+            <span>Nasarawa, Kano State</span>
+          </div>
         </div>
 
-        <div class="footer-col">
-          <h5>About</h5>
+        <!-- Column 2: Governance & About -->
+        <div class="footer-nav-col">
+          <h5>About Foundation</h5>
           <a href="about.html">Who We Are</a>
-          <a href="about.html#mission">Mission &amp; Vision</a>
-          <a href="team.html">Our Leadership</a>
-          <a href="impact.html">Impact Report</a>
+          <a href="about.html#mission">Our Story &amp; Philosophy</a>
+          <a href="team.html">Governance &amp; Leadership</a>
+          <a href="impact.html">Impact &amp; Verification</a>
         </div>
 
-        <div class="footer-col">
-          <h5>Dispatches</h5>
+        <!-- Column 3: Interventions & Programs -->
+        <div class="footer-nav-col">
+          <h5>Core Focus &amp; Field</h5>
           <a href="work.html">Focus Areas</a>
-          <a href="projects.html">Active Projects</a>
-          <a href="blog.html">Blog &amp; Field Reports</a>
-          <a href="contact.html">Contact Us</a>
+          <a href="projects.html">Active Deployments</a>
+          <a href="blog.html">Field Reports &amp; News</a>
+          <a href="contact.html">Partner &amp; Contact</a>
         </div>
 
-        <div class="footer-col">
-          <h5>Newsletter</h5>
-          <p style="font-size: 0.85rem; margin-bottom: 12px;">Receive quarterly field updates and governance reports:</p>
-          <form onsubmit="event.preventDefault(); showToast('Subscribed to BHB Foundation updates!', 'success'); this.reset();" style="display: flex; gap: 8px;">
-            <input type="email" placeholder="Your email address" style="padding: 9px 12px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; font-size: 0.88rem; outline: none; flex: 1;" required>
-            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+        <!-- Column 4: Newsletter & Dispatch Updates -->
+        <div class="footer-newsletter-col">
+          <h5>Quarterly Dispatches</h5>
+          <p class="footer-newsletter-desc">
+            Subscribe to receive verified field audits, milestone publications, and community stories directly in your inbox.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing to BHB Foundation dispatches!', 'success'); this.reset();">
+            <div class="footer-input-group">
+              <input type="email" placeholder="Enter your email address..." required aria-label="Your email address">
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </div>
+            <div class="footer-form-note">Zero spam. Verified operational dispatches only.</div>
           </form>
         </div>
+
       </div>
 
+      <!-- Bottom Bar -->
       <div class="footer-bottom-bar">
-        <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. 9670692. All rights reserved.</span>
-        <a href="index.html" style="color: #94A3B8; text-decoration: underline;">Return to Home</a>
+        <span>© 2026 BHB Family Support and Development Foundation. Incorporated under Nigerian CAMA law. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="index.html">Home</a>
+          <span>·</span>
+          <a href="contact.html">Transparency &amp; Governance</a>
+          <span>·</span>
+          <button onclick="if(typeof toggleAdminView === 'function') toggleAdminView(true); else location.href='index.html?openAdmin=true';" class="footer-admin-btn">
+            Admin Access
+          </button>
+        </div>
       </div>
     </div>
   </footer>

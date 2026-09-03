@@ -277,12 +277,12 @@ class AdminImageCropper {
 
   applyCrop() {
     const guide = document.getElementById('cropOverlayGuide');
-    if (!guide || !this.canvas) return;
+    if (!guide || !this.canvas || !this.image) return;
 
     const guideRect = guide.getBoundingClientRect();
     const canvasRect = this.canvas.getBoundingClientRect();
 
-    // Calculate crop viewport relative to canvas
+    // Viewport scale between display CSS pixels and internal canvas resolution
     const scaleX = this.canvas.width / canvasRect.width;
     const scaleY = this.canvas.height / canvasRect.height;
 
@@ -291,29 +291,103 @@ class AdminImageCropper {
     const cropW = guideRect.width * scaleX;
     const cropH = guideRect.height * scaleY;
 
-    // Create target output canvas
+    // High-Resolution Target Dimensions (Crystal Sharp & Retina Grade)
+    let outW = 1200;
+    let outH = 1600;
+
+    if (this.aspectMode === '3:4') {
+      outW = 1200;
+      outH = 1600;
+    } else if (this.aspectMode === '4:5') {
+      outW = 1200;
+      outH = 1500;
+    } else if (this.aspectMode === '16:9') {
+      outW = 1600;
+      outH = 900;
+    } else if (this.aspectMode === '4:3') {
+      outW = 1600;
+      outH = 1200;
+    } else if (this.aspectMode === '1:1') {
+      outW = 1200;
+      outH = 1200;
+    } else {
+      // Freeform: proportional up to 1600px
+      const maxDim = 1600;
+      if (cropW >= cropH) {
+        outW = maxDim;
+        outH = Math.round(maxDim * (cropH / cropW));
+      } else {
+        outH = maxDim;
+        outW = Math.round(maxDim * (cropW / cropH));
+      }
+    }
+
     const outCanvas = document.createElement('canvas');
-    outCanvas.width = Math.min(1600, cropW * 2);
-    outCanvas.height = Math.min(1200, cropH * 2);
+    outCanvas.width = outW;
+    outCanvas.height = outH;
     const outCtx = outCanvas.getContext('2d');
 
-    // High quality rendering
+    // Premium image smoothing
     outCtx.imageSmoothingEnabled = true;
     outCtx.imageSmoothingQuality = 'high';
 
-    outCtx.drawImage(
-      this.canvas,
-      cropX, cropY, cropW, cropH,
-      0, 0, outCanvas.width, outCanvas.height
-    );
+    const mult = outW / cropW;
 
-    const croppedBase64 = outCanvas.toDataURL('image/jpeg', 0.88);
+    outCtx.save();
+    // Translate to center of output canvas
+    outCtx.translate(outW / 2, outH / 2);
+    outCtx.scale(mult, mult);
+
+    // Center relative to crop guide box
+    const guideCenterX = cropX + cropW / 2;
+    const guideCenterY = cropY + cropH / 2;
+    outCtx.translate(this.posX - guideCenterX, this.posY - guideCenterY);
+    outCtx.rotate((this.rotation * Math.PI) / 180);
+    outCtx.scale(this.scale, this.scale);
+
+    // Draw the RAW NATIVE FULL-RESOLUTION image
+    const iw = this.image.naturalWidth || this.image.width;
+    const ih = this.image.naturalHeight || this.image.height;
+    outCtx.drawImage(this.image, -iw / 2, -ih / 2);
+
+    outCtx.restore();
+
+    // Export ultra-clear JPEG with optimal balance of clarity and storage efficiency (~250KB)
+    const croppedBase64 = outCanvas.toDataURL('image/jpeg', 0.92);
     this.saveOutput(croppedBase64);
   }
 
   useOriginal() {
-    if (!this.image.src) return;
-    this.saveOutput(this.image.src);
+    if (!this.image || !this.image.src) return;
+
+    const iw = this.image.naturalWidth || this.image.width;
+    const ih = this.image.naturalHeight || this.image.height;
+
+    // Preserve high resolution while keeping storage safe (max 1800px)
+    const maxDim = 1800;
+    let targetW = iw;
+    let targetH = ih;
+
+    if (iw > maxDim || ih > maxDim) {
+      if (iw >= ih) {
+        targetW = maxDim;
+        targetH = Math.round((ih * maxDim) / iw);
+      } else {
+        targetH = maxDim;
+        targetW = Math.round((iw * maxDim) / ih);
+      }
+    }
+
+    const outCanvas = document.createElement('canvas');
+    outCanvas.width = targetW;
+    outCanvas.height = targetH;
+    const outCtx = outCanvas.getContext('2d');
+    outCtx.imageSmoothingEnabled = true;
+    outCtx.imageSmoothingQuality = 'high';
+    outCtx.drawImage(this.image, 0, 0, targetW, targetH);
+
+    const fullQualityBase64 = outCanvas.toDataURL('image/jpeg', 0.94);
+    this.saveOutput(fullQualityBase64);
   }
 
   saveOutput(base64Data) {
@@ -332,7 +406,7 @@ class AdminImageCropper {
 
     this.close();
     if (typeof showToast === 'function') {
-      showToast('Image cropped and framed successfully!', 'success');
+      showToast('High-resolution image framed & saved successfully!', 'success');
     }
   }
 }

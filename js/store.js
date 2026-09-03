@@ -623,6 +623,18 @@ class StoreEngine {
   constructor() {
     this.subscribers = [];
     this.data = this.load();
+
+    // Listen to storage events from other tabs/windows for live real-time sync
+    if (typeof window !== 'undefined') {
+      window.addEventListener('storage', (e) => {
+        if (e.key === BHB_STORAGE_KEY && e.newValue) {
+          try {
+            this.data = JSON.parse(e.newValue);
+            this.notifySubscribersOnly();
+          } catch (err) {}
+        }
+      });
+    }
   }
 
   load() {
@@ -655,12 +667,25 @@ class StoreEngine {
     try {
       localStorage.setItem(BHB_STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (e) {
-      console.error("Storage save failed", e);
+      console.warn("Storage save quota warning:", e);
+      try {
+        // If quota warning occurs, prune large redundant items
+        const clone = JSON.parse(JSON.stringify(dataToSave));
+        if (clone.inquiries && clone.inquiries.length > 20) clone.inquiries = clone.inquiries.slice(0, 20);
+        if (clone.donations && clone.donations.length > 50) clone.donations = clone.donations.slice(0, 50);
+        localStorage.setItem(BHB_STORAGE_KEY, JSON.stringify(clone));
+      } catch (e2) {
+        console.error("Storage save failed critically", e2);
+      }
     }
   }
 
   notify() {
     this.persist(this.data);
+    this.notifySubscribersOnly();
+  }
+
+  notifySubscribersOnly() {
     this.subscribers.forEach(cb => {
       try {
         cb(this.data);
@@ -668,6 +693,9 @@ class StoreEngine {
         console.error("Subscriber notification error", err);
       }
     });
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('bhb:store-updated', { detail: this.data }));
+    }
   }
 
   subscribe(callback) {
@@ -922,3 +950,78 @@ class StoreEngine {
 
 // Global Singleton Instance
 window.BHBStore = new StoreEngine();
+
+// Synchronous Instant Card Generators (Eliminates Flash of Demo Images on Refresh)
+window.renderChairmanSpotlightHTML = function() {
+  if (typeof BHBStore === 'undefined') return '';
+  const team = BHBStore.getTeam();
+  const chairman = team.find(t => t.tier === 'Trustees' || t.id === 'team-1') || team[0];
+  if (!chairman) return '';
+
+  return `
+    <div class="executive-spotlight-photo-frame">
+      <img src="${chairman.image}" alt="${chairman.name}" class="executive-spotlight-photo">
+      <div class="executive-badge-ribbon">Board of Trustees · Institutional Founder</div>
+    </div>
+    <div class="executive-spotlight-details">
+      <div>
+        <span class="executive-tier-tag">Executive Leadership</span>
+        <h3 class="executive-name">${chairman.name}</h3>
+        <div class="executive-title">${chairman.position}</div>
+        <div class="executive-quote">
+          “Our mandate is to build self-sustaining community structures where every family, woman, and youth is treated with unconditional dignity and given the practical tools to thrive.”
+        </div>
+        <p class="executive-bio-text">${chairman.bio}</p>
+      </div>
+      <div class="executive-purview-tags">
+        <span class="purview-tag">Strategic Governance</span>
+        <span class="purview-tag">Health Equity</span>
+        <span class="purview-tag">Grassroots Mobilization</span>
+        <span class="purview-tag">Northern Nigeria Focus</span>
+      </div>
+    </div>
+  `;
+};
+
+window.renderTeamCardsHTML = function(isHome = false) {
+  if (typeof BHBStore === 'undefined') return '';
+  const team = BHBStore.getTeam();
+  const chairman = team.find(t => t.tier === 'Trustees' || t.id === 'team-1') || team[0];
+  const others = team.filter(t => !chairman || t.id !== chairman.id);
+  const displayList = isHome ? others.slice(0, 3) : others;
+
+  return displayList.map(m => `
+    <div class="team-card-cinematic interactive-lift reveal-up in">
+      <div class="team-card-photo-wrapper">
+        <img src="${m.image}" alt="${m.name}" loading="eager" class="team-card-portrait">
+        <div class="team-card-photo-vignette"></div>
+        
+        <!-- Default Base Info (Name & Role) -->
+        <div class="team-card-default-info">
+          <span class="team-card-dept-badge">${m.department || 'Directorate'}</span>
+          <h4 class="team-card-name">${m.name}</h4>
+          <div class="team-card-role">${m.position}</div>
+          <div class="team-hover-hint">Hover for bio <span>→</span></div>
+        </div>
+
+        <!-- Cinematic Slide-Up Hover Overlay (Reveals "About You") -->
+        <div class="team-card-hover-overlay">
+          <div>
+            <span class="team-hover-dept">${m.department || 'Leadership Directorate'}</span>
+            <h4 class="team-hover-name">${m.name}</h4>
+            <div class="team-hover-role">${m.position}</div>
+          </div>
+
+          <div class="team-hover-about">
+            <div class="team-hover-about-label">About &amp; Leadership Scope</div>
+            <p class="team-hover-bio">${m.bio}</p>
+          </div>
+
+          <div class="team-hover-purview">
+            <span>•</span> ${m.purview || m.department || 'Strategic Leadership'}
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+};

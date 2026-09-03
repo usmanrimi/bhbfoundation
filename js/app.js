@@ -153,17 +153,28 @@ function setupNavigation() {
   }
 }
 
-// 4. Focus Areas
+// 4. Focus Areas (High-Standard Animated Cards)
 function renderFocusAreas() {
   const container = document.getElementById('focusAreasGrid');
   if (!container) return;
 
   const areas = BHBStore.getFocusAreas();
-  container.innerHTML = areas.map(a => `
-    <div class="focus-area-item">
-      <img src="${a.image}" alt="${a.title}" class="focus-area-thumb">
-      <h3>${a.title}</h3>
-      <p>${a.summary}</p>
+  container.innerHTML = areas.map((a, idx) => `
+    <div class="focus-area-item interactive-lift reveal-up in" onclick="location.href='projects.html'">
+      <div class="focus-area-thumb-wrapper">
+        <img src="${a.image}" alt="${a.title}" class="focus-area-thumb" loading="lazy">
+        <div class="focus-area-badge">Pillar 0${idx + 1}</div>
+      </div>
+      <div class="focus-area-body">
+        <div>
+          <h3>${a.title}</h3>
+          <p>${a.summary}</p>
+        </div>
+        <div class="focus-area-footer">
+          <span>Priority Field Program</span>
+          <span class="arrow">Explore Projects →</span>
+        </div>
+      </div>
     </div>
   `).join('');
 }

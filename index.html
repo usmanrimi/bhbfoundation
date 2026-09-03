@@ -17,6 +17,9 @@
 
   <!-- Chart.js for Admin Analytics -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Core Store Synchronous Load for Instant Rendering -->
+  <script src="js/store.js"></script>
 </head>
 <body>
 
@@ -589,126 +592,18 @@
           </div>
         </div>
 
-        <!-- Featured Spotlight Card: Founder & Chairman -->
+        <!-- Featured Spotlight Card: Founder & Chairman (Instant Zero-Flash Sync) -->
         <div class="executive-spotlight-card interactive-lift reveal-up dynamic-team-spotlight">
-          <div class="executive-spotlight-photo-frame">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Dr. Bashir H. Bello" class="executive-spotlight-photo">
-            <div class="executive-badge-ribbon">Board of Trustees · Institutional Founder</div>
-          </div>
-          <div class="executive-spotlight-details">
-            <div>
-              <span class="executive-tier-tag">Executive Leadership</span>
-              <h3 class="executive-name">Dr. Bashir H. Bello</h3>
-              <div class="executive-title">Founder &amp; Chairman, Board of Trustees</div>
-              <div class="executive-quote">
-                “Our mandate is to build self-sustaining community structures where every family, woman, and youth is treated with unconditional dignity and given the practical tools to thrive.”
-              </div>
-              <p class="executive-bio-text">
-                Dr. Bashir established BHB Foundation to advance human dignity, social resilience, and structured opportunity across Northern Nigeria, ensuring programs are grounded in genuine community trust.
-              </p>
-            </div>
-            <div class="executive-purview-tags">
-              <span class="purview-tag">Strategic Governance</span>
-              <span class="purview-tag">Health Equity</span>
-              <span class="purview-tag">Grassroots Mobilization</span>
-              <span class="purview-tag">Northern Nigeria Focus</span>
-            </div>
-          </div>
+          <script>document.write(renderChairmanSpotlightHTML());</script>
         </div>
 
-        <!-- Directorate Grid (3 Columns Cinematic Hover Cards) -->
-        <div class="leadership-directorate-grid dynamic-team-grid" data-home-limit="true">
-          
-          <!-- Director 1 -->
-          <div class="team-card-cinematic interactive-lift reveal-up in">
-            <div class="team-card-photo-wrapper">
-              <img src="assets/images/team-director.jpg" alt="Hajiya Fatima A. Yusuf" loading="lazy" class="team-card-portrait">
-              <div class="team-card-photo-vignette"></div>
-              
-              <div class="team-card-default-info">
-                <span class="team-card-dept-badge">Executive Directorate</span>
-                <h4 class="team-card-name">Hajiya Fatima A. Yusuf</h4>
-                <div class="team-card-role">Executive Director</div>
-                <div class="team-hover-hint">Hover for bio <span>→</span></div>
-              </div>
+        <!-- Directorate Grid (Cinematic Hover Cards - Instant Zero-Flash Sync) -->
+        <div class="leadership-directorate-grid dynamic-team-grid">
+          <script>document.write(renderTeamCardsHTML(false));</script>
+        </div>
 
-              <div class="team-card-hover-overlay">
-                <div>
-                  <span class="team-hover-dept">Executive Directorate</span>
-                  <h4 class="team-hover-name">Hajiya Fatima A. Yusuf</h4>
-                  <div class="team-hover-role">Executive Director</div>
-                </div>
-                <div class="team-hover-about">
-                  <div class="team-hover-about-label">About &amp; Leadership Scope</div>
-                  <p class="team-hover-bio">Leads strategic direction, institutional partner alignment, and program execution across participating local governments in Kano.</p>
-                </div>
-                <div class="team-hover-purview">
-                  <span>•</span> Strategic Direction &amp; Compliance
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Director 2 -->
-          <div class="team-card-cinematic interactive-lift reveal-up in">
-            <div class="team-card-photo-wrapper">
-              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" alt="Malam Ibrahim Al-Hassan" loading="lazy" class="team-card-portrait">
-              <div class="team-card-photo-vignette"></div>
-              
-              <div class="team-card-default-info">
-                <span class="team-card-dept-badge">Programs &amp; Inclusion</span>
-                <h4 class="team-card-name">Malam Ibrahim Al-Hassan</h4>
-                <div class="team-card-role">Director of Programs &amp; Inclusive Tech</div>
-                <div class="team-hover-hint">Hover for bio <span>→</span></div>
-              </div>
-
-              <div class="team-card-hover-overlay">
-                <div>
-                  <span class="team-hover-dept">Programs &amp; Inclusion</span>
-                  <h4 class="team-hover-name">Malam Ibrahim Al-Hassan</h4>
-                  <div class="team-hover-role">Director of Programs &amp; Inclusive Tech</div>
-                </div>
-                <div class="team-hover-about">
-                  <div class="team-hover-about-label">About &amp; Leadership Scope</div>
-                  <p class="team-hover-bio">Oversees digital inclusion initiatives, screen-reader coding boot camps for girls with disabilities, and technical apprenticeships.</p>
-                </div>
-                <div class="team-hover-purview">
-                  <span>•</span> Assistive Tech &amp; Youth Skills
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Director 3 -->
-          <div class="team-card-cinematic interactive-lift reveal-up in">
-            <div class="team-card-photo-wrapper">
-              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80" alt="Dr. Aisha Kwaku" loading="lazy" class="team-card-portrait">
-              <div class="team-card-photo-vignette"></div>
-              
-              <div class="team-card-default-info">
-                <span class="team-card-dept-badge">Health &amp; Clinical Advisory</span>
-                <h4 class="team-card-name">Dr. Aisha Kwaku</h4>
-                <div class="team-card-role">Lead Strategic Health Advisor</div>
-                <div class="team-hover-hint">Hover for bio <span>→</span></div>
-              </div>
-
-              <div class="team-card-hover-overlay">
-                <div>
-                  <span class="team-hover-dept">Health &amp; Clinical Advisory</span>
-                  <h4 class="team-hover-name">Dr. Aisha Kwaku</h4>
-                  <div class="team-hover-role">Lead Strategic Health Advisor</div>
-                </div>
-                <div class="team-hover-about">
-                  <div class="team-hover-about-label">About &amp; Leadership Scope</div>
-                  <p class="team-hover-bio">Guides maternal health outreach strategy, mobile diagnostic clinics, and primary care partnerships across underserved rural communities.</p>
-                </div>
-                <div class="team-hover-purview">
-                  <span>•</span> Primary Care &amp; Maternal Health
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <div style="text-align: center; margin-top: 36px;">
+          <a href="team.html" class="btn btn-outline" style="padding: 12px 28px; font-weight: 700;">Explore Full Governance Roster &amp; Staff →</a>
         </div>
       </div>
     </section>
@@ -801,50 +696,73 @@
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Executive Institutional Footer (Balanced 4-Column Design) -->
     <footer class="site-footer">
       <div class="container">
         <div class="footer-top-grid">
           
-          <div class="footer-brand">
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <img src="assets/images/bhb-logo.png" alt="BHB mark" style="height: 38px;">
+          <!-- Column 1: Institutional Brand & Legal Identity -->
+          <div class="footer-brand-col">
+            <div class="footer-brand-header">
+              <img src="assets/images/bhb-logo.png" alt="BHB Foundation" class="footer-logo">
             </div>
-            <p>Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State, Nigeria.</p>
+            <p class="footer-brand-desc">
+              Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State and Northern Nigeria.
+            </p>
+            <div class="footer-legal-badge">
+              <span>CAC Reg. No. <b>9670692</b></span>
+              <span>·</span>
+              <span>Nasarawa, Kano State</span>
+            </div>
           </div>
 
-          <div class="footer-col">
-            <h5>About</h5>
+          <!-- Column 2: Governance & About -->
+          <div class="footer-nav-col">
+            <h5>About Foundation</h5>
             <a href="about.html">Who We Are</a>
-            <a href="about.html#mission">Mission &amp; Vision</a>
-            <a href="team.html">Our Leadership</a>
-            <a href="impact.html">Impact Report</a>
+            <a href="about.html#mission">Our Story &amp; Philosophy</a>
+            <a href="team.html">Governance &amp; Leadership</a>
+            <a href="impact.html">Impact &amp; Verification</a>
           </div>
 
-          <div class="footer-col">
-            <h5>Dispatches</h5>
+          <!-- Column 3: Interventions & Programs -->
+          <div class="footer-nav-col">
+            <h5>Core Focus &amp; Field</h5>
             <a href="work.html">Focus Areas</a>
-            <a href="projects.html">Active Projects</a>
-            <a href="blog.html">Blog &amp; Field Reports</a>
-            <a href="contact.html">Contact Us</a>
+            <a href="projects.html">Active Deployments</a>
+            <a href="blog.html">Field Reports &amp; News</a>
+            <a href="contact.html">Partner &amp; Contact</a>
           </div>
 
-          <div class="footer-col">
-            <h5>Newsletter</h5>
-            <p style="font-size: 0.85rem; margin-bottom: 12px;">Receive quarterly field updates and governance reports:</p>
-            <form onsubmit="event.preventDefault(); showToast('Subscribed to BHB Foundation updates!', 'success'); this.reset();" style="display: flex; gap: 8px;">
-              <input type="email" placeholder="Your email address" style="padding: 9px 12px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; font-size: 0.88rem; outline: none; flex: 1;" required>
-              <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          <!-- Column 4: Newsletter & Dispatch Updates -->
+          <div class="footer-newsletter-col">
+            <h5>Quarterly Dispatches</h5>
+            <p class="footer-newsletter-desc">
+              Subscribe to receive verified field audits, milestone publications, and community stories directly in your inbox.
+            </p>
+            <form class="footer-newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing to BHB Foundation dispatches!', 'success'); this.reset();">
+              <div class="footer-input-group">
+                <input type="email" placeholder="Enter your email address..." required aria-label="Your email address">
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+              </div>
+              <div class="footer-form-note">Zero spam. Verified operational dispatches only.</div>
             </form>
           </div>
 
         </div>
 
+        <!-- Bottom Bar -->
         <div class="footer-bottom-bar">
-          <span>© 2026 BHB Family Support and Development Foundation. CAC Reg. No. <span data-bind="cacNumber">9670692</span>. All rights reserved.</span>
-          <button onclick="toggleAdminView(true)" style="background: none; border: none; color: #94A3B8; font-size: 0.82rem; cursor: pointer; text-decoration: underline;">
-            Super Admin Controller
-          </button>
+          <span>© 2026 BHB Family Support and Development Foundation. Incorporated under Nigerian CAMA law. All rights reserved.</span>
+          <div class="footer-bottom-links">
+            <a href="index.html">Home</a>
+            <span>·</span>
+            <a href="contact.html">Transparency &amp; Governance</a>
+            <span>·</span>
+            <button onclick="toggleAdminView(true)" class="footer-admin-btn">
+              Super Admin Controller
+            </button>
+          </div>
         </div>
       </div>
     </footer>
