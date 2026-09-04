@@ -1063,7 +1063,7 @@ function renderAdminTeamTable() {
 
   const team = BHBStore.getTeam();
   if (!team.length) {
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #64748B; padding: 24px;">No team members registered yet. Click "+ Add Member" to create one.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #64748B; padding: 24px;">No team members registered yet. Click "+ Add Member" to create one.</td></tr>`;
     return;
   }
 
@@ -1074,14 +1074,12 @@ function renderAdminTeamTable() {
           <img src="${m.image}" alt="${m.name}" style="width: 48px; height: 60px; border-radius: 4px; object-fit: cover; object-position: center 15%; border: 1px solid #CBD5E1; box-shadow: 0 2px 6px rgba(15,23,42,0.08);">
           <div>
             <b style="color: #0F172A; font-size: 0.95rem;">${m.name}</b>
-            <div style="font-size: 0.78rem; color: #2563EB; font-weight: 600; margin-top: 2px;">• ${m.purview || m.department || 'Governance'}</div>
           </div>
         </div>
       </td>
       <td><b style="color: #334155; font-size: 0.9rem;">${m.position}</b></td>
-      <td><span class="project-category-tag" style="margin: 0;">${m.department || 'Directorate'}</span></td>
       <td>
-        <span class="status-pill success" style="font-size: 0.75rem;">${m.tier || 'Active Leader'}</span>
+        <span class="status-pill success" style="font-size: 0.75rem;">${m.tier || 'Executive'}</span>
       </td>
       <td>
         <div class="action-btn-group">
@@ -1120,25 +1118,6 @@ window.openNewTeamModal = function() {
             <input type="text" name="team_pos" required placeholder="e.g. Executive Director">
           </div>
           <div class="form-group">
-            <label>Department / Category *</label>
-            <input type="text" name="team_dept" required placeholder="e.g. Executive Directorate" list="deptSuggestions">
-            <datalist id="deptSuggestions">
-              <option value="Board of Trustees">
-              <option value="Executive Directorate">
-              <option value="Programs & Inclusion">
-              <option value="Health & Clinical Advisory">
-              <option value="Field Logistics & Security">
-              <option value="Women & Youth Directorate">
-            </datalist>
-          </div>
-        </div>
-
-        <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <div class="form-group">
-            <label>Purview / Focus Badge Tag *</label>
-            <input type="text" name="team_purview" required placeholder="e.g. Strategic Direction & Compliance" value="Strategic Direction & Compliance">
-          </div>
-          <div class="form-group">
             <label>Governance Hierarchy Tier</label>
             <select name="team_tier" required>
               <option value="Executive">Executive Directorate</option>
@@ -1152,7 +1131,7 @@ window.openNewTeamModal = function() {
 
         <div class="form-group">
           <label>Professional Biography / Scope *</label>
-          <textarea name="team_bio" rows="3" required placeholder="Brief professional background, operational purview, and leadership scope across Kano State."></textarea>
+          <textarea name="team_bio" rows="3" required placeholder="Brief professional background and leadership profile."></textarea>
         </div>
 
         <div class="form-group">
@@ -1194,25 +1173,6 @@ window.editTeamModal = function(id) {
             <input type="text" name="team_pos" value="${member.position}" required>
           </div>
           <div class="form-group">
-            <label>Department / Category *</label>
-            <input type="text" name="team_dept" value="${member.department || 'Executive Directorate'}" required list="deptSuggestions">
-            <datalist id="deptSuggestions">
-              <option value="Board of Trustees">
-              <option value="Executive Directorate">
-              <option value="Programs & Inclusion">
-              <option value="Health & Clinical Advisory">
-              <option value="Field Logistics & Security">
-              <option value="Women & Youth Directorate">
-            </datalist>
-          </div>
-        </div>
-
-        <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <div class="form-group">
-            <label>Purview / Focus Badge Tag *</label>
-            <input type="text" name="team_purview" value="${member.purview || member.department || 'Operational Strategy'}" required>
-          </div>
-          <div class="form-group">
             <label>Governance Hierarchy Tier</label>
             <select name="team_tier" required>
               <option value="Executive" ${member.tier === 'Executive' ? 'selected' : ''}>Executive Directorate</option>
@@ -1252,8 +1212,6 @@ window.handleSaveTeam = function(e) {
     id: form.team_id.value || undefined,
     name: form.team_name.value,
     position: form.team_pos.value,
-    department: form.team_dept.value,
-    purview: form.team_purview ? form.team_purview.value : form.team_dept.value,
     tier: form.team_tier ? form.team_tier.value : 'Executive',
     bio: form.team_bio.value,
     image: form.team_image.value

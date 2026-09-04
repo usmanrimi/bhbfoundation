@@ -641,7 +641,6 @@ function renderTeam() {
           
           <!-- Default Base Info (Name & Role) -->
           <div class="team-card-default-info">
-            <span class="team-card-dept-badge">${m.department || 'Directorate'}</span>
             <h4 class="team-card-name">${m.name}</h4>
             <div class="team-card-role">${m.position}</div>
             <div class="team-hover-hint">Hover for bio <span>→</span></div>
@@ -650,18 +649,13 @@ function renderTeam() {
           <!-- Cinematic Slide-Up Hover Overlay (Reveals "About You") -->
           <div class="team-card-hover-overlay">
             <div>
-              <span class="team-hover-dept">${m.department || 'Leadership Directorate'}</span>
               <h4 class="team-hover-name">${m.name}</h4>
               <div class="team-hover-role">${m.position}</div>
             </div>
 
             <div class="team-hover-about">
-              <div class="team-hover-about-label">About &amp; Leadership Scope</div>
+              <div class="team-hover-about-label">Biography &amp; Leadership Profile</div>
               <p class="team-hover-bio">${m.bio}</p>
-            </div>
-
-            <div class="team-hover-purview">
-              <span>•</span> ${m.purview || m.department || 'Strategic Leadership'}
             </div>
           </div>
         </div>
