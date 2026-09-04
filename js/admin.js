@@ -147,6 +147,7 @@ function renderAdminDashboard() {
   renderAdminOverviewMetrics();
   renderAdminCharts();
   renderAdminHeroSlidesTable();
+  renderAdminFocusAreasTable();
   renderAdminProjectsTable();
   renderAdminBlogTable();
   renderAdminCommentsTable();
@@ -165,6 +166,7 @@ function renderAdminOverviewMetrics() {
   const volunteers = BHBStore.getVolunteers();
   const inquiries = BHBStore.getInquiries();
   const comments = BHBStore.getAllComments();
+  const focusAreas = BHBStore.getFocusAreas();
 
   // Total funds mobilized
   let totalDonations = donations.reduce((sum, d) => {
@@ -199,6 +201,9 @@ function renderAdminOverviewMetrics() {
   if (inqEl) inqEl.textContent = pendingInq;
 
   // Sidebar counters
+  const sideFocus = document.getElementById('adminSidebarFocusCount');
+  if (sideFocus) sideFocus.textContent = focusAreas.length;
+
   const sideVol = document.getElementById('adminSidebarVolCount');
   if (sideVol) sideVol.textContent = pendingVol;
 
@@ -434,6 +439,136 @@ window.handleSaveHeroSlide = function(e) {
   BHBStore.saveHeroSlide(slide);
   closeModal('adminCrudModal');
   showToast('Hero slide saved and synced live to public website!', 'success');
+};
+
+// 3b. Focus Areas & Strategic Pillars CRUD
+function renderAdminFocusAreasTable() {
+  const tbody = document.getElementById('adminFocusAreasTableBody');
+  if (!tbody) return;
+
+  const areas = BHBStore.getFocusAreas();
+  tbody.innerHTML = areas.map((a, idx) => `
+    <tr>
+      <td>
+        <img src="${a.image}" style="width: 72px; height: 48px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1;">
+      </td>
+      <td>
+        <b style="color: #0F172A;">${a.title}</b>
+        <div style="font-size: 0.76rem; color: #2563EB; font-weight: 700; margin-top: 2px;">PILLAR 0${idx + 1}</div>
+      </td>
+      <td style="max-width: 260px; font-size: 0.85rem; color: #475569;">${a.summary}</td>
+      <td style="max-width: 240px; font-size: 0.82rem; color: #64748B;">${a.details || a.summary}</td>
+      <td>
+        <div class="action-btn-group">
+          <button class="btn-icon-sm" onclick="editFocusAreaModal('${a.id}')">Edit</button>
+          <button class="btn-icon-sm danger" onclick="deleteFocusAreaAdmin('${a.id}')">Delete</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+window.deleteFocusAreaAdmin = function(id) {
+  if (confirm('Are you sure you want to delete this focus pillar?')) {
+    BHBStore.deleteFocusArea(id);
+    showToast('Focus area pillar deleted successfully!', 'info');
+  }
+};
+
+window.openNewFocusAreaModal = function() {
+  const content = document.getElementById('adminCrudModalContent');
+  document.getElementById('adminCrudModalTitle').textContent = 'Add Strategic Focus Pillar';
+  if (content) {
+    content.innerHTML = `
+      <form class="admin-modal-form" onsubmit="handleSaveFocusArea(event)">
+        <input type="hidden" name="focus_id" value="">
+        <input type="hidden" name="focus_image" id="focusImageHidden" value="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80">
+        
+        <div class="form-group">
+          <label>Pillar Title *</label>
+          <input type="text" name="focus_title" placeholder="e.g. Digital Inclusion &amp; Assistive Technology" required>
+        </div>
+
+        <div class="form-group">
+          <label>Summary Narrative (Shown on Card Front) *</label>
+          <textarea name="focus_summary" rows="3" placeholder="Core mission and objective of this strategic pillar..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Operational Scope &amp; Target Beneficiaries</label>
+          <textarea name="focus_details" rows="2" placeholder="e.g. Specialized coaching, hardware grants, and grassroots mentoring across Kano LGAs."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Pillar Cover Photo (Interactive Cropper 4:3)</label>
+          <div class="admin-dropzone">
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'focusImgPreview', 'focus_image', '4:3')" style="margin-bottom: 8px;">
+            <img id="focusImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Save Focus Pillar</button>
+      </form>
+    `;
+  }
+  openModal('adminCrudModal');
+};
+
+window.editFocusAreaModal = function(id) {
+  const area = BHBStore.getFocusAreas().find(a => a.id === id);
+  if (!area) return;
+
+  const content = document.getElementById('adminCrudModalContent');
+  document.getElementById('adminCrudModalTitle').textContent = 'Edit Strategic Focus Pillar';
+  if (content) {
+    content.innerHTML = `
+      <form class="admin-modal-form" onsubmit="handleSaveFocusArea(event)">
+        <input type="hidden" name="focus_id" value="${area.id}">
+        <input type="hidden" name="focus_image" id="focusImageHidden" value="${area.image}">
+        
+        <div class="form-group">
+          <label>Pillar Title *</label>
+          <input type="text" name="focus_title" value="${area.title}" required>
+        </div>
+
+        <div class="form-group">
+          <label>Summary Narrative (Shown on Card Front) *</label>
+          <textarea name="focus_summary" rows="3" required>${area.summary}</textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Operational Scope &amp; Target Beneficiaries</label>
+          <textarea name="focus_details" rows="2">${area.details || area.summary}</textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Pillar Cover Photo (Interactive Cropper 4:3)</label>
+          <div class="admin-dropzone">
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'focusImgPreview', 'focus_image', '4:3')" style="margin-bottom: 8px;">
+            <img id="focusImgPreview" src="${area.image}" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Update Focus Pillar</button>
+      </form>
+    `;
+  }
+  openModal('adminCrudModal');
+};
+
+window.handleSaveFocusArea = function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const area = {
+    id: form.focus_id.value || undefined,
+    title: form.focus_title.value,
+    summary: form.focus_summary.value,
+    details: form.focus_details.value,
+    image: form.focus_image.value
+  };
+  BHBStore.saveFocusArea(area);
+  closeModal('adminCrudModal');
+  showToast('Focus Area pillar saved and synchronized live on public website!', 'success');
 };
 
 // 4. Projects CRUD

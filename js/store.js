@@ -746,6 +746,24 @@ class StoreEngine {
     this.notify();
   }
 
+  saveFocusArea(area) {
+    if (!this.data.focusAreas) this.data.focusAreas = [];
+    if (!area.id) {
+      area.id = `focus-${Date.now()}`;
+      this.data.focusAreas.push(area);
+    } else {
+      const idx = this.data.focusAreas.findIndex(a => a.id === area.id);
+      if (idx !== -1) this.data.focusAreas[idx] = { ...this.data.focusAreas[idx], ...area };
+      else this.data.focusAreas.push(area);
+    }
+    this.notify();
+  }
+
+  deleteFocusArea(id) {
+    this.data.focusAreas = (this.data.focusAreas || []).filter(a => a.id !== id);
+    this.notify();
+  }
+
   saveProject(project) {
     if (!this.data.projects) this.data.projects = [];
     if (!project.id) {

@@ -607,36 +607,6 @@
             <div class="contact-cards-grid">
               <div class="contact-card-box">
                 <div class="contact-box-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M6 11h2M6 15h2M11 11h2M11 15h2M16 11h2M16 15h2M9 3h6v4H9z"/></svg>
-                </div>
-                <div class="contact-box-meta">
-                  <span class="contact-box-label">Organization Name</span>
-                  <span class="contact-box-val">BHB Family Support and Development Foundation</span>
-                </div>
-              </div>
-
-              <div class="contact-card-box">
-                <div class="contact-box-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-                </div>
-                <div class="contact-box-meta">
-                  <span class="contact-box-label">Legal Registration</span>
-                  <span class="contact-box-val">CAC Corporate Reg. No. <span data-bind="cacNumber">9670692</span></span>
-                </div>
-              </div>
-
-              <div class="contact-card-box">
-                <div class="contact-box-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                </div>
-                <div class="contact-box-meta">
-                  <span class="contact-box-label">Headquarters Address</span>
-                  <span class="contact-box-val" data-bind="officeAddress">66/77 Sulaiman Crescent, Nasarawa, Kano State, Nigeria</span>
-                </div>
-              </div>
-
-              <div class="contact-card-box">
-                <div class="contact-box-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </div>
                 <div class="contact-box-meta">
@@ -662,6 +632,16 @@
                 <div class="contact-box-meta">
                   <span class="contact-box-label">Office Working Hours</span>
                   <span class="contact-box-val">Monday – Friday, 8:00 AM – 5:00 PM (WAT)</span>
+                </div>
+              </div>
+
+              <div class="contact-card-box">
+                <div class="contact-box-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="contact-box-meta">
+                  <span class="contact-box-label">Headquarters Address</span>
+                  <span class="contact-box-val" data-bind="officeAddress">66/77 Sulaiman Crescent, Nasarawa, Kano State, Nigeria</span>
                 </div>
               </div>
             </div>
@@ -883,11 +863,6 @@
             <p class="footer-brand-desc">
               Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State and Northern Nigeria.
             </p>
-            <div class="footer-legal-badge">
-              <span>CAC Reg. No. <b>9670692</b></span>
-              <span>·</span>
-              <span>Nasarawa, Kano State</span>
-            </div>
           </div>
 
           <!-- Column 2: Governance & About -->
@@ -969,6 +944,12 @@
             <li class="admin-nav-item">
               <button data-admin-tab="slides">
                 <span class="nav-item-left">Hero Carousel Slides</span>
+              </button>
+            </li>
+            <li class="admin-nav-item">
+              <button data-admin-tab="focus">
+                <span class="nav-item-left">Focus Areas &amp; Pillars</span>
+                <span class="admin-badge-count" id="adminSidebarFocusCount">6</span>
               </button>
             </li>
             <li class="admin-nav-item">
@@ -1124,6 +1105,33 @@
                     </tr>
                   </thead>
                   <tbody id="adminHeroSlidesTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: FOCUS AREAS & PILLARS CMS -->
+          <div class="admin-tab-pane" id="adminTab-focus">
+            <div class="admin-table-card">
+              <div class="table-action-bar">
+                <div>
+                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Strategic Focus Areas &amp; Pillars</h3>
+                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Manage community pillars, narrative summaries, operational details, and cover photos with live public sync.</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openNewFocusAreaModal()">+ Add New Focus Pillar</button>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="admin-data-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 100px;">Cover</th>
+                      <th style="min-width: 180px;">Pillar Title</th>
+                      <th style="min-width: 240px;">Summary Narrative</th>
+                      <th style="min-width: 220px;">Operational Scope</th>
+                      <th style="width: 130px;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminFocusAreasTableBody"></tbody>
                 </table>
               </div>
             </div>
