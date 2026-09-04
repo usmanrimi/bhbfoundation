@@ -189,13 +189,25 @@ class AdminImageCropper {
 
   resetPosition() {
     if (!this.canvas || !this.image) return;
-    this.scale = 1;
+    const iw = this.image.naturalWidth || this.image.width || 700;
+    const ih = this.image.naturalHeight || this.image.height || 380;
+
+    // Calculate responsive fit scale so photo fills viewport comfortably without exploding at 1:1
+    const fitScale = Math.min((this.canvas.width * 0.85) / iw, (this.canvas.height * 0.85) / ih);
+    this.scale = fitScale > 0 ? fitScale : 1;
+    this.minScale = Math.max(this.scale * 0.25, 0.05);
+    this.maxScale = Math.max(this.scale * 5, 3.5);
     this.rotation = 0;
     this.posX = this.canvas.width / 2;
     this.posY = this.canvas.height / 2;
 
     const slider = document.getElementById('cropZoomSlider');
-    if (slider) slider.value = '1';
+    if (slider) {
+      slider.min = this.minScale.toFixed(3);
+      slider.max = this.maxScale.toFixed(3);
+      slider.step = ((this.maxScale - this.minScale) / 100).toFixed(4);
+      slider.value = this.scale.toFixed(3);
+    }
     this.render();
   }
 
@@ -247,9 +259,10 @@ class AdminImageCropper {
   }
 
   stepZoom(delta) {
-    this.scale = Math.max(this.minScale, Math.min(this.maxScale, this.scale + delta));
+    const stepAmount = (this.maxScale - this.minScale) * 0.06;
+    this.scale = Math.max(this.minScale, Math.min(this.maxScale, this.scale + (delta > 0 ? stepAmount : -stepAmount)));
     const slider = document.getElementById('cropZoomSlider');
-    if (slider) slider.value = this.scale.toFixed(2);
+    if (slider) slider.value = this.scale.toFixed(3);
     this.render();
   }
 

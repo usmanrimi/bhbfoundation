@@ -311,6 +311,41 @@ function renderBlogPage() {
   }
 
   // B. Homepage index.html containers
+  const homeBlogGrid = document.getElementById('homeBlogGrid');
+  if (homeBlogGrid) {
+    const postsToShow = allPosts.slice(0, 3);
+    homeBlogGrid.innerHTML = postsToShow.map(p => {
+      const comments = BHBStore.getCommentsByPost(p.id);
+      return `
+        <div class="blog-card interactive-lift" onclick="openBlogPostReader('${p.id}')" style="cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; height: 100%; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04); transition: transform 0.25s ease, box-shadow 0.25s ease;">
+          <div>
+            <div style="position: relative; overflow: hidden; height: 210px;">
+              <img src="${p.image}" alt="${p.title}" class="blog-card-thumb" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease;">
+              <span class="project-category-tag" style="position: absolute; top: 12px; left: 12px; margin: 0; background: rgba(15, 23, 42, 0.88); color: #38BDF8; font-weight: 700; border-radius: 6px; padding: 4px 10px; font-size: 0.76rem; backdrop-filter: blur(4px);">${p.category}</span>
+            </div>
+            <div class="blog-card-body" style="padding: 22px 20px 14px;">
+              <div class="blog-card-meta" style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">
+                <span>${p.date}</span>
+                <span>·</span>
+                <span>${p.readTime || '4 min read'}</span>
+              </div>
+              <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 10px; line-height: 1.4; font-weight: 800; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${p.title}</h3>
+              <p style="font-size: 0.92rem; color: var(--text-body); line-height: 1.6; margin-bottom: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.excerpt}</p>
+            </div>
+          </div>
+          <div style="padding: 0 20px 20px;">
+            <div class="blog-engagement-strip" style="border-top: 1px solid #F1F5F9; padding-top: 14px; margin-top: 10px; display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.82rem; color: var(--text-muted);">Likes: <b>${p.likes || 0}</b></span>
+              <span style="font-size: 0.82rem; color: var(--text-muted);">Comments: <b>${comments.length}</b></span>
+              <span style="margin-left: auto; color: var(--blue); font-weight: 700; font-size: 0.88rem;">Read Article →</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Fallback for previous container IDs if present
   const homeLeadContainer = document.getElementById('homeBlogLeadContainer');
   const homeSecondaryGrid = document.getElementById('homeBlogSecondaryGrid');
 
@@ -395,7 +430,7 @@ window.openBlogPostReader = function(postId) {
   content.innerHTML = `
     <div class="blog-reader-container">
       <div class="blog-reader-header">
-        <span class="section-label">${post.category} · ${post.date}</span>
+        <span class="blog-reader-tag">${post.category} · ${post.date}</span>
         <h1 class="blog-reader-title">${post.title}</h1>
         
         <div class="blog-author-row">

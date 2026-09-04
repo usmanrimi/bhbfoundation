@@ -232,6 +232,110 @@
     </section>
 
     <!-- =========================================================================
+         INSTITUTIONAL PARTNERS & COALITION MARQUEE (SLIDING TRACK)
+         ========================================================================= -->
+    <section class="partners-marquee-section">
+      <div class="container">
+        <div class="partners-header">
+          <span class="partners-header-tag">Strategic Alignment &amp; Coalitions</span>
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: #0F172A; margin: 0;">Institutional Partners Empowering Our Grassroots Mission</h3>
+        </div>
+      </div>
+
+      <div class="partners-track-wrapper">
+        <div class="partners-track">
+          <!-- 6 Partner badges -->
+          <div class="partner-logo-badge">
+            <div class="partner-badge-icon">AF</div>
+            <div class="partner-badge-info">
+              <span class="partner-badge-name">Ability First Tech</span>
+              <span class="partner-badge-tier">Assistive Technology Partner</span>
+            </div>
+          </div>
+          <div class="partner-logo-badge">
+            <div class="partner-badge-icon">CAC</div>
+            <div class="partner-badge-info">
+              <span class="partner-badge-name">Corporate Affairs Commission</span>
+              <span class="partner-badge-tier">Statutory Regulatory Body</span>
+            </div>
+          </div>
+          <div class="partner-logo-badge">
+            <div class="partner-badge-icon">KSM</div>
+            <div class="partner-badge-info">
+              <span class="partner-badge-name">Kano Min. of Humanitarian Affairs</span>
+              <span class="partner-badge-tier">State Government Ally</span>
+            </div>
+          </div>
+          <div class="partner-logo-badge">
+            <div class="partner-badge-icon">SCH</div>
+            <div class="partner-badge-info">
+              <span class="partner-badge-name">Sahel Community Health Initiative</span>
+              <span class="partner-badge-tier">Primary Healthcare Outreach</span>
+            </div>
+          </div>
+          <div class="partner-logo-badge">
+            <div class="partner-badge-icon">AKA</div>
+            <div class="partner-badge-info">
+              <span class="partner-badge-name">Aisha Kwaku &amp; Associates</span>
+              <span class="partner-badge-tier">Governance &amp; Compliance Advisory</span>
+            </div>
+          </div>
+          <div class="partner-logo-badge">
+            <div class="partner-badge-icon">NYCN</div>
+            <div class="partner-badge-info">
+              <span class="partner-badge-name">National Youth Council of Nigeria</span>
+              <span class="partner-badge-tier">Kano State Youth Mobilization</span>
+            </div>
+          </div>
+
+          <!-- Duplicate set for seamless infinite marquee -->
+          <div class="partner-logo-badge">
+            <div class="partner-badge-icon">AF</div>
+            <div class="partner-badge-info">
+              <span class="partner-badge-name">Ability First Tech</span>
+              <span class="partner-badge-tier">Assistive Technology Partner</span>
+            </div>
+          </div>
+          <div class="partner-logo-badge">
+            <div class="partner-badge-icon">CAC</div>
+            <div class="partner-badge-info">
+              <span class="partner-badge-name">Corporate Affairs Commission</span>
+              <span class="partner-badge-tier">Statutory Regulatory Body</span>
+            </div>
+          </div>
+          <div class="partner-logo-badge">
+            <div class="partner-badge-icon">KSM</div>
+            <div class="partner-badge-info">
+              <span class="partner-badge-name">Kano Min. of Humanitarian Affairs</span>
+              <span class="partner-badge-tier">State Government Ally</span>
+            </div>
+          </div>
+          <div class="partner-logo-badge">
+            <div class="partner-badge-icon">SCH</div>
+            <div class="partner-badge-info">
+              <span class="partner-badge-name">Sahel Community Health Initiative</span>
+              <span class="partner-badge-tier">Primary Healthcare Outreach</span>
+            </div>
+          </div>
+          <div class="partner-logo-badge">
+            <div class="partner-badge-icon">AKA</div>
+            <div class="partner-badge-info">
+              <span class="partner-badge-name">Aisha Kwaku &amp; Associates</span>
+              <span class="partner-badge-tier">Governance &amp; Compliance Advisory</span>
+            </div>
+          </div>
+          <div class="partner-logo-badge">
+            <div class="partner-badge-icon">NYCN</div>
+            <div class="partner-badge-info">
+              <span class="partner-badge-name">National Youth Council of Nigeria</span>
+              <span class="partner-badge-tier">Kano State Youth Mobilization</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
          ABOUT SECTION OVERVIEW (TWO-COLOR TYPOGRAPHY & CONCISE NARRATIVE)
          ========================================================================= -->
     <section id="about" class="about-overview-section">
@@ -242,10 +346,6 @@
           <div class="about-showcase-column">
             <div class="about-showcase-frame interactive-lift">
               <img id="aboutShowcaseImg" data-bind-src="aboutImage" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80" alt="BHB Foundation Grassroots Community Outreach in Kano State" class="about-showcase-img">
-              <div class="about-showcase-badge">
-                <div class="reg-title">Incorporated Non-Governmental Organization</div>
-                <div class="reg-desc">Headquarters: Nasarawa LGA, Kano State · Grassroots Verified Interventions</div>
-              </div>
             </div>
           </div>
 
@@ -564,8 +664,7 @@
           </div>
         </div>
 
-        <div id="homeBlogLeadContainer"></div>
-        <div class="blog-grid-3" id="homeBlogSecondaryGrid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px;"></div>
+        <div class="blog-grid-3" id="homeBlogGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px; margin-top: 32px;"></div>
       </div>
     </section>
 
@@ -609,30 +708,65 @@
               Our team is available Monday through Friday to answer inquiries regarding ongoing projects, grant matching, and community partnerships.
             </p>
 
-            <div class="contact-detail-list">
-              <div class="contact-detail-item">
-                <b>Organization Name</b>
-                <span>BHB Family Support and Development Foundation</span>
+            <div class="contact-cards-grid">
+              <div class="contact-card-box">
+                <div class="contact-box-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M6 11h2M6 15h2M11 11h2M11 15h2M16 11h2M16 15h2M9 3h6v4H9z"/></svg>
+                </div>
+                <div class="contact-box-meta">
+                  <span class="contact-box-label">Organization Name</span>
+                  <span class="contact-box-val">BHB Family Support and Development Foundation</span>
+                </div>
               </div>
-              <div class="contact-detail-item">
-                <b>Legal Registration</b>
-                <span>CAC Corporate Registration No. <span data-bind="cacNumber">9670692</span></span>
+
+              <div class="contact-card-box">
+                <div class="contact-box-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <div class="contact-box-meta">
+                  <span class="contact-box-label">Legal Registration</span>
+                  <span class="contact-box-val">CAC Corporate Reg. No. <span data-bind="cacNumber">9670692</span></span>
+                </div>
               </div>
-              <div class="contact-detail-item">
-                <b>Headquarters Address</b>
-                <span data-bind="officeAddress">66/77 Sulaiman Crescent, Nasarawa, Kano State, Nigeria</span>
+
+              <div class="contact-card-box">
+                <div class="contact-box-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="contact-box-meta">
+                  <span class="contact-box-label">Headquarters Address</span>
+                  <span class="contact-box-val" data-bind="officeAddress">66/77 Sulaiman Crescent, Nasarawa, Kano State, Nigeria</span>
+                </div>
               </div>
-              <div class="contact-detail-item">
-                <b>Telephone Numbers</b>
-                <span data-bind="phone">+234 201 454 5878</span>
+
+              <div class="contact-card-box">
+                <div class="contact-box-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div class="contact-box-meta">
+                  <span class="contact-box-label">Telephone Numbers</span>
+                  <span class="contact-box-val"><a href="tel:+2342014545878" data-bind="phone" style="color: inherit; text-decoration: none;">+234 201 454 5878</a></span>
+                </div>
               </div>
-              <div class="contact-detail-item">
-                <b>Official Email</b>
-                <span data-bind="email">info@bhbfoundation.com</span>
+
+              <div class="contact-card-box">
+                <div class="contact-box-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div class="contact-box-meta">
+                  <span class="contact-box-label">Official Email</span>
+                  <span class="contact-box-val"><a href="mailto:info@bhbfoundation.com" data-bind="email" style="color: inherit; text-decoration: none;">info@bhbfoundation.com</a></span>
+                </div>
               </div>
-              <div class="contact-detail-item">
-                <b>Office Working Hours</b>
-                <span>Monday – Friday, 8:00 AM – 5:00 PM (WAT)</span>
+
+              <div class="contact-card-box">
+                <div class="contact-box-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="contact-box-meta">
+                  <span class="contact-box-label">Office Working Hours</span>
+                  <span class="contact-box-val">Monday – Friday, 8:00 AM – 5:00 PM (WAT)</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1240,10 +1374,8 @@
 
   <!-- Interactive Blog Reader Modal -->
   <div class="modal-backdrop" id="blogReaderModal">
-    <div class="modal-window" style="max-width: 860px; width: 95%; background: #FFFFFF; border-radius: 8px;">
-      <div style="position: absolute; top: 20px; right: 24px; z-index: 10;">
-        <button onclick="closeModal('blogReaderModal')" style="background:none; border:none; font-size:1.8rem; cursor:pointer; color: var(--navy);">×</button>
-      </div>
+    <div class="modal-window blog-reader-modal-window">
+      <button class="blog-reader-close-btn" onclick="closeModal('blogReaderModal')" aria-label="Close Modal">×</button>
       <div id="blogReaderModalContent"></div>
     </div>
   </div>
