@@ -304,28 +304,28 @@ class AdminImageCropper {
     const cropW = guideRect.width * scaleX;
     const cropH = guideRect.height * scaleY;
 
-    // High-Resolution Target Dimensions (Crystal Sharp & Retina Grade)
-    let outW = 1200;
-    let outH = 1600;
+    // High-Definition Target Dimensions (Optimized for Retina Clarity + Safe Persistence)
+    let outW = 800;
+    let outH = 600;
 
     if (this.aspectMode === '3:4') {
-      outW = 1200;
-      outH = 1600;
+      outW = 600;
+      outH = 800;
     } else if (this.aspectMode === '4:5') {
-      outW = 1200;
-      outH = 1500;
+      outW = 640;
+      outH = 800;
     } else if (this.aspectMode === '16:9') {
-      outW = 1600;
-      outH = 900;
+      outW = 1280;
+      outH = 720;
     } else if (this.aspectMode === '4:3') {
-      outW = 1600;
-      outH = 1200;
+      outW = 960;
+      outH = 720;
     } else if (this.aspectMode === '1:1') {
-      outW = 1200;
-      outH = 1200;
+      outW = 700;
+      outH = 700;
     } else {
-      // Freeform: proportional up to 1600px
-      const maxDim = 1600;
+      // Freeform: proportional up to 1000px
+      const maxDim = 1000;
       if (cropW >= cropH) {
         outW = maxDim;
         outH = Math.round(maxDim * (cropH / cropW));
@@ -365,8 +365,8 @@ class AdminImageCropper {
 
     outCtx.restore();
 
-    // Export ultra-clear JPEG with optimal balance of clarity and storage efficiency (~250KB)
-    const croppedBase64 = outCanvas.toDataURL('image/jpeg', 0.92);
+    // Export crisp HD JPEG with optimized file size (~70KB - 120KB)
+    const croppedBase64 = outCanvas.toDataURL('image/jpeg', 0.85);
     this.saveOutput(croppedBase64);
   }
 
@@ -376,8 +376,8 @@ class AdminImageCropper {
     const iw = this.image.naturalWidth || this.image.width;
     const ih = this.image.naturalHeight || this.image.height;
 
-    // Preserve high resolution while keeping storage safe (max 1800px)
-    const maxDim = 1800;
+    // Preserve high resolution while keeping storage safe (max 1200px)
+    const maxDim = 1200;
     let targetW = iw;
     let targetH = ih;
 
@@ -399,7 +399,7 @@ class AdminImageCropper {
     outCtx.imageSmoothingQuality = 'high';
     outCtx.drawImage(this.image, 0, 0, targetW, targetH);
 
-    const fullQualityBase64 = outCanvas.toDataURL('image/jpeg', 0.94);
+    const fullQualityBase64 = outCanvas.toDataURL('image/jpeg', 0.84);
     this.saveOutput(fullQualityBase64);
   }
 

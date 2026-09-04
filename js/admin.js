@@ -1263,67 +1263,148 @@ window.handleSaveTeam = function(e) {
   showToast('Team roster updated and synchronized live across public website!', 'success');
 };
 
-// 8. Partners Manager
+// 8. Partner Organizations & Logo CMS
 function renderAdminPartnersTable() {
   const tbody = document.getElementById('adminPartnersTableBody');
   if (!tbody) return;
 
   const partners = BHBStore.getPartners();
-  tbody.innerHTML = partners.map(p => `
+  if (!partners.length) {
+    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #64748B; padding: 24px;">No partner logos uploaded yet. Click "+ Upload Partner Logo" to add one.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = partners.map((p, idx) => `
     <tr>
-      <td><b style="color: #0F172A;">${p.name}</b></td>
-      <td>${p.tier}</td>
-      <td>${p.category}</td>
-      <td><a href="${p.website}" target="_blank" style="color: #2563EB; text-decoration: underline;">${p.website}</a></td>
+      <td>
+        <div style="background: #FFFFFF; padding: 10px 18px; border: 1.5px solid #E2E8F0; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; height: 68px; min-width: 170px; box-shadow: 0 2px 6px rgba(15,23,42,0.04);">
+          <img src="${p.logo}" alt="${p.name || 'Partner Logo'}" style="max-height: 52px; max-width: 160px; object-fit: contain;">
+        </div>
+      </td>
+      <td>
+        <b style="color: #0F172A; font-size: 0.95rem;">${p.name || 'Partner Organization'}</b>
+        <div style="font-size: 0.76rem; color: #64748B; margin-top: 2px;">Partner #${idx + 1}</div>
+      </td>
+      <td>
+        <span class="status-pill success" style="font-size: 0.76rem;">Big Sliding Marquee</span>
+      </td>
       <td>
         <div class="action-btn-group">
-          <button class="btn-icon-sm danger" onclick="BHBStore.deletePartner('${p.id}')">Delete</button>
+          <button class="btn-icon-sm danger" onclick="deletePartnerAdmin('${p.id}')">Delete</button>
         </div>
       </td>
     </tr>
   `).join('');
 }
 
+window.deletePartnerAdmin = function(id) {
+  if (confirm('Are you sure you want to remove this partner logo from the homepage sliding marquee?')) {
+    BHBStore.deletePartner(id);
+    showToast('Partner logo removed successfully!', 'info');
+  }
+};
+
 window.openNewPartnerModal = function() {
   const content = document.getElementById('adminCrudModalContent');
-  document.getElementById('adminCrudModalTitle').textContent = 'Add Partner';
+  document.getElementById('adminCrudModalTitle').textContent = 'Upload Partner Logo';
   if (content) {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSavePartner(event)">
+        <input type="hidden" name="part_id" value="">
+        <input type="hidden" name="part_logo" id="partLogoHidden" value="" required>
+
         <div class="form-group">
-          <label>Organization Name *</label>
-          <input type="text" name="part_name" required placeholder="e.g. Sahel Health Initiative">
+          <label style="font-weight: 700; color: #0F172A; margin-bottom: 6px;">Upload Partner Logo Image *</label>
+          <div class="admin-dropzone" style="padding: 24px; text-align: center; border: 2px dashed #94A3B8; border-radius: 8px; background: #F8FAFC; cursor: pointer;">
+            <input type="file" accept="image/*" onchange="handlePartnerLogoUpload(this)" required style="margin-bottom: 8px;">
+            <p style="font-size: 0.8rem; color: #64748B; margin: 0 0 10px;">Supports PNG, SVG, JPG, WebP. Crisp transparent logos look best.</p>
+            <div id="partLogoPreviewBox" style="display: none; padding: 12px 20px; background: #FFFFFF; border-radius: 8px; border: 1.5px solid #CBD5E1; width: fit-content; margin: 10px auto 0; box-shadow: 0 4px 12px rgba(15,23,42,0.08);">
+              <img id="partLogoPreview" src="" alt="Partner Logo Preview" style="max-height: 80px; max-width: 240px; object-fit: contain; display: block;">
+            </div>
+          </div>
         </div>
+
         <div class="form-group">
-          <label>Tier *</label>
-          <input type="text" name="part_tier" required placeholder="Programme Partner">
+          <label style="font-weight: 600; color: #475569;">Organization Name (Optional internal reference)</label>
+          <input type="text" name="part_name" placeholder="e.g. Kano State Ministry of Humanitarian Affairs">
         </div>
-        <div class="form-group">
-          <label>Sector / Category *</label>
-          <input type="text" name="part_cat" required placeholder="Health & Well-being">
-        </div>
-        <div class="form-group">
-          <label>Website URL</label>
-          <input type="url" name="part_web" required placeholder="https://organization.org">
-        </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Save Partner</button>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 14px; padding: 12px; font-weight: 700; font-size: 0.95rem;">
+          Upload &amp; Add Logo to Homepage Marquee
+        </button>
       </form>
     `;
   }
   openModal('adminCrudModal');
 };
 
+window.handlePartnerLogoUpload = function(inputEl) {
+  const file = inputEl.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const rawData = e.target.result;
+    const img = new Image();
+    img.onload = function() {
+      const maxW = 500;
+      const maxH = 250;
+      let w = img.width;
+      let h = img.height;
+
+      if (w > maxW || h > maxH) {
+        if (w / maxW > h / maxH) {
+          h = Math.round(h * (maxW / w));
+          w = maxW;
+        } else {
+          w = Math.round(w * (maxH / h));
+          h = maxH;
+        }
+      }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(img, 0, 0, w, h);
+
+      const isPNG = file.type === 'image/png' || file.type === 'image/svg+xml';
+      const optimizedData = isPNG ? canvas.toDataURL('image/png') : canvas.toDataURL('image/jpeg', 0.88);
+
+      const hiddenInput = document.getElementById('partLogoHidden');
+      if (hiddenInput) hiddenInput.value = optimizedData;
+
+      const previewBox = document.getElementById('partLogoPreviewBox');
+      const previewImg = document.getElementById('partLogoPreview');
+      if (previewImg) previewImg.src = optimizedData;
+      if (previewBox) previewBox.style.display = 'block';
+
+      showToast('Partner logo loaded and optimized!', 'success');
+    };
+    img.src = rawData;
+  };
+  reader.readAsDataURL(file);
+};
+
 window.handleSavePartner = function(e) {
   e.preventDefault();
   const form = e.target;
+  const logo = form.part_logo ? form.part_logo.value : '';
+  if (!logo) {
+    showToast('Please select a partner logo image to upload.', 'warning');
+    return;
+  }
+
   BHBStore.savePartner({
-    name: form.part_name.value,
-    tier: form.part_tier.value,
-    category: form.part_cat.value,
-    website: form.part_web.value
+    id: form.part_id ? form.part_id.value : undefined,
+    name: form.part_name ? form.part_name.value.trim() || 'Strategic Partner' : 'Strategic Partner',
+    logo: logo
   });
+
   closeModal('adminCrudModal');
-  showToast('Partner added and synced live!', 'success');
+  showToast('Partner logo uploaded and added to the sliding marquee live!', 'success');
 };
 
 // 9. Donations Ledger

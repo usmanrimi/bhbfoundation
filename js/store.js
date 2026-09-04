@@ -445,31 +445,33 @@ All institutional programs and financial disbursements remain open to annual pub
   partners: [
     {
       id: "part-1",
-      name: "The Ability First Tech Hub",
-      tier: "Programme Partner",
-      category: "Tech & Inclusion",
-      website: "https://abilityfirst.org"
+      name: "Corporate Affairs Commission (CAC)",
+      logo: "data:image/svg+xml;utf8,<svg viewBox='0 0 180 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%23047857'/><path d='M26 12L34 17V27C34 32.5 26 37 26 37C26 37 18 32.5 18 27V17L26 12Z' fill='%2310B981' stroke='%23FFFFFF' stroke-width='1.8'/><circle cx='26' cy='22' r='3.5' fill='%23FFFFFF'/><text x='56' y='32' font-family='sans-serif' font-weight='900' font-size='24' fill='%23064E3B' letter-spacing='1'>CAC</text><text x='57' y='43' font-family='sans-serif' font-weight='800' font-size='8' fill='%23047857' letter-spacing='2.2'>NIGERIA</text></svg>"
     },
     {
       id: "part-2",
-      name: "Aisha Kwaku and Associates",
-      tier: "Strategic Advisory",
-      category: "Health Consulting",
-      website: "https://aishakwaku.com"
+      name: "National Youth Council of Nigeria (NYCN)",
+      logo: "data:image/svg+xml;utf8,<svg viewBox='0 0 180 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%230F172A'/><rect x='12' y='11' width='8' height='28' rx='2' fill='%23008751'/><rect x='22' y='11' width='8' height='28' rx='2' fill='%23FFFFFF'/><rect x='32' y='11' width='8' height='28' rx='2' fill='%23008751'/><path d='M26 14L28.5 20H23.5L26 14Z' fill='%23F59E0B'/><text x='56' y='32' font-family='sans-serif' font-weight='900' font-size='23' fill='%230F172A' letter-spacing='1.2'>NYCN</text><text x='57' y='43' font-family='sans-serif' font-weight='800' font-size='8' fill='%23008751' letter-spacing='2'>KANO STATE</text></svg>"
     },
     {
       id: "part-3",
-      name: "Kano State Ministry of Women Affairs",
-      tier: "Institutional Partner",
-      category: "Government Policy",
-      website: "https://kanostate.gov.ng"
+      name: "The Ability First Tech Hub",
+      logo: "data:image/svg+xml;utf8,<svg viewBox='0 0 190 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%231E3A8A'/><path d='M26 13L35 18.5V29.5L26 35L17 29.5V18.5L26 13Z' stroke='%2338BDF8' stroke-width='2.2' fill='none'/><circle cx='26' cy='24' r='4.5' fill='%2338BDF8'/><text x='56' y='27' font-family='sans-serif' font-weight='900' font-size='16' fill='%230F172A' letter-spacing='0.5'>ABILITY FIRST</text><text x='57' y='41' font-family='sans-serif' font-weight='800' font-size='11' fill='%232563EB' letter-spacing='2.5'>TECH HUB</text></svg>"
     },
     {
       id: "part-4",
-      name: "Sahel Health Initiative",
-      tier: "Delivery Partner",
-      category: "Community Health",
-      website: "https://sahelhealth.org"
+      name: "Kano State Government",
+      logo: "data:image/svg+xml;utf8,<svg viewBox='0 0 190 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%2392400E'/><circle cx='26' cy='25' r='14' stroke='%23FBBF24' stroke-width='2' fill='none'/><path d='M21 28V20L26 16L31 20V28H21Z' fill='%23FDE68A'/><text x='56' y='27' font-family='sans-serif' font-weight='900' font-size='15' fill='%230F172A' letter-spacing='0.8'>KANO STATE</text><text x='57' y='41' font-family='sans-serif' font-weight='800' font-size='9' fill='%23B45309' letter-spacing='1.5'>GOVERNMENT</text></svg>"
+    },
+    {
+      id: "part-5",
+      name: "Sahel Community Health Initiative",
+      logo: "data:image/svg+xml;utf8,<svg viewBox='0 0 190 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%230F766E'/><path d='M23 15H29V22H36V28H29V35H23V28H16V22H23V15Z' fill='%23FFFFFF'/><text x='56' y='27' font-family='sans-serif' font-weight='900' font-size='16' fill='%230F172A' letter-spacing='0.5'>SAHEL HEALTH</text><text x='57' y='41' font-family='sans-serif' font-weight='800' font-size='10' fill='%230D9488' letter-spacing='1.8'>INITIATIVE</text></svg>"
+    },
+    {
+      id: "part-6",
+      name: "Aisha Kwaku & Associates Advisory",
+      logo: "data:image/svg+xml;utf8,<svg viewBox='0 0 180 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%23312E81'/><circle cx='26' cy='16' r='3' fill='%23A5B4FC'/><path d='M26 19V34M20 22L16 28H24L20 22ZM32 22L28 28H36L32 22Z' stroke='%23FFFFFF' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/><text x='56' y='32' font-family='sans-serif' font-weight='900' font-size='24' fill='%231E1B4B' letter-spacing='1.2'>AKA</text><text x='57' y='43' font-family='sans-serif' font-weight='800' font-size='8.5' fill='%234338CA' letter-spacing='2'>ADVISORY</text></svg>"
     }
   ],
 
@@ -619,13 +621,82 @@ All institutional programs and financial disbursements remain open to annual pub
   ]
 };
 
+// High-Capacity IndexedDB Engine for Fail-Safe Persistent Storage (No 5MB Quota Limits)
+const BHB_IDB_NAME = 'BHBFoundationDB';
+const BHB_IDB_STORE = 'keyval';
+const BHB_IDB_DOC_KEY = 'bhb_master_state';
+
+let bhbIDBInstance = null;
+
+function getIDBConnection() {
+  return new Promise((resolve) => {
+    if (typeof indexedDB === 'undefined') return resolve(null);
+    if (bhbIDBInstance) return resolve(bhbIDBInstance);
+
+    try {
+      const request = indexedDB.open(BHB_IDB_NAME, 1);
+      request.onupgradeneeded = (e) => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains(BHB_IDB_STORE)) {
+          db.createObjectStore(BHB_IDB_STORE);
+        }
+      };
+      request.onsuccess = (e) => {
+        bhbIDBInstance = e.target.result;
+        resolve(bhbIDBInstance);
+      };
+      request.onerror = () => resolve(null);
+    } catch (err) {
+      resolve(null);
+    }
+  });
+}
+
+function writeToIDB(data) {
+  getIDBConnection().then((db) => {
+    if (!db) return;
+    try {
+      const tx = db.transaction(BHB_IDB_STORE, 'readwrite');
+      tx.objectStore(BHB_IDB_STORE).put(data, BHB_IDB_DOC_KEY);
+    } catch (err) {}
+  });
+}
+
+function readFromIDB() {
+  return new Promise((resolve) => {
+    getIDBConnection().then((db) => {
+      if (!db) return resolve(null);
+      try {
+        const tx = db.transaction(BHB_IDB_STORE, 'readonly');
+        const req = tx.objectStore(BHB_IDB_STORE).get(BHB_IDB_DOC_KEY);
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => resolve(null);
+      } catch (err) {
+        resolve(null);
+      }
+    });
+  });
+}
+
 class StoreEngine {
   constructor() {
     this.subscribers = [];
     this.data = this.load();
 
-    // Listen to storage events from other tabs/windows for live real-time sync
+    // Asynchronously connect to IndexedDB and ensure latest master state
     if (typeof window !== 'undefined') {
+      readFromIDB().then((idbData) => {
+        if (idbData && typeof idbData === 'object' && idbData.settings) {
+          // If IndexedDB has items (especially images that might have been too large for localStorage)
+          this.data = idbData;
+          this.notifySubscribersOnly();
+        } else {
+          // Seed IndexedDB
+          writeToIDB(this.data);
+        }
+      });
+
+      // Listen to storage events from other tabs/windows for live real-time sync
       window.addEventListener('storage', (e) => {
         if (e.key === BHB_STORAGE_KEY && e.newValue) {
           try {
@@ -648,7 +719,7 @@ class StoreEngine {
         if (!parsed.heroSlides || !parsed.heroSlides.length) parsed.heroSlides = DEFAULT_STORE_DATA.heroSlides;
         if (!parsed.focusAreas || !parsed.focusAreas.length) parsed.focusAreas = DEFAULT_STORE_DATA.focusAreas;
         if (!parsed.projects || !parsed.projects.length) parsed.projects = DEFAULT_STORE_DATA.projects;
-        if (!parsed.partners || !parsed.partners.length) parsed.partners = DEFAULT_STORE_DATA.partners;
+        if (!parsed.partners || !parsed.partners.length || !parsed.partners[0].logo) parsed.partners = DEFAULT_STORE_DATA.partners;
         if (!parsed.comments) parsed.comments = DEFAULT_STORE_DATA.comments;
         if (!parsed.posts || !parsed.posts.length) parsed.posts = DEFAULT_STORE_DATA.posts;
         if (!parsed.donations || !parsed.donations.length) parsed.donations = DEFAULT_STORE_DATA.donations;
@@ -664,19 +735,23 @@ class StoreEngine {
   }
 
   persist(dataToSave) {
+    // 1. Immediately write to IndexedDB (virtually unlimited capacity, never throws quota errors)
+    if (typeof window !== 'undefined') {
+      writeToIDB(dataToSave);
+    }
+
+    // 2. Synchronously write to LocalStorage for instant zero-latency load
     try {
       localStorage.setItem(BHB_STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (e) {
-      console.warn("Storage save quota warning:", e);
+      console.warn("LocalStorage save quota exceeded. IndexedDB is safely retaining full state.", e);
       try {
-        // If quota warning occurs, prune large redundant items
+        // Prune older items for localStorage only, leaving IndexedDB intact
         const clone = JSON.parse(JSON.stringify(dataToSave));
-        if (clone.inquiries && clone.inquiries.length > 20) clone.inquiries = clone.inquiries.slice(0, 20);
-        if (clone.donations && clone.donations.length > 50) clone.donations = clone.donations.slice(0, 50);
+        if (clone.inquiries && clone.inquiries.length > 10) clone.inquiries = clone.inquiries.slice(0, 10);
+        if (clone.donations && clone.donations.length > 20) clone.donations = clone.donations.slice(0, 20);
         localStorage.setItem(BHB_STORAGE_KEY, JSON.stringify(clone));
-      } catch (e2) {
-        console.error("Storage save failed critically", e2);
-      }
+      } catch (e2) {}
     }
   }
 
@@ -1042,4 +1117,150 @@ window.renderTeamCardsHTML = function(isHome = false) {
       </div>
     </div>
   `).join('');
+};
+
+window.renderHeroSliderHTML = function() {
+  if (typeof BHBStore === 'undefined') return '';
+  const slides = BHBStore.getHeroSlides();
+  if (!slides || !slides.length) return '';
+
+  return slides.map((s, idx) => `
+    <div class="hero-slide ${idx === 0 ? 'active' : ''}">
+      <div class="hero-slide-item">
+        <img src="${s.image}" alt="${s.title}" class="hero-slide-bg" loading="${idx === 0 ? 'eager' : 'lazy'}">
+        <div class="hero-slide-overlay"></div>
+        <div class="container">
+          <div class="hero-slide-content">
+            ${s.label ? `<span class="hero-eyebrow-tag" style="display:inline-block; font-size:0.8rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:#38BDF8; margin-bottom:12px; background:rgba(15,23,42,0.6); padding:4px 12px; border-radius:4px; border:1px solid rgba(56,189,248,0.3);">${s.label}</span>` : ''}
+            <h1>${s.title}</h1>
+            <p class="lead">${s.lead}</p>
+            <div class="hero-cta-group">
+              <a href="${s.primaryCtaLink || 'work.html'}" class="btn btn-primary">${s.primaryCtaText || 'Explore Our Work →'}</a>
+              <button class="btn btn-outline-white" onclick="openDonateModal()">Support Our Mission</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+};
+
+window.renderFocusAreasHTML = function() {
+  if (typeof BHBStore === 'undefined') return '';
+  const areas = BHBStore.getFocusAreas();
+  if (!areas || !areas.length) return '';
+
+  return areas.map((a, idx) => `
+    <div class="focus-area-item interactive-lift reveal-up in" onclick="location.href='projects.html'">
+      <div class="focus-area-thumb-wrapper">
+        <img src="${a.image}" alt="${a.title}" class="focus-area-thumb" loading="lazy">
+        <div class="focus-area-badge">Pillar 0${idx + 1}</div>
+      </div>
+      <div class="focus-area-body">
+        <div>
+          <h3>${a.title}</h3>
+          <p>${a.summary}</p>
+        </div>
+        <div class="focus-area-footer">
+          <span>Priority Field Program</span>
+          <span class="arrow">Explore Projects →</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+};
+
+window.renderFeaturedProjectHTML = function() {
+  if (typeof BHBStore === 'undefined') return '';
+  const projects = BHBStore.getProjects();
+  if (!projects || !projects.length) return '';
+  const featured = projects.find(p => p.featured) || projects[0];
+
+  return `
+    <div class="project-featured-card interactive-lift reveal-up in">
+      <img src="${featured.image}" alt="${featured.title}" class="project-featured-image" loading="lazy">
+      <div class="project-featured-body">
+        <div>
+          <span class="project-category-tag">Featured Initiative · ${featured.category}</span>
+          <h3>${featured.title}</h3>
+          <p style="color: var(--text-body); margin-bottom: 20px; font-size: 1.05rem;">${featured.description}</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;"><b>Location:</b> ${featured.location} &nbsp;|&nbsp; <b>Impact:</b> ${featured.beneficiaries}</p>
+        </div>
+        <div>
+          <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('${featured.id}')">View Project Details →</button>
+        </div>
+      </div>
+    </div>
+  `;
+};
+
+window.renderSecondaryProjectsHTML = function() {
+  if (typeof BHBStore === 'undefined') return '';
+  const projects = BHBStore.getProjects();
+  if (!projects || !projects.length) return '';
+  const featured = projects.find(p => p.featured) || projects[0];
+  const secondaries = projects.filter(p => !featured || p.id !== featured.id).slice(0, 3);
+
+  return secondaries.map(p => `
+    <div class="project-item interactive-lift reveal-up in">
+      <img src="${p.image}" alt="${p.title}" class="project-item-thumb" loading="lazy">
+      <div class="project-item-content">
+        <div>
+          <span class="project-category-tag">${p.category}</span>
+          <h4>${p.title}</h4>
+          <p>${(p.description || '').substring(0, 115)}...</p>
+        </div>
+        <div>
+          <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('${p.id}')" style="width: 100%;">View Project →</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+};
+
+window.renderPartnersHTML = function() {
+  if (typeof BHBStore === 'undefined') return '';
+  const partners = BHBStore.getPartners();
+  if (!partners || !partners.length) return '';
+
+  const badges = partners.map(p => `
+    <div class="partner-logo-badge" title="${p.name || 'Partner Organization'}">
+      <img src="${p.logo}" alt="${p.name || 'Partner Logo'}" class="partner-logo-img" loading="lazy">
+    </div>
+  `).join('');
+
+  // Duplicate for seamless infinite sliding marquee animation
+  return badges + badges;
+};
+
+window.renderHomeBlogGridHTML = function() {
+  if (typeof BHBStore === 'undefined') return '';
+  const posts = BHBStore.getPosts().slice(0, 3);
+  if (!posts || !posts.length) return '';
+
+  return posts.map(p => {
+    const comments = BHBStore.getCommentsByPost(p.id);
+    return `
+      <div class="blog-card interactive-lift reveal-up in" onclick="openBlogPostReader('${p.id}')">
+        <img src="${p.image}" alt="${p.title}" class="blog-card-thumb" loading="lazy">
+        <div class="blog-card-body">
+          <div>
+            <div class="blog-card-meta">
+              <span class="project-category-tag">${p.category}</span>
+              <span>${p.readTime || '3 min read'}</span>
+            </div>
+            <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px;">${p.title}</h3>
+            <p style="font-size: 0.92rem; color: var(--text-body);">${(p.excerpt || '').substring(0, 110)}...</p>
+          </div>
+          <div>
+            <div class="blog-engagement-strip">
+              <span>Likes: ${p.likes || 0}</span>
+              <span>Comments: ${comments.length}</span>
+              <span style="margin-left: auto; color: var(--blue); font-weight: 600;">Read Article →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
 };

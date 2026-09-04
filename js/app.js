@@ -670,17 +670,14 @@ function renderTeam() {
   });
 }
 
-// 8. Partners
+// 8. Partners (Sliding Big Logo Marquee)
 function renderPartners() {
-  const container = document.getElementById('partnersStrip');
+  const container = document.getElementById('partnersTrack') || document.querySelector('.partners-track') || document.getElementById('partnersStrip');
   if (!container) return;
 
-  const partners = BHBStore.getPartners();
-  container.innerHTML = partners.map(p => `
-    <div class="partner-logo-item">
-      <span>${p.name}</span>
-    </div>
-  `).join('');
+  if (typeof renderPartnersHTML === 'function') {
+    container.innerHTML = renderPartnersHTML();
+  }
 }
 
 // 9. Settings & Metadata

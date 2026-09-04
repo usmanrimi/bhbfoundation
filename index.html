@@ -77,87 +77,8 @@
          HOMEPAGE HERO SLIDER (MULTI-SLIDE CAROUSEL)
          ========================================================================= -->
     <section class="hero-slider-section" id="top">
-      <div class="hero-slider-container">
-        
-        <!-- Slide 1 -->
-        <div class="hero-slide active">
-          <div class="hero-slide-item">
-            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80" alt="Empowering Families" class="hero-slide-bg">
-            <div class="hero-slide-overlay"></div>
-            <div class="container">
-              <div class="hero-slide-content">
-                <h1>Building Resilient Families, <br><span class="hero-two-color">Empowering Communities</span></h1>
-                <p class="lead">
-                  Advancing welfare, primary healthcare access, and economic self-reliance for vulnerable households across Northern Nigeria.
-                </p>
-                <div class="hero-cta-group">
-                  <a href="work.html" class="btn btn-primary">Explore Our Work →</a>
-                  <button class="btn btn-outline-white" onclick="openDonateModal()">Support Our Mission</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="hero-slide">
-          <div class="hero-slide-item">
-            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80" alt="Inclusive Education" class="hero-slide-bg">
-            <div class="hero-slide-overlay"></div>
-            <div class="container">
-              <div class="hero-slide-content">
-                <h1>Bridging The Digital Divide For <br><span class="hero-two-color">Girls With Disabilities</span></h1>
-                <p class="lead">
-                  Equipping adolescent girls with assistive tech laptops, coding skills, and career pathways in partnership with The Ability First Tech Hub.
-                </p>
-                <div class="hero-cta-group">
-                  <a href="projects.html" class="btn btn-primary">View Flagship Project →</a>
-                  <button class="btn btn-outline-white" onclick="openDonateModal()">Support Our Mission</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="hero-slide">
-          <div class="hero-slide-item">
-            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1600&q=80" alt="Maternal Health" class="hero-slide-bg">
-            <div class="hero-slide-overlay"></div>
-            <div class="container">
-              <div class="hero-slide-content">
-                <h1>Safe Healthcare &amp; Maternal Care <br><span class="hero-two-color">Within Reach</span></h1>
-                <p class="lead">
-                  Mobile clinics and community healthcare teams delivering prenatal checkups and diagnostic support directly to rural settlements.
-                </p>
-                <div class="hero-cta-group">
-                  <a href="work.html" class="btn btn-primary">Our Health Initiatives →</a>
-                  <a href="contact.html" class="btn btn-outline-white">Partner With Us</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 4 -->
-        <div class="hero-slide">
-          <div class="hero-slide-item">
-            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1600&q=80" alt="Women Enterprise" class="hero-slide-bg">
-            <div class="hero-slide-overlay"></div>
-            <div class="container">
-              <div class="hero-slide-content">
-                <h1>Fostering Economic Independence For <br><span class="hero-two-color">Women &amp; Youth</span></h1>
-                <p class="lead">
-                  Providing seed micro-grants, mechanized grain processing equipment, and vocational mentoring that empower sustainable household income.
-                </p>
-                <div class="hero-cta-group">
-                  <a href="projects.html" class="btn btn-primary">Explore Livelihoods →</a>
-                  <button class="btn btn-outline-white" onclick="openDonateModal()">Get Involved</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="hero-slider-container" id="heroSliderContainer">
+        <script>document.write(renderHeroSliderHTML());</script>
 
         <!-- Arrows -->
         <div class="hero-slider-arrows">
@@ -241,7 +162,7 @@
           <!-- Left Column: Institutional Field Showcase -->
           <div class="about-showcase-column">
             <div class="about-showcase-frame interactive-lift">
-              <img id="aboutShowcaseImg" data-bind-src="aboutImage" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80" alt="BHB Foundation Grassroots Community Outreach in Kano State" class="about-showcase-img">
+              <script>document.write('<img id="aboutShowcaseImg" data-bind-src="aboutImage" src="' + (BHBStore.getSettings().aboutImage || 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80') + '" alt="BHB Foundation Grassroots Community Outreach in Kano State" class="about-showcase-img">');</script>
             </div>
           </div>
 
@@ -396,36 +317,7 @@
         </div>
 
         <div class="focus-areas-grid" id="focusAreasGrid">
-          <div class="focus-area-item interactive-lift reveal-up">
-            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" alt="Family Support &amp; Welfare" class="focus-area-thumb">
-            <h3>Family Support &amp; Welfare</h3>
-            <p>Direct household interventions, emergency relief, and social safety nets for vulnerable families.</p>
-          </div>
-          <div class="focus-area-item interactive-lift reveal-up">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Youth Empowerment &amp; Livelihoods" class="focus-area-thumb">
-            <h3>Youth Empowerment &amp; Livelihoods</h3>
-            <p>Vocational apprenticeships, digital skills incubation, and mentorship programs for young people.</p>
-          </div>
-          <div class="focus-area-item interactive-lift reveal-up">
-            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80" alt="Women &amp; Vulnerable Groups" class="focus-area-thumb">
-            <h3>Women &amp; Vulnerable Groups</h3>
-            <p>Micro-enterprise seed grants, financial literacy, and protective safe spaces for widowed mothers.</p>
-          </div>
-          <div class="focus-area-item interactive-lift reveal-up">
-            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" alt="Digital Skills &amp; Inclusive Education" class="focus-area-thumb">
-            <h3>Digital Skills &amp; Inclusive Education</h3>
-            <p>Foundational digital literacy, assistive tools, and inclusive classrooms for children with disabilities.</p>
-          </div>
-          <div class="focus-area-item interactive-lift reveal-up">
-            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" alt="Community Health &amp; Well-being" class="focus-area-thumb">
-            <h3>Community Health &amp; Well-being</h3>
-            <p>Mobile prenatal diagnostics, primary healthcare awareness, and hygiene education in underserved settlements.</p>
-          </div>
-          <div class="focus-area-item interactive-lift reveal-up">
-            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80" alt="Community Resilience &amp; Sustainability" class="focus-area-thumb">
-            <h3>Community Resilience &amp; Sustainability</h3>
-            <p>Grassroots leadership committees, water and sanitation maintenance, and climate-resilient farming.</p>
-          </div>
+          <script>document.write(renderFocusAreasHTML());</script>
         </div>
       </div>
     </section>
@@ -481,67 +373,12 @@
 
         <!-- Featured Major Project Card -->
         <div id="projectFeaturedContainer">
-          <div class="project-featured-card interactive-lift reveal-up">
-            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="Digital Skills Boot Camp" class="project-featured-image">
-            <div class="project-featured-body">
-              <div>
-                <span class="project-category-tag">Featured Initiative · Digital Skills &amp; Education</span>
-                <h3>Holiday Digital Skills Boot Camp for Girls with Disabilities</h3>
-                <p style="color: var(--text-body); margin-bottom: 20px; font-size: 1.05rem;">
-                  Funded directly by BHB Foundation in partnership with The Ability First Tech Hub. An intensive assistive tech program empowering adolescent girls with visual, hearing, and physical disabilities with screen-reader fluency and digital independence.
-                </p>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;"><b>Location:</b> Kano Metropolitan &nbsp;|&nbsp; <b>Impact:</b> 10 Girls</p>
-              </div>
-              <div>
-                <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('proj-1')">View Project Details →</button>
-              </div>
-            </div>
-          </div>
+          <script>document.write(renderFeaturedProjectHTML());</script>
         </div>
 
         <!-- Secondary Structured Projects Grid -->
         <div class="project-secondary-grid" id="projectSecondaryGrid">
-          <div class="project-item interactive-lift reveal-up">
-            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" alt="Maternal Health" class="project-item-thumb">
-            <div class="project-item-content">
-              <div>
-                <span class="project-category-tag">Community Health</span>
-                <h4>Mobile Primary &amp; Maternal Care Access Initiative</h4>
-                <p>Providing rural settlements across Kano with routine mobile clinics, prenatal checkups, and nutritional packages.</p>
-              </div>
-              <div>
-                <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('proj-2')" style="width: 100%;">View Project →</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-item interactive-lift reveal-up">
-            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80" alt="Widows Agro Fund" class="project-item-thumb">
-            <div class="project-item-content">
-              <div>
-                <span class="project-category-tag">Livelihoods</span>
-                <h4>Widows &amp; Vulnerable Women Agro-Business Seed Fund</h4>
-                <p>Seed grants, grain processing equipment, and financial literacy training empowering widowed mothers with sustainable income.</p>
-              </div>
-              <div>
-                <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('proj-3')" style="width: 100%;">View Project →</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-item interactive-lift reveal-up">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Youth Technical Hub" class="project-item-thumb">
-            <div class="project-item-content">
-              <div>
-                <span class="project-category-tag">Youth Empowerment</span>
-                <h4>Kano Youth Technical &amp; Apprenticeship Hub</h4>
-                <p>6-month practical vocational and IT hardware repair apprenticeship connecting underprivileged youth to market placements.</p>
-              </div>
-              <div>
-                <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('proj-4')" style="width: 100%;">View Project →</button>
-              </div>
-            </div>
-          </div>
+          <script>document.write(renderSecondaryProjectsHTML());</script>
         </div>
 
       </div>
@@ -560,7 +397,9 @@
           </div>
         </div>
 
-        <div class="blog-grid-3" id="homeBlogGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px; margin-top: 32px;"></div>
+        <div class="blog-grid-3" id="homeBlogGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px; margin-top: 32px;">
+          <script>document.write(renderHomeBlogGridHTML());</script>
+        </div>
       </div>
     </section>
 
@@ -711,141 +550,8 @@
       </div>
 
       <div class="partners-track-wrapper">
-        <div class="partners-track">
-          <!-- 1. CAC -->
-          <div class="partner-logo-badge" title="Corporate Affairs Commission (CAC)">
-            <svg class="partner-logo-img" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="5" width="40" height="40" rx="10" fill="#047857"/>
-              <path d="M26 12L34 17V27C34 32.5 26 37 26 37C26 37 18 32.5 18 27V17L26 12Z" fill="#10B981" stroke="#FFFFFF" stroke-width="1.8"/>
-              <circle cx="26" cy="22" r="3.5" fill="#FFFFFF"/>
-              <text x="56" y="32" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="24" fill="#064E3B" letter-spacing="1">CAC</text>
-              <text x="57" y="43" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8" fill="#047857" letter-spacing="2.2">NIGERIA</text>
-            </svg>
-          </div>
-
-          <!-- 2. NYCN -->
-          <div class="partner-logo-badge" title="National Youth Council of Nigeria (NYCN)">
-            <svg class="partner-logo-img" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="5" width="40" height="40" rx="10" fill="#0F172A"/>
-              <rect x="12" y="11" width="8" height="28" rx="2" fill="#008751"/>
-              <rect x="22" y="11" width="8" height="28" rx="2" fill="#FFFFFF"/>
-              <rect x="32" y="11" width="8" height="28" rx="2" fill="#008751"/>
-              <path d="M26 14L28.5 20H23.5L26 14Z" fill="#F59E0B"/>
-              <text x="56" y="32" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="23" fill="#0F172A" letter-spacing="1.2">NYCN</text>
-              <text x="57" y="43" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8" fill="#008751" letter-spacing="2">KANO STATE</text>
-            </svg>
-          </div>
-
-          <!-- 3. Ability First Tech -->
-          <div class="partner-logo-badge" title="Ability First Tech">
-            <svg class="partner-logo-img" viewBox="0 0 190 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="5" width="40" height="40" rx="10" fill="#1E3A8A"/>
-              <path d="M26 13L35 18.5V29.5L26 35L17 29.5V18.5L26 13Z" stroke="#38BDF8" stroke-width="2.2" fill="none"/>
-              <circle cx="26" cy="24" r="4.5" fill="#38BDF8"/>
-              <text x="56" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="16" fill="#0F172A" letter-spacing="0.5">ABILITY FIRST</text>
-              <text x="57" y="41" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="11" fill="#2563EB" letter-spacing="2.5">TECH HUB</text>
-            </svg>
-          </div>
-
-          <!-- 4. Kano State Government -->
-          <div class="partner-logo-badge" title="Kano State Ministry of Humanitarian Affairs">
-            <svg class="partner-logo-img" viewBox="0 0 190 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="5" width="40" height="40" rx="10" fill="#92400E"/>
-              <circle cx="26" cy="25" r="14" stroke="#FBBF24" stroke-width="2" fill="none"/>
-              <path d="M21 28V20L26 16L31 20V28H21Z" fill="#FDE68A"/>
-              <text x="56" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="15" fill="#0F172A" letter-spacing="0.8">KANO STATE</text>
-              <text x="57" y="41" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="#B45309" letter-spacing="1.5">GOVERNMENT</text>
-            </svg>
-          </div>
-
-          <!-- 5. Sahel Community Health -->
-          <div class="partner-logo-badge" title="Sahel Community Health Initiative">
-            <svg class="partner-logo-img" viewBox="0 0 190 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="5" width="40" height="40" rx="10" fill="#0F766E"/>
-              <path d="M23 15H29V22H36V28H29V35H23V28H16V22H23V15Z" fill="#FFFFFF"/>
-              <text x="56" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="16" fill="#0F172A" letter-spacing="0.5">SAHEL HEALTH</text>
-              <text x="57" y="41" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="10" fill="#0D9488" letter-spacing="1.8">INITIATIVE</text>
-            </svg>
-          </div>
-
-          <!-- 6. Aisha Kwaku Advisory -->
-          <div class="partner-logo-badge" title="Aisha Kwaku &amp; Associates">
-            <svg class="partner-logo-img" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="5" width="40" height="40" rx="10" fill="#312E81"/>
-              <circle cx="26" cy="16" r="3" fill="#A5B4FC"/>
-              <path d="M26 19V34M20 22L16 28H24L20 22ZM32 22L28 28H36L32 22Z" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <text x="56" y="32" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="24" fill="#1E1B4B" letter-spacing="1.2">AKA</text>
-              <text x="57" y="43" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8.5" fill="#4338CA" letter-spacing="2">ADVISORY</text>
-            </svg>
-          </div>
-
-          <!-- Duplicate Set for Seamless Continuous Slide -->
-          <!-- 1. CAC -->
-          <div class="partner-logo-badge" title="Corporate Affairs Commission (CAC)">
-            <svg class="partner-logo-img" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="5" width="40" height="40" rx="10" fill="#047857"/>
-              <path d="M26 12L34 17V27C34 32.5 26 37 26 37C26 37 18 32.5 18 27V17L26 12Z" fill="#10B981" stroke="#FFFFFF" stroke-width="1.8"/>
-              <circle cx="26" cy="22" r="3.5" fill="#FFFFFF"/>
-              <text x="56" y="32" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="24" fill="#064E3B" letter-spacing="1">CAC</text>
-              <text x="57" y="43" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8" fill="#047857" letter-spacing="2.2">NIGERIA</text>
-            </svg>
-          </div>
-
-          <!-- 2. NYCN -->
-          <div class="partner-logo-badge" title="National Youth Council of Nigeria (NYCN)">
-            <svg class="partner-logo-img" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="5" width="40" height="40" rx="10" fill="#0F172A"/>
-              <rect x="12" y="11" width="8" height="28" rx="2" fill="#008751"/>
-              <rect x="22" y="11" width="8" height="28" rx="2" fill="#FFFFFF"/>
-              <rect x="32" y="11" width="8" height="28" rx="2" fill="#008751"/>
-              <path d="M26 14L28.5 20H23.5L26 14Z" fill="#F59E0B"/>
-              <text x="56" y="32" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="23" fill="#0F172A" letter-spacing="1.2">NYCN</text>
-              <text x="57" y="43" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8" fill="#008751" letter-spacing="2">KANO STATE</text>
-            </svg>
-          </div>
-
-          <!-- 3. Ability First Tech -->
-          <div class="partner-logo-badge" title="Ability First Tech">
-            <svg class="partner-logo-img" viewBox="0 0 190 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="5" width="40" height="40" rx="10" fill="#1E3A8A"/>
-              <path d="M26 13L35 18.5V29.5L26 35L17 29.5V18.5L26 13Z" stroke="#38BDF8" stroke-width="2.2" fill="none"/>
-              <circle cx="26" cy="24" r="4.5" fill="#38BDF8"/>
-              <text x="56" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="16" fill="#0F172A" letter-spacing="0.5">ABILITY FIRST</text>
-              <text x="57" y="41" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="11" fill="#2563EB" letter-spacing="2.5">TECH HUB</text>
-            </svg>
-          </div>
-
-          <!-- 4. Kano State Government -->
-          <div class="partner-logo-badge" title="Kano State Ministry of Humanitarian Affairs">
-            <svg class="partner-logo-img" viewBox="0 0 190 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="5" width="40" height="40" rx="10" fill="#92400E"/>
-              <circle cx="26" cy="25" r="14" stroke="#FBBF24" stroke-width="2" fill="none"/>
-              <path d="M21 28V20L26 16L31 20V28H21Z" fill="#FDE68A"/>
-              <text x="56" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="15" fill="#0F172A" letter-spacing="0.8">KANO STATE</text>
-              <text x="57" y="41" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="#B45309" letter-spacing="1.5">GOVERNMENT</text>
-            </svg>
-          </div>
-
-          <!-- 5. Sahel Community Health -->
-          <div class="partner-logo-badge" title="Sahel Community Health Initiative">
-            <svg class="partner-logo-img" viewBox="0 0 190 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="5" width="40" height="40" rx="10" fill="#0F766E"/>
-              <path d="M23 15H29V22H36V28H29V35H23V28H16V22H23V15Z" fill="#FFFFFF"/>
-              <text x="56" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="16" fill="#0F172A" letter-spacing="0.5">SAHEL HEALTH</text>
-              <text x="57" y="41" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="10" fill="#0D9488" letter-spacing="1.8">INITIATIVE</text>
-            </svg>
-          </div>
-
-          <!-- 6. Aisha Kwaku Advisory -->
-          <div class="partner-logo-badge" title="Aisha Kwaku &amp; Associates">
-            <svg class="partner-logo-img" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="5" width="40" height="40" rx="10" fill="#312E81"/>
-              <circle cx="26" cy="16" r="3" fill="#A5B4FC"/>
-              <path d="M26 19V34M20 22L16 28H24L20 22ZM32 22L28 28H36L32 22Z" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <text x="56" y="32" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="24" fill="#1E1B4B" letter-spacing="1.2">AKA</text>
-              <text x="57" y="43" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8.5" fill="#4338CA" letter-spacing="2">ADVISORY</text>
-            </svg>
-          </div>
+        <div class="partners-track" id="partnersTrack">
+          <script>document.write(renderPartnersHTML());</script>
         </div>
       </div>
     </section>
@@ -1251,21 +957,24 @@
           </div>
 
           <!-- TAB 7: PARTNERS -->
+          <!-- TAB 7: PARTNERS (LOGO-ONLY SLIDING SHOWCASE) -->
           <div class="admin-tab-pane" id="adminTab-partners">
             <div class="admin-table-card">
               <div class="table-action-bar">
-                <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Partner Organizations</h3>
-                <button class="btn btn-primary btn-sm" onclick="openNewPartnerModal()">+ Add Partner</button>
+                <div>
+                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Partner &amp; Coalition Logos</h3>
+                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Upload high-visibility partner logos. Only logos appear in the homepage continuous sliding marquee in big size.</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openNewPartnerModal()">+ Upload Partner Logo</button>
               </div>
               <div style="overflow-x: auto;">
                 <table class="admin-data-table">
                   <thead>
                     <tr>
-                      <th>Organization</th>
-                      <th>Tier</th>
-                      <th>Sector</th>
-                      <th>Website</th>
-                      <th>Actions</th>
+                      <th style="min-width: 200px;">Partner Logo (Big Size)</th>
+                      <th style="min-width: 180px;">Organization Reference</th>
+                      <th style="width: 160px;">Display Mode</th>
+                      <th style="width: 120px;">Actions</th>
                     </tr>
                   </thead>
                   <tbody id="adminPartnersTableBody"></tbody>
