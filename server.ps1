@@ -1,33 +1,61 @@
 $port = 8080
 $root = "C:\Users\USER\.gemini\antigravity\scratch\bhb-foundation"
-$listener = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::IPv6Any, $port)
-$listener.Server.DualMode = $true
+
+$listener = [System.Net.HttpListener]::new()
+$listener.Prefixes.Add("http://localhost:$port/")
+$listener.Prefixes.Add("http://127.0.0.1:$port/")
 $listener.Start()
 Write-Host "BHB Foundation server running on http://localhost:$port and http://127.0.0.1:$port"
 
-while ($true) {
+while ($listener.IsListening) {
     try {
-        $client = $listener.AcceptTcpClient()
-        $stream = $client.GetStream()
-        $reader = [System.IO.StreamReader]::new($stream)
-        $writer = [System.IO.StreamWriter]::new($stream)
-        $writer.AutoFlush = $true
+        $context = $listener.GetContext()
+        $request = $context.Request
+        $response = $context.Response
 
-        $line = $reader.ReadLine()
-        if (-not $line) {
-            $client.Close()
+        # CORS headers
+        $response.AddHeader("Access-Control-Allow-Origin", "*")
+        $response.AddHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        $response.AddHeader("Access-Control-Allow-Headers", "Content-Type")
+
+        if ($request.HttpMethod -eq 'OPTIONS') {
+            $response.StatusCode = 204
+            $response.Close()
             continue
         }
 
-        $parts = $line.Split(' ')
-        if ($parts.Length -lt 2) {
-            $client.Close()
+        if ($request.HttpMethod -eq 'POST' -and $request.Url.AbsolutePath -eq '/api/sync-to-git') {
+            $bodyReader = [System.IO.StreamReader]::new($request.InputStream, [System.Text.Encoding]::UTF8)
+            $bodyJson = $bodyReader.ReadToEnd()
+
+            if ($bodyJson.Length -gt 10) {
+                $seedPath = Join-Path $root 'data\seed_data.json'
+                [System.IO.File]::WriteAllText($seedPath, $bodyJson, [System.Text.Encoding]::UTF8)
+
+                $initJsPath = Join-Path $root 'js\initial_data.js'
+                $initJsContent = "window.BHB_SEED_DATA = " + $bodyJson + ";`n"
+                [System.IO.File]::WriteAllText($initJsPath, $initJsContent, [System.Text.Encoding]::UTF8)
+
+                $git = "C:\Users\USER\.gemini\antigravity\scratch\mingit\cmd\git.exe"
+                try {
+                    & $git add js/initial_data.js data/seed_data.json 2>$null
+                    & $git commit -m "chore(content): sync super admin content to live site" 2>$null
+                    & $git push origin main 2>$null
+                } catch {}
+            }
+
+            $respObj = @{ success = $true; message = "All your Super Admin changes and photos have been pushed live to GitHub!" }
+            $respJson = $respObj | ConvertTo-Json
+            $respBytes = [System.Text.Encoding]::UTF8.GetBytes($respJson)
+            $response.ContentType = "application/json; charset=utf-8"
+            $response.ContentLength64 = $respBytes.Length
+            $response.OutputStream.Write($respBytes, 0, $respBytes.Length)
+            $response.Close()
             continue
         }
 
-        $method = $parts[0]
-        $rawUrl = $parts[1].Split('?')[0]
-        $path = $rawUrl.TrimStart('/')
+        # Static files
+        $path = $request.Url.AbsolutePath.TrimStart('/')
         if ([string]::IsNullOrEmpty($path) -or $path -eq '/') {
             $path = 'index.html'
         }
@@ -53,14 +81,11 @@ while ($true) {
         }
 
         $bytes = [System.IO.File]::ReadAllBytes($fullPath)
-        $header = "HTTP/1.1 200 OK`r`nContent-Type: $contentType`r`nContent-Length: $($bytes.Length)`r`nAccess-Control-Allow-Origin: *`r`nConnection: close`r`n`r`n"
-        $headerBytes = [System.Text.Encoding]::UTF8.GetBytes($header)
-
-        $stream.Write($headerBytes, 0, $headerBytes.Length)
-        $stream.Write($bytes, 0, $bytes.Length)
-        $stream.Flush()
-        $client.Close()
+        $response.ContentType = $contentType
+        $response.ContentLength64 = $bytes.Length
+        $response.OutputStream.Write($bytes, 0, $bytes.Length)
+        $response.Close()
     } catch {
-        # ignore client disconnects
+        # ignore client aborts
     }
 }

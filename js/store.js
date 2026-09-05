@@ -6,7 +6,7 @@
 
 const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V8';
 
-const DEFAULT_STORE_DATA = {
+const RAW_DEFAULT_STORE_DATA = {
   settings: {
     foundationName: "BHB Family Support and Development Foundation",
     shortName: "BHB Foundation",
@@ -621,6 +621,8 @@ All institutional programs and financial disbursements remain open to annual pub
   ]
 };
 
+const DEFAULT_STORE_DATA = (typeof window !== 'undefined' && window.BHB_SEED_DATA && window.BHB_SEED_DATA.settings) ? window.BHB_SEED_DATA : RAW_DEFAULT_STORE_DATA;
+
 // High-Capacity IndexedDB Engine for Fail-Safe Persistent Storage (No 5MB Quota Limits)
 const BHB_IDB_NAME = 'BHBFoundationDB';
 const BHB_IDB_STORE = 'keyval';
@@ -713,6 +715,11 @@ class StoreEngine {
       const stored = localStorage.getItem(BHB_STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
+        // If a new seed data was deployed to GitHub with a newer timestamp, sync it in
+        if (typeof window !== 'undefined' && window.BHB_SEED_DATA && window.BHB_SEED_DATA.lastUpdated && (!parsed.lastUpdated || window.BHB_SEED_DATA.lastUpdated > parsed.lastUpdated)) {
+          this.persist(window.BHB_SEED_DATA);
+          return JSON.parse(JSON.stringify(window.BHB_SEED_DATA));
+        }
         if (!parsed.settings) parsed.settings = DEFAULT_STORE_DATA.settings;
         if (!parsed.settings.aboutImage) parsed.settings.aboutImage = DEFAULT_STORE_DATA.settings.aboutImage;
         if (!parsed.team || !parsed.team.length) parsed.team = DEFAULT_STORE_DATA.team;

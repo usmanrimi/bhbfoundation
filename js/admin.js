@@ -1522,3 +1522,43 @@ window.resetToDemoData = function() {
     showToast('Database reset to default factory data!', 'success');
   }
 };
+
+window.syncAdminChangesToGitHub = async function() {
+  const btn = document.getElementById('adminSyncGitBtn');
+  const originalHtml = btn ? btn.innerHTML : '';
+  if (btn) {
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    btn.innerHTML = '<span>⏳ Pushing to GitHub...</span>';
+  }
+
+  try {
+    const data = BHBStore.data;
+    data.lastUpdated = Date.now();
+    const res = await fetch('/api/sync-to-git', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (res.ok) {
+      const result = await res.json();
+      showToast('🎉 ' + (result.message || 'All changes & photos pushed live to GitHub!'), 'success');
+    } else {
+      throw new Error('Server response: ' + res.status);
+    }
+  } catch (err) {
+    console.error('Direct git sync error:', err);
+    showToast('Server sync unavailable. Downloading database JSON backup for you...', 'warning');
+    if (typeof BHBStore !== 'undefined' && BHBStore.exportJSON) {
+      BHBStore.exportJSON();
+    }
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      btn.innerHTML = originalHtml;
+    }
+  }
+};
+
