@@ -1,0 +1,5 @@
+﻿User-agent: *
+Allow: /
+Disallow: /*openAdmin=true
+
+Sitemap: https://bhbfoundation.org/sitemap.xml
