@@ -1,5 +1,5 @@
 $port = 8080
-$root = "C:\Users\USER\.gemini\antigravity\scratch\bhb-foundation"
+$root = $PSScriptRoot
 
 $listener = [System.Net.HttpListener]::new()
 $listener.Prefixes.Add("http://localhost:$port/")
@@ -12,6 +12,7 @@ while ($listener.IsListening) {
         $context = $listener.GetContext()
         $request = $context.Request
         $response = $context.Response
+        Write-Host "Received $($request.HttpMethod) request for $($request.Url.AbsolutePath)"
 
         # CORS headers
         $response.AddHeader("Access-Control-Allow-Origin", "*")
@@ -36,11 +37,10 @@ while ($listener.IsListening) {
                 $initJsContent = "window.BHB_SEED_DATA = " + $bodyJson + ";`n"
                 [System.IO.File]::WriteAllText($initJsPath, $initJsContent, [System.Text.Encoding]::UTF8)
 
-                $git = "C:\Users\USER\.gemini\antigravity\scratch\mingit\cmd\git.exe"
                 try {
-                    & $git add js/initial_data.js data/seed_data.json 2>$null
-                    & $git commit -m "chore(content): sync super admin content to live site" 2>$null
-                    & $git push origin main 2>$null
+                    & git add js/initial_data.js data/seed_data.json 2>$null
+                    & git commit -m "chore(content): sync super admin content to live site" 2>$null
+                    & git push origin main 2>$null
                 } catch {}
             }
 

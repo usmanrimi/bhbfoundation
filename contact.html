@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us — BHB Family Support and Development Foundation</title>
   
-  <meta name="description" content="Connect with BHB Foundation headquarters in Kano State, Nigeria. Partnerships, donor relations, and program inquiries.">
+  <meta name="description" content="Connect with BHB Foundation headquarters in Kano State, Nigeria. Partnerships, donor relations, and programme inquiries.">
   <link rel="icon" type="image/png" href="assets/images/bhb-logo.png">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +19,7 @@
   <!-- Core Store Synchronous Load for Instant Rendering -->
   <script src="js/initial_data.js"></script>
   <script src="js/store.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -41,7 +42,7 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="index.html" class="nav-admin-link" onclick="localStorage.setItem('openAdmin', 'true')">Admin</a>
+        
         <button class="btn btn-primary btn-sm" onclick="openDonateModal()">Support Our Mission</button>
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">Menu</button>
       </div>
@@ -53,7 +54,7 @@
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="work.html">Our Work</a>
-    <a href="projects.html">Projects &amp; Programs</a>
+    <a href="projects.html">Projects &amp; Programmes</a>
     <a href="impact.html">Impact Metrics</a>
     <a href="blog.html">Blog &amp; Dispatches</a>
     <a href="team.html">Our Team</a>
@@ -61,9 +62,9 @@
   </div>
 
   <!-- Page Header Banner -->
-  <div class="page-header-banner">
+  <div class="page-header-banner" style="background: linear-gradient(rgba(15, 30, 54, 0.92), rgba(15, 30, 54, 0.98)), url('https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center;">
     <div class="container">
-      <h1>Start A Conversation With <br><span class="hero-two-color">BHB Foundation</span></h1>
+      <h1>Start A Conversation With  <span class="hero-two-color">BHB Foundation</span></h1>
       <p>
         Whether you are an institutional partner, philanthropic donor, CSR representative, or community volunteer, reach out to explore collaborative pathways.
       </p>
@@ -73,11 +74,11 @@
   <!-- Contact Section -->
   <section>
     <div class="container">
-      <div class="contact-editorial-grid">
+      <div class="contact-editorial-grid" style="background: var(--navy); color: #FFF; padding: 60px; border-radius: 20px;">
         
         <div class="contact-info-col">
-          <h2 class="section-title-twotone">Kano Headquarters &amp; <br><span class="text-accent-blue">Communications</span></h2>
-          <p style="margin-top: 12px;">
+          <h2 class="section-title-twotone">Kano Headquarters &amp;  <span class="text-accent-blue">Communications</span></h2>
+          <p style="margin-top: 12px; color: #CBD5E1;">
             Our team is available Monday through Friday to answer inquiries regarding ongoing projects, grant matching, and community partnerships.
           </p>
 
@@ -134,17 +135,17 @@
               </div>
               <div class="form-group">
                 <label>Email Address *</label>
-                <input type="email" name="contact_email" required placeholder="name@organization.org">
+                <input type="email" name="contact_email" required placeholder="name@organisation.org">
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label>Organization Type</label>
+                <label>Organisation Type</label>
                 <select name="contact_org" required>
                   <option value="Government institution">Government institution</option>
                   <option value="Philanthropic foundation">Philanthropic foundation</option>
-                  <option value="Corporate CSR program">Corporate CSR program</option>
+                  <option value="Corporate CSR programme">Corporate CSR programme</option>
                   <option value="Civil society / NGO">Civil society / NGO</option>
                   <option value="Individual">Individual Supporter</option>
                   <option value="Other">Other</option>
@@ -154,7 +155,7 @@
                 <label>Inquiry Subject</label>
                 <select name="contact_subject" required>
                   <option value="Partnership inquiry">Partnership inquiry</option>
-                  <option value="Program collaboration">Program collaboration</option>
+                  <option value="Programme collaboration">Programme collaboration</option>
                   <option value="Funding & Grants">Funding &amp; Grants</option>
                   <option value="General question">General question</option>
                 </select>
@@ -200,7 +201,7 @@
           <a href="impact.html">Impact &amp; Verification</a>
         </div>
 
-        <!-- Column 3: Interventions & Programs -->
+        <!-- Column 3: Interventions & Programmes -->
         <div class="footer-nav-col">
           <h5>Core Focus &amp; Field</h5>
           <a href="work.html">Focus Areas</a>
@@ -209,26 +210,9 @@
           <a href="contact.html">Partner &amp; Contact</a>
         </div>
 
-        <!-- Column 4: Newsletter & Dispatch Updates -->
-        <div class="footer-newsletter-col">
-          <h5>Quarterly Dispatches</h5>
-          <p class="footer-newsletter-desc">
-            Subscribe to receive verified field audits, milestone publications, and community stories directly in your inbox.
-          </p>
-          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing to BHB Foundation dispatches!', 'success'); this.reset();">
-            <div class="footer-input-group">
-              <input type="email" placeholder="Enter your email address..." required aria-label="Your email address">
-              <button type="submit" class="btn btn-primary">Subscribe</button>
-            </div>
-            <div class="footer-form-note">Zero spam. Verified operational dispatches only.</div>
-          </form>
-        </div>
-
-      </div>
-
-      <!-- Bottom Bar -->
+        </div><!-- Bottom Bar -->
       <div class="footer-bottom-bar">
-        <span>© 2026 BHB Family Support and Development Foundation. Incorporated under Nigerian CAMA law. All rights reserved.</span>
+        <span>© 2026 BHB Family Support and Development Foundation. Registered in Nigeria under the Companies and Allied Matters Act (CAMA). All rights reserved.</span>
         <div class="footer-bottom-links">
           <a href="index.html">Home</a>
           <span>·</span>
@@ -255,5 +239,32 @@
   <script src="js/store.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/app.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Auto-add AOS to major cards
+      const elements = document.querySelectorAll('.focus-area-item, .project-card, .news-card, .sdg-card, .commitment-card, .mv-card, .executive-spotlight-card, .team-member-card');
+      elements.forEach(el => {
+        if (!el.hasAttribute('data-aos')) {
+          el.setAttribute('data-aos', 'fade-up');
+        }
+      });
+      if (typeof AOS !== 'undefined') {
+        AOS.init({ once: true, offset: 30, duration: 700, easing: 'ease-out-cubic' });
+      }
+    });
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

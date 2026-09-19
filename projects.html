@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Initiatives &amp; Strategic Programs — BHB Family Support and Development Foundation</title>
+  <title>Initiatives &amp; Strategic Programmes — BHB Family Support and Development Foundation</title>
   
-  <meta name="description" content="View active and pipeline community programs by BHB Foundation across healthcare, education, assistive tech, and livelihood creation.">
+  <meta name="description" content="View active and pipeline community programmes by BHB Foundation across healthcare, education, assistive tech, and livelihood creation.">
   <link rel="icon" type="image/png" href="assets/images/bhb-logo.png">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@
       box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: centre;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .project-kpi-card:hover {
@@ -67,7 +67,7 @@
     .project-filter-toolbar {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: centre;
       margin-bottom: 36px;
       gap: 20px;
       flex-wrap: wrap;
@@ -91,7 +91,7 @@
       cursor: pointer;
       transition: all 0.2s ease;
       display: flex;
-      align-items: center;
+      align-items: centre;
       gap: 6px;
     }
 
@@ -120,7 +120,7 @@
     /* Project Cards & Status Badges */
     .badge-status {
       display: inline-flex;
-      align-items: center;
+      align-items: centre;
       gap: 5px;
       font-size: 0.75rem;
       font-weight: 700;
@@ -231,7 +231,7 @@
       right: 14px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: centre;
     }
 
     .portfolio-card-body {
@@ -268,7 +268,7 @@
       border-radius: var(--radius-sm);
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: centre;
       flex-wrap: wrap;
       gap: 24px;
       margin-bottom: 60px;
@@ -283,11 +283,11 @@
     .cofunding-cta-text p {
       color: #CBD5E1;
       font-size: 1.05rem;
-      max-width: 600px;
+      
       margin: 0;
     }
 
-    @media (max-width: 1024px) {
+    @media () {
       .project-kpi-ribbon {
         grid-template-columns: repeat(2, 1fr);
         margin-top: 20px;
@@ -303,7 +303,7 @@
       }
     }
 
-    @media (max-width: 768px) {
+    @media () {
       .project-kpi-ribbon {
         grid-template-columns: 1fr;
       }
@@ -316,6 +316,7 @@
       }
     }
   </style>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -338,7 +339,7 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="index.html" class="nav-admin-link" onclick="localStorage.setItem('openAdmin', 'true')">Admin</a>
+        
         <button class="btn btn-primary btn-sm" onclick="openDonateModal()">Support Our Mission</button>
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">Menu</button>
       </div>
@@ -350,7 +351,7 @@
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="work.html">Our Work</a>
-    <a href="projects.html" class="active">Projects &amp; Programs</a>
+    <a href="projects.html" class="active">Projects &amp; Programmes</a>
     <a href="impact.html">Impact Metrics</a>
     <a href="blog.html">Blog &amp; Dispatches</a>
     <a href="team.html">Our Team</a>
@@ -358,9 +359,9 @@
   </div>
 
   <!-- Page Header Banner (Clean Title Without Removed Label) -->
-  <div class="page-header-banner">
+  <div class="page-header-banner" style="background: linear-gradient(rgba(15, 30, 54, 0.92), rgba(15, 30, 54, 0.98)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center;">
     <div class="container">
-      <h1>Strategic Initiatives &amp; <br><span class="hero-two-color">Community Programs</span></h1>
+      <h1>Strategic Initiatives &amp;  <span class="hero-two-color">Community Programmes</span></h1>
       <p>
         A comprehensive portfolio of completed milestones, ongoing field deployments, and upcoming interventions executed across Kano State and Northern Nigeria.
       </p>
@@ -383,10 +384,10 @@
         </div>
         <div class="project-kpi-card interactive-lift">
           <div class="project-kpi-number">2 LGAs</div>
-          <div class="project-kpi-label">Target Municipalities (Nasarawa &amp; Municipal)</div>
+          <div class="project-kpi-label">Target Municipalities (Nasarawa &amp; LGA)</div>
         </div>
         <div class="project-kpi-card interactive-lift">
-          <div class="project-kpi-number">6+</div>
+          <div class="project-kpi-number">15+</div>
           <div class="project-kpi-label">Dedicated Team &amp; Mobilizers</div>
         </div>
       </div>
@@ -395,7 +396,7 @@
       <div class="project-filter-toolbar">
         <div class="project-status-tabs">
           <button class="project-status-btn active" data-status="All" onclick="filterPortfolioStatus('All')">
-            All Programs (6)
+            All Programmes (6)
           </button>
           <button class="project-status-btn" data-status="Ongoing" onclick="filterPortfolioStatus('Ongoing')">
             Ongoing Initiatives
@@ -431,7 +432,7 @@
         <div class="cofunding-cta-text">
           <h3>Partner with BHB Foundation on Grassroots Initiatives</h3>
           <p>
-            We co-design, implement, and rigorously audit social impact programs alongside institutional donors, international development agencies, and corporate CSR partners.
+            We co-design, implement, and rigorously audit social impact programmes alongside institutional donors, international development agencies, and corporate CSR partners.
           </p>
         </div>
         <div>
@@ -466,7 +467,7 @@
           <a href="impact.html">Impact &amp; Verification</a>
         </div>
 
-        <!-- Column 3: Interventions & Programs -->
+        <!-- Column 3: Interventions & Programmes -->
         <div class="footer-nav-col">
           <h5>Core Focus &amp; Field</h5>
           <a href="work.html">Focus Areas</a>
@@ -475,26 +476,9 @@
           <a href="contact.html">Partner &amp; Contact</a>
         </div>
 
-        <!-- Column 4: Newsletter & Dispatch Updates -->
-        <div class="footer-newsletter-col">
-          <h5>Quarterly Dispatches</h5>
-          <p class="footer-newsletter-desc">
-            Subscribe to receive verified field audits, milestone publications, and community stories directly in your inbox.
-          </p>
-          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing to BHB Foundation dispatches!', 'success'); this.reset();">
-            <div class="footer-input-group">
-              <input type="email" placeholder="Enter your email address..." required aria-label="Your email address">
-              <button type="submit" class="btn btn-primary">Subscribe</button>
-            </div>
-            <div class="footer-form-note">Zero spam. Verified operational dispatches only.</div>
-          </form>
-        </div>
-
-      </div>
-
-      <!-- Bottom Bar -->
+        </div><!-- Bottom Bar -->
       <div class="footer-bottom-bar">
-        <span>© 2026 BHB Family Support and Development Foundation. Incorporated under Nigerian CAMA law. All rights reserved.</span>
+        <span>© 2026 BHB Family Support and Development Foundation. Registered in Nigeria under the Companies and Allied Matters Act (CAMA). All rights reserved.</span>
         <div class="footer-bottom-links">
           <a href="index.html">Home</a>
           <span>·</span>
@@ -510,7 +494,7 @@
 
   <!-- Interactive Project Dossier Modal -->
   <div class="modal-backdrop" id="projectDossierModal">
-    <div class="modal-window" style="max-width: 860px; width: 95%; background: #FFFFFF; border-radius: 8px;">
+    <div class="modal-window" style=" width: 95%; background: #FFFFFF; border-radius: 8px;">
       <div style="position: absolute; top: 18px; right: 22px; z-index: 10;">
         <button onclick="closeModal('projectDossierModal')" style="background:none; border:none; font-size:1.8rem; cursor:pointer; color: var(--navy);">×</button>
       </div>
@@ -548,106 +532,46 @@
         filtered = filtered.filter(p => p.category === currentCategoryFilter);
       }
 
-      const featured = filtered.find(p => p.featured) || filtered[0];
-      const secondaries = filtered.filter(p => !featured || p.id !== featured.id);
-
-      // Render Flagship Card
+      // Remove the flagship container entirely if it exists
       const featuredContainer = document.getElementById('projectFeaturedShowcase');
-      if (featuredContainer) {
-        if (featured) {
-          const statusClass = featured.status ? featured.status.toLowerCase() : 'ongoing';
-          featuredContainer.innerHTML = `
-            <div class="flagship-project-card">
-              <div class="flagship-thumb-col">
-                <img src="${featured.image}" alt="${featured.title}" class="flagship-thumb-img">
-              </div>
-              <div class="flagship-body-col">
-                <div>
-                  <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px;">
-                    <span class="project-category-tag" style="margin: 0;">${featured.category}</span>
-                    <span class="badge-status ${statusClass}">● ${featured.status}</span>
-                  </div>
-                  <h2 style="font-size: 1.7rem; color: var(--navy); margin-bottom: 12px; line-height: 1.3;">${featured.title}</h2>
-                  <span class="project-timeline-tag">Timeline: ${featured.timeline || 'Ongoing Program'}</span>
-                  <p style="color: var(--text-body); font-size: 1rem; line-height: 1.65; margin-bottom: 20px;">
-                    ${featured.description}
-                  </p>
-                  
-                  <div style="background: var(--bg-off); padding: 14px 18px; border: 1px solid var(--border-light); margin-bottom: 20px;">
-                    <div style="font-size: 0.85rem; color: var(--navy); font-weight: 700; margin-bottom: 6px;">
-                      Key Milestone Focus:
-                    </div>
-                    <ul style="padding-left: 18px; margin: 0; font-size: 0.88rem; color: var(--text-body);">
-                      ${(featured.milestones || []).slice(0, 2).map(m => `<li style="margin-bottom: 4px;">${m}</li>`).join('')}
-                    </ul>
-                  </div>
-                </div>
+      if (featuredContainer) featuredContainer.innerHTML = '';
 
-                <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-light); padding-top: 18px; flex-wrap: wrap; gap: 12px;">
-                  <div style="font-size: 0.88rem; color: var(--text-muted);">
-                    <b>${featured.location}</b> &nbsp;|&nbsp; <b>${featured.beneficiaries}</b>
-                  </div>
-                  <div style="display: flex; gap: 10px;">
-                    <button class="btn btn-outline btn-sm" onclick="openProjectDossierModal('${featured.id}')">View Full Dossier →</button>
-                    <button class="btn btn-primary btn-sm" onclick="openDonateModal()">Support Initiative</button>
-                  </div>
+      const gridContainer = document.getElementById('projectsGridContainer');
+      if (!gridContainer) return;
+
+      if (filtered.length === 0) {
+        gridContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No programmes match the current filters.</div>';
+        return;
+      }
+
+      gridContainer.innerHTML = filtered.map(p => {
+        return 
+          <div class="portfolio-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer;" onclick="openProjectDossierModal(' + p.id + ')">
+            <div class="portfolio-card-thumb-wrap" style="position: relative;">
+              <img src=" + p.image + " alt=" + p.title + " style="width: 100%; height: 220px; object-fit: cover; display: block;">
+              <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;"> + p.category + </div>
+            </div>
+            <div class="portfolio-card-body" style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+              <div style="flex-grow: 1;">
+                <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35;"> + p.title + </h3>
+                <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"> + p.description + </p>
+              </div>
+
+              <div class="portfolio-meta-list" style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px;">
+                <div class="portfolio-meta-item" style="margin-bottom: 4px;">
+                  <span style="color: var(--text-muted);">Timeline:</span>
+                  <b style="color: var(--navy);"> + (p.timeline || 'Active') + </b>
+                </div>
+                <div class="portfolio-meta-item" style="margin-bottom: 4px;">
+                  <span style="color: var(--text-muted);">Location:</span>
+                  <b style="color: var(--navy);"> + p.location + </b>
                 </div>
               </div>
             </div>
-          `;
-        } else {
-          featuredContainer.innerHTML = `<div style="padding: 40px; text-align: center; color: var(--text-muted); background: #fff; border: 1px solid var(--border-light); margin-bottom: 30px;">No initiatives found under this filter.</div>`;
-        }
-      }
-
-      // Render Secondary Grid
-      const gridContainer = document.getElementById('projectPortfolioGrid');
-      if (gridContainer) {
-        gridContainer.innerHTML = secondaries.map(p => {
-          const statusClass = p.status ? p.status.toLowerCase() : 'ongoing';
-          return `
-            <div class="portfolio-card">
-              <div>
-                <div class="portfolio-card-thumb-wrapper">
-                  <img src="${p.image}" alt="${p.title}" class="portfolio-card-thumb">
-                  <div class="portfolio-card-badges">
-                    <span class="project-category-tag" style="background: rgba(15,23,42,0.85); color: #fff; border: none; margin: 0;">${p.category}</span>
-                    <span class="badge-status ${statusClass}">● ${p.status}</span>
-                  </div>
-                </div>
-
-                <div class="portfolio-card-body">
-                  <div>
-                    <h3 style="font-size: 1.22rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35;">${p.title}</h3>
-                    <p style="font-size: 0.92rem; color: var(--text-body); line-height: 1.6;">${p.description.substring(0, 125)}...</p>
-                  </div>
-
-                  <div class="portfolio-meta-list">
-                    <div class="portfolio-meta-item">
-                      <span>Timeline:</span>
-                      <b>${p.timeline || 'Active'}</b>
-                    </div>
-                    <div class="portfolio-meta-item">
-                      <span>Location:</span>
-                      <b>${p.location}</b>
-                    </div>
-                    <div class="portfolio-meta-item">
-                      <span>Beneficiaries:</span>
-                      <b>${p.beneficiaries}</b>
-                    </div>
-                  </div>
-
-                  <button class="btn btn-outline btn-sm" onclick="openProjectDossierModal('${p.id}')" style="width: 100%;">
-                    View Program Dossier →
-                  </button>
-                </div>
-              </div>
-            </div>
-          `;
-        }).join('');
-      }
+          </div>
+        ;
+      }).join('');
     }
-
     function filterPortfolioStatus(status) {
       currentStatusFilter = status;
       document.querySelectorAll('.project-status-btn').forEach(btn => {
@@ -670,7 +594,7 @@
         const statusClass = proj.status ? proj.status.toLowerCase() : 'ongoing';
         modalContent.innerHTML = `
           <div style="padding: 36px 40px; max-height: 85vh; overflow-y: auto;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: centre; margin-bottom: 12px;">
               <span class="project-category-tag" style="margin: 0;">${proj.category}</span>
               <span class="badge-status ${statusClass}">● ${proj.status}</span>
             </div>
@@ -682,7 +606,7 @@
 
             <img src="${proj.image}" alt="${proj.title}" style="width: 100%; height: 320px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 24px;">
 
-            <h3 style="color: var(--navy); font-size: 1.2rem; margin-bottom: 10px;">Program Summary &amp; Scope</h3>
+            <h3 style="color: var(--navy); font-size: 1.2rem; margin-bottom: 10px;">Programme Summary &amp; Scope</h3>
             <p style="font-size: 1.05rem; line-height: 1.75; color: var(--text-body); margin-bottom: 28px;">
               ${proj.description}
             </p>
@@ -694,13 +618,13 @@
               </ul>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); padding-top: 20px; flex-wrap: wrap; gap: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: centre; border-top: 1px solid var(--border-light); padding-top: 20px; flex-wrap: wrap; gap: 14px;">
               <div style="font-size: 0.92rem; color: var(--text-muted);">
                 Audit Transparency: <b>Direct Grassroots Field Verification</b>
               </div>
               <div style="display: flex; gap: 10px;">
                 <button class="btn btn-outline btn-sm" onclick="closeModal('projectDossierModal')">Close Dossier</button>
-                <button class="btn btn-primary btn-sm" onclick="closeModal('projectDossierModal'); openDonateModal();">Support This Program →</button>
+                <button class="btn btn-primary btn-sm" onclick="closeModal('projectDossierModal'); openDonateModal();">Support This Programme →</button>
               </div>
             </div>
           </div>
@@ -716,5 +640,33 @@
       });
     });
   </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Auto-add AOS to major cards
+      const elements = document.querySelectorAll('.focus-area-item, .project-card, .news-card, .sdg-card, .commitment-card, .mv-card, .executive-spotlight-card, .team-member-card');
+      elements.forEach(el => {
+        if (!el.hasAttribute('data-aos')) {
+          el.setAttribute('data-aos', 'fade-up');
+        }
+      });
+      if (typeof AOS !== 'undefined') {
+        AOS.init({ once: true, offset: 30, duration: 700, easing: 'ease-out-cubic' });
+      }
+    });
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+

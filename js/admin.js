@@ -188,7 +188,7 @@ function renderAdminOverviewMetrics() {
 
   // Direct Beneficiaries
   const benEl = document.getElementById('kpiTotalBeneficiaries');
-  if (benEl) benEl.textContent = "12,450+";
+  if (benEl) benEl.textContent = "10+";
 
   // Pending volunteers
   const pendingVol = volunteers.filter(v => v.status === 'Pending').length;
@@ -292,7 +292,7 @@ function renderAdminCharts() {
         datasets: [{
           label: 'Direct Beneficiaries',
           data: dataVals,
-          backgroundColor: ['#1E3A8A', '#0284C7', '#0D9488', '#F59E0B', '#6366F1'],
+          backgroundColor: ['#1E3A8A', '#1C4DA0', '#0D9488', '#F59E0B', '#6366F1'],
           borderRadius: 4
         }]
       },
@@ -1472,6 +1472,12 @@ function renderAdminSettingsForm() {
   const currentImg = settings.aboutImage || 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80';
   if (aboutPreview) aboutPreview.src = currentImg;
   if (aboutHidden) aboutHidden.value = currentImg;
+
+  const partnersPreview = document.getElementById('adminPartnersImgPreview');
+  const partnersHidden = document.getElementById('admin_partners_img_hidden');
+  const currentPartnersImg = settings.communityCoDesignImage || 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80';
+  if (partnersPreview) partnersPreview.src = currentPartnersImg;
+  if (partnersHidden) partnersHidden.value = currentPartnersImg;
 }
 
 window.handleSaveSettings = function(e) {
@@ -1484,6 +1490,7 @@ window.handleSaveSettings = function(e) {
     phone: form.contact_phone ? form.contact_phone.value : currentSettings.phone,
     email: form.contact_email ? form.contact_email.value : currentSettings.email,
     aboutImage: form.about_image ? form.about_image.value : (currentSettings.aboutImage || 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80'),
+    communityCoDesignImage: form.partners_image ? form.partners_image.value : (currentSettings.communityCoDesignImage || 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80'),
     zenithBank: {
       ...currentSettings.zenithBank,
       accountNumber: form.zenith_acc ? form.zenith_acc.value : (currentSettings.zenithBank ? currentSettings.zenithBank.accountNumber : '')
@@ -1524,6 +1531,10 @@ window.resetToDemoData = function() {
 };
 
 window.syncAdminChangesToGitHub = async function() {
+  if (window.location.protocol === 'file:') {
+    alert("STOP! You cannot push changes while viewing the file directly (file:///...).\n\nPlease open http://localhost:8080/ in your browser, import your JSON there, and then push!");
+    return;
+  }
   const btn = document.getElementById('adminSyncGitBtn');
   const originalHtml = btn ? btn.innerHTML : '';
   if (btn) {
@@ -1549,7 +1560,7 @@ window.syncAdminChangesToGitHub = async function() {
     }
   } catch (err) {
     console.error('Direct git sync error:', err);
-    showToast('Server sync unavailable. Downloading database JSON backup for you...', 'warning');
+    showToast('Sync error: ' + err.message + '. Downloading backup...', 'warning');
     if (typeof BHBStore !== 'undefined' && BHBStore.exportJSON) {
       BHBStore.exportJSON();
     }
@@ -1561,4 +1572,6 @@ window.syncAdminChangesToGitHub = async function() {
     }
   }
 };
+
+
 

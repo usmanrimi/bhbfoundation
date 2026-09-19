@@ -18,6 +18,7 @@ const RAW_DEFAULT_STORE_DATA = {
     contactEmail: "contact@bhborganization.org",
     tagline: "Empowering Families. Strengthening Communities. Creating Sustainable Futures.",
     aboutImage: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80",
+    communityCoDesignImage: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80",
     primaryCurrency: "NGN",
     usdRate: 1550,
     zenithBank: {
@@ -118,7 +119,7 @@ const RAW_DEFAULT_STORE_DATA = {
       milestones: [
         "Delivered 120 hours of specialized assistive tech coaching",
         "Provided custom screen-reader laptops to all 10 participants",
-        "100% capstone project completion rate with web portfolio exhibitions"
+        "High capstone project completion rate with web portfolio exhibitions"
       ],
       featured: true,
       status: "Ongoing"
@@ -127,7 +128,7 @@ const RAW_DEFAULT_STORE_DATA = {
       id: "proj-2",
       title: "Mobile Primary & Maternal Care Access Initiative",
       category: "Community Health",
-      location: "Nasarawa & Dala LGAs, Kano",
+      location: "Kano Communities",
       beneficiaries: "1,450+ Mothers & Infants",
       timeline: "May 2026 – Ongoing Field Rounds",
       goal: 6000000,
@@ -146,7 +147,7 @@ const RAW_DEFAULT_STORE_DATA = {
       id: "proj-3",
       title: "Widows & Vulnerable Women Agro-Business Seed Fund",
       category: "Women Livelihoods",
-      location: "Fagge & Bichi LGAs, Kano",
+      location: "Kano Communities",
       beneficiaries: "220 Female-Headed Households",
       timeline: "Jan 2026 – June 2026 (Completed)",
       goal: 5000000,
@@ -165,7 +166,7 @@ const RAW_DEFAULT_STORE_DATA = {
       id: "proj-4",
       title: "Kano Youth Technical & Apprenticeship Hub",
       category: "Youth Mentorship",
-      location: "Kano Municipal Center",
+      location: "Kano Municipal Centre",
       beneficiaries: "350 Young Persons",
       timeline: "February 2026 – July 2026 (Completed)",
       goal: 4500000,
@@ -184,7 +185,7 @@ const RAW_DEFAULT_STORE_DATA = {
       id: "proj-5",
       title: "Solar-Powered Community Borehole & WASH Hygiene Post",
       category: "WASH & Hygiene",
-      location: "Gwale & Kumbotso LGAs",
+      location: "Kano Communities",
       beneficiaries: "2,500+ Community Residents",
       timeline: "Pipeline · Target Q4 2026",
       goal: 6000000,
@@ -201,7 +202,7 @@ const RAW_DEFAULT_STORE_DATA = {
     },
     {
       id: "proj-6",
-      title: "Inclusive Assistive Tech Center of Excellence",
+      title: "Inclusive Assistive Tech Centre of Excellence",
       category: "Digital Inclusion",
       location: "Kano Central Innovation Campus",
       beneficiaries: "300+ Persons with Disabilities Annually",
@@ -240,7 +241,7 @@ Over several weeks of intensive hands-on instruction, 10 young participants—li
 
 "Before this boot camp, I believed computer coding was something closed off to someone who is blind," shared 15-year-old Halima, one of the cohort participants. "Today, I built my own digital profile and learned how software can be made accessible to everyone."
 
-Every graduate received a specialized assistive laptop and ongoing mentorship from our technical team. BHB Foundation is currently finalizing plans to expand this program to 50 additional girls across neighboring Local Government Areas in early 2027.`,
+Every graduate received a specialized assistive laptop and ongoing mentorship from our technical team. BHB Foundation is currently finalizing plans to expand this programme to 50 additional girls across neighboring Local Government Areas in early 2027.`,
       likes: 42,
       likedByUser: false,
       featured: true,
@@ -261,7 +262,7 @@ Every graduate received a specialized assistive laptop and ongoing mentorship fr
 
 BHB Foundation's Mobile Primary & Maternal Health Intervention addresses this challenge directly by deploying certified midwives, mobile ultrasound diagnostics, and essential prenatal micronutrients straight into village squares.
 
-Over the past three months, our medical teams have completed over 1,450 free clinical consultations across six rural settlements in Nasarawa LGA, identifying high-risk pregnancies early and coordinating safe clinic deliveries.
+Over the past three months, our medical teams have completed over 1,450 free clinical consultations across six rural settlements in rural settlements, identifying high-risk pregnancies early and coordinating safe clinic deliveries.
 
 In addition to diagnostics, our teams conduct bi-weekly hygiene and nutrition workshops for young mothers and distribute delivery preparation kits containing sterile clinical essentials.`,
       likes: 28,
@@ -279,10 +280,10 @@ In addition to diagnostics, our teams conduct bi-weekly hygiene and nutrition wo
       readTime: "3 min read",
       tags: ["WomenEnterprise", "Livelihoods", "GrassrootsImpact"],
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80",
-      excerpt: "Fatima, a widowed mother of four in Fagge LGA, transformed her family's future through business training and seed capital.",
+      excerpt: "Fatima, a widowed mother of four in Kano State, transformed her family's future through business training and seed capital.",
       content: `When Fatima lost her husband four years ago, she faced the daunting challenge of providing for four young children with only informal tailoring work on a rented sewing machine.
 
-Through BHB Foundation's Women & Vulnerable Groups Livelihoods program, Fatima completed a 6-week business management, cooperative savings, and financial bookkeeping course before receiving a direct seed grant.
+Through BHB Foundation's Women & Vulnerable Groups Livelihoods programme, Fatima completed a 6-week business management, cooperative savings, and financial bookkeeping course before receiving a direct seed grant.
 
 With the capital, Fatima purchased a heavy-duty industrial sewing machine and bulk fabrics at wholesale prices. Within five months, her monthly revenue tripled, enabling her to comfortably pay school fees for all four children and take on two young neighborhood apprentices.
 
@@ -353,7 +354,7 @@ All institutional programs and financial disbursements remain open to annual pub
       postTitle: "Breaking Barriers: How 10 Young Girls with Disabilities Mastered Coding in Kano",
       authorName: "Kabiru Suleiman",
       authorEmail: "kabiru.s@yahoo.com",
-      content: "Proud to see grassroots organizations in Kano partnering with Ability First. Looking forward to cohort 2 expansion across other LGAs.",
+      content: "Proud to see grassroots organizations in Kano partnering with Ability First. Looking forward to cohort 2 expansion across other communities.",
       date: "August 20, 2026",
       status: "approved"
     },
@@ -397,7 +398,7 @@ All institutional programs and financial disbursements remain open to annual pub
       department: "Executive Directorate",
       purview: "Strategic Direction & Compliance",
       tier: "Executive",
-      bio: "Fatima leads the foundation's strategic direction, partner alignment, and program execution across participating local governments in Kano.",
+      bio: "Fatima leads the foundation's strategic direction, partner alignment, and programme execution across participating local governments in Kano.",
       image: "assets/images/team-director.jpg"
     },
     {
@@ -427,7 +428,7 @@ All institutional programs and financial disbursements remain open to annual pub
       department: "Field Logistics & Security",
       purview: "Field Operations & Logistics",
       tier: "Operations",
-      bio: "Coordinates ground logistics, community liaison town halls, and resource delivery across all target LGAs in Kano State.",
+      bio: "Coordinates ground logistics, community liaison town halls, and resource delivery across all target communities in Kano State.",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80"
     },
     {
@@ -475,117 +476,9 @@ All institutional programs and financial disbursements remain open to annual pub
     }
   ],
 
-  donations: [
-    {
-      id: "tx-1001",
-      donorName: "Alhaji Garba Danladi",
-      email: "g.danladi@kanoagric.ng",
-      amount: 3500000,
-      currency: "NGN",
-      method: "Bank Transfer",
-      project: "Holiday Digital Skills Boot Camp for Girls with Disabilities",
-      date: "2026-08-20 11:30",
-      status: "Completed"
-    },
-    {
-      id: "tx-1002",
-      donorName: "Sarah Jenkins Philanthropic Trust",
-      email: "s.jenkins@philanthropy.org",
-      amount: 4800000,
-      currency: "NGN",
-      method: "Direct Wire",
-      project: "Mobile Primary & Maternal Care Access Initiative",
-      date: "2026-08-19 16:45",
-      status: "Completed"
-    },
-    {
-      id: "tx-1003",
-      donorName: "Kano Agro-Enterprise Development Fund",
-      email: "csr@kanoenterprise.com",
-      amount: 5000000,
-      currency: "NGN",
-      method: "Bank Transfer",
-      project: "Widows & Vulnerable Women Agro-Business Seed Fund",
-      date: "2026-08-15 09:20",
-      status: "Completed"
-    },
-    {
-      id: "tx-1004",
-      donorName: "Alhaji Mustapha Bello & Family",
-      email: "m.bello@investments.ng",
-      amount: 4500000,
-      currency: "NGN",
-      method: "Zenith Bank Transfer",
-      project: "Kano Youth Technical & Apprenticeship Hub",
-      date: "2026-08-12 14:10",
-      status: "Completed"
-    },
-    {
-      id: "tx-1005",
-      donorName: "Dr. Aminu Kano Memorial Trust",
-      email: "grants@aminutrust.org",
-      amount: 1800000,
-      currency: "NGN",
-      method: "Direct Grant",
-      project: "Solar-Powered Community Borehole & WASH Hygiene Post",
-      date: "2026-08-08 10:05",
-      status: "Completed"
-    },
-    {
-      id: "tx-1006",
-      donorName: "Sahel Health Initiative Partner Contribution",
-      email: "finance@sahelhealth.org",
-      amount: 4500000,
-      currency: "NGN",
-      method: "Co-Funding Transfer",
-      project: "Inclusive Assistive Tech Center of Excellence",
-      date: "2026-08-02 17:30",
-      status: "Completed"
-    }
-  ],
+  donations: [],
 
-  volunteers: [
-    {
-      id: "vol-1",
-      name: "Amina Lawan",
-      email: "amina.lawan@gmail.com",
-      phone: "+234 803 219 0041",
-      rolePreference: "Assistive Tech Trainer",
-      lga: "Nasarawa LGA",
-      status: "Pending",
-      appliedDate: "2026-08-22"
-    },
-    {
-      id: "vol-2",
-      name: "Dr. Yusuf Al-Hassan",
-      email: "y.alhassan@kanohealth.org",
-      phone: "+234 802 884 1920",
-      rolePreference: "Volunteer Physician / Medical Outreach",
-      lga: "Dala LGA",
-      status: "Approved",
-      appliedDate: "2026-08-18"
-    },
-    {
-      id: "vol-3",
-      name: "Fatima Sani",
-      email: "fatima.sani@vocational.ng",
-      phone: "+234 814 550 3391",
-      rolePreference: "Women Agro-Fund Field Mobilizer",
-      lga: "Fagge LGA",
-      status: "Pending",
-      appliedDate: "2026-08-21"
-    },
-    {
-      id: "vol-4",
-      name: "Ibrahim Abdullahi",
-      email: "ibrahim.a@techhub.ng",
-      phone: "+234 806 771 9022",
-      rolePreference: "Youth Coding Mentor",
-      lga: "Kano Municipal",
-      status: "Approved",
-      appliedDate: "2026-08-14"
-    }
-  ],
+  volunteers: [],
 
   inquiries: [
     {
@@ -594,7 +487,7 @@ All institutional programs and financial disbursements remain open to annual pub
       email: "bello.tukur@statecsr.gov.ng",
       orgType: "Government institution",
       subject: "Partnership inquiry",
-      message: "We would like to explore state-level collaboration for maternal clinic deployment across rural LGAs.",
+      message: "We would like to explore state-level collaboration for maternal clinic deployment across rural communities.",
       date: "2026-08-22 10:15",
       status: "Unread"
     },
@@ -612,9 +505,9 @@ All institutional programs and financial disbursements remain open to annual pub
       id: "inq-3",
       name: "Malam Sanusi Dangote",
       email: "sanusi@kcci.org.ng",
-      orgType: "Corporate CSR program",
+      orgType: "Corporate CSR programme",
       subject: "CSR Solar Borehole sponsorship",
-      message: "We have budgeted CSR funds for clean water infrastructure in Gwale and Kumbotso LGAs.",
+      message: "We have budgeted CSR funds for clean water infrastructure in rural communities.",
       date: "2026-08-19 11:20",
       status: "Replied"
     }
@@ -1076,7 +969,7 @@ window.renderChairmanSpotlightHTML = function() {
       <div class="executive-purview-tags">
         <span class="purview-tag">Strategic Governance</span>
         <span class="purview-tag">Health Equity</span>
-        <span class="purview-tag">Grassroots Mobilization</span>
+        <span class="purview-tag">Grassroots Mobilisation</span>
         <span class="purview-tag">Northern Nigeria Focus</span>
       </div>
     </div>
@@ -1132,7 +1025,7 @@ window.renderHeroSliderHTML = function() {
         <div class="hero-slide-overlay"></div>
         <div class="container">
           <div class="hero-slide-content">
-            ${s.label ? `<span class="hero-eyebrow-tag" style="display:inline-block; font-size:0.8rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:#38BDF8; margin-bottom:12px; background:rgba(15,23,42,0.6); padding:4px 12px; border-radius:4px; border:1px solid rgba(56,189,248,0.3);">${s.label}</span>` : ''}
+            ${s.label ? `<span class="hero-eyebrow-tag" style="display:inline-block; font-size:0.8rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:#1C4DA0; margin-bottom:12px; background:rgba(15,23,42,0.6); padding:4px 12px; border-radius:4px; border:1px solid rgba(56,189,248,0.3);">${s.label}</span>` : ''}
             <h1>${s.title}</h1>
             <p class="lead">${s.lead}</p>
             <div class="hero-cta-group">
@@ -1163,7 +1056,7 @@ window.renderFocusAreasHTML = function() {
           <p>${a.summary}</p>
         </div>
         <div class="focus-area-footer">
-          <span>Priority Field Program</span>
+          <span>Priority Field Programme</span>
           <span class="arrow">Explore Projects →</span>
         </div>
       </div>
@@ -1225,7 +1118,7 @@ window.renderPartnersHTML = function() {
   if (!partners || !partners.length) return '';
 
   const badges = partners.map(p => `
-    <div class="partner-logo-badge" title="${p.name || 'Partner Organization'}">
+    <div class="partner-logo-badge" title="${p.name || 'Partner Organisation'}">
       <img src="${p.logo}" alt="${p.name || 'Partner Logo'}" class="partner-logo-img" loading="lazy">
     </div>
   `).join('');
@@ -1265,3 +1158,9 @@ window.renderHomeBlogGridHTML = function() {
     `;
   }).join('');
 };
+
+
+
+
+
+

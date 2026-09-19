@@ -440,3 +440,5 @@ window.handleImageUpload = function(inputEl, previewImgId, hiddenInputName, pref
   // Launch the interactive cropper
   window.adminCropper.open(file, previewImgId, hiddenInputName, preferredAspect);
 };
+
+

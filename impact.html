@@ -39,8 +39,8 @@
       cursor: pointer;
       overflow: hidden;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: centre;
+      justify-content: centre;
     }
 
     .video-poster-img {
@@ -63,8 +63,8 @@
       color: var(--navy);
       border-radius: 50%;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: centre;
+      justify-content: centre;
       font-size: 1.8rem;
       box-shadow: 0 10px 25px rgba(0,0,0,0.35);
       transition: transform 0.2s ease, background 0.2s ease;
@@ -112,7 +112,6 @@
 
     .testimonial-quote-box {
       background: var(--bg-off);
-      border-left: 4px solid var(--blue);
       padding: 18px 20px;
       margin: 16px 0 20px;
       font-style: italic;
@@ -121,7 +120,7 @@
       line-height: 1.65;
     }
 
-    @media (max-width: 1024px) {
+    @media () {
       .video-spotlight-card {
         grid-template-columns: 1fr;
       }
@@ -130,6 +129,7 @@
       }
     }
   </style>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -152,7 +152,7 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="index.html" class="nav-admin-link" onclick="localStorage.setItem('openAdmin', 'true')">Admin</a>
+        
         <button class="btn btn-primary btn-sm" onclick="openDonateModal()">Support Our Mission</button>
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">Menu</button>
       </div>
@@ -164,7 +164,7 @@
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="work.html">Our Work</a>
-    <a href="projects.html">Projects &amp; Programs</a>
+    <a href="projects.html">Projects &amp; Programmes</a>
     <a href="impact.html" class="active">Impact Metrics</a>
     <a href="blog.html">Blog &amp; Dispatches</a>
     <a href="team.html">Our Team</a>
@@ -172,9 +172,9 @@
   </div>
 
   <!-- Page Header Banner (Clean Title Without Removed Label) -->
-  <div class="page-header-banner">
+  <div class="page-header-banner" style="background: linear-gradient(rgba(15, 30, 54, 0.92), rgba(15, 30, 54, 0.98)), url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center;">
     <div class="container">
-      <h1>Documented Impact &amp; <br><span class="hero-two-color">Direct Grassroots Interventions</span></h1>
+      <h1>Documented Impact &amp;  <span class="hero-two-color">Direct Grassroots Interventions</span></h1>
       <p>
         Verifiable metrics, direct community engagement, and accountable stewardship advancing welfare and self-reliance across Kano State.
       </p>
@@ -194,8 +194,8 @@
           <div class="stat-metric-label">Active Initiatives &amp; Projects</div>
         </div>
         <div class="stat-metric-block">
-          <div class="stat-metric-number">2 LGAs</div>
-          <div class="stat-metric-label">Target Local Government Areas</div>
+          <div class="stat-metric-number">Multiple Communities</div>
+          <div class="stat-metric-label">Target Communities Reached</div>
         </div>
         <div class="stat-metric-block">
           <div class="stat-metric-number">100%</div>
@@ -240,11 +240,11 @@
             </div>
 
             <p style="font-size: 0.95rem; color: var(--text-body); line-height: 1.65; margin-bottom: 18px;">
-              Funded directly by BHB Foundation in partnership with The Ability First Tech Hub, this 120-hour intensive program provided accessible screen-reader laptops, accessible web design fundamentals, and career mentorship.
+              Funded directly by BHB Foundation in partnership with The Ability First Tech Hub, this 120-hour intensive programme provided accessible screen-reader laptops, accessible web design fundamentals, and career mentorship.
             </p>
           </div>
 
-          <div style="display: flex; gap: 12px; align-items: center; border-top: 1px solid var(--border-light); padding-top: 18px;">
+          <div style="display: flex; gap: 12px; align-items: centre; border-top: 1px solid var(--border-light); padding-top: 18px;">
             <button class="btn btn-navy btn-sm" onclick="openSuccessVideoModal()">
               ▶ Watch Video (4:18)
             </button>
@@ -260,80 +260,50 @@
   <!-- Section 2: Impact Measurement & Accountability Framework (Colorful & Animated) -->
   <section style="padding: 80px 0; background: #FFFFFF;">
     <div class="container">
-      <div class="section-header center" style="text-align: center; max-width: 760px; margin: 0 auto 40px;">
+      <div class="section-header center" style="text-align: centre;  margin: 0 auto 40px;">
         <h2 class="section-title-twotone">How We Measure &amp; <span class="text-accent-blue">Verify Real Impact</span></h2>
         <p class="lead-short">Every project undertaken by BHB Foundation follows strict on-ground verification protocols to guarantee direct, measurable community benefits.</p>
       </div>
 
-      <div class="impact-verification-grid">
-        
-        <!-- Verification Card 1: Sky Cyan Theme -->
-        <div class="verification-pillar-card verif-cyan interactive-lift reveal-up in">
-          <div>
-            <div class="verif-header">
-              <span class="verif-num">01</span>
-              <div class="verif-icon-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9 11l3 3L22 4"></path>
-                  <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
-                </svg>
-              </div>
-            </div>
-            <div class="verif-tag">Field Baseline Protocol</div>
-            <h3>Direct Community Assessments</h3>
-            <p>Before launching any project, our field mobilizers conduct in-person household surveys across participating Kano communities to identify acute vulnerabilities and establish measurable baseline milestones.</p>
-          </div>
-          <div class="verif-footer">
-            <span class="verif-pill">✓ Community Baseline Surveyed</span>
-          </div>
-        </div>
+            <!-- Horizontal Methodology Timeline -->
+      <div class="impact-methodology-timeline" style="margin-top: 50px; margin-bottom: 50px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; position: relative;">
+          
+          <!-- Connecting Line -->
+          <div style="position: absolute; top: 30px; left: 10%; right: 10%; height: 3px; background: #E2E8F0; z-index: 1;" class="timeline-line"></div>
 
-        <!-- Verification Card 2: Royal Blue Theme -->
-        <div class="verification-pillar-card verif-blue interactive-lift reveal-up in">
-          <div>
-            <div class="verif-header">
-              <span class="verif-num">02</span>
-              <div class="verif-icon-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
-              </div>
-            </div>
-            <div class="verif-tag">Transparent Stewardship</div>
-            <h3>Accountable Resource Delivery</h3>
-            <p>Every naira received and deployed is accounted for with detailed milestone tracking, transparent vendor audits, and direct in-person handovers to verified beneficiaries and local partner institutions.</p>
+          <!-- Stage 1 -->
+          <div class="methodology-stage" style="position: relative; z-index: 2; text-align: center;">
+            <div style="width: 64px; height: 64px; background: #0F1E36; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', monospace; font-size: 1.5rem; font-weight: 800; margin: 0 auto 24px; border: 4px solid #FFF; box-shadow: 0 4px 12px rgba(15,30,54,0.15);">1</div>
+            <h4 style="color: var(--navy); margin-bottom: 12px; font-size: 1.1rem;">Baseline Assessment</h4>
+            <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.6;">Conducting in-person household surveys to identify vulnerabilities and set measurable baselines.</p>
           </div>
-          <div class="verif-footer">
-            <span class="verif-pill">✓ 100% Audited Allocation</span>
-          </div>
-        </div>
 
-        <!-- Verification Card 3: Deep Navy Theme -->
-        <div class="verification-pillar-card verif-navy interactive-lift reveal-up in">
-          <div>
-            <div class="verif-header">
-              <span class="verif-num">03</span>
-              <div class="verif-icon-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-              </div>
-            </div>
-            <div class="verif-tag">Long-Term Sustainability</div>
-            <h3>Post-Deployment Monitoring</h3>
-            <p>Our commitment extends beyond initial delivery. We conduct 3-month and 6-month longitudinal reviews to verify ongoing skills adoption, health improvements, and sustainable family welfare.</p>
+          <!-- Stage 2 -->
+          <div class="methodology-stage" style="position: relative; z-index: 2; text-align: center;">
+            <div style="width: 64px; height: 64px; background: #1C4DA0; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', monospace; font-size: 1.5rem; font-weight: 800; margin: 0 auto 24px; border: 4px solid #FFF; box-shadow: 0 4px 12px rgba(2,132,199,0.15);">2</div>
+            <h4 style="color: var(--navy); margin-bottom: 12px; font-size: 1.1rem;">Audited Allocation</h4>
+            <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.6;">Disbursing funds exclusively in controlled tranches. Next-phase grants require audited progress.</p>
           </div>
-          <div class="verif-footer">
-            <span class="verif-pill">✓ Sustained Community Results</span>
-          </div>
-        </div>
 
+          <!-- Stage 3 -->
+          <div class="methodology-stage" style="position: relative; z-index: 2; text-align: center;">
+            <div style="width: 64px; height: 64px; background: #0F1E36; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', monospace; font-size: 1.5rem; font-weight: 800; margin: 0 auto 24px; border: 4px solid #FFF; box-shadow: 0 4px 12px rgba(15,30,54,0.15);">3</div>
+            <h4 style="color: var(--navy); margin-bottom: 12px; font-size: 1.1rem;">Post-Delivery Verification</h4>
+            <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.6;">Independent officers confirm that supplies and clinics match required operational standards.</p>
+          </div>
+
+          <!-- Stage 4 -->
+          <div class="methodology-stage" style="position: relative; z-index: 2; text-align: center;">
+            <div style="width: 64px; height: 64px; background: #1C4DA0; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', monospace; font-size: 1.5rem; font-weight: 800; margin: 0 auto 24px; border: 4px solid #FFF; box-shadow: 0 4px 12px rgba(2,132,199,0.15);">4</div>
+            <h4 style="color: var(--navy); margin-bottom: 12px; font-size: 1.1rem;">Ongoing Monitoring</h4>
+            <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.6;">Longitudinal reviews at 3 and 6 months to verify skills adoption and sustainable family welfare.</p>
+          </div>
+          
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Section 3: Strategic SDG Alignment Matrix -->
+    </section>
+<!-- Section 3: Strategic SDG Alignment Matrix -->
   <section class="bg-off">
     <div class="container">
       <div class="section-header">
@@ -341,45 +311,53 @@
         <p class="lead">How every BHB intervention maps directly to measurable international development benchmarks.</p>
       </div>
 
-      <div class="focus-areas-grid">
-        <div class="focus-area-item" style="background: #FFFFFF; padding: 28px; border: 1px solid var(--border-light);">
-          <div style="font-size: 0.78rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;">SDG 03 · Good Health</div>
-          <h3>Health &amp; Maternal Well-being</h3>
-          <p>Preventative maternal screenings, mobile ultrasound clinics, and newborn hygiene kits in hard-to-reach settlements.</p>
-        </div>
+              <div class="sdg-grid">
+          <div class="sdg-card sdg-bg-3">
+            <div class="sdg-card-number">3</div>
+            <div class="sdg-label">SDG 03 &bull; Good Health</div>
+            <h3>Health &amp; Maternal Well-being</h3>
+            <p>Preventative maternal screenings, mobile ultrasound clinics, and newborn hygiene kits in hard-to-reach settlements.</p>
+          </div>
 
-        <div class="focus-area-item" style="background: #FFFFFF; padding: 28px; border: 1px solid var(--border-light);">
-          <div style="font-size: 0.78rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;">SDG 04 · Quality Education</div>
-          <h3>Inclusive Tech &amp; Literacy</h3>
-          <p>Accessible screen-reading software, assistive coding boot camps for girls with disabilities, and school re-enrollment support.</p>
-        </div>
+          <div class="sdg-card sdg-bg-4">
+            <div class="sdg-card-number">4</div>
+            <div class="sdg-label">SDG 04 &bull; Quality Education</div>
+            <h3>Inclusive Tech &amp; Literacy</h3>
+            <p>Accessible screen-reading software, assistive coding boot camps for girls with disabilities, and school re-enrollment support.</p>
+          </div>
 
-        <div class="focus-area-item" style="background: #FFFFFF; padding: 28px; border: 1px solid var(--border-light);">
-          <div style="font-size: 0.78rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;">SDG 05 · Gender Equality</div>
-          <h3>Women &amp; Widows Economic Fund</h3>
-          <p>Direct micro-seed capital, agro-processing machinery, and cooperative financial literacy circles for widowed mothers.</p>
-        </div>
+          <div class="sdg-card sdg-bg-5">
+            <div class="sdg-card-number">5</div>
+            <div class="sdg-label">SDG 05 &bull; Gender Equality</div>
+            <h3>Women &amp; Widows Economic Fund</h3>
+            <p>Direct micro-seed capital, agro-processing machinery, and cooperative financial literacy circles for widowed mothers.</p>
+          </div>
 
-        <div class="focus-area-item" style="background: #FFFFFF; padding: 28px; border: 1px solid var(--border-light);">
-          <div style="font-size: 0.78rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;">SDG 08 · Decent Work</div>
-          <h3>Youth Technical Livelihoods</h3>
-          <p>Vocational training, solar power system installation, IT hardware diagnostics, and startup business kits.</p>
-        </div>
+          <div class="sdg-card sdg-bg-8">
+            <div class="sdg-card-number">8</div>
+            <div class="sdg-label">SDG 08 &bull; Decent Work</div>
+            <h3>Youth Technical Livelihoods</h3>
+            <p>Vocational training, solar power system installation, IT hardware diagnostics, and startup business kits.</p>
+          </div>
 
-        <div class="focus-area-item" style="background: #FFFFFF; padding: 28px; border: 1px solid var(--border-light);">
-          <div style="font-size: 0.78rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;">SDG 10 · Reduced Inequalities</div>
-          <h3>Disability Tech Inclusion</h3>
-          <p>Overcoming socio-economic marginalization by empowering persons with disabilities with high-value digital capabilities.</p>
-        </div>
+          <div class="sdg-card sdg-bg-10">
+            <div class="sdg-card-number">10</div>
+            <div class="sdg-label">SDG 10 &bull; Reduced Inequalities</div>
+            <h3>Disability Tech Inclusion</h3>
+            <p>Overcoming socio-economic marginalization by empowering persons with disabilities with high-value digital capabilities.</p>
+          </div>
 
-        <div class="focus-area-item" style="background: #FFFFFF; padding: 28px; border: 1px solid var(--border-light);">
-          <div style="font-size: 0.78rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;">SDG 11 · Resilient Communities</div>
-          <h3>Grassroots Leadership &amp; WASH</h3>
-          <p>Community Water Management Committees, solar-powered boreholes, and civic infrastructure resilience.</p>
+          <div class="sdg-card sdg-bg-11">
+            <div class="sdg-card-number">11</div>
+            <div class="sdg-label">SDG 11 &bull; Resilient Communities</div>
+            <h3>Grassroots Leadership &amp; WASH</h3>
+            <p>Community Water Management Committees, solar-powered boreholes, and civic infrastructure resilience.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    
 
   <!-- Executive Institutional Footer (Balanced 4-Column Design) -->
   <footer class="site-footer">
@@ -405,7 +383,7 @@
           <a href="impact.html">Impact &amp; Verification</a>
         </div>
 
-        <!-- Column 3: Interventions & Programs -->
+        <!-- Column 3: Interventions & Programmes -->
         <div class="footer-nav-col">
           <h5>Core Focus &amp; Field</h5>
           <a href="work.html">Focus Areas</a>
@@ -414,26 +392,9 @@
           <a href="contact.html">Partner &amp; Contact</a>
         </div>
 
-        <!-- Column 4: Newsletter & Dispatch Updates -->
-        <div class="footer-newsletter-col">
-          <h5>Quarterly Dispatches</h5>
-          <p class="footer-newsletter-desc">
-            Subscribe to receive verified field audits, milestone publications, and community stories directly in your inbox.
-          </p>
-          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing to BHB Foundation dispatches!', 'success'); this.reset();">
-            <div class="footer-input-group">
-              <input type="email" placeholder="Enter your email address..." required aria-label="Your email address">
-              <button type="submit" class="btn btn-primary">Subscribe</button>
-            </div>
-            <div class="footer-form-note">Zero spam. Verified operational dispatches only.</div>
-          </form>
-        </div>
-
-      </div>
-
-      <!-- Bottom Bar -->
+        </div><!-- Bottom Bar -->
       <div class="footer-bottom-bar">
-        <span>© 2026 BHB Family Support and Development Foundation. Incorporated under Nigerian CAMA law. All rights reserved.</span>
+        <span>© 2026 BHB Family Support and Development Foundation. Registered in Nigeria under the Companies and Allied Matters Act (CAMA). All rights reserved.</span>
         <div class="footer-bottom-links">
           <a href="index.html">Home</a>
           <span>·</span>
@@ -449,8 +410,8 @@
 
   <!-- Interactive Success Video Modal -->
   <div class="modal-backdrop" id="successVideoModal">
-    <div class="modal-window" style="max-width: 820px; width: 95%; background: #0F172A; color: #FFFFFF; border-radius: 8px; overflow: hidden; padding: 0;">
-      <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #1E293B; border-bottom: 1px solid #334155;">
+    <div class="modal-window" style=" width: 95%; background: #0F172A; color: #FFFFFF; border-radius: 8px; overflow: hidden; padding: 0;">
+      <div style="display: flex; justify-content: space-between; align-items: centre; padding: 16px 24px; background: #1E293B; border-bottom: 1px solid #334155;">
         <div>
           <h3 style="color: #FFFFFF; font-size: 1.1rem; margin: 0;">Documentary: Voices of Kano — Amina's Journey</h3>
           <span style="font-size: 0.78rem; color: #94A3B8;">BHB Foundation &amp; Ability First Tech Hub Collaboration</span>
@@ -459,15 +420,15 @@
       </div>
 
       <!-- Simulated HD Video Player Display -->
-      <div style="position: relative; width: 100%; height: 400px; background: #000000; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <div style="position: relative; width: 100%; height: 400px; background: #000000; display: flex; flex-direction: column; justify-content: centre; align-items: centre;">
         <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.45;">
         
-        <div style="position: relative; z-index: 10; text-align: center; padding: 20px;">
+        <div style="position: relative; z-index: 10; text-align: centre; padding: 20px;">
           <div style="font-size: 3rem; margin-bottom: 10px;">▶</div>
           <div style="font-weight: 700; font-size: 1.15rem; color: #FFFFFF; margin-bottom: 6px;">
             "Turning Obstacles into Digital Opportunity"
           </div>
-          <p style="font-size: 0.88rem; color: #CBD5E1; max-width: 540px; margin: 0 auto 16px;">
+          <p style="font-size: 0.88rem; color: #CBD5E1;  margin: 0 auto 16px;">
             Full documentary showcasing 10 adolescent girls with disabilities demonstrating their capstone coding projects.
           </p>
           <button class="btn btn-primary btn-sm" onclick="showToast('Playing full 1080p HD field documentary...', 'info')">
@@ -476,8 +437,8 @@
         </div>
 
         <!-- Custom Video Controls Bar -->
-        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; color: #FFFFFF; z-index: 12;">
-          <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 14px 20px; display: flex; align-items: centre; justify-content: space-between; font-size: 0.85rem; color: #FFFFFF; z-index: 12;">
+          <div style="display: flex; align-items: centre; gap: 12px;">
             <span>▶ 01:24 / 04:18</span>
             <div style="width: 220px; height: 5px; background: rgba(255,255,255,0.3); border-radius: 3px; position: relative;">
               <div style="width: 32%; height: 100%; background: #2563EB; border-radius: 3px;"></div>
@@ -518,5 +479,35 @@
       openModal('successVideoModal');
     };
   </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Auto-add AOS to major cards
+      const elements = document.querySelectorAll('.focus-area-item, .project-card, .news-card, .sdg-card, .commitment-card, .mv-card, .executive-spotlight-card, .team-member-card');
+      elements.forEach(el => {
+        if (!el.hasAttribute('data-aos')) {
+          el.setAttribute('data-aos', 'fade-up');
+        }
+      });
+      if (typeof AOS !== 'undefined') {
+        AOS.init({ once: true, offset: 30, duration: 700, easing: 'ease-out-cubic' });
+      }
+    });
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
