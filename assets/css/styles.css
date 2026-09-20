@@ -2078,24 +2078,72 @@ nav.nav-links a.active {
 .contact-box-label {
   display: block;
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: #64748B;
+  color: #CBD5E1 !important;
   margin-bottom: 4px;
 }
 
 .contact-box-val {
   display: block;
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: #0F172A;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #FFFFFF !important;
   line-height: 1.45;
   word-break: break-word;
 }
 
-.contact-form-col {
+.contact-box-val a {
+  color: #FFFFFF !important;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-box-val a:hover {
+  color: #60A5FA !important;
+  text-decoration: underline;
+}
+
+.contact-box-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(28, 77, 160, 0.25);
+  border: 1px solid rgba(28, 77, 160, 0.5);
+  color: #FFFFFF !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Branded Solid/Gradient Header for Inner Pages */
+.bg-branded-header {
+  background: linear-gradient(135deg, #0F1E36 0%, #152542 50%, #1C4DA0 100%) !important;
+  color: #FFFFFF !important;
+  padding: 76px 0 60px !important;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bg-branded-header h1 {
+  color: #FFFFFF !important;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem) !important;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.bg-branded-header p {
+  color: #E2E8F0 !important;
+  font-size: 1.08rem !important;
+  max-width: 760px;
+  line-height: 1.65;
+  margin: 0;
+}
   background: var(--bg-white);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
@@ -2147,24 +2195,53 @@ footer.site-footer { background: var(--navy); color: #FFFFFF; padding: 70px 0 30
 
 .footer-top-grid {
   display: grid;
-  grid-template-columns: 1.4fr 0.85fr 0.85fr 1.3fr;
-  gap: 48px;
-  margin-bottom: 56px;
+  grid-template-columns: 1.4fr 1fr 1.2fr 1.3fr;
+  gap: 40px;
+  margin-bottom: 50px;
   align-items: start;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
   .footer-top-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 36px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .footer-top-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
   }
+}
+
+.footer-social-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF !important;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-social-btn:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
 }
 
 .footer-brand-col {

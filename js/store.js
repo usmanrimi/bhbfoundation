@@ -1127,36 +1127,63 @@ window.renderPartnersHTML = function() {
   return badges + badges;
 };
 
-window.renderHomeBlogGridHTML = function() {
+window.renderHomepageProjectsHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
-  const posts = BHBStore.getPosts().slice(0, 3);
-  if (!posts || !posts.length) return '';
+  const projects = BHBStore.getProjects().slice(0, 3);
+  if (!projects || !projects.length) return '<div style="grid-column: 1/-1; text-align: center; padding: 30px; color: var(--text-muted);">No active programs currently published.</div>';
 
-  return posts.map(p => {
-    const comments = BHBStore.getCommentsByPost(p.id);
-    return `
-      <div class="blog-card interactive-lift reveal-up in" onclick="openBlogPostReader('${p.id}')">
-        <img src="${p.image}" alt="${p.title}" class="blog-card-thumb" loading="lazy">
-        <div class="blog-card-body">
-          <div>
-            <div class="blog-card-meta">
-              <span class="project-category-tag">${p.category}</span>
-              <span>${p.readTime || '3 min read'}</span>
-            </div>
-            <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px;">${p.title}</h3>
-            <p style="font-size: 0.92rem; color: var(--text-body);">${(p.excerpt || '').substring(0, 110)}...</p>
+  return projects.map(p => `
+    <div class="portfolio-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer;" onclick="openProjectDetailsModal('${p.id}')">
+      <div class="portfolio-card-thumb-wrap" style="position: relative;">
+        <img src="${p.image}" alt="${p.title}" style="width: 100%; height: 220px; object-fit: cover; display: block;">
+        <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;">${p.category}</div>
+      </div>
+      <div class="portfolio-card-body" style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+        <div style="flex-grow: 1;">
+          <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35;">${p.title}</h3>
+          <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.description}</p>
+        </div>
+        <div class="portfolio-meta-list" style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px;">
+          <div class="portfolio-meta-item" style="margin-bottom: 4px;">
+            <span style="color: var(--text-muted);">Timeline:</span>
+            <b style="color: var(--navy);">${p.timeline || 'Active'}</b>
           </div>
-          <div>
-            <div class="blog-engagement-strip">
-              <span>Likes: ${p.likes || 0}</span>
-              <span>Comments: ${comments.length}</span>
-              <span style="margin-left: auto; color: var(--blue); font-weight: 600;">Read Article →</span>
-            </div>
+          <div class="portfolio-meta-item">
+            <span style="color: var(--text-muted);">Status:</span>
+            <b style="color: var(--blue);">${p.status || 'Ongoing'}</b>
           </div>
         </div>
       </div>
-    `;
-  }).join('');
+    </div>
+  `).join('');
+};
+
+window.renderHomeBlogGridHTML = function() {
+  if (typeof BHBStore === 'undefined') return '';
+  const posts = BHBStore.getPosts().slice(0, 3);
+  if (!posts || !posts.length) return '<div style="grid-column: 1/-1; text-align: center; padding: 30px; color: var(--text-muted);">No stories currently published.</div>';
+
+  return posts.map(p => `
+    <div class="blog-card news-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer; height: 100%;" onclick="openBlogPostReader('${p.id}')">
+      <div style="position: relative;">
+        <img src="${p.image}" alt="${p.title}" class="blog-card-thumb" style="width: 100%; height: 220px; object-fit: cover; display: block;" loading="lazy">
+        <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;">${p.category}</div>
+      </div>
+      <div class="blog-card-body" style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+        <div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">
+            <span>${p.date || 'Recent Report'}</span> · <span>${p.readTime || '3 min read'}</span>
+          </div>
+          <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${p.title}</h3>
+          <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; min-height: 4.2em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.excerpt || (p.content || '').substring(0, 110) + '...'}</p>
+        </div>
+        <div style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted);">
+          <span>${p.author || 'BHB Editorial'}</span>
+          <span style="color: var(--blue); font-weight: 700;">Read Article →</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
 };
 
 

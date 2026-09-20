@@ -52,10 +52,6 @@
         </nav>
 
         <div class="nav-actions">
-          <button class="nav-admin-link" onclick="toggleAdminView(true)" title="Access Super Admin Dashboard">
-            Admin
-          </button>
-
           <button class="btn btn-primary btn-sm" onclick="openDonateModal()">
             Support Our Mission
           </button>
@@ -75,7 +71,6 @@
       <a href="blog.html">Blog &amp; Dispatches</a>
       <a href="team.html">Our Team</a>
       <a href="contact.html">Contact Us</a>
-      <button class="btn btn-navy" onclick="toggleAdminView(true)" style="width: 100%; margin-top: 8px;">Super Admin Portal</button>
     </div>
 
     <!-- =========================================================================
@@ -87,8 +82,12 @@
 
         <!-- Arrows -->
         <div class="hero-slider-arrows">
-          <button class="slider-arrow-btn" onclick="prevSlide()" aria-label="Previous Slide">‹</button>
-          <button class="slider-arrow-btn" onclick="nextSlide()" aria-label="Next Slide">›</button>
+          <button class="slider-arrow-btn" onclick="prevSlide()" aria-label="Previous Slide">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button class="slider-arrow-btn" onclick="nextSlide()" aria-label="Next Slide">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
         </div>
 
         <!-- Dots -->
@@ -98,15 +97,14 @@
     </section>
 
     <!-- =========================================================================
-         ACTIVE DEPLOYMENTS DUAL-ROW MARQUEE
+         KEY AREAS OF INTERVENTION
          ========================================================================= -->
     <section class="marquee-showcase-section">
-      <div class="container" style="text-align: centre;">
-        <h2 class="section-title-twotone">Explore Our Key Areas Of <span class="text-accent-blue">Intervention</span></h2>
-        <p class="lead-short">Delivering high-impact, verified grassroots support across all local government areas in Kano State.</p>
+      <div class="container" style="text-align: center;">
+        <h2 class="section-title-twotone">Our Key Areas of <span class="text-accent-blue">Intervention</span></h2>
       </div>
 
-      <div class="marquee-wrapper">
+      <div class="marquee-wrapper" style="margin-top: 28px;">
         <!-- Row 1: Leftward slide -->
         <div class="marquee-track marquee-left">
           <div class="marquee-content">
@@ -133,25 +131,23 @@
         <!-- Row 2: Rightward slide -->
         <div class="marquee-track marquee-right" style="margin-top: 14px;">
           <div class="marquee-content">
-            <span class="marquee-pill"></span>
-            <span class="marquee-pill pill-navy"></span>
-            <span class="marquee-pill">Dala LGA</span>
-            <span class="marquee-pill pill-blue">Tarauni LGA</span>
-            <span class="marquee-pill"></span>
-            <span class="marquee-pill pill-navy">Kano LGA</span>
-            <span class="marquee-pill">Direct Grassroots Delivery</span>
-            <span class="marquee-pill pill-blue">Transparent Allocation</span>
-            <span class="marquee-pill">Community Verified</span>
+            <span class="marquee-pill pill-navy">Community Water Supply</span>
+            <span class="marquee-pill">Maternal Health Outreach</span>
+            <span class="marquee-pill pill-blue">Digital Skills Bootcamps</span>
+            <span class="marquee-pill">Women Cooperative Seed Funds</span>
+            <span class="marquee-pill pill-navy">Inclusive Tech Education</span>
+            <span class="marquee-pill">Grassroots Relief Support</span>
+            <span class="marquee-pill pill-blue">Youth Apprenticeship Hubs</span>
+            <span class="marquee-pill">Disability Support &amp; Tools</span>
             <!-- Duplicate for continuous loop -->
-            <span class="marquee-pill"></span>
-            <span class="marquee-pill pill-navy"></span>
-            <span class="marquee-pill">Dala LGA</span>
-            <span class="marquee-pill pill-blue">Tarauni LGA</span>
-            <span class="marquee-pill"></span>
-            <span class="marquee-pill pill-navy">Kano LGA</span>
-            <span class="marquee-pill">Direct Grassroots Delivery</span>
-            <span class="marquee-pill pill-blue">Transparent Allocation</span>
-            <span class="marquee-pill">Community Verified</span>
+            <span class="marquee-pill pill-navy">Community Water Supply</span>
+            <span class="marquee-pill">Maternal Health Outreach</span>
+            <span class="marquee-pill pill-blue">Digital Skills Bootcamps</span>
+            <span class="marquee-pill">Women Cooperative Seed Funds</span>
+            <span class="marquee-pill pill-navy">Inclusive Tech Education</span>
+            <span class="marquee-pill">Grassroots Relief Support</span>
+            <span class="marquee-pill pill-blue">Youth Apprenticeship Hubs</span>
+            <span class="marquee-pill">Disability Support &amp; Tools</span>
           </div>
         </div>
       </div>
@@ -267,19 +263,19 @@
             <div class="stat-metric-label">Target Communities Impacted</div>
           </div>
           <div class="stat-metric-block interactive-lift reveal-up">
-            <div class="stat-metric-number" data-counter-end="6" data-suffix="+">6+</div>
-            <div class="stat-metric-label">Dedicated Team &amp; Volunteers</div>
+            <div class="stat-metric-number" data-counter-end="15" data-suffix="+">15+</div>
+            <div class="stat-metric-label">Dedicated Team &amp; Mobilizers</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section Overview -->
+    <!-- Active Programs Section -->
     <section id="projects">
       <div class="container">
         <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
           <div>
-            <h2 class="section-title-twotone">Featured Deployments &amp;  <span class="text-accent-blue">Active Programmes</span></h2>
+            <h2 class="section-title-twotone">Active <span class="text-accent-blue">Programs</span></h2>
             <p class="lead">Targeted initiatives implemented with local stakeholders and strategic partners.</p>
           </div>
           <div>
@@ -287,41 +283,11 @@
           </div>
         </div>
 
-                  <div class="projects-portfolio-grid" id="homepageProjectsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-top: 30px;">
-            <script>
-              (function() {
-                if (typeof BHBStore !== 'undefined') {
-                  const projs = BHBStore.getProjects().slice(0, 3);
-                  let out = '';
-                  projs.forEach(p => {
-                    out += 
-          <div class="portfolio-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer;" onclick="if(window.openProjectDossierModal) { openProjectDossierModal('+p.id+'); } else if(window.openProjectDetailsModal) { openProjectDetailsModal('+p.id+'); }">
-            <div class="portfolio-card-thumb-wrap" style="position: relative;">
-              <img src="+p.image+" alt="+p.title+" style="width: 100%; height: 220px; object-fit: cover; display: block;">
-              <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;">+p.category+</div>
-            </div>
-            <div class="portfolio-card-body" style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
-              <div style="flex-grow: 1;">
-                <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35;">+p.title+</h3>
-                <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">+p.description+</p>
-              </div>
-
-              <div class="portfolio-meta-list" style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px;">
-                <div class="portfolio-meta-item" style="margin-bottom: 4px;">
-                  <span style="color: var(--text-muted);">Timeline:</span>
-                  <b style="color: var(--navy);"> + (p.timeline || 'Active') + </b>
-                </div>
-              </div>
-            </div>
-          </div>
-                    ;
-                  });
-                  document.write(out);
-                }
-              })();
-            </script>
-          </div>
-        </div></section>
+        <div class="projects-portfolio-grid" id="homepageProjectsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-top: 30px;">
+          <script>document.write(renderHomepageProjectsHTML());</script>
+        </div>
+      </div>
+    </section>
 
     <!-- From Our Blog & Field Reports -->
     <section id="blog" class="bg-off">
@@ -495,12 +461,12 @@
       </div>
     </section>
 
-    <!-- Executive Institutional Footer (Balanced 4-Column Design) -->
+    <!-- Executive Institutional Footer (Clean 4-Column Design) -->
     <footer class="site-footer">
       <div class="container">
         <div class="footer-top-grid">
           
-          <!-- Column 1: Institutional Brand & Legal Identity -->
+          <!-- Column 1: Foundation Overview -->
           <div class="footer-brand-col">
             <div class="footer-brand-header">
               <img src="assets/images/bhb-logo.png" alt="BHB Foundation" class="footer-logo">
@@ -508,37 +474,64 @@
             <p class="footer-brand-desc">
               Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State and Northern Nigeria.
             </p>
+            <div class="footer-legal-badge">
+              <span>Incorporated NGO:</span> <b>CAC/IT/NO/9670692</b>
+            </div>
           </div>
 
-          <!-- Column 2: Governance & About -->
+          <!-- Column 2: Quick Links -->
           <div class="footer-nav-col">
-            <h5>About Foundation</h5>
-            <a href="about.html">Who We Are</a>
-            <a href="about.html#mission">Our Story &amp; Philosophy</a>
-            <a href="team.html">Governance &amp; Leadership</a>
-            <a href="impact.html">Impact &amp; Verification</a>
+            <h5>Quick Links</h5>
+            <a href="about.html">About Us</a>
+            <a href="work.html">Our Work</a>
+            <a href="projects.html">Projects</a>
+            <a href="impact.html">Impact Metrics</a>
+            <a href="blog.html">Field Reports</a>
+            <a href="team.html">Our Team</a>
+            <a href="contact.html">Contact Us</a>
           </div>
 
-          <!-- Column 3: Interventions & Programmes -->
+          <!-- Column 3: Focus Areas -->
           <div class="footer-nav-col">
-            <h5>Core Focus &amp; Field</h5>
-            <a href="work.html">Focus Areas</a>
-            <a href="projects.html">Active Deployments</a>
-            <a href="blog.html">Field Reports &amp; News</a>
-            <a href="contact.html">Partner &amp; Contact</a>
+            <h5>Focus Areas</h5>
+            <a href="work.html">Women &amp; Widows Support</a>
+            <a href="work.html">Child Welfare &amp; Education</a>
+            <a href="work.html">Disability Inclusion</a>
+            <a href="work.html">Skills &amp; Livelihoods</a>
+            <a href="work.html">Community Healthcare</a>
+            <a href="work.html">WASH Infrastructure</a>
           </div>
 
-          </div><!-- Bottom Bar -->
+          <!-- Column 4: Contact & Connect -->
+          <div class="footer-nav-col">
+            <h5>Contact &amp; Connect</h5>
+            <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">
+              <b>Office:</b> 66/77 Sulaiman Crescent, Nasarawa, Kano State, Nigeria
+            </p>
+            <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">
+              <b>Phone:</b> <a href="tel:+2342014545878" style="display: inline; color: #FFFFFF; text-decoration: none;">+234 201 454 5878</a>
+            </p>
+            <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 12px;">
+              <b>Email:</b> <a href="mailto:info@bhbfoundation.com" style="display: inline; color: #FFFFFF; text-decoration: none;">info@bhbfoundation.com</a>
+            </p>
+            <div class="footer-social-links">
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-btn">LinkedIn</a>
+              <a href="https://twitter.com" target="_blank" rel="noopener" class="footer-social-btn">X / Twitter</a>
+              <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-btn">Facebook</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Bar -->
         <div class="footer-bottom-bar">
-          <span>© 2026 BHB Family Support and Development Foundation. Registered in Nigeria under the Companies and Allied Matters Act (CAMA). All rights reserved.</span>
+          <span>&copy; 2026 BHB Family Support and Development Foundation. Registered in Nigeria under the Companies and Allied Matters Act (CAMA). All rights reserved.</span>
           <div class="footer-bottom-links">
             <a href="index.html">Home</a>
             <span>·</span>
             <a href="contact.html">Transparency &amp; Governance</a>
             <span>·</span>
-            <button onclick="toggleAdminView(true)" class="footer-admin-btn">
-              Super Admin Controller
-            </button>
+            <a href="contact.html">Privacy Policy</a>
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderAllSections();
   setupNavigation();
 
-  if (localStorage.getItem('openAdmin') === 'true') {
+  if (window.location.pathname === '/admin' || window.location.pathname === '/admin/' || window.location.search.includes('openAdmin=true') || localStorage.getItem('openAdmin') === 'true') {
     localStorage.removeItem('openAdmin');
     if (typeof toggleAdminView === 'function') {
       toggleAdminView(true);
@@ -55,8 +55,12 @@ function renderHeroSlider() {
   sliderContainer.innerHTML = `
     ${slidesHtml}
     <div class="hero-slider-arrows">
-      <button class="slider-arrow-btn" onclick="prevSlide()" aria-label="Previous Slide">‹</button>
-      <button class="slider-arrow-btn" onclick="nextSlide()" aria-label="Next Slide">›</button>
+      <button class="slider-arrow-btn" onclick="prevSlide()" aria-label="Previous Slide">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="slider-arrow-btn" onclick="nextSlide()" aria-label="Next Slide">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
     </div>
     <div class="hero-slider-dots" id="heroSliderDots"></div>
   `;
@@ -90,6 +94,21 @@ function initHeroSlider() {
     sliderContainer.removeEventListener('mouseleave', startHeroAutoPlay);
     sliderContainer.addEventListener('mouseenter', stopHeroAutoPlay);
     sliderContainer.addEventListener('mouseleave', startHeroAutoPlay);
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    sliderContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    sliderContainer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) {
+        nextSlide();
+      } else if (touchEndX - touchStartX > 50) {
+        prevSlide();
+      }
+    }, { passive: true });
   }
 }
 
@@ -97,7 +116,7 @@ function startHeroAutoPlay() {
   stopHeroAutoPlay();
   heroSlideTimer = setInterval(() => {
     nextSlide();
-  }, 5500);
+  }, 6000);
 }
 
 function stopHeroAutoPlay() {
@@ -113,7 +132,7 @@ window.goToSlide = function(index) {
   dots.forEach(d => d.classList.remove('active'));
 
   heroCurrentSlide = (index + slides.length) % slides.length;
-  slides[heroCurrentSlide].classList.add('active');
+  if (slides[heroCurrentSlide]) slides[heroCurrentSlide].classList.add('active');
   if (dots[heroCurrentSlide]) dots[heroCurrentSlide].classList.add('active');
 };
 
@@ -179,12 +198,47 @@ function renderFocusAreas() {
   `).join('');
 }
 
-// 5. Projects & Programs
+// 5. Projects & Programs (Active Programs Dynamic Rendering)
 function renderProjects() {
+  const projects = BHBStore.getProjects();
+
+  // A. Homepage Grid Container
+  const homeGrid = document.getElementById('homepageProjectsGrid');
+  if (homeGrid) {
+    const featuredList = projects.slice(0, 3);
+    if (!featuredList.length) {
+      homeGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 30px; color: var(--text-muted);">No active programs currently published.</div>';
+    } else {
+      homeGrid.innerHTML = featuredList.map(p => `
+        <div class="portfolio-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer;" onclick="openProjectDetailsModal('${p.id}')">
+          <div class="portfolio-card-thumb-wrap" style="position: relative;">
+            <img src="${p.image}" alt="${p.title}" style="width: 100%; height: 220px; object-fit: cover; display: block;">
+            <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;">${p.category}</div>
+          </div>
+          <div class="portfolio-card-body" style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
+            <div style="flex-grow: 1;">
+              <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35;">${p.title}</h3>
+              <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.description}</p>
+            </div>
+            <div class="portfolio-meta-list" style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px;">
+              <div class="portfolio-meta-item" style="margin-bottom: 4px;">
+                <span style="color: var(--text-muted);">Timeline:</span>
+                <b style="color: var(--navy);">${p.timeline || 'Active'}</b>
+              </div>
+              <div class="portfolio-meta-item">
+                <span style="color: var(--text-muted);">Status:</span>
+                <b style="color: var(--blue);">${p.status || 'Ongoing'}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+  }
+
+  // B. Legacy Secondary Containers
   const featuredContainer = document.getElementById('projectFeaturedContainer');
   const secondaryContainer = document.getElementById('projectSecondaryGrid');
-
-  const projects = BHBStore.getProjects();
   const featured = projects.find(p => p.featured) || projects[0];
   const secondaries = projects.filter(p => !featured || p.id !== featured.id);
 
@@ -245,7 +299,7 @@ function renderBlogPage() {
     );
   }
 
-  // Clear lead containers if they exist (we don't use them anymore)
+  // Clear lead containers if they exist (clean uniform grid layout)
   const blogLeadContainer = document.getElementById('blogLeadContainer');
   if (blogLeadContainer) blogLeadContainer.style.display = 'none';
 
@@ -253,32 +307,33 @@ function renderBlogPage() {
   const blogSecondaryGrid = document.getElementById('blogSecondaryGrid');
   if (blogSecondaryGrid) {
     if (filtered.length === 0) {
-      blogSecondaryGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No reports match your filters.</div>';
+      blogSecondaryGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No reports match your search criteria.</div>';
     } else {
       blogSecondaryGrid.style.display = 'grid';
       blogSecondaryGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(320px, 1fr))';
       blogSecondaryGrid.style.gap = '30px';
 
-      blogSecondaryGrid.innerHTML = filtered.map(p => {
-        return 
-          <div class="news-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer;" onclick="openBlogPostReader(' + p.id + ')">
-            <div style="position: relative;">
-              <img src=" + p.image + " alt=" + p.title + " style="width: 100%; height: 220px; object-fit: cover; display: block;">
-              <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;"> + p.category + </div>
+      blogSecondaryGrid.innerHTML = filtered.map(p => `
+        <div class="news-card blog-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer; height: 100%;" onclick="openBlogPostReader('${p.id}')">
+          <div style="position: relative;">
+            <img src="${p.image}" alt="${p.title}" class="blog-card-thumb" style="width: 100%; height: 220px; object-fit: cover; display: block;">
+            <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;">${p.category}</div>
+          </div>
+          <div class="blog-card-body" style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">
+                <span>${p.date || 'Recent Report'}</span> · <span>${p.readTime || '3 min read'}</span>
+              </div>
+              <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${p.title}</h3>
+              <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; min-height: 4.2em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.excerpt || p.content.substring(0, 110) + '...'}</p>
             </div>
-            <div style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
-              <div style="flex-grow: 1;">
-                <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35;"> + p.title + </h3>
-                <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"> + (p.excerpt || p.content.substring(0, 100) + '...') + </p>
-              </div>
-              <div style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted);">
-                <span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px; margin-top: -2px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> + p.date + </span>
-                <span style="color: var(--blue); font-weight: 700;">Read More</span>
-              </div>
+            <div style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted);">
+              <span>${p.author || 'BHB Editorial'}</span>
+              <span style="color: var(--blue); font-weight: 700;">Read Article →</span>
             </div>
           </div>
-        ;
-      }).join('');
+        </div>
+      `).join('');
     }
   }
 
@@ -286,31 +341,37 @@ function renderBlogPage() {
   const homeBlogGrid = document.getElementById('homeBlogGrid');
   if (homeBlogGrid) {
     const homePosts = allPosts.slice(0, 3);
-    homeBlogGrid.style.display = 'grid';
-    homeBlogGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(320px, 1fr))';
-    homeBlogGrid.style.gap = '30px';
-    homeBlogGrid.innerHTML = homePosts.map(p => {
-      return 
-        <div class="news-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer;" onclick="window.location.href='blog.html'">
-            <div style="position: relative;">
-              <img src=" + p.image + " alt=" + p.title + " style="width: 100%; height: 220px; object-fit: cover; display: block;">
-              <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;"> + p.category + </div>
-            </div>
-            <div style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
-              <div style="flex-grow: 1;">
-                <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35;"> + p.title + </h3>
-                <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"> + (p.excerpt || p.content.substring(0, 100) + '...') + </p>
+    if (!homePosts.length) {
+      homeBlogGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 30px; color: var(--text-muted);">No stories currently published.</div>';
+    } else {
+      homeBlogGrid.style.display = 'grid';
+      homeBlogGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(320px, 1fr))';
+      homeBlogGrid.style.gap = '30px';
+      homeBlogGrid.innerHTML = homePosts.map(p => `
+        <div class="news-card blog-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer; height: 100%;" onclick="openBlogPostReader('${p.id}')">
+          <div style="position: relative;">
+            <img src="${p.image}" alt="${p.title}" class="blog-card-thumb" style="width: 100%; height: 220px; object-fit: cover; display: block;">
+            <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;">${p.category}</div>
+          </div>
+          <div class="blog-card-body" style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">
+                <span>${p.date || 'Recent Report'}</span> · <span>${p.readTime || '3 min read'}</span>
               </div>
-              <div style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted);">
-                <span> + p.date + </span>
-                <span style="color: var(--blue); font-weight: 700;">Read More</span>
-              </div>
+              <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${p.title}</h3>
+              <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; min-height: 4.2em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.excerpt || p.content.substring(0, 110) + '...'}</p>
             </div>
+            <div style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted);">
+              <span>${p.author || 'BHB Editorial'}</span>
+              <span style="color: var(--blue); font-weight: 700;">Read Article →</span>
+            </div>
+          </div>
         </div>
-      ;
-    }).join('');
+      `).join('');
+    }
   }
 }
+
 window.filterBlogCategory = function(cat) {
   currentBlogCategory = cat;
   document.querySelectorAll('.blog-filter-btn').forEach(btn => {
@@ -369,7 +430,7 @@ window.openBlogPostReader = function(postId) {
       <div class="blog-actions-bar">
         <div>
           <button class="like-btn-action ${post.likedByUser ? 'liked' : ''}" id="readerLikeBtn" onclick="toggleLikePost('${post.id}')">
-            <span>${post.likedByUser ? '[Liked]' : '[Like]'}</span>
+            <span>${post.likedByUser ? '❤️ Liked' : '🤍 Like'}</span>
             <span id="readerLikeCount">${post.likes || 0}</span> Likes
           </button>
         </div>
@@ -456,7 +517,7 @@ window.toggleLikePost = function(postId) {
 
   if (btn && post) {
     btn.classList.toggle('liked', post.likedByUser);
-    btn.querySelector('span').textContent = post.likedByUser ? '[Liked]' : '[Like]';
+    btn.querySelector('span').textContent = post.likedByUser ? '❤️ Liked' : '🤍 Like';
   }
   if (countEl) countEl.textContent = newCount;
 
@@ -639,7 +700,7 @@ window.openProjectDetailsModal = function(projId) {
           ${(proj.milestones || []).map(m => `<li style="margin-bottom: 6px;">${m}</li>`).join('')}
         </ul>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); padding-top: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); padding-top: 20px; flex-wrap: wrap; gap: 10px;">
           <span style="font-size: 0.9rem; color: var(--text-muted);">Status: <b>${proj.status}</b> | Beneficiaries: <b>${proj.beneficiaries}</b></span>
           <button class="btn btn-navy btn-sm" onclick="openDonateModal()">Support This Initiative →</button>
         </div>
@@ -744,6 +805,3 @@ window.submitContactForm = function(e) {
   showToast('Thank you for reaching out. The BHB Foundation team will respond promptly.', 'success');
   form.reset();
 };
-
-
-

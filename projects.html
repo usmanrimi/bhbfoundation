@@ -23,7 +23,7 @@
     /* Dedicated Enhanced Projects Layout */
     .project-kpi-ribbon {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       margin-top: -40px;
       margin-bottom: 48px;
@@ -359,7 +359,7 @@
   </div>
 
   <!-- Page Header Banner (Clean Title Without Removed Label) -->
-  <div class="page-header-banner" style="background: linear-gradient(rgba(15, 30, 54, 0.92), rgba(15, 30, 54, 0.98)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center;">
+  <div class="page-header-banner bg-branded-header">
     <div class="container">
       <h1>Strategic Initiatives &amp;  <span class="hero-two-color">Community Programmes</span></h1>
       <p>
@@ -381,10 +381,6 @@
         <div class="project-kpi-card interactive-lift">
           <div class="project-kpi-number">2</div>
           <div class="project-kpi-label">Active Projects &amp; Flagship Deployments</div>
-        </div>
-        <div class="project-kpi-card interactive-lift">
-          <div class="project-kpi-number">2 LGAs</div>
-          <div class="project-kpi-label">Target Municipalities (Nasarawa &amp; LGA)</div>
         </div>
         <div class="project-kpi-card interactive-lift">
           <div class="project-kpi-number">15+</div>
@@ -456,6 +452,9 @@
           <p class="footer-brand-desc">
             Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State and Northern Nigeria.
           </p>
+          <div class="footer-legal-badge">
+            <span>Incorporated NGO:</span> <b>CAC/IT/NO/9670692</b>
+          </div>
         </div>
 
         <!-- Column 2: Governance & About -->
@@ -476,17 +475,36 @@
           <a href="contact.html">Partner &amp; Contact</a>
         </div>
 
-        </div><!-- Bottom Bar -->
+        <!-- Column 4: Contact & Connect -->
+        <div class="footer-nav-col">
+          <h5>Contact &amp; Connect</h5>
+          <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">
+            <b>Office:</b> 66/77 Sulaiman Crescent, Nasarawa, Kano State, Nigeria
+          </p>
+          <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">
+            <b>Phone:</b> <a href="tel:+2342014545878" style="display: inline; color: #FFFFFF; text-decoration: none;">+234 201 454 5878</a>
+          </p>
+          <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 12px;">
+            <b>Email:</b> <a href="mailto:info@bhbfoundation.com" style="display: inline; color: #FFFFFF; text-decoration: none;">info@bhbfoundation.com</a>
+          </p>
+          <div class="footer-social-links">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-btn">LinkedIn</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="footer-social-btn">X / Twitter</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-btn">Facebook</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
       <div class="footer-bottom-bar">
         <span>© 2026 BHB Family Support and Development Foundation. Registered in Nigeria under the Companies and Allied Matters Act (CAMA). All rights reserved.</span>
         <div class="footer-bottom-links">
           <a href="index.html">Home</a>
           <span>·</span>
-          <a href="contact.html">Transparency &amp; Governance</a>
+          <a href="about.html">About Us</a>
           <span>·</span>
-          <button onclick="if(typeof toggleAdminView === 'function') toggleAdminView(true); else location.href='index.html?openAdmin=true';" class="footer-admin-btn">
-            Admin Access
-          </button>
+          <a href="contact.html">Transparency &amp; Governance</a>
         </div>
       </div>
     </div>
@@ -536,7 +554,7 @@
       const featuredContainer = document.getElementById('projectFeaturedShowcase');
       if (featuredContainer) featuredContainer.innerHTML = '';
 
-      const gridContainer = document.getElementById('projectsGridContainer');
+      const gridContainer = document.getElementById('projectPortfolioGrid') || document.getElementById('projectsGridContainer');
       if (!gridContainer) return;
 
       if (filtered.length === 0) {
@@ -545,31 +563,31 @@
       }
 
       gridContainer.innerHTML = filtered.map(p => {
-        return 
-          <div class="portfolio-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer;" onclick="openProjectDossierModal(' + p.id + ')">
-            <div class="portfolio-card-thumb-wrap" style="position: relative;">
-              <img src=" + p.image + " alt=" + p.title + " style="width: 100%; height: 220px; object-fit: cover; display: block;">
-              <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;"> + p.category + </div>
+        return `
+          <div class="portfolio-card interactive-lift" style="border-radius: 8px; overflow: hidden; background: #fff; border: 1px solid var(--border-light); display: flex; flex-direction: column; cursor: pointer;" onclick="openProjectDossierModal(${p.id})">
+            <div class="portfolio-card-thumb-wrapper" style="position: relative; height: 220px;">
+              <img src="${p.image}" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;">${p.category}</div>
             </div>
             <div class="portfolio-card-body" style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
               <div style="flex-grow: 1;">
-                <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35;"> + p.title + </h3>
-                <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"> + p.description + </p>
+                <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35;">${p.title}</h3>
+                <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.description}</p>
               </div>
 
               <div class="portfolio-meta-list" style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px;">
-                <div class="portfolio-meta-item" style="margin-bottom: 4px;">
+                <div class="portfolio-meta-item" style="margin-bottom: 4px; display: flex; justify-content: space-between;">
                   <span style="color: var(--text-muted);">Timeline:</span>
-                  <b style="color: var(--navy);"> + (p.timeline || 'Active') + </b>
+                  <b style="color: var(--navy);">${p.timeline || 'Active'}</b>
                 </div>
-                <div class="portfolio-meta-item" style="margin-bottom: 4px;">
+                <div class="portfolio-meta-item" style="margin-bottom: 4px; display: flex; justify-content: space-between;">
                   <span style="color: var(--text-muted);">Location:</span>
-                  <b style="color: var(--navy);"> + p.location + </b>
+                  <b style="color: var(--navy);">${p.location || 'Kano State'}</b>
                 </div>
               </div>
             </div>
           </div>
-        ;
+        `;
       }).join('');
     }
     function filterPortfolioStatus(status) {
