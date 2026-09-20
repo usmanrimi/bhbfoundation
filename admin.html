@@ -38,15 +38,21 @@
         Invalid credentials. Please verify your email and password.
       </div>
 
+      <div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; padding: 12px 14px; margin-bottom: 20px; font-size: 0.82rem; color: #1E40AF; text-align: left;">
+        <div style="font-weight: 700; margin-bottom: 4px;">Super Admin Credentials:</div>
+        <div>Email: <code style="font-weight: 700; background: #DBEAFE; padding: 2px 6px; border-radius: 4px;">bhbfoundation0@gmail.com</code></div>
+        <div style="margin-top: 2px;">Password: <code style="font-weight: 700; background: #DBEAFE; padding: 2px 6px; border-radius: 4px;">F0und@ti0n</code></div>
+      </div>
+
       <form class="admin-login-form" onsubmit="handleAdminLoginSubmit(event)">
         <div class="admin-login-field">
           <label for="adminEmailInput">Administrator Email</label>
-          <input type="email" id="adminEmailInput" name="email" required placeholder="bhbfoundation0@gmail.com" autocomplete="username">
+          <input type="email" id="adminEmailInput" name="email" required placeholder="bhbfoundation0@gmail.com" value="bhbfoundation0@gmail.com" autocomplete="username">
         </div>
 
         <div class="admin-login-field">
           <label for="adminPasswordInput">Security Password</label>
-          <input type="password" id="adminPasswordInput" name="password" required placeholder="••••••••••••" autocomplete="current-password">
+          <input type="password" id="adminPasswordInput" name="password" required placeholder="••••••••••••" value="F0und@ti0n" autocomplete="current-password">
         </div>
 
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 0.85rem; color: #64748B;">
@@ -257,10 +263,10 @@
                 <table class="admin-data-table">
                   <thead>
                     <tr>
-                      <th>Image</th>
-                      <th>Headline Title</th>
-                      <th>Category Label</th>
-                      <th>Actions</th>
+                      <th style="width: 90px;">Image</th>
+                      <th style="min-width: 200px;">Headline &amp; Eyebrow</th>
+                      <th style="min-width: 260px;">Lead Narrative</th>
+                      <th style="width: 130px;">Actions</th>
                     </tr>
                   </thead>
                   <tbody id="adminHeroSlidesTableBody"></tbody>

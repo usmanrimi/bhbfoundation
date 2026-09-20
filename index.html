@@ -145,59 +145,111 @@
     </section>
 
     <!-- =========================================================================
-         ABOUT SECTION OVERVIEW (TWO-COLOR TYPOGRAPHY & CONCISE NARRATIVE)
+         ABOUT SECTION OVERVIEW (ELEGANT STRUCTURED LAYOUT WITHOUT PHOTO)
          ========================================================================= -->
     <section id="about" class="about-overview-section">
       <div class="container">
-        <div class="about-overview-grid">
+        
+        <!-- Top Section Header -->
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 44px;">
+          <span class="section-label" style="margin-bottom: 12px; display: inline-block;">Who We Are &amp; Our Conviction</span>
+          <h2 class="section-title-twotone" style="font-size: 2.2rem; line-height: 1.25; margin-bottom: 16px;">
+            Every Individual Deserves A <span class="text-accent-blue">Healthy &amp; Dignified Life</span>
+          </h2>
+          <p style="font-size: 1.08rem; line-height: 1.7; color: var(--text-body); margin: 0;">
+            <b>BHB Foundation</b> is an incorporated non-governmental organisation built on a profound conviction: <b>People are not defined by their circumstances.</b>
+          </p>
+        </div>
+
+        <!-- 2-Column Balanced Master Grid -->
+        <div class="about-overview-grid" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px; align-items: stretch;">
           
-          <!-- Left Column: Institutional Field Showcase -->
-          <div class="about-showcase-column">
-            <div class="about-showcase-frame interactive-lift">
-              <script>document.write('<img id="aboutShowcaseImg" data-bind-src="aboutImage" src="' + (BHBStore.getSettings().aboutImage || 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80') + '" alt="BHB Foundation Grassroots Community Outreach in Kano State" class="about-showcase-img">');</script>
+          <!-- Left Column: Founding Narrative & Action Pillars -->
+          <div style="display: flex; flex-direction: column; justify-content: space-between; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 36px 32px; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);">
+            <div>
+              <h3 style="color: var(--navy); font-size: 1.3rem; font-weight: 800; margin-bottom: 14px; line-height: 1.35;">
+                Sustainable Transformation Over Temporary Handouts
+              </h3>
+              <p style="font-size: 0.98rem; line-height: 1.72; color: var(--text-body); margin-bottom: 22px;">
+                Enduring progress is never created through temporary charity. True transformation occurs when we strengthen human capabilities, connect vulnerable individuals to essential healthcare and assistive digital education, and foster self-sustaining conditions for lifelong independence across Kano State and Northern Nigeria.
+              </p>
+
+              <!-- 3 Strategic Grassroots Principles -->
+              <div style="display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 24px;">
+                <div style="display: flex; align-items: flex-start; gap: 12px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px 16px;">
+                  <div style="width: 34px; height: 34px; border-radius: 8px; background: #EFF6FF; color: var(--blue); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem; flex-shrink: 0;">01</div>
+                  <div>
+                    <h4 style="font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 2px;">Grassroots Community Proximity</h4>
+                    <p style="font-size: 0.84rem; color: var(--text-body); line-height: 1.45; margin: 0;">Working directly alongside families and community leaders across Kano State.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: flex-start; gap: 12px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px 16px;">
+                  <div style="width: 34px; height: 34px; border-radius: 8px; background: #F0FDF4; color: #16A34A; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem; flex-shrink: 0;">02</div>
+                  <div>
+                    <h4 style="font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 2px;">Inclusive Capability Building</h4>
+                    <p style="font-size: 0.84rem; color: var(--text-body); line-height: 1.45; margin: 0;">Empowering persons with disabilities, widows, and youth with tools &amp; capital.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: flex-start; gap: 12px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px 16px;">
+                  <div style="width: 34px; height: 34px; border-radius: 8px; background: #FAF5FF; color: #9333EA; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem; flex-shrink: 0;">03</div>
+                  <div>
+                    <h4 style="font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 2px;">Governance &amp; Accountability</h4>
+                    <p style="font-size: 0.84rem; color: var(--text-body); line-height: 1.45; margin: 0;">Full regulatory compliance under CAC incorporation (Reg: CAC/IT/NO/9670692).</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <a href="about.html" class="btn btn-navy" style="display: inline-flex; align-items: center; gap: 8px;">
+                <span>Read Full Story &amp; Philosophy →</span>
+              </a>
             </div>
           </div>
 
-          <!-- Right Column: Institutional Mandate & Symmetrical Mission/Vision Cards -->
-                      <div class="about-narrative-column">
-              <h2 class="section-title-twotone">Every Individual Deserves A <span class="text-accent-blue">Healthy &amp; Dignified Life</span></h2>
-              <p class="about-lead-p" style="margin-bottom: 24px;">
-                <b>BHB Foundation</b> is a non-governmental organisation built on a profound conviction: <b>People are not defined by their circumstances.</b>
+          <!-- Right Column: Institutional Conviction Card + Symmetrical Mission & Vision -->
+          <div style="display: flex; flex-direction: column; gap: 18px; justify-content: space-between;">
+            
+            <!-- Conviction Quote Box (Deep Navy Prestige) -->
+            <div style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: #FFFFFF; padding: 30px 28px; border-radius: 16px; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.15); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+              <div style="position: absolute; top: -12px; right: 10px; font-size: 6rem; color: rgba(255, 255, 255, 0.05); font-family: serif; pointer-events: none; line-height: 1;">“</div>
+              <span style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #93C5FD; display: block; margin-bottom: 10px;">The BHB Institutional Mandate</span>
+              <p style="font-size: 1.02rem; line-height: 1.7; color: #F1F5F9; font-style: italic; margin: 0 0 18px;">
+                "With targeted support, assistive tools, and genuine community solidarity, families can overcome structural barriers, build economic resilience, and shape their own destinies."
               </p>
-              <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-body); margin-bottom: 30px;">
-                Enduring progress is never created through temporary handouts. True transformation occurs when we strengthen human capabilities, connect vulnerable individuals to essential healthcare and digital education, and foster self-sustaining conditions for lifelong independence across Kano State.
-              </p>
-  
-              <!-- Symmetrical 2-Column Mission & Vision Master Cards -->
-              <div class="about-mv-symmetrical-grid">
-                <!-- Mission Card -->
-                <div class="about-mv-item-card mission-card interactive-lift">
-                  <div>
-                    <span class="about-mv-tag-badge blue">Our Mission</span>
-                    <div class="about-mv-card-title">Direct Grassroots Action</div>
-                    <p class="about-mv-card-text">
-                      Walking alongside vulnerable families to expand access to primary health, digital literacy, and economic seed grants.
-                    </p>
-                  </div>
-                </div>
-  
-                <!-- Vision Card -->
-                <div class="about-mv-item-card vision-card interactive-lift">
-                  <div>
-                    <span class="about-mv-tag-badge blue">Our Vision</span>
-                    <div class="about-mv-card-title">Inclusive Community Dignity</div>
-                    <p class="about-mv-card-text">
-                      Building self-reliant, resilient communities where every individual lives with dignity, security, and equal opportunity.
-                    </p>
-                  </div>
+              <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <span style="font-size: 0.82rem; color: #CBD5E1;">Incorporated NGO: <b>CAC/IT/NO/9670692</b></span>
+                <span style="font-size: 0.78rem; background: rgba(37, 99, 235, 0.35); border: 1px solid rgba(147, 197, 253, 0.3); padding: 4px 10px; border-radius: 6px; color: #93C5FD; font-weight: 700;">Grassroots Verified</span>
+              </div>
+            </div>
+
+            <!-- Symmetrical Mission & Vision Cards -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <!-- Mission Card -->
+              <div class="about-mv-item-card mission-card interactive-lift" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 22px 18px; box-shadow: 0 4px 16px rgba(15,23,42,0.04);">
+                <div>
+                  <span class="about-mv-tag-badge blue" style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: #2563EB; background: #EFF6FF; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 8px;">Our Mission</span>
+                  <div class="about-mv-card-title" style="font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 6px;">Direct Grassroots Action</div>
+                  <p class="about-mv-card-text" style="font-size: 0.84rem; color: var(--text-body); line-height: 1.55; margin: 0;">
+                    Walking alongside vulnerable families to expand access to healthcare, digital literacy, and economic seed grants.
+                  </p>
                 </div>
               </div>
 
-              <!-- Rectangular Action Buttons -->
-              <div class="about-actions-group" style="margin-top: 30px;">
-                <a href="about.html" class="btn btn-navy">Read Full Story &amp; Philosophy  </a>
+              <!-- Vision Card -->
+              <div class="about-mv-item-card vision-card interactive-lift" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 22px 18px; box-shadow: 0 4px 16px rgba(15,23,42,0.04);">
+                <div>
+                  <span class="about-mv-tag-badge blue" style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: #0D9488; background: #F0FDFA; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 8px;">Our Vision</span>
+                  <div class="about-mv-card-title" style="font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 6px;">Inclusive Community Dignity</div>
+                  <p class="about-mv-card-text" style="font-size: 0.84rem; color: var(--text-body); line-height: 1.55; margin: 0;">
+                    Building self-reliant, resilient communities where every individual lives with dignity, security, and equal opportunity.
+                  </p>
+                </div>
               </div>
             </div>
+
           </div>
 
         </div>

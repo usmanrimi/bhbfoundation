@@ -2913,18 +2913,10 @@ footer.site-footer {
 
 
 
-/* Override About Overview Grid for Landscape Image Left */
-.about-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-.about-showcase-img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 30px rgba(15, 30, 54, 0.1); }
-.about-narrative-column {
-  margin: 0;
-  text-align: left;
-}
-.about-lead-p {
-  font-size: 1.15rem;
-  line-height: 1.7;
-  color: #FFF;
-  margin-bottom: 24px;
+/* About Overview Grid */
+.about-overview-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px; align-items: stretch; }
+@media (max-width: 991px) {
+  .about-overview-grid { grid-template-columns: 1fr; }
 }
 
 /* Contact Page Enhancements */

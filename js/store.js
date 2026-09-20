@@ -476,9 +476,106 @@ All institutional programs and financial disbursements remain open to annual pub
     }
   ],
 
-  donations: [],
+  donations: [
+    {
+      id: "DON-84920",
+      donorName: "Alhaji Aminu Dantata Philanthropy Fund",
+      email: "csr@dantata-group.ng",
+      amount: 2500000,
+      currency: "NGN",
+      method: "Bank Transfer (Zenith)",
+      project: "Maternal & Mobile Primary Clinics",
+      date: "2026-08-24 14:32",
+      status: "Verified"
+    },
+    {
+      id: "DON-84919",
+      donorName: "Engr. Kabir M. Bello",
+      email: "km.bello@consulting.com",
+      amount: 1000000,
+      currency: "NGN",
+      method: "Zenith Bank Direct",
+      project: "Assistive Coding & Hardware Grants",
+      date: "2026-08-22 09:15",
+      status: "Verified"
+    },
+    {
+      id: "DON-84918",
+      donorName: "Hajiya Maryam Sunusi",
+      email: "maryam.sunusi@gmail.com",
+      amount: 500000,
+      currency: "NGN",
+      method: "Online Transfer",
+      project: "Widow Agro-Processing Micro-Grants",
+      date: "2026-08-19 18:40",
+      status: "Verified"
+    },
+    {
+      id: "DON-84917",
+      donorName: "Dr. Farouk Al-Mansoor",
+      email: "f.mansoor@oxfordalumni.org",
+      amount: 1200,
+      currency: "USD",
+      method: "Direct Wire Transfer",
+      project: "General Foundation Operations",
+      date: "2026-08-15 11:20",
+      status: "Verified"
+    },
+    {
+      id: "DON-84916",
+      donorName: "Kano Diaspora Support Initiative",
+      email: "contact@kanodiaspora.org.uk",
+      amount: 3500000,
+      currency: "NGN",
+      method: "Zenith Bank Direct",
+      project: "Solar-Powered Clean Water Borehole",
+      date: "2026-08-10 16:05",
+      status: "Verified"
+    }
+  ],
 
-  volunteers: [],
+  volunteers: [
+    {
+      id: "VOL-101",
+      name: "Amina Lawal Bello",
+      email: "amina.lawal@unimail.edu.ng",
+      phone: "+234 803 245 9811",
+      rolePreference: "Healthcare & Mobile Medical Outreach",
+      lga: "Nasarawa LGA, Kano",
+      appliedDate: "2026-08-23",
+      status: "Pending"
+    },
+    {
+      id: "VOL-102",
+      name: "Usman Sadiq Garba",
+      email: "usman.sadiq@gmail.com",
+      phone: "+234 812 345 6789",
+      rolePreference: "Digital Skills & Screen-Reader Tutoring",
+      lga: "Kano Municipal",
+      appliedDate: "2026-08-21",
+      status: "Approved"
+    },
+    {
+      id: "VOL-103",
+      name: "Fatima Zahra Mahmoud",
+      email: "fz.mahmoud@kust.edu.ng",
+      phone: "+234 809 876 5432",
+      rolePreference: "Women Vocational & Cooperative Mentorship",
+      lga: "Dala LGA, Kano",
+      appliedDate: "2026-08-18",
+      status: "Approved"
+    },
+    {
+      id: "VOL-104",
+      name: "Ibrahim Dahiru",
+      email: "ibrahim.dahiru@techhub.ng",
+      phone: "+234 802 112 3344",
+      rolePreference: "Youth Apprenticeship & Vocational Training",
+      lga: "Gwale LGA, Kano",
+      appliedDate: "2026-08-15",
+      status: "Pending"
+    }
+  ],
 
   inquiries: [
     {
@@ -689,9 +786,24 @@ class StoreEngine {
   getPostById(id) { return (this.data.posts || []).find(p => p.id === id); }
   getTeam() { return this.data.team || []; }
   getPartners() { return this.data.partners || []; }
-  getDonations() { return this.data.donations || []; }
-  getVolunteers() { return this.data.volunteers || []; }
-  getInquiries() { return this.data.inquiries || []; }
+  getDonations() {
+    if (!this.data.donations || !this.data.donations.length) {
+      this.data.donations = DEFAULT_STORE_DATA.donations || [];
+    }
+    return this.data.donations;
+  }
+  getVolunteers() {
+    if (!this.data.volunteers || !this.data.volunteers.length) {
+      this.data.volunteers = DEFAULT_STORE_DATA.volunteers || [];
+    }
+    return this.data.volunteers;
+  }
+  getInquiries() {
+    if (!this.data.inquiries || !this.data.inquiries.length) {
+      this.data.inquiries = DEFAULT_STORE_DATA.inquiries || [];
+    }
+    return this.data.inquiries;
+  }
   getAllComments() { return this.data.comments || []; }
   getCommentsByPost(postId) {
     return (this.data.comments || []).filter(c => c.postId === postId && c.status === 'approved');
