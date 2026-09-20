@@ -9,15 +9,14 @@ let currentBlogCategory = 'All';
 let currentBlogSearchQuery = '';
 
 document.addEventListener('DOMContentLoaded', () => {
+  if (window.location.pathname.endsWith('/admin') || window.location.search.includes('openAdmin=true') || localStorage.getItem('openAdmin') === 'true') {
+    localStorage.removeItem('openAdmin');
+    window.location.href = 'admin.html';
+    return;
+  }
+
   renderAllSections();
   setupNavigation();
-
-  if (window.location.pathname === '/admin' || window.location.pathname === '/admin/' || window.location.search.includes('openAdmin=true') || localStorage.getItem('openAdmin') === 'true') {
-    localStorage.removeItem('openAdmin');
-    if (typeof toggleAdminView === 'function') {
-      toggleAdminView(true);
-    }
-  }
 
   BHBStore.subscribe(() => {
     renderAllSections();

@@ -340,7 +340,7 @@ header.site-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 0;
+  padding: 12px 0;
   gap: 20px;
 }
 
@@ -351,9 +351,19 @@ header.site-header {
 }
 
 .nav-brand-logo {
-  height: 48px;
+  height: 62px;
   width: auto;
+  max-width: 240px;
   object-fit: contain;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .nav-brand-logo {
+    height: 52px;
+    max-width: 200px;
+  }
 }
 
 nav.nav-links {
@@ -2191,7 +2201,16 @@ nav.nav-links a.active {
 /* ==========================================================================
    EXECUTIVE INSTITUTIONAL FOOTER (BALANCED 4-COLUMN DESIGN)
    ========================================================================== */
-footer.site-footer { background: var(--navy); color: #FFFFFF; padding: 70px 0 30px; margin-top: auto; }
+footer.site-footer { 
+  background: var(--navy); 
+  color: #FFFFFF; 
+  padding: 70px 0 30px; 
+  margin-top: auto; 
+  border-top: 1px solid rgba(255, 255, 255, 0.15); 
+  box-shadow: 0 -6px 24px rgba(15, 30, 54, 0.08); 
+  position: relative;
+  z-index: 10;
+}
 
 .footer-top-grid {
   display: grid;

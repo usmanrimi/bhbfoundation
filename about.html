@@ -475,8 +475,6 @@
       </nav>
 
       <div class="nav-actions">
-        
-        <button class="btn btn-primary btn-sm" onclick="openDonateModal()" style="border-radius: 0;">Support Our Mission</button>
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">Menu</button>
       </div>
     </div>
@@ -508,22 +506,33 @@
   <section style="padding: 72px 0 60px;">
     <div class="container">
 
-      <!-- Section 1: Our Story & Philosophy -->
-      <div class="about-story-grid">
-        <div>
-          <p style="font-size: 1.15rem; line-height: 1.75; color: var(--navy); margin-bottom: 20px; font-weight: 600;">
-            <b>BHB Foundation</b> is built on a profound conviction: <b>People are not defined by their circumstances.</b>
+      <!-- Section 1: Our Story & Philosophy (Clean Balanced Layout Without Photo) -->
+      <div class="about-story-grid" style="grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: stretch; margin-bottom: 50px;">
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+          <span class="section-label" style="margin-bottom: 16px;">Our Core Philosophy</span>
+          <h2 style="color: var(--navy); font-size: 2rem; line-height: 1.3; margin-bottom: 20px;">
+            People Are Not Defined By <span class="text-accent-blue">Their Circumstances</span>
+          </h2>
+          <p style="font-size: 1.08rem; line-height: 1.75; color: var(--navy); margin-bottom: 18px; font-weight: 600;">
+            Enduring progress is never created through temporary handouts. True transformation occurs when we strengthen human capabilities.
           </p>
-          <p style="font-size: 1rem; line-height: 1.75; color: var(--text-body); margin-bottom: 20px;">
-            Enduring progress is never created through temporary handouts. True transformation occurs when we strengthen human capabilities, connect vulnerable individuals to essential healthcare and digital education, and foster self-sustaining conditions for lifelong independence.
+          <p style="font-size: 0.98rem; line-height: 1.75; color: var(--text-body); margin-bottom: 18px;">
+            At BHB Foundation, we connect vulnerable individuals to essential healthcare, inclusive assistive technology, and vocational seed capital—fostering self-sustaining conditions for lifelong independence and community dignity across Kano State and Northern Nigeria.
           </p>
-          <div class="about-pull-quote" style="border-radius: 8px; background: var(--bg-off); padding: 20px 24px; margin: 24px 0; font-style: italic; border-left: 4px solid var(--blue);">
-            "With targeted support, assistive tools, and genuine community solidarity, families can overcome structural barriers, build resilience, and shape their own destinies."
-          </div>
         </div>
 
-        <div class="story-image-wrapper">
-          <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=1000&q=80" alt="Northern Nigerian Community" class="story-image-main">
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+          <div style="background: var(--navy); color: #FFFFFF; padding: 36px 32px; border-radius: 14px; box-shadow: 0 10px 30px rgba(15, 30, 54, 0.12); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -10px; right: -10px; font-size: 6rem; color: rgba(255, 255, 255, 0.05); font-family: serif; pointer-events: none; line-height: 1;">“</div>
+            <h4 style="color: #93C5FD; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 800; margin-bottom: 12px;">The BHB Conviction</h4>
+            <blockquote style="font-size: 1.05rem; line-height: 1.7; color: #FFFFFF; font-style: italic; margin: 0 0 20px; padding: 0; border: none;">
+              "With targeted support, assistive tools, and genuine community solidarity, families can overcome structural barriers, build resilience, and shape their own destinies."
+            </blockquote>
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+              <span style="font-size: 0.85rem; color: #CBD5E1; font-weight: 600;">Incorporated NGO: <b>CAC/IT/NO/9670692</b></span>
+              <span style="font-size: 0.82rem; background: rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 4px; color: #93C5FD; font-weight: 700;">Grassroots Verified</span>
+            </div>
+          </div>
         </div>
       </div>
 

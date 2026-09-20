@@ -1,43 +1,86 @@
-/**
- * BHB FAMILY SUPPORT AND DEVELOPMENT FOUNDATION
- * SUPER ADMIN CONTROLLER (LIGHT PROFESSIONAL CORPORATE THEME)
- * EQUIPPED WITH LIVE ANALYTICS, BLOG CMS, COMMENTS MODERATION, AND IMAGE CROPPER
- */
-
-let donationsChartInstance = null;
-let beneficiariesChartInstance = null;
+// Authentication Credentials
+const ADMIN_AUTH_EMAIL = 'bhbfoundation0@gmail.com';
+const ADMIN_AUTH_PASS = 'F0und@ti0n';
 
 document.addEventListener('DOMContentLoaded', () => {
+  checkAdminAuth();
   initAdminNavigation();
   initAdminLiveClock();
   setupImageDropzones();
-  renderAdminDashboard();
 
   BHBStore.subscribe(() => {
-    renderAdminDashboard();
+    if (isAdminAuthenticated()) {
+      renderAdminDashboard();
+    }
   });
 });
 
-// View Toggle
-window.toggleAdminView = function(showAdmin) {
-  const publicView = document.getElementById('publicPortalView');
-  const adminView = document.getElementById('adminDashboardView');
-  
-  if (showAdmin) {
-    if (publicView) publicView.style.display = 'none';
-    if (adminView) {
-      adminView.style.display = 'block';
-      renderAdminDashboard();
-      setTimeout(renderAdminCharts, 100);
+function isAdminAuthenticated() {
+  return localStorage.getItem('bhb_admin_auth') === 'true' || sessionStorage.getItem('bhb_admin_auth') === 'true';
+}
+
+function checkAdminAuth() {
+  const loginView = document.getElementById('adminLoginView');
+  const dashboardView = document.getElementById('adminDashboardView');
+
+  if (isAdminAuthenticated()) {
+    if (loginView) loginView.style.display = 'none';
+    if (dashboardView) {
+      dashboardView.style.display = 'block';
+      dashboardView.classList.add('active');
     }
-    window.scrollTo(0, 0);
+    renderAdminDashboard();
+    setTimeout(renderAdminCharts, 120);
   } else {
-    if (adminView) adminView.style.display = 'none';
-    if (publicView) publicView.style.display = 'block';
-    if (typeof renderAllSections === 'function') {
-      renderAllSections();
+    if (dashboardView) {
+      dashboardView.style.display = 'none';
+      dashboardView.classList.remove('active');
     }
-    window.scrollTo(0, 0);
+    if (loginView) loginView.style.display = 'flex';
+  }
+}
+
+window.handleAdminLoginSubmit = function(event) {
+  event.preventDefault();
+  const emailInput = document.getElementById('adminEmailInput');
+  const passInput = document.getElementById('adminPasswordInput');
+  const rememberMe = document.getElementById('adminRememberMe');
+  const errorEl = document.getElementById('adminLoginError');
+
+  const emailVal = emailInput ? emailInput.value.trim().toLowerCase() : '';
+  const passVal = passInput ? passInput.value : '';
+
+  if (emailVal === ADMIN_AUTH_EMAIL.toLowerCase() && passVal === ADMIN_AUTH_PASS) {
+    if (errorEl) errorEl.style.display = 'none';
+    if (rememberMe && rememberMe.checked) {
+      localStorage.setItem('bhb_admin_auth', 'true');
+    } else {
+      sessionStorage.setItem('bhb_admin_auth', 'true');
+    }
+    showToast('Authenticated as Super Administrator', 'success');
+    checkAdminAuth();
+  } else {
+    if (errorEl) {
+      errorEl.textContent = 'Invalid email or password. Please use the authorized credentials.';
+      errorEl.style.display = 'block';
+    }
+    showToast('Invalid credentials provided.', 'warning');
+  }
+};
+
+window.handleAdminLogout = function() {
+  localStorage.removeItem('bhb_admin_auth');
+  sessionStorage.removeItem('bhb_admin_auth');
+  showToast('Logged out of Super Admin Portal', 'info');
+  checkAdminAuth();
+};
+
+// View Toggle (Redirects to admin.html for standalone experience)
+window.toggleAdminView = function(showAdmin) {
+  if (showAdmin) {
+    window.location.href = 'admin.html';
+  } else {
+    window.location.href = 'index.html';
   }
 };
 
