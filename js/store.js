@@ -12,11 +12,13 @@ const RAW_DEFAULT_STORE_DATA = {
     shortName: "BHB Foundation",
     cacNumber: "9670692",
     establishedYear: "2026",
-    officeAddress: "66/77 Sulaiman Crescent, Nasarawa, Kano State, Nigeria",
+    officeAddress: "Office No. 66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria",
     phone: "+234 201 454 5878",
     email: "info@bhbfoundation.com",
     contactEmail: "contact@bhborganization.org",
     tagline: "Empowering Families. Strengthening Communities. Creating Sustainable Futures.",
+    mission: "To support vulnerable and underserved individuals and communities by improving access to essential health and social services, education and economic opportunities, while promoting dignity, resilience, inclusion and self-reliance.",
+    vision: "To build a just, inclusive and resilient society where every individual and family has the opportunity to live with dignity, achieve their potential and contribute to community development.",
     aboutImage: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80",
     communityCoDesignImage: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80",
     primaryCurrency: "NGN",
@@ -41,7 +43,7 @@ const RAW_DEFAULT_STORE_DATA = {
     },
     {
       id: "slide-2",
-      label: "Inclusive Technology & Education",
+      label: "",
       title: "Turning Vulnerability into Lasting Opportunity.",
       lead: "Equipping adolescent girls with disabilities with foundational digital literacy, screen reader fluency, and technological self-reliance in partnership with The Ability First Tech Hub.",
       image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80",
@@ -50,7 +52,7 @@ const RAW_DEFAULT_STORE_DATA = {
     },
     {
       id: "slide-3",
-      label: "Community Healthcare Outreach",
+      label: "",
       title: "Safe Healthcare & Maternal Care Within Reach.",
       lead: "Delivering mobile clinical screenings, prenatal assistance, and health worker training to hard-to-reach settlements across Kano State.",
       image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1600&q=80",
@@ -388,6 +390,8 @@ All institutional programs and financial disbursements remain open to annual pub
       department: "Board of Trustees",
       purview: "Strategic Governance & Institutional Oversight",
       tier: "Trustees",
+      order: 1,
+      published: true,
       bio: "Dr. Bashir established BHB Foundation to advance human dignity, social resilience, and structured opportunity across Northern Nigeria.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
     },
@@ -398,6 +402,8 @@ All institutional programs and financial disbursements remain open to annual pub
       department: "Executive Directorate",
       purview: "Strategic Direction & Compliance",
       tier: "Executive",
+      order: 2,
+      published: true,
       bio: "Fatima leads the foundation's strategic direction, partner alignment, and programme execution across participating local governments in Kano.",
       image: "assets/images/team-director.jpg"
     },
@@ -408,6 +414,8 @@ All institutional programs and financial disbursements remain open to annual pub
       department: "Programs & Inclusion",
       purview: "Assistive Tech & Youth Skills",
       tier: "Directorate",
+      order: 3,
+      published: true,
       bio: "Ibrahim oversees digital inclusion initiatives, screen-reader coding boot camps for girls with disabilities, and technical apprenticeships.",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80"
     },
@@ -418,6 +426,8 @@ All institutional programs and financial disbursements remain open to annual pub
       department: "Health & Clinical Advisory",
       purview: "Primary Care & Maternal Health",
       tier: "Advisory",
+      order: 4,
+      published: true,
       bio: "Dr. Aisha guides maternal health outreach strategy, mobile diagnostic clinics, and primary care partnerships across underserved rural communities.",
       image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
     },
@@ -428,6 +438,8 @@ All institutional programs and financial disbursements remain open to annual pub
       department: "Field Logistics & Security",
       purview: "Field Operations & Logistics",
       tier: "Operations",
+      order: 5,
+      published: true,
       bio: "Coordinates ground logistics, community liaison town halls, and resource delivery across all target communities in Kano State.",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80"
     },
@@ -438,6 +450,8 @@ All institutional programs and financial disbursements remain open to annual pub
       department: "Women & Youth Directorate",
       purview: "Women Enterprise & Safeguarding",
       tier: "Operations",
+      order: 6,
+      published: true,
       bio: "Oversees women's enterprise incubation, girl-child mentorship networks, and safeguarding protocols across rural districts.",
       image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
     }
@@ -711,8 +725,17 @@ class StoreEngine {
           return JSON.parse(JSON.stringify(window.BHB_SEED_DATA));
         }
         if (!parsed.settings) parsed.settings = DEFAULT_STORE_DATA.settings;
+        parsed.settings.mission = DEFAULT_STORE_DATA.settings.mission;
+        parsed.settings.officeAddress = DEFAULT_STORE_DATA.settings.officeAddress;
         if (!parsed.settings.aboutImage) parsed.settings.aboutImage = DEFAULT_STORE_DATA.settings.aboutImage;
-        if (!parsed.team || !parsed.team.length) parsed.team = DEFAULT_STORE_DATA.team;
+        if (!parsed.team || !parsed.team.length) {
+          parsed.team = DEFAULT_STORE_DATA.team;
+        } else {
+          parsed.team.forEach((t, i) => {
+            if (t.published === undefined) t.published = true;
+            if (t.order === undefined) t.order = i + 1;
+          });
+        }
         if (!parsed.heroSlides || !parsed.heroSlides.length) parsed.heroSlides = DEFAULT_STORE_DATA.heroSlides;
         if (!parsed.focusAreas || !parsed.focusAreas.length) parsed.focusAreas = DEFAULT_STORE_DATA.focusAreas;
         if (!parsed.projects || !parsed.projects.length) parsed.projects = DEFAULT_STORE_DATA.projects;
@@ -784,7 +807,13 @@ class StoreEngine {
   getProjects() { return this.data.projects || []; }
   getPosts() { return this.data.posts || []; }
   getPostById(id) { return (this.data.posts || []).find(p => p.id === id); }
-  getTeam() { return this.data.team || []; }
+  getTeam(publishedOnly = false) {
+    let list = this.data.team || [];
+    if (publishedOnly) {
+      list = list.filter(m => m.published !== false);
+    }
+    return list.slice().sort((a, b) => (Number(a.order) || 99) - (Number(b.order) || 99));
+  }
   getPartners() { return this.data.partners || []; }
   getDonations() {
     if (!this.data.donations || !this.data.donations.length) {
@@ -939,6 +968,12 @@ class StoreEngine {
 
   saveTeamMember(member) {
     if (!this.data.team) this.data.team = [];
+    if (member.published === undefined) member.published = true;
+    if (member.order === undefined || member.order === null || isNaN(member.order)) {
+      member.order = this.data.team.length + 1;
+    } else {
+      member.order = Number(member.order);
+    }
     if (!member.id) {
       member.id = `team-${Date.now()}`;
       this.data.team.push(member);
@@ -948,6 +983,16 @@ class StoreEngine {
       else this.data.team.push(member);
     }
     this.notify();
+  }
+
+  toggleTeamMemberPublish(id) {
+    const member = (this.data.team || []).find(t => t.id === id);
+    if (member) {
+      member.published = member.published === false ? true : false;
+      this.notify();
+      return member.published;
+    }
+    return false;
   }
 
   deleteTeamMember(id) {
@@ -1059,7 +1104,7 @@ window.BHBStore = new StoreEngine();
 // Synchronous Instant Card Generators (Eliminates Flash of Demo Images on Refresh)
 window.renderChairmanSpotlightHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
-  const team = BHBStore.getTeam();
+  const team = BHBStore.getTeam(true);
   const chairman = team.find(t => t.tier === 'Trustees' || t.id === 'team-1') || team[0];
   if (!chairman) return '';
 
@@ -1090,7 +1135,7 @@ window.renderChairmanSpotlightHTML = function() {
 
 window.renderTeamCardsHTML = function(isHome = false) {
   if (typeof BHBStore === 'undefined') return '';
-  const team = BHBStore.getTeam();
+  const team = BHBStore.getTeam(true);
   const chairman = team.find(t => t.tier === 'Trustees' || t.id === 'team-1') || team[0];
   const others = team.filter(t => !chairman || t.id !== chairman.id);
   const displayList = isHome ? others.slice(0, 3) : others;
@@ -1142,7 +1187,6 @@ window.renderHeroSliderHTML = function() {
             <p class="lead">${s.lead}</p>
             <div class="hero-cta-group">
               <a href="${s.primaryCtaLink || 'work.html'}" class="btn btn-primary">${s.primaryCtaText || 'Explore Our Work →'}</a>
-              <button class="btn btn-outline-white" onclick="openDonateModal()">Support Our Mission</button>
             </div>
           </div>
         </div>

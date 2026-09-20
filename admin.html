@@ -393,19 +393,21 @@
             <div class="admin-table-card">
               <div class="table-action-bar">
                 <div>
-                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Leadership &amp; Staff Roster</h3>
-                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Upload portrait images for leadership and field personnel.</p>
+                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Leadership &amp; Team CMS</h3>
+                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Add, edit, publish/unpublish, re-order, and manage portrait photos with instant live sync to the Our Team page.</p>
                 </div>
-                <button class="btn btn-primary btn-sm" onclick="openNewTeamModal()">+ Add Member (With Photo Upload)</button>
+                <button class="btn btn-primary btn-sm" onclick="openNewTeamModal()">+ Add New Team Member</button>
               </div>
               <div style="overflow-x: auto;">
                 <table class="admin-data-table">
                   <thead>
                     <tr>
+                      <th style="width: 70px;">Order</th>
                       <th>Portrait &amp; Member Name</th>
                       <th>Official Position</th>
                       <th>Governance Tier</th>
-                      <th>Actions</th>
+                      <th style="width: 130px;">Status</th>
+                      <th style="width: 140px;">Actions</th>
                     </tr>
                   </thead>
                   <tbody id="adminTeamTableBody"></tbody>
@@ -544,44 +546,24 @@
                   <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Save All Settings &amp; Media</button>
                 </div>
 
-                <!-- Card 2: About Us Section Feature Picture -->
+                <!-- Card 2: Our Work & Active Partners Feature Picture -->
                 <div class="settings-card">
-                  <h3 style="color: #0F172A; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">About Section Feature Picture</h3>
-                  <p style="color: #64748B; font-size: 0.84rem; margin-bottom: 14px;">Change the official image displayed on the Homepage About section.</p>
-                  
-                  <input type="hidden" name="about_image" id="admin_about_img_hidden" value="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80">
-                  
-                  <div style="margin-bottom: 14px; border: 1px solid #CBD5E1; border-radius: 4px; overflow: hidden; background: #0F172A;">
-                    <img id="adminAboutImgPreview" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80" alt="About Section Preview" style="width: 100%; height: 210px; object-fit: cover; display: block;">
-                  </div>
-
-                  <div class="admin-dropzone" style="padding: 16px; margin-bottom: 14px;">
-                    <label style="font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 6px; display: block;">Upload New About Image:</label>
-                    <input type="file" accept="image/*" onchange="handleImageUpload(this, 'adminAboutImgPreview', 'about_image', '4:3')" style="margin-bottom: 6px;">
-                    <p style="font-size: 0.76rem; color: #64748B; margin: 0;">Supports 4:3, 16:9, or freeform cropping with zoom and pan.</p>
-                  </div>
-
-                  <button type="submit" class="btn btn-navy" style="width: 100%;">Update &amp; Sync About Image</button>
-                </div>
-
-                <!-- Card 2.5: Active Partners Section Feature Picture -->
-                <div class="settings-card">
-                  <h3 style="color: #0F172A; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Active Partners Image</h3>
-                  <p style="color: #64748B; font-size: 0.84rem; margin-bottom: 14px;">Change the official image displayed on the Active Partners section.</p>
+                  <h3 style="color: #0F172A; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Our Work Page Feature Picture</h3>
+                  <p style="color: #64748B; font-size: 0.84rem; margin-bottom: 14px;">Update the showcase photograph displayed on the Our Work page (Active Partners section).</p>
                   
                   <input type="hidden" name="partners_image" id="admin_partners_img_hidden" value="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80">
                   
-                  <div style="margin-bottom: 14px; border: 1px solid #CBD5E1; border-radius: 4px; overflow: hidden; background: #0F172A;">
+                  <div style="margin-bottom: 14px; border: 1px solid #CBD5E1; border-radius: 6px; overflow: hidden; background: #0F172A;">
                     <img id="adminPartnersImgPreview" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80" alt="Active Partners Section Preview" style="width: 100%; height: 210px; object-fit: cover; display: block;">
                   </div>
 
                   <div class="admin-dropzone" style="padding: 16px; margin-bottom: 14px;">
-                    <label style="font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 6px; display: block;">Upload New Active Partners Image:</label>
+                    <label style="font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 6px; display: block;">Upload / Replace Image:</label>
                     <input type="file" accept="image/*" onchange="handleImageUpload(this, 'adminPartnersImgPreview', 'partners_image', '4:3')" style="margin-bottom: 6px;">
                     <p style="font-size: 0.76rem; color: #64748B; margin: 0;">Supports 4:3, 16:9, or freeform cropping with zoom and pan.</p>
                   </div>
 
-                  <button type="submit" class="btn btn-navy" style="width: 100%;">Update &amp; Sync Image</button>
+                  <button type="submit" class="btn btn-navy" style="width: 100%;">Save &amp; Sync Image Live</button>
                 </div>
 
                 <!-- Card 3: Database Backup & Live Restore -->

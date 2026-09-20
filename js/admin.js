@@ -1127,22 +1127,25 @@ window.deleteCommentAdmin = function(id) {
   }
 };
 
-// 7. Team & Leadership CRUD (With 3:4 Portrait Cropper & Live Site Sync)
+// 7. Team & Leadership CRUD (With 3:4 Portrait Cropper, Order, Status & Live Site Sync)
 function renderAdminTeamTable() {
   const tbody = document.getElementById('adminTeamTableBody');
   if (!tbody) return;
 
-  const team = BHBStore.getTeam();
+  const team = BHBStore.getTeam(false);
   if (!team.length) {
-    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #64748B; padding: 24px;">No team members registered yet. Click "+ Add Member" to create one.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #64748B; padding: 24px;">No team members registered yet. Click "+ Add New Team Member" to create one.</td></tr>`;
     return;
   }
 
-  tbody.innerHTML = team.map(m => `
+  tbody.innerHTML = team.map((m, idx) => `
     <tr>
+      <td style="text-align: center;">
+        <input type="number" min="1" value="${m.order || idx + 1}" style="width: 52px; padding: 4px 6px; text-align: center; border: 1.5px solid #CBD5E1; border-radius: 6px; font-weight: 700; color: #0F172A;" onchange="updateTeamOrderAdmin('${m.id}', this.value)" title="Change Display Order">
+      </td>
       <td>
         <div style="display: flex; gap: 12px; align-items: center;">
-          <img src="${m.image}" alt="${m.name}" style="width: 48px; height: 60px; border-radius: 4px; object-fit: cover; object-position: center 15%; border: 1px solid #CBD5E1; box-shadow: 0 2px 6px rgba(15,23,42,0.08);">
+          <img src="${m.image}" alt="${m.name}" style="width: 44px; height: 58px; border-radius: 4px; object-fit: cover; object-position: center 15%; border: 1px solid #CBD5E1; box-shadow: 0 2px 6px rgba(15,23,42,0.08);">
           <div>
             <b style="color: #0F172A; font-size: 0.95rem;">${m.name}</b>
           </div>
@@ -1151,6 +1154,11 @@ function renderAdminTeamTable() {
       <td><b style="color: #334155; font-size: 0.9rem;">${m.position}</b></td>
       <td>
         <span class="status-pill success" style="font-size: 0.75rem;">${m.tier || 'Executive'}</span>
+      </td>
+      <td>
+        <button type="button" class="btn-icon-sm" onclick="toggleTeamMemberPublishAdmin('${m.id}')" style="cursor: pointer; font-weight: 700; font-size: 0.78rem; border-radius: 9999px; padding: 4px 10px; border: 1px solid ${m.published !== false ? '#86EFAC' : '#FECACA'}; background: ${m.published !== false ? '#DCFCE7' : '#FEE2E2'}; color: ${m.published !== false ? '#15803D' : '#DC2626'};">
+          ${m.published !== false ? '● Published' : '○ Draft'}
+        </button>
       </td>
       <td>
         <div class="action-btn-group">
@@ -1162,6 +1170,20 @@ function renderAdminTeamTable() {
   `).join('');
 }
 
+window.toggleTeamMemberPublishAdmin = function(id) {
+  const isPublished = BHBStore.toggleTeamMemberPublish(id);
+  showToast(`Team member is now ${isPublished ? 'published live on public site' : 'hidden as draft'}!`, 'success');
+};
+
+window.updateTeamOrderAdmin = function(id, newOrder) {
+  const member = BHBStore.getTeam().find(t => t.id === id);
+  if (member) {
+    member.order = parseInt(newOrder, 10) || 1;
+    BHBStore.saveTeamMember(member);
+    showToast('Display position updated and synced!', 'success');
+  }
+};
+
 window.deleteTeamMemberAdmin = function(id) {
   if (confirm('Are you sure you want to remove this team member from the public website?')) {
     BHBStore.deleteTeamMember(id);
@@ -1172,6 +1194,7 @@ window.deleteTeamMemberAdmin = function(id) {
 window.openNewTeamModal = function() {
   const content = document.getElementById('adminCrudModalContent');
   document.getElementById('adminCrudModalTitle').textContent = 'Add Leadership Team Member';
+  const currentCount = (BHBStore.getTeam() || []).length;
   if (content) {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSaveTeam(event)">
@@ -1180,7 +1203,7 @@ window.openNewTeamModal = function() {
         
         <div class="form-group">
           <label>Full Name &amp; Title *</label>
-          <input type="text" name="team_name" required placeholder="e.g. Hajiya Fatima A. Yusuf">
+          <input type="text" name="team_name" required placeholder="e.g. Dr. Amina Bello">
         </div>
 
         <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
@@ -1200,9 +1223,20 @@ window.openNewTeamModal = function() {
           </div>
         </div>
 
+        <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Display Order (Priority)</label>
+            <input type="number" name="team_order" min="1" value="${currentCount + 1}" required>
+          </div>
+          <div class="form-group" style="display: flex; align-items: center; gap: 8px; margin-top: 26px;">
+            <input type="checkbox" name="team_published" id="teamPublishedCheck" checked style="width: 18px; height: 18px;">
+            <label for="teamPublishedCheck" style="margin: 0; cursor: pointer; font-weight: 700; color: #0F172A;">Publish to Public Website</label>
+          </div>
+        </div>
+
         <div class="form-group">
           <label>Professional Biography / Scope *</label>
-          <textarea name="team_bio" rows="3" required placeholder="Brief professional background and leadership profile."></textarea>
+          <textarea name="team_bio" rows="3" required placeholder="Brief professional background, leadership scope, and commitment to the mission."></textarea>
         </div>
 
         <div class="form-group">
@@ -1210,7 +1244,7 @@ window.openNewTeamModal = function() {
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image', '3:4')" style="margin-bottom: 8px;">
             <p style="font-size: 0.78rem; color: #64748B; margin-bottom: 8px;">Supports passport, ID, and vertical portrait photos with auto-centering.</p>
-            <img id="teamImgPreview" src="assets/images/team-director.jpg" style="height: 160px; width: 128px; border-radius: 4px; object-fit: cover; object-position: center 8%; margin: 8px auto; display: block; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
+            <img id="teamImgPreview" src="assets/images/team-director.jpg" style="height: 160px; width: 120px; border-radius: 4px; object-fit: cover; object-position: center 8%; margin: 8px auto; display: block; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
           </div>
         </div>
 
@@ -1255,6 +1289,17 @@ window.editTeamModal = function(id) {
           </div>
         </div>
 
+        <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Display Order (Priority)</label>
+            <input type="number" name="team_order" min="1" value="${member.order || 1}" required>
+          </div>
+          <div class="form-group" style="display: flex; align-items: center; gap: 8px; margin-top: 26px;">
+            <input type="checkbox" name="team_published" id="teamPublishedCheck" ${member.published !== false ? 'checked' : ''} style="width: 18px; height: 18px;">
+            <label for="teamPublishedCheck" style="margin: 0; cursor: pointer; font-weight: 700; color: #0F172A;">Publish to Public Website</label>
+          </div>
+        </div>
+
         <div class="form-group">
           <label>Professional Biography / Scope *</label>
           <textarea name="team_bio" rows="3" required>${member.bio}</textarea>
@@ -1265,7 +1310,7 @@ window.editTeamModal = function(id) {
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image', '3:4')" style="margin-bottom: 8px;">
             <p style="font-size: 0.78rem; color: #64748B; margin-bottom: 8px;">Supports passport, ID, and vertical portrait photos with auto-centering.</p>
-            <img id="teamImgPreview" src="${member.image}" style="height: 160px; width: 128px; border-radius: 4px; object-fit: cover; object-position: center 8%; margin: 8px auto; display: block; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
+            <img id="teamImgPreview" src="${member.image}" style="height: 160px; width: 120px; border-radius: 4px; object-fit: cover; object-position: center 8%; margin: 8px auto; display: block; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
           </div>
         </div>
 
@@ -1284,6 +1329,8 @@ window.handleSaveTeam = function(e) {
     name: form.team_name.value,
     position: form.team_pos.value,
     tier: form.team_tier ? form.team_tier.value : 'Executive',
+    order: parseInt(form.team_order ? form.team_order.value : '1', 10) || 1,
+    published: form.team_published ? form.team_published.checked : true,
     bio: form.team_bio.value,
     image: form.team_image.value
   };
@@ -1538,12 +1585,6 @@ function renderAdminSettingsForm() {
   if (form.contact_email) form.contact_email.value = settings.email || '';
   if (form.zenith_acc && settings.zenithBank) form.zenith_acc.value = settings.zenithBank.accountNumber || '';
 
-  const aboutPreview = document.getElementById('adminAboutImgPreview');
-  const aboutHidden = document.getElementById('admin_about_img_hidden');
-  const currentImg = settings.aboutImage || 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80';
-  if (aboutPreview) aboutPreview.src = currentImg;
-  if (aboutHidden) aboutHidden.value = currentImg;
-
   const partnersPreview = document.getElementById('adminPartnersImgPreview');
   const partnersHidden = document.getElementById('admin_partners_img_hidden');
   const currentPartnersImg = settings.communityCoDesignImage || 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80';
@@ -1560,14 +1601,13 @@ window.handleSaveSettings = function(e) {
     officeAddress: form.office_address ? form.office_address.value : currentSettings.officeAddress,
     phone: form.contact_phone ? form.contact_phone.value : currentSettings.phone,
     email: form.contact_email ? form.contact_email.value : currentSettings.email,
-    aboutImage: form.about_image ? form.about_image.value : (currentSettings.aboutImage || 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80'),
     communityCoDesignImage: form.partners_image ? form.partners_image.value : (currentSettings.communityCoDesignImage || 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80'),
     zenithBank: {
       ...currentSettings.zenithBank,
       accountNumber: form.zenith_acc ? form.zenith_acc.value : (currentSettings.zenithBank ? currentSettings.zenithBank.accountNumber : '')
     }
   });
-  showToast('Profile settings & About section picture updated live across platform!', 'success');
+  showToast('Settings & Our Work section feature picture updated live across platform!', 'success');
 };
 
 window.exportDatabaseJSON = function() {

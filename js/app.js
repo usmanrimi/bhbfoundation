@@ -43,7 +43,6 @@ function renderHeroSlider() {
             <p class="lead">${s.lead}</p>
             <div class="hero-cta-group">
               <a href="${s.primaryCtaLink || 'work.html'}" class="btn btn-primary">${s.primaryCtaText || 'Explore Our Work →'}</a>
-              <button class="btn btn-outline-white" onclick="openDonateModal()">Support Our Mission</button>
             </div>
           </div>
         </div>
@@ -557,9 +556,9 @@ window.submitBlogComment = function(e, postId) {
 
 // 7. Team & Leadership Showcase (Dynamic Live Rendering from Store)
 function renderTeam() {
-  let team = BHBStore.getTeam();
+  let team = BHBStore.getTeam(true);
   if (!team || !team.length) {
-    team = (typeof DEFAULT_STORE_DATA !== 'undefined' && DEFAULT_STORE_DATA.team) ? DEFAULT_STORE_DATA.team : [];
+    team = (typeof DEFAULT_STORE_DATA !== 'undefined' && DEFAULT_STORE_DATA.team) ? DEFAULT_STORE_DATA.team.filter(m => m.published !== false) : [];
   }
   if (!team || !team.length) return;
 
@@ -718,7 +717,7 @@ window.openDonateModal = function() {
     content.innerHTML = `
       <div style="padding: 36px;">
         <span class="section-label">Institutional &amp; Community Support</span>
-        <h2 style="font-size: 1.7rem; color: var(--navy); margin: 6px 0 16px;">Support Our Mission</h2>
+        <h2 style="font-size: 1.7rem; color: var(--navy); margin: 6px 0 16px;">Direct Foundation Contribution</h2>
         <p style="color: var(--text-body); margin-bottom: 24px;">Your direct contribution funds verified community toolkits, mobile prenatal outreach, and disability digital inclusion programs.</p>
 
         <div style="background: var(--bg-off); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 20px; margin-bottom: 24px;">
