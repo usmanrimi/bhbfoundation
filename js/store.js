@@ -65,16 +65,16 @@ const RAW_DEFAULT_STORE_DATA = {
     {
       id: "focus-1",
       title: "Support for Widows and Vulnerable Women",
-      summary: "Direct financial assistance, seed capital, food security packages, and psychosocial counseling.",
+      summary: "Direct financial assistance, seed capital, food security packages, and micro-enterprise mentorship circles.",
       image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80",
       details: "Empowering vulnerable women and widows through micro-enterprise seed funding, grain processing equipment, and mentorship circles."
     },
     {
       id: "focus-2",
-      title: "Child Welfare, Education and Girl-Child Support",
-      summary: "Scholarship grants, learning supplies, school re-entry facilitation, and specialized girl-child empowerment programs.",
+      title: "Every Girl Deserves Dignity: Menstrual Hygiene Awareness and Sanitary Pad Distribution",
+      summary: "We educate and empower girls in secondary schools on menstrual health and hygiene, while providing sanitary pads and essential hygiene supplies. Our goal is to ensure that every girl can manage her period safely and confidently, stay in school, and reach her full potential.",
       image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
-      details: "Supporting vulnerable children through basic education kits, school fee subventions, and assistive learning aids."
+      details: "Menstrual hygiene workshops, sanitary pad distribution, and school-based health support to keep girls confident and in school."
     },
     {
       id: "focus-3",
@@ -86,23 +86,23 @@ const RAW_DEFAULT_STORE_DATA = {
     {
       id: "focus-4",
       title: "Skills Acquisition and Livelihoods Development",
-      summary: "Tailoring, computer literacy, agro-processing, trade crafts, and micro-grant seed funding.",
+      summary: "Tailoring, computer literacy, agro-processing, trade crafts, and micro-grant seed funding for sustainable economic independence.",
       image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
       details: "Vocational apprenticeship pathways equipping youths and women with marketable economic skills."
     },
     {
       id: "focus-5",
-      title: "Health, Well-being and Humanitarian Support",
-      summary: "Mobile prenatal diagnostics, primary healthcare awareness, and hygiene education in underserved settlements.",
-      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
-      details: "Delivering preventative screening, maternal support kits, and hygiene education to rural settlements."
+      title: "Safe Water for Stronger Communities",
+      summary: "We provide clean and safe water by drilling boreholes and building wells in underserved rural communities. Access to clean water improves health, reduces waterborne diseases, eases the burden on women and children, and creates stronger, healthier communities.",
+      image: "https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=800&q=80",
+      details: "Drilling solar boreholes, constructing clean water points, and establishing localized community water management committees."
     },
     {
       id: "focus-6",
-      title: "Community Engagement & Resilience",
-      summary: "Participatory town halls, grassroots community action committees, and long-term civic resilience infrastructure.",
-      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80",
-      details: "Empowering residents to co-design and self-manage infrastructure, including localized water committees."
+      title: "Every Child Deserves to Grow: Child Nutrition & Malnutrition Support",
+      summary: "We support children affected by malnutrition in underserved communities through nutrition screening, caregiver education, nutritious food support, and referral to appropriate healthcare services. Our goal is to help children grow, develop, and thrive in good health.",
+      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
+      details: "Community nutrition screenings, caregiver education, nutritious food packages, and clinical referrals."
     }
   ],
 
@@ -737,7 +737,9 @@ class StoreEngine {
           });
         }
         if (!parsed.heroSlides || !parsed.heroSlides.length) parsed.heroSlides = DEFAULT_STORE_DATA.heroSlides;
-        if (!parsed.focusAreas || !parsed.focusAreas.length) parsed.focusAreas = DEFAULT_STORE_DATA.focusAreas;
+        if (!parsed.focusAreas || !parsed.focusAreas.length || parsed.focusAreas.length !== 6 || !parsed.focusAreas.find(f => f.title.includes('Menstrual Hygiene'))) {
+          parsed.focusAreas = DEFAULT_STORE_DATA.focusAreas;
+        }
         if (!parsed.projects || !parsed.projects.length) parsed.projects = DEFAULT_STORE_DATA.projects;
         if (!parsed.partners || !parsed.partners.length || !parsed.partners[0].logo) parsed.partners = DEFAULT_STORE_DATA.partners;
         if (!parsed.comments) parsed.comments = DEFAULT_STORE_DATA.comments;
@@ -1207,12 +1209,11 @@ window.renderFocusAreasHTML = function() {
         <div class="focus-area-badge">Pillar 0${idx + 1}</div>
       </div>
       <div class="focus-area-body">
-        <div>
+        <div class="focus-area-content-wrap">
           <h3>${a.title}</h3>
           <p>${a.summary}</p>
         </div>
         <div class="focus-area-footer">
-          <span>Priority Field Programme</span>
           <span class="arrow">Explore Projects →</span>
         </div>
       </div>

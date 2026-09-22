@@ -1727,19 +1727,25 @@ nav.nav-links a.active {
 }
 
 .focus-area-body {
-  padding: 24px 22px;
+  padding: 26px 24px 22px;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+.focus-area-content-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .focus-area-body h3 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 800;
   color: var(--navy);
-  margin-bottom: 10px;
-  line-height: 1.35;
+  margin-bottom: 12px;
+  line-height: 1.38;
   transition: color 0.25s ease;
 }
 
@@ -1748,29 +1754,35 @@ nav.nav-links a.active {
 }
 
 .focus-area-body p {
-  font-size: 0.94rem;
+  font-size: 0.93rem;
   color: #475569;
   line-height: 1.65;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  flex: 1;
 }
 
 .focus-area-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   border-top: 1px solid #F1F5F9;
   padding-top: 14px;
-  font-size: 0.82rem;
+  margin-top: auto;
+  font-size: 0.88rem;
   font-weight: 700;
   color: var(--blue);
 }
 
 .focus-area-footer span.arrow {
-  transition: transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.3s ease, color 0.2s ease;
 }
 
 .focus-area-item:hover .focus-area-footer span.arrow {
-  transform: translateX(5px);
+  transform: translateX(6px);
+  color: var(--navy);
 }
 
 /* ==========================================================================
