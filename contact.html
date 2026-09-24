@@ -8,22 +8,22 @@
   <meta name="description" content="Connect with BHB Foundation headquarters in Kano State, Nigeria. Partnerships, donor relations, and programme inquiries.">
   <link rel="icon" type="image/png" href="assets/images/bhb-logo.png">
   
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/animations.css">
-  <link rel="stylesheet" href="assets/css/admin.css">
 
   <!-- Core Store Synchronous Load for Instant Rendering -->
   <script src="js/initial_data.js"></script>
   <script src="js/store.js"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Site Header -->
   <header class="site-header">
     <div class="container nav-container">
       <a href="index.html" class="nav-brand">
@@ -33,11 +33,9 @@
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
-        <a href="work.html">Our Work</a>
+        <a href="what-we-do.html">What We Do</a>
         <a href="projects.html">Projects</a>
-        <a href="impact.html">Impact</a>
-        <a href="blog.html">Blog</a>
-        <a href="team.html">Our Team</a>
+        <a href="blog.html">Blog &amp; Updates</a>
         <a href="contact.html" class="active">Contact Us</a>
       </nav>
 
@@ -47,89 +45,90 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
+  <!-- Mobile Menu Drawer -->
   <div class="mobile-menu-drawer" id="mobileMenuDrawer">
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
-    <a href="work.html">Our Work</a>
-    <a href="projects.html">Projects &amp; Programmes</a>
-    <a href="impact.html">Impact Metrics</a>
-    <a href="blog.html">Blog &amp; Dispatches</a>
-    <a href="team.html">Our Team</a>
+    <a href="what-we-do.html">What We Do</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog &amp; Updates</a>
     <a href="contact.html" class="active">Contact Us</a>
   </div>
 
   <!-- Page Header Banner -->
-  <div class="page-header-banner bg-branded-header">
+  <div class="page-header-banner">
     <div class="container">
-      <h1>Start A Conversation With  <span class="hero-two-color">BHB Foundation</span></h1>
+      <h1>Start a Conversation With BHB</h1>
       <p>
-        Whether you are an institutional partner, philanthropic donor, CSR representative, or community volunteer, reach out to explore collaborative pathways.
+        Whether you represent an institutional partner, government agency, corporate CSR team, or community initiative — we would love to hear from you.
       </p>
     </div>
   </div>
 
-  <!-- Contact Section -->
+  <!-- Main Contact Section (2-Column Clean Split) -->
   <section>
     <div class="container">
-      <div class="contact-editorial-grid" style="background: var(--navy); color: #FFF; padding: 60px; border-radius: 20px;">
+      <div class="contact-split-grid">
         
-        <div class="contact-info-col">
-          <h2 class="section-title-twotone">Kano Headquarters &amp;  <span class="text-accent-blue">Communications</span></h2>
-          <p style="margin-top: 12px; color: #CBD5E1;">
-            Our team is available Monday through Friday to answer inquiries regarding ongoing projects, grant matching, and community partnerships.
-          </p>
+        <!-- Left: Contact Details Card -->
+        <div class="contact-details-card">
+          <h3>Contact Details</h3>
+          <p class="tagline">Our team is available Monday through Friday to respond to partnership inquiries and community questions.</p>
 
-          <div class="contact-cards-grid">
-            <div class="contact-card-box">
-              <div class="contact-box-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              </div>
-              <div class="contact-box-meta">
-                <span class="contact-box-label">Telephone Numbers</span>
-                <span class="contact-box-val"><a href="tel:+2342014545878" data-bind="phone" style="color: inherit; text-decoration: none;">+234 201 454 5878</a></span>
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📍</div>
+              <div class="contact-info-text">
+                <strong>Headquarters Address</strong>
+                <span data-bind="officeAddress">Office No. 66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria</span>
               </div>
             </div>
 
-            <div class="contact-card-box">
-              <div class="contact-box-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </div>
-              <div class="contact-box-meta">
-                <span class="contact-box-label">Official Email</span>
-                <span class="contact-box-val"><a href="mailto:info@bhbfoundation.com" data-bind="email" style="color: inherit; text-decoration: none;">info@bhbfoundation.com</a></span>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📞</div>
+              <div class="contact-info-text">
+                <strong>Telephone Number</strong>
+                <span><a href="tel:+2342014545878" data-bind="phone">+234 201 454 5878</a></span>
               </div>
             </div>
 
-            <div class="contact-card-box">
-              <div class="contact-box-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <div class="contact-box-meta">
-                <span class="contact-box-label">Office Working Hours</span>
-                <span class="contact-box-val">Monday – Friday, 8:00 AM – 5:00 PM (WAT)</span>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">✉️</div>
+              <div class="contact-info-text">
+                <strong>Official Email</strong>
+                <span><a href="mailto:info@bhbfoundation.com" data-bind="email">info@bhbfoundation.com</a></span>
               </div>
             </div>
 
-            <div class="contact-card-box">
-              <div class="contact-box-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">🕒</div>
+              <div class="contact-info-text">
+                <strong>Working Hours</strong>
+                <span>Monday – Friday, 8:00 AM – 5:00 PM (WAT)</span>
               </div>
-              <div class="contact-box-meta">
-                <span class="contact-box-label">Headquarters Address</span>
-                <span class="contact-box-val" data-bind="officeAddress">66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria</span>
-              </div>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid rgba(255, 255, 255, 0.15); margin-top: 32px; padding-top: 24px;">
+            <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #93C5FD; font-weight: 700; margin-bottom: 12px;">Connect On Social Media</div>
+            <div class="footer-social-links" style="margin-top: 0;">
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-btn">LinkedIn</a>
+              <a href="https://twitter.com" target="_blank" rel="noopener" class="footer-social-btn">Twitter / X</a>
+              <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-btn">Facebook</a>
             </div>
           </div>
         </div>
 
-        <div class="contact-form-col">
-          <h3 style="margin-bottom: 20px; font-size: 1.3rem;">Send Us a Direct Inquiry</h3>
-          <form onsubmit="submitContactForm(event)">
-            <div class="form-row">
+        <!-- Right: Send Us a Message Form Card -->
+        <div class="contact-form-card">
+          <h2 style="font-size: 1.5rem; color: var(--navy); margin-bottom: 8px;">Send Us a Message</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">Fill in the form below and our team will get back to you promptly.</p>
+
+          <form onsubmit="submitContactForm(event)" id="contactForm">
+            <div class="form-row-2">
               <div class="form-group">
                 <label>Full Name *</label>
-                <input type="text" name="contact_name" required placeholder="e.g. Alhaji Ibrahim Danladi">
+                <input type="text" name="contact_name" required placeholder="e.g. Alhaji Aminu Kano">
               </div>
               <div class="form-group">
                 <label>Email Address *</label>
@@ -137,9 +136,9 @@
               </div>
             </div>
 
-            <div class="form-row">
+            <div class="form-row-2">
               <div class="form-group">
-                <label>Organisation Type</label>
+                <label>Organization Type</label>
                 <select name="contact_org" required>
                   <option value="Government institution">Government institution</option>
                   <option value="Philanthropic foundation">Philanthropic foundation</option>
@@ -162,11 +161,11 @@
 
             <div class="form-group">
               <label>Your Message *</label>
-              <textarea name="contact_message" rows="5" placeholder="How can we collaborate to empower underserved communities?" required></textarea>
+              <textarea name="contact_message" rows="5" required placeholder="Tell us how we can collaborate to create sustainable community impact..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">
-              Submit Inquiry →
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem;">
+              Send Message →
             </button>
           </form>
         </div>
@@ -175,57 +174,61 @@
     </div>
   </section>
 
-  <!-- Executive Institutional Footer (Balanced 4-Column Design) -->
+  <!-- Institutional Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top-grid">
         
-        <!-- Column 1: Institutional Brand & Legal Identity -->
+        <!-- Col 1: Brand -->
         <div class="footer-brand-col">
-          <div class="footer-brand-header">
-            <img src="assets/images/bhb-logo.png" alt="BHB Foundation" class="footer-logo">
-          </div>
-          <p class="footer-brand-desc">
+          <img src="assets/images/bhb-logo.png" alt="BHB Foundation" class="footer-logo">
+          <p class="footer-desc">
             Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State and Northern Nigeria.
           </p>
-          <div class="footer-legal-badge">
-            <span>Incorporated NGO:</span> <b>CAC/IT/NO/9670692</b>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="what-we-do.html">What We Do</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog &amp; Updates</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Focus Areas -->
+        <div class="footer-col">
+          <h4>Focus Areas</h4>
+          <ul class="footer-links">
+            <li><a href="what-we-do.html">Menstrual Hygiene &amp; Health</a></li>
+            <li><a href="what-we-do.html">Safe Water Infrastructure</a></li>
+            <li><a href="what-we-do.html">Child Nutrition &amp; Care</a></li>
+            <li><a href="what-we-do.html">Widows &amp; Women Agro-Fund</a></li>
+            <li><a href="what-we-do.html">Disability &amp; Inclusive Tech</a></li>
+            <li><a href="what-we-do.html">Skills &amp; Livelihoods</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact -->
+        <div class="footer-col">
+          <h4>Contact &amp; Connect</h4>
+          <div class="footer-contact-item">
+            <strong>Office:</strong><br>
+            66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria
           </div>
-        </div>
-
-        <!-- Column 2: Governance & About -->
-        <div class="footer-nav-col">
-          <h5>About Foundation</h5>
-          <a href="about.html">Who We Are</a>
-          <a href="about.html#mission">Our Story &amp; Philosophy</a>
-          <a href="team.html">Governance &amp; Leadership</a>
-          <a href="impact.html">Impact &amp; Verification</a>
-        </div>
-
-        <!-- Column 3: Interventions & Programmes -->
-        <div class="footer-nav-col">
-          <h5>Core Focus &amp; Field</h5>
-          <a href="work.html">Focus Areas</a>
-          <a href="projects.html">Active Deployments</a>
-          <a href="blog.html">Field Reports &amp; News</a>
-          <a href="contact.html">Partner &amp; Contact</a>
-        </div>
-
-        <!-- Column 4: Contact & Connect -->
-        <div class="footer-nav-col">
-          <h5>Contact &amp; Connect</h5>
-          <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">
-            <b>Office:</b> 66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria
-          </p>
-          <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">
-            <b>Phone:</b> <a href="tel:+2342014545878" style="display: inline; color: #FFFFFF; text-decoration: none;">+234 201 454 5878</a>
-          </p>
-          <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 12px;">
-            <b>Email:</b> <a href="mailto:info@bhbfoundation.com" style="display: inline; color: #FFFFFF; text-decoration: none;">info@bhbfoundation.com</a>
-          </p>
+          <div class="footer-contact-item">
+            <strong>Phone:</strong> <a href="tel:+2342014545878">+234 201 454 5878</a>
+          </div>
+          <div class="footer-contact-item">
+            <strong>Email:</strong> <a href="mailto:info@bhbfoundation.com">info@bhbfoundation.com</a>
+          </div>
           <div class="footer-social-links">
             <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-btn">LinkedIn</a>
-            <a href="https://twitter.com" target="_blank" rel="noopener" class="footer-social-btn">X / Twitter</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="footer-social-btn">Twitter / X</a>
             <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-btn">Facebook</a>
           </div>
         </div>
@@ -234,56 +237,19 @@
 
       <!-- Bottom Bar -->
       <div class="footer-bottom-bar">
-        <span>© 2026 BHB Family Support and Development Foundation. Registered in Nigeria under the Companies and Allied Matters Act (CAMA). All rights reserved.</span>
-        <div class="footer-bottom-links">
-          <a href="index.html">Home</a>
-          <span>·</span>
-          <a href="about.html">About Us</a>
-          <span>·</span>
-          <a href="contact.html">Transparency &amp; Governance</a>
+        <span>© 2026 BHB Family Support and Development Foundation. All rights reserved.</span>
+        <div>
+          <span>Registered in Nigeria under the Companies and Allied Matters Act (CAMA).</span>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Generic Modal -->
-  <div class="modal-backdrop" id="genericModal">
-    <div class="modal-window">
-      <div style="position: absolute; top: 18px; right: 20px;">
-        <button onclick="closeModal('genericModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy);">×</button>
-      </div>
-      <div id="genericModalContent"></div>
-    </div>
-  </div>
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
 
+  <!-- Scripts -->
   <script src="js/animations.js"></script>
   <script src="js/app.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Auto-add AOS to major cards
-      const elements = document.querySelectorAll('.focus-area-item, .project-card, .news-card, .sdg-card, .commitment-card, .mv-card, .executive-spotlight-card, .team-member-card');
-      elements.forEach(el => {
-        if (!el.hasAttribute('data-aos')) {
-          el.setAttribute('data-aos', 'fade-up');
-        }
-      });
-      if (typeof AOS !== 'undefined') {
-        AOS.init({ once: true, offset: 30, duration: 700, easing: 'ease-out-cubic' });
-      }
-    });
-  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

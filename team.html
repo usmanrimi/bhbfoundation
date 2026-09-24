@@ -8,22 +8,22 @@
   <meta name="description" content="Meet the leadership, trustees, and operational specialists guiding the mission of BHB Family Support and Development Foundation.">
   <link rel="icon" type="image/png" href="assets/images/bhb-logo.png">
   
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/animations.css">
-  <link rel="stylesheet" href="assets/css/admin.css">
 
   <!-- Core Store Synchronous Load for Instant Rendering -->
   <script src="js/initial_data.js"></script>
   <script src="js/store.js"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Site Header -->
   <header class="site-header">
     <div class="container nav-container">
       <a href="index.html" class="nav-brand">
@@ -33,11 +33,9 @@
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
-        <a href="work.html">Our Work</a>
+        <a href="what-we-do.html">What We Do</a>
         <a href="projects.html">Projects</a>
-        <a href="impact.html">Impact</a>
-        <a href="blog.html">Blog</a>
-        <a href="team.html" class="active">Our Team</a>
+        <a href="blog.html">Blog &amp; Updates</a>
         <a href="contact.html">Contact Us</a>
       </nav>
 
@@ -47,105 +45,101 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
+  <!-- Mobile Menu Drawer -->
   <div class="mobile-menu-drawer" id="mobileMenuDrawer">
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
-    <a href="work.html">Our Work</a>
-    <a href="projects.html">Projects &amp; Programmes</a>
-    <a href="impact.html">Impact Metrics</a>
-    <a href="blog.html">Blog &amp; Dispatches</a>
-    <a href="team.html" class="active">Our Team</a>
+    <a href="what-we-do.html">What We Do</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog &amp; Updates</a>
     <a href="contact.html">Contact Us</a>
   </div>
 
   <!-- Page Header Banner -->
-  <div class="page-header-banner bg-branded-header">
+  <div class="page-header-banner">
     <div class="container">
-      <h1>Our Leadership &amp;  <span class="hero-two-color">Field Specialists</span></h1>
+      <h1>Governance &amp; Leadership</h1>
       <p>
-        Experienced leaders, healthcare practitioners, and community mobilizers steering our institutional mission with accountability.
+        Experienced trustees, healthcare advisors, and community mobilizers steering our institutional mandate with accountability.
       </p>
     </div>
   </div>
 
-  <!-- Executive Leadership & Governance Architecture -->
-  <section class="leadership-showcase-section" style="padding-top: 50px;">
+  <!-- Main Leadership Section -->
+  <section>
     <div class="container">
-      
-      <!-- Section Header -->
-      <div class="section-header center" style="text-align: centre;  margin: 0 auto 44px;">
-        <h2 class="section-title-twotone">Governed By Purpose,  <span class="text-accent-blue">Led By Community</span></h2>
-        <p class="lead-short">Experienced practitioners, institutional trustees, and healthcare specialists ensuring strict accountability and grassroots impact.</p>
+      <div class="section-header center">
+        <h2 class="section-title-twotone">Governed By Purpose, <span class="text-accent-blue">Led By Community</span></h2>
+        <p class="lead">Experienced practitioners and trustees ensuring strict accountability and grassroots impact.</p>
       </div>
 
-      <!-- Featured Spotlight Card: Founder & Chairman (Instant Zero-Flash Sync) -->
-      <div class="executive-spotlight-card interactive-lift reveal-up dynamic-team-spotlight">
+      <!-- Chairman Spotlight -->
+      <div class="dynamic-team-spotlight executive-spotlight-card">
         <script>document.write(renderChairmanSpotlightHTML());</script>
       </div>
 
-      <!-- Directorate & Advisory Grid -->
-      <div class="section-header" style="margin-top: 60px; margin-bottom: 28px;">
-        <h3 style="font-size: 1.6rem; color: var(--navy);">Operational Directorate &amp; Programme Leads</h3>
-      </div>
-
-      <div class="leadership-directorate-grid dynamic-team-grid">
-        <script>document.write(renderTeamCardsHTML(false));</script>
+      <!-- Directorate & Officers Grid -->
+      <div class="team-grid-3 dynamic-team-grid" style="margin-top: 40px;">
+        <script>document.write(renderTeamCardsHTML());</script>
       </div>
     </div>
   </section>
 
-  <!-- Executive Institutional Footer (Balanced 4-Column Design) -->
+  <!-- Institutional Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top-grid">
         
-        <!-- Column 1: Institutional Brand & Legal Identity -->
+        <!-- Col 1: Brand -->
         <div class="footer-brand-col">
-          <div class="footer-brand-header">
-            <img src="assets/images/bhb-logo.png" alt="BHB Foundation" class="footer-logo">
-          </div>
-          <p class="footer-brand-desc">
+          <img src="assets/images/bhb-logo.png" alt="BHB Foundation" class="footer-logo">
+          <p class="footer-desc">
             Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State and Northern Nigeria.
           </p>
-          <div class="footer-legal-badge">
-            <span>Incorporated NGO:</span> <b>CAC/IT/NO/9670692</b>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="what-we-do.html">What We Do</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog &amp; Updates</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Focus Areas -->
+        <div class="footer-col">
+          <h4>Focus Areas</h4>
+          <ul class="footer-links">
+            <li><a href="what-we-do.html">Menstrual Hygiene &amp; Health</a></li>
+            <li><a href="what-we-do.html">Safe Water Infrastructure</a></li>
+            <li><a href="what-we-do.html">Child Nutrition &amp; Care</a></li>
+            <li><a href="what-we-do.html">Widows &amp; Women Agro-Fund</a></li>
+            <li><a href="what-we-do.html">Disability &amp; Inclusive Tech</a></li>
+            <li><a href="what-we-do.html">Skills &amp; Livelihoods</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact -->
+        <div class="footer-col">
+          <h4>Contact &amp; Connect</h4>
+          <div class="footer-contact-item">
+            <strong>Office:</strong><br>
+            66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria
           </div>
-        </div>
-
-        <!-- Column 2: Governance & About -->
-        <div class="footer-nav-col">
-          <h5>About Foundation</h5>
-          <a href="about.html">Who We Are</a>
-          <a href="about.html#mission">Our Story &amp; Philosophy</a>
-          <a href="team.html">Governance &amp; Leadership</a>
-          <a href="impact.html">Impact &amp; Verification</a>
-        </div>
-
-        <!-- Column 3: Interventions & Programmes -->
-        <div class="footer-nav-col">
-          <h5>Core Focus &amp; Field</h5>
-          <a href="work.html">Focus Areas</a>
-          <a href="projects.html">Active Deployments</a>
-          <a href="blog.html">Field Reports &amp; News</a>
-          <a href="contact.html">Partner &amp; Contact</a>
-        </div>
-
-        <!-- Column 4: Contact & Connect -->
-        <div class="footer-nav-col">
-          <h5>Contact &amp; Connect</h5>
-          <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">
-            <b>Office:</b> 66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria
-          </p>
-          <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">
-            <b>Phone:</b> <a href="tel:+2342014545878" style="display: inline; color: #FFFFFF; text-decoration: none;">+234 201 454 5878</a>
-          </p>
-          <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 12px;">
-            <b>Email:</b> <a href="mailto:info@bhbfoundation.com" style="display: inline; color: #FFFFFF; text-decoration: none;">info@bhbfoundation.com</a>
-          </p>
+          <div class="footer-contact-item">
+            <strong>Phone:</strong> <a href="tel:+2342014545878">+234 201 454 5878</a>
+          </div>
+          <div class="footer-contact-item">
+            <strong>Email:</strong> <a href="mailto:info@bhbfoundation.com">info@bhbfoundation.com</a>
+          </div>
           <div class="footer-social-links">
             <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-btn">LinkedIn</a>
-            <a href="https://twitter.com" target="_blank" rel="noopener" class="footer-social-btn">X / Twitter</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="footer-social-btn">Twitter / X</a>
             <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-btn">Facebook</a>
           </div>
         </div>
@@ -154,55 +148,16 @@
 
       <!-- Bottom Bar -->
       <div class="footer-bottom-bar">
-        <span>© 2026 BHB Family Support and Development Foundation. Registered in Nigeria under the Companies and Allied Matters Act (CAMA). All rights reserved.</span>
-        <div class="footer-bottom-links">
-          <a href="index.html">Home</a>
-          <span>·</span>
-          <a href="about.html">About Us</a>
-          <span>·</span>
-          <a href="contact.html">Transparency &amp; Governance</a>
+        <span>© 2026 BHB Family Support and Development Foundation. All rights reserved.</span>
+        <div>
+          <span>Registered in Nigeria under the Companies and Allied Matters Act (CAMA).</span>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Generic Modal -->
-  <div class="modal-backdrop" id="genericModal">
-    <div class="modal-window">
-      <div style="position: absolute; top: 18px; right: 20px;">
-        <button onclick="closeModal('genericModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy);">×</button>
-      </div>
-      <div id="genericModalContent"></div>
-    </div>
-  </div>
-
+  <!-- Scripts -->
   <script src="js/animations.js"></script>
   <script src="js/app.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Auto-add AOS to major cards
-      const elements = document.querySelectorAll('.focus-area-item, .project-card, .news-card, .sdg-card, .commitment-card, .mv-card, .executive-spotlight-card, .team-member-card');
-      elements.forEach(el => {
-        if (!el.hasAttribute('data-aos')) {
-          el.setAttribute('data-aos', 'fade-up');
-        }
-      });
-      if (typeof AOS !== 'undefined') {
-        AOS.init({ once: true, offset: 30, duration: 700, easing: 'ease-out-cubic' });
-      }
-    });
-  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

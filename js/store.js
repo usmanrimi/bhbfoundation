@@ -35,29 +35,35 @@ const RAW_DEFAULT_STORE_DATA = {
     {
       id: "slide-1",
       label: "",
-      title: "Empowering Families. Building Resilient Communities.",
-      lead: "We walk alongside individuals, families, and underserved communities to overcome barriers, restore dignity, and create sustainable futures across Northern Nigeria.",
+      title: "Turning Vulnerability into Opportunity.",
+      lead: "We walk alongside individuals, families, and underserved communities to overcome barriers, restore dignity, and create sustainable futures.",
       image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80",
-      primaryCtaText: "Explore Our Work →",
-      primaryCtaLink: "work.html"
+      primaryCtaText: "Partner With Us →",
+      primaryCtaLink: "contact.html",
+      secondaryCtaText: "Explore Our Programs",
+      secondaryCtaLink: "what-we-do.html"
     },
     {
       id: "slide-2",
       label: "",
-      title: "Turning Vulnerability into Lasting Opportunity.",
-      lead: "Equipping adolescent girls with disabilities with foundational digital literacy, screen reader fluency, and technological self-reliance in partnership with The Ability First Tech Hub.",
+      title: "Building Resilient, Self-Sustaining Communities.",
+      lead: "Equipping adolescent girls with disabilities, widows, and vulnerable youth with healthcare access, digital literacy, and economic tools across Kano State.",
       image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80",
-      primaryCtaText: "View Flagship Project →",
-      primaryCtaLink: "projects.html"
+      primaryCtaText: "Partner With Us →",
+      primaryCtaLink: "contact.html",
+      secondaryCtaText: "Explore Our Programs",
+      secondaryCtaLink: "what-we-do.html"
     },
     {
       id: "slide-3",
       label: "",
       title: "Safe Healthcare & Maternal Care Within Reach.",
-      lead: "Delivering mobile clinical screenings, prenatal assistance, and health worker training to hard-to-reach settlements across Kano State.",
+      lead: "Delivering mobile clinical screenings, prenatal assistance, and community health worker training to hard-to-reach settlements.",
       image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1600&q=80",
-      primaryCtaText: "Support Healthcare Fund →",
-      primaryCtaLink: "projects.html"
+      primaryCtaText: "Explore Projects →",
+      primaryCtaLink: "projects.html",
+      secondaryCtaText: "Learn More About BHB",
+      secondaryCtaLink: "about.html"
     }
   ],
 
@@ -1184,11 +1190,11 @@ window.renderHeroSliderHTML = function() {
         <div class="hero-slide-overlay"></div>
         <div class="container">
           <div class="hero-slide-content">
-            ${s.label ? `<span class="hero-eyebrow-tag" style="display:inline-block; font-size:0.8rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:#1C4DA0; margin-bottom:12px; background:rgba(15,23,42,0.6); padding:4px 12px; border-radius:4px; border:1px solid rgba(56,189,248,0.3);">${s.label}</span>` : ''}
             <h1>${s.title}</h1>
             <p class="lead">${s.lead}</p>
             <div class="hero-cta-group">
-              <a href="${s.primaryCtaLink || 'work.html'}" class="btn btn-primary">${s.primaryCtaText || 'Explore Our Work →'}</a>
+              <a href="${s.primaryCtaLink || 'contact.html'}" class="btn btn-primary">${s.primaryCtaText || 'Partner With Us →'}</a>
+              <a href="${s.secondaryCtaLink || 'what-we-do.html'}" class="btn btn-outline-white">${s.secondaryCtaText || 'Explore Our Programs'}</a>
             </div>
           </div>
         </div>
@@ -1321,22 +1327,17 @@ window.renderHomeBlogGridHTML = function() {
   if (!posts || !posts.length) return '<div style="grid-column: 1/-1; text-align: center; padding: 30px; color: var(--text-muted);">No stories currently published.</div>';
 
   return posts.map(p => `
-    <div class="blog-card news-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer; height: 100%;" onclick="openBlogPostReader('${p.id}')">
-      <div style="position: relative;">
-        <img src="${p.image}" alt="${p.title}" class="blog-card-thumb" style="width: 100%; height: 220px; object-fit: cover; display: block;" loading="lazy">
-        <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;">${p.category}</div>
+    <div class="blog-card news-card interactive-lift reveal-up in" onclick="openBlogPostReader('${p.id}')">
+      <div class="blog-card-thumb-wrap">
+        <img src="${p.image}" alt="${p.title}" class="blog-card-thumb" loading="lazy">
+        <div class="blog-card-tag">#${(p.category || 'update').toLowerCase().replace(/[^a-z0-9]/g, '')}</div>
       </div>
-      <div class="blog-card-body" style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
-        <div>
-          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">
-            <span>${p.date || 'Recent Report'}</span> · <span>${p.readTime || '3 min read'}</span>
-          </div>
-          <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${p.title}</h3>
-          <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; min-height: 4.2em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.excerpt || (p.content || '').substring(0, 110) + '...'}</p>
-        </div>
-        <div style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted);">
-          <span>${p.author || 'BHB Editorial'}</span>
-          <span style="color: var(--blue); font-weight: 700;">Read Article →</span>
+      <div class="blog-card-body">
+        <div class="blog-card-date">${p.date || 'Recent Update'}</div>
+        <h3 class="blog-card-title">${p.title}</h3>
+        <p class="blog-card-excerpt">${p.excerpt || (p.content || '').substring(0, 95) + '...'}</p>
+        <div class="blog-card-footer">
+          <span class="blog-card-link">Read full post →</span>
         </div>
       </div>
     </div>

@@ -3,137 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documented Impact &amp; Field Stories — BHB Family Support and Development Foundation</title>
+  <title>Impact &amp; Accountability — BHB Family Support and Development Foundation</title>
   
   <meta name="description" content="Verified impact metrics, beneficiary stories, and transparent field outcomes across Kano State, Nigeria.">
   <link rel="icon" type="image/png" href="assets/images/bhb-logo.png">
   
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/animations.css">
-  <link rel="stylesheet" href="assets/css/admin.css">
 
   <!-- Core Store Synchronous Load for Instant Rendering -->
   <script src="js/initial_data.js"></script>
   <script src="js/store.js"></script>
-  <style>
-    /* Dedicated Impact Page Enhancements */
-    .video-spotlight-card {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 36px;
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 56px;
-    }
-
-    .video-player-wrapper {
-      position: relative;
-      min-height: 380px;
-      background: #0F172A;
-      cursor: pointer;
-      overflow: hidden;
-      display: flex;
-      align-items: centre;
-      justify-content: centre;
-    }
-
-    .video-poster-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.82;
-      transition: transform 0.4s ease, opacity 0.4s ease;
-    }
-    .video-player-wrapper:hover .video-poster-img {
-      transform: scale(1.04);
-      opacity: 0.92;
-    }
-
-    .video-play-btn-pulse {
-      position: absolute;
-      width: 76px;
-      height: 76px;
-      background: #FFFFFF;
-      color: var(--navy);
-      border-radius: 50%;
-      display: flex;
-      align-items: centre;
-      justify-content: centre;
-      font-size: 1.8rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
-      transition: transform 0.2s ease, background 0.2s ease;
-      z-index: 5;
-    }
-    .video-player-wrapper:hover .video-play-btn-pulse {
-      transform: scale(1.12);
-      background: #EFF6FF;
-      color: var(--blue);
-    }
-
-    .video-badge-duration {
-      position: absolute;
-      bottom: 16px;
-      right: 16px;
-      background: rgba(15, 23, 42, 0.85);
-      color: #FFFFFF;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 4px;
-      z-index: 5;
-    }
-
-    .video-badge-hd {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      background: #2563EB;
-      color: #FFFFFF;
-      font-size: 0.75rem;
-      font-weight: 800;
-      padding: 4px 8px;
-      border-radius: 4px;
-      z-index: 5;
-      text-transform: uppercase;
-    }
-
-    .video-spotlight-content {
-      padding: 36px 36px 36px 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .testimonial-quote-box {
-      background: var(--bg-off);
-      padding: 18px 20px;
-      margin: 16px 0 20px;
-      font-style: italic;
-      color: var(--navy);
-      font-size: 1.02rem;
-      line-height: 1.65;
-    }
-
-    @media () {
-      .video-spotlight-card {
-        grid-template-columns: 1fr;
-      }
-      .video-spotlight-content {
-        padding: 28px;
-      }
-    }
-  </style>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Site Header -->
   <header class="site-header">
     <div class="container nav-container">
       <a href="index.html" class="nav-brand">
@@ -143,11 +33,9 @@
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
-        <a href="work.html">Our Work</a>
+        <a href="what-we-do.html">What We Do</a>
         <a href="projects.html">Projects</a>
-        <a href="impact.html" class="active">Impact</a>
-        <a href="blog.html">Blog</a>
-        <a href="team.html">Our Team</a>
+        <a href="blog.html">Blog &amp; Updates</a>
         <a href="contact.html">Contact Us</a>
       </nav>
 
@@ -157,205 +45,117 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
+  <!-- Mobile Menu Drawer -->
   <div class="mobile-menu-drawer" id="mobileMenuDrawer">
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
-    <a href="work.html">Our Work</a>
-    <a href="projects.html">Projects &amp; Programmes</a>
-    <a href="impact.html" class="active">Impact Metrics</a>
-    <a href="blog.html">Blog &amp; Dispatches</a>
-    <a href="team.html">Our Team</a>
+    <a href="what-we-do.html">What We Do</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog &amp; Updates</a>
     <a href="contact.html">Contact Us</a>
   </div>
 
-  <!-- Page Header Banner (Clean Title Without Removed Label) -->
-  <div class="page-header-banner bg-branded-header">
+  <!-- Page Header Banner -->
+  <div class="page-header-banner">
     <div class="container">
-      <h1>Documented Impact &amp;  <span class="hero-two-color">Direct Grassroots Interventions</span></h1>
+      <h1>Impact &amp; Verification</h1>
       <p>
         Verifiable metrics, direct community engagement, and accountable stewardship advancing welfare and self-reliance across Kano State.
       </p>
     </div>
   </div>
 
-  <!-- Core Impact Metrics Ribbon -->
-  <section class="bg-navy" style="padding: 48px 0;">
+  <!-- Verification Framework -->
+  <section>
     <div class="container">
-      <div class="impact-stats-container" style="border-top: none; border-bottom: none; margin-top: 0; padding: 0;">
-        <div class="stat-metric-block">
-          <div class="stat-metric-number">10+</div>
-          <div class="stat-metric-label">Direct Beneficiaries Reached</div>
+      <div class="section-header center">
+        <h2 class="section-title-twotone">How We Measure &amp; <span class="text-accent-blue">Verify Impact</span></h2>
+        <p class="lead">Every project undertaken by BHB Foundation follows strict on-ground verification protocols to guarantee direct community benefits.</p>
+      </div>
+
+      <div class="core-values-grid">
+        <div class="value-card">
+          <div class="value-num">01</div>
+          <h3>Baseline Assessment</h3>
+          <p>Conducting in-person household surveys to identify vulnerabilities and establish verifiable baseline indicators.</p>
         </div>
-        <div class="stat-metric-block">
-          <div class="stat-metric-number">2</div>
-          <div class="stat-metric-label">Active Initiatives &amp; Projects</div>
+
+        <div class="value-card">
+          <div class="value-num">02</div>
+          <h3>Audited Allocation</h3>
+          <p>Disbursing project funds in controlled milestone tranches tied to verified project execution.</p>
         </div>
-        <div class="stat-metric-block">
-          <div class="stat-metric-number">Multiple Communities</div>
-          <div class="stat-metric-label">Target Communities Reached</div>
+
+        <div class="value-card">
+          <div class="value-num">03</div>
+          <h3>Direct Delivery</h3>
+          <p>Supplies, assistive tools, and medical kits are handed directly to verified individual beneficiaries.</p>
         </div>
-        <div class="stat-metric-block">
-          <div class="stat-metric-number">100%</div>
-          <div class="stat-metric-label">Direct Grassroots Verification</div>
+
+        <div class="value-card">
+          <div class="value-num">04</div>
+          <h3>Longitudinal Review</h3>
+          <p>Follow-up assessments at 3, 6, and 12 months to verify business survival, health status, and community ownership.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 2: Impact Measurement & Accountability Framework (Colorful & Animated) -->
-  <section style="padding: 80px 0; background: #FFFFFF;">
-    <div class="container">
-      <div class="section-header center" style="text-align: centre;  margin: 0 auto 40px;">
-        <h2 class="section-title-twotone">How We Measure &amp; <span class="text-accent-blue">Verify Real Impact</span></h2>
-        <p class="lead-short">Every project undertaken by BHB Foundation follows strict on-ground verification protocols to guarantee direct, measurable community benefits.</p>
-      </div>
-
-            <!-- Horizontal Methodology Timeline -->
-      <div class="impact-methodology-timeline" style="margin-top: 50px; margin-bottom: 50px;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; position: relative;">
-          
-          <!-- Connecting Line -->
-          <div style="position: absolute; top: 30px; left: 10%; right: 10%; height: 3px; background: #E2E8F0; z-index: 1;" class="timeline-line"></div>
-
-          <!-- Stage 1 -->
-          <div class="methodology-stage" style="position: relative; z-index: 2; text-align: center;">
-            <div style="width: 64px; height: 64px; background: #0F1E36; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', monospace; font-size: 1.5rem; font-weight: 800; margin: 0 auto 24px; border: 4px solid #FFF; box-shadow: 0 4px 12px rgba(15,30,54,0.15);">1</div>
-            <h4 style="color: var(--navy); margin-bottom: 12px; font-size: 1.1rem;">Baseline Assessment</h4>
-            <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.6;">Conducting in-person household surveys to identify vulnerabilities and set measurable baselines.</p>
-          </div>
-
-          <!-- Stage 2 -->
-          <div class="methodology-stage" style="position: relative; z-index: 2; text-align: center;">
-            <div style="width: 64px; height: 64px; background: #1C4DA0; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', monospace; font-size: 1.5rem; font-weight: 800; margin: 0 auto 24px; border: 4px solid #FFF; box-shadow: 0 4px 12px rgba(2,132,199,0.15);">2</div>
-            <h4 style="color: var(--navy); margin-bottom: 12px; font-size: 1.1rem;">Audited Allocation</h4>
-            <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.6;">Disbursing funds exclusively in controlled tranches. Next-phase grants require audited progress.</p>
-          </div>
-
-          <!-- Stage 3 -->
-          <div class="methodology-stage" style="position: relative; z-index: 2; text-align: center;">
-            <div style="width: 64px; height: 64px; background: #0F1E36; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', monospace; font-size: 1.5rem; font-weight: 800; margin: 0 auto 24px; border: 4px solid #FFF; box-shadow: 0 4px 12px rgba(15,30,54,0.15);">3</div>
-            <h4 style="color: var(--navy); margin-bottom: 12px; font-size: 1.1rem;">Post-Delivery Verification</h4>
-            <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.6;">Independent officers confirm that supplies and clinics match required operational standards.</p>
-          </div>
-
-          <!-- Stage 4 -->
-          <div class="methodology-stage" style="position: relative; z-index: 2; text-align: center;">
-            <div style="width: 64px; height: 64px; background: #1C4DA0; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', monospace; font-size: 1.5rem; font-weight: 800; margin: 0 auto 24px; border: 4px solid #FFF; box-shadow: 0 4px 12px rgba(2,132,199,0.15);">4</div>
-            <h4 style="color: var(--navy); margin-bottom: 12px; font-size: 1.1rem;">Ongoing Monitoring</h4>
-            <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.6;">Longitudinal reviews at 3 and 6 months to verify skills adoption and sustainable family welfare.</p>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 3: Strategic SDG Alignment Matrix -->
-  <section class="bg-off">
-    <div class="container">
-      <div class="section-header">
-        <h2>Sustainable Development Goals (SDG) Alignment</h2>
-        <p class="lead">How every BHB intervention maps directly to measurable international development benchmarks.</p>
-      </div>
-
-      <div class="sdg-grid">
-        <div class="sdg-card sdg-bg-3">
-          <div class="sdg-card-number">3</div>
-          <div class="sdg-label">SDG 03 &bull; Good Health</div>
-          <h3>Health &amp; Maternal Well-being</h3>
-          <p>Preventative maternal screenings, mobile ultrasound clinics, and newborn hygiene kits in hard-to-reach settlements.</p>
-        </div>
-
-        <div class="sdg-card sdg-bg-4">
-          <div class="sdg-card-number">4</div>
-          <div class="sdg-label">SDG 04 &bull; Quality Education</div>
-          <h3>Inclusive Tech &amp; Literacy</h3>
-          <p>Accessible screen-reading software, assistive coding boot camps for girls with disabilities, and school re-enrollment support.</p>
-        </div>
-
-        <div class="sdg-card sdg-bg-5">
-          <div class="sdg-card-number">5</div>
-          <div class="sdg-label">SDG 05 &bull; Gender Equality</div>
-          <h3>Women &amp; Widows Economic Fund</h3>
-          <p>Direct micro-seed capital, agro-processing machinery, and cooperative financial literacy circles for widowed mothers.</p>
-        </div>
-
-        <div class="sdg-card sdg-bg-8">
-          <div class="sdg-card-number">8</div>
-          <div class="sdg-label">SDG 08 &bull; Decent Work</div>
-          <h3>Youth Technical Livelihoods</h3>
-          <p>Vocational training, solar power system installation, IT hardware diagnostics, and startup business kits.</p>
-        </div>
-
-        <div class="sdg-card sdg-bg-10">
-          <div class="sdg-card-number">10</div>
-          <div class="sdg-label">SDG 10 &bull; Reduced Inequalities</div>
-          <h3>Disability Tech Inclusion</h3>
-          <p>Overcoming socio-economic marginalization by empowering persons with disabilities with high-value digital capabilities.</p>
-        </div>
-
-        <div class="sdg-card sdg-bg-11">
-          <div class="sdg-card-number">11</div>
-          <div class="sdg-label">SDG 11 &bull; Resilient Communities</div>
-          <h3>Grassroots Leadership &amp; WASH</h3>
-          <p>Community Water Management Committees, solar-powered boreholes, and civic infrastructure resilience.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Executive Institutional Footer (Balanced 4-Column Design) -->
+  <!-- Institutional Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top-grid">
         
-        <!-- Column 1: Institutional Brand & Legal Identity -->
+        <!-- Col 1: Brand -->
         <div class="footer-brand-col">
-          <div class="footer-brand-header">
-            <img src="assets/images/bhb-logo.png" alt="BHB Foundation" class="footer-logo">
-          </div>
-          <p class="footer-brand-desc">
+          <img src="assets/images/bhb-logo.png" alt="BHB Foundation" class="footer-logo">
+          <p class="footer-desc">
             Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State and Northern Nigeria.
           </p>
-          <div class="footer-legal-badge">
-            <span>Incorporated NGO:</span> <b>CAC/IT/NO/9670692</b>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="what-we-do.html">What We Do</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog &amp; Updates</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Focus Areas -->
+        <div class="footer-col">
+          <h4>Focus Areas</h4>
+          <ul class="footer-links">
+            <li><a href="what-we-do.html">Menstrual Hygiene &amp; Health</a></li>
+            <li><a href="what-we-do.html">Safe Water Infrastructure</a></li>
+            <li><a href="what-we-do.html">Child Nutrition &amp; Care</a></li>
+            <li><a href="what-we-do.html">Widows &amp; Women Agro-Fund</a></li>
+            <li><a href="what-we-do.html">Disability &amp; Inclusive Tech</a></li>
+            <li><a href="what-we-do.html">Skills &amp; Livelihoods</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact -->
+        <div class="footer-col">
+          <h4>Contact &amp; Connect</h4>
+          <div class="footer-contact-item">
+            <strong>Office:</strong><br>
+            66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria
           </div>
-        </div>
-
-        <!-- Column 2: Governance & About -->
-        <div class="footer-nav-col">
-          <h5>About Foundation</h5>
-          <a href="about.html">Who We Are</a>
-          <a href="about.html#mission">Our Story &amp; Philosophy</a>
-          <a href="team.html">Governance &amp; Leadership</a>
-          <a href="impact.html">Impact &amp; Verification</a>
-        </div>
-
-        <!-- Column 3: Interventions & Programmes -->
-        <div class="footer-nav-col">
-          <h5>Core Focus &amp; Field</h5>
-          <a href="work.html">Focus Areas</a>
-          <a href="projects.html">Active Deployments</a>
-          <a href="blog.html">Field Reports &amp; News</a>
-          <a href="contact.html">Partner &amp; Contact</a>
-        </div>
-
-        <!-- Column 4: Contact & Connect -->
-        <div class="footer-nav-col">
-          <h5>Contact &amp; Connect</h5>
-          <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">
-            <b>Office:</b> 66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria
-          </p>
-          <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">
-            <b>Phone:</b> <a href="tel:+2342014545878" style="display: inline; color: #FFFFFF; text-decoration: none;">+234 201 454 5878</a>
-          </p>
-          <p style="color: #CBD5E1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 12px;">
-            <b>Email:</b> <a href="mailto:info@bhbfoundation.com" style="display: inline; color: #FFFFFF; text-decoration: none;">info@bhbfoundation.com</a>
-          </p>
+          <div class="footer-contact-item">
+            <strong>Phone:</strong> <a href="tel:+2342014545878">+234 201 454 5878</a>
+          </div>
+          <div class="footer-contact-item">
+            <strong>Email:</strong> <a href="mailto:info@bhbfoundation.com">info@bhbfoundation.com</a>
+          </div>
           <div class="footer-social-links">
             <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-btn">LinkedIn</a>
-            <a href="https://twitter.com" target="_blank" rel="noopener" class="footer-social-btn">X / Twitter</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="footer-social-btn">Twitter / X</a>
             <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-btn">Facebook</a>
           </div>
         </div>
@@ -364,46 +164,16 @@
 
       <!-- Bottom Bar -->
       <div class="footer-bottom-bar">
-        <span>© 2026 BHB Family Support and Development Foundation. Registered in Nigeria under the Companies and Allied Matters Act (CAMA). All rights reserved.</span>
-        <div class="footer-bottom-links">
-          <a href="index.html">Home</a>
-          <span>·</span>
-          <a href="about.html">About Us</a>
-          <span>·</span>
-          <a href="contact.html">Transparency &amp; Governance</a>
+        <span>© 2026 BHB Family Support and Development Foundation. All rights reserved.</span>
+        <div>
+          <span>Registered in Nigeria under the Companies and Allied Matters Act (CAMA).</span>
         </div>
       </div>
     </div>
   </footer>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Auto-add AOS to major cards
-      const elements = document.querySelectorAll('.focus-area-item, .project-card, .news-card, .sdg-card, .commitment-card, .mv-card, .executive-spotlight-card, .team-member-card');
-      elements.forEach(el => {
-        if (!el.hasAttribute('data-aos')) {
-          el.setAttribute('data-aos', 'fade-up');
-        }
-      });
-      if (typeof AOS !== 'undefined') {
-        AOS.init({ once: true, offset: 30, duration: 700, easing: 'ease-out-cubic' });
-      }
-    });
-  </script>
+
+  <!-- Scripts -->
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
