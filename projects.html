@@ -58,6 +58,7 @@
   <!-- Page Header Banner -->
   <div class="page-header-banner">
     <div class="container">
+      <span class="section-tag light">Field Deployments</span>
       <h1>Projects &amp; Initiatives</h1>
       <p>
         A transparent portfolio of active field deployments, completed milestones, and community-led initiatives across Northern Nigeria.
@@ -79,20 +80,21 @@
         </div>
 
         <div>
-          <select id="projectCategoryFilter" onchange="filterProjectsByCategory(this.value)" class="filter-btn" style="background: #FFFFFF; font-weight: 600;">
+          <select id="projectCategoryFilter" onchange="filterProjectsByCategory(this.value)" class="filter-btn" style="background: #FFFFFF; font-weight: 600; cursor: pointer;">
             <option value="All">All Categories</option>
-            <option value="Digital Inclusion">Digital Inclusion</option>
-            <option value="Health & Maternal Care">Health &amp; Maternal Care</option>
+            <option value="Gender Dignity & Health">Gender Dignity &amp; Health</option>
+            <option value="WASH & Safe Water">WASH &amp; Safe Water</option>
+            <option value="Child Nutrition & Health">Child Nutrition &amp; Health</option>
             <option value="Women Livelihoods">Women Livelihoods</option>
+            <option value="Digital Inclusion">Digital Inclusion</option>
             <option value="Youth Mentorship">Youth Mentorship</option>
-            <option value="WASH & Hygiene">WASH &amp; Safe Water</option>
           </select>
         </div>
       </div>
 
-      <!-- Projects Grid -->
-      <div class="projects-portfolio-grid" id="projectsGridContainer">
-        <!-- Rendered dynamically -->
+      <!-- Projects Landscape Rows Container -->
+      <div class="projects-landscape-list" id="projectsListContainer">
+        <!-- Rendered dynamically via BHBStore.renderProjectsLandscapeHTML() -->
       </div>
 
     </div>
@@ -189,7 +191,7 @@
   <div class="modal-backdrop" id="genericModal">
     <div class="modal-window">
       <div style="position: absolute; top: 16px; right: 18px;">
-        <button onclick="closeModal('genericModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy);">×</button>
+        <button onclick="closeModal('genericModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy); line-height: 1;">×</button>
       </div>
       <div id="genericModalContent"></div>
     </div>
@@ -202,7 +204,7 @@
     let activeStatus = 'All';
     let activeCategory = 'All';
 
-    function renderProjectsGrid() {
+    function renderProjectsList() {
       const allProjects = BHBStore.getProjects();
       let filtered = allProjects;
 
@@ -213,33 +215,10 @@
         filtered = filtered.filter(p => (p.category || '').toLowerCase().includes(activeCategory.toLowerCase()));
       }
 
-      const grid = document.getElementById('projectsGridContainer');
-      if (!grid) return;
+      const container = document.getElementById('projectsListContainer');
+      if (!container) return;
 
-      if (!filtered.length) {
-        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 48px; color: var(--text-muted);">No initiatives match the selected filters.</div>';
-        return;
-      }
-
-      grid.innerHTML = filtered.map(p => `
-        <div class="portfolio-card interactive-lift" onclick="openProjectDetailsModal('${p.id}')">
-          <div class="portfolio-card-thumb-wrap">
-            <img src="${p.image}" alt="${p.title}" loading="lazy">
-            <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.72rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;">${p.category}</div>
-            <div style="position: absolute; top: 12px; right: 12px; background: #FFFFFF; color: var(--navy); padding: 4px 8px; font-size: 0.72rem; border-radius: 4px; font-weight: 700;">${p.status || 'Active'}</div>
-          </div>
-          <div class="portfolio-card-body">
-            <div>
-              <h3 style="color: var(--navy); margin-bottom: 8px;">${p.title}</h3>
-              <p style="color: var(--text-body); font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.description}</p>
-            </div>
-            <div style="border-top: 1px solid var(--border-light); padding-top: 14px; font-size: 0.85rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center;">
-              <span><b>Reach:</b> ${p.beneficiaries || 'Community'}</span>
-              <span style="color: var(--blue); font-weight: 700;">View Details →</span>
-            </div>
-          </div>
-        </div>
-      `).join('');
+      container.innerHTML = BHBStore.renderProjectsLandscapeHTML(filtered);
     }
 
     function filterProjectsByStatus(status) {
@@ -247,18 +226,18 @@
       document.querySelectorAll('.filter-bar .filter-btn').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-status') === status);
       });
-      renderProjectsGrid();
+      renderProjectsList();
     }
 
     function filterProjectsByCategory(cat) {
       activeCategory = cat;
-      renderProjectsGrid();
+      renderProjectsList();
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      renderProjectsGrid();
+      renderProjectsList();
       BHBStore.subscribe(() => {
-        renderProjectsGrid();
+        renderProjectsList();
       });
     });
   </script>

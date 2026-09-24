@@ -170,111 +170,30 @@ function setupNavigation() {
   }
 }
 
-// 4. Focus Areas (High-Standard Animated Cards)
+// 4. Focus Areas (Landscape Editorial Layout)
 function renderFocusAreas() {
-  const container = document.getElementById('focusAreasGrid');
+  const container = document.getElementById('focusAreasGrid') || document.querySelector('.pillar-landscape-list');
   if (!container) return;
 
-  const areas = BHBStore.getFocusAreas();
-  container.innerHTML = areas.map((a, idx) => `
-    <div class="focus-area-item interactive-lift reveal-up in" onclick="location.href='projects.html'">
-      <div class="focus-area-thumb-wrapper">
-        <img src="${a.image}" alt="${a.title}" class="focus-area-thumb" loading="lazy">
-        <div class="focus-area-badge">Pillar 0${idx + 1}</div>
-      </div>
-      <div class="focus-area-body">
-        <div>
-          <h3>${a.title}</h3>
-          <p>${a.summary}</p>
-        </div>
-        <div class="focus-area-footer">
-          <span>Priority Field Program</span>
-          <span class="arrow">Explore Projects →</span>
-        </div>
-      </div>
-    </div>
-  `).join('');
+  if (typeof renderFocusAreasHTML === 'function') {
+    container.innerHTML = renderFocusAreasHTML();
+  }
 }
 
-// 5. Projects & Programs (Active Programs Dynamic Rendering)
+// 5. Projects & Programs (Active Programs Landscape Dynamic Rendering)
 function renderProjects() {
-  const projects = BHBStore.getProjects();
-
-  // A. Homepage Grid Container
-  const homeGrid = document.getElementById('homepageProjectsGrid');
+  // A. Homepage Landscape Container
+  const homeGrid = document.getElementById('homepageProjectsGrid') || document.getElementById('projectsLandscapeContainer');
   if (homeGrid) {
-    const featuredList = projects.slice(0, 3);
-    if (!featuredList.length) {
-      homeGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 30px; color: var(--text-muted);">No active programs currently published.</div>';
-    } else {
-      homeGrid.innerHTML = featuredList.map(p => `
-        <div class="portfolio-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer;" onclick="openProjectDetailsModal('${p.id}')">
-          <div class="portfolio-card-thumb-wrap" style="position: relative;">
-            <img src="${p.image}" alt="${p.title}" style="width: 100%; height: 220px; object-fit: cover; display: block;">
-            <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;">${p.category}</div>
-          </div>
-          <div class="portfolio-card-body" style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
-            <div style="flex-grow: 1;">
-              <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35;">${p.title}</h3>
-              <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.description}</p>
-            </div>
-            <div class="portfolio-meta-list" style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px;">
-              <div class="portfolio-meta-item" style="margin-bottom: 4px;">
-                <span style="color: var(--text-muted);">Timeline:</span>
-                <b style="color: var(--navy);">${p.timeline || 'Active'}</b>
-              </div>
-              <div class="portfolio-meta-item">
-                <span style="color: var(--text-muted);">Status:</span>
-                <b style="color: var(--blue);">${p.status || 'Ongoing'}</b>
-              </div>
-            </div>
-          </div>
-        </div>
-      `).join('');
+    if (typeof renderHomepageProjectsHTML === 'function') {
+      homeGrid.innerHTML = renderHomepageProjectsHTML();
     }
   }
 
-  // B. Legacy Secondary Containers
-  const featuredContainer = document.getElementById('projectFeaturedContainer');
-  const secondaryContainer = document.getElementById('projectSecondaryGrid');
-  const featured = projects.find(p => p.featured) || projects[0];
-  const secondaries = projects.filter(p => !featured || p.id !== featured.id);
-
-  if (featuredContainer && featured) {
-    featuredContainer.innerHTML = `
-      <div class="project-featured-card">
-        <img src="${featured.image}" alt="${featured.title}" class="project-featured-image">
-        <div class="project-featured-body">
-          <div>
-            <span class="project-category-tag">Featured Initiative · ${featured.category}</span>
-            <h3>${featured.title}</h3>
-            <p style="color: var(--text-body); margin-bottom: 20px; font-size: 1.05rem;">${featured.description}</p>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;"><b>Location:</b> ${featured.location} &nbsp;|&nbsp; <b>Impact:</b> ${featured.beneficiaries}</p>
-          </div>
-          <div>
-            <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('${featured.id}')">View Project Details →</button>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  if (secondaryContainer) {
-    secondaryContainer.innerHTML = secondaries.map(p => `
-      <div class="project-item">
-        <img src="${p.image}" alt="${p.title}" class="project-item-thumb">
-        <div class="project-item-content">
-          <div>
-            <span class="project-category-tag">${p.category}</span>
-            <h4>${p.title}</h4>
-            <p>${p.description.substring(0, 130)}...</p>
-          </div>
-          <div>
-            <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('${p.id}')" style="width: 100%;">View Project →</button>
-          </div>
-        </div>
-      </div>
-    `).join('');
+  // B. Projects Page Container
+  const projectsList = document.getElementById('projectsListContainer');
+  if (projectsList && typeof renderProjectsLandscapeHTML === 'function') {
+    projectsList.innerHTML = renderProjectsLandscapeHTML();
   }
 }
 
@@ -285,21 +204,17 @@ function renderBlogPage() {
   // Filter by category and search query
   let filtered = allPosts;
   if (currentBlogCategory && currentBlogCategory !== 'All') {
-    filtered = filtered.filter(p => p.category.toLowerCase().includes(currentBlogCategory.toLowerCase()));
+    filtered = filtered.filter(p => (p.category || '').toLowerCase().includes(currentBlogCategory.toLowerCase()));
   }
   if (currentBlogSearchQuery.trim()) {
     const q = currentBlogSearchQuery.toLowerCase();
     filtered = filtered.filter(p => 
-      p.title.toLowerCase().includes(q) || 
+      (p.title || '').toLowerCase().includes(q) || 
       (p.content && p.content.toLowerCase().includes(q)) ||
       (p.author && p.author.toLowerCase().includes(q)) ||
       (p.category && p.category.toLowerCase().includes(q))
     );
   }
-
-  // Clear lead containers if they exist (clean uniform grid layout)
-  const blogLeadContainer = document.getElementById('blogLeadContainer');
-  if (blogLeadContainer) blogLeadContainer.style.display = 'none';
 
   // Render unified grid in blogSecondaryGrid for blog.html
   const blogSecondaryGrid = document.getElementById('blogSecondaryGrid');
@@ -307,27 +222,19 @@ function renderBlogPage() {
     if (filtered.length === 0) {
       blogSecondaryGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No reports match your search criteria.</div>';
     } else {
-      blogSecondaryGrid.style.display = 'grid';
-      blogSecondaryGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(320px, 1fr))';
-      blogSecondaryGrid.style.gap = '30px';
-
       blogSecondaryGrid.innerHTML = filtered.map(p => `
-        <div class="news-card blog-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer; height: 100%;" onclick="openBlogPostReader('${p.id}')">
-          <div style="position: relative;">
-            <img src="${p.image}" alt="${p.title}" class="blog-card-thumb" style="width: 100%; height: 220px; object-fit: cover; display: block;">
-            <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;">${p.category}</div>
+        <div class="blog-card" onclick="openBlogPostReader('${p.id}')">
+          <div class="blog-card-header-bar">
+            <span class="blog-card-tag">#${(p.category || 'update').toLowerCase().replace(/[^a-z0-9]/g, '')}</span>
+            <span class="blog-card-date">${p.date || 'Recent'}</span>
           </div>
-          <div class="blog-card-body" style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+          <div class="blog-card-body">
             <div>
-              <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">
-                <span>${p.date || 'Recent Report'}</span> · <span>${p.readTime || '3 min read'}</span>
-              </div>
-              <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${p.title}</h3>
-              <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; min-height: 4.2em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.excerpt || p.content.substring(0, 110) + '...'}</p>
+              <h3 class="blog-card-title">${p.title}</h3>
+              <p class="blog-card-excerpt">${p.excerpt || (p.content || '').substring(0, 110) + '...'}</p>
             </div>
-            <div style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted);">
-              <span>${p.author || 'BHB Editorial'}</span>
-              <span style="color: var(--blue); font-weight: 700;">Read Article →</span>
+            <div class="blog-card-footer">
+              <span class="blog-card-link">Read full post →</span>
             </div>
           </div>
         </div>
@@ -338,34 +245,8 @@ function renderBlogPage() {
   // B. Render for index.html (Homepage)
   const homeBlogGrid = document.getElementById('homeBlogGrid');
   if (homeBlogGrid) {
-    const homePosts = allPosts.slice(0, 3);
-    if (!homePosts.length) {
-      homeBlogGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 30px; color: var(--text-muted);">No stories currently published.</div>';
-    } else {
-      homeBlogGrid.style.display = 'grid';
-      homeBlogGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(320px, 1fr))';
-      homeBlogGrid.style.gap = '30px';
-      homeBlogGrid.innerHTML = homePosts.map(p => `
-        <div class="news-card blog-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer; height: 100%;" onclick="openBlogPostReader('${p.id}')">
-          <div style="position: relative;">
-            <img src="${p.image}" alt="${p.title}" class="blog-card-thumb" style="width: 100%; height: 220px; object-fit: cover; display: block;">
-            <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;">${p.category}</div>
-          </div>
-          <div class="blog-card-body" style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
-            <div>
-              <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">
-                <span>${p.date || 'Recent Report'}</span> · <span>${p.readTime || '3 min read'}</span>
-              </div>
-              <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${p.title}</h3>
-              <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; min-height: 4.2em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.excerpt || p.content.substring(0, 110) + '...'}</p>
-            </div>
-            <div style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted);">
-              <span>${p.author || 'BHB Editorial'}</span>
-              <span style="color: var(--blue); font-weight: 700;">Read Article →</span>
-            </div>
-          </div>
-        </div>
-      `).join('');
+    if (typeof renderHomeBlogGridHTML === 'function') {
+      homeBlogGrid.innerHTML = renderHomeBlogGridHTML();
     }
   }
 }

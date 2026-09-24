@@ -546,15 +546,16 @@
                   <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Save All Settings &amp; Media</button>
                 </div>
 
-                <!-- Card 2: Our Work & Active Partners Feature Picture -->
+                <!-- Card 2: Feature Picture & Brand Assets -->
                 <div class="settings-card">
-                  <h3 style="color: #0F172A; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Our Work Page Feature Picture</h3>
-                  <p style="color: #64748B; font-size: 0.84rem; margin-bottom: 14px;">Update the showcase photograph displayed on the Our Work page (Active Partners section).</p>
+                  <h3 style="color: #0F172A; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Foundation Media &amp; Photos</h3>
+                  <p style="color: #64748B; font-size: 0.84rem; margin-bottom: 14px;">Upload approved high-resolution foundation field photographs to sync across portal showcases.</p>
                   
-                  <input type="hidden" name="partners_image" id="admin_partners_img_hidden" value="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80">
+                  <input type="hidden" name="partners_image" id="admin_partners_img_hidden" value="">
                   
-                  <div style="margin-bottom: 14px; border: 1px solid #CBD5E1; border-radius: 6px; overflow: hidden; background: #0F172A;">
-                    <img id="adminPartnersImgPreview" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80" alt="Active Partners Section Preview" style="width: 100%; height: 210px; object-fit: cover; display: block;">
+                  <div style="margin-bottom: 14px; border: 1px solid #CBD5E1; border-radius: 6px; overflow: hidden; background: #0F1E36; height: 160px; display: flex; align-items: center; justify-content: center;">
+                    <img id="adminPartnersImgPreview" src="" alt="Feature Preview" style="width: 100%; height: 160px; object-fit: cover; display: none;">
+                    <div id="adminPartnersImgEmptyNotice" style="color: #94A3B8; font-size: 0.85rem; font-weight: 600;">No photo uploaded yet</div>
                   </div>
 
                   <div class="admin-dropzone" style="padding: 16px; margin-bottom: 14px;">

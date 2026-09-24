@@ -7,12 +7,13 @@ window.BHB_SEED_DATA = {
     "officeAddress": "Office No. 66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria",
     "phone": "+234 201 454 5878",
     "email": "info@bhbfoundation.com",
+    "workingHours": "Monday – Friday, 8:00 AM – 5:00 PM (WAT)",
     "contactEmail": "contact@bhborganization.org",
     "tagline": "Empowering Families. Strengthening Communities. Creating Sustainable Futures.",
     "mission": "To support vulnerable and underserved individuals and communities by improving access to essential health and social services, education and economic opportunities, while promoting dignity, resilience, inclusion and self-reliance.",
-    "vision": "To build a just, inclusive and resilient society where every individual and family has the opportunity to live with dignity, achieve their potential and contribute to community development.",
-    "aboutImage": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80",
-    "communityCoDesignImage": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80",
+    "vision": "To build inclusive, resilient, and empowered communities where every individual can live with dignity and realise their full potential.",
+    "aboutImage": "",
+    "communityCoDesignImage": "",
     "primaryCurrency": "NGN",
     "usdRate": 1550,
     "zenithBank": {
@@ -25,74 +26,69 @@ window.BHB_SEED_DATA = {
   "heroSlides": [
     {
       "id": "slide-1",
-      "label": "",
+      "label": "BHB Foundation Mandate",
       "title": "Empowering Families. Building Resilient Communities.",
       "lead": "We walk alongside individuals, families, and underserved communities to overcome barriers, restore dignity, and create sustainable futures across Northern Nigeria.",
-      "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80",
-      "primaryCtaText": "Explore Our Work →",
-      "primaryCtaLink": "work.html"
+      "image": "",
+      "primaryCtaText": "Partner With Us →",
+      "primaryCtaLink": "contact.html",
+      "secondaryCtaText": "Explore Our Work",
+      "secondaryCtaLink": "what-we-do.html"
     },
     {
       "id": "slide-2",
-      "label": "",
+      "label": "Sustainable Transformation",
       "title": "Turning Vulnerability into Lasting Opportunity.",
-      "lead": "Equipping adolescent girls with disabilities with foundational digital literacy, screen reader fluency, and technological self-reliance in partnership with The Ability First Tech Hub.",
-      "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80",
-      "primaryCtaText": "View Flagship Project →",
-      "primaryCtaLink": "projects.html"
-    },
-    {
-      "id": "slide-3",
-      "label": "",
-      "title": "Safe Healthcare & Maternal Care Within Reach.",
-      "lead": "Delivering mobile clinical screenings, prenatal assistance, and health worker training to hard-to-reach settlements across Kano State.",
-      "image": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1600&q=80",
-      "primaryCtaText": "Support Healthcare Fund →",
-      "primaryCtaLink": "projects.html"
+      "lead": "Equipping adolescent girls with disabilities, widows, and vulnerable youth with healthcare access, digital literacy, and economic self-reliance across Kano State.",
+      "image": "",
+      "primaryCtaText": "Partner With Us →",
+      "primaryCtaLink": "contact.html",
+      "secondaryCtaText": "Explore Our Programs",
+      "secondaryCtaLink": "what-we-do.html"
     }
   ],
   "focusAreas": [
     {
       "id": "focus-1",
-      "title": "Support for Widows and Vulnerable Women",
-      "summary": "Direct financial assistance, seed capital, food security packages, and micro-enterprise mentorship circles.",
-      "image": "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80",
-      "details": "Empowering vulnerable women and widows through micro-enterprise seed funding, grain processing equipment, and mentorship circles."
+      "title": "Every Girl Deserves Dignity: Menstrual Hygiene Awareness and Sanitary Pad Distribution",
+      "summary": "We educate and empower girls in secondary schools on menstrual health and hygiene, while providing sanitary pads and essential hygiene supplies. Our goal is to ensure that every girl can manage her period safely, comfortably, and with dignity — without shame, stigma, or missing school.",
+      "image": "",
+      "details": "School-based menstrual health education, free sanitary pad distributions, and dignity support kits for adolescent girls."
     },
     {
       "id": "focus-2",
-      "title": "Every Girl Deserves Dignity: Menstrual Hygiene Awareness and Sanitary Pad Distribution",
-      "summary": "We educate and empower girls in secondary schools on menstrual health and hygiene, while providing sanitary pads and essential hygiene supplies. Our goal is to ensure that every girl can manage her period safely and confidently, stay in school, and reach her full potential.",
-      "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
-      "details": "Menstrual hygiene workshops, sanitary pad distribution, and school-based health support to keep girls confident and in school."
+      "title": "Safe Water, Safer Communities: Clean Water Infrastructure & Hygiene Promotion",
+      "summary": "We construct and rehabilitate solar-powered community boreholes, establish community water management committees, and deliver WASH education to eliminate waterborne disease outbreaks in rural settlements.",
+      "image": "",
+      "details": "Solar borehole installations, overhead reservoirs, filtration posts, and localized water management committees."
     },
     {
       "id": "focus-3",
-      "title": "Disability Inclusion and Support",
-      "summary": "Assistive devices, tailored digital literacy, accessibility advocacy, and vocational training designed for persons with disabilities.",
-      "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
-      "details": "Championing full digital, educational, and social inclusion for persons living with disabilities."
+      "title": "Protecting the Future: Nutrition, Health, and Social Protection for Vulnerable Children",
+      "summary": "Delivering community-based acute malnutrition screenings, emergency nutritional supplements, and educational enrollment toolkits for orphans and vulnerable children across peri-urban settlements.",
+      "image": "",
+      "details": "Community malnutrition screenings, supplementary food supplies, and primary health referrals."
     },
     {
       "id": "focus-4",
-      "title": "Skills Acquisition and Livelihoods Development",
-      "summary": "Tailoring, computer literacy, agro-processing, trade crafts, and micro-grant seed funding for sustainable economic independence.",
-      "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
-      "details": "Vocational apprenticeship pathways equipping youths and women with marketable economic skills."
+      "title": "Empowering Widows and Vulnerable Women Through Agro-Enterprise Support",
+      "summary": "Providing direct seed capital, post-harvest agro-processing machinery, cooperative bookkeeping training, and direct market access linkages to widowed mothers and female-headed households.",
+      "image": "",
+      "details": "Direct seed capital grants, grain milling machinery, cooperative savings circles, and business management mentorship."
     },
     {
       "id": "focus-5",
-      "title": "Safe Water for Stronger Communities",
-      "summary": "We provide clean and safe water by drilling boreholes and building wells in underserved rural communities. Access to clean water improves health, reduces waterborne diseases, eases the burden on women and children, and creates stronger, healthier communities.",
-      "image": "https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=800&q=80",
-      "details": "Drilling solar boreholes, constructing clean water points, and establishing localized community water management committees."
+      "title": "Inclusive Tech for Girls with Disabilities",
+      "summary": "Delivering intensive digital literacy boot camps, assistive screen-reader computing, and hardware grants for young women living with visual and physical impairments across Kano State.",
+      "image": "",
+      "details": "Accessible coding courses, screen-reader software (NVDA/JAWS), custom laptops, and tech mentorship."
     },
     {
       "id": "focus-6",
-      "title": "Every Child Deserves to Grow: Child Nutrition & Malnutrition Support",
-      "summary": "We support children affected by malnutrition in underserved communities through nutrition screening, caregiver education, nutritious food support, and referral to appropriate healthcare services. Our goal is to help children grow, develop, and thrive in good health.",
-      "image": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
-      "details": "Community nutrition screenings, caregiver education, nutritious food packages, and clinical referrals."
+      "title": "Youth Skills Development & Entrepreneurship Support",
+      "summary": "Structured vocational apprenticeships in renewable solar installation, electrical diagnostics, tailoring, and digital entrepreneurship equipped with starter toolkits.",
+      "image": "",
+      "details": "Vocational skills training, technical apprenticeships, startup kits, and enterprise mentorship."
     }
   ],
   "projects": [
@@ -101,16 +97,16 @@ window.BHB_SEED_DATA = {
       "title": "Holiday Digital Skills Boot Camp for Girls with Disabilities",
       "category": "Digital Inclusion",
       "location": "Kano Metropolitan Hub",
-      "beneficiaries": "10 Girls (Adolescents with visual & physical disabilities)",
-      "timeline": "July 2026 – Present (Cohort 1 Graduated / Cohort 2 Active)",
+      "beneficiaries": "10 Adolescent Girls with Disabilities",
+      "timeline": "Active Deployment",
       "goal": 3500000,
       "raised": 3500000,
-      "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
-      "description": "Directly funded by BHB Foundation in collaboration with The Ability First Tech Hub. A flagship intensive holiday digital literacy boot camp equipping adolescent girls with disabilities with foundational computer operations, screen-reader fluency, accessible digital tools, and web design fundamentals.",
+      "image": "",
+      "description": "Directly funded by BHB Foundation in collaboration with The Ability First Tech Hub. An intensive holiday digital literacy boot camp equipping adolescent girls with disabilities with foundational computer architecture, screen-reader fluency, accessible tools, and web design fundamentals.",
       "milestones": [
         "Delivered 120 hours of specialized assistive tech coaching",
-        "Provided custom screen-reader laptops to all 10 participants",
-        "High capstone project completion rate with web portfolio exhibitions"
+        "Equipped participants with custom screen-reader accessible laptops",
+        "Graduated cohort 1 with independent web portfolio exhibitions"
       ],
       "featured": true,
       "status": "Ongoing"
@@ -118,17 +114,17 @@ window.BHB_SEED_DATA = {
     {
       "id": "proj-2",
       "title": "Mobile Primary & Maternal Care Access Initiative",
-      "category": "Community Health",
+      "category": "Health & Maternal Care",
       "location": "Kano Communities",
       "beneficiaries": "1,450+ Mothers & Infants",
-      "timeline": "May 2026 – Ongoing Field Rounds",
+      "timeline": "Active Field Rounds",
       "goal": 6000000,
       "raised": 4800000,
-      "image": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
-      "description": "Equipping mobile medical vans with portable ultrasound and primary diagnostic kits to provide preventative prenatal checkups, immunization tracking, and maternal nutrition packs.",
+      "image": "",
+      "description": "Deploying certified midwives, mobile ultrasound diagnostics, and essential prenatal micronutrients directly to hard-to-reach rural settlements to identify high-risk pregnancies and prevent preventable birth complications.",
       "milestones": [
-        "Conducted 24 mobile clinical visits in 6 hard-to-reach settlements",
-        "Distributed 1,200 maternal delivery hygiene kits",
+        "Conducted 24 mobile clinical visits across 6 underserved settlements",
+        "Distributed 1,200 sterile delivery and newborn hygiene kits",
         "Trained 18 volunteer community healthcare mobilizers"
       ],
       "featured": false,
@@ -140,10 +136,10 @@ window.BHB_SEED_DATA = {
       "category": "Women Livelihoods",
       "location": "Kano Communities",
       "beneficiaries": "220 Female-Headed Households",
-      "timeline": "Jan 2026 – June 2026 (Completed)",
+      "timeline": "Completed Milestone",
       "goal": 5000000,
       "raised": 5000000,
-      "image": "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80",
+      "image": "",
       "description": "Empowering widowed mothers through micro-enterprise seed capital, grain processing machinery, cooperative savings training, and direct market access linkages.",
       "milestones": [
         "Disbursed ₦5M in direct micro-grants across 220 female traders",
@@ -159,10 +155,10 @@ window.BHB_SEED_DATA = {
       "category": "Youth Mentorship",
       "location": "Kano Municipal Centre",
       "beneficiaries": "350 Young Persons",
-      "timeline": "February 2026 – July 2026 (Completed)",
+      "timeline": "Completed Milestone",
       "goal": 4500000,
       "raised": 4500000,
-      "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
+      "image": "",
       "description": "Structured technical apprenticeships in solar installation, IT hardware diagnostics, tailoring, and electrical repairs paired with professional mentorship and soft skills.",
       "milestones": [
         "Graduated cohort 1 with 120 certified vocational trainees",
@@ -181,7 +177,7 @@ window.BHB_SEED_DATA = {
       "timeline": "Pipeline · Target Q4 2026",
       "goal": 6000000,
       "raised": 1800000,
-      "image": "https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=800&q=80",
+      "image": "",
       "description": "Construction of deep solar-powered industrial boreholes, overhead storage reservoirs, and community sanitation filtration points providing potable water to underserved settlements.",
       "milestones": [
         "Hydrogeological geophysical surveying completed",
@@ -200,11 +196,11 @@ window.BHB_SEED_DATA = {
       "timeline": "Pipeline · Target 2027",
       "goal": 15000000,
       "raised": 4500000,
-      "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
-      "description": "Establishing a permanent accessible computing and digital media academy equipped with braille display terminals, tactile graphics printers, and specialized software workstations.",
+      "image": "",
+      "description": "Establishing a permanent accessible computing academy equipped with braille display terminals, tactile graphics printers, and specialized software workstations.",
       "milestones": [
         "Curriculum alignment with national assistive tech standards",
-        "Facility partnership secured with metropolitan vocational board",
+        "Facility partnership secured with vocational board",
         "Initial hardware donation pledged by CSR partners"
       ],
       "featured": false,
@@ -220,13 +216,8 @@ window.BHB_SEED_DATA = {
       "authorRole": "Director of Programs & Inclusive Tech",
       "date": "August 18, 2026",
       "readTime": "4 min read",
-      "tags": [
-        "InclusiveTech",
-        "DisabilityAdvocacy",
-        "YouthEmpowerment",
-        "Kano"
-      ],
-      "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["InclusiveTech", "DisabilityAdvocacy", "YouthEmpowerment", "Kano"],
+      "image": "",
       "excerpt": "Inside the landmark Holiday Digital Skills Boot Camp funded directly by BHB in collaboration with The Ability First Tech Hub.",
       "content": "In a world increasingly shaped by digital technology, persons with disabilities in Northern Nigeria face disproportionate barriers in education and economic participation.\n\nTo bridge this critical divide, BHB Family Support and Development Foundation partnered with The Ability First Tech Hub to deliver an intensive, high-impact Holiday Digital Skills Boot Camp for adolescent girls in Kano Metropolitan.\n\nOver several weeks of intensive hands-on instruction, 10 young participants—living with visual impairments, hearing difficulties, and physical mobility challenges—mastered computer architecture fundamentals, accessible screen-reader navigation (NVDA and JAWS), HTML/CSS coding logic, and assistive tools.\n\n\"Before this boot camp, I believed computer coding was something closed off to someone who is blind,\" shared 15-year-old Halima, one of the cohort participants. \"Today, I built my own digital profile and learned how software can be made accessible to everyone.\"\n\nEvery graduate received a specialized assistive laptop and ongoing mentorship from our technical team. BHB Foundation is currently finalizing plans to expand this programme to 50 additional girls across neighboring Local Government Areas in early 2027.",
       "likes": 42,
@@ -242,13 +233,8 @@ window.BHB_SEED_DATA = {
       "authorRole": "Lead Strategic Health Advisor",
       "date": "August 12, 2026",
       "readTime": "5 min read",
-      "tags": [
-        "MaternalHealth",
-        "MobileClinics",
-        "PrimaryCare",
-        "Kano"
-      ],
-      "image": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["MaternalHealth", "MobileClinics", "PrimaryCare", "Kano"],
+      "image": "",
       "excerpt": "How mobile healthcare vehicles and community midwives are preventing complications and delivering maternal care to hard-to-reach settlements.",
       "content": "Geographic isolation and transport costs frequently turn manageable pregnancy complications into critical emergencies for families living in rural communities.\n\nBHB Foundation's Mobile Primary & Maternal Health Intervention addresses this challenge directly by deploying certified midwives, mobile ultrasound diagnostics, and essential prenatal micronutrients straight into village squares.\n\nOver the past three months, our medical teams have completed over 1,450 free clinical consultations across six rural settlements in rural settlements, identifying high-risk pregnancies early and coordinating safe clinic deliveries.\n\nIn addition to diagnostics, our teams conduct bi-weekly hygiene and nutrition workshops for young mothers and distribute delivery preparation kits containing sterile clinical essentials.",
       "likes": 28,
@@ -264,12 +250,8 @@ window.BHB_SEED_DATA = {
       "authorRole": "Head of Youth & Gender Initiatives",
       "date": "August 05, 2026",
       "readTime": "3 min read",
-      "tags": [
-        "WomenEnterprise",
-        "Livelihoods",
-        "GrassrootsImpact"
-      ],
-      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["WomenEnterprise", "Livelihoods", "GrassrootsImpact"],
+      "image": "",
       "excerpt": "Fatima, a widowed mother of four in Kano State, transformed her family's future through business training and seed capital.",
       "content": "When Fatima lost her husband four years ago, she faced the daunting challenge of providing for four young children with only informal tailoring work on a rented sewing machine.\n\nThrough BHB Foundation's Women & Vulnerable Groups Livelihoods programme, Fatima completed a 6-week business management, cooperative savings, and financial bookkeeping course before receiving a direct seed grant.\n\nWith the capital, Fatima purchased a heavy-duty industrial sewing machine and bulk fabrics at wholesale prices. Within five months, her monthly revenue tripled, enabling her to comfortably pay school fees for all four children and take on two young neighborhood apprentices.\n\n\"Dignity is when you can feed your children and plan for tomorrow without depending on handouts,\" Fatima says with pride.",
       "likes": 35,
@@ -285,12 +267,8 @@ window.BHB_SEED_DATA = {
       "authorRole": "Head of Field Operations",
       "date": "July 30, 2026",
       "readTime": "4 min read",
-      "tags": [
-        "Resilience",
-        "CleanWater",
-        "CommunityOwnership"
-      ],
-      "image": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["Resilience", "CleanWater", "CommunityOwnership"],
+      "image": "",
       "excerpt": "Rather than providing temporary external fixes, BHB helped establish a local Water Committee that manages borehole maintenance independently.",
       "content": "When a primary borehole pump broke down in a suburban settlement outside Kano, over 800 households faced severe shortages, forcing women and children to walk miles for water.\n\nRejecting top-down charitable fixes that fail once funding ends, BHB Foundation facilitated an open town hall uniting neighborhood elders, youth leaders, and local mechanics.\n\nTogether, residents formed a 7-member Water Management Committee, established a community maintenance fund with modest monthly contributions, and repaired the solar-powered pump. Today, the borehole operates continuously, managed entirely by the neighborhood.",
       "likes": 19,
@@ -306,12 +284,8 @@ window.BHB_SEED_DATA = {
       "authorRole": "Institutional Governance Office",
       "date": "July 24, 2026",
       "readTime": "2 min read",
-      "tags": [
-        "CorporateGovernance",
-        "CAC",
-        "InstitutionalMilestone"
-      ],
-      "image": "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80",
+      "tags": ["CorporateGovernance", "CAC", "InstitutionalMilestone"],
+      "image": "",
       "excerpt": "Official registration with the Corporate Affairs Commission cements BHB's legal foundation and governance transparency.",
       "content": "The Trustees of BHB Family Support and Development Foundation are pleased to announce the formal incorporation and issuance of CAC Registration No. 9670692 under the Companies and Allied Matters Act.\n\nThis milestone reinforces our dedication to transparent non-profit management, rigorous fiscal auditing, and alignment with Nigerian and international civil society development standards.\n\nAll institutional programs and financial disbursements remain open to annual public reporting and independent audit.",
       "likes": 54,
@@ -373,7 +347,7 @@ window.BHB_SEED_DATA = {
       "order": 1,
       "published": true,
       "bio": "Dr. Bashir established BHB Foundation to advance human dignity, social resilience, and structured opportunity across Northern Nigeria.",
-      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+      "image": ""
     },
     {
       "id": "team-2",
@@ -385,7 +359,7 @@ window.BHB_SEED_DATA = {
       "order": 2,
       "published": true,
       "bio": "Fatima leads the foundation's strategic direction, partner alignment, and programme execution across participating local governments in Kano.",
-      "image": "assets/images/team-director.jpg"
+      "image": ""
     },
     {
       "id": "team-3",
@@ -397,7 +371,7 @@ window.BHB_SEED_DATA = {
       "order": 3,
       "published": true,
       "bio": "Ibrahim oversees digital inclusion initiatives, screen-reader coding boot camps for girls with disabilities, and technical apprenticeships.",
-      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80"
+      "image": ""
     },
     {
       "id": "team-4",
@@ -409,7 +383,7 @@ window.BHB_SEED_DATA = {
       "order": 4,
       "published": true,
       "bio": "Dr. Aisha guides maternal health outreach strategy, mobile diagnostic clinics, and primary care partnerships across underserved rural communities.",
-      "image": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+      "image": ""
     },
     {
       "id": "team-5",
@@ -421,7 +395,7 @@ window.BHB_SEED_DATA = {
       "order": 5,
       "published": true,
       "bio": "Coordinates ground logistics, community liaison town halls, and resource delivery across all target communities in Kano State.",
-      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80"
+      "image": ""
     },
     {
       "id": "team-6",
@@ -433,39 +407,19 @@ window.BHB_SEED_DATA = {
       "order": 6,
       "published": true,
       "bio": "Oversees women's enterprise incubation, girl-child mentorship networks, and safeguarding protocols across rural districts.",
-      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
+      "image": ""
     }
   ],
   "partners": [
     {
       "id": "part-1",
       "name": "Corporate Affairs Commission (CAC)",
-      "logo": "data:image/svg+xml;utf8,<svg viewBox='0 0 180 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%23047857'/><path d='M26 12L34 17V27C34 32.5 26 37 26 37C26 37 18 32.5 18 27V17L26 12Z' fill='%2310B981' stroke='%23FFFFFF' stroke-width='1.8'/><circle cx='26' cy='22' r='3.5' fill='%23FFFFFF'/><text x='56' y='32' font-family='sans-serif' font-weight='900' font-size='24' fill='%23064E3B' letter-spacing='1'>CAC</text><text x='57' y='43' font-family='sans-serif' font-weight='800' font-size='8' fill='%23047857' letter-spacing='2.2'>NIGERIA</text></svg>"
+      "logo": "data:image/svg+xml;utf8,<svg viewBox='0 0 180 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='8' fill='%230F1E36'/><text x='56' y='32' font-family='sans-serif' font-weight='800' font-size='20' fill='%230F1E36'>CAC NIGERIA</text></svg>"
     },
     {
       "id": "part-2",
-      "name": "National Youth Council of Nigeria (NYCN)",
-      "logo": "data:image/svg+xml;utf8,<svg viewBox='0 0 180 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%230F172A'/><rect x='12' y='11' width='8' height='28' rx='2' fill='%23008751'/><rect x='22' y='11' width='8' height='28' rx='2' fill='%23FFFFFF'/><rect x='32' y='11' width='8' height='28' rx='2' fill='%23008751'/><path d='M26 14L28.5 20H23.5L26 14Z' fill='%23F59E0B'/><text x='56' y='32' font-family='sans-serif' font-weight='900' font-size='23' fill='%230F172A' letter-spacing='1.2'>NYCN</text><text x='57' y='43' font-family='sans-serif' font-weight='800' font-size='8' fill='%23008751' letter-spacing='2'>KANO STATE</text></svg>"
-    },
-    {
-      "id": "part-3",
       "name": "The Ability First Tech Hub",
-      "logo": "data:image/svg+xml;utf8,<svg viewBox='0 0 190 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%231E3A8A'/><path d='M26 13L35 18.5V29.5L26 35L17 29.5V18.5L26 13Z' stroke='%2338BDF8' stroke-width='2.2' fill='none'/><circle cx='26' cy='24' r='4.5' fill='%2338BDF8'/><text x='56' y='27' font-family='sans-serif' font-weight='900' font-size='16' fill='%230F172A' letter-spacing='0.5'>ABILITY FIRST</text><text x='57' y='41' font-family='sans-serif' font-weight='800' font-size='11' fill='%232563EB' letter-spacing='2.5'>TECH HUB</text></svg>"
-    },
-    {
-      "id": "part-4",
-      "name": "Kano State Government",
-      "logo": "data:image/svg+xml;utf8,<svg viewBox='0 0 190 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%2392400E'/><circle cx='26' cy='25' r='14' stroke='%23FBBF24' stroke-width='2' fill='none'/><path d='M21 28V20L26 16L31 20V28H21Z' fill='%23FDE68A'/><text x='56' y='27' font-family='sans-serif' font-weight='900' font-size='15' fill='%230F172A' letter-spacing='0.8'>KANO STATE</text><text x='57' y='41' font-family='sans-serif' font-weight='800' font-size='9' fill='%23B45309' letter-spacing='1.5'>GOVERNMENT</text></svg>"
-    },
-    {
-      "id": "part-5",
-      "name": "Sahel Community Health Initiative",
-      "logo": "data:image/svg+xml;utf8,<svg viewBox='0 0 190 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%230F766E'/><path d='M23 15H29V22H36V28H29V35H23V28H16V22H23V15Z' fill='%23FFFFFF'/><text x='56' y='27' font-family='sans-serif' font-weight='900' font-size='16' fill='%230F172A' letter-spacing='0.5'>SAHEL HEALTH</text><text x='57' y='41' font-family='sans-serif' font-weight='800' font-size='10' fill='%230D9488' letter-spacing='1.8'>INITIATIVE</text></svg>"
-    },
-    {
-      "id": "part-6",
-      "name": "Aisha Kwaku & Associates Advisory",
-      "logo": "data:image/svg+xml;utf8,<svg viewBox='0 0 180 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%23312E81'/><circle cx='26' cy='16' r='3' fill='%23A5B4FC'/><path d='M26 19V34M20 22L16 28H24L20 22ZM32 22L28 28H36L32 22Z' stroke='%23FFFFFF' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/><text x='56' y='32' font-family='sans-serif' font-weight='900' font-size='24' fill='%231E1B4B' letter-spacing='1.2'>AKA</text><text x='57' y='43' font-family='sans-serif' font-weight='800' font-size='8.5' fill='%234338CA' letter-spacing='2'>ADVISORY</text></svg>"
+      "logo": "data:image/svg+xml;utf8,<svg viewBox='0 0 190 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='8' fill='%231C4DA0'/><text x='56' y='32' font-family='sans-serif' font-weight='800' font-size='18' fill='%231C4DA0'>ABILITY FIRST</text></svg>"
     }
   ],
   "donations": [
@@ -490,39 +444,6 @@ window.BHB_SEED_DATA = {
       "project": "Assistive Coding & Hardware Grants",
       "date": "2026-08-22 09:15",
       "status": "Verified"
-    },
-    {
-      "id": "DON-84918",
-      "donorName": "Hajiya Maryam Sunusi",
-      "email": "maryam.sunusi@gmail.com",
-      "amount": 500000,
-      "currency": "NGN",
-      "method": "Online Transfer",
-      "project": "Widow Agro-Processing Micro-Grants",
-      "date": "2026-08-19 18:40",
-      "status": "Verified"
-    },
-    {
-      "id": "DON-84917",
-      "donorName": "Dr. Farouk Al-Mansoor",
-      "email": "f.mansoor@oxfordalumni.org",
-      "amount": 1200,
-      "currency": "USD",
-      "method": "Direct Wire Transfer",
-      "project": "General Foundation Operations",
-      "date": "2026-08-15 11:20",
-      "status": "Verified"
-    },
-    {
-      "id": "DON-84916",
-      "donorName": "Kano Diaspora Support Initiative",
-      "email": "contact@kanodiaspora.org.uk",
-      "amount": 3500000,
-      "currency": "NGN",
-      "method": "Zenith Bank Direct",
-      "project": "Solar-Powered Clean Water Borehole",
-      "date": "2026-08-10 16:05",
-      "status": "Verified"
     }
   ],
   "volunteers": [
@@ -534,36 +455,6 @@ window.BHB_SEED_DATA = {
       "rolePreference": "Healthcare & Mobile Medical Outreach",
       "lga": "Nasarawa LGA, Kano",
       "appliedDate": "2026-08-23",
-      "status": "Pending"
-    },
-    {
-      "id": "VOL-102",
-      "name": "Usman Sadiq Garba",
-      "email": "usman.sadiq@gmail.com",
-      "phone": "+234 812 345 6789",
-      "rolePreference": "Digital Skills & Screen-Reader Tutoring",
-      "lga": "Kano Municipal",
-      "appliedDate": "2026-08-21",
-      "status": "Approved"
-    },
-    {
-      "id": "VOL-103",
-      "name": "Fatima Zahra Mahmoud",
-      "email": "fz.mahmoud@kust.edu.ng",
-      "phone": "+234 809 876 5432",
-      "rolePreference": "Women Vocational & Cooperative Mentorship",
-      "lga": "Dala LGA, Kano",
-      "appliedDate": "2026-08-18",
-      "status": "Approved"
-    },
-    {
-      "id": "VOL-104",
-      "name": "Ibrahim Dahiru",
-      "email": "ibrahim.dahiru@techhub.ng",
-      "phone": "+234 802 112 3344",
-      "rolePreference": "Youth Apprenticeship & Vocational Training",
-      "lga": "Gwale LGA, Kano",
-      "appliedDate": "2026-08-15",
       "status": "Pending"
     }
   ],
@@ -577,27 +468,7 @@ window.BHB_SEED_DATA = {
       "message": "We would like to explore state-level collaboration for maternal clinic deployment across rural communities.",
       "date": "2026-08-22 10:15",
       "status": "Unread"
-    },
-    {
-      "id": "inq-2",
-      "name": "Clara O'Connor",
-      "email": "clara@globalphilanthropy.org",
-      "orgType": "Philanthropic foundation",
-      "subject": "Grant co-funding",
-      "message": "Our international foundation is interested in scaling the Disability Coding Boot Camp across Northern Nigeria.",
-      "date": "2026-08-21 15:40",
-      "status": "Unread"
-    },
-    {
-      "id": "inq-3",
-      "name": "Malam Sanusi Dangote",
-      "email": "sanusi@kcci.org.ng",
-      "orgType": "Corporate CSR programme",
-      "subject": "CSR Solar Borehole sponsorship",
-      "message": "We have budgeted CSR funds for clean water infrastructure in rural communities.",
-      "date": "2026-08-19 11:20",
-      "status": "Replied"
     }
   ],
-  "lastUpdated": 1790266097203
+  "lastUpdated": 1790272000000
 };

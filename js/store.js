@@ -1,12 +1,11 @@
 /**
  * BHB FAMILY SUPPORT AND DEVELOPMENT FOUNDATION
  * CENTRAL DATA STORE & LOCALSTORAGE PERSISTENCE ENGINE
- * (WITH BLOG CMS, LIKES, COMMENTS, ENGAGEMENT & ADMIN MODERATION)
  */
 
-const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V8';
+const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V9';
 
-const RAW_DEFAULT_STORE_DATA = {
+const RAW_DEFAULT_STORE_DATA = (typeof window !== 'undefined' && window.BHB_SEED_DATA) ? window.BHB_SEED_DATA : {
   settings: {
     foundationName: "BHB Family Support and Development Foundation",
     shortName: "BHB Foundation",
@@ -15,12 +14,13 @@ const RAW_DEFAULT_STORE_DATA = {
     officeAddress: "Office No. 66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria",
     phone: "+234 201 454 5878",
     email: "info@bhbfoundation.com",
+    workingHours: "Monday – Friday, 8:00 AM – 5:00 PM (WAT)",
     contactEmail: "contact@bhborganization.org",
     tagline: "Empowering Families. Strengthening Communities. Creating Sustainable Futures.",
     mission: "To support vulnerable and underserved individuals and communities by improving access to essential health and social services, education and economic opportunities, while promoting dignity, resilience, inclusion and self-reliance.",
-    vision: "To build a just, inclusive and resilient society where every individual and family has the opportunity to live with dignity, achieve their potential and contribute to community development.",
-    aboutImage: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80",
-    communityCoDesignImage: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80",
+    vision: "To build inclusive, resilient, and empowered communities where every individual can live with dignity and realise their full potential.",
+    aboutImage: "",
+    communityCoDesignImage: "",
     primaryCurrency: "NGN",
     usdRate: 1550,
     zenithBank: {
@@ -30,610 +30,44 @@ const RAW_DEFAULT_STORE_DATA = {
       sortCode: "057150013"
     }
   },
-
   heroSlides: [
     {
       id: "slide-1",
-      label: "",
-      title: "Turning Vulnerability into Opportunity.",
-      lead: "We walk alongside individuals, families, and underserved communities to overcome barriers, restore dignity, and create sustainable futures.",
-      image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80",
+      label: "BHB Foundation Mandate",
+      title: "Empowering Families. Building Resilient Communities.",
+      lead: "We walk alongside individuals, families, and underserved communities to overcome barriers, restore dignity, and create sustainable futures across Northern Nigeria.",
+      image: "",
       primaryCtaText: "Partner With Us →",
       primaryCtaLink: "contact.html",
-      secondaryCtaText: "Explore Our Programs",
+      secondaryCtaText: "Explore Our Work",
       secondaryCtaLink: "what-we-do.html"
     },
     {
       id: "slide-2",
-      label: "",
-      title: "Building Resilient, Self-Sustaining Communities.",
-      lead: "Equipping adolescent girls with disabilities, widows, and vulnerable youth with healthcare access, digital literacy, and economic tools across Kano State.",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80",
+      label: "Sustainable Transformation",
+      title: "Turning Vulnerability into Lasting Opportunity.",
+      lead: "Equipping adolescent girls with disabilities, widows, and vulnerable youth with healthcare access, digital literacy, and economic self-reliance across Kano State.",
+      image: "",
       primaryCtaText: "Partner With Us →",
       primaryCtaLink: "contact.html",
       secondaryCtaText: "Explore Our Programs",
       secondaryCtaLink: "what-we-do.html"
-    },
-    {
-      id: "slide-3",
-      label: "",
-      title: "Safe Healthcare & Maternal Care Within Reach.",
-      lead: "Delivering mobile clinical screenings, prenatal assistance, and community health worker training to hard-to-reach settlements.",
-      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1600&q=80",
-      primaryCtaText: "Explore Projects →",
-      primaryCtaLink: "projects.html",
-      secondaryCtaText: "Learn More About BHB",
-      secondaryCtaLink: "about.html"
     }
   ],
-
-  focusAreas: [
-    {
-      id: "focus-1",
-      title: "Support for Widows and Vulnerable Women",
-      summary: "Direct financial assistance, seed capital, food security packages, and micro-enterprise mentorship circles.",
-      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80",
-      details: "Empowering vulnerable women and widows through micro-enterprise seed funding, grain processing equipment, and mentorship circles."
-    },
-    {
-      id: "focus-2",
-      title: "Every Girl Deserves Dignity: Menstrual Hygiene Awareness and Sanitary Pad Distribution",
-      summary: "We educate and empower girls in secondary schools on menstrual health and hygiene, while providing sanitary pads and essential hygiene supplies. Our goal is to ensure that every girl can manage her period safely and confidently, stay in school, and reach her full potential.",
-      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
-      details: "Menstrual hygiene workshops, sanitary pad distribution, and school-based health support to keep girls confident and in school."
-    },
-    {
-      id: "focus-3",
-      title: "Disability Inclusion and Support",
-      summary: "Assistive devices, tailored digital literacy, accessibility advocacy, and vocational training designed for persons with disabilities.",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
-      details: "Championing full digital, educational, and social inclusion for persons living with disabilities."
-    },
-    {
-      id: "focus-4",
-      title: "Skills Acquisition and Livelihoods Development",
-      summary: "Tailoring, computer literacy, agro-processing, trade crafts, and micro-grant seed funding for sustainable economic independence.",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
-      details: "Vocational apprenticeship pathways equipping youths and women with marketable economic skills."
-    },
-    {
-      id: "focus-5",
-      title: "Safe Water for Stronger Communities",
-      summary: "We provide clean and safe water by drilling boreholes and building wells in underserved rural communities. Access to clean water improves health, reduces waterborne diseases, eases the burden on women and children, and creates stronger, healthier communities.",
-      image: "https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=800&q=80",
-      details: "Drilling solar boreholes, constructing clean water points, and establishing localized community water management committees."
-    },
-    {
-      id: "focus-6",
-      title: "Every Child Deserves to Grow: Child Nutrition & Malnutrition Support",
-      summary: "We support children affected by malnutrition in underserved communities through nutrition screening, caregiver education, nutritious food support, and referral to appropriate healthcare services. Our goal is to help children grow, develop, and thrive in good health.",
-      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
-      details: "Community nutrition screenings, caregiver education, nutritious food packages, and clinical referrals."
-    }
-  ],
-
-  projects: [
-    {
-      id: "proj-1",
-      title: "Holiday Digital Skills Boot Camp for Girls with Disabilities",
-      category: "Digital Inclusion",
-      location: "Kano Metropolitan Hub",
-      beneficiaries: "10 Girls (Adolescents with visual & physical disabilities)",
-      timeline: "July 2026 – Present (Cohort 1 Graduated / Cohort 2 Active)",
-      goal: 3500000,
-      raised: 3500000,
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
-      description: "Directly funded by BHB Foundation in collaboration with The Ability First Tech Hub. A flagship intensive holiday digital literacy boot camp equipping adolescent girls with disabilities with foundational computer operations, screen-reader fluency, accessible digital tools, and web design fundamentals.",
-      milestones: [
-        "Delivered 120 hours of specialized assistive tech coaching",
-        "Provided custom screen-reader laptops to all 10 participants",
-        "High capstone project completion rate with web portfolio exhibitions"
-      ],
-      featured: true,
-      status: "Ongoing"
-    },
-    {
-      id: "proj-2",
-      title: "Mobile Primary & Maternal Care Access Initiative",
-      category: "Community Health",
-      location: "Kano Communities",
-      beneficiaries: "1,450+ Mothers & Infants",
-      timeline: "May 2026 – Ongoing Field Rounds",
-      goal: 6000000,
-      raised: 4800000,
-      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
-      description: "Equipping mobile medical vans with portable ultrasound and primary diagnostic kits to provide preventative prenatal checkups, immunization tracking, and maternal nutrition packs.",
-      milestones: [
-        "Conducted 24 mobile clinical visits in 6 hard-to-reach settlements",
-        "Distributed 1,200 maternal delivery hygiene kits",
-        "Trained 18 volunteer community healthcare mobilizers"
-      ],
-      featured: false,
-      status: "Ongoing"
-    },
-    {
-      id: "proj-3",
-      title: "Widows & Vulnerable Women Agro-Business Seed Fund",
-      category: "Women Livelihoods",
-      location: "Kano Communities",
-      beneficiaries: "220 Female-Headed Households",
-      timeline: "Jan 2026 – June 2026 (Completed)",
-      goal: 5000000,
-      raised: 5000000,
-      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80",
-      description: "Empowering widowed mothers through micro-enterprise seed capital, grain processing machinery, cooperative savings training, and direct market access linkages.",
-      milestones: [
-        "Disbursed ₦5M in direct micro-grants across 220 female traders",
-        "Organized 4 cooperative processing clusters",
-        "Achieved 94% business sustainability rate after 6 months"
-      ],
-      featured: false,
-      status: "Completed"
-    },
-    {
-      id: "proj-4",
-      title: "Kano Youth Technical & Apprenticeship Hub",
-      category: "Youth Mentorship",
-      location: "Kano Municipal Centre",
-      beneficiaries: "350 Young Persons",
-      timeline: "February 2026 – July 2026 (Completed)",
-      goal: 4500000,
-      raised: 4500000,
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
-      description: "Structured technical apprenticeships in solar installation, IT hardware diagnostics, tailoring, and electrical repairs paired with professional mentorship and soft skills.",
-      milestones: [
-        "Graduated cohort 1 with 120 certified vocational trainees",
-        "78% direct employment and independent apprenticeship rate",
-        "Equipped each graduate with a startup toolkit"
-      ],
-      featured: false,
-      status: "Completed"
-    },
-    {
-      id: "proj-5",
-      title: "Solar-Powered Community Borehole & WASH Hygiene Post",
-      category: "WASH & Hygiene",
-      location: "Kano Communities",
-      beneficiaries: "2,500+ Community Residents",
-      timeline: "Pipeline · Target Q4 2026",
-      goal: 6000000,
-      raised: 1800000,
-      image: "https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=800&q=80",
-      description: "Construction of deep solar-powered industrial boreholes, overhead storage reservoirs, and community sanitation filtration points providing potable water to underserved settlements.",
-      milestones: [
-        "Hydrogeological geophysical surveying completed",
-        "Community Water Management Committee established",
-        "Procurement underway for solar pumps and filtration arrays"
-      ],
-      featured: false,
-      status: "Upcoming"
-    },
-    {
-      id: "proj-6",
-      title: "Inclusive Assistive Tech Centre of Excellence",
-      category: "Digital Inclusion",
-      location: "Kano Central Innovation Campus",
-      beneficiaries: "300+ Persons with Disabilities Annually",
-      timeline: "Pipeline · Target 2027",
-      goal: 15000000,
-      raised: 4500000,
-      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
-      description: "Establishing a permanent accessible computing and digital media academy equipped with braille display terminals, tactile graphics printers, and specialized software workstations.",
-      milestones: [
-        "Curriculum alignment with national assistive tech standards",
-        "Facility partnership secured with metropolitan vocational board",
-        "Initial hardware donation pledged by CSR partners"
-      ],
-      featured: false,
-      status: "Upcoming"
-    }
-  ],
-
-  posts: [
-    {
-      id: "post-1",
-      title: "Breaking Barriers: How 10 Young Girls with Disabilities Mastered Coding in Kano",
-      category: "Digital Inclusion",
-      author: "Malam Ibrahim Al-Hassan",
-      authorRole: "Director of Programs & Inclusive Tech",
-      date: "August 18, 2026",
-      readTime: "4 min read",
-      tags: ["InclusiveTech", "DisabilityAdvocacy", "YouthEmpowerment", "Kano"],
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
-      excerpt: "Inside the landmark Holiday Digital Skills Boot Camp funded directly by BHB in collaboration with The Ability First Tech Hub.",
-      content: `In a world increasingly shaped by digital technology, persons with disabilities in Northern Nigeria face disproportionate barriers in education and economic participation.
-
-To bridge this critical divide, BHB Family Support and Development Foundation partnered with The Ability First Tech Hub to deliver an intensive, high-impact Holiday Digital Skills Boot Camp for adolescent girls in Kano Metropolitan.
-
-Over several weeks of intensive hands-on instruction, 10 young participants—living with visual impairments, hearing difficulties, and physical mobility challenges—mastered computer architecture fundamentals, accessible screen-reader navigation (NVDA and JAWS), HTML/CSS coding logic, and assistive tools.
-
-"Before this boot camp, I believed computer coding was something closed off to someone who is blind," shared 15-year-old Halima, one of the cohort participants. "Today, I built my own digital profile and learned how software can be made accessible to everyone."
-
-Every graduate received a specialized assistive laptop and ongoing mentorship from our technical team. BHB Foundation is currently finalizing plans to expand this programme to 50 additional girls across neighboring Local Government Areas in early 2027.`,
-      likes: 42,
-      likedByUser: false,
-      featured: true,
-      status: "published"
-    },
-    {
-      id: "post-2",
-      title: "Closing the Maternal Health Gap: Expanding Mobile Primary Care in Nasarawa",
-      category: "Health & Maternal Care",
-      author: "Dr. Aisha Kwaku",
-      authorRole: "Lead Strategic Health Advisor",
-      date: "August 12, 2026",
-      readTime: "5 min read",
-      tags: ["MaternalHealth", "MobileClinics", "PrimaryCare", "Kano"],
-      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
-      excerpt: "How mobile healthcare vehicles and community midwives are preventing complications and delivering maternal care to hard-to-reach settlements.",
-      content: `Geographic isolation and transport costs frequently turn manageable pregnancy complications into critical emergencies for families living in rural communities.
-
-BHB Foundation's Mobile Primary & Maternal Health Intervention addresses this challenge directly by deploying certified midwives, mobile ultrasound diagnostics, and essential prenatal micronutrients straight into village squares.
-
-Over the past three months, our medical teams have completed over 1,450 free clinical consultations across six rural settlements in rural settlements, identifying high-risk pregnancies early and coordinating safe clinic deliveries.
-
-In addition to diagnostics, our teams conduct bi-weekly hygiene and nutrition workshops for young mothers and distribute delivery preparation kits containing sterile clinical essentials.`,
-      likes: 28,
-      likedByUser: false,
-      featured: false,
-      status: "published"
-    },
-    {
-      id: "post-3",
-      title: "Fatima’s Story: Turning a Small Seed Grant into a Sustainable Tailoring Enterprise",
-      category: "Community Stories",
-      author: "Zainab S. Umar",
-      authorRole: "Head of Youth & Gender Initiatives",
-      date: "August 05, 2026",
-      readTime: "3 min read",
-      tags: ["WomenEnterprise", "Livelihoods", "GrassrootsImpact"],
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80",
-      excerpt: "Fatima, a widowed mother of four in Kano State, transformed her family's future through business training and seed capital.",
-      content: `When Fatima lost her husband four years ago, she faced the daunting challenge of providing for four young children with only informal tailoring work on a rented sewing machine.
-
-Through BHB Foundation's Women & Vulnerable Groups Livelihoods programme, Fatima completed a 6-week business management, cooperative savings, and financial bookkeeping course before receiving a direct seed grant.
-
-With the capital, Fatima purchased a heavy-duty industrial sewing machine and bulk fabrics at wholesale prices. Within five months, her monthly revenue tripled, enabling her to comfortably pay school fees for all four children and take on two young neighborhood apprentices.
-
-"Dignity is when you can feed your children and plan for tomorrow without depending on handouts," Fatima says with pride.`,
-      likes: 35,
-      likedByUser: false,
-      featured: false,
-      status: "published"
-    },
-    {
-      id: "post-4",
-      title: "Community-Led Infrastructure: How One Settlement Restored Its Clean Water Source",
-      category: "Community Stories",
-      author: "Engr. Usman Farouk",
-      authorRole: "Head of Field Operations",
-      date: "July 30, 2026",
-      readTime: "4 min read",
-      tags: ["Resilience", "CleanWater", "CommunityOwnership"],
-      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
-      excerpt: "Rather than providing temporary external fixes, BHB helped establish a local Water Committee that manages borehole maintenance independently.",
-      content: `When a primary borehole pump broke down in a suburban settlement outside Kano, over 800 households faced severe shortages, forcing women and children to walk miles for water.
-
-Rejecting top-down charitable fixes that fail once funding ends, BHB Foundation facilitated an open town hall uniting neighborhood elders, youth leaders, and local mechanics.
-
-Together, residents formed a 7-member Water Management Committee, established a community maintenance fund with modest monthly contributions, and repaired the solar-powered pump. Today, the borehole operates continuously, managed entirely by the neighborhood.`,
-      likes: 19,
-      likedByUser: false,
-      featured: false,
-      status: "published"
-    },
-    {
-      id: "post-5",
-      title: "BHB Foundation Receives Official CAC Incorporation (Reg. No. 9670692)",
-      category: "Press Releases",
-      author: "BHB Communications",
-      authorRole: "Institutional Governance Office",
-      date: "July 24, 2026",
-      readTime: "2 min read",
-      tags: ["CorporateGovernance", "CAC", "InstitutionalMilestone"],
-      image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80",
-      excerpt: "Official registration with the Corporate Affairs Commission cements BHB's legal foundation and governance transparency.",
-      content: `The Trustees of BHB Family Support and Development Foundation are pleased to announce the formal incorporation and issuance of CAC Registration No. 9670692 under the Companies and Allied Matters Act.
-
-This milestone reinforces our dedication to transparent non-profit management, rigorous fiscal auditing, and alignment with Nigerian and international civil society development standards.
-
-All institutional programs and financial disbursements remain open to annual public reporting and independent audit.`,
-      likes: 54,
-      likedByUser: false,
-      featured: false,
-      status: "published"
-    }
-  ],
-
-  comments: [
-    {
-      id: "comm-1",
-      postId: "post-1",
-      postTitle: "Breaking Barriers: How 10 Young Girls with Disabilities Mastered Coding in Kano",
-      authorName: "Dr. Fatima Al-Mansoor",
-      authorEmail: "f.almansoor@education.org",
-      content: "This is a truly transformative initiative for Kano State. Digital literacy for adolescent girls with disabilities addresses one of the most overlooked sectors of inclusive development.",
-      date: "August 19, 2026",
-      status: "approved"
-    },
-    {
-      id: "comm-2",
-      postId: "post-1",
-      postTitle: "Breaking Barriers: How 10 Young Girls with Disabilities Mastered Coding in Kano",
-      authorName: "Kabiru Suleiman",
-      authorEmail: "kabiru.s@yahoo.com",
-      content: "Proud to see grassroots organizations in Kano partnering with Ability First. Looking forward to cohort 2 expansion across other communities.",
-      date: "August 20, 2026",
-      status: "approved"
-    },
-    {
-      id: "comm-3",
-      postId: "post-2",
-      postTitle: "Closing the Maternal Health Gap: Expanding Mobile Primary Care in Nasarawa",
-      authorName: "Nurse Maryam Bello",
-      authorEmail: "maryam.b@nasarawaclinic.ng",
-      content: "The mobile diagnostic clinics have dramatically reduced prenatal referral delays in rural settlements. Commendable work by the medical volunteers!",
-      date: "August 14, 2026",
-      status: "approved"
-    },
-    {
-      id: "comm-4",
-      postId: "post-3",
-      postTitle: "Fatima’s Story: Turning a Small Seed Grant into a Sustainable Tailoring Enterprise",
-      authorName: "Hauwa Mustapha",
-      authorEmail: "hauwa.mustapha@gmail.com",
-      content: "Stories like Fatima's show that real empowerment comes from giving people dignity and tools, not handouts. Well done BHB Foundation!",
-      date: "August 07, 2026",
-      status: "approved"
-    }
-  ],
-
-  team: [
-    {
-      id: "team-1",
-      name: "Dr. Bashir H. Bello",
-      position: "Founder & Chairman, Board of Trustees",
-      department: "Board of Trustees",
-      purview: "Strategic Governance & Institutional Oversight",
-      tier: "Trustees",
-      order: 1,
-      published: true,
-      bio: "Dr. Bashir established BHB Foundation to advance human dignity, social resilience, and structured opportunity across Northern Nigeria.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "team-2",
-      name: "Hajiya Fatima A. Yusuf",
-      position: "Executive Director",
-      department: "Executive Directorate",
-      purview: "Strategic Direction & Compliance",
-      tier: "Executive",
-      order: 2,
-      published: true,
-      bio: "Fatima leads the foundation's strategic direction, partner alignment, and programme execution across participating local governments in Kano.",
-      image: "assets/images/team-director.jpg"
-    },
-    {
-      id: "team-3",
-      name: "Malam Ibrahim Al-Hassan",
-      position: "Director of Programs & Inclusive Tech",
-      department: "Programs & Inclusion",
-      purview: "Assistive Tech & Youth Skills",
-      tier: "Directorate",
-      order: 3,
-      published: true,
-      bio: "Ibrahim oversees digital inclusion initiatives, screen-reader coding boot camps for girls with disabilities, and technical apprenticeships.",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "team-4",
-      name: "Dr. Aisha Kwaku",
-      position: "Lead Strategic Health Advisor",
-      department: "Health & Clinical Advisory",
-      purview: "Primary Care & Maternal Health",
-      tier: "Advisory",
-      order: 4,
-      published: true,
-      bio: "Dr. Aisha guides maternal health outreach strategy, mobile diagnostic clinics, and primary care partnerships across underserved rural communities.",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "team-5",
-      name: "Engr. Usman Farouk",
-      position: "Head of Field Operations",
-      department: "Field Logistics & Security",
-      purview: "Field Operations & Logistics",
-      tier: "Operations",
-      order: 5,
-      published: true,
-      bio: "Coordinates ground logistics, community liaison town halls, and resource delivery across all target communities in Kano State.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "team-6",
-      name: "Zainab S. Umar",
-      position: "Head of Youth & Gender Initiatives",
-      department: "Women & Youth Directorate",
-      purview: "Women Enterprise & Safeguarding",
-      tier: "Operations",
-      order: 6,
-      published: true,
-      bio: "Oversees women's enterprise incubation, girl-child mentorship networks, and safeguarding protocols across rural districts.",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
-    }
-  ],
-
-  partners: [
-    {
-      id: "part-1",
-      name: "Corporate Affairs Commission (CAC)",
-      logo: "data:image/svg+xml;utf8,<svg viewBox='0 0 180 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%23047857'/><path d='M26 12L34 17V27C34 32.5 26 37 26 37C26 37 18 32.5 18 27V17L26 12Z' fill='%2310B981' stroke='%23FFFFFF' stroke-width='1.8'/><circle cx='26' cy='22' r='3.5' fill='%23FFFFFF'/><text x='56' y='32' font-family='sans-serif' font-weight='900' font-size='24' fill='%23064E3B' letter-spacing='1'>CAC</text><text x='57' y='43' font-family='sans-serif' font-weight='800' font-size='8' fill='%23047857' letter-spacing='2.2'>NIGERIA</text></svg>"
-    },
-    {
-      id: "part-2",
-      name: "National Youth Council of Nigeria (NYCN)",
-      logo: "data:image/svg+xml;utf8,<svg viewBox='0 0 180 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%230F172A'/><rect x='12' y='11' width='8' height='28' rx='2' fill='%23008751'/><rect x='22' y='11' width='8' height='28' rx='2' fill='%23FFFFFF'/><rect x='32' y='11' width='8' height='28' rx='2' fill='%23008751'/><path d='M26 14L28.5 20H23.5L26 14Z' fill='%23F59E0B'/><text x='56' y='32' font-family='sans-serif' font-weight='900' font-size='23' fill='%230F172A' letter-spacing='1.2'>NYCN</text><text x='57' y='43' font-family='sans-serif' font-weight='800' font-size='8' fill='%23008751' letter-spacing='2'>KANO STATE</text></svg>"
-    },
-    {
-      id: "part-3",
-      name: "The Ability First Tech Hub",
-      logo: "data:image/svg+xml;utf8,<svg viewBox='0 0 190 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%231E3A8A'/><path d='M26 13L35 18.5V29.5L26 35L17 29.5V18.5L26 13Z' stroke='%2338BDF8' stroke-width='2.2' fill='none'/><circle cx='26' cy='24' r='4.5' fill='%2338BDF8'/><text x='56' y='27' font-family='sans-serif' font-weight='900' font-size='16' fill='%230F172A' letter-spacing='0.5'>ABILITY FIRST</text><text x='57' y='41' font-family='sans-serif' font-weight='800' font-size='11' fill='%232563EB' letter-spacing='2.5'>TECH HUB</text></svg>"
-    },
-    {
-      id: "part-4",
-      name: "Kano State Government",
-      logo: "data:image/svg+xml;utf8,<svg viewBox='0 0 190 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%2392400E'/><circle cx='26' cy='25' r='14' stroke='%23FBBF24' stroke-width='2' fill='none'/><path d='M21 28V20L26 16L31 20V28H21Z' fill='%23FDE68A'/><text x='56' y='27' font-family='sans-serif' font-weight='900' font-size='15' fill='%230F172A' letter-spacing='0.8'>KANO STATE</text><text x='57' y='41' font-family='sans-serif' font-weight='800' font-size='9' fill='%23B45309' letter-spacing='1.5'>GOVERNMENT</text></svg>"
-    },
-    {
-      id: "part-5",
-      name: "Sahel Community Health Initiative",
-      logo: "data:image/svg+xml;utf8,<svg viewBox='0 0 190 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%230F766E'/><path d='M23 15H29V22H36V28H29V35H23V28H16V22H23V15Z' fill='%23FFFFFF'/><text x='56' y='27' font-family='sans-serif' font-weight='900' font-size='16' fill='%230F172A' letter-spacing='0.5'>SAHEL HEALTH</text><text x='57' y='41' font-family='sans-serif' font-weight='800' font-size='10' fill='%230D9488' letter-spacing='1.8'>INITIATIVE</text></svg>"
-    },
-    {
-      id: "part-6",
-      name: "Aisha Kwaku & Associates Advisory",
-      logo: "data:image/svg+xml;utf8,<svg viewBox='0 0 180 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='10' fill='%23312E81'/><circle cx='26' cy='16' r='3' fill='%23A5B4FC'/><path d='M26 19V34M20 22L16 28H24L20 22ZM32 22L28 28H36L32 22Z' stroke='%23FFFFFF' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/><text x='56' y='32' font-family='sans-serif' font-weight='900' font-size='24' fill='%231E1B4B' letter-spacing='1.2'>AKA</text><text x='57' y='43' font-family='sans-serif' font-weight='800' font-size='8.5' fill='%234338CA' letter-spacing='2'>ADVISORY</text></svg>"
-    }
-  ],
-
-  donations: [
-    {
-      id: "DON-84920",
-      donorName: "Alhaji Aminu Dantata Philanthropy Fund",
-      email: "csr@dantata-group.ng",
-      amount: 2500000,
-      currency: "NGN",
-      method: "Bank Transfer (Zenith)",
-      project: "Maternal & Mobile Primary Clinics",
-      date: "2026-08-24 14:32",
-      status: "Verified"
-    },
-    {
-      id: "DON-84919",
-      donorName: "Engr. Kabir M. Bello",
-      email: "km.bello@consulting.com",
-      amount: 1000000,
-      currency: "NGN",
-      method: "Zenith Bank Direct",
-      project: "Assistive Coding & Hardware Grants",
-      date: "2026-08-22 09:15",
-      status: "Verified"
-    },
-    {
-      id: "DON-84918",
-      donorName: "Hajiya Maryam Sunusi",
-      email: "maryam.sunusi@gmail.com",
-      amount: 500000,
-      currency: "NGN",
-      method: "Online Transfer",
-      project: "Widow Agro-Processing Micro-Grants",
-      date: "2026-08-19 18:40",
-      status: "Verified"
-    },
-    {
-      id: "DON-84917",
-      donorName: "Dr. Farouk Al-Mansoor",
-      email: "f.mansoor@oxfordalumni.org",
-      amount: 1200,
-      currency: "USD",
-      method: "Direct Wire Transfer",
-      project: "General Foundation Operations",
-      date: "2026-08-15 11:20",
-      status: "Verified"
-    },
-    {
-      id: "DON-84916",
-      donorName: "Kano Diaspora Support Initiative",
-      email: "contact@kanodiaspora.org.uk",
-      amount: 3500000,
-      currency: "NGN",
-      method: "Zenith Bank Direct",
-      project: "Solar-Powered Clean Water Borehole",
-      date: "2026-08-10 16:05",
-      status: "Verified"
-    }
-  ],
-
-  volunteers: [
-    {
-      id: "VOL-101",
-      name: "Amina Lawal Bello",
-      email: "amina.lawal@unimail.edu.ng",
-      phone: "+234 803 245 9811",
-      rolePreference: "Healthcare & Mobile Medical Outreach",
-      lga: "Nasarawa LGA, Kano",
-      appliedDate: "2026-08-23",
-      status: "Pending"
-    },
-    {
-      id: "VOL-102",
-      name: "Usman Sadiq Garba",
-      email: "usman.sadiq@gmail.com",
-      phone: "+234 812 345 6789",
-      rolePreference: "Digital Skills & Screen-Reader Tutoring",
-      lga: "Kano Municipal",
-      appliedDate: "2026-08-21",
-      status: "Approved"
-    },
-    {
-      id: "VOL-103",
-      name: "Fatima Zahra Mahmoud",
-      email: "fz.mahmoud@kust.edu.ng",
-      phone: "+234 809 876 5432",
-      rolePreference: "Women Vocational & Cooperative Mentorship",
-      lga: "Dala LGA, Kano",
-      appliedDate: "2026-08-18",
-      status: "Approved"
-    },
-    {
-      id: "VOL-104",
-      name: "Ibrahim Dahiru",
-      email: "ibrahim.dahiru@techhub.ng",
-      phone: "+234 802 112 3344",
-      rolePreference: "Youth Apprenticeship & Vocational Training",
-      lga: "Gwale LGA, Kano",
-      appliedDate: "2026-08-15",
-      status: "Pending"
-    }
-  ],
-
-  inquiries: [
-    {
-      id: "inq-1",
-      name: "Bello Tukur",
-      email: "bello.tukur@statecsr.gov.ng",
-      orgType: "Government institution",
-      subject: "Partnership inquiry",
-      message: "We would like to explore state-level collaboration for maternal clinic deployment across rural communities.",
-      date: "2026-08-22 10:15",
-      status: "Unread"
-    },
-    {
-      id: "inq-2",
-      name: "Clara O'Connor",
-      email: "clara@globalphilanthropy.org",
-      orgType: "Philanthropic foundation",
-      subject: "Grant co-funding",
-      message: "Our international foundation is interested in scaling the Disability Coding Boot Camp across Northern Nigeria.",
-      date: "2026-08-21 15:40",
-      status: "Unread"
-    },
-    {
-      id: "inq-3",
-      name: "Malam Sanusi Dangote",
-      email: "sanusi@kcci.org.ng",
-      orgType: "Corporate CSR programme",
-      subject: "CSR Solar Borehole sponsorship",
-      message: "We have budgeted CSR funds for clean water infrastructure in rural communities.",
-      date: "2026-08-19 11:20",
-      status: "Replied"
-    }
-  ]
+  focusAreas: [],
+  projects: [],
+  posts: [],
+  comments: [],
+  team: [],
+  partners: [],
+  donations: [],
+  volunteers: [],
+  inquiries: []
 };
 
 const DEFAULT_STORE_DATA = (typeof window !== 'undefined' && window.BHB_SEED_DATA && window.BHB_SEED_DATA.settings) ? window.BHB_SEED_DATA : RAW_DEFAULT_STORE_DATA;
 
-// High-Capacity IndexedDB Engine for Fail-Safe Persistent Storage (No 5MB Quota Limits)
+// High-Capacity IndexedDB Engine for Fail-Safe Persistent Storage
 const BHB_IDB_NAME = 'BHBFoundationDB';
 const BHB_IDB_STORE = 'keyval';
 const BHB_IDB_DOC_KEY = 'bhb_master_state';
@@ -695,20 +129,16 @@ class StoreEngine {
     this.subscribers = [];
     this.data = this.load();
 
-    // Asynchronously connect to IndexedDB and ensure latest master state
     if (typeof window !== 'undefined') {
       readFromIDB().then((idbData) => {
         if (idbData && typeof idbData === 'object' && idbData.settings) {
-          // If IndexedDB has items (especially images that might have been too large for localStorage)
           this.data = idbData;
           this.notifySubscribersOnly();
         } else {
-          // Seed IndexedDB
           writeToIDB(this.data);
         }
       });
 
-      // Listen to storage events from other tabs/windows for live real-time sync
       window.addEventListener('storage', (e) => {
         if (e.key === BHB_STORAGE_KEY && e.newValue) {
           try {
@@ -725,7 +155,6 @@ class StoreEngine {
       const stored = localStorage.getItem(BHB_STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        // If a new seed data was deployed to GitHub with a newer timestamp, sync it in
         if (typeof window !== 'undefined' && window.BHB_SEED_DATA && window.BHB_SEED_DATA.lastUpdated && (!parsed.lastUpdated || window.BHB_SEED_DATA.lastUpdated > parsed.lastUpdated)) {
           this.persist(window.BHB_SEED_DATA);
           return JSON.parse(JSON.stringify(window.BHB_SEED_DATA));
@@ -733,22 +162,10 @@ class StoreEngine {
         if (!parsed.settings) parsed.settings = DEFAULT_STORE_DATA.settings;
         parsed.settings.mission = DEFAULT_STORE_DATA.settings.mission;
         parsed.settings.officeAddress = DEFAULT_STORE_DATA.settings.officeAddress;
-        if (!parsed.settings.aboutImage) parsed.settings.aboutImage = DEFAULT_STORE_DATA.settings.aboutImage;
-        if (!parsed.team || !parsed.team.length) {
-          parsed.team = DEFAULT_STORE_DATA.team;
-        } else {
-          parsed.team.forEach((t, i) => {
-            if (t.published === undefined) t.published = true;
-            if (t.order === undefined) t.order = i + 1;
-          });
-        }
+        if (!parsed.team || !parsed.team.length) parsed.team = DEFAULT_STORE_DATA.team;
         if (!parsed.heroSlides || !parsed.heroSlides.length) parsed.heroSlides = DEFAULT_STORE_DATA.heroSlides;
-        if (!parsed.focusAreas || !parsed.focusAreas.length || parsed.focusAreas.length !== 6 || !parsed.focusAreas.find(f => f.title.includes('Menstrual Hygiene'))) {
-          parsed.focusAreas = DEFAULT_STORE_DATA.focusAreas;
-        }
+        if (!parsed.focusAreas || !parsed.focusAreas.length) parsed.focusAreas = DEFAULT_STORE_DATA.focusAreas;
         if (!parsed.projects || !parsed.projects.length) parsed.projects = DEFAULT_STORE_DATA.projects;
-        if (!parsed.partners || !parsed.partners.length || !parsed.partners[0].logo) parsed.partners = DEFAULT_STORE_DATA.partners;
-        if (!parsed.comments) parsed.comments = DEFAULT_STORE_DATA.comments;
         if (!parsed.posts || !parsed.posts.length) parsed.posts = DEFAULT_STORE_DATA.posts;
         if (!parsed.donations || !parsed.donations.length) parsed.donations = DEFAULT_STORE_DATA.donations;
         if (!parsed.volunteers || !parsed.volunteers.length) parsed.volunteers = DEFAULT_STORE_DATA.volunteers;
@@ -763,23 +180,14 @@ class StoreEngine {
   }
 
   persist(dataToSave) {
-    // 1. Immediately write to IndexedDB (virtually unlimited capacity, never throws quota errors)
     if (typeof window !== 'undefined') {
       writeToIDB(dataToSave);
     }
 
-    // 2. Synchronously write to LocalStorage for instant zero-latency load
     try {
       localStorage.setItem(BHB_STORAGE_KEY, JSON.stringify(dataToSave));
     } catch (e) {
-      console.warn("LocalStorage save quota exceeded. IndexedDB is safely retaining full state.", e);
-      try {
-        // Prune older items for localStorage only, leaving IndexedDB intact
-        const clone = JSON.parse(JSON.stringify(dataToSave));
-        if (clone.inquiries && clone.inquiries.length > 10) clone.inquiries = clone.inquiries.slice(0, 10);
-        if (clone.donations && clone.donations.length > 20) clone.donations = clone.donations.slice(0, 20);
-        localStorage.setItem(BHB_STORAGE_KEY, JSON.stringify(clone));
-      } catch (e2) {}
+      console.warn("LocalStorage quota fallback", e);
     }
   }
 
@@ -809,7 +217,7 @@ class StoreEngine {
   }
 
   // Getters
-  getSettings() { return this.data.settings; }
+  getSettings() { return this.data.settings || DEFAULT_STORE_DATA.settings; }
   getHeroSlides() { return this.data.heroSlides || []; }
   getFocusAreas() { return this.data.focusAreas || []; }
   getProjects() { return this.data.projects || []; }
@@ -823,24 +231,9 @@ class StoreEngine {
     return list.slice().sort((a, b) => (Number(a.order) || 99) - (Number(b.order) || 99));
   }
   getPartners() { return this.data.partners || []; }
-  getDonations() {
-    if (!this.data.donations || !this.data.donations.length) {
-      this.data.donations = DEFAULT_STORE_DATA.donations || [];
-    }
-    return this.data.donations;
-  }
-  getVolunteers() {
-    if (!this.data.volunteers || !this.data.volunteers.length) {
-      this.data.volunteers = DEFAULT_STORE_DATA.volunteers || [];
-    }
-    return this.data.volunteers;
-  }
-  getInquiries() {
-    if (!this.data.inquiries || !this.data.inquiries.length) {
-      this.data.inquiries = DEFAULT_STORE_DATA.inquiries || [];
-    }
-    return this.data.inquiries;
-  }
+  getDonations() { return this.data.donations || []; }
+  getVolunteers() { return this.data.volunteers || []; }
+  getInquiries() { return this.data.inquiries || []; }
   getAllComments() { return this.data.comments || []; }
   getCommentsByPost(postId) {
     return (this.data.comments || []).filter(c => c.postId === postId && c.status === 'approved');
@@ -1008,24 +401,6 @@ class StoreEngine {
     this.notify();
   }
 
-  savePartner(partner) {
-    if (!this.data.partners) this.data.partners = [];
-    if (!partner.id) {
-      partner.id = `part-${Date.now()}`;
-      this.data.partners.push(partner);
-    } else {
-      const idx = this.data.partners.findIndex(p => p.id === partner.id);
-      if (idx !== -1) this.data.partners[idx] = { ...this.data.partners[idx], ...partner };
-      else this.data.partners.push(partner);
-    }
-    this.notify();
-  }
-
-  deletePartner(id) {
-    this.data.partners = (this.data.partners || []).filter(p => p.id !== id);
-    this.notify();
-  }
-
   addDonation(donation) {
     if (!this.data.donations) this.data.donations = [];
     const newDonation = {
@@ -1081,7 +456,6 @@ class StoreEngine {
     }
   }
 
-  // Full Database JSON Backup & Restore
   exportJSON() {
     return JSON.stringify(this.data, null, 2);
   }
@@ -1109,233 +483,127 @@ class StoreEngine {
 // Global Singleton Instance
 window.BHBStore = new StoreEngine();
 
-// Synchronous Instant Card Generators (Eliminates Flash of Demo Images on Refresh)
-window.renderChairmanSpotlightHTML = function() {
+// =========================================================================
+// SYNCHRONOUS EDITORIAL HTML RENDERERS (IMAGE-FREE & CARD-REDUCED)
+// =========================================================================
+
+// 1. Editorial Hero Banner
+window.renderHeroSliderHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
-  const team = BHBStore.getTeam(true);
-  const chairman = team.find(t => t.tier === 'Trustees' || t.id === 'team-1') || team[0];
-  if (!chairman) return '';
+  const slides = BHBStore.getHeroSlides();
+  if (!slides || !slides.length) return '';
+  const s = slides[0];
 
   return `
-    <div class="executive-spotlight-photo-frame">
-      <img src="${chairman.image}" alt="${chairman.name}" class="executive-spotlight-photo">
-      <div class="executive-badge-ribbon">Board of Trustees · Institutional Founder</div>
-    </div>
-    <div class="executive-spotlight-details">
-      <div>
-        <span class="executive-tier-tag">Executive Leadership</span>
-        <h3 class="executive-name">${chairman.name}</h3>
-        <div class="executive-title">${chairman.position}</div>
-        <div class="executive-quote">
-          “Our mandate is to build self-sustaining community structures where every family, woman, and youth is treated with unconditional dignity and given the practical tools to thrive.”
-        </div>
-        <p class="executive-bio-text">${chairman.bio}</p>
-      </div>
-      <div class="executive-purview-tags">
-        <span class="purview-tag">Strategic Governance</span>
-        <span class="purview-tag">Health Equity</span>
-        <span class="purview-tag">Grassroots Mobilisation</span>
-        <span class="purview-tag">Northern Nigeria Focus</span>
+    <div class="hero-editorial-content">
+      <span class="section-tag light">${s.label || 'BHB Foundation'}</span>
+      <h1>${s.title}</h1>
+      <p class="lead">${s.lead}</p>
+      <div class="hero-cta-group">
+        <a href="${s.primaryCtaLink || 'contact.html'}" class="btn btn-primary">${s.primaryCtaText || 'Partner With Us →'}</a>
+        <a href="${s.secondaryCtaLink || 'what-we-do.html'}" class="btn btn-outline-white">${s.secondaryCtaText || 'Explore Our Work'}</a>
       </div>
     </div>
   `;
 };
 
-window.renderTeamCardsHTML = function(isHome = false) {
-  if (typeof BHBStore === 'undefined') return '';
-  const team = BHBStore.getTeam(true);
-  const chairman = team.find(t => t.tier === 'Trustees' || t.id === 'team-1') || team[0];
-  const others = team.filter(t => !chairman || t.id !== chairman.id);
-  const displayList = isHome ? others.slice(0, 3) : others;
-
-  return displayList.map(m => `
-    <div class="team-card-cinematic interactive-lift reveal-up in">
-      <div class="team-card-photo-wrapper">
-        <img src="${m.image}" alt="${m.name}" loading="eager" class="team-card-portrait">
-        <div class="team-card-photo-vignette"></div>
-        
-        <!-- Default Base Info (Name & Role) -->
-        <div class="team-card-default-info">
-          <h4 class="team-card-name">${m.name}</h4>
-          <div class="team-card-role">${m.position}</div>
-          <div class="team-hover-hint">Hover for bio <span>→</span></div>
-        </div>
-
-        <!-- Cinematic Slide-Up Hover Overlay (Reveals "About You") -->
-        <div class="team-card-hover-overlay">
-          <div>
-            <h4 class="team-hover-name">${m.name}</h4>
-            <div class="team-hover-role">${m.position}</div>
-          </div>
-
-          <div class="team-hover-about">
-            <div class="team-hover-about-label">Biography &amp; Leadership Profile</div>
-            <p class="team-hover-bio">${m.bio}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  `).join('');
-};
-
-window.renderHeroSliderHTML = function() {
-  if (typeof BHBStore === 'undefined') return '';
-  const slides = BHBStore.getHeroSlides();
-  if (!slides || !slides.length) return '';
-
-  return slides.map((s, idx) => `
-    <div class="hero-slide ${idx === 0 ? 'active' : ''}">
-      <div class="hero-slide-item">
-        <img src="${s.image}" alt="${s.title}" class="hero-slide-bg" loading="${idx === 0 ? 'eager' : 'lazy'}">
-        <div class="hero-slide-overlay"></div>
-        <div class="container">
-          <div class="hero-slide-content">
-            <h1>${s.title}</h1>
-            <p class="lead">${s.lead}</p>
-            <div class="hero-cta-group">
-              <a href="${s.primaryCtaLink || 'contact.html'}" class="btn btn-primary">${s.primaryCtaText || 'Partner With Us →'}</a>
-              <a href="${s.secondaryCtaLink || 'what-we-do.html'}" class="btn btn-outline-white">${s.secondaryCtaText || 'Explore Our Programs'}</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `).join('');
-};
-
+// 2. The 6 Pillars Landscape / Editorial List
 window.renderFocusAreasHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
   const areas = BHBStore.getFocusAreas();
   if (!areas || !areas.length) return '';
 
   return areas.map((a, idx) => `
-    <div class="focus-area-item interactive-lift reveal-up in" onclick="location.href='projects.html'">
-      <div class="focus-area-thumb-wrapper">
-        <img src="${a.image}" alt="${a.title}" class="focus-area-thumb" loading="lazy">
-        <div class="focus-area-badge">Pillar 0${idx + 1}</div>
+    <div class="pillar-landscape-row">
+      <div class="pillar-num">0${idx + 1}</div>
+      <div class="pillar-title-col">
+        <h3>${a.title}</h3>
       </div>
-      <div class="focus-area-body">
-        <div class="focus-area-content-wrap">
-          <h3>${a.title}</h3>
-          <p>${a.summary}</p>
-        </div>
-        <div class="focus-area-footer">
-          <span class="arrow">Explore Projects →</span>
-        </div>
+      <div class="pillar-desc-col">
+        <p>${a.summary}</p>
+      </div>
+      <div class="pillar-action-col">
+        <a href="projects.html">Explore Projects →</a>
       </div>
     </div>
   `).join('');
 };
 
-window.renderFeaturedProjectHTML = function() {
-  if (typeof BHBStore === 'undefined') return '';
-  const projects = BHBStore.getProjects();
-  if (!projects || !projects.length) return '';
-  const featured = projects.find(p => p.featured) || projects[0];
-
-  return `
-    <div class="project-featured-card interactive-lift reveal-up in">
-      <img src="${featured.image}" alt="${featured.title}" class="project-featured-image" loading="lazy">
-      <div class="project-featured-body">
-        <div>
-          <span class="project-category-tag">Featured Initiative · ${featured.category}</span>
-          <h3>${featured.title}</h3>
-          <p style="color: var(--text-body); margin-bottom: 20px; font-size: 1.05rem;">${featured.description}</p>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;"><b>Location:</b> ${featured.location} &nbsp;|&nbsp; <b>Impact:</b> ${featured.beneficiaries}</p>
-        </div>
-        <div>
-          <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('${featured.id}')">View Project Details →</button>
-        </div>
-      </div>
-    </div>
-  `;
-};
-
-window.renderSecondaryProjectsHTML = function() {
-  if (typeof BHBStore === 'undefined') return '';
-  const projects = BHBStore.getProjects();
-  if (!projects || !projects.length) return '';
-  const featured = projects.find(p => p.featured) || projects[0];
-  const secondaries = projects.filter(p => !featured || p.id !== featured.id).slice(0, 3);
-
-  return secondaries.map(p => `
-    <div class="project-item interactive-lift reveal-up in">
-      <img src="${p.image}" alt="${p.title}" class="project-item-thumb" loading="lazy">
-      <div class="project-item-content">
-        <div>
-          <span class="project-category-tag">${p.category}</span>
-          <h4>${p.title}</h4>
-          <p>${(p.description || '').substring(0, 115)}...</p>
-        </div>
-        <div>
-          <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('${p.id}')" style="width: 100%;">View Project →</button>
-        </div>
-      </div>
-    </div>
-  `).join('');
-};
-
-window.renderPartnersHTML = function() {
-  if (typeof BHBStore === 'undefined') return '';
-  const partners = BHBStore.getPartners();
-  if (!partners || !partners.length) return '';
-
-  const badges = partners.map(p => `
-    <div class="partner-logo-badge" title="${p.name || 'Partner Organisation'}">
-      <img src="${p.logo}" alt="${p.name || 'Partner Logo'}" class="partner-logo-img" loading="lazy">
-    </div>
-  `).join('');
-
-  // Duplicate for seamless infinite sliding marquee animation
-  return badges + badges;
-};
-
+// 3. Projects Landscape Rows (Clean Horizontal Layout)
 window.renderHomepageProjectsHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
   const projects = BHBStore.getProjects().slice(0, 3);
-  if (!projects || !projects.length) return '<div style="grid-column: 1/-1; text-align: center; padding: 30px; color: var(--text-muted);">No active programs currently published.</div>';
+  if (!projects || !projects.length) return '<div style="padding: 30px 0; color: var(--text-muted);">No active programs currently published.</div>';
 
   return projects.map(p => `
-    <div class="portfolio-card interactive-lift reveal-up in" style="border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #E2E8F0; display: flex; flex-direction: column; cursor: pointer;" onclick="openProjectDetailsModal('${p.id}')">
-      <div class="portfolio-card-thumb-wrap" style="position: relative;">
-        <img src="${p.image}" alt="${p.title}" style="width: 100%; height: 220px; object-fit: cover; display: block;">
-        <div style="position: absolute; top: 12px; left: 12px; background: rgba(15,30,54,0.85); color: #FFF; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase; font-weight: 700;">${p.category}</div>
+    <div class="project-landscape-row">
+      <div class="project-main-info">
+        <div class="project-meta-badges">
+          <span class="badge-tag">${p.category}</span>
+          <span class="badge-status-pill ${p.status ? p.status.toLowerCase() : 'ongoing'}">${p.status || 'Active'}</span>
+        </div>
+        <h3 class="project-landscape-title">${p.title}</h3>
+        <p class="project-landscape-summary">${p.description}</p>
       </div>
-      <div class="portfolio-card-body" style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1;">
-        <div style="flex-grow: 1;">
-          <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; line-height: 1.35;">${p.title}</h3>
-          <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.55; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${p.description}</p>
-        </div>
-        <div class="portfolio-meta-list" style="font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 12px; margin-top: 12px;">
-          <div class="portfolio-meta-item" style="margin-bottom: 4px;">
-            <span style="color: var(--text-muted);">Timeline:</span>
-            <b style="color: var(--navy);">${p.timeline || 'Active'}</b>
-          </div>
-          <div class="portfolio-meta-item">
-            <span style="color: var(--text-muted);">Status:</span>
-            <b style="color: var(--blue);">${p.status || 'Ongoing'}</b>
-          </div>
-        </div>
+
+      <div class="project-details-grid">
+        <div class="project-detail-item"><span>Location:</span> ${p.location}</div>
+        <div class="project-detail-item"><span>Reach:</span> ${p.beneficiaries}</div>
+        <div class="project-detail-item"><span>Timeline:</span> ${p.timeline || 'Active'}</div>
+      </div>
+
+      <div class="project-action-btn-col">
+        <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('${p.id}')">View Project →</button>
       </div>
     </div>
   `).join('');
 };
 
+window.renderProjectsLandscapeHTML = function(filteredProjects) {
+  const projects = filteredProjects || (typeof BHBStore !== 'undefined' ? BHBStore.getProjects() : []);
+  if (!projects || !projects.length) return '<div style="padding: 40px 0; color: var(--text-muted); text-align: center;">No initiatives match the selected filter.</div>';
+
+  return projects.map(p => `
+    <div class="project-landscape-row">
+      <div class="project-main-info">
+        <div class="project-meta-badges">
+          <span class="badge-tag">${p.category}</span>
+          <span class="badge-status-pill ${p.status ? p.status.toLowerCase() : 'ongoing'}">${p.status || 'Active'}</span>
+        </div>
+        <h3 class="project-landscape-title">${p.title}</h3>
+        <p class="project-landscape-summary">${p.description}</p>
+      </div>
+
+      <div class="project-details-grid">
+        <div class="project-detail-item"><span>Location:</span> ${p.location}</div>
+        <div class="project-detail-item"><span>Reach:</span> ${p.beneficiaries}</div>
+        <div class="project-detail-item"><span>Timeline:</span> ${p.timeline || 'Active'}</div>
+      </div>
+
+      <div class="project-action-btn-col">
+        <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('${p.id}')">View Project →</button>
+      </div>
+    </div>
+  `).join('');
+};
+
+// 4. Blog 3-Column Cards (Equal Height, Clean Typography)
 window.renderHomeBlogGridHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
   const posts = BHBStore.getPosts().slice(0, 3);
-  if (!posts || !posts.length) return '<div style="grid-column: 1/-1; text-align: center; padding: 30px; color: var(--text-muted);">No stories currently published.</div>';
+  if (!posts || !posts.length) return '<div style="grid-column: 1/-1; padding: 30px 0; color: var(--text-muted);">No dispatches published yet.</div>';
 
   return posts.map(p => `
-    <div class="blog-card news-card interactive-lift reveal-up in" onclick="openBlogPostReader('${p.id}')">
-      <div class="blog-card-thumb-wrap">
-        <img src="${p.image}" alt="${p.title}" class="blog-card-thumb" loading="lazy">
-        <div class="blog-card-tag">#${(p.category || 'update').toLowerCase().replace(/[^a-z0-9]/g, '')}</div>
+    <div class="blog-card" onclick="openBlogPostReader('${p.id}')">
+      <div class="blog-card-header-bar">
+        <span class="blog-card-tag">#${(p.category || 'update').toLowerCase().replace(/[^a-z0-9]/g, '')}</span>
+        <span class="blog-card-date">${p.date || 'Recent'}</span>
       </div>
       <div class="blog-card-body">
-        <div class="blog-card-date">${p.date || 'Recent Update'}</div>
-        <h3 class="blog-card-title">${p.title}</h3>
-        <p class="blog-card-excerpt">${p.excerpt || (p.content || '').substring(0, 95) + '...'}</p>
+        <div>
+          <h3 class="blog-card-title">${p.title}</h3>
+          <p class="blog-card-excerpt">${p.excerpt || (p.content || '').substring(0, 110) + '...'}</p>
+        </div>
         <div class="blog-card-footer">
           <span class="blog-card-link">Read full post →</span>
         </div>
@@ -1344,8 +612,50 @@ window.renderHomeBlogGridHTML = function() {
   `).join('');
 };
 
+// 5. Governance & Leadership Open Editorial Profile
+window.renderChairmanSpotlightHTML = function() {
+  if (typeof BHBStore === 'undefined') return '';
+  const team = BHBStore.getTeam(true);
+  const chairman = team.find(t => t.tier === 'Trustees' || t.id === 'team-1') || team[0];
+  if (!chairman) return '';
 
+  const initials = chairman.name ? chairman.name.split(' ').map(n => n[0]).join('').substring(0, 2) : 'BH';
 
+  return `
+    <div class="leadership-open-profile">
+      <div>
+        <div class="leader-avatar-monogram">${initials}</div>
+      </div>
+      <div class="leader-details">
+        <span class="section-tag">Board of Trustees</span>
+        <h3>${chairman.name}</h3>
+        <div class="leader-role">${chairman.position}</div>
+        <p class="leader-bio">${chairman.bio}</p>
+      </div>
+    </div>
+  `;
+};
 
+window.renderTeamCardsHTML = function() {
+  if (typeof BHBStore === 'undefined') return '';
+  const team = BHBStore.getTeam(true);
+  const chairman = team.find(t => t.tier === 'Trustees' || t.id === 'team-1') || team[0];
+  const others = team.filter(t => !chairman || t.id !== chairman.id);
 
-
+  return others.map(m => {
+    const initials = m.name ? m.name.split(' ').map(n => n[0]).join('').substring(0, 2) : 'BH';
+    return `
+      <div class="leadership-open-profile">
+        <div>
+          <div class="leader-avatar-monogram" style="width: 100px; height: 100px; font-size: 1.8rem;">${initials}</div>
+        </div>
+        <div class="leader-details">
+          <span class="section-tag">${m.department || 'Executive Directorate'}</span>
+          <h3>${m.name}</h3>
+          <div class="leader-role">${m.position}</div>
+          <p class="leader-bio">${m.bio}</p>
+        </div>
+      </div>
+    `;
+  }).join('');
+};
