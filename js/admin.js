@@ -1740,5 +1740,89 @@ window.syncAdminChangesToGitHub = async function() {
   }
 };
 
+// =========================================================================
+// GLOBAL MODAL & TOAST CONTROLLERS FOR SUPER ADMIN
+// =========================================================================
+window.openModal = function(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeModal = function(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+};
+
+window.showToast = function(message, type = 'info') {
+  let container = document.getElementById('adminToastContainer');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'adminToastContainer';
+    container.style.cssText = 'position: fixed; bottom: 24px; right: 24px; z-index: 99999; display: flex; flex-direction: column; gap: 10px; max-width: 400px;';
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement('div');
+  const bgColors = {
+    success: '#15803D',
+    warning: '#B45309',
+    info: '#1C4DA0',
+    danger: '#DC2626'
+  };
+
+  toast.style.cssText = `
+    background: ${bgColors[type] || bgColors.info};
+    color: #FFFFFF;
+    padding: 12px 18px;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.4;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    transform: translateY(12px);
+  `;
+  toast.textContent = message;
+
+  container.appendChild(toast);
+
+  // Trigger animation
+  requestAnimationFrame(() => {
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+  });
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(12px)';
+    setTimeout(() => toast.remove(), 300);
+  }, 4000);
+};
+
+// Global click listener to close modals when clicking backdrop
+document.addEventListener('click', (e) => {
+  if (e.target.classList && e.target.classList.contains('modal-backdrop')) {
+    e.target.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+
+// ESC key to close any active modal
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-backdrop.active').forEach(m => {
+      m.classList.remove('active');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
 
 

@@ -513,24 +513,28 @@ window.renderFocusAreasHTML = function() {
   const areas = BHBStore.getFocusAreas();
   if (!areas || !areas.length) return '';
 
-  const bgClasses = ['pillar-row-white', 'pillar-row-soft', 'pillar-row-white', 'pillar-row-tint', 'pillar-row-white', 'pillar-row-soft'];
+  return areas.map((a, idx) => {
+    const isBrand = (idx % 2 === 1);
+    const rowClass = isBrand ? 'pillar-row-brand' : 'pillar-row-light';
+    const btnClass = isBrand ? 'btn-pillar-white' : 'btn-pillar-brand';
 
-  return areas.map((a, idx) => `
-    <div class="pillar-landscape-row ${bgClasses[idx % bgClasses.length]} interactive-lift">
-      <div class="pillar-row-header">
-        <div class="pillar-num">0${idx + 1}</div>
-        <div class="pillar-title-col">
-          <h3>${a.title}</h3>
+    return `
+      <div class="pillar-landscape-row ${rowClass} interactive-lift">
+        <div class="pillar-row-header">
+          <div class="pillar-num">0${idx + 1}</div>
+          <div class="pillar-title-col">
+            <h3>${a.title}</h3>
+          </div>
+          <div class="pillar-desc-col">
+            <p>${a.summary}</p>
+          </div>
         </div>
-        <div class="pillar-desc-col">
-          <p>${a.summary}</p>
+        <div class="pillar-bottom-bar">
+          <a href="projects.html" class="${btnClass}">Explore Initiatives →</a>
         </div>
       </div>
-      <div class="pillar-bottom-bar">
-        <a href="projects.html" class="arrow-hover">Explore Projects →</a>
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 };
 
 // 2b. Sustainable Development Goals (SDGs) Interactive Section Renderer
@@ -581,14 +585,23 @@ window.renderHomepageProjectsHTML = function() {
         </div>
 
         <div class="project-details-grid">
-          <div class="project-detail-item"><strong>Location:</strong> ${p.location}</div>
-          <div class="project-detail-item"><strong>Reach:</strong> ${p.beneficiaries}</div>
-          <div class="project-detail-item"><strong>Timeline:</strong> ${p.timeline || 'Active'}</div>
+          <div class="project-detail-pill">
+            <span class="meta-label">LOCATION</span>
+            <span class="meta-value">${p.location}</span>
+          </div>
+          <div class="project-detail-pill">
+            <span class="meta-label">REACH</span>
+            <span class="meta-value">${p.beneficiaries}</span>
+          </div>
+          <div class="project-detail-pill">
+            <span class="meta-label">TIMELINE</span>
+            <span class="meta-value">${p.timeline || 'Active'}</span>
+          </div>
         </div>
       </div>
 
       <div class="project-row-bottom-bar">
-        <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('${p.id}')">View Project Details →</button>
+        <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('${p.id}')">View Project Details →</button>
       </div>
     </div>
   `).join('');
@@ -611,9 +624,18 @@ window.renderProjectsLandscapeHTML = function(filteredProjects) {
         </div>
 
         <div class="project-details-grid">
-          <div class="project-detail-item"><strong>Location:</strong> ${p.location}</div>
-          <div class="project-detail-item"><strong>Reach:</strong> ${p.beneficiaries}</div>
-          <div class="project-detail-item"><strong>Timeline:</strong> ${p.timeline || 'Active'}</div>
+          <div class="project-detail-pill">
+            <span class="meta-label">LOCATION</span>
+            <span class="meta-value">${p.location}</span>
+          </div>
+          <div class="project-detail-pill">
+            <span class="meta-label">REACH</span>
+            <span class="meta-value">${p.beneficiaries}</span>
+          </div>
+          <div class="project-detail-pill">
+            <span class="meta-label">TIMELINE</span>
+            <span class="meta-value">${p.timeline || 'Active'}</span>
+          </div>
         </div>
       </div>
 
