@@ -308,13 +308,14 @@ window.openNewPostModal = function() {
 
       <div class="form-group">
         <label>Cover Image (Optional)</label>
-        <div class="admin-dropzone">
-          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'postImageHidden', 'postImgPreviewBox', 'postImgPreview')">
-          <p style="font-size: 0.8rem; color: #64748B; margin: 4px 0 0;">Upload a clear photograph for the article header.</p>
-          <div id="postImgPreviewBox" style="display: none; margin-top: 10px;">
-            <img id="postImgPreview" src="" style="max-height: 120px; border-radius: 4px; border: 1px solid #CBD5E1;">
-            <div style="margin-top: 6px;">
-              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('postImageHidden', 'postImgPreviewBox', 'postImgPreview')">Remove Image</button>
+        <div class="admin-dropzone" style="border: 1.5px dashed #CBD5E1; background: #F8FAFC; padding: 18px; border-radius: 8px; text-align: center;">
+          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'postImageHidden', 'postImgPreviewBox', 'postImgPreview', '16:9')">
+          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload a clear photograph for the article header (16:9 banner or editorial).</p>
+          <div id="postImgPreviewBox" style="display: none; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
+            <img id="postImgPreview" src="" style="max-height: 140px; width: auto; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
+            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('postImgPreview', 'postImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Crop / Re-frame</button>
+              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('postImageHidden', 'postImgPreviewBox', 'postImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Remove Image</button>
             </div>
           </div>
         </div>
@@ -389,13 +390,14 @@ window.openEditPostModal = function(id) {
 
       <div class="form-group">
         <label>Cover Image</label>
-        <div class="admin-dropzone">
-          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'postImageHidden', 'postImgPreviewBox', 'postImgPreview')">
-          <p style="font-size: 0.8rem; color: #64748B; margin: 4px 0 0;">Upload or replace the cover photo.</p>
-          <div id="postImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 10px;">
-            <img id="postImgPreview" src="${post.image || ''}" style="max-height: 120px; border-radius: 4px; border: 1px solid #CBD5E1;">
-            <div style="margin-top: 6px;">
-              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('postImageHidden', 'postImgPreviewBox', 'postImgPreview')">Remove Image</button>
+        <div class="admin-dropzone" style="border: 1.5px dashed #CBD5E1; background: #F8FAFC; padding: 18px; border-radius: 8px; text-align: center;">
+          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'postImageHidden', 'postImgPreviewBox', 'postImgPreview', '16:9')">
+          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload or replace the cover photo (16:9 banner or editorial).</p>
+          <div id="postImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
+            <img id="postImgPreview" src="${post.image || ''}" style="max-height: 140px; width: auto; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
+            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('postImgPreview', 'postImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Crop / Re-frame</button>
+              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('postImageHidden', 'postImgPreviewBox', 'postImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Remove Image</button>
             </div>
           </div>
         </div>
@@ -541,13 +543,14 @@ window.openNewTeamModal = function() {
 
       <div class="form-group">
         <label>Portrait Photo (Optional - Clean Monogram used if empty)</label>
-        <div class="admin-dropzone">
-          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview')">
-          <p style="font-size: 0.8rem; color: #64748B; margin: 4px 0 0;">Upload a clear portrait photograph.</p>
-          <div id="teamImgPreviewBox" style="display: none; margin-top: 10px;">
-            <img id="teamImgPreview" src="" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1;">
-            <div style="margin-top: 6px;">
-              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview')">Clear Photo (Use Monogram)</button>
+        <div class="admin-dropzone" style="border: 1.5px dashed #CBD5E1; background: #F8FAFC; padding: 18px; border-radius: 8px; text-align: center;">
+          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview', '3:4')">
+          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload a clear portrait photograph (3:4 or 1:1 headshot ratio).</p>
+          <div id="teamImgPreviewBox" style="display: none; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
+            <img id="teamImgPreview" src="" style="width: 100px; height: 120px; object-fit: cover; border-radius: 6px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
+            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('teamImgPreview', 'teamImageHidden', '3:4')" style="font-size: 0.78rem;">📐 Crop / Frame Headshot</button>
+              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Clear Photo (Use Monogram)</button>
             </div>
           </div>
         </div>
@@ -616,13 +619,14 @@ window.openEditTeamModal = function(id) {
 
       <div class="form-group">
         <label>Portrait Photo</label>
-        <div class="admin-dropzone">
-          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview')">
-          <p style="font-size: 0.8rem; color: #64748B; margin: 4px 0 0;">Upload or replace the portrait photo.</p>
-          <div id="teamImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 10px;">
-            <img id="teamImgPreview" src="${member.image || ''}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1;">
-            <div style="margin-top: 6px;">
-              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview')">Clear Photo (Use Monogram)</button>
+        <div class="admin-dropzone" style="border: 1.5px dashed #CBD5E1; background: #F8FAFC; padding: 18px; border-radius: 8px; text-align: center;">
+          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview', '3:4')">
+          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload or replace the portrait photo (3:4 or 1:1 headshot ratio).</p>
+          <div id="teamImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
+            <img id="teamImgPreview" src="${member.image || ''}" style="width: 100px; height: 120px; object-fit: cover; border-radius: 6px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
+            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('teamImgPreview', 'teamImageHidden', '3:4')" style="font-size: 0.78rem;">📐 Crop / Frame Headshot</button>
+              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Clear Photo (Use Monogram)</button>
             </div>
           </div>
         </div>
@@ -752,6 +756,21 @@ window.openNewProjectModal = function() {
       </div>
 
       <div class="form-group">
+        <label>Cover / Field Photo (Optional)</label>
+        <div class="admin-dropzone" style="border: 1.5px dashed #CBD5E1; background: #F8FAFC; padding: 18px; border-radius: 8px; text-align: center;">
+          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'projImageHidden', 'projImgPreviewBox', 'projImgPreview', '16:9')">
+          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload a field photograph for the initiative card (16:9 banner or 4:3 photo).</p>
+          <div id="projImgPreviewBox" style="display: none; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
+            <img id="projImgPreview" src="" style="max-height: 140px; width: auto; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
+            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('projImgPreview', 'projImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Crop / Re-frame</button>
+              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('projImageHidden', 'projImgPreviewBox', 'projImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Remove Image</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label>Program Overview &amp; Description *</label>
         <textarea name="proj_desc" rows="4" required placeholder="Explain the intervention scope, objectives, and impact..."></textarea>
       </div>
@@ -772,6 +791,8 @@ window.openEditProjectModal = function(id) {
   const content = document.getElementById('adminCrudModalContent');
   document.getElementById('adminCrudModalTitle').textContent = 'Edit Project Details';
   if (!content) return;
+
+  const hasImg = !!proj.image;
 
   content.innerHTML = `
     <form class="admin-modal-form" onsubmit="handleSaveProject(event)">
@@ -815,6 +836,21 @@ window.openEditProjectModal = function(id) {
       </div>
 
       <div class="form-group">
+        <label>Cover / Field Photo</label>
+        <div class="admin-dropzone" style="border: 1.5px dashed #CBD5E1; background: #F8FAFC; padding: 18px; border-radius: 8px; text-align: center;">
+          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'projImageHidden', 'projImgPreviewBox', 'projImgPreview', '16:9')">
+          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload or replace the field photograph (16:9 banner or 4:3 photo).</p>
+          <div id="projImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
+            <img id="projImgPreview" src="${proj.image || ''}" style="max-height: 140px; width: auto; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
+            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('projImgPreview', 'projImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Crop / Re-frame</button>
+              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('projImageHidden', 'projImgPreviewBox', 'projImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Remove Image</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label>Program Overview &amp; Description *</label>
         <textarea name="proj_desc" rows="4" required>${proj.description || ''}</textarea>
       </div>
@@ -841,6 +877,7 @@ window.handleSaveProject = function(e) {
     location: form.proj_location.value.trim(),
     beneficiaries: form.proj_reach.value.trim(),
     timeline: form.proj_timeline ? form.proj_timeline.value.trim() : 'Active',
+    image: form.proj_image ? form.proj_image.value || '' : '',
     description: form.proj_desc.value.trim()
   };
 
@@ -1075,51 +1112,62 @@ window.syncAdminChangesToGitHub = async function() {
 // =========================================================================
 // 7. FILE & IMAGE UPLOAD HELPERS
 // =========================================================================
-function handleImageFileSelect(inputEl, hiddenInputId, previewBoxId, previewImgId) {
+function handleImageFileSelect(inputEl, hiddenInputId, previewBoxId, previewImgId, preferredAspect = '16:9') {
   const file = inputEl.files[0];
   if (!file) return;
 
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const rawData = e.target.result;
-    const img = new Image();
-    img.onload = function() {
-      const maxW = 800;
-      const maxH = 600;
-      let w = img.width;
-      let h = img.height;
+  if (file.size > 15 * 1024 * 1024) {
+    showToast('Image file is too large! Please select an image under 15MB.', 'warning');
+    return;
+  }
 
-      if (w > maxW || h > maxH) {
-        if (w / maxW > h / maxH) {
-          h = Math.round(h * (maxW / w));
-          w = maxW;
-        } else {
-          w = Math.round(w * (maxH / h));
-          h = maxH;
+  // If interactive Cropper engine is available, launch visual framing modal
+  if (window.adminCropper && typeof window.adminCropper.open === 'function') {
+    window.adminCropper.open(file, previewImgId, hiddenInputId, preferredAspect);
+  } else {
+    // Standard FileReader fallback
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const rawData = e.target.result;
+      const img = new Image();
+      img.onload = function() {
+        const maxW = 1200;
+        const maxH = 900;
+        let w = img.width;
+        let h = img.height;
+
+        if (w > maxW || h > maxH) {
+          if (w / maxW > h / maxH) {
+            h = Math.round(h * (maxW / w));
+            w = maxW;
+          } else {
+            w = Math.round(w * (maxH / h));
+            h = maxH;
+          }
         }
-      }
 
-      const canvas = document.createElement('canvas');
-      canvas.width = w;
-      canvas.height = h;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, w, h);
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
 
-      const optimized = canvas.toDataURL('image/jpeg', 0.85);
+        const optimized = canvas.toDataURL('image/jpeg', 0.85);
 
-      const hidden = document.getElementById(hiddenInputId);
-      const box = document.getElementById(previewBoxId);
-      const prev = document.getElementById(previewImgId);
+        const hidden = document.getElementById(hiddenInputId);
+        const box = document.getElementById(previewBoxId);
+        const prev = document.getElementById(previewImgId);
 
-      if (hidden) hidden.value = optimized;
-      if (prev) prev.src = optimized;
-      if (box) box.style.display = 'block';
+        if (hidden) hidden.value = optimized;
+        if (prev) prev.src = optimized;
+        if (box) box.style.display = 'block';
 
-      showToast('Image uploaded and optimized!', 'success');
+        showToast('Image uploaded and optimized!', 'success');
+      };
+      img.src = rawData;
     };
-    img.src = rawData;
-  };
-  reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
+  }
 }
 
 function clearUploadedImage(hiddenInputId, previewBoxId, previewImgId) {

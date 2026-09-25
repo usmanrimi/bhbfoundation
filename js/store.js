@@ -731,3 +731,42 @@ window.renderTeamCardsHTML = function() {
 
   return `<div class="team-roster-grid">${cardsHTML}</div>`;
 };
+
+// 6. Our Partners Infinite Marquee Section
+window.renderPartnersSectionHTML = function() {
+  if (typeof BHBStore === 'undefined') return '';
+  let partners = BHBStore.getPartners();
+  if (!partners || !partners.length) {
+    partners = (typeof window.BHB_SEED_DATA !== 'undefined' && window.BHB_SEED_DATA.partners) ? window.BHB_SEED_DATA.partners : [];
+  }
+  if (!partners || !partners.length) return '';
+
+  const activePartners = partners.filter(p => p.status !== 'inactive');
+  // Duplicate list to enable continuous seamless horizontal loop
+  const marqueeList = [...activePartners, ...activePartners];
+
+  const cardsHTML = marqueeList.map((p) => {
+    const logoContent = p.logo
+      ? `<img src="${p.logo}" alt="${p.name}" class="partner-logo-img">`
+      : `
+        <div class="partner-logo-badge">
+          <span class="partner-logo-badge-icon">${p.abbr || p.name.substring(0, 3).toUpperCase()}</span>
+          <span class="partner-logo-text">${p.name}</span>
+        </div>
+      `;
+
+    return `
+      <div class="partner-logo-card" title="${p.name}">
+        ${logoContent}
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="partners-marquee-container">
+      <div class="partners-marquee-track">
+        ${cardsHTML}
+      </div>
+    </div>
+  `;
+};

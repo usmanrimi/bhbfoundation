@@ -183,6 +183,29 @@ class AdminImageCropper {
     reader.readAsDataURL(file);
   }
 
+  openWithUrl(imageUrl, previewElId, hiddenInputName, preferredAspect = '16:9') {
+    if (!imageUrl) return;
+    this.currentFile = null;
+    this.previewElId = previewElId;
+    this.hiddenInputName = hiddenInputName;
+
+    this.image = new Image();
+    this.image.crossOrigin = 'anonymous';
+    this.image.onload = () => {
+      this.resetPosition();
+      if (preferredAspect === '3:4') this.setAspect('3:4', 3/4);
+      else if (preferredAspect === '4:5') this.setAspect('4:5', 4/5);
+      else if (preferredAspect === '1:1') this.setAspect('1:1', 1);
+      else if (preferredAspect === '4:3') this.setAspect('4:3', 4/3);
+      else if (preferredAspect === 'free') this.setAspect('free', null);
+      else this.setAspect('16:9', 16/9);
+
+      if (this.modal) this.modal.classList.add('active');
+      this.render();
+    };
+    this.image.src = imageUrl;
+  }
+
   close() {
     if (this.modal) this.modal.classList.remove('active');
   }
@@ -409,11 +432,13 @@ class AdminImageCropper {
       if (preview) {
         preview.src = base64Data;
         preview.style.display = 'block';
+        const parentBox = preview.closest('div[id$="PreviewBox"]') || preview.parentElement;
+        if (parentBox) parentBox.style.display = 'block';
       }
     }
 
     if (this.hiddenInputName) {
-      const input = document.querySelector(`input[name="${this.hiddenInputName}"]`);
+      const input = document.getElementById(this.hiddenInputName) || document.querySelector(`input[name="${this.hiddenInputName}"]`);
       if (input) input.value = base64Data;
     }
 
@@ -432,13 +457,24 @@ window.handleImageUpload = function(inputEl, previewImgId, hiddenInputName, pref
   const file = inputEl.files[0];
   if (!file) return;
 
-  if (file.size > 8 * 1024 * 1024) {
-    showToast('Image file is too large! Please select an image under 8MB.', 'warning');
+  if (file.size > 12 * 1024 * 1024) {
+    if (typeof showToast === 'function') showToast('Image file is too large! Please select an image under 12MB.', 'warning');
     return;
   }
 
   // Launch the interactive cropper
   window.adminCropper.open(file, previewImgId, hiddenInputName, preferredAspect);
+};
+
+window.openCropperForCurrent = function(previewImgId, hiddenInputName, preferredAspect = '16:9') {
+  const preview = document.getElementById(previewImgId);
+  const hidden = document.getElementById(hiddenInputName) || document.querySelector(`input[name="${hiddenInputName}"]`);
+  const src = (preview && preview.src && preview.src.length > 20) ? preview.src : (hidden ? hidden.value : '');
+  if (!src) {
+    if (typeof showToast === 'function') showToast('Please upload an image first.', 'info');
+    return;
+  }
+  window.adminCropper.openWithUrl(src, previewImgId, hiddenInputName, preferredAspect);
 };
 
 

@@ -470,5 +470,61 @@ window.BHB_SEED_DATA = {
       "status": "Unread"
     }
   ],
+  "partners": [
+    {
+      "id": "partner-1",
+      "name": "Federal Ministry of Women Affairs",
+      "abbr": "FMWA",
+      "logo": "",
+      "url": "https://womenaffairs.gov.ng",
+      "order": 1,
+      "status": "active"
+    },
+    {
+      "id": "partner-2",
+      "name": "National Primary Health Care Agency",
+      "abbr": "NPHCDA",
+      "logo": "",
+      "url": "https://nphcda.gov.ng",
+      "order": 2,
+      "status": "active"
+    },
+    {
+      "id": "partner-3",
+      "name": "Ability First Tech Hub",
+      "abbr": "AFTH",
+      "logo": "",
+      "url": "https://abilityfirst.org",
+      "order": 3,
+      "status": "active"
+    },
+    {
+      "id": "partner-4",
+      "name": "United Nations SDG Partnership Network",
+      "abbr": "UN SDG",
+      "logo": "",
+      "url": "https://sdgs.un.org",
+      "order": 4,
+      "status": "active"
+    },
+    {
+      "id": "partner-5",
+      "name": "Grassroots Water & Sanitation Alliance",
+      "abbr": "GWSA",
+      "logo": "",
+      "url": "",
+      "order": 5,
+      "status": "active"
+    },
+    {
+      "id": "partner-6",
+      "name": "Inclusive Livelihoods Consortium",
+      "abbr": "ILC",
+      "logo": "",
+      "url": "",
+      "order": 6,
+      "status": "active"
+    }
+  ],
   "lastUpdated": 1790272000000
 };
