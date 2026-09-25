@@ -1,0 +1,10 @@
+{
+  "name": "bhbfoundation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BHB Family Support and Development Foundation Official Website",
+  "scripts": {
+    "build": "echo 'Static assets ready'",
+    "start": "node server.js"
+  }
+}
