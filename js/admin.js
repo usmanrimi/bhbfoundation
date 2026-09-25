@@ -332,13 +332,13 @@ function renderAdminCharts() {
         scales: {
           x: {
             grid: { color: '#F1F5F9' },
-            ticks: { color: '#64748B', font: { family: 'Plus Jakarta Sans', weight: '600' } }
+            ticks: { color: '#64748B', font: { family: 'Inter', weight: '600' } }
           },
           y: {
             grid: { color: '#F1F5F9' },
             ticks: {
               color: '#64748B',
-              font: { family: 'Plus Jakarta Sans' },
+              font: { family: 'Inter' },
               callback: (val) => `₦${val}M`
             }
           }
@@ -376,11 +376,11 @@ function renderAdminCharts() {
         scales: {
           x: {
             grid: { display: false },
-            ticks: { color: '#64748B', font: { family: 'Plus Jakarta Sans', size: 10, weight: '600' } }
+            ticks: { color: '#64748B', font: { family: 'Inter', size: 10, weight: '600' } }
           },
           y: {
             grid: { color: '#F1F5F9' },
-            ticks: { color: '#64748B', font: { family: 'Plus Jakarta Sans' } }
+            ticks: { color: '#64748B', font: { family: 'Inter' } }
           }
         }
       }

@@ -507,14 +507,16 @@ window.renderHeroSliderHTML = function() {
   `;
 };
 
-// 2. The 6 Pillars Landscape / Editorial List
+// 2. The 6 Pillars Landscape / Editorial List (With Rhythmic Alternating Backgrounds)
 window.renderFocusAreasHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
   const areas = BHBStore.getFocusAreas();
   if (!areas || !areas.length) return '';
 
+  const bgClasses = ['pillar-row-white', 'pillar-row-soft', 'pillar-row-white', 'pillar-row-tint', 'pillar-row-white', 'pillar-row-soft'];
+
   return areas.map((a, idx) => `
-    <div class="pillar-landscape-row">
+    <div class="pillar-landscape-row ${bgClasses[idx % bgClasses.length]} interactive-lift">
       <div class="pillar-num">0${idx + 1}</div>
       <div class="pillar-title-col">
         <h3>${a.title}</h3>
@@ -523,10 +525,39 @@ window.renderFocusAreasHTML = function() {
         <p>${a.summary}</p>
       </div>
       <div class="pillar-action-col">
-        <a href="projects.html">Explore Projects →</a>
+        <a href="projects.html" class="arrow-hover">Explore Projects →</a>
       </div>
     </div>
   `).join('');
+};
+
+// 2b. Sustainable Development Goals (SDGs) Interactive Section Renderer
+window.renderSDGsSectionHTML = function() {
+  const sdgData = [
+    { num: '01', code: 'sdg-1', name: 'No Poverty', pillar: 'Women & Youth Livelihoods' },
+    { num: '02', code: 'sdg-2', name: 'Zero Hunger', pillar: 'Agro-Seeds & Child Nutrition' },
+    { num: '03', code: 'sdg-3', name: 'Good Health & Well-being', pillar: 'Hygiene & Primary Care' },
+    { num: '04', code: 'sdg-4', name: 'Quality Education', pillar: 'Inclusive Computing Grants' },
+    { num: '05', code: 'sdg-5', name: 'Gender Equality', pillar: 'Menstrual Health & Dignity' },
+    { num: '06', code: 'sdg-6', name: 'Clean Water & Sanitation', pillar: 'Solar Boreholes & WASH' },
+    { num: '08', code: 'sdg-8', name: 'Decent Work & Growth', pillar: 'Vocational Apprenticeships' },
+    { num: '10', code: 'sdg-10', name: 'Reduced Inequalities', pillar: 'Disability Tech Inclusion' },
+    { num: '17', code: 'sdg-17', name: 'Partnerships for Goals', pillar: 'Grassroots Coalitions' }
+  ];
+
+  return `
+    <div class="sdg-modules-grid">
+      ${sdgData.map(s => `
+        <div class="sdg-module-card ${s.code}">
+          <div class="sdg-num-tag">${s.num}</div>
+          <div>
+            <div class="sdg-name">${s.name}</div>
+            <div class="sdg-bhb-pillar-note">${s.pillar}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
 };
 
 // 3. Projects Landscape Rows (Clean Horizontal Layout)

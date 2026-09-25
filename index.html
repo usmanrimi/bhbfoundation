@@ -8,10 +8,10 @@
   <meta name="description" content="BHB Family Support and Development Foundation empowers families, promotes health equity, inclusive tech education, and sustainable livelihoods across Northern Nigeria.">
   <link rel="icon" type="image/png" href="assets/images/bhb-logo.png">
   
-  <!-- Fonts -->
+  <!-- Fonts: Manrope (Display) & Inter (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/styles.css">
@@ -23,7 +23,7 @@
 </head>
 <body>
 
-  <!-- Site Header -->
+  <!-- Site Header (Standard 6-Link Navigation) -->
   <header class="site-header">
     <div class="container nav-container">
       <a href="index.html" class="nav-brand">
@@ -55,51 +55,116 @@
     <a href="contact.html">Contact Us</a>
   </div>
 
-  <!-- Hero Section (Editorial Typography Hero — Image Free) -->
+  <!-- Hero Section: Premium Typography & Brand Geometric Motif (No Stock Photography) -->
   <section class="hero-editorial-section" id="top">
     <div class="container">
-      <div id="heroSliderContainer">
-        <script>document.write(renderHeroSliderHTML());</script>
+      <div class="hero-editorial-grid">
+        
+        <!-- Left Headline Column (55-65% Width) -->
+        <div class="hero-statement-col">
+          <span class="section-tag light">BHB Family Support &amp; Development Foundation</span>
+          <h1>Empowering Families. Strengthening Communities. Creating Sustainable Futures.</h1>
+          <p class="lead">
+            We are dedicated to building resilient communities across Northern Nigeria through health equity, inclusive technology, women livelihoods, and sustainable development.
+          </p>
+          <div class="hero-cta-group">
+            <a href="contact.html" class="btn btn-primary">Partner With Us →</a>
+            <a href="what-we-do.html" class="btn btn-outline-white">Explore Our Strategic Pillars</a>
+          </div>
+        </div>
+
+        <!-- Right Motif & Institutional Framework Column -->
+        <div class="hero-motif-col">
+          <span class="hero-motif-tag">Institutional Commitment</span>
+          <div class="hero-metrics-list">
+            <div class="hero-metric-item">
+              <div class="hero-metric-num">06</div>
+              <div class="hero-metric-label">Integrated Strategic Development Pillars</div>
+            </div>
+            <div class="hero-metric-item">
+              <div class="hero-metric-num">10+</div>
+              <div class="hero-metric-label">Grassroots Communities Directly Partnered</div>
+            </div>
+            <div class="hero-metric-item">
+              <div class="hero-metric-num">100%</div>
+              <div class="hero-metric-label">Community-Led Verification &amp; Co-Design</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Section 1: Who We Are (Open Editorial Layout — No Boxed Cards) -->
-  <section id="about" class="bg-off">
+  <!-- Section 1: Who We Are (Layout Family A: Editorial Split) -->
+  <section id="who-we-are" class="bg-off">
     <div class="container">
-      <div class="who-we-are-editorial">
-        <div class="who-we-are-main">
+      <div class="who-we-are-split">
+        
+        <div class="who-we-are-statement">
           <span class="section-tag">Who We Are</span>
           <h2>Every individual deserves the chance to live a <span class="text-accent-blue">healthy, safe, and dignified life.</span></h2>
+          <div style="margin-top: 24px;">
+            <a href="about.html" class="btn btn-primary">Learn More About BHB →</a>
+          </div>
+        </div>
+
+        <div class="who-we-are-body">
           <p>
             Yet for children, youth, women, and low-income families in underserved communities, systemic barriers to basic opportunities can make a healthy and dignified life difficult to achieve.
           </p>
           <p>
             BHB Foundation exists to walk alongside those facing difficult circumstances — offering not just temporary relief, but the tools, mentorship, and opportunities needed to build stronger, more independent futures.
           </p>
-          <div style="margin-top: 24px;">
-            <a href="about.html" class="btn btn-primary">Learn More About BHB →</a>
+          <div style="border-left: 3px solid var(--blue); padding-left: 20px; margin-top: 28px;">
+            <blockquote style="font-size: 1.05rem; font-style: italic; color: var(--navy); line-height: 1.55; margin-bottom: 8px;">
+              “People are not defined by the circumstances they find themselves in. Behind every statistic is a person, a family, and a community with hopes, dignity, and untapped potential.”
+            </blockquote>
+            <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted);">The BHB Core Conviction</span>
           </div>
         </div>
 
-        <div>
-          <div class="conviction-quote-panel">
-            <blockquote>
-              “People are not defined by the circumstances they find themselves in. Behind every statistic is a person, a family, and a community with hopes, dignity, and untapped potential.”
-            </blockquote>
-            <div class="quote-meta">The BHB Core Conviction</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 2: How We Drive Sustainable Change (The 6 Pillars — Landscape Rows) -->
+  <!-- Section 2: Mission & Vision (Layout Family B: Statement Dual-Contrast Full-Width Split) -->
+  <section style="padding: 0;">
+    <div class="mission-vision-split-container">
+      
+      <!-- Left: Mission (Deep Navy Canvas) -->
+      <div class="mission-contrast-col">
+        <div class="statement-watermark">01</div>
+        <div class="contrast-col-content">
+          <span class="section-tag light">Our Mandate</span>
+          <h2>Our Mission</h2>
+          <p>
+            To empower vulnerable families and individuals through targeted programs that foster health, education, sustainable livelihoods, and self-reliance — bridging the gap between potential and opportunity.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Vision (Soft Neutral / Navy Text) -->
+      <div class="vision-contrast-col">
+        <div class="statement-watermark">02</div>
+        <div class="contrast-col-content">
+          <span class="section-tag">Our Aspiration</span>
+          <h2>Our Vision</h2>
+          <p>
+            A society where every individual, regardless of socio-economic background, has access to the resources, support, and environment necessary to realize their full potential and contribute meaningfully to community development.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 3: The 6 Strategic Pillars (Layout Family C: Landscape Intervention Rows) -->
   <section id="pillars">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Intervention Framework</span>
-        <h2 class="section-title-twotone">How We Drive <span class="text-accent-blue">Sustainable Change</span></h2>
+        <h2>How We Drive <span class="text-accent-blue">Sustainable Change</span></h2>
         <p class="lead">Six integrated development pillars designed to address systemic poverty and health inequities.</p>
       </div>
 
@@ -109,37 +174,76 @@
     </div>
   </section>
 
-  <!-- Section 3: Active Programs (Landscape Rows) -->
+  <!-- Section 4: Sustainable Transformation Philosophy Statement (Full-Width Banner) -->
+  <section class="philosophy-banner-section">
+    <div class="container">
+      <div class="philosophy-banner-content">
+        <span class="section-tag light" style="justify-content: center;">Foundational Principle</span>
+        <blockquote>
+          “Sustainable transformation requires building long-term capability within communities, not merely dispensing temporary handouts.”
+        </blockquote>
+        <p>
+          Every BHB initiative is co-designed with local leaders, verified through direct household assessments, and structured for lasting community governance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: United Nations Sustainable Development Goals (Special Interactive Section) -->
+  <section class="sdg-section-wrapper" id="sdgs">
+    <div class="container">
+      <div class="sdg-layout-grid">
+        
+        <!-- Left Supporting Content -->
+        <div class="sdg-intro-col">
+          <span class="section-tag">Global Alignment</span>
+          <h2>Our Work &amp; the <span class="text-accent-blue">Sustainable Development Goals</span></h2>
+          <p>
+            The BHB strategic framework directly advances 9 core United Nations Sustainable Development Goals, translating high-level global targets into accountable on-the-ground interventions across Kano State and Northern Nigeria.
+          </p>
+          <a href="what-we-do.html" class="btn btn-navy">View Strategic Framework →</a>
+        </div>
+
+        <!-- Right Interactive Authentic SDG Modules -->
+        <div>
+          <script>document.write(renderSDGsSectionHTML());</script>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Active Programs (Layout Family C: Landscape Case Study Rows) -->
   <section id="programs" class="bg-off">
     <div class="container">
       <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
         <div>
-          <span class="section-tag">On-The-Ground Impact</span>
-          <h2 class="section-title-twotone">Active <span class="text-accent-blue">Programs</span></h2>
-          <p class="lead">Targeted initiatives implemented with local stakeholders and strategic partners.</p>
+          <span class="section-tag">On-The-Ground Deployments</span>
+          <h2>Active <span class="text-accent-blue">Programs &amp; Initiatives</span></h2>
+          <p class="lead">Targeted community deployments implemented with local ownership and verifiable outcomes.</p>
         </div>
         <div>
-          <a href="projects.html" class="btn btn-outline">Explore All Projects →</a>
+          <a href="projects.html" class="btn btn-outline arrow-hover">Explore All Projects →</a>
         </div>
       </div>
 
-      <div class="projects-landscape-list" id="homepageProjectsGrid">
+      <div class="project-landscape-list" id="homepageProjectsGrid">
         <script>document.write(renderHomepageProjectsHTML());</script>
       </div>
     </div>
   </section>
 
-  <!-- Section 4: Blog & Updates (3-Column Clean Article Cards) -->
+  <!-- Section 7: Blog & Updates (Layout Family E: Clean 3-Column News Cards) -->
   <section id="blog">
     <div class="container">
       <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
         <div>
           <span class="section-tag">Field Updates</span>
-          <h2 class="section-title-twotone">Latest <span class="text-accent-blue">Updates &amp; Field Reports</span></h2>
-          <p class="lead">First-hand dispatches and milestone reports from our community deployments.</p>
+          <h2>Latest <span class="text-accent-blue">Dispatches &amp; Reports</span></h2>
+          <p class="lead">First-hand progress reports and community stories from our field deployments.</p>
         </div>
         <div>
-          <a href="blog.html" class="btn btn-outline">View All Articles →</a>
+          <a href="blog.html" class="btn btn-outline arrow-hover">View All Articles →</a>
         </div>
       </div>
 
@@ -149,23 +253,24 @@
     </div>
   </section>
 
-  <!-- Section 5: Call to Action Banner -->
-  <section class="cta-banner-section">
+  <!-- Section 8: Call to Action Banner -->
+  <section class="philosophy-banner-section" style="background-color: var(--blue);">
     <div class="container">
-      <div class="cta-banner-box">
-        <div class="cta-banner-content">
-          <h2>Together, We Can Build a More Inclusive Future</h2>
-          <p>Whether you are a government institution, philanthropic foundation, corporate CSR program, or civil society group — your partnership creates lasting grassroots impact.</p>
-        </div>
-        <div class="cta-btn-group">
-          <a href="contact.html" class="btn btn-white">Become a Partner →</a>
+      <div class="philosophy-banner-content">
+        <span class="section-tag light" style="justify-content: center;">Collaborative Engagement</span>
+        <h2 style="color: var(--white); font-size: clamp(1.8rem, 3.2vw, 2.6rem); margin-bottom: 14px;">Together, We Can Build a More Inclusive Future</h2>
+        <p style="color: #DBEAFE; margin-bottom: 28px;">
+          Whether you represent a government institution, philanthropic foundation, corporate CSR programme, or civil society group — your partnership creates lasting grassroots impact.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <a href="contact.html" class="btn btn-white">Partner With Us →</a>
           <a href="what-we-do.html" class="btn btn-outline-white">Explore What We Do</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Institutional Footer (Simple 4-Column Design) -->
+  <!-- Institutional Footer (Simple 4-Column Layout — Zero Public Admin Links) -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top-grid">
@@ -240,7 +345,7 @@
   <div class="modal-backdrop" id="blogReaderModal">
     <div class="modal-window">
       <div style="position: absolute; top: 16px; right: 18px;">
-        <button onclick="closeModal('blogReaderModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy);">×</button>
+        <button onclick="closeModal('blogReaderModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy); line-height: 1;">×</button>
       </div>
       <div id="blogReaderModalContent"></div>
     </div>
@@ -250,7 +355,7 @@
   <div class="modal-backdrop" id="genericModal">
     <div class="modal-window">
       <div style="position: absolute; top: 16px; right: 18px;">
-        <button onclick="closeModal('genericModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy);">×</button>
+        <button onclick="closeModal('genericModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy); line-height: 1;">×</button>
       </div>
       <div id="genericModalContent"></div>
     </div>

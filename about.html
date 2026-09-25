@@ -8,10 +8,10 @@
   <meta name="description" content="Discover BHB Foundation's institutional vision, core philosophy, and mission to advance dignity and resilience across Northern Nigeria.">
   <link rel="icon" type="image/png" href="assets/images/bhb-logo.png">
   
-  <!-- Fonts -->
+  <!-- Fonts: Manrope (Display) & Inter (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/styles.css">
@@ -23,7 +23,7 @@
 </head>
 <body>
 
-  <!-- Site Header -->
+  <!-- Site Header (Standard 6-Link Navigation) -->
   <header class="site-header">
     <div class="container nav-container">
       <a href="index.html" class="nav-brand">
@@ -55,154 +55,191 @@
     <a href="contact.html">Contact Us</a>
   </div>
 
-  <!-- Page Header Banner -->
-  <div class="page-header-banner">
+  <!-- Page Header Banner (Editorial Typography) -->
+  <section class="hero-editorial-section" style="padding-top: clamp(60px, 8vw, 96px); padding-bottom: clamp(50px, 7vw, 80px);">
     <div class="container">
       <span class="section-tag light">Institutional Profile</span>
-      <h1>About BHB Foundation</h1>
-      <p>
+      <h1 style="color: var(--white); max-width: 880px;">About BHB Foundation</h1>
+      <p class="lead" style="color: #CBD5E1; max-width: 720px; margin-top: 14px;">
         An incorporated non-governmental organisation advancing welfare, healthcare access, and economic self-reliance across Kano State and Northern Nigeria.
       </p>
     </div>
-  </div>
+  </section>
 
-  <!-- Section 1: Our Story & Philosophy (Open Editorial Layout) -->
+  <!-- Section 1: Our Story & Philosophy (Layout Family A: Editorial Split) -->
   <section>
     <div class="container">
-      <div class="who-we-are-editorial">
-        <div class="who-we-are-main">
+      <div class="who-we-are-split">
+        
+        <div class="who-we-are-statement">
           <span class="section-tag">Our Core Philosophy</span>
           <h2>People Are Not Defined By <span class="text-accent-blue">Their Circumstances</span></h2>
-          <p style="font-size: 1.1rem; font-weight: 600; color: var(--navy);">
-            Behind every statistic is a person, a family, and a community with hopes, dignity, and untapped potential.
-          </p>
+          <div style="border-left: 3px solid var(--blue); padding-left: 18px; margin-top: 28px;">
+            <p style="font-size: 1.1rem; font-weight: 600; color: var(--navy); line-height: 1.5; margin: 0;">
+              Behind every statistic is a person, a family, and a community with hopes, dignity, and untapped potential.
+            </p>
+          </div>
+        </div>
+
+        <div class="who-we-are-body">
           <p>
             BHB Foundation exists to walk alongside those facing difficult circumstances — offering not just relief, but the tools, support, and opportunities needed to build stronger, more independent futures.
           </p>
           <p>
             We connect vulnerable individuals to essential healthcare, inclusive assistive technology, and vocational seed capital—fostering self-sustaining conditions for lifelong independence and community dignity across Kano State and Northern Nigeria.
           </p>
-        </div>
-
-        <div>
-          <div class="conviction-quote-panel">
-            <blockquote>
+          <div style="background: var(--bg-off); border: 1px solid var(--border-light); padding: 20px 24px; border-radius: var(--radius-sm); margin-top: 20px;">
+            <blockquote style="font-style: italic; color: var(--navy); margin-bottom: 6px; font-size: 0.96rem;">
               “With targeted support, assistive tools, and genuine community solidarity, families can overcome structural barriers, build resilience, and shape their own destinies.”
             </blockquote>
-            <div class="quote-meta">Incorporated NGO: CAC/IT/NO/9670692</div>
+            <span style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--blue);">Incorporated NGO: CAC/IT/NO/9670692</span>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Section 2: Mission & Vision (Open Presentation — No Boxed Cards) -->
-  <section class="bg-off">
-    <div class="container">
-      <div class="section-header center">
-        <span class="section-tag">Institutional Purpose</span>
-        <h2 class="section-title-twotone">Our Mandate &amp; <span class="text-accent-blue">Vision</span></h2>
-        <p class="lead">Guiding principles ensuring accountability, human dignity, and long-term community impact.</p>
-      </div>
-
-      <div class="mission-vision-open-grid">
-        <!-- Mission Column -->
-        <div class="mv-open-column">
-          <span class="mv-open-label">MISSION</span>
-          <h3>Supporting Underserved Communities</h3>
-          <p class="mv-open-statement">
-            &ldquo;To support vulnerable and underserved individuals and communities by improving access to essential health and social services, education and economic opportunities, while promoting dignity, resilience, inclusion and self-reliance.&rdquo;
-          </p>
-        </div>
-
-        <!-- Vision Column -->
-        <div class="mv-open-column vision-col">
-          <span class="mv-open-label">VISION</span>
-          <h3>Building Inclusive Futures</h3>
-          <p class="mv-open-statement">
-            &ldquo;To build inclusive, resilient, and empowered communities where every individual can live with dignity and realise their full potential.&rdquo;
+  <!-- Section 2: Mission & Vision (Layout Family B: Statement Dual-Contrast Full-Width Split) -->
+  <section style="padding: 0;">
+    <div class="mission-vision-split-container">
+      
+      <!-- Left: Mission (Deep Navy Canvas) -->
+      <div class="mission-contrast-col">
+        <div class="statement-watermark">01</div>
+        <div class="contrast-col-content">
+          <span class="section-tag light">Our Mandate</span>
+          <h2>Our Mission</h2>
+          <p>
+            To support vulnerable and underserved individuals and communities by improving access to essential health and social services, education and economic opportunities, while promoting dignity, resilience, inclusion and self-reliance.
           </p>
         </div>
       </div>
+
+      <!-- Right: Vision (Soft Neutral / Navy Text) -->
+      <div class="vision-contrast-col">
+        <div class="statement-watermark">02</div>
+        <div class="contrast-col-content">
+          <span class="section-tag">Our Aspiration</span>
+          <h2>Our Vision</h2>
+          <p>
+            To build inclusive, resilient, and empowered communities where every individual can live with dignity and realise their full potential.
+          </p>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- Section 3: Core Values (Numbered Columns with Subtle Dividers — No Boxed Cards) -->
+  <!-- Section 3: Core Values (Layout Family D: Indexed Editorial Rows) -->
   <section>
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Guiding Principles</span>
-        <h2 class="section-title-twotone">Our Core <span class="text-accent-blue">Values</span></h2>
+        <h2>Our Core <span class="text-accent-blue">Values</span></h2>
         <p class="lead">The ethical compass embedded in every initiative and partnership we pursue.</p>
       </div>
 
-      <div class="values-numbered-grid">
-        <div class="value-numbered-item">
-          <div class="value-num-heading">01</div>
-          <h3>Dignity</h3>
-          <p>Every person deserves respect, care, and the opportunity to live with self-worth and independence.</p>
+      <div class="indexed-editorial-list">
+        
+        <div class="indexed-editorial-row interactive-lift">
+          <div class="indexed-editorial-num">01</div>
+          <div class="indexed-editorial-title">
+            <h3>Dignity</h3>
+          </div>
+          <div class="indexed-editorial-desc">
+            <p>Every person deserves respect, care, and the opportunity to live with self-worth and independence.</p>
+          </div>
         </div>
 
-        <div class="value-numbered-item">
-          <div class="value-num-heading">02</div>
-          <h3>Empowerment</h3>
-          <p>We focus on building capabilities, vocational capacity, and self-reliance rather than dependency.</p>
+        <div class="indexed-editorial-row interactive-lift">
+          <div class="indexed-editorial-num">02</div>
+          <div class="indexed-editorial-title">
+            <h3>Empowerment</h3>
+          </div>
+          <div class="indexed-editorial-desc">
+            <p>We focus on building capabilities, vocational capacity, and self-reliance rather than dependency.</p>
+          </div>
         </div>
 
-        <div class="value-numbered-item">
-          <div class="value-num-heading">03</div>
-          <h3>Integrity</h3>
-          <p>Transparent, accountable, and mission-driven in financial stewardship and field deployments.</p>
+        <div class="indexed-editorial-row interactive-lift">
+          <div class="indexed-editorial-num">03</div>
+          <div class="indexed-editorial-title">
+            <h3>Integrity</h3>
+          </div>
+          <div class="indexed-editorial-desc">
+            <p>Transparent, accountable, and mission-driven in financial stewardship and field deployments.</p>
+          </div>
         </div>
 
-        <div class="value-numbered-item">
-          <div class="value-num-heading">04</div>
-          <h3>Inclusion</h3>
-          <p>Ensuring no one is left behind — regardless of background, gender, or physical ability.</p>
+        <div class="indexed-editorial-row interactive-lift">
+          <div class="indexed-editorial-num">04</div>
+          <div class="indexed-editorial-title">
+            <h3>Inclusion</h3>
+          </div>
+          <div class="indexed-editorial-desc">
+            <p>Ensuring no one is left behind — regardless of background, gender, or physical ability.</p>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Section 4: Operational Commitments (Open Columns) -->
+  <!-- Section 4: Operational Principles & Commitments (3-Column Numbered Layout) -->
   <section class="bg-off">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Operational Integrity</span>
-        <h2 class="section-title-twotone">Our Operational <span class="text-accent-blue">Commitments</span></h2>
+        <h2>Our Institutional <span class="text-accent-blue">Commitments</span></h2>
         <p class="lead">How we uphold our promises to the communities, partners, and stakeholders we serve.</p>
       </div>
 
-      <div class="commitments-open-grid">
-        <div class="commitment-open-item">
-          <h4>People First</h4>
+      <div class="principles-numbered-grid">
+        
+        <div class="principle-numbered-col">
+          <div class="principle-num">01</div>
+          <h3>People First</h3>
           <p>We listen before acting, respect local customs, and prioritize grassroots choices in all our interventions.</p>
         </div>
 
-        <div class="commitment-open-item">
-          <h4>Accountability</h4>
-          <p>Complete financial transparency through independent audits and direct milestone-based project tranche disbursements.</p>
+        <div class="principle-numbered-col">
+          <div class="principle-num">02</div>
+          <h3>Accountability &amp; Data</h3>
+          <p>Complete financial transparency through direct milestone disbursements and verified household baseline indicators.</p>
         </div>
 
-        <div class="commitment-open-item">
-          <h4>Data-Driven</h4>
-          <p>Deployments are driven by verifiable household surveys and baseline community indicators rather than guesswork.</p>
+        <div class="principle-numbered-col">
+          <div class="principle-num">03</div>
+          <h3>Sustainability</h3>
+          <p>Structuring exit strategies from day one so self-governing local committees sustain progress independently.</p>
         </div>
 
-        <div class="commitment-open-item">
-          <h4>Sustainability</h4>
-          <p>Structuring exit strategies from day one so communities manage and sustain their own progress independently.</p>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 5: Governance & Leadership -->
+  <!-- Section 5: Sustainable Transformation Philosophy (Full-Width Banner) -->
+  <section class="philosophy-banner-section">
+    <div class="container">
+      <div class="philosophy-banner-content">
+        <span class="section-tag light" style="justify-content: center;">Development Mandate</span>
+        <blockquote>
+          “Development is not something done to a community; it is a capability built within a community.”
+        </blockquote>
+        <p>
+          We do not create passive recipients; we equip community members to become active architects of their own future.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Governance & Leadership Showcase (Monogram Initials & Clean Typography) -->
   <section id="leadership">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Leadership &amp; Oversight</span>
-        <h2 class="section-title-twotone">Governance &amp; <span class="text-accent-blue">Leadership</span></h2>
+        <h2>Governance &amp; <span class="text-accent-blue">Leadership</span></h2>
         <p class="lead">Experienced trustees and management professionals steering our institutional mandate with accountability.</p>
       </div>
 
@@ -211,30 +248,31 @@
         <script>document.write(renderChairmanSpotlightHTML());</script>
       </div>
 
-      <!-- Team Members List -->
-      <div id="teamMembersList" style="margin-top: 20px;">
+      <!-- Additional Leadership Roster -->
+      <div id="teamMembersList" style="margin-top: 10px;">
         <script>document.write(renderTeamCardsHTML());</script>
       </div>
     </div>
   </section>
 
-  <!-- Section 6: Call to Action Banner -->
-  <section class="cta-banner-section">
+  <!-- Section 7: Call to Action Banner -->
+  <section class="philosophy-banner-section" style="background-color: var(--blue);">
     <div class="container">
-      <div class="cta-banner-box">
-        <div class="cta-banner-content">
-          <h2>Collaborate With BHB Foundation for Grassroots Impact</h2>
-          <p>Whether you are an institutional donor, development partner, or corporate CSR leader, explore collaborative opportunities to transform communities together.</p>
-        </div>
-        <div class="cta-btn-group">
+      <div class="philosophy-banner-content">
+        <span class="section-tag light" style="justify-content: center;">Strategic Alignment</span>
+        <h2 style="color: var(--white); font-size: clamp(1.8rem, 3.2vw, 2.6rem); margin-bottom: 14px;">Collaborate With BHB Foundation</h2>
+        <p style="color: #DBEAFE; margin-bottom: 28px;">
+          Whether you are an institutional donor, development partner, or corporate CSR leader, explore collaborative opportunities to transform communities together.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
           <a href="contact.html" class="btn btn-white">Partner With Us →</a>
-          <a href="projects.html" class="btn btn-outline-white">Explore Projects</a>
+          <a href="projects.html" class="btn btn-outline-white">Explore Active Projects</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Institutional Footer -->
+  <!-- Institutional Footer (Simple 4-Column Layout — Zero Public Admin Links) -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top-grid">
