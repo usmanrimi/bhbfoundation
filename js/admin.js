@@ -217,6 +217,7 @@ function renderAdminOverviewMetrics() {
 }
 
 // =========================================================================
+// =========================================================================
 // 2. BLOG ARTICLES CMS
 // =========================================================================
 function renderAdminBlogTable() {
@@ -230,8 +231,9 @@ function renderAdminBlogTable() {
   }
 
   tbody.innerHTML = posts.map(p => {
+    const pos = p.imagePosition || 'center center';
     const imgHTML = p.image
-      ? `<img src="${p.image}" alt="${p.title}" style="width: 60px; height: 42px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;">`
+      ? `<img src="${p.image}" alt="${p.title}" style="width: 60px; height: 42px; object-fit: cover; object-position: ${pos}; border-radius: 4px; border: 1px solid #E2E8F0;">`
       : `<div style="width: 60px; height: 42px; background: #0F1E36; color: #93C5FD; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: 700;">NEWS</div>`;
 
     return `
@@ -272,6 +274,7 @@ window.openNewPostModal = function() {
     <form class="admin-modal-form" onsubmit="handleSavePost(event)">
       <input type="hidden" name="post_id" value="">
       <input type="hidden" name="post_image" id="postImageHidden" value="">
+      <input type="hidden" name="post_image_position" id="postImagePosHidden" value="center center">
 
       <div class="form-group">
         <label>Article Title *</label>
@@ -309,13 +312,21 @@ window.openNewPostModal = function() {
       <div class="form-group">
         <label>Cover Image (Optional)</label>
         <div class="admin-dropzone" style="border: 1.5px dashed #CBD5E1; background: #F8FAFC; padding: 18px; border-radius: 8px; text-align: center;">
-          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'postImageHidden', 'postImgPreviewBox', 'postImgPreview', '16:9')">
+          <input type="file" accept="image/*" onchange="handleSimpleImageUpload(this, 'postImageHidden', 'postImagePosHidden', 'postImgPreviewBox', 'postImgPreview')">
           <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload a clear photograph for the article header (16:9 banner or editorial).</p>
-          <div id="postImgPreviewBox" style="display: none; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
-            <img id="postImgPreview" src="" style="max-height: 140px; width: auto; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
-            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('postImgPreview', 'postImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Position &amp; Crop Picture</button>
-              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('postImageHidden', 'postImgPreviewBox', 'postImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Remove Image</button>
+          
+          <div id="postImgPreviewBox" style="display: none; margin-top: 14px; text-align: left;">
+            <div class="admin-preview-frame aspect-16-9">
+              <img id="postImgPreview" src="" alt="Article Preview" style="object-position: center center;">
+              <span class="admin-preview-badge">16:9 Banner Preview</span>
+            </div>
+            
+            ${generatePositionGridHTML('postImagePosHidden', 'postImgPreview', 'center center')}
+            
+            <div style="text-align: center; margin-top: 10px;">
+              <button type="button" class="btn btn-sm btn-ghost" onclick="clearSimpleImage('postImageHidden', 'postImagePosHidden', 'postImgPreviewBox', 'postImgPreview')" style="font-size: 0.78rem; color: #DC2626;">
+                ✕ Remove Image
+              </button>
             </div>
           </div>
         </div>
@@ -349,11 +360,13 @@ window.openEditPostModal = function(id) {
   if (!content) return;
 
   const hasImg = !!post.image;
+  const currentPos = post.imagePosition || 'center center';
 
   content.innerHTML = `
     <form class="admin-modal-form" onsubmit="handleSavePost(event)">
       <input type="hidden" name="post_id" value="${post.id}">
       <input type="hidden" name="post_image" id="postImageHidden" value="${post.image || ''}">
+      <input type="hidden" name="post_image_position" id="postImagePosHidden" value="${currentPos}">
 
       <div class="form-group">
         <label>Article Title *</label>
@@ -391,13 +404,21 @@ window.openEditPostModal = function(id) {
       <div class="form-group">
         <label>Cover Image</label>
         <div class="admin-dropzone" style="border: 1.5px dashed #CBD5E1; background: #F8FAFC; padding: 18px; border-radius: 8px; text-align: center;">
-          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'postImageHidden', 'postImgPreviewBox', 'postImgPreview', '16:9')">
+          <input type="file" accept="image/*" onchange="handleSimpleImageUpload(this, 'postImageHidden', 'postImagePosHidden', 'postImgPreviewBox', 'postImgPreview')">
           <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload or replace the cover photo (16:9 banner or editorial).</p>
-          <div id="postImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
-            <img id="postImgPreview" src="${post.image || ''}" style="max-height: 140px; width: auto; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
-            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('postImgPreview', 'postImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Position &amp; Crop Picture</button>
-              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('postImageHidden', 'postImgPreviewBox', 'postImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Remove Image</button>
+          
+          <div id="postImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 14px; text-align: left;">
+            <div class="admin-preview-frame aspect-16-9">
+              <img id="postImgPreview" src="${post.image || ''}" alt="Article Preview" style="object-position: ${currentPos};">
+              <span class="admin-preview-badge">16:9 Banner Preview</span>
+            </div>
+            
+            ${generatePositionGridHTML('postImagePosHidden', 'postImgPreview', currentPos)}
+            
+            <div style="text-align: center; margin-top: 10px;">
+              <button type="button" class="btn btn-sm btn-ghost" onclick="clearSimpleImage('postImageHidden', 'postImagePosHidden', 'postImgPreviewBox', 'postImgPreview')" style="font-size: 0.78rem; color: #DC2626;">
+                ✕ Remove Image
+              </button>
             </div>
           </div>
         </div>
@@ -435,6 +456,7 @@ window.handleSavePost = function(e) {
     date: form.post_date.value.trim(),
     readTime: form.post_readtime.value.trim(),
     image: form.post_image.value || '',
+    imagePosition: form.post_image_position ? form.post_image_position.value || 'center center' : 'center center',
     excerpt: form.post_excerpt.value.trim(),
     content: form.post_content.value.trim()
   };
@@ -467,9 +489,10 @@ function renderAdminTeamTable() {
   }
 
   tbody.innerHTML = team.map((m, idx) => {
+    const pos = m.imagePosition || 'center top';
     const initials = m.name ? m.name.split(' ').map(n => n[0]).join('').substring(0, 2) : 'BH';
     const avatarHTML = m.image
-      ? `<img src="${m.image}" alt="${m.name}" style="width: 44px; height: 44px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;">`
+      ? `<img src="${m.image}" alt="${m.name}" style="width: 44px; height: 44px; object-fit: cover; object-position: ${pos}; border-radius: 4px; border: 1px solid #E2E8F0;">`
       : `<div style="width: 44px; height: 44px; background: #0F1E36; color: #FFFFFF; font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; border-radius: 4px;">${initials}</div>`;
 
     return `
@@ -508,6 +531,7 @@ window.openNewTeamModal = function() {
     <form class="admin-modal-form" onsubmit="handleSaveTeam(event)">
       <input type="hidden" name="team_id" value="">
       <input type="hidden" name="team_image" id="teamImageHidden" value="">
+      <input type="hidden" name="team_image_position" id="teamImagePosHidden" value="center top">
 
       <div class="form-group">
         <label>Full Name *</label>
@@ -544,13 +568,21 @@ window.openNewTeamModal = function() {
       <div class="form-group">
         <label>Portrait Photo (Optional - Clean Monogram used if empty)</label>
         <div class="admin-dropzone" style="border: 1.5px dashed #CBD5E1; background: #F8FAFC; padding: 18px; border-radius: 8px; text-align: center;">
-          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview', '3:4')">
-          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload a clear portrait photograph (3:4 or 1:1 headshot ratio).</p>
-          <div id="teamImgPreviewBox" style="display: none; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
-            <img id="teamImgPreview" src="" style="width: 100px; height: 120px; object-fit: cover; border-radius: 6px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
-            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('teamImgPreview', 'teamImageHidden', '3:4')" style="font-size: 0.78rem;">📐 Position &amp; Frame Headshot</button>
-              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Clear Photo (Use Monogram)</button>
+          <input type="file" accept="image/*" onchange="handleSimpleImageUpload(this, 'teamImageHidden', 'teamImagePosHidden', 'teamImgPreviewBox', 'teamImgPreview')">
+          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload a portrait photograph (3:4 headshot ratio).</p>
+          
+          <div id="teamImgPreviewBox" style="display: none; margin-top: 14px; text-align: left;">
+            <div class="admin-preview-frame aspect-3-4">
+              <img id="teamImgPreview" src="" alt="Portrait Preview" style="object-position: center top;">
+              <span class="admin-preview-badge">3:4 Portrait Preview</span>
+            </div>
+            
+            ${generatePositionGridHTML('teamImagePosHidden', 'teamImgPreview', 'center top')}
+            
+            <div style="text-align: center; margin-top: 10px;">
+              <button type="button" class="btn btn-sm btn-ghost" onclick="clearSimpleImage('teamImageHidden', 'teamImagePosHidden', 'teamImgPreviewBox', 'teamImgPreview')" style="font-size: 0.78rem; color: #DC2626;">
+                ✕ Clear Photo (Use Monogram)
+              </button>
             </div>
           </div>
         </div>
@@ -579,11 +611,13 @@ window.openEditTeamModal = function(id) {
   if (!content) return;
 
   const hasImg = !!member.image;
+  const currentPos = member.imagePosition || 'center top';
 
   content.innerHTML = `
     <form class="admin-modal-form" onsubmit="handleSaveTeam(event)">
       <input type="hidden" name="team_id" value="${member.id}">
       <input type="hidden" name="team_image" id="teamImageHidden" value="${member.image || ''}">
+      <input type="hidden" name="team_image_position" id="teamImagePosHidden" value="${currentPos}">
 
       <div class="form-group">
         <label>Full Name *</label>
@@ -620,13 +654,21 @@ window.openEditTeamModal = function(id) {
       <div class="form-group">
         <label>Portrait Photo</label>
         <div class="admin-dropzone" style="border: 1.5px dashed #CBD5E1; background: #F8FAFC; padding: 18px; border-radius: 8px; text-align: center;">
-          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview', '3:4')">
-          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload or replace the portrait photo (3:4 or 1:1 headshot ratio).</p>
-          <div id="teamImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
-            <img id="teamImgPreview" src="${member.image || ''}" style="width: 100px; height: 120px; object-fit: cover; border-radius: 6px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
-            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('teamImgPreview', 'teamImageHidden', '3:4')" style="font-size: 0.78rem;">📐 Position &amp; Frame Headshot</button>
-              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Clear Photo (Use Monogram)</button>
+          <input type="file" accept="image/*" onchange="handleSimpleImageUpload(this, 'teamImageHidden', 'teamImagePosHidden', 'teamImgPreviewBox', 'teamImgPreview')">
+          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload or replace the portrait photo (3:4 headshot ratio).</p>
+          
+          <div id="teamImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 14px; text-align: left;">
+            <div class="admin-preview-frame aspect-3-4">
+              <img id="teamImgPreview" src="${member.image || ''}" alt="Portrait Preview" style="object-position: ${currentPos};">
+              <span class="admin-preview-badge">3:4 Portrait Preview</span>
+            </div>
+            
+            ${generatePositionGridHTML('teamImagePosHidden', 'teamImgPreview', currentPos)}
+            
+            <div style="text-align: center; margin-top: 10px;">
+              <button type="button" class="btn btn-sm btn-ghost" onclick="clearSimpleImage('teamImageHidden', 'teamImagePosHidden', 'teamImgPreviewBox', 'teamImgPreview')" style="font-size: 0.78rem; color: #DC2626;">
+                ✕ Clear Photo (Use Monogram)
+              </button>
             </div>
           </div>
         </div>
@@ -659,6 +701,7 @@ window.handleSaveTeam = function(e) {
     department: form.team_dept.value.trim(),
     order: parseInt(form.team_order.value, 10) || 1,
     image: form.team_image.value || '',
+    imagePosition: form.team_image_position ? form.team_image_position.value || 'center top' : 'center top',
     bio: form.team_bio.value.trim(),
     status: 'Published'
   };
@@ -684,30 +727,55 @@ function renderAdminProjectsTable() {
   const tbody = document.getElementById('adminProjectsTableBody');
   if (!tbody || typeof BHBStore === 'undefined') return;
 
-  const projects = BHBStore.getProjects();
+  const projects = BHBStore.getProjects(false);
   if (!projects.length) {
     tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #64748B; padding: 24px;">No projects registered. Click "+ Launch New Project" to add one.</td></tr>`;
     return;
   }
 
-  tbody.innerHTML = projects.map(p => `
-    <tr>
-      <td>
-        <b style="color: #0F172A; font-size: 0.95rem;">${p.title}</b>
-      </td>
-      <td><span class="status-pill info">${p.category}</span></td>
-      <td>${p.location}</td>
-      <td><b>${p.beneficiaries}</b></td>
-      <td><span class="status-pill success">${p.status || 'Active'}</span></td>
-      <td>
-        <div class="action-btn-group">
-          <button class="btn-icon-sm" onclick="openEditProjectModal('${p.id}')">Edit</button>
-          <button class="btn-icon-sm danger" onclick="deleteProjectAdmin('${p.id}')">Delete</button>
-        </div>
-      </td>
-    </tr>
-  `).join('');
+  tbody.innerHTML = projects.map(p => {
+    const pos = p.imagePosition || 'center center';
+    const imgHTML = p.image
+      ? `<img src="${p.image}" alt="${p.title}" style="width: 54px; height: 38px; object-fit: cover; object-position: ${pos}; border-radius: 4px; border: 1px solid #E2E8F0;">`
+      : `<div style="width: 54px; height: 38px; background: #0F1E36; color: #93C5FD; font-size: 0.65rem; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: 700;">PROJ</div>`;
+
+    const isPublished = p.published !== false;
+    const pubStatusHTML = `
+      <button class="status-pill ${isPublished ? 'success' : 'pending'}" onclick="toggleProjectPublishAdmin('${p.id}')" title="Click to toggle public visibility" style="cursor: pointer;">
+        ${isPublished ? '✓ Published' : '○ Draft'}
+      </button>
+    `;
+
+    return `
+      <tr>
+        <td>${imgHTML}</td>
+        <td>
+          <b style="color: #0F172A; font-size: 0.95rem;">${p.title}</b>
+          <div style="font-size: 0.76rem; color: #2563EB; font-weight: 700; margin-top: 2px;">${p.category || 'General'}</div>
+        </td>
+        <td>
+          <div style="font-weight: 600; color: #1E293B;">${p.location || 'Nationwide'}</div>
+          <div style="font-size: 0.78rem; color: #64748B;">Reach: ${p.beneficiaries || 'Community Wide'}</div>
+        </td>
+        <td style="font-weight: 700; color: #64748B;">#${p.order || 1}</td>
+        <td>${pubStatusHTML}</td>
+        <td>
+          <div class="action-btn-group">
+            <button class="btn-icon-sm" onclick="openEditProjectModal('${p.id}')">Edit</button>
+            <button class="btn-icon-sm danger" onclick="deleteProjectAdmin('${p.id}')">Delete</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
 }
+
+window.toggleProjectPublishAdmin = function(id) {
+  const newState = BHBStore.toggleProjectPublish(id);
+  showToast(`Project visibility updated to: ${newState ? 'Published (Live)' : 'Draft (Hidden)'}`, 'info');
+  renderAdminProjectsTable();
+  renderAdminOverviewMetrics();
+};
 
 window.openNewProjectModal = function() {
   const content = document.getElementById('adminCrudModalContent');
@@ -718,6 +786,7 @@ window.openNewProjectModal = function() {
     <form class="admin-modal-form" onsubmit="handleSaveProject(event)">
       <input type="hidden" name="proj_id" value="">
       <input type="hidden" name="proj_image" id="projImageHidden" value="">
+      <input type="hidden" name="proj_image_position" id="projImagePosHidden" value="center center">
 
       <div class="form-group">
         <label>Project Title *</label>
@@ -726,7 +795,7 @@ window.openNewProjectModal = function() {
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
         <div class="form-group">
-          <label>Category *</label>
+          <label>Category / Pillar *</label>
           <input type="text" name="proj_category" required placeholder="e.g. Gender Dignity & Health">
         </div>
         <div class="form-group">
@@ -739,7 +808,7 @@ window.openNewProjectModal = function() {
         </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 14px;">
         <div class="form-group">
           <label>Target Location *</label>
           <input type="text" name="proj_location" required placeholder="e.g. Nasarawa & Peri-Urban Settlements">
@@ -748,35 +817,60 @@ window.openNewProjectModal = function() {
           <label>Beneficiary Reach *</label>
           <input type="text" name="proj_reach" required placeholder="e.g. 5,000+ Girls & Young Women">
         </div>
+        <div class="form-group">
+          <label>Display Priority Order</label>
+          <input type="number" name="proj_order" value="1" min="1" max="99">
+        </div>
       </div>
 
-      <div class="form-group">
-        <label>Timeline / Duration</label>
-        <input type="text" name="proj_timeline" placeholder="e.g. Q1 2026 – Ongoing">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+        <div class="form-group">
+          <label>Timeline / Duration</label>
+          <input type="text" name="proj_timeline" placeholder="e.g. Q1 2026 – Ongoing" value="Q1 2026 – Ongoing">
+        </div>
+        <div class="form-group" style="display: flex; flex-direction: column; justify-content: flex-end;">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding-bottom: 10px;">
+            <input type="checkbox" name="proj_published" checked style="width: 18px; height: 18px;">
+            <span style="font-weight: 700; color: #0F172A; font-size: 0.9rem;">Publish Live on Public Website</span>
+          </label>
+        </div>
       </div>
 
       <div class="form-group">
         <label>Cover / Field Photo (Optional)</label>
         <div class="admin-dropzone" style="border: 1.5px dashed #CBD5E1; background: #F8FAFC; padding: 18px; border-radius: 8px; text-align: center;">
-          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'projImageHidden', 'projImgPreviewBox', 'projImgPreview', '16:9')">
-          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload a field photograph for the initiative card (16:9 banner or 4:3 photo).</p>
-          <div id="projImgPreviewBox" style="display: none; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
-            <img id="projImgPreview" src="" style="max-height: 140px; width: auto; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
-            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('projImgPreview', 'projImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Position &amp; Crop Picture</button>
-              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('projImageHidden', 'projImgPreviewBox', 'projImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Remove Image</button>
+          <input type="file" accept="image/*" onchange="handleSimpleImageUpload(this, 'projImageHidden', 'projImagePosHidden', 'projImgPreviewBox', 'projImgPreview')">
+          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload a field photograph for the initiative card (16:9 banner).</p>
+          
+          <div id="projImgPreviewBox" style="display: none; margin-top: 14px; text-align: left;">
+            <div class="admin-preview-frame aspect-16-9">
+              <img id="projImgPreview" src="" alt="Project Preview" style="object-position: center center;">
+              <span class="admin-preview-badge">16:9 Project Preview</span>
+            </div>
+            
+            ${generatePositionGridHTML('projImagePosHidden', 'projImgPreview', 'center center')}
+            
+            <div style="text-align: center; margin-top: 10px;">
+              <button type="button" class="btn btn-sm btn-ghost" onclick="clearSimpleImage('projImageHidden', 'projImagePosHidden', 'projImgPreviewBox', 'projImgPreview')" style="font-size: 0.78rem; color: #DC2626;">
+                ✕ Remove Image
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       <div class="form-group">
-        <label>Program Overview &amp; Description *</label>
-        <textarea name="proj_desc" rows="4" required placeholder="Explain the intervention scope, objectives, and impact..."></textarea>
+        <label>Short Excerpt / Summary *</label>
+        <textarea name="proj_excerpt" rows="2" required placeholder="A brief one or two-sentence summary of the initiative..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Program Overview &amp; Full Description *</label>
+        <textarea name="proj_desc" rows="4" required placeholder="Explain the intervention scope, key deliverables, and community impact..."></textarea>
       </div>
 
       <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-weight: 700; margin-top: 6px;">
-        Save Project →
+        Save &amp; Launch Project →
       </button>
     </form>
   `;
@@ -785,7 +879,7 @@ window.openNewProjectModal = function() {
 };
 
 window.openEditProjectModal = function(id) {
-  const proj = BHBStore.getProjects().find(p => p.id === id);
+  const proj = BHBStore.getProjects(false).find(p => p.id === id);
   if (!proj) return;
 
   const content = document.getElementById('adminCrudModalContent');
@@ -793,11 +887,14 @@ window.openEditProjectModal = function(id) {
   if (!content) return;
 
   const hasImg = !!proj.image;
+  const currentPos = proj.imagePosition || 'center center';
+  const isPublished = proj.published !== false;
 
   content.innerHTML = `
     <form class="admin-modal-form" onsubmit="handleSaveProject(event)">
       <input type="hidden" name="proj_id" value="${proj.id}">
       <input type="hidden" name="proj_image" id="projImageHidden" value="${proj.image || ''}">
+      <input type="hidden" name="proj_image_position" id="projImagePosHidden" value="${currentPos}">
 
       <div class="form-group">
         <label>Project Title *</label>
@@ -806,7 +903,7 @@ window.openEditProjectModal = function(id) {
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
         <div class="form-group">
-          <label>Category *</label>
+          <label>Category / Pillar *</label>
           <input type="text" name="proj_category" value="${proj.category}" required>
         </div>
         <div class="form-group">
@@ -819,7 +916,7 @@ window.openEditProjectModal = function(id) {
         </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 14px;">
         <div class="form-group">
           <label>Target Location *</label>
           <input type="text" name="proj_location" value="${proj.location}" required>
@@ -828,30 +925,55 @@ window.openEditProjectModal = function(id) {
           <label>Beneficiary Reach *</label>
           <input type="text" name="proj_reach" value="${proj.beneficiaries}" required>
         </div>
+        <div class="form-group">
+          <label>Display Priority Order</label>
+          <input type="number" name="proj_order" value="${proj.order || 1}" min="1" max="99">
+        </div>
       </div>
 
-      <div class="form-group">
-        <label>Timeline / Duration</label>
-        <input type="text" name="proj_timeline" value="${proj.timeline || 'Active'}">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+        <div class="form-group">
+          <label>Timeline / Duration</label>
+          <input type="text" name="proj_timeline" value="${proj.timeline || 'Active'}">
+        </div>
+        <div class="form-group" style="display: flex; flex-direction: column; justify-content: flex-end;">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding-bottom: 10px;">
+            <input type="checkbox" name="proj_published" ${isPublished ? 'checked' : ''} style="width: 18px; height: 18px;">
+            <span style="font-weight: 700; color: #0F172A; font-size: 0.9rem;">Publish Live on Public Website</span>
+          </label>
+        </div>
       </div>
 
       <div class="form-group">
         <label>Cover / Field Photo</label>
         <div class="admin-dropzone" style="border: 1.5px dashed #CBD5E1; background: #F8FAFC; padding: 18px; border-radius: 8px; text-align: center;">
-          <input type="file" accept="image/*" onchange="handleImageFileSelect(this, 'projImageHidden', 'projImgPreviewBox', 'projImgPreview', '16:9')">
-          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload or replace the field photograph (16:9 banner or 4:3 photo).</p>
-          <div id="projImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
-            <img id="projImgPreview" src="${proj.image || ''}" style="max-height: 140px; width: auto; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
-            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('projImgPreview', 'projImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Position &amp; Crop Picture</button>
-              <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('projImageHidden', 'projImgPreviewBox', 'projImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Remove Image</button>
+          <input type="file" accept="image/*" onchange="handleSimpleImageUpload(this, 'projImageHidden', 'projImagePosHidden', 'projImgPreviewBox', 'projImgPreview')">
+          <p style="font-size: 0.8rem; color: #64748B; margin: 6px 0 0;">Upload or replace the field photograph (16:9 banner).</p>
+          
+          <div id="projImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 14px; text-align: left;">
+            <div class="admin-preview-frame aspect-16-9">
+              <img id="projImgPreview" src="${proj.image || ''}" alt="Project Preview" style="object-position: ${currentPos};">
+              <span class="admin-preview-badge">16:9 Project Preview</span>
+            </div>
+            
+            ${generatePositionGridHTML('projImagePosHidden', 'projImgPreview', currentPos)}
+            
+            <div style="text-align: center; margin-top: 10px;">
+              <button type="button" class="btn btn-sm btn-ghost" onclick="clearSimpleImage('projImageHidden', 'projImagePosHidden', 'projImgPreviewBox', 'projImgPreview')" style="font-size: 0.78rem; color: #DC2626;">
+                ✕ Remove Image
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       <div class="form-group">
-        <label>Program Overview &amp; Description *</label>
+        <label>Short Excerpt / Summary *</label>
+        <textarea name="proj_excerpt" rows="2" required>${proj.excerpt || ''}</textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Program Overview &amp; Full Description *</label>
         <textarea name="proj_desc" rows="4" required>${proj.description || ''}</textarea>
       </div>
 
@@ -874,17 +996,22 @@ window.handleSaveProject = function(e) {
     title: form.proj_title.value.trim(),
     category: form.proj_category.value.trim(),
     status: form.proj_status.value,
+    published: form.proj_published ? form.proj_published.checked : true,
+    order: parseInt(form.proj_order ? form.proj_order.value : '1', 10) || 1,
     location: form.proj_location.value.trim(),
     beneficiaries: form.proj_reach.value.trim(),
     timeline: form.proj_timeline ? form.proj_timeline.value.trim() : 'Active',
     image: form.proj_image ? form.proj_image.value || '' : '',
+    imagePosition: form.proj_image_position ? form.proj_image_position.value || 'center center' : 'center center',
+    excerpt: form.proj_excerpt ? form.proj_excerpt.value.trim() : '',
     description: form.proj_desc.value.trim()
   };
 
   BHBStore.saveProject(projData);
   closeModal('adminCrudModal');
-  showToast('Project updated successfully!', 'success');
+  showToast('Project saved successfully and synced live!', 'success');
   renderAdminProjectsTable();
+  renderAdminOverviewMetrics();
 };
 
 window.deleteProjectAdmin = function(id) {
@@ -892,6 +1019,7 @@ window.deleteProjectAdmin = function(id) {
     BHBStore.deleteProject(id);
     showToast('Project removed successfully', 'info');
     renderAdminProjectsTable();
+    renderAdminOverviewMetrics();
   }
 };
 
@@ -1110,76 +1238,133 @@ window.syncAdminChangesToGitHub = async function() {
 };
 
 // =========================================================================
-// 7. FILE & IMAGE UPLOAD HELPERS
+// 7. SIMPLIFIED 3x3 IMAGE POSITIONING & UPLOAD HELPERS
 // =========================================================================
-function handleImageFileSelect(inputEl, hiddenInputId, previewBoxId, previewImgId, preferredAspect = '16:9') {
+function generatePositionGridHTML(hiddenPosId, previewImgId, currentPos = 'center center') {
+  const normPos = (currentPos || 'center center').toLowerCase();
+  const positions = [
+    { label: '↖ Top L', value: 'top left' },
+    { label: '↑ Top C', value: 'top center' },
+    { label: '↗ Top R', value: 'top right' },
+    { label: '← Mid L', value: 'center left' },
+    { label: '• Center', value: 'center center' },
+    { label: '→ Mid R', value: 'center right' },
+    { label: '↙ Bot L', value: 'bottom left' },
+    { label: '↓ Bot C', value: 'bottom center' },
+    { label: '↘ Bot R', value: 'bottom right' }
+  ];
+
+  const btnsHTML = positions.map(pos => {
+    const isAct = normPos === pos.value;
+    return `<button type="button" class="pos-btn ${isAct ? 'active' : ''}" onclick="setSimpleImagePosition('${pos.value}', '${previewImgId}', '${hiddenPosId}', this)">${pos.label}</button>`;
+  }).join('');
+
+  return `
+    <div class="position-selector-wrap">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <span style="font-size: 0.78rem; font-weight: 700; color: #334155; text-transform: uppercase;">Image Focus / Alignment</span>
+        <span id="${hiddenPosId}_label" style="font-size: 0.75rem; color: #2563EB; font-weight: 700;">${currentPos || 'center center'}</span>
+      </div>
+      <div class="position-grid-3x3">
+        ${btnsHTML}
+      </div>
+      <p style="font-size: 0.74rem; color: #64748B; margin: 6px 0 0; text-align: center;">Click any grid square to shift which part of the photo is framed.</p>
+    </div>
+  `;
+}
+
+window.setSimpleImagePosition = function(posValue, previewImgId, hiddenPosId, btnEl) {
+  const hidden = document.getElementById(hiddenPosId);
+  const img = document.getElementById(previewImgId);
+  const label = document.getElementById(`${hiddenPosId}_label`);
+
+  if (hidden) hidden.value = posValue;
+  if (img) img.style.objectPosition = posValue;
+  if (label) label.textContent = posValue;
+
+  if (btnEl && btnEl.parentElement) {
+    btnEl.parentElement.querySelectorAll('.pos-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+};
+
+window.handleSimpleImageUpload = function(inputEl, hiddenImgId, hiddenPosId, previewBoxId, previewImgId) {
   const file = inputEl.files[0];
   if (!file) return;
 
   if (file.size > 15 * 1024 * 1024) {
-    showToast('Image file is too large! Please select an image under 15MB.', 'warning');
+    showToast('Image file too large! Please choose an image under 15MB.', 'warning');
     return;
   }
 
-  // If interactive Cropper engine is available, launch visual framing modal
-  if (window.adminCropper && typeof window.adminCropper.open === 'function') {
-    window.adminCropper.open(file, previewImgId, hiddenInputId, preferredAspect);
-  } else {
-    // Standard FileReader fallback
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const rawData = e.target.result;
-      const img = new Image();
-      img.onload = function() {
-        const maxW = 1200;
-        const maxH = 900;
-        let w = img.width;
-        let h = img.height;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const rawData = e.target.result;
+    const img = new Image();
+    img.onload = function() {
+      const maxW = 1600;
+      const maxH = 1200;
+      let w = img.width;
+      let h = img.height;
 
-        if (w > maxW || h > maxH) {
-          if (w / maxW > h / maxH) {
-            h = Math.round(h * (maxW / w));
-            w = maxW;
-          } else {
-            w = Math.round(w * (maxH / h));
-            h = maxH;
-          }
+      if (w > maxW || h > maxH) {
+        if (w / maxW > h / maxH) {
+          h = Math.round(h * (maxW / w));
+          w = maxW;
+        } else {
+          w = Math.round(w * (maxH / h));
+          h = maxH;
         }
+      }
 
-        const canvas = document.createElement('canvas');
-        canvas.width = w;
-        canvas.height = h;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0, w, h);
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
 
-        const optimized = canvas.toDataURL('image/jpeg', 0.85);
+      const optimized = canvas.toDataURL('image/jpeg', 0.88);
 
-        const hidden = document.getElementById(hiddenInputId);
-        const box = document.getElementById(previewBoxId);
-        const prev = document.getElementById(previewImgId);
+      const hidden = document.getElementById(hiddenImgId);
+      const box = document.getElementById(previewBoxId);
+      const prev = document.getElementById(previewImgId);
 
-        if (hidden) hidden.value = optimized;
-        if (prev) prev.src = optimized;
-        if (box) box.style.display = 'block';
+      if (hidden) hidden.value = optimized;
+      if (prev) {
+        prev.src = optimized;
+        const curPos = (document.getElementById(hiddenPosId) && document.getElementById(hiddenPosId).value) || 'center center';
+        prev.style.objectPosition = curPos;
+      }
+      if (box) box.style.display = 'block';
 
-        showToast('Image uploaded and optimized!', 'success');
-      };
-      img.src = rawData;
+      showToast('Image uploaded successfully! You can adjust its alignment below.', 'success');
     };
-    reader.readAsDataURL(file);
-  }
-}
+    img.src = rawData;
+  };
+  reader.readAsDataURL(file);
+};
 
-function clearUploadedImage(hiddenInputId, previewBoxId, previewImgId) {
-  const hidden = document.getElementById(hiddenInputId);
+window.clearSimpleImage = function(hiddenImgId, hiddenPosId, previewBoxId, previewImgId) {
+  const hidden = document.getElementById(hiddenImgId);
+  const hiddenPos = document.getElementById(hiddenPosId);
   const box = document.getElementById(previewBoxId);
   const prev = document.getElementById(previewImgId);
 
   if (hidden) hidden.value = '';
+  if (hiddenPos) hiddenPos.value = 'center center';
   if (prev) prev.src = '';
   if (box) box.style.display = 'none';
 
   showToast('Image removed.', 'info');
+};
+
+// Backwards compatibility wrappers
+function handleImageFileSelect(inputEl, hiddenInputId, previewBoxId, previewImgId, preferredAspect = '16:9') {
+  handleSimpleImageUpload(inputEl, hiddenInputId, 'postImagePosHidden', previewBoxId, previewImgId);
+}
+
+function clearUploadedImage(hiddenInputId, previewBoxId, previewImgId) {
+  clearSimpleImage(hiddenInputId, 'postImagePosHidden', previewBoxId, previewImgId);
 }
 
 // =========================================================================

@@ -69,103 +69,66 @@
     </div>
   </section>
 
-  <!-- Main Contact Section: 2-Column Desktop Split (Editorial Intro + Spacious Form) -->
-  <section class="contact-main-section">
-    <div class="container">
-      <div class="contact-split-grid">
-        
-        <!-- Left Side: Contact Introduction & Direct Quick Channels -->
-        <div class="contact-intro-panel">
-          <div>
-            <span class="contact-intro-badge">Direct Engagement</span>
-            <h2 class="contact-intro-title">Advancing Dignity Through Strategic Collaboration</h2>
-            <p class="contact-intro-text">
-              We partner with multilateral institutions, government ministries, grassroots coalitions, and philanthropic donors to deliver high-impact interventions with transparency and community ownership.
-            </p>
-          </div>
-
-          <div class="contact-direct-channels">
-            <div class="contact-direct-item">
-              <span class="contact-direct-label">National Secretariat</span>
-              <span class="contact-direct-value" data-bind="officeAddress">66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria</span>
-            </div>
-            <div class="contact-direct-item">
-              <span class="contact-direct-label">Direct Telephone</span>
-              <span class="contact-direct-value">
-                <a href="tel:+2342014545878" data-bind="phone">+234 201 454 5878</a>
-              </span>
-            </div>
-            <div class="contact-direct-item">
-              <span class="contact-direct-label">Official Email</span>
-              <span class="contact-direct-value">
-                <a href="mailto:info@bhbfoundation.com" data-bind="email">info@bhbfoundation.com</a>
-              </span>
-            </div>
-            <div class="contact-direct-item">
-              <span class="contact-direct-label">Working Hours</span>
-              <span class="contact-direct-value" data-bind="workingHours">Monday – Friday, 8:00 AM – 5:00 PM (WAT)</span>
-            </div>
-          </div>
+  <!-- Main Contact Section: Centered Spacious Form -->
+  <section class="contact-main-section" style="padding: 60px 0;">
+    <div class="container" style="max-width: 840px;">
+      
+      <div class="contact-form-panel" style="box-shadow: 0 4px 20px rgba(15, 30, 54, 0.06); border: 1px solid rgba(15, 30, 54, 0.08);">
+        <div class="contact-form-header">
+          <h2 class="contact-form-title">Send Us a Message</h2>
+          <p class="contact-form-sub">Fill in the form below and our administrative team will respond promptly.</p>
         </div>
 
-        <!-- Right Side: Clean, Spacious Contact Form -->
-        <div class="contact-form-panel">
-          <div class="contact-form-header">
-            <h2 class="contact-form-title">Send Us a Message</h2>
-            <p class="contact-form-sub">Fill in the form below and our administrative team will respond promptly.</p>
-          </div>
-
-          <form onsubmit="submitContactForm(event)" id="contactForm">
-            <div class="form-row-2">
-              <div class="form-group">
-                <label for="contactName">Full Name *</label>
-                <input type="text" id="contactName" name="contact_name" required placeholder="e.g. Alhaji Aminu Kano" autocomplete="name">
-              </div>
-              <div class="form-group">
-                <label for="contactEmail">Email Address *</label>
-                <input type="email" id="contactEmail" name="contact_email" required placeholder="name@organisation.org" autocomplete="email">
-              </div>
-            </div>
-
-            <div class="form-row-2">
-              <div class="form-group">
-                <label for="contactOrg">Organization / Institution</label>
-                <select id="contactOrg" name="contact_org" required>
-                  <option value="Government institution">Government institution</option>
-                  <option value="Philanthropic foundation">Philanthropic foundation</option>
-                  <option value="Corporate CSR programme">Corporate CSR programme</option>
-                  <option value="Civil society / NGO">Civil society / NGO</option>
-                  <option value="Individual">Individual Supporter</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="contactSubject">Subject / Inquiry Type</label>
-                <select id="contactSubject" name="contact_subject" required>
-                  <option value="Partnership inquiry">Partnership inquiry</option>
-                  <option value="Programme collaboration">Programme collaboration</option>
-                  <option value="Funding & Grants">Funding &amp; Grants</option>
-                  <option value="General question">General question</option>
-                </select>
-              </div>
-            </div>
-
+        <form onsubmit="submitContactForm(event)" id="contactForm">
+          <div class="form-row-2">
             <div class="form-group">
-              <label for="contactMessage">Your Message *</label>
-              <textarea id="contactMessage" name="contact_message" rows="5" required placeholder="Tell us how we can collaborate to create sustainable community impact..."></textarea>
+              <label for="contactName">Full Name *</label>
+              <input type="text" id="contactName" name="contact_name" required placeholder="e.g. Alhaji Aminu Kano" autocomplete="name">
             </div>
+            <div class="form-group">
+              <label for="contactEmail">Email Address *</label>
+              <input type="email" id="contactEmail" name="contact_email" required placeholder="name@organisation.org" autocomplete="email">
+            </div>
+          </div>
 
-            <button type="submit" class="contact-submit-btn">
-              <span>Send Message →</span>
-            </button>
-          </form>
-        </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="contactOrg">Organization / Institution</label>
+              <select id="contactOrg" name="contact_org" required>
+                <option value="Government institution">Government institution</option>
+                <option value="Philanthropic foundation">Philanthropic foundation</option>
+                <option value="Corporate CSR programme">Corporate CSR programme</option>
+                <option value="Civil society / NGO">Civil society / NGO</option>
+                <option value="Individual">Individual Supporter</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject / Inquiry Type</label>
+              <select id="contactSubject" name="contact_subject" required>
+                <option value="Partnership inquiry">Partnership inquiry</option>
+                <option value="Programme collaboration">Programme collaboration</option>
+                <option value="Funding & Grants">Funding &amp; Grants</option>
+                <option value="General question">General question</option>
+              </select>
+            </div>
+          </div>
 
+          <div class="form-group">
+            <label for="contactMessage">Your Message *</label>
+            <textarea id="contactMessage" name="contact_message" rows="5" required placeholder="Tell us how we can collaborate to create sustainable community impact..."></textarea>
+          </div>
+
+          <button type="submit" class="contact-submit-btn">
+            <span>Send Message →</span>
+          </button>
+        </form>
       </div>
+
     </div>
   </section>
 
-  <!-- Section: Official Contact Information (Dedicated Full-Width Brand Area) -->
+  <!-- Section: Official Contact Information (Approved Full-Width Brand Area) -->
   <section class="contact-official-section">
     <div class="container">
       
@@ -214,16 +177,90 @@
 
       </div>
 
-      <!-- Social Media Bar (Identifiable Default State, Expressive Hover) -->
-      <div class="contact-social-channels-bar">
-        <div class="contact-social-bar-label">CONNECT ON SOCIAL MEDIA</div>
-        <div class="contact-social-pill-group">
-          <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-social-pill">LinkedIn</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener" class="contact-social-pill">Twitter / X</a>
-          <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-social-pill">Facebook</a>
-        </div>
+    </div>
+  </section>
+
+  <!-- Section: Connect on Social Media (Clean Dedicated White Closing Section) -->
+  <section class="contact-social-section" style="background: #FFFFFF; padding: 64px 0; border-top: 1px solid rgba(15, 30, 54, 0.08);">
+    <div class="container">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto 36px;">
+        <h2 style="font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 800; color: var(--navy); margin-bottom: 8px;">Connect on Social Media</h2>
+        <p style="font-size: 0.96rem; color: var(--text-muted); line-height: 1.6;">Follow our verified institutional channels for live field updates, beneficiary dispatches, and partnership opportunities.</p>
       </div>
 
+      <div class="social-channels-grid-6">
+        <!-- 1. Instagram -->
+        <a href="https://instagram.com/bhbfoundation" target="_blank" rel="noopener" class="social-channel-card" title="BHB Foundation on Instagram">
+          <div class="social-channel-icon-wrap" style="color: #E1306C;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </div>
+          <div class="social-channel-info">
+            <span class="social-channel-name">Instagram</span>
+            <span class="social-channel-handle">@bhbfoundation</span>
+          </div>
+          <span class="social-channel-arrow">→</span>
+        </a>
+
+        <!-- 2. LinkedIn -->
+        <a href="https://linkedin.com/company/bhbfoundation" target="_blank" rel="noopener" class="social-channel-card" title="BHB Foundation on LinkedIn">
+          <div class="social-channel-icon-wrap" style="color: #0A66C2;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </div>
+          <div class="social-channel-info">
+            <span class="social-channel-name">LinkedIn</span>
+            <span class="social-channel-handle">BHB Foundation</span>
+          </div>
+          <span class="social-channel-arrow">→</span>
+        </a>
+
+        <!-- 3. X / Twitter -->
+        <a href="https://x.com/bhbfoundation" target="_blank" rel="noopener" class="social-channel-card" title="BHB Foundation on X / Twitter">
+          <div class="social-channel-icon-wrap" style="color: #0F172A;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </div>
+          <div class="social-channel-info">
+            <span class="social-channel-name">X (Twitter)</span>
+            <span class="social-channel-handle">@bhbfoundation</span>
+          </div>
+          <span class="social-channel-arrow">→</span>
+        </a>
+
+        <!-- 4. Facebook -->
+        <a href="https://facebook.com/bhbfoundation" target="_blank" rel="noopener" class="social-channel-card" title="BHB Foundation on Facebook">
+          <div class="social-channel-icon-wrap" style="color: #1877F2;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </div>
+          <div class="social-channel-info">
+            <span class="social-channel-name">Facebook</span>
+            <span class="social-channel-handle">/bhbfoundation</span>
+          </div>
+          <span class="social-channel-arrow">→</span>
+        </a>
+
+        <!-- 5. YouTube -->
+        <a href="https://youtube.com/@bhbfoundation" target="_blank" rel="noopener" class="social-channel-card" title="BHB Foundation on YouTube">
+          <div class="social-channel-icon-wrap" style="color: #FF0000;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+          </div>
+          <div class="social-channel-info">
+            <span class="social-channel-name">YouTube</span>
+            <span class="social-channel-handle">@bhbfoundation</span>
+          </div>
+          <span class="social-channel-arrow">→</span>
+        </a>
+
+        <!-- 6. TikTok -->
+        <a href="https://tiktok.com/@bhbfoundation" target="_blank" rel="noopener" class="social-channel-card" title="BHB Foundation on TikTok">
+          <div class="social-channel-icon-wrap" style="color: #000000;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </div>
+          <div class="social-channel-info">
+            <span class="social-channel-name">TikTok</span>
+            <span class="social-channel-handle">@bhbfoundation</span>
+          </div>
+          <span class="social-channel-arrow">→</span>
+        </a>
+      </div>
     </div>
   </section>
 

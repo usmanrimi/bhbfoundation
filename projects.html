@@ -208,7 +208,7 @@
     let activeCategory = 'All';
 
     function renderProjectsList() {
-      const allProjects = BHBStore.getProjects();
+      const allProjects = BHBStore.getProjects(true);
       let filtered = allProjects;
 
       if (activeStatus !== 'All') {

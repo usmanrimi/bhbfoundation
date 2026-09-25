@@ -223,7 +223,13 @@ class StoreEngine {
   getSettings() { return this.data.settings || DEFAULT_STORE_DATA.settings; }
   getHeroSlides() { return this.data.heroSlides || []; }
   getFocusAreas() { return this.data.focusAreas || []; }
-  getProjects() { return this.data.projects || []; }
+  getProjects(publishedOnly = false) {
+    let list = this.data.projects || [];
+    if (publishedOnly) {
+      list = list.filter(p => p.published !== false && p.status !== 'Draft');
+    }
+    return list.slice().sort((a, b) => (Number(a.order) || 99) - (Number(b.order) || 99));
+  }
   getPosts() { return this.data.posts || []; }
   getPostById(id) { return (this.data.posts || []).find(p => p.id === id); }
   getTeam(publishedOnly = false) {
@@ -295,6 +301,16 @@ class StoreEngine {
       else this.data.projects.push(project);
     }
     this.notify();
+  }
+
+  toggleProjectPublish(id) {
+    const proj = (this.data.projects || []).find(p => p.id === id);
+    if (proj) {
+      proj.published = (proj.published === false) ? true : false;
+      this.notify();
+      return proj.published;
+    }
+    return false;
   }
 
   deleteProject(id) {
@@ -611,42 +627,53 @@ window.renderHomepageProjectsHTML = function() {
 };
 
 window.renderProjectsLandscapeHTML = function(filteredProjects) {
-  const projects = filteredProjects || (typeof BHBStore !== 'undefined' ? BHBStore.getProjects() : []);
+  const projects = filteredProjects || (typeof BHBStore !== 'undefined' ? BHBStore.getProjects(true) : []);
   if (!projects || !projects.length) return '<div style="padding: 40px 0; color: var(--text-muted); text-align: center;">No initiatives match the selected filter.</div>';
 
-  return projects.map(p => `
-    <div class="project-landscape-row">
-      <div class="project-row-main-grid">
-        <div>
-          <div class="project-meta-badges">
-            <span class="badge-tag">${p.category}</span>
-            <span class="badge-status-pill ${p.status ? p.status.toLowerCase() : 'ongoing'}">${p.status || 'Active'}</span>
+  return projects.map(p => {
+    const imgHTML = p.image
+      ? `
+        <div class="project-landscape-img-wrap" style="width: 100%; height: 220px; overflow: hidden; border-radius: 6px; margin-bottom: 18px; border: 1px solid var(--border-light); background: #0F172A;">
+          <img src="${p.image}" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; object-position: ${p.imagePosition || 'center center'}; display: block;">
+        </div>
+      `
+      : '';
+
+    return `
+      <div class="project-landscape-row">
+        ${imgHTML}
+        <div class="project-row-main-grid">
+          <div>
+            <div class="project-meta-badges">
+              <span class="badge-tag">${p.category}</span>
+              <span class="badge-status-pill ${p.status ? p.status.toLowerCase() : 'ongoing'}">${p.status || 'Active'}</span>
+            </div>
+            <h3 class="project-landscape-title">${p.title}</h3>
+            <p class="project-landscape-summary">${p.description}</p>
           </div>
-          <h3 class="project-landscape-title">${p.title}</h3>
-          <p class="project-landscape-summary">${p.description}</p>
+
+          <div class="project-details-grid">
+            <div class="project-detail-pill">
+              <span class="meta-label">LOCATION</span>
+              <span class="meta-value">${p.location}</span>
+            </div>
+            <div class="project-detail-pill">
+              <span class="meta-label">REACH</span>
+              <span class="meta-value">${p.beneficiaries}</span>
+            </div>
+            <div class="project-detail-pill">
+              <span class="meta-label">TIMELINE</span>
+              <span class="meta-value">${p.timeline || 'Active'}</span>
+            </div>
+          </div>
         </div>
 
-        <div class="project-details-grid">
-          <div class="project-detail-pill">
-            <span class="meta-label">LOCATION</span>
-            <span class="meta-value">${p.location}</span>
-          </div>
-          <div class="project-detail-pill">
-            <span class="meta-label">REACH</span>
-            <span class="meta-value">${p.beneficiaries}</span>
-          </div>
-          <div class="project-detail-pill">
-            <span class="meta-label">TIMELINE</span>
-            <span class="meta-value">${p.timeline || 'Active'}</span>
-          </div>
+        <div class="project-row-bottom-bar">
+          <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('${p.id}')">View Full Case Study →</button>
         </div>
       </div>
-
-      <div class="project-row-bottom-bar">
-        <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('${p.id}')">View Full Case Study →</button>
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 };
 
 // 4. Blog 3-Column Cards (Equal Height, Clean Typography & Bottom CTA)
@@ -657,7 +684,7 @@ window.renderHomeBlogGridHTML = function() {
 
   return posts.map(p => {
     const imgHTML = p.image
-      ? `<div class="blog-card-img-wrap"><img src="${p.image}" alt="${p.title}" class="blog-card-thumb" onerror="this.parentElement.style.display='none'"></div>`
+      ? `<div class="blog-card-img-wrap"><img src="${p.image}" alt="${p.title}" class="blog-card-thumb" style="object-position: ${p.imagePosition || 'center center'};" onerror="this.parentElement.style.display='none'"></div>`
       : '';
 
     return `
@@ -688,7 +715,7 @@ window.renderChairmanSpotlightHTML = function() {
 
   const initials = chairman.name ? chairman.name.split(' ').map(n => n[0]).join('').substring(0, 2) : 'BH';
   const avatarHTML = chairman.image
-    ? `<img src="${chairman.image}" alt="${chairman.name}" onerror="this.outerHTML='<div class=\\'founder-monogram-placeholder\\'>${initials}</div>'">`
+    ? `<img src="${chairman.image}" alt="${chairman.name}" style="object-position: ${chairman.imagePosition || 'center top'};" onerror="this.outerHTML='<div class=\\'founder-monogram-placeholder\\'>${initials}</div>'">`
     : `<div class="founder-monogram-placeholder">${initials}</div>`;
 
   return `
@@ -715,7 +742,7 @@ window.renderTeamCardsHTML = function() {
   const cardsHTML = others.map(m => {
     const initials = m.name ? m.name.split(' ').map(n => n[0]).join('').substring(0, 2) : 'BH';
     const photoHTML = m.image
-      ? `<img src="${m.image}" alt="${m.name}" onerror="this.outerHTML='<div class=\\'team-card-monogram\\'>${initials}</div>'">`
+      ? `<img src="${m.image}" alt="${m.name}" style="object-position: ${m.imagePosition || 'center top'};" onerror="this.outerHTML='<div class=\\'team-card-monogram\\'>${initials}</div>'">`
       : `<div class="team-card-monogram">${initials}</div>`;
 
     return `
@@ -735,7 +762,7 @@ window.renderTeamCardsHTML = function() {
   return `<div class="team-roster-grid">${cardsHTML}</div>`;
 };
 
-// 6. Our Partners Infinite Marquee Section
+// 6. Our Partners Infinite Marquee Section (Strictly Official Partner Logos)
 window.renderPartnersSectionHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
   let partners = BHBStore.getPartners();
@@ -744,23 +771,17 @@ window.renderPartnersSectionHTML = function() {
   }
   if (!partners || !partners.length) return '';
 
-  const activePartners = partners.filter(p => p.status !== 'inactive');
+  // Filter ONLY active partners that have actual official logo files (no text/placeholder fallbacks)
+  const validPartners = partners.filter(p => p.status !== 'inactive' && p.logo && typeof p.logo === 'string' && p.logo.length > 5 && !p.logo.includes('data:image/svg'));
+  if (!validPartners.length) return '';
+
   // Duplicate list 4x to enable continuous seamless horizontal marquee on all screen resolutions
-  const marqueeList = [...activePartners, ...activePartners, ...activePartners, ...activePartners];
+  const marqueeList = [...validPartners, ...validPartners, ...validPartners, ...validPartners];
 
   const cardsHTML = marqueeList.map((p) => {
-    const logoContent = p.logo
-      ? `<img src="${p.logo}" alt="${p.name}" class="partner-logo-img">`
-      : `
-        <div class="partner-logo-badge">
-          <span class="partner-logo-badge-icon">${p.abbr || p.name.substring(0, 3).toUpperCase()}</span>
-          <span class="partner-logo-text">${p.name}</span>
-        </div>
-      `;
-
     return `
       <div class="partner-logo-card" title="${p.name}">
-        ${logoContent}
+        <img src="${p.logo}" alt="${p.name}" class="partner-logo-img">
       </div>
     `;
   }).join('');
