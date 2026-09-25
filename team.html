@@ -58,8 +58,8 @@
   <!-- Page Header Banner -->
   <div class="page-header-banner">
     <div class="container">
-      <h1>Governance &amp; Leadership</h1>
-      <p>
+      <h1 style="color: var(--white); max-width: 960px;">Governance &amp; Leadership</h1>
+      <p class="lead" style="color: #CBD5E1; max-width: 880px; margin-top: 14px;">
         Experienced trustees, healthcare advisors, and community mobilizers steering our institutional mandate with accountability.
       </p>
     </div>
@@ -68,18 +68,18 @@
   <!-- Main Leadership Section -->
   <section>
     <div class="container">
-      <div class="section-header center">
-        <h2 class="section-title-twotone">Governed By Purpose, <span class="text-accent-blue">Led By Community</span></h2>
+      <div class="section-header">
+        <h2>Governed By Purpose, <span class="text-accent-blue">Led By Community</span></h2>
         <p class="lead">Experienced practitioners and trustees ensuring strict accountability and grassroots impact.</p>
       </div>
 
       <!-- Chairman Spotlight -->
-      <div class="dynamic-team-spotlight executive-spotlight-card">
+      <div id="chairmanSpotlight">
         <script>document.write(renderChairmanSpotlightHTML());</script>
       </div>
 
       <!-- Directorate & Officers Grid -->
-      <div class="team-grid-3 dynamic-team-grid" style="margin-top: 40px;">
+      <div id="teamMembersList" style="margin-top: 20px;">
         <script>document.write(renderTeamCardsHTML());</script>
       </div>
     </div>
@@ -93,8 +93,8 @@
         <!-- Col 1: Brand -->
         <div class="footer-brand-col">
           <img src="assets/images/bhb-logo.png" alt="BHB Foundation" class="footer-logo">
-          <p class="footer-desc">
-            Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State and Northern Nigeria.
+          <p class="footer-desc" data-bind="tagline">
+            Empowering Families. Strengthening Communities. Creating Sustainable Futures across underserved communities.
           </p>
         </div>
 
@@ -129,13 +129,13 @@
           <h4>Contact &amp; Connect</h4>
           <div class="footer-contact-item">
             <strong>Office:</strong><br>
-            66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria
+            <span data-bind="officeAddress">66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria</span>
           </div>
           <div class="footer-contact-item">
-            <strong>Phone:</strong> <a href="tel:+2342014545878">+234 201 454 5878</a>
+            <strong>Phone:</strong> <a href="tel:+2342014545878" data-bind="phone">+234 201 454 5878</a>
           </div>
           <div class="footer-contact-item">
-            <strong>Email:</strong> <a href="mailto:info@bhbfoundation.com">info@bhbfoundation.com</a>
+            <strong>Email:</strong> <a href="mailto:info@bhbfoundation.com" data-bind="email">info@bhbfoundation.com</a>
           </div>
           <div class="footer-social-links">
             <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-btn">LinkedIn</a>

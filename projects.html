@@ -11,7 +11,7 @@
   <!-- Fonts: Manrope (Display) & Inter (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/styles.css">
@@ -55,13 +55,12 @@
     <a href="contact.html">Contact Us</a>
   </div>
 
-  <!-- Page Header Banner (Editorial Typography) -->
+  <!-- Page Header Banner -->
   <section class="hero-editorial-section" style="padding-top: clamp(60px, 8vw, 96px); padding-bottom: clamp(50px, 7vw, 80px);">
     <div class="container">
-      <span class="section-tag light">Field Deployments</span>
-      <h1 style="color: var(--white); max-width: 880px;">Projects &amp; Initiatives</h1>
-      <p class="lead" style="color: #CBD5E1; max-width: 720px; margin-top: 14px;">
-        A transparent portfolio of active field deployments, completed milestones, and community-led initiatives across Northern Nigeria.
+      <h1 style="color: var(--white); max-width: 960px;">Projects &amp; Initiatives</h1>
+      <p class="lead" style="color: #CBD5E1; max-width: 880px; margin-top: 14px;">
+        A transparent portfolio of active field deployments, completed milestones, and community-led initiatives.
       </p>
     </div>
   </section>
@@ -104,20 +103,19 @@
   <section class="philosophy-banner-section" style="background-color: var(--blue);">
     <div class="container">
       <div class="philosophy-banner-content">
-        <span class="section-tag light" style="justify-content: center;">Direct Support</span>
         <h2 style="color: var(--white); font-size: clamp(1.8rem, 3.2vw, 2.6rem); margin-bottom: 14px;">Support an Active Initiative</h2>
         <p style="color: #DBEAFE; margin-bottom: 28px;">
           Direct your contribution to verified grassroots programs providing healthcare access, assistive tools, and livelihood training.
         </p>
         <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
           <a href="contact.html" class="btn btn-white">Partner With Us →</a>
-          <button class="btn btn-outline-white" onclick="openDonateModal()">Direct Support</button>
+          <a href="contact.html" class="btn btn-outline-white">Make an Inquiry</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Institutional Footer (Simple 4-Column Layout — Zero Public Admin Links) -->
+  <!-- Institutional Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top-grid">
@@ -125,8 +123,8 @@
         <!-- Col 1: Brand -->
         <div class="footer-brand-col">
           <img src="assets/images/bhb-logo.png" alt="BHB Foundation" class="footer-logo">
-          <p class="footer-desc">
-            Empowering Families. Strengthening Communities. Creating Sustainable Futures across Kano State and Northern Nigeria.
+          <p class="footer-desc" data-bind="tagline">
+            Empowering Families. Strengthening Communities. Creating Sustainable Futures across underserved communities.
           </p>
         </div>
 
@@ -161,13 +159,13 @@
           <h4>Contact &amp; Connect</h4>
           <div class="footer-contact-item">
             <strong>Office:</strong><br>
-            66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria
+            <span data-bind="officeAddress">66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria</span>
           </div>
           <div class="footer-contact-item">
-            <strong>Phone:</strong> <a href="tel:+2342014545878">+234 201 454 5878</a>
+            <strong>Phone:</strong> <a href="tel:+2342014545878" data-bind="phone">+234 201 454 5878</a>
           </div>
           <div class="footer-contact-item">
-            <strong>Email:</strong> <a href="mailto:info@bhbfoundation.com">info@bhbfoundation.com</a>
+            <strong>Email:</strong> <a href="mailto:info@bhbfoundation.com" data-bind="email">info@bhbfoundation.com</a>
           </div>
           <div class="footer-social-links">
             <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-btn">LinkedIn</a>
@@ -188,7 +186,7 @@
     </div>
   </footer>
 
-  <!-- Project Details Modal (Case Study Layout) -->
+  <!-- Project Details Modal -->
   <div class="modal-backdrop" id="genericModal">
     <div class="modal-window">
       <div style="position: absolute; top: 16px; right: 18px; z-index: 10;">

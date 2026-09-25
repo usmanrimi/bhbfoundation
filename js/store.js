@@ -507,7 +507,7 @@ window.renderHeroSliderHTML = function() {
   `;
 };
 
-// 2. The 6 Pillars Landscape / Editorial List (With Rhythmic Alternating Backgrounds)
+// 2. The 6 Pillars Landscape / Editorial List (With Rhythmic Alternating Backgrounds & Bottom Aligned CTA)
 window.renderFocusAreasHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
   const areas = BHBStore.getFocusAreas();
@@ -517,14 +517,16 @@ window.renderFocusAreasHTML = function() {
 
   return areas.map((a, idx) => `
     <div class="pillar-landscape-row ${bgClasses[idx % bgClasses.length]} interactive-lift">
-      <div class="pillar-num">0${idx + 1}</div>
-      <div class="pillar-title-col">
-        <h3>${a.title}</h3>
+      <div class="pillar-row-header">
+        <div class="pillar-num">0${idx + 1}</div>
+        <div class="pillar-title-col">
+          <h3>${a.title}</h3>
+        </div>
+        <div class="pillar-desc-col">
+          <p>${a.summary}</p>
+        </div>
       </div>
-      <div class="pillar-desc-col">
-        <p>${a.summary}</p>
-      </div>
-      <div class="pillar-action-col">
+      <div class="pillar-bottom-bar">
         <a href="projects.html" class="arrow-hover">Explore Projects →</a>
       </div>
     </div>
@@ -560,7 +562,7 @@ window.renderSDGsSectionHTML = function() {
   `;
 };
 
-// 3. Projects Landscape Rows (Clean Horizontal Layout)
+// 3. Projects Landscape Rows (Clean Horizontal Layout with Bottom CTA)
 window.renderHomepageProjectsHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
   const projects = BHBStore.getProjects().slice(0, 3);
@@ -568,23 +570,25 @@ window.renderHomepageProjectsHTML = function() {
 
   return projects.map(p => `
     <div class="project-landscape-row">
-      <div class="project-main-info">
-        <div class="project-meta-badges">
-          <span class="badge-tag">${p.category}</span>
-          <span class="badge-status-pill ${p.status ? p.status.toLowerCase() : 'ongoing'}">${p.status || 'Active'}</span>
+      <div class="project-row-main-grid">
+        <div>
+          <div class="project-meta-badges">
+            <span class="badge-tag">${p.category}</span>
+            <span class="badge-status-pill ${p.status ? p.status.toLowerCase() : 'ongoing'}">${p.status || 'Active'}</span>
+          </div>
+          <h3 class="project-landscape-title">${p.title}</h3>
+          <p class="project-landscape-summary">${p.description}</p>
         </div>
-        <h3 class="project-landscape-title">${p.title}</h3>
-        <p class="project-landscape-summary">${p.description}</p>
+
+        <div class="project-details-grid">
+          <div class="project-detail-item"><strong>Location:</strong> ${p.location}</div>
+          <div class="project-detail-item"><strong>Reach:</strong> ${p.beneficiaries}</div>
+          <div class="project-detail-item"><strong>Timeline:</strong> ${p.timeline || 'Active'}</div>
+        </div>
       </div>
 
-      <div class="project-details-grid">
-        <div class="project-detail-item"><span>Location:</span> ${p.location}</div>
-        <div class="project-detail-item"><span>Reach:</span> ${p.beneficiaries}</div>
-        <div class="project-detail-item"><span>Timeline:</span> ${p.timeline || 'Active'}</div>
-      </div>
-
-      <div class="project-action-btn-col">
-        <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('${p.id}')">View Project →</button>
+      <div class="project-row-bottom-bar">
+        <button class="btn btn-outline btn-sm" onclick="openProjectDetailsModal('${p.id}')">View Project Details →</button>
       </div>
     </div>
   `).join('');
@@ -596,29 +600,31 @@ window.renderProjectsLandscapeHTML = function(filteredProjects) {
 
   return projects.map(p => `
     <div class="project-landscape-row">
-      <div class="project-main-info">
-        <div class="project-meta-badges">
-          <span class="badge-tag">${p.category}</span>
-          <span class="badge-status-pill ${p.status ? p.status.toLowerCase() : 'ongoing'}">${p.status || 'Active'}</span>
+      <div class="project-row-main-grid">
+        <div>
+          <div class="project-meta-badges">
+            <span class="badge-tag">${p.category}</span>
+            <span class="badge-status-pill ${p.status ? p.status.toLowerCase() : 'ongoing'}">${p.status || 'Active'}</span>
+          </div>
+          <h3 class="project-landscape-title">${p.title}</h3>
+          <p class="project-landscape-summary">${p.description}</p>
         </div>
-        <h3 class="project-landscape-title">${p.title}</h3>
-        <p class="project-landscape-summary">${p.description}</p>
+
+        <div class="project-details-grid">
+          <div class="project-detail-item"><strong>Location:</strong> ${p.location}</div>
+          <div class="project-detail-item"><strong>Reach:</strong> ${p.beneficiaries}</div>
+          <div class="project-detail-item"><strong>Timeline:</strong> ${p.timeline || 'Active'}</div>
+        </div>
       </div>
 
-      <div class="project-details-grid">
-        <div class="project-detail-item"><span>Location:</span> ${p.location}</div>
-        <div class="project-detail-item"><span>Reach:</span> ${p.beneficiaries}</div>
-        <div class="project-detail-item"><span>Timeline:</span> ${p.timeline || 'Active'}</div>
-      </div>
-
-      <div class="project-action-btn-col">
-        <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('${p.id}')">View Project →</button>
+      <div class="project-row-bottom-bar">
+        <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('${p.id}')">View Full Case Study →</button>
       </div>
     </div>
   `).join('');
 };
 
-// 4. Blog 3-Column Cards (Equal Height, Clean Typography)
+// 4. Blog 3-Column Cards (Equal Height, Clean Typography & Bottom CTA)
 window.renderHomeBlogGridHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
   const posts = BHBStore.getPosts().slice(0, 3);
@@ -626,18 +632,16 @@ window.renderHomeBlogGridHTML = function() {
 
   return posts.map(p => `
     <div class="blog-card" onclick="openBlogPostReader('${p.id}')">
-      <div class="blog-card-header-bar">
-        <span class="blog-card-tag">#${(p.category || 'update').toLowerCase().replace(/[^a-z0-9]/g, '')}</span>
-        <span class="blog-card-date">${p.date || 'Recent'}</span>
+      <div>
+        <div class="blog-card-header-bar">
+          <span class="blog-card-tag">#${(p.category || 'update').toLowerCase().replace(/[^a-z0-9]/g, '')}</span>
+          <span class="blog-card-date">${p.date || 'Recent'}</span>
+        </div>
+        <h3 class="blog-card-title">${p.title}</h3>
+        <p class="blog-card-excerpt">${p.excerpt || (p.content || '').substring(0, 110) + '...'}</p>
       </div>
-      <div class="blog-card-body">
-        <div>
-          <h3 class="blog-card-title">${p.title}</h3>
-          <p class="blog-card-excerpt">${p.excerpt || (p.content || '').substring(0, 110) + '...'}</p>
-        </div>
-        <div class="blog-card-footer">
-          <span class="blog-card-link">Read full post →</span>
-        </div>
+      <div class="blog-card-footer">
+        <span class="blog-card-link">Read full post →</span>
       </div>
     </div>
   `).join('');
@@ -651,11 +655,14 @@ window.renderChairmanSpotlightHTML = function() {
   if (!chairman) return '';
 
   const initials = chairman.name ? chairman.name.split(' ').map(n => n[0]).join('').substring(0, 2) : 'BH';
+  const avatarHTML = chairman.image
+    ? `<img src="${chairman.image}" alt="${chairman.name}" style="width: 120px; height: 120px; object-fit: cover; border-radius: var(--radius-sm);">`
+    : `<div class="leader-avatar-monogram">${initials}</div>`;
 
   return `
     <div class="leadership-open-profile">
       <div>
-        <div class="leader-avatar-monogram">${initials}</div>
+        ${avatarHTML}
       </div>
       <div class="leader-details">
         <span class="section-tag">Board of Trustees</span>
@@ -675,10 +682,14 @@ window.renderTeamCardsHTML = function() {
 
   return others.map(m => {
     const initials = m.name ? m.name.split(' ').map(n => n[0]).join('').substring(0, 2) : 'BH';
+    const avatarHTML = m.image
+      ? `<img src="${m.image}" alt="${m.name}" style="width: 100px; height: 100px; object-fit: cover; border-radius: var(--radius-sm);">`
+      : `<div class="leader-avatar-monogram" style="width: 100px; height: 100px; font-size: 1.8rem;">${initials}</div>`;
+
     return `
       <div class="leadership-open-profile">
         <div>
-          <div class="leader-avatar-monogram" style="width: 100px; height: 100px; font-size: 1.8rem;">${initials}</div>
+          ${avatarHTML}
         </div>
         <div class="leader-details">
           <span class="section-tag">${m.department || 'Executive Directorate'}</span>

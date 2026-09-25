@@ -394,25 +394,43 @@ function renderAdminHeroSlidesTable() {
   if (!tbody) return;
 
   const slides = BHBStore.getHeroSlides();
-  tbody.innerHTML = slides.map(s => `
-    <tr>
-      <td>
-        <img src="${s.image}" style="width: 70px; height: 42px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1;">
-      </td>
-      <td>
-        <b style="color: #0F172A;">${s.title}</b>
-        <div style="font-size: 0.78rem; color: #64748B;">${s.label || 'Standard Slide'}</div>
-      </td>
-      <td style="max-width: 260px; font-size: 0.85rem; color: #475569;">${s.lead}</td>
-      <td>
-        <div class="action-btn-group">
-          <button class="btn-icon-sm" onclick="editHeroSlideModal('${s.id}')">Edit</button>
-          <button class="btn-icon-sm danger" onclick="BHBStore.deleteHeroSlide('${s.id}')">Delete</button>
-        </div>
-      </td>
-    </tr>
-  `).join('');
+  tbody.innerHTML = slides.map(s => {
+    const imgHTML = s.image
+      ? `<img src="${s.image}" style="width: 70px; height: 42px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1;">`
+      : `<div style="width: 70px; height: 42px; border-radius: 4px; background: #F1F5F9; color: #64748B; font-weight: 700; font-size: 0.72rem; display: flex; align-items: center; justify-content: center; border: 1px solid #CBD5E1;">NO IMG</div>`;
+    return `
+      <tr>
+        <td>${imgHTML}</td>
+        <td>
+          <b style="color: #0F172A;">${s.title}</b>
+          <div style="font-size: 0.78rem; color: #64748B;">${s.label || 'Standard Slide'}</div>
+        </td>
+        <td style="max-width: 260px; font-size: 0.85rem; color: #475569;">${s.lead}</td>
+        <td>
+          <div class="action-btn-group">
+            <button class="btn-icon-sm" onclick="editHeroSlideModal('${s.id}')">Edit</button>
+            <button class="btn-icon-sm danger" onclick="BHBStore.deleteHeroSlide('${s.id}')">Delete</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
 }
+
+window.clearFieldImage = function(previewId, hiddenInputName, emptyNoticeId) {
+  const hidden = document.querySelector(`input[name="${hiddenInputName}"]`) || document.getElementById(hiddenInputName);
+  const preview = document.getElementById(previewId);
+  const emptyNotice = emptyNoticeId ? document.getElementById(emptyNoticeId) : null;
+  if (hidden) hidden.value = '';
+  if (preview) {
+    preview.src = '';
+    preview.style.display = 'none';
+  }
+  if (emptyNotice) {
+    emptyNotice.style.display = 'block';
+  }
+  showToast('Image cleared. Fallback display will be used.', 'info');
+};
 
 window.openNewHeroSlideModal = function() {
   const content = document.getElementById('adminCrudModalContent');
@@ -421,7 +439,7 @@ window.openNewHeroSlideModal = function() {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSaveHeroSlide(event)">
         <input type="hidden" name="slide_id" value="">
-        <input type="hidden" name="slide_image" id="heroSlideImageHidden" value="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80">
+        <input type="hidden" name="slide_image" id="heroSlideImageHidden" value="">
         
         <div class="form-group">
           <label>Eyebrow Label (Optional)</label>
@@ -439,10 +457,12 @@ window.openNewHeroSlideModal = function() {
         </div>
 
         <div class="form-group">
-          <label>Slide Background Photo (Interactive Cropper)</label>
+          <label>Slide Background Photo (Optional)</label>
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'heroSlideImgPreview', 'slide_image', '16:9')" style="margin-bottom: 8px;">
-            <img id="heroSlideImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
+            <div id="heroSlideEmptyNotice" style="display: block; color: #64748B; font-size: 0.82rem; margin: 6px 0;">No image selected (clean editorial banner will display)</div>
+            <img id="heroSlideImgPreview" src="" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: none; border: 1px solid #CBD5E1;">
+            <button type="button" class="btn-icon-sm" onclick="clearFieldImage('heroSlideImgPreview', 'slide_image', 'heroSlideEmptyNotice')" style="margin-top: 6px;">Clear Image</button>
           </div>
         </div>
 
@@ -459,11 +479,12 @@ window.editHeroSlideModal = function(id) {
 
   const content = document.getElementById('adminCrudModalContent');
   document.getElementById('adminCrudModalTitle').textContent = 'Edit Hero Slide';
+  const hasImg = !!slide.image;
   if (content) {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSaveHeroSlide(event)">
         <input type="hidden" name="slide_id" value="${slide.id}">
-        <input type="hidden" name="slide_image" id="heroSlideImageHidden" value="${slide.image}">
+        <input type="hidden" name="slide_image" id="heroSlideImageHidden" value="${slide.image || ''}">
         
         <div class="form-group">
           <label>Eyebrow Label (Optional)</label>
@@ -481,10 +502,12 @@ window.editHeroSlideModal = function(id) {
         </div>
 
         <div class="form-group">
-          <label>Slide Background Photo (Interactive Cropper)</label>
+          <label>Slide Background Photo (Optional)</label>
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'heroSlideImgPreview', 'slide_image', '16:9')" style="margin-bottom: 8px;">
-            <img id="heroSlideImgPreview" src="${slide.image}" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
+            <div id="heroSlideEmptyNotice" style="display: ${hasImg ? 'none' : 'block'}; color: #64748B; font-size: 0.82rem; margin: 6px 0;">No image selected (clean editorial banner will display)</div>
+            <img id="heroSlideImgPreview" src="${slide.image || ''}" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: ${hasImg ? 'block' : 'none'}; border: 1px solid #CBD5E1;">
+            <button type="button" class="btn-icon-sm" onclick="clearFieldImage('heroSlideImgPreview', 'slide_image', 'heroSlideEmptyNotice')" style="margin-top: 6px;">Clear Image</button>
           </div>
         </div>
 
@@ -518,25 +541,28 @@ function renderAdminFocusAreasTable() {
   if (!tbody) return;
 
   const areas = BHBStore.getFocusAreas();
-  tbody.innerHTML = areas.map((a, idx) => `
-    <tr>
-      <td>
-        <img src="${a.image}" style="width: 72px; height: 48px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1;">
-      </td>
-      <td>
-        <b style="color: #0F172A;">${a.title}</b>
-        <div style="font-size: 0.76rem; color: #2563EB; font-weight: 700; margin-top: 2px;">PILLAR 0${idx + 1}</div>
-      </td>
-      <td style="max-width: 260px; font-size: 0.85rem; color: #475569;">${a.summary}</td>
-      <td style="max-width: 240px; font-size: 0.82rem; color: #64748B;">${a.details || a.summary}</td>
-      <td>
-        <div class="action-btn-group">
-          <button class="btn-icon-sm" onclick="editFocusAreaModal('${a.id}')">Edit</button>
-          <button class="btn-icon-sm danger" onclick="deleteFocusAreaAdmin('${a.id}')">Delete</button>
-        </div>
-      </td>
-    </tr>
-  `).join('');
+  tbody.innerHTML = areas.map((a, idx) => {
+    const imgHTML = a.image
+      ? `<img src="${a.image}" style="width: 72px; height: 48px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1;">`
+      : `<div style="width: 72px; height: 48px; border-radius: 4px; background: #F1F5F9; color: #64748B; font-weight: 700; font-size: 0.72rem; display: flex; align-items: center; justify-content: center; border: 1px solid #CBD5E1;">PILLAR</div>`;
+    return `
+      <tr>
+        <td>${imgHTML}</td>
+        <td>
+          <b style="color: #0F172A;">${a.title}</b>
+          <div style="font-size: 0.76rem; color: #2563EB; font-weight: 700; margin-top: 2px;">PILLAR 0${idx + 1}</div>
+        </td>
+        <td style="max-width: 260px; font-size: 0.85rem; color: #475569;">${a.summary}</td>
+        <td style="max-width: 240px; font-size: 0.82rem; color: #64748B;">${a.details || a.summary}</td>
+        <td>
+          <div class="action-btn-group">
+            <button class="btn-icon-sm" onclick="editFocusAreaModal('${a.id}')">Edit</button>
+            <button class="btn-icon-sm danger" onclick="deleteFocusAreaAdmin('${a.id}')">Delete</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
 }
 
 window.deleteFocusAreaAdmin = function(id) {
@@ -553,7 +579,7 @@ window.openNewFocusAreaModal = function() {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSaveFocusArea(event)">
         <input type="hidden" name="focus_id" value="">
-        <input type="hidden" name="focus_image" id="focusImageHidden" value="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80">
+        <input type="hidden" name="focus_image" id="focusImageHidden" value="">
         
         <div class="form-group">
           <label>Pillar Title *</label>
@@ -567,14 +593,16 @@ window.openNewFocusAreaModal = function() {
 
         <div class="form-group">
           <label>Operational Scope &amp; Target Beneficiaries</label>
-          <textarea name="focus_details" rows="2" placeholder="e.g. Specialized coaching, hardware grants, and grassroots mentoring across Kano LGAs."></textarea>
+          <textarea name="focus_details" rows="2" placeholder="e.g. Specialized coaching, hardware grants, and grassroots mentoring across target LGAs."></textarea>
         </div>
 
         <div class="form-group">
-          <label>Pillar Cover Photo (Interactive Cropper 4:3)</label>
+          <label>Pillar Cover Photo (Optional)</label>
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'focusImgPreview', 'focus_image', '4:3')" style="margin-bottom: 8px;">
-            <img id="focusImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
+            <div id="focusImgEmptyNotice" style="display: block; color: #64748B; font-size: 0.82rem; margin: 6px 0;">No cover image (clean typography layout will display)</div>
+            <img id="focusImgPreview" src="" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: none; border: 1px solid #CBD5E1;">
+            <button type="button" class="btn-icon-sm" onclick="clearFieldImage('focusImgPreview', 'focus_image', 'focusImgEmptyNotice')" style="margin-top: 6px;">Clear Image</button>
           </div>
         </div>
 
@@ -591,11 +619,12 @@ window.editFocusAreaModal = function(id) {
 
   const content = document.getElementById('adminCrudModalContent');
   document.getElementById('adminCrudModalTitle').textContent = 'Edit Strategic Focus Pillar';
+  const hasImg = !!area.image;
   if (content) {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSaveFocusArea(event)">
         <input type="hidden" name="focus_id" value="${area.id}">
-        <input type="hidden" name="focus_image" id="focusImageHidden" value="${area.image}">
+        <input type="hidden" name="focus_image" id="focusImageHidden" value="${area.image || ''}">
         
         <div class="form-group">
           <label>Pillar Title *</label>
@@ -613,10 +642,12 @@ window.editFocusAreaModal = function(id) {
         </div>
 
         <div class="form-group">
-          <label>Pillar Cover Photo (Interactive Cropper 4:3)</label>
+          <label>Pillar Cover Photo (Optional)</label>
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'focusImgPreview', 'focus_image', '4:3')" style="margin-bottom: 8px;">
-            <img id="focusImgPreview" src="${area.image}" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
+            <div id="focusImgEmptyNotice" style="display: ${hasImg ? 'none' : 'block'}; color: #64748B; font-size: 0.82rem; margin: 6px 0;">No cover image (clean typography layout will display)</div>
+            <img id="focusImgPreview" src="${area.image || ''}" style="max-height: 140px; margin: 10px auto; border-radius: 4px; display: ${hasImg ? 'block' : 'none'}; border: 1px solid #CBD5E1;">
+            <button type="button" class="btn-icon-sm" onclick="clearFieldImage('focusImgPreview', 'focus_image', 'focusImgEmptyNotice')" style="margin-top: 6px;">Clear Image</button>
           </div>
         </div>
 
@@ -642,7 +673,7 @@ window.handleSaveFocusArea = function(e) {
   showToast('Focus Area pillar saved and synchronized live on public website!', 'success');
 };
 
-// 4. Projects CRUD
+// 4. Projects & Active Programs CRUD
 function renderAdminProjectsTable() {
   const tbody = document.getElementById('adminProjectsTableBody');
   if (!tbody) return;
@@ -650,11 +681,14 @@ function renderAdminProjectsTable() {
   const projects = BHBStore.getProjects();
   tbody.innerHTML = projects.map(p => {
     const statusClass = p.status === 'Ongoing' ? 'success' : (p.status === 'Completed' ? 'info' : 'pending');
+    const imgHTML = p.image
+      ? `<img src="${p.image}" style="width: 44px; height: 44px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;">`
+      : `<div style="width: 44px; height: 44px; border-radius: 4px; background: #F1F5F9; color: #475569; font-weight: 700; font-size: 0.72rem; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">PRJ</div>`;
     return `
       <tr>
         <td>
           <div style="display: flex; gap: 12px; align-items: center;">
-            <img src="${p.image}" style="width: 44px; height: 44px; object-fit: cover; border-radius: 4px; border: 1px solid #E2E8F0;">
+            ${imgHTML}
             <div>
               <b style="color: #0F172A;">${p.title}</b>
               <div style="font-size: 0.78rem; color: #64748B;">${p.location}</div>
@@ -683,7 +717,7 @@ window.openNewProjectModal = function() {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSaveProject(event)">
         <input type="hidden" name="proj_id" value="">
-        <input type="hidden" name="proj_image" id="projImageHidden" value="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80">
+        <input type="hidden" name="proj_image" id="projImageHidden" value="">
         
         <div class="form-group">
           <label>Project Title *</label>
@@ -713,8 +747,8 @@ window.openNewProjectModal = function() {
 
         <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <div class="form-group">
-            <label>Location / LGA *</label>
-            <input type="text" name="proj_location" required placeholder="Nasarawa LGA, Kano">
+            <label>Location *</label>
+            <input type="text" name="proj_location" required placeholder="Community Location">
           </div>
           <div class="form-group">
             <label>Direct Beneficiary Reach *</label>
@@ -739,10 +773,12 @@ window.openNewProjectModal = function() {
         </div>
 
         <div class="form-group">
-          <label>Project Banner Photo (Interactive Cropper)</label>
+          <label>Project Banner Photo (Optional)</label>
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'projImgPreview', 'proj_image', '16:9')" style="margin-bottom: 8px;">
-            <img id="projImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
+            <div id="projImgEmptyNotice" style="display: block; color: #64748B; font-size: 0.82rem; margin: 6px 0;">No banner photo (clean editorial layout will display)</div>
+            <img id="projImgPreview" src="" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: none; border: 1px solid #CBD5E1;">
+            <button type="button" class="btn-icon-sm" onclick="clearFieldImage('projImgPreview', 'proj_image', 'projImgEmptyNotice')" style="margin-top: 6px;">Clear Image</button>
           </div>
         </div>
 
@@ -759,11 +795,12 @@ window.editProjectModal = function(id) {
 
   const content = document.getElementById('adminCrudModalContent');
   document.getElementById('adminCrudModalTitle').textContent = 'Edit Project';
+  const hasImg = !!proj.image;
   if (content) {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSaveProject(event)">
         <input type="hidden" name="proj_id" value="${proj.id}">
-        <input type="hidden" name="proj_image" id="projImageHidden" value="${proj.image}">
+        <input type="hidden" name="proj_image" id="projImageHidden" value="${proj.image || ''}">
         
         <div class="form-group">
           <label>Project Title *</label>
@@ -793,7 +830,7 @@ window.editProjectModal = function(id) {
 
         <div class="form-row-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <div class="form-group">
-            <label>Location / LGA *</label>
+            <label>Location *</label>
             <input type="text" name="proj_location" value="${proj.location}" required>
           </div>
           <div class="form-group">
@@ -819,10 +856,12 @@ window.editProjectModal = function(id) {
         </div>
 
         <div class="form-group">
-          <label>Project Banner Photo (Interactive Cropper)</label>
+          <label>Project Banner Photo (Optional)</label>
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'projImgPreview', 'proj_image', '16:9')" style="margin-bottom: 8px;">
-            <img id="projImgPreview" src="${proj.image}" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
+            <div id="projImgEmptyNotice" style="display: ${hasImg ? 'none' : 'block'}; color: #64748B; font-size: 0.82rem; margin: 6px 0;">No banner photo (clean editorial layout will display)</div>
+            <img id="projImgPreview" src="${proj.image || ''}" style="max-height: 120px; margin: 8px auto; border-radius: 4px; display: ${hasImg ? 'block' : 'none'}; border: 1px solid #CBD5E1;">
+            <button type="button" class="btn-icon-sm" onclick="clearFieldImage('projImgPreview', 'proj_image', 'projImgEmptyNotice')" style="margin-top: 6px;">Clear Image</button>
           </div>
         </div>
 
@@ -853,7 +892,7 @@ window.handleSaveProject = function(e) {
   showToast('Project saved and updated live on public website!', 'success');
 };
 
-// 5. Blog Articles CMS (With Cropper, Likes & Comments Tracking)
+// 5. Blog Articles CMS
 function renderAdminBlogTable() {
   const tbody = document.getElementById('adminBlogTableBody');
   if (!tbody) return;
@@ -861,11 +900,12 @@ function renderAdminBlogTable() {
   const posts = BHBStore.getPosts();
   tbody.innerHTML = posts.map(p => {
     const comments = BHBStore.getCommentsByPost(p.id);
+    const imgHTML = p.image
+      ? `<img src="${p.image}" style="width: 50px; height: 35px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1;">`
+      : `<div style="width: 50px; height: 35px; border-radius: 4px; background: #F1F5F9; color: #475569; font-weight: 700; font-size: 0.72rem; display: flex; align-items: center; justify-content: center; border: 1px solid #CBD5E1;">POST</div>`;
     return `
       <tr>
-        <td>
-          <img src="${p.image}" style="width: 50px; height: 35px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1;">
-        </td>
+        <td>${imgHTML}</td>
         <td>
           <b style="color: #0F172A;">${p.title}</b>
           <div style="font-size: 0.78rem; color: #64748B;">${p.date} · ${p.readTime || '4 min read'}</div>
@@ -900,7 +940,7 @@ window.openNewPostModal = function() {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSavePost(event)">
         <input type="hidden" name="post_id" value="">
-        <input type="hidden" name="post_image" id="postImageHidden" value="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80">
+        <input type="hidden" name="post_image" id="postImageHidden" value="">
         
         <div class="form-group">
           <label>Article Title *</label>
@@ -938,7 +978,7 @@ window.openNewPostModal = function() {
 
         <div class="form-group">
           <label>Article Tags (Comma separated)</label>
-          <input type="text" name="post_tags" placeholder="e.g. Kano, Digital Skills, Inclusion, Youth">
+          <input type="text" name="post_tags" placeholder="e.g. Digital Skills, Inclusion, Youth">
         </div>
 
         <div class="form-group">
@@ -952,10 +992,12 @@ window.openNewPostModal = function() {
         </div>
 
         <div class="form-group">
-          <label>Article Banner Photo (Crop before Uploading)</label>
+          <label>Article Banner Photo (Optional)</label>
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'postImgPreview', 'post_image', '16:9')" style="margin-bottom: 8px;">
-            <img id="postImgPreview" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" style="max-height: 140px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
+            <div id="postImgEmptyNotice" style="display: block; color: #64748B; font-size: 0.82rem; margin: 6px 0;">No banner photo (clean editorial format will display)</div>
+            <img id="postImgPreview" src="" style="max-height: 140px; margin: 8px auto; border-radius: 4px; display: none; border: 1px solid #CBD5E1;">
+            <button type="button" class="btn-icon-sm" onclick="clearFieldImage('postImgPreview', 'post_image', 'postImgEmptyNotice')" style="margin-top: 6px;">Clear Image</button>
           </div>
         </div>
 
@@ -977,11 +1019,12 @@ window.editPostModal = function(id) {
 
   const content = document.getElementById('adminCrudModalContent');
   document.getElementById('adminCrudModalTitle').textContent = 'Edit Blog Article';
+  const hasImg = !!post.image;
   if (content) {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSavePost(event)">
         <input type="hidden" name="post_id" value="${post.id}">
-        <input type="hidden" name="post_image" id="postImageHidden" value="${post.image}">
+        <input type="hidden" name="post_image" id="postImageHidden" value="${post.image || ''}">
         
         <div class="form-group">
           <label>Article Title *</label>
@@ -1033,10 +1076,12 @@ window.editPostModal = function(id) {
         </div>
 
         <div class="form-group">
-          <label>Article Banner Photo (Crop before Uploading)</label>
+          <label>Article Banner Photo (Optional)</label>
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'postImgPreview', 'post_image', '16:9')" style="margin-bottom: 8px;">
-            <img id="postImgPreview" src="${post.image}" style="max-height: 140px; margin: 8px auto; border-radius: 4px; display: block; border: 1px solid #CBD5E1;">
+            <div id="postImgEmptyNotice" style="display: ${hasImg ? 'none' : 'block'}; color: #64748B; font-size: 0.82rem; margin: 6px 0;">No banner photo (clean editorial format will display)</div>
+            <img id="postImgPreview" src="${post.image || ''}" style="max-height: 140px; margin: 8px auto; border-radius: 4px; display: ${hasImg ? 'block' : 'none'}; border: 1px solid #CBD5E1;">
+            <button type="button" class="btn-icon-sm" onclick="clearFieldImage('postImgPreview', 'post_image', 'postImgEmptyNotice')" style="margin-top: 6px;">Clear Image</button>
           </div>
         </div>
 
@@ -1138,36 +1183,42 @@ function renderAdminTeamTable() {
     return;
   }
 
-  tbody.innerHTML = team.map((m, idx) => `
-    <tr>
-      <td style="text-align: center;">
-        <input type="number" min="1" value="${m.order || idx + 1}" style="width: 52px; padding: 4px 6px; text-align: center; border: 1.5px solid #CBD5E1; border-radius: 6px; font-weight: 700; color: #0F172A;" onchange="updateTeamOrderAdmin('${m.id}', this.value)" title="Change Display Order">
-      </td>
-      <td>
-        <div style="display: flex; gap: 12px; align-items: center;">
-          <img src="${m.image}" alt="${m.name}" style="width: 44px; height: 58px; border-radius: 4px; object-fit: cover; object-position: center 15%; border: 1px solid #CBD5E1; box-shadow: 0 2px 6px rgba(15,23,42,0.08);">
-          <div>
-            <b style="color: #0F172A; font-size: 0.95rem;">${m.name}</b>
+  tbody.innerHTML = team.map((m, idx) => {
+    const initials = m.name ? m.name.split(' ').map(n => n[0]).join('').substring(0, 2) : 'BH';
+    const avatarHTML = m.image
+      ? `<img src="${m.image}" alt="${m.name}" style="width: 44px; height: 58px; border-radius: 4px; object-fit: cover; object-position: center 15%; border: 1px solid #CBD5E1; box-shadow: 0 2px 6px rgba(15,23,42,0.08);">`
+      : `<div style="width: 44px; height: 58px; border-radius: 4px; background: #1E3A8A; color: #FFFFFF; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; border: 1px solid #CBD5E1;">${initials}</div>`;
+    return `
+      <tr>
+        <td style="text-align: center;">
+          <input type="number" min="1" value="${m.order || idx + 1}" style="width: 52px; padding: 4px 6px; text-align: center; border: 1.5px solid #CBD5E1; border-radius: 6px; font-weight: 700; color: #0F172A;" onchange="updateTeamOrderAdmin('${m.id}', this.value)" title="Change Display Order">
+        </td>
+        <td>
+          <div style="display: flex; gap: 12px; align-items: center;">
+            ${avatarHTML}
+            <div>
+              <b style="color: #0F172A; font-size: 0.95rem;">${m.name}</b>
+            </div>
           </div>
-        </div>
-      </td>
-      <td><b style="color: #334155; font-size: 0.9rem;">${m.position}</b></td>
-      <td>
-        <span class="status-pill success" style="font-size: 0.75rem;">${m.tier || 'Executive'}</span>
-      </td>
-      <td>
-        <button type="button" class="btn-icon-sm" onclick="toggleTeamMemberPublishAdmin('${m.id}')" style="cursor: pointer; font-weight: 700; font-size: 0.78rem; border-radius: 9999px; padding: 4px 10px; border: 1px solid ${m.published !== false ? '#86EFAC' : '#FECACA'}; background: ${m.published !== false ? '#DCFCE7' : '#FEE2E2'}; color: ${m.published !== false ? '#15803D' : '#DC2626'};">
-          ${m.published !== false ? '● Published' : '○ Draft'}
-        </button>
-      </td>
-      <td>
-        <div class="action-btn-group">
-          <button class="btn-icon-sm" onclick="editTeamModal('${m.id}')" title="Edit Member Profile">Edit</button>
-          <button class="btn-icon-sm danger" onclick="deleteTeamMemberAdmin('${m.id}')" title="Delete Member">Delete</button>
-        </div>
-      </td>
-    </tr>
-  `).join('');
+        </td>
+        <td><b style="color: #334155; font-size: 0.9rem;">${m.position}</b></td>
+        <td>
+          <span class="status-pill success" style="font-size: 0.75rem;">${m.tier || 'Executive'}</span>
+        </td>
+        <td>
+          <button type="button" class="btn-icon-sm" onclick="toggleTeamMemberPublishAdmin('${m.id}')" style="cursor: pointer; font-weight: 700; font-size: 0.78rem; border-radius: 9999px; padding: 4px 10px; border: 1px solid ${m.published !== false ? '#86EFAC' : '#FECACA'}; background: ${m.published !== false ? '#DCFCE7' : '#FEE2E2'}; color: ${m.published !== false ? '#15803D' : '#DC2626'};">
+            ${m.published !== false ? '● Published' : '○ Draft'}
+          </button>
+        </td>
+        <td>
+          <div class="action-btn-group">
+            <button class="btn-icon-sm" onclick="editTeamModal('${m.id}')" title="Edit Member Profile">Edit</button>
+            <button class="btn-icon-sm danger" onclick="deleteTeamMemberAdmin('${m.id}')" title="Delete Member">Delete</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
 }
 
 window.toggleTeamMemberPublishAdmin = function(id) {
@@ -1199,7 +1250,7 @@ window.openNewTeamModal = function() {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSaveTeam(event)">
         <input type="hidden" name="team_id" value="">
-        <input type="hidden" name="team_image" id="teamImageHidden" value="assets/images/team-director.jpg">
+        <input type="hidden" name="team_image" id="teamImageHidden" value="">
         
         <div class="form-group">
           <label>Full Name &amp; Title *</label>
@@ -1240,11 +1291,13 @@ window.openNewTeamModal = function() {
         </div>
 
         <div class="form-group">
-          <label>Portrait Headshot (3:4 Ratio Interactive Cropper)</label>
+          <label>Portrait Headshot (Optional)</label>
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image', '3:4')" style="margin-bottom: 8px;">
-            <p style="font-size: 0.78rem; color: #64748B; margin-bottom: 8px;">Supports passport, ID, and vertical portrait photos with auto-centering.</p>
-            <img id="teamImgPreview" src="assets/images/team-director.jpg" style="height: 160px; width: 120px; border-radius: 4px; object-fit: cover; object-position: center 8%; margin: 8px auto; display: block; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
+            <p style="font-size: 0.78rem; color: #64748B; margin-bottom: 8px;">Supports passport, ID, and portrait photos. If no photo is selected, clean monogram initials will display.</p>
+            <div id="teamImgEmptyNotice" style="display: block; color: #64748B; font-size: 0.82rem; margin: 6px 0;">No photo selected (clean monogram avatar will be used)</div>
+            <img id="teamImgPreview" src="" style="height: 160px; width: 120px; border-radius: 4px; object-fit: cover; object-position: center 8%; margin: 8px auto; display: none; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
+            <button type="button" class="btn-icon-sm" onclick="clearFieldImage('teamImgPreview', 'team_image', 'teamImgEmptyNotice')" style="margin-top: 6px;">Clear Photo</button>
           </div>
         </div>
 
@@ -1261,11 +1314,12 @@ window.editTeamModal = function(id) {
 
   const content = document.getElementById('adminCrudModalContent');
   document.getElementById('adminCrudModalTitle').textContent = 'Edit Team Member Profile';
+  const hasImg = !!member.image;
   if (content) {
     content.innerHTML = `
       <form class="admin-modal-form" onsubmit="handleSaveTeam(event)">
         <input type="hidden" name="team_id" value="${member.id}">
-        <input type="hidden" name="team_image" id="teamImageHidden" value="${member.image}">
+        <input type="hidden" name="team_image" id="teamImageHidden" value="${member.image || ''}">
         
         <div class="form-group">
           <label>Full Name &amp; Title *</label>
@@ -1306,11 +1360,13 @@ window.editTeamModal = function(id) {
         </div>
 
         <div class="form-group">
-          <label>Portrait Headshot (3:4 Ratio Interactive Cropper)</label>
+          <label>Portrait Headshot (Optional)</label>
           <div class="admin-dropzone">
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'teamImgPreview', 'team_image', '3:4')" style="margin-bottom: 8px;">
-            <p style="font-size: 0.78rem; color: #64748B; margin-bottom: 8px;">Supports passport, ID, and vertical portrait photos with auto-centering.</p>
-            <img id="teamImgPreview" src="${member.image}" style="height: 160px; width: 120px; border-radius: 4px; object-fit: cover; object-position: center 8%; margin: 8px auto; display: block; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
+            <p style="font-size: 0.78rem; color: #64748B; margin-bottom: 8px;">Supports passport, ID, and portrait photos. If no photo is selected, clean monogram initials will display.</p>
+            <div id="teamImgEmptyNotice" style="display: ${hasImg ? 'none' : 'block'}; color: #64748B; font-size: 0.82rem; margin: 6px 0;">No photo selected (clean monogram avatar will be used)</div>
+            <img id="teamImgPreview" src="${member.image || ''}" style="height: 160px; width: 120px; border-radius: 4px; object-fit: cover; object-position: center 8%; margin: 8px auto; display: ${hasImg ? 'block' : 'none'}; border: 2px solid #2563EB; box-shadow: 0 4px 12px rgba(15,23,42,0.12);">
+            <button type="button" class="btn-icon-sm" onclick="clearFieldImage('teamImgPreview', 'team_image', 'teamImgEmptyNotice')" style="margin-top: 6px;">Clear Photo</button>
           </div>
         </div>
 
