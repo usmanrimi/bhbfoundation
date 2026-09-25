@@ -8,7 +8,7 @@
   <meta name="description" content="Connect with BHB Foundation headquarters. Partnerships, donor relations, and programme inquiries.">
   <link rel="icon" type="image/png" href="assets/images/bhb-logo.png">
   
-  <!-- Fonts -->
+  <!-- Fonts: Manrope (Display) & Inter (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
 </head>
 <body>
 
-  <!-- Site Header -->
+  <!-- Site Header (Standard 6-Link Navigation) -->
   <header class="site-header">
     <div class="container nav-container">
       <a href="index.html" class="nav-brand">
@@ -55,123 +55,171 @@
     <a href="contact.html" class="active">Contact Us</a>
   </div>
 
-  <!-- Page Header Banner -->
-  <div class="page-header-banner">
+  <!-- Hero / Introduction Section (Clean, Brand Blue Canvas, Strong Contrast) -->
+  <section class="contact-hero-banner">
     <div class="container">
-      <h1 style="color: var(--white); max-width: 960px;">Start a Conversation With BHB</h1>
-      <p class="lead" style="color: #CBD5E1; max-width: 880px; margin-top: 14px;">
+      <h1 class="contact-hero-title">Start a Conversation With BHB</h1>
+      <p class="contact-hero-lead">
         Whether you represent an institutional partner, government agency, corporate CSR team, or community initiative, we would love to hear from you.
       </p>
     </div>
-  </div>
+  </section>
 
-  <!-- Section 1: Contact Form (First) -->
-  <section>
-    <div class="container" style="max-width: 960px;">
-      <div class="section-header">
-        <h2>Send Us a Message</h2>
-        <p class="lead">Fill in the form below and our administrative team will respond promptly.</p>
-      </div>
-
-      <div style="background: #FFFFFF; border: 1px solid var(--border-light); padding: clamp(24px, 4vw, 44px); border-radius: var(--radius-sm);">
-        <form onsubmit="submitContactForm(event)" id="contactForm">
-          <div class="form-row-2">
-            <div class="form-group">
-              <label>Full Name *</label>
-              <input type="text" name="contact_name" required placeholder="e.g. Alhaji Aminu Kano">
-            </div>
-            <div class="form-group">
-              <label>Email Address *</label>
-              <input type="email" name="contact_email" required placeholder="name@organisation.org">
-            </div>
+  <!-- Main Contact Section: 2-Column Desktop Split (Editorial Intro + Spacious Form) -->
+  <section class="contact-main-section">
+    <div class="container">
+      <div class="contact-split-grid">
+        
+        <!-- Left Side: Contact Introduction & Direct Quick Channels -->
+        <div class="contact-intro-panel">
+          <div>
+            <span class="contact-intro-badge">Direct Engagement</span>
+            <h2 class="contact-intro-title">Advancing Dignity Through Strategic Collaboration</h2>
+            <p class="contact-intro-text">
+              We partner with multilateral institutions, government ministries, grassroots coalitions, and philanthropic donors to deliver high-impact interventions with transparency and community ownership.
+            </p>
           </div>
 
-          <div class="form-row-2">
-            <div class="form-group">
-              <label>Organization Type</label>
-              <select name="contact_org" required>
-                <option value="Government institution">Government institution</option>
-                <option value="Philanthropic foundation">Philanthropic foundation</option>
-                <option value="Corporate CSR programme">Corporate CSR programme</option>
-                <option value="Civil society / NGO">Civil society / NGO</option>
-                <option value="Individual">Individual Supporter</option>
-                <option value="Other">Other</option>
-              </select>
+          <div class="contact-direct-channels">
+            <div class="contact-direct-item">
+              <span class="contact-direct-label">National Secretariat</span>
+              <span class="contact-direct-value" data-bind="officeAddress">66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria</span>
             </div>
-            <div class="form-group">
-              <label>Inquiry Subject</label>
-              <select name="contact_subject" required>
-                <option value="Partnership inquiry">Partnership inquiry</option>
-                <option value="Programme collaboration">Programme collaboration</option>
-                <option value="Funding & Grants">Funding &amp; Grants</option>
-                <option value="General question">General question</option>
-              </select>
+            <div class="contact-direct-item">
+              <span class="contact-direct-label">Direct Telephone</span>
+              <span class="contact-direct-value">
+                <a href="tel:+2342014545878" data-bind="phone">+234 201 454 5878</a>
+              </span>
+            </div>
+            <div class="contact-direct-item">
+              <span class="contact-direct-label">Official Email</span>
+              <span class="contact-direct-value">
+                <a href="mailto:info@bhbfoundation.com" data-bind="email">info@bhbfoundation.com</a>
+              </span>
+            </div>
+            <div class="contact-direct-item">
+              <span class="contact-direct-label">Working Hours</span>
+              <span class="contact-direct-value" data-bind="workingHours">Monday – Friday, 8:00 AM – 5:00 PM (WAT)</span>
             </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label>Your Message *</label>
-            <textarea name="contact_message" rows="5" required placeholder="Tell us how we can collaborate to create sustainable community impact..."></textarea>
+        <!-- Right Side: Clean, Spacious Contact Form -->
+        <div class="contact-form-panel">
+          <div class="contact-form-header">
+            <h2 class="contact-form-title">Send Us a Message</h2>
+            <p class="contact-form-sub">Fill in the form below and our administrative team will respond promptly.</p>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1rem; font-weight: 700;">
-            Send Message →
-          </button>
-        </form>
+          <form onsubmit="submitContactForm(event)" id="contactForm">
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="contactName">Full Name *</label>
+                <input type="text" id="contactName" name="contact_name" required placeholder="e.g. Alhaji Aminu Kano" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Email Address *</label>
+                <input type="email" id="contactEmail" name="contact_email" required placeholder="name@organisation.org" autocomplete="email">
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="contactOrg">Organization / Institution</label>
+                <select id="contactOrg" name="contact_org" required>
+                  <option value="Government institution">Government institution</option>
+                  <option value="Philanthropic foundation">Philanthropic foundation</option>
+                  <option value="Corporate CSR programme">Corporate CSR programme</option>
+                  <option value="Civil society / NGO">Civil society / NGO</option>
+                  <option value="Individual">Individual Supporter</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="contactSubject">Subject / Inquiry Type</label>
+                <select id="contactSubject" name="contact_subject" required>
+                  <option value="Partnership inquiry">Partnership inquiry</option>
+                  <option value="Programme collaboration">Programme collaboration</option>
+                  <option value="Funding & Grants">Funding &amp; Grants</option>
+                  <option value="General question">General question</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Your Message *</label>
+              <textarea id="contactMessage" name="contact_message" rows="5" required placeholder="Tell us how we can collaborate to create sustainable community impact..."></textarea>
+            </div>
+
+            <button type="submit" class="contact-submit-btn">
+              <span>Send Message →</span>
+            </button>
+          </form>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Section 2: Contact Details Block (Toward Bottom of Page - Pure Typography, Dividers, NO Icons) -->
-  <section class="bg-off" style="border-top: 1px solid var(--border-light);">
-    <div class="container" style="max-width: 960px;">
-      <div class="section-header">
+  <!-- Section: Official Contact Information (Dedicated Full-Width Brand Area) -->
+  <section class="contact-official-section">
+    <div class="container">
+      
+      <div class="contact-official-header">
         <h2>Official Contact Information</h2>
-        <p class="lead">Our administrative headquarters details and direct institutional lines.</p>
+        <p>Our administrative headquarters details and direct institutional lines.</p>
       </div>
 
-      <div class="contact-details-editorial">
+      <div class="contact-official-grid">
         
-        <div class="contact-editorial-item">
-          <div class="contact-editorial-label">HEADQUARTERS ADDRESS</div>
-          <div class="contact-editorial-value" data-bind="officeAddress">
+        <!-- Col 1: Headquarters -->
+        <div class="contact-official-col">
+          <span class="contact-official-label">HEADQUARTERS</span>
+          <div class="contact-official-value" data-bind="officeAddress">
             66/67 Sulaiman Crescent, Nasarawa, Kano State, Nigeria
           </div>
+          <div class="contact-official-note">National Secretariat &amp; Program Operations</div>
         </div>
 
-        <div class="contact-editorial-item">
-          <div class="contact-editorial-label">TELEPHONE</div>
-          <div class="contact-editorial-value">
+        <!-- Col 2: Telephone -->
+        <div class="contact-official-col">
+          <span class="contact-official-label">TELEPHONE</span>
+          <div class="contact-official-value">
             <a href="tel:+2342014545878" data-bind="phone">+234 201 454 5878</a>
           </div>
+          <div class="contact-official-note">Direct Secretariat Line</div>
         </div>
 
-        <div class="contact-editorial-item">
-          <div class="contact-editorial-label">OFFICIAL EMAIL</div>
-          <div class="contact-editorial-value">
+        <!-- Col 3: Official Email -->
+        <div class="contact-official-col">
+          <span class="contact-official-label">OFFICIAL EMAIL</span>
+          <div class="contact-official-value">
             <a href="mailto:info@bhbfoundation.com" data-bind="email">info@bhbfoundation.com</a>
           </div>
+          <div class="contact-official-note">Partnerships &amp; Inquiries</div>
         </div>
 
-        <div class="contact-editorial-item">
-          <div class="contact-editorial-label">WORKING HOURS</div>
-          <div class="contact-editorial-value" data-bind="workingHours">
-            Monday - Friday, 8:00 AM - 5:00 PM (West Africa Time)
+        <!-- Col 4: Working Hours -->
+        <div class="contact-official-col">
+          <span class="contact-official-label">WORKING HOURS</span>
+          <div class="contact-official-value" data-bind="workingHours">
+            Monday – Friday, 8:00 AM – 5:00 PM (WAT)
           </div>
-        </div>
-
-        <div class="contact-editorial-item" style="border-bottom: none;">
-          <div class="contact-editorial-label">CONNECT ON SOCIAL MEDIA</div>
-          <div class="contact-editorial-value">
-            <div class="footer-social-links" style="margin-top: 6px;">
-              <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-btn">LinkedIn</a>
-              <a href="https://twitter.com" target="_blank" rel="noopener" class="footer-social-btn">Twitter / X</a>
-              <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-btn">Facebook</a>
-            </div>
-          </div>
+          <div class="contact-official-note">West Africa Time (GMT+1)</div>
         </div>
 
       </div>
+
+      <!-- Social Media Bar (Identifiable Default State, Expressive Hover) -->
+      <div class="contact-social-channels-bar">
+        <div class="contact-social-bar-label">CONNECT ON SOCIAL MEDIA</div>
+        <div class="contact-social-pill-group">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-social-pill">LinkedIn</a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" class="contact-social-pill">Twitter / X</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-social-pill">Facebook</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
