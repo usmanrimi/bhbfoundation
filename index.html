@@ -67,10 +67,7 @@
         <!-- Left Headline Column -->
         <div class="hero-statement-col">
           <h1>Empowering Families. Strengthening Communities. Creating Sustainable Futures.</h1>
-          <p class="lead">
-            We are dedicated to building resilient communities through health equity, inclusive technology, women livelihoods, and sustainable grassroots development.
-          </p>
-          <div class="hero-cta-group">
+          <div class="hero-cta-group" style="margin-top: 24px;">
             <a href="contact.html" class="btn btn-primary">Partner With Us →</a>
             <a href="what-we-do.html" class="btn btn-outline-white">Explore Our Strategic Pillars</a>
           </div>
@@ -98,30 +95,36 @@
     </div>
   </section>
 
-  <!-- Section 1: Belief Statement (Rich Brand Canvas & Unified Narrative) -->
-  <section class="belief-statement-section" id="who-we-are">
+  <!-- Section 1: Belief Statement (Rich Brand Canvas & Clean White Supporting Canvas) -->
+  <section class="belief-statement-section" id="who-we-are" style="padding-top: 0;">
     <div class="container">
-      <div class="belief-statement-content">
-        <div class="belief-lead-quote">
-          Every individual deserves the chance to live a healthy, safe, and dignified life.
-        </div>
-        <div class="belief-body-grid">
-          <div>
-            <p class="belief-narrative-text">
-              Yet many children, women, families and individuals living in underserved communities still face barriers that limit access to essential opportunities, services and support.
-            </p>
-            <p class="belief-belief-text">
-              BHB Foundation believes that people are not defined by their circumstances.
-            </p>
-            <p class="belief-narrative-text">
-              We work alongside individuals, families and communities to address practical challenges, strengthen resilience and create pathways toward dignity, inclusion and self-reliance.
-            </p>
-          </div>
-          <div class="belief-action-col">
-            <a href="about.html" class="btn" style="padding: 14px 28px; font-size: 0.95rem; background: #FFFFFF; color: #1C4DA0; font-weight: 800; text-decoration: none; border-radius: var(--radius-xs);">Learn More About BHB →</a>
-            <a href="what-we-do.html" class="btn btn-outline-white" style="padding: 14px 28px; font-size: 0.95rem;">Explore Our Strategic Pillars</a>
+      <div class="belief-statement-container">
+        
+        <!-- Upper Lead Canvas (Strong Brand Blue) -->
+        <div class="belief-lead-canvas">
+          <div class="belief-lead-quote">
+            Every individual deserves the chance to live a healthy, safe, and dignified life.
           </div>
         </div>
+
+        <!-- Lower Connected Supporting Canvas (Clean White Background with Dark Navy Text) -->
+        <div class="belief-supporting-canvas">
+          <div class="belief-supporting-grid">
+            <div class="belief-text-column">
+              <p class="belief-primary-supporting">
+                We are dedicated to building resilient communities through health equity, inclusive technology, women livelihood, and sustainable grassroots development.
+              </p>
+              <p class="belief-secondary-supporting">
+                BHB Foundation believes that people are not defined by their circumstances. We work alongside individuals, families and communities to address practical challenges, strengthen resilience and create pathways toward dignity, inclusion and self-reliance.
+              </p>
+            </div>
+            <div class="belief-action-column">
+              <a href="about.html" class="btn btn-navy" style="padding: 14px 28px; font-weight: 700; text-align: center;">Learn More About BHB →</a>
+              <a href="what-we-do.html" class="btn btn-outline" style="padding: 14px 28px; font-weight: 700; text-align: center;">Explore Strategic Pillars</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -155,12 +158,12 @@
     </div>
   </section>
 
-  <!-- Section 3: The 6 Strategic Pillars (Layout Family C: Landscape Intervention Rows) -->
+  <!-- Section 3: The 6 Strategic Pillars (Landscape Intervention Rows) -->
   <section id="pillars">
     <div class="container">
-      <div class="pillar-heading-banner">
-        <h2>How We Drive Sustainable Change</h2>
-        <p>Six integrated development pillars designed to address systemic poverty and health inequities.</p>
+      <div class="section-marker-title-wrap">
+        <h2 class="section-marker-title">How We Drive Sustainable Change</h2>
+        <p class="section-marker-subtitle">Six integrated development pillars designed to address systemic poverty and health inequities.</p>
       </div>
 
       <div class="pillar-landscape-list" id="focusAreasGrid">
@@ -172,9 +175,9 @@
   <!-- Section 4: Foundational Principles (Connected Institutional Triad) -->
   <section class="bg-off">
     <div class="container">
-      <div class="section-header">
-        <h2>Our Foundational <span class="text-accent-blue">Principles</span></h2>
-        <p class="lead">Core operating tenets ensuring community ownership, verifiable delivery, and institutional integrity across all initiatives.</p>
+      <div class="section-marker-title-wrap">
+        <h2 class="section-marker-title">Our Foundational Principles</h2>
+        <p class="section-marker-subtitle">Core operating tenets ensuring community ownership, verifiable delivery, and institutional integrity across all initiatives.</p>
       </div>
 
       <div class="principles-connected-container">
@@ -230,10 +233,10 @@
   <!-- Section 6: Active Programs (Clean Landscape Rows) -->
   <section id="programs" class="bg-off">
     <div class="container">
-      <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
-        <div>
-          <h2>Active Programs</h2>
-          <p class="lead">Targeted community deployments implemented with local ownership and verifiable outcomes.</p>
+      <div class="section-marker-title-wrap" style="display: flex; justify-content: space-between; align-items: center; flex-direction: row; flex-wrap: wrap; gap: 16px; margin-bottom: 28px;">
+        <div style="text-align: left;">
+          <h2 class="section-marker-title" style="margin: 0;">Active Programs</h2>
+          <p class="section-marker-subtitle" style="margin: 8px 0 0; text-align: left;">Targeted community deployments implemented with local ownership and verifiable outcomes.</p>
         </div>
         <div>
           <a href="projects.html" class="btn btn-outline arrow-hover">Explore All Projects →</a>
@@ -366,8 +369,8 @@
 
   <!-- Blog Reader Modal -->
   <div class="modal-backdrop" id="blogReaderModal">
-    <div class="modal-window">
-      <div style="position: absolute; top: 16px; right: 18px;">
+    <div class="modal-window modal-window-article">
+      <div style="position: absolute; top: 16px; right: 18px; z-index: 10;">
         <button onclick="closeModal('blogReaderModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy); line-height: 1;">×</button>
       </div>
       <div id="blogReaderModalContent"></div>

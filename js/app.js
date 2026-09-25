@@ -280,18 +280,38 @@ window.openBlogPostReader = function(postId) {
 
   const currentUrl = window.location.origin + window.location.pathname;
 
+  // Format content paragraphs
+  const rawContent = post.content || post.excerpt || '';
+  const formattedContent = rawContent.includes('<p>')
+    ? rawContent
+    : rawContent.split('\n\n').map(para => `<p>${para.replace(/\n/g, '<br>')}</p>`).join('');
+
+  const imgHTML = post.image
+    ? `
+      <div class="blog-reader-banner-wrap">
+        <img src="${post.image}" alt="${post.title}" class="blog-reader-banner" style="object-position: ${post.imagePosition || 'center center'};">
+      </div>
+    `
+    : '';
+
   content.innerHTML = `
     <div class="blog-reader-container">
+      <div style="margin-bottom: 16px;">
+        <button onclick="closeModal('blogReaderModal')" class="btn btn-ghost btn-sm" style="color: var(--navy); font-weight: 700; padding: 6px 12px; display: inline-flex; align-items: center; gap: 6px;">
+          ← Back to Articles
+        </button>
+      </div>
+
       <div class="blog-reader-header">
-        <span class="blog-reader-tag">${post.category} · ${post.date}</span>
+        <span class="blog-reader-tag">${post.category || 'Article'} · ${post.date || 'Recent'}</span>
         <h1 class="blog-reader-title">${post.title}</h1>
         
         <div class="blog-author-row">
           <div class="blog-author-info">
-            <div class="blog-author-avatar">${post.author.charAt(0)}</div>
+            <div class="blog-author-avatar">${(post.author || 'B').charAt(0)}</div>
             <div>
-              <div style="font-weight: 700; color: var(--navy); font-size: 0.95rem;">${post.author}</div>
-              <div style="font-size: 0.8rem; color: var(--text-muted);">${post.authorRole || 'BHB Editorial Team'} · ${post.readTime || '4 min read'}</div>
+              <div style="font-weight: 700; color: var(--navy); font-size: 0.95rem;">${post.author || 'BHB Editorial Team'}</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">${post.authorRole || 'Field Communications'} · ${post.readTime || '4 min read'}</div>
             </div>
           </div>
           <div style="font-size: 0.85rem; color: var(--text-muted);">
@@ -300,9 +320,11 @@ window.openBlogPostReader = function(postId) {
         </div>
       </div>
 
-      <img src="${post.image}" alt="${post.title}" class="blog-reader-banner">
+      ${imgHTML}
 
-      <div class="blog-reader-content">${post.content || post.excerpt}</div>
+      <div class="blog-reader-content">
+        ${formattedContent}
+      </div>
 
       ${(post.tags && post.tags.length) ? `
         <div class="blog-tags-list">

@@ -588,42 +588,54 @@ window.renderSDGsSectionHTML = function() {
 // 3. Projects Landscape Rows (Clean Horizontal Layout with Bottom CTA)
 window.renderHomepageProjectsHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
-  const projects = BHBStore.getProjects().slice(0, 3);
+  const projects = BHBStore.getProjects(true).slice(0, 3);
   if (!projects || !projects.length) return '<div style="padding: 30px 0; color: var(--text-muted);">No active programs currently published.</div>';
 
-  return projects.map(p => `
-    <div class="project-landscape-row">
-      <div class="project-row-main-grid">
-        <div>
-          <div class="project-meta-badges">
-            <span class="badge-tag">${p.category}</span>
-            <span class="badge-status-pill ${p.status ? p.status.toLowerCase() : 'ongoing'}">${p.status || 'Active'}</span>
+  return projects.map(p => {
+    const pos = p.imagePosition || 'center center';
+    const imgHTML = p.image
+      ? `
+        <div class="project-landscape-img-wrap" style="width: 100%; height: 220px; overflow: hidden; border-radius: 6px; margin-bottom: 18px; border: 1px solid var(--border-light); background: #0F172A;">
+          <img src="${p.image}" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; object-position: ${pos}; display: block;">
+        </div>
+      `
+      : '';
+
+    return `
+      <div class="project-landscape-row">
+        ${imgHTML}
+        <div class="project-row-main-grid">
+          <div>
+            <div class="project-meta-badges">
+              <span class="badge-tag">${p.category}</span>
+              <span class="badge-status-pill ${p.status ? p.status.toLowerCase() : 'ongoing'}">${p.status || 'Active'}</span>
+            </div>
+            <h3 class="project-landscape-title">${p.title}</h3>
+            <p class="project-landscape-summary">${p.description}</p>
           </div>
-          <h3 class="project-landscape-title">${p.title}</h3>
-          <p class="project-landscape-summary">${p.description}</p>
+
+          <div class="project-details-grid">
+            <div class="project-detail-pill">
+              <span class="meta-label">LOCATION</span>
+              <span class="meta-value">${p.location}</span>
+            </div>
+            <div class="project-detail-pill">
+              <span class="meta-label">REACH</span>
+              <span class="meta-value">${p.beneficiaries}</span>
+            </div>
+            <div class="project-detail-pill">
+              <span class="meta-label">TIMELINE</span>
+              <span class="meta-value">${p.timeline || 'Active'}</span>
+            </div>
+          </div>
         </div>
 
-        <div class="project-details-grid">
-          <div class="project-detail-pill">
-            <span class="meta-label">LOCATION</span>
-            <span class="meta-value">${p.location}</span>
-          </div>
-          <div class="project-detail-pill">
-            <span class="meta-label">REACH</span>
-            <span class="meta-value">${p.beneficiaries}</span>
-          </div>
-          <div class="project-detail-pill">
-            <span class="meta-label">TIMELINE</span>
-            <span class="meta-value">${p.timeline || 'Active'}</span>
-          </div>
+        <div class="project-row-bottom-bar">
+          <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('${p.id}')">View Project Details →</button>
         </div>
       </div>
-
-      <div class="project-row-bottom-bar">
-        <button class="btn btn-navy btn-sm" onclick="openProjectDetailsModal('${p.id}')">View Project Details →</button>
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 };
 
 window.renderProjectsLandscapeHTML = function(filteredProjects) {
