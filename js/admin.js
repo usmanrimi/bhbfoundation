@@ -982,9 +982,6 @@ function renderAdminSettingsForm() {
   if (form.office_address) form.office_address.value = settings.officeAddress || '';
   if (form.contact_phone) form.contact_phone.value = settings.phone || '';
   if (form.contact_email) form.contact_email.value = settings.email || '';
-  if (form.zenith_acc && settings.zenithBank) form.zenith_acc.value = settings.zenithBank.accountNumber || '';
-  if (form.mission_text) form.mission_text.value = settings.mission || '';
-  if (form.vision_text) form.vision_text.value = settings.vision || '';
 }
 
 window.handleSaveSettings = function(e) {
@@ -996,16 +993,10 @@ window.handleSaveSettings = function(e) {
     cacNumber: form.cac_num ? form.cac_num.value.trim() : currentSettings.cacNumber,
     officeAddress: form.office_address ? form.office_address.value.trim() : currentSettings.officeAddress,
     phone: form.contact_phone ? form.contact_phone.value.trim() : currentSettings.phone,
-    email: form.contact_email ? form.contact_email.value.trim() : currentSettings.email,
-    mission: form.mission_text ? form.mission_text.value.trim() : currentSettings.mission,
-    vision: form.vision_text ? form.vision_text.value.trim() : currentSettings.vision,
-    zenithBank: {
-      ...currentSettings.zenithBank,
-      accountNumber: form.zenith_acc ? form.zenith_acc.value.trim() : (currentSettings.zenithBank ? currentSettings.zenithBank.accountNumber : '')
-    }
+    email: form.contact_email ? form.contact_email.value.trim() : currentSettings.email
   });
 
-  showToast('Foundation Settings, Mission & Vision updated live across portal!', 'success');
+  showToast('Foundation institutional details updated successfully!', 'success');
 };
 
 window.exportDatabaseJSON = function() {

@@ -23,23 +23,26 @@
 </head>
 <body>
 
-  <!-- Site Header (Standard 6-Link Navigation) -->
+  <!-- Site Header (Unified Pill Navigation Track) -->
   <header class="site-header">
     <div class="container nav-container">
       <a href="index.html" class="nav-brand">
         <img src="assets/images/bhb-logo.png" alt="BHB Foundation Logo" class="nav-brand-logo">
       </a>
 
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html" class="active">About Us</a>
-        <a href="what-we-do.html">What We Do</a>
-        <a href="projects.html">Projects</a>
-        <a href="blog.html">Blog &amp; Updates</a>
-        <a href="contact.html">Contact Us</a>
+      <nav class="nav-pill-wrapper" aria-label="Main Navigation">
+        <div class="nav-pill-track">
+          <a href="index.html" class="nav-pill-link">Home</a>
+          <a href="about.html" class="nav-pill-link active">About Us</a>
+          <a href="what-we-do.html" class="nav-pill-link">What We Do</a>
+          <a href="projects.html" class="nav-pill-link">Projects</a>
+          <a href="blog.html" class="nav-pill-link">Blog &amp; Updates</a>
+          <a href="contact.html" class="nav-pill-link">Contact Us</a>
+        </div>
       </nav>
 
       <div class="nav-actions">
+        <a href="contact.html" class="btn-nav-cta">Partner With Us</a>
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">Menu</button>
       </div>
     </div>
@@ -86,11 +89,6 @@
           <p>
             We connect vulnerable individuals to essential healthcare, inclusive assistive technology, and vocational seed capital, fostering self-sustaining conditions for lifelong independence and community dignity.
           </p>
-          <div style="background: var(--bg-off); border: 1px solid var(--border-light); padding: 20px 24px; border-radius: var(--radius-sm); margin-top: 20px;">
-            <blockquote style="font-style: italic; color: var(--navy); margin-bottom: 0; font-size: 0.98rem; line-height: 1.6;">
-              “With targeted support, assistive tools, and genuine community solidarity, families can overcome structural barriers, build resilience, and shape their own destinies.”
-            </blockquote>
-          </div>
         </div>
 
       </div>
@@ -192,36 +190,24 @@
         <p class="lead">How we uphold our promises to the communities, partners, and stakeholders we serve.</p>
       </div>
 
-      <div class="principles-indexed-container">
+      <div class="principles-editorial-grid">
         
-        <div class="principles-indexed-row">
-          <div class="principles-indexed-num">01</div>
-          <div class="principles-indexed-title">
-            <h3>People First</h3>
-          </div>
-          <div class="principles-indexed-desc">
-            <p>We listen before acting, respect local customs, and prioritize grassroots choices in all our interventions.</p>
-          </div>
+        <div class="principle-editorial-item">
+          <div class="principle-editorial-num">01</div>
+          <div class="principle-editorial-title">People First</div>
+          <p class="principle-editorial-desc">We listen before acting, respect local customs, and prioritize grassroots choices in all our interventions.</p>
         </div>
 
-        <div class="principles-indexed-row">
-          <div class="principles-indexed-num">02</div>
-          <div class="principles-indexed-title">
-            <h3>Accountability &amp; Data</h3>
-          </div>
-          <div class="principles-indexed-desc">
-            <p>Complete financial transparency through direct milestone disbursements and verified household baseline indicators.</p>
-          </div>
+        <div class="principle-editorial-item item-brand">
+          <div class="principle-editorial-num">02</div>
+          <div class="principle-editorial-title">Accountability &amp; Data</div>
+          <p class="principle-editorial-desc">Complete financial transparency through direct milestone disbursements and verified household baseline indicators.</p>
         </div>
 
-        <div class="principles-indexed-row">
-          <div class="principles-indexed-num">03</div>
-          <div class="principles-indexed-title">
-            <h3>Sustainability</h3>
-          </div>
-          <div class="principles-indexed-desc">
-            <p>Structuring exit strategies from day one so self-governing local committees sustain progress independently.</p>
-          </div>
+        <div class="principle-editorial-item">
+          <div class="principle-editorial-num">03</div>
+          <div class="principle-editorial-title">Sustainability</div>
+          <p class="principle-editorial-desc">Structuring exit strategies from day one so self-governing local committees sustain progress independently.</p>
         </div>
 
       </div>

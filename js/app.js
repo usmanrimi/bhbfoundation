@@ -222,14 +222,19 @@ function renderBlogPage() {
     if (filtered.length === 0) {
       blogSecondaryGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No reports match your search criteria.</div>';
     } else {
-      blogSecondaryGrid.innerHTML = filtered.map(p => `
-        <div class="blog-card" onclick="openBlogPostReader('${p.id}')">
-          <div class="blog-card-header-bar">
-            <span class="blog-card-tag">#${(p.category || 'update').toLowerCase().replace(/[^a-z0-9]/g, '')}</span>
-            <span class="blog-card-date">${p.date || 'Recent'}</span>
-          </div>
-          <div class="blog-card-body">
+      blogSecondaryGrid.innerHTML = filtered.map(p => {
+        const imgHTML = p.image
+          ? `<div class="blog-card-img-wrap"><img src="${p.image}" alt="${p.title}" class="blog-card-thumb" onerror="this.parentElement.style.display='none'"></div>`
+          : '';
+
+        return `
+          <div class="blog-card" onclick="openBlogPostReader('${p.id}')">
             <div>
+              ${imgHTML}
+              <div class="blog-card-header-bar">
+                <span class="blog-card-tag">#${(p.category || 'update').toLowerCase().replace(/[^a-z0-9]/g, '')}</span>
+                <span class="blog-card-date">${p.date || 'Recent'}</span>
+              </div>
               <h3 class="blog-card-title">${p.title}</h3>
               <p class="blog-card-excerpt">${p.excerpt || (p.content || '').substring(0, 110) + '...'}</p>
             </div>
@@ -237,8 +242,8 @@ function renderBlogPage() {
               <span class="blog-card-link">Read full post →</span>
             </div>
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
   }
 

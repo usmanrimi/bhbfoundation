@@ -23,23 +23,26 @@
 </head>
 <body>
 
-  <!-- Site Header (Standard 6-Link Navigation) -->
+  <!-- Site Header (Unified Pill Navigation Track) -->
   <header class="site-header">
     <div class="container nav-container">
       <a href="index.html" class="nav-brand">
         <img src="assets/images/bhb-logo.png" alt="BHB Foundation Logo" class="nav-brand-logo">
       </a>
 
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="what-we-do.html">What We Do</a>
-        <a href="projects.html">Projects</a>
-        <a href="blog.html">Blog &amp; Updates</a>
-        <a href="contact.html" class="active">Contact Us</a>
+      <nav class="nav-pill-wrapper" aria-label="Main Navigation">
+        <div class="nav-pill-track">
+          <a href="index.html" class="nav-pill-link">Home</a>
+          <a href="about.html" class="nav-pill-link">About Us</a>
+          <a href="what-we-do.html" class="nav-pill-link">What We Do</a>
+          <a href="projects.html" class="nav-pill-link">Projects</a>
+          <a href="blog.html" class="nav-pill-link">Blog &amp; Updates</a>
+          <a href="contact.html" class="nav-pill-link active">Contact Us</a>
+        </div>
       </nav>
 
       <div class="nav-actions">
+        <a href="contact.html" class="btn-nav-cta">Partner With Us</a>
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">Menu</button>
       </div>
     </div>

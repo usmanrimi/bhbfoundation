@@ -652,21 +652,28 @@ window.renderHomeBlogGridHTML = function() {
   const posts = BHBStore.getPosts().slice(0, 3);
   if (!posts || !posts.length) return '<div style="grid-column: 1/-1; padding: 30px 0; color: var(--text-muted);">No dispatches published yet.</div>';
 
-  return posts.map(p => `
-    <div class="blog-card" onclick="openBlogPostReader('${p.id}')">
-      <div>
-        <div class="blog-card-header-bar">
-          <span class="blog-card-tag">#${(p.category || 'update').toLowerCase().replace(/[^a-z0-9]/g, '')}</span>
-          <span class="blog-card-date">${p.date || 'Recent'}</span>
+  return posts.map(p => {
+    const imgHTML = p.image
+      ? `<div class="blog-card-img-wrap"><img src="${p.image}" alt="${p.title}" class="blog-card-thumb" onerror="this.parentElement.style.display='none'"></div>`
+      : '';
+
+    return `
+      <div class="blog-card" onclick="openBlogPostReader('${p.id}')">
+        <div>
+          ${imgHTML}
+          <div class="blog-card-header-bar">
+            <span class="blog-card-tag">#${(p.category || 'update').toLowerCase().replace(/[^a-z0-9]/g, '')}</span>
+            <span class="blog-card-date">${p.date || 'Recent'}</span>
+          </div>
+          <h3 class="blog-card-title">${p.title}</h3>
+          <p class="blog-card-excerpt">${p.excerpt || (p.content || '').substring(0, 110) + '...'}</p>
         </div>
-        <h3 class="blog-card-title">${p.title}</h3>
-        <p class="blog-card-excerpt">${p.excerpt || (p.content || '').substring(0, 110) + '...'}</p>
+        <div class="blog-card-footer">
+          <span class="blog-card-link">Read full post →</span>
+        </div>
       </div>
-      <div class="blog-card-footer">
-        <span class="blog-card-link">Read full post →</span>
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 };
 
 // 5. Governance & Leadership Open Editorial Profile
@@ -678,19 +685,18 @@ window.renderChairmanSpotlightHTML = function() {
 
   const initials = chairman.name ? chairman.name.split(' ').map(n => n[0]).join('').substring(0, 2) : 'BH';
   const avatarHTML = chairman.image
-    ? `<img src="${chairman.image}" alt="${chairman.name}" style="width: 120px; height: 120px; object-fit: cover; border-radius: var(--radius-sm);">`
-    : `<div class="leader-avatar-monogram">${initials}</div>`;
+    ? `<img src="${chairman.image}" alt="${chairman.name}" onerror="this.outerHTML='<div class=\\'founder-monogram-placeholder\\'>${initials}</div>'">`
+    : `<div class="founder-monogram-placeholder">${initials}</div>`;
 
   return `
-    <div class="leadership-open-profile">
-      <div>
+    <div class="founder-spotlight-card">
+      <div class="founder-photo-wrap">
         ${avatarHTML}
       </div>
-      <div class="leader-details">
-        <span class="section-tag">Board of Trustees</span>
+      <div class="founder-details">
+        <div class="founder-role-badge">Founder &amp; Chairman, Board of Trustees</div>
         <h3>${chairman.name}</h3>
-        <div class="leader-role">${chairman.position}</div>
-        <p class="leader-bio">${chairman.bio}</p>
+        <p class="founder-bio">${chairman.bio}</p>
       </div>
     </div>
   `;
@@ -701,25 +707,27 @@ window.renderTeamCardsHTML = function() {
   const team = BHBStore.getTeam(true);
   const chairman = team.find(t => t.tier === 'Trustees' || t.id === 'team-1') || team[0];
   const others = team.filter(t => !chairman || t.id !== chairman.id);
+  if (!others || !others.length) return '';
 
-  return others.map(m => {
+  const cardsHTML = others.map(m => {
     const initials = m.name ? m.name.split(' ').map(n => n[0]).join('').substring(0, 2) : 'BH';
-    const avatarHTML = m.image
-      ? `<img src="${m.image}" alt="${m.name}" style="width: 100px; height: 100px; object-fit: cover; border-radius: var(--radius-sm);">`
-      : `<div class="leader-avatar-monogram" style="width: 100px; height: 100px; font-size: 1.8rem;">${initials}</div>`;
+    const photoHTML = m.image
+      ? `<img src="${m.image}" alt="${m.name}" onerror="this.outerHTML='<div class=\\'team-card-monogram\\'>${initials}</div>'">`
+      : `<div class="team-card-monogram">${initials}</div>`;
 
     return `
-      <div class="leadership-open-profile">
-        <div>
-          ${avatarHTML}
+      <div class="team-member-editorial-card">
+        <div class="team-card-photo-wrap">
+          ${photoHTML}
         </div>
-        <div class="leader-details">
-          <span class="section-tag">${m.department || 'Executive Directorate'}</span>
-          <h3>${m.name}</h3>
-          <div class="leader-role">${m.position}</div>
-          <p class="leader-bio">${m.bio}</p>
+        <div class="team-card-body">
+          <h4 class="team-card-name">${m.name}</h4>
+          <div class="team-card-role">${m.position}</div>
+          <p class="team-card-bio">${m.bio}</p>
         </div>
       </div>
     `;
   }).join('');
+
+  return `<div class="team-roster-grid">${cardsHTML}</div>`;
 };

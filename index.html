@@ -23,23 +23,26 @@
 </head>
 <body>
 
-  <!-- Site Header (Standard 6-Link Navigation) -->
+  <!-- Site Header (Unified Pill Navigation Track) -->
   <header class="site-header">
     <div class="container nav-container">
       <a href="index.html" class="nav-brand">
         <img src="assets/images/bhb-logo.png" alt="BHB Foundation Logo" class="nav-brand-logo">
       </a>
 
-      <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="what-we-do.html">What We Do</a>
-        <a href="projects.html">Projects</a>
-        <a href="blog.html">Blog &amp; Updates</a>
-        <a href="contact.html">Contact Us</a>
+      <nav class="nav-pill-wrapper" aria-label="Main Navigation">
+        <div class="nav-pill-track">
+          <a href="index.html" class="nav-pill-link active">Home</a>
+          <a href="about.html" class="nav-pill-link">About Us</a>
+          <a href="what-we-do.html" class="nav-pill-link">What We Do</a>
+          <a href="projects.html" class="nav-pill-link">Projects</a>
+          <a href="blog.html" class="nav-pill-link">Blog &amp; Updates</a>
+          <a href="contact.html" class="nav-pill-link">Contact Us</a>
+        </div>
       </nav>
 
       <div class="nav-actions">
+        <a href="contact.html" class="btn-nav-cta">Partner With Us</a>
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">Menu</button>
       </div>
     </div>
@@ -94,21 +97,25 @@
     </div>
   </section>
 
-  <!-- Section 1: Belief Statement (Prominent Statement Section) -->
+  <!-- Section 1: Belief Statement (Rich Brand Canvas) -->
   <section class="belief-statement-section" id="who-we-are">
     <div class="container">
-      <div class="belief-statement-card">
-        <div class="belief-quote-title">
-          “People are not defined by the circumstances they find themselves in. Behind every statistic is a person, a family, and a community with hopes, dignity, and untapped potential.”
+      <div class="belief-statement-content">
+        <div class="belief-lead-quote">
+          “Every individual deserves the chance to live a healthy, safe, and dignified life.”
         </div>
         <div class="belief-body-grid">
           <div>
-            <p class="belief-body-text">
-              Every individual deserves the chance to live a healthy, safe, and dignified life. Yet for children, youth, women, and low-income families in underserved communities, systemic barriers can make this difficult to achieve. BHB Foundation walks alongside those facing adversity, providing tools, mentorship, and opportunities to build lasting independence.
+            <p class="belief-narrative-text">
+              Yet for children, youth, women, and low-income families in underserved communities, systemic barriers can make this difficult to achieve. BHB Foundation walks alongside those facing adversity, providing tools, mentorship, and opportunities to build lasting independence.
+            </p>
+            <p class="belief-sub-quote">
+              “People are not defined by the circumstances they find themselves in. Behind every statistic is a person, a family, and a community with hopes, dignity, and untapped potential.”
             </p>
           </div>
-          <div style="display: flex; justify-content: flex-end; align-items: center;">
-            <a href="about.html" class="btn btn-primary" style="padding: 14px 28px; font-size: 0.95rem;">Learn More About BHB →</a>
+          <div class="belief-action-col">
+            <a href="about.html" class="btn" style="padding: 14px 28px; font-size: 0.95rem; background: #FFFFFF; color: #1C4DA0; font-weight: 800; text-decoration: none; border-radius: var(--radius-xs);">Learn More About BHB →</a>
+            <a href="what-we-do.html" class="btn btn-outline-white" style="padding: 14px 28px; font-size: 0.95rem;">Explore Our Strategic Pillars</a>
           </div>
         </div>
       </div>
@@ -147,9 +154,9 @@
   <!-- Section 3: The 6 Strategic Pillars (Layout Family C: Landscape Intervention Rows) -->
   <section id="pillars">
     <div class="container">
-      <div class="section-header">
-        <h2>How We Drive <span class="text-accent-blue">Sustainable Change</span></h2>
-        <p class="lead">Six integrated development pillars designed to address systemic poverty and health inequities.</p>
+      <div class="pillar-heading-banner">
+        <h2>How We Drive Sustainable Change</h2>
+        <p>Six integrated development pillars designed to address systemic poverty and health inequities.</p>
       </div>
 
       <div class="pillar-landscape-list" id="focusAreasGrid">
