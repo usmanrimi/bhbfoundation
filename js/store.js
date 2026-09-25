@@ -18,7 +18,7 @@ const RAW_DEFAULT_STORE_DATA = (typeof window !== 'undefined' && window.BHB_SEED
     contactEmail: "contact@bhborganization.org",
     tagline: "Empowering Families. Strengthening Communities. Creating Sustainable Futures.",
     mission: "To support vulnerable and underserved individuals and communities by improving access to essential health and social services, education and economic opportunities, while promoting dignity, resilience, inclusion and self-reliance.",
-    vision: "To build inclusive, resilient, and empowered communities where every individual can live with dignity and realise their full potential.",
+    vision: "To build inclusive, resilient and empowered communities where every individual can live with dignity and realise their full potential.",
     aboutImage: "",
     communityCoDesignImage: "",
     primaryCurrency: "NGN",

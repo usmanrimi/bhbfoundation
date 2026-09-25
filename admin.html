@@ -6,18 +6,15 @@
   <title>Super Admin Controller — BHB Family Support and Development Foundation</title>
   <link rel="icon" type="image/png" href="assets/images/bhb-logo.png">
 
-  <!-- Fonts -->
+  <!-- Fonts: Inter & Manrope -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/admin.css">
-
-  <!-- Chart.js CDN for Live Analytics Visualizations -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <!-- Core Store Synchronous Load for Instant Live Synchronization -->
   <script src="js/initial_data.js"></script>
@@ -69,14 +66,14 @@
 
       <div class="admin-login-footer">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        <span>256-Bit SSL Encrypted Admin Gateway</span>
+        <span>256-Bit Encrypted Admin Gateway</span>
       </div>
     </div>
   </div>
 
 
   <!-- =========================================================================
-       SUPER ADMIN DASHBOARD VIEW (FULLY SEPARATED & ISOLATED)
+       SUPER ADMIN DASHBOARD VIEW (FOCUSED & ESSENTIAL)
        ========================================================================= -->
   <div id="adminDashboardView">
     <div class="admin-layout">
@@ -95,66 +92,36 @@
           <ul class="admin-nav-menu">
             <li class="admin-nav-item active">
               <button data-admin-tab="overview">
-                <span class="nav-item-left">Analytics Overview</span>
-              </button>
-            </li>
-            <li class="admin-nav-item">
-              <button data-admin-tab="slides">
-                <span class="nav-item-left">Hero Carousel Slides</span>
-              </button>
-            </li>
-            <li class="admin-nav-item">
-              <button data-admin-tab="focus">
-                <span class="nav-item-left">Focus Areas &amp; Pillars</span>
-                <span class="admin-badge-count" id="adminSidebarFocusCount">6</span>
-              </button>
-            </li>
-            <li class="admin-nav-item">
-              <button data-admin-tab="projects">
-                <span class="nav-item-left">Projects &amp; Milestones</span>
+                <span class="nav-item-left">📊 Dashboard Overview</span>
               </button>
             </li>
             <li class="admin-nav-item">
               <button data-admin-tab="blog">
-                <span class="nav-item-left">Blog Articles CMS</span>
-              </button>
-            </li>
-            <li class="admin-nav-item">
-              <button data-admin-tab="comments">
-                <span class="nav-item-left">Comments Moderation</span>
-                <span class="admin-badge-count" id="adminSidebarCommCount">0</span>
+                <span class="nav-item-left">📰 Blog &amp; News CMS</span>
+                <span class="admin-badge-count" id="adminSidebarBlogCount">0</span>
               </button>
             </li>
             <li class="admin-nav-item">
               <button data-admin-tab="team">
-                <span class="nav-item-left">Leadership &amp; Team</span>
+                <span class="nav-item-left">👥 Leadership &amp; Team</span>
+                <span class="admin-badge-count" id="adminSidebarTeamCount">0</span>
               </button>
             </li>
             <li class="admin-nav-item">
-              <button data-admin-tab="partners">
-                <span class="nav-item-left">Partner Organisations</span>
-              </button>
-            </li>
-            <li class="admin-nav-item">
-              <button data-admin-tab="donations">
-                <span class="nav-item-left">Donations Ledger</span>
-              </button>
-            </li>
-            <li class="admin-nav-item">
-              <button data-admin-tab="volunteers">
-                <span class="nav-item-left">Volunteers</span>
-                <span class="admin-badge-count" id="adminSidebarVolCount">0</span>
+              <button data-admin-tab="projects">
+                <span class="nav-item-left">🎯 Projects &amp; Initiatives</span>
+                <span class="admin-badge-count" id="adminSidebarProjectCount">0</span>
               </button>
             </li>
             <li class="admin-nav-item">
               <button data-admin-tab="inquiries">
-                <span class="nav-item-left">Inquiries Inbox</span>
+                <span class="nav-item-left">📬 Inquiries Inbox</span>
                 <span class="admin-badge-count" id="adminSidebarInqCount">0</span>
               </button>
             </li>
             <li class="admin-nav-item">
               <button data-admin-tab="settings">
-                <span class="nav-item-left">Platform Settings</span>
+                <span class="nav-item-left">⚙️ Platform Settings</span>
               </button>
             </li>
           </ul>
@@ -162,10 +129,10 @@
 
         <div class="admin-sidebar-footer">
           <a href="index.html" class="exit-admin-btn" style="text-decoration: none; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
-            🌐 View Public Website
+            🌐 Public Website
           </a>
           <button class="exit-admin-btn" onclick="handleAdminLogout()" style="color: #DC2626; border-color: #FCA5A5;">
-            🔒 Sign Out of Admin
+            🔒 Sign Out
           </button>
         </div>
       </aside>
@@ -174,17 +141,16 @@
       <main class="admin-main">
         <header class="admin-topbar">
           <div class="admin-topbar-title" id="adminCurrentTabTitle">
-            Executive Analytics &amp; KPI Overview
+            Dashboard Overview
           </div>
           <div class="admin-topbar-right" style="display: flex; align-items: center; gap: 14px;">
-            <span style="color: #10B981; font-weight: bold; font-size: 0.9em;">&#10003; Server Connected</span>
-            <button id="adminSyncGitBtn" onclick="syncAdminChangesToGitHub()" class="btn btn-sm" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: #FFFFFF; font-weight: 800; border: none; padding: 7px 16px; border-radius: 6px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35); cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='none'" title="Commit and push all your Super Admin edits, pictures, and updates to GitHub">
-              <span>🚀 Push Changes to GitHub</span>
+            <button id="adminSyncGitBtn" onclick="syncAdminChangesToGitHub()" class="btn btn-sm" style="background: #10B981; color: #FFFFFF; font-weight: 800; border: none; padding: 7px 16px; border-radius: 6px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;" title="Save and push changes">
+              <span>🚀 Push Changes Live</span>
             </button>
             <div class="admin-live-clock" id="adminLiveClock">Loading WAT...</div>
             <div class="admin-user-pill" style="cursor: pointer;" onclick="handleAdminLogout()" title="Click to Sign Out">
               <div class="admin-user-avatar">AD</div>
-              <span style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF;">bhbfoundation0@gmail.com</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #0F172A;">Super Admin</span>
             </div>
           </div>
         </header>
@@ -193,150 +159,96 @@
 
           <!-- TAB 1: OVERVIEW -->
           <div class="admin-tab-pane active" id="adminTab-overview">
+            
+            <!-- Quick KPI Cards -->
             <div class="kpi-cards-grid">
-              <div class="kpi-card">
+              <div class="kpi-card" onclick="switchAdminTab('blog')" style="cursor: pointer;">
                 <div class="kpi-header">
-                  <span class="kpi-title">Total Funds Mobilized</span>
+                  <span class="kpi-title">Published Articles</span>
+                  <span class="kpi-icon">📰</span>
                 </div>
-                <div class="kpi-value" id="kpiTotalDonations">₦0</div>
-                <span class="kpi-trend trend-up">↑ +28% vs Last Month</span>
+                <div class="kpi-value" id="kpiTotalPosts">0</div>
+                <span class="kpi-trend trend-up">Click to Manage Articles →</span>
               </div>
 
-              <div class="kpi-card">
+              <div class="kpi-card" onclick="switchAdminTab('team')" style="cursor: pointer;">
                 <div class="kpi-header">
-                  <span class="kpi-title">People Directly Reached</span>
+                  <span class="kpi-title">Team &amp; Trustees</span>
+                  <span class="kpi-icon">👥</span>
                 </div>
-                <div class="kpi-value" id="kpiTotalBeneficiaries">10+</div>
-                <span class="kpi-trend trend-up">Across 14 Communities</span>
+                <div class="kpi-value" id="kpiTotalTeam">0</div>
+                <span class="kpi-trend trend-up">Click to Manage Team →</span>
               </div>
 
-              <div class="kpi-card">
+              <div class="kpi-card" onclick="switchAdminTab('projects')" style="cursor: pointer;">
                 <div class="kpi-header">
                   <span class="kpi-title">Active Programmes</span>
+                  <span class="kpi-icon">🎯</span>
                 </div>
-                <div class="kpi-value" id="kpiActiveProjects">0</div>
-                <span class="kpi-trend trend-neutral">6 Focus Pillars</span>
+                <div class="kpi-value" id="kpiTotalProjects">0</div>
+                <span class="kpi-trend trend-up">Click to Manage Projects →</span>
               </div>
 
-              <div class="kpi-card">
+              <div class="kpi-card" onclick="switchAdminTab('inquiries')" style="cursor: pointer;">
                 <div class="kpi-header">
-                  <span class="kpi-title">Pending Volunteer Reviews</span>
+                  <span class="kpi-title">Inquiries &amp; Messages</span>
+                  <span class="kpi-icon">📬</span>
                 </div>
-                <div class="kpi-value" id="kpiPendingVolunteers">0</div>
-                <span class="kpi-trend trend-neutral">Awaiting Review</span>
+                <div class="kpi-value" id="kpiTotalInquiries">0</div>
+                <span class="kpi-trend trend-neutral">From Contact Form →</span>
               </div>
             </div>
 
-            <div class="admin-charts-grid">
-              <div class="chart-card">
-                <div class="chart-header">
-                  <span class="chart-title">Monthly Donation Trends (₦ Millions)</span>
-                  <span class="status-pill success">Live Sync</span>
-                </div>
-                <div class="chart-container-box">
-                  <canvas id="adminDonationsChart"></canvas>
-                </div>
-              </div>
-
-              <div class="chart-card">
-                <div class="chart-header">
-                  <span class="chart-title">Beneficiary Allocation by Programme</span>
-                </div>
-                <div class="chart-container-box">
-                  <canvas id="adminBeneficiariesChart"></canvas>
-                </div>
-              </div>
+            <!-- Fast Action Shortcuts -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 28px;">
+              <button class="btn btn-primary" onclick="openNewPostModal()" style="padding: 14px; font-weight: 700;">
+                + Write New Blog Post
+              </button>
+              <button class="btn btn-navy" onclick="openNewTeamModal()" style="padding: 14px; font-weight: 700;">
+                + Add Team Member
+              </button>
+              <button class="btn btn-navy" onclick="openNewProjectModal()" style="padding: 14px; font-weight: 700;">
+                + Launch New Project
+              </button>
+              <button class="btn btn-ghost" onclick="switchAdminTab('settings')" style="padding: 14px; font-weight: 700;">
+                ⚙️ Foundation Settings
+              </button>
             </div>
-          </div>
 
-          <!-- TAB 2: HERO SLIDES -->
-          <div class="admin-tab-pane" id="adminTab-slides">
+            <!-- Recent Inquiries Preview Table -->
             <div class="admin-table-card">
               <div class="table-action-bar">
                 <div>
-                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Hero Carousel Slides Manager</h3>
-                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Customize carousel slides, background photos, and calls to action.</p>
+                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Recent Inquiries from Contact Form</h3>
+                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Direct messages submitted through the website contact page.</p>
                 </div>
-                <button class="btn btn-primary btn-sm" onclick="openNewHeroSlideModal()">+ Add Carousel Slide</button>
+                <button class="btn btn-sm btn-ghost" onclick="switchAdminTab('inquiries')">View Full Inbox →</button>
               </div>
               <div style="overflow-x: auto;">
                 <table class="admin-data-table">
                   <thead>
                     <tr>
-                      <th style="width: 90px;">Image</th>
-                      <th style="min-width: 200px;">Headline &amp; Eyebrow</th>
-                      <th style="min-width: 260px;">Lead Narrative</th>
-                      <th style="width: 130px;">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody id="adminHeroSlidesTableBody"></tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <!-- TAB: FOCUS AREAS & PILLARS CMS -->
-          <div class="admin-tab-pane" id="adminTab-focus">
-            <div class="admin-table-card">
-              <div class="table-action-bar">
-                <div>
-                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Strategic Focus Areas &amp; Pillars</h3>
-                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Manage community pillars, narrative summaries, operational details, and cover photos with live public sync.</p>
-                </div>
-                <button class="btn btn-primary btn-sm" onclick="openNewFocusAreaModal()">+ Add New Focus Pillar</button>
-              </div>
-              <div style="overflow-x: auto;">
-                <table class="admin-data-table">
-                  <thead>
-                    <tr>
-                      <th style="width: 100px;">Cover</th>
-                      <th style="min-width: 180px;">Pillar Title</th>
-                      <th style="min-width: 240px;">Summary Narrative</th>
-                      <th style="min-width: 220px;">Operational Scope</th>
-                      <th style="width: 130px;">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody id="adminFocusAreasTableBody"></tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <!-- TAB 3: PROJECTS -->
-          <div class="admin-tab-pane" id="adminTab-projects">
-            <div class="admin-table-card">
-              <div class="table-action-bar">
-                <div>
-                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Projects &amp; Initiatives Manager</h3>
-                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Upload project banners and update beneficiary milestones.</p>
-                </div>
-                <button class="btn btn-primary btn-sm" onclick="openNewProjectModal()">+ Launch Project (With Photo)</button>
-              </div>
-              <div style="overflow-x: auto;">
-                <table class="admin-data-table">
-                  <thead>
-                    <tr>
-                      <th>Project Title</th>
-                      <th>Category</th>
-                      <th>Raised / Goal</th>
-                      <th>Beneficiaries</th>
+                      <th>Sender</th>
+                      <th>Subject</th>
+                      <th>Date</th>
                       <th>Status</th>
-                      <th>Actions</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
-                  <tbody id="adminProjectsTableBody"></tbody>
+                  <tbody id="adminRecentInquiriesTableBody"></tbody>
                 </table>
               </div>
             </div>
+
           </div>
 
-          <!-- TAB 4: BLOG CMS -->
+          <!-- TAB 2: BLOG & NEWS CMS -->
           <div class="admin-tab-pane" id="adminTab-blog">
             <div class="admin-table-card">
               <div class="table-action-bar">
                 <div>
                   <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Blog Articles &amp; Field Reports CMS</h3>
-                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Publish articles with custom author, categories, tags, and interactive image cropper.</p>
+                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Publish and update news dispatches with custom categories, authors, and cover photos.</p>
                 </div>
                 <button class="btn btn-primary btn-sm" onclick="openNewPostModal()">+ Write New Article</button>
               </div>
@@ -344,14 +256,11 @@
                 <table class="admin-data-table">
                   <thead>
                     <tr>
-                      <th>Image</th>
-                      <th>Article Title</th>
-                      <th>Category</th>
-                      <th>Author</th>
-                      <th>Likes</th>
-                      <th>Comments</th>
-                      <th>Status</th>
-                      <th>Actions</th>
+                      <th style="width: 80px;">Cover</th>
+                      <th style="min-width: 220px;">Article Title &amp; Category</th>
+                      <th style="min-width: 140px;">Author &amp; Date</th>
+                      <th style="min-width: 200px;">Excerpt</th>
+                      <th style="width: 140px;">Actions</th>
                     </tr>
                   </thead>
                   <tbody id="adminBlogTableBody"></tbody>
@@ -360,53 +269,25 @@
             </div>
           </div>
 
-          <!-- TAB 5: COMMENTS MODERATION -->
-          <div class="admin-tab-pane" id="adminTab-comments">
-            <div class="admin-table-card">
-              <div class="table-action-bar">
-                <div>
-                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Community Comments Moderation Centre</h3>
-                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Review, approve, flag, or delete visitor comments across all blog publications.</p>
-                </div>
-              </div>
-              <div style="overflow-x: auto;">
-                <table class="admin-data-table">
-                  <thead>
-                    <tr>
-                      <th>Commenter</th>
-                      <th>Email</th>
-                      <th>Article</th>
-                      <th>Comment Message</th>
-                      <th>Date</th>
-                      <th>Status</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody id="adminCommentsTableBody"></tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <!-- TAB 6: TEAM ROSTER -->
+          <!-- TAB 3: LEADERSHIP & TEAM CMS -->
           <div class="admin-tab-pane" id="adminTab-team">
             <div class="admin-table-card">
               <div class="table-action-bar">
                 <div>
                   <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Leadership &amp; Team CMS</h3>
-                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Add, edit, publish/unpublish, re-order, and manage portrait photos with instant live sync to the Our Team page.</p>
+                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Manage trustees, executive leadership, portrait photos, and profile statements.</p>
                 </div>
-                <button class="btn btn-primary btn-sm" onclick="openNewTeamModal()">+ Add New Team Member</button>
+                <button class="btn btn-primary btn-sm" onclick="openNewTeamModal()">+ Add New Member</button>
               </div>
               <div style="overflow-x: auto;">
                 <table class="admin-data-table">
                   <thead>
                     <tr>
                       <th style="width: 70px;">Order</th>
-                      <th>Portrait &amp; Member Name</th>
-                      <th>Official Position</th>
+                      <th>Portrait / Monogram</th>
+                      <th>Member Name</th>
+                      <th>Official Position &amp; Sector</th>
                       <th>Governance Tier</th>
-                      <th style="width: 130px;">Status</th>
                       <th style="width: 140px;">Actions</th>
                     </tr>
                   </thead>
@@ -416,97 +297,53 @@
             </div>
           </div>
 
-          <!-- TAB 7: PARTNERS -->
-          <div class="admin-tab-pane" id="adminTab-partners">
+          <!-- TAB 4: PROJECTS & INITIATIVES CMS -->
+          <div class="admin-tab-pane" id="adminTab-projects">
             <div class="admin-table-card">
               <div class="table-action-bar">
                 <div>
-                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Partner &amp; Coalition Logos</h3>
-                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Upload high-visibility partner logos for the continuous sliding marquee.</p>
+                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Projects &amp; Initiatives Manager</h3>
+                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Update active community programs, beneficiary metrics, status, and summaries.</p>
                 </div>
-                <button class="btn btn-primary btn-sm" onclick="openNewPartnerModal()">+ Upload Partner Logo</button>
+                <button class="btn btn-primary btn-sm" onclick="openNewProjectModal()">+ Launch New Project</button>
               </div>
               <div style="overflow-x: auto;">
                 <table class="admin-data-table">
                   <thead>
                     <tr>
-                      <th style="min-width: 200px;">Partner Logo</th>
-                      <th style="min-width: 180px;">Organisation Reference</th>
-                      <th style="width: 160px;">Display Mode</th>
-                      <th style="width: 120px;">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody id="adminPartnersTableBody"></tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <!-- TAB 8: DONATIONS -->
-          <div class="admin-tab-pane" id="adminTab-donations">
-            <div class="admin-table-card">
-              <div class="table-action-bar">
-                <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Donations Transactions Ledger</h3>
-                <button class="btn btn-primary btn-sm" onclick="exportDonationsCSV()">Export to CSV</button>
-              </div>
-              <div style="overflow-x: auto;">
-                <table class="admin-data-table">
-                  <thead>
-                    <tr>
-                      <th>Ref ID</th>
-                      <th>Donor</th>
-                      <th>Amount</th>
-                      <th>Method</th>
-                      <th>Project Designation</th>
-                      <th>Date</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody id="adminDonationsTableBody"></tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <!-- TAB 9: VOLUNTEERS -->
-          <div class="admin-tab-pane" id="adminTab-volunteers">
-            <div class="admin-table-card">
-              <div class="table-action-bar">
-                <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Volunteer Applications</h3>
-              </div>
-              <div style="overflow-x: auto;">
-                <table class="admin-data-table">
-                  <thead>
-                    <tr>
-                      <th>Applicant</th>
-                      <th>Role Interest</th>
+                      <th>Project Title</th>
+                      <th>Category</th>
                       <th>Location</th>
-                      <th>Applied Date</th>
+                      <th>Reach / Beneficiaries</th>
                       <th>Status</th>
-                      <th>Action</th>
+                      <th style="width: 140px;">Actions</th>
                     </tr>
                   </thead>
-                  <tbody id="adminVolunteersTableBody"></tbody>
+                  <tbody id="adminProjectsTableBody"></tbody>
                 </table>
               </div>
             </div>
           </div>
 
-          <!-- TAB 10: INQUIRIES -->
+          <!-- TAB 5: INQUIRIES INBOX -->
           <div class="admin-tab-pane" id="adminTab-inquiries">
             <div class="admin-table-card">
               <div class="table-action-bar">
-                <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Public &amp; Partner Inquiries</h3>
+                <div>
+                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Public &amp; Partner Inquiries Inbox</h3>
+                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Review and manage inquiries submitted through the Contact Us form.</p>
+                </div>
               </div>
               <div style="overflow-x: auto;">
                 <table class="admin-data-table">
                   <thead>
                     <tr>
                       <th>Sender</th>
+                      <th>Organization Type</th>
                       <th>Subject &amp; Message</th>
                       <th>Received Date</th>
                       <th>Status</th>
-                      <th>Action</th>
+                      <th style="width: 150px;">Actions</th>
                     </tr>
                   </thead>
                   <tbody id="adminInquiriesTableBody"></tbody>
@@ -515,14 +352,16 @@
             </div>
           </div>
 
-          <!-- TAB 11: SETTINGS -->
+          <!-- TAB 6: SETTINGS & BACKUP -->
           <div class="admin-tab-pane" id="adminTab-settings">
             <form class="admin-modal-form" id="adminSettingsForm" onsubmit="handleSaveSettings(event)">
               <div class="admin-settings-grid">
                 
-                <!-- Card 1: Institutional Profile & Banking -->
+                <!-- Card 1: Official Profile & Banking -->
                 <div class="settings-card">
-                  <h3 style="color: #0F172A; font-size: 1.1rem; margin-bottom: 14px; font-weight: 700;">Institutional Profile &amp; Banking</h3>
+                  <h3>Institutional Profile &amp; Banking</h3>
+                  <p>Official legal details synchronized across the public website and footer.</p>
+
                   <div class="form-group">
                     <label>CAC Registration Number</label>
                     <input type="text" name="cac_num" required>
@@ -543,44 +382,49 @@
                     <label>Zenith Bank Account Number (NGN)</label>
                     <input type="text" name="zenith_acc" required>
                   </div>
-                  <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Save All Settings &amp; Media</button>
+
+                  <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px; padding: 12px; font-weight: 700;">
+                    Save Official Information
+                  </button>
                 </div>
 
-                <!-- Card 2: Feature Picture & Brand Assets -->
+                <!-- Card 2: Mission & Vision Settings -->
                 <div class="settings-card">
-                  <h3 style="color: #0F172A; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Foundation Media &amp; Photos</h3>
-                  <p style="color: #64748B; font-size: 0.84rem; margin-bottom: 14px;">Upload approved high-resolution foundation field photographs to sync across portal showcases.</p>
-                  
-                  <input type="hidden" name="partners_image" id="admin_partners_img_hidden" value="">
-                  
-                  <div style="margin-bottom: 14px; border: 1px solid #CBD5E1; border-radius: 6px; overflow: hidden; background: #0F1E36; height: 160px; display: flex; align-items: center; justify-content: center;">
-                    <img id="adminPartnersImgPreview" src="" alt="Feature Preview" style="width: 100%; height: 160px; object-fit: cover; display: none;">
-                    <div id="adminPartnersImgEmptyNotice" style="color: #94A3B8; font-size: 0.85rem; font-weight: 600;">No photo uploaded yet</div>
+                  <h3>Official Mission &amp; Vision</h3>
+                  <p>Update the core foundation statements displayed across all public pages.</p>
+
+                  <div class="form-group">
+                    <label>Official Mission Statement</label>
+                    <textarea name="mission_text" rows="4" style="font-size: 0.9rem;" required></textarea>
                   </div>
 
-                  <div class="admin-dropzone" style="padding: 16px; margin-bottom: 14px;">
-                    <label style="font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 6px; display: block;">Upload / Replace Image:</label>
-                    <input type="file" accept="image/*" onchange="handleImageUpload(this, 'adminPartnersImgPreview', 'partners_image', '4:3')" style="margin-bottom: 6px;">
-                    <p style="font-size: 0.76rem; color: #64748B; margin: 0;">Supports 4:3, 16:9, or freeform cropping with zoom and pan.</p>
+                  <div class="form-group">
+                    <label>Official Vision Statement</label>
+                    <textarea name="vision_text" rows="4" style="font-size: 0.9rem;" required></textarea>
                   </div>
 
-                  <button type="submit" class="btn btn-navy" style="width: 100%;">Save &amp; Sync Image Live</button>
+                  <button type="submit" class="btn btn-navy" style="width: 100%; margin-top: 10px; padding: 12px; font-weight: 700;">
+                    Save Mission &amp; Vision
+                  </button>
                 </div>
 
-                <!-- Card 3: Database Backup & Live Restore -->
+                <!-- Card 3: Database Backup & Restore -->
                 <div class="settings-card">
-                  <h3 style="color: #0F172A; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Database Backup &amp; Live Restore</h3>
-                  <p style="color: #64748B; font-size: 0.84rem; margin-bottom: 14px;">Export all live platform data as a portable JSON file, or restore from a previous backup.</p>
-                  <div style="display: grid; gap: 12px;">
-                    <button type="button" class="btn btn-primary" onclick="exportDatabaseJSON()" style="width: 100%;">
-                      Download JSON Database Backup
+                  <h3>Database Backup &amp; Live Restore</h3>
+                  <p>Export all live website data as a portable JSON file, or restore from a previous backup.</p>
+                  
+                  <div style="display: grid; gap: 12px; margin-top: 18px;">
+                    <button type="button" class="btn btn-primary" onclick="exportDatabaseJSON()" style="width: 100%; padding: 12px;">
+                      📥 Download JSON Database Backup
                     </button>
-                    <label class="btn btn-ghost-dark" style="width: 100%; cursor: pointer; text-align: center;">
-                      Restore Database from JSON Backup
+
+                    <label class="btn btn-ghost" style="width: 100%; cursor: pointer; text-align: center; padding: 12px; border: 1.5px dashed #CBD5E1; color: #1E3A8A; font-weight: 700;">
+                      📤 Restore Database from JSON File
                       <input type="file" accept=".json" onchange="importDatabaseJSON(event)" style="display: none;">
                     </label>
-                    <button type="button" class="btn btn-ghost" onclick="resetToDemoData()" style="width: 100%; color: #DC2626; border-color: rgba(220, 38, 38, 0.4);">
-                      Reset to Factory Foundation Data
+
+                    <button type="button" class="btn btn-ghost" onclick="resetToDemoData()" style="width: 100%; color: #DC2626; border-color: rgba(220, 38, 38, 0.4); padding: 10px;">
+                      ⚠️ Reset to Factory Foundation Data
                     </button>
                   </div>
                 </div>
@@ -596,24 +440,14 @@
   </div>
 
 
-  <!-- Admin CRUD Modal -->
+  <!-- Admin Universal CRUD Modal -->
   <div class="modal-backdrop" id="adminCrudModal">
-    <div class="modal-window" style="background: #FFFFFF; color: #0F172A; border: 1px solid #E2E8F0; border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);">
+    <div class="modal-window" style="background: #FFFFFF; color: #0F172A; border: 1px solid #E2E8F0; border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15);">
       <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #E2E8F0; padding: 18px 24px;">
-        <h3 id="adminCrudModalTitle" style="color: #0F172A; font-size: 1.2rem; font-weight: 700;">Manage Item</h3>
-        <button onclick="closeModal('adminCrudModal')" style="background:none; border:none; font-size:1.6rem; color:#64748B; cursor:pointer;">×</button>
+        <h3 id="adminCrudModalTitle" style="color: #0F172A; font-size: 1.2rem; font-weight: 800; margin: 0;">Manage Item</h3>
+        <button onclick="closeModal('adminCrudModal')" style="background:none; border:none; font-size:1.6rem; color:#64748B; cursor:pointer; line-height: 1;">×</button>
       </div>
       <div id="adminCrudModalContent"></div>
-    </div>
-  </div>
-
-  <!-- Generic Modal -->
-  <div class="modal-backdrop" id="genericModal">
-    <div class="modal-window">
-      <div style="position: absolute; top: 18px; right: 20px;">
-        <button onclick="closeModal('genericModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy);">×</button>
-      </div>
-      <div id="genericModalContent"></div>
     </div>
   </div>
 
