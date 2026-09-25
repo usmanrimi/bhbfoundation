@@ -170,6 +170,9 @@ class StoreEngine {
         if (!parsed.donations || !parsed.donations.length) parsed.donations = DEFAULT_STORE_DATA.donations;
         if (!parsed.volunteers || !parsed.volunteers.length) parsed.volunteers = DEFAULT_STORE_DATA.volunteers;
         if (!parsed.inquiries || !parsed.inquiries.length) parsed.inquiries = DEFAULT_STORE_DATA.inquiries;
+        if (!parsed.partners || !parsed.partners.length || (parsed.partners[0] && !parsed.partners[0].logo)) {
+          parsed.partners = DEFAULT_STORE_DATA.partners;
+        }
         return parsed;
       }
     } catch (e) {
@@ -742,8 +745,8 @@ window.renderPartnersSectionHTML = function() {
   if (!partners || !partners.length) return '';
 
   const activePartners = partners.filter(p => p.status !== 'inactive');
-  // Duplicate list to enable continuous seamless horizontal loop
-  const marqueeList = [...activePartners, ...activePartners];
+  // Duplicate list 4x to enable continuous seamless horizontal marquee on all screen resolutions
+  const marqueeList = [...activePartners, ...activePartners, ...activePartners, ...activePartners];
 
   const cardsHTML = marqueeList.map((p) => {
     const logoContent = p.logo

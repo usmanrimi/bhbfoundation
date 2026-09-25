@@ -2608,3 +2608,231 @@ section {
   right: 24px;
   z-index: 3000;
 }
+
+/* --------------------------------------------------------------------------
+   19. OUR PARTNERS & COLLABORATORS MARQUEE
+   -------------------------------------------------------------------------- */
+.partners-section {
+  padding: 56px 0 64px;
+  background: #F8FAFC;
+  border-top: 1px solid rgba(15, 30, 54, 0.08);
+  border-bottom: 1px solid rgba(15, 30, 54, 0.08);
+  overflow: hidden;
+}
+
+.partners-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 36px;
+  padding: 0 20px;
+}
+
+.partners-header h2 {
+  font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.partners-header p {
+  font-size: 0.94rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.partners-marquee-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 12px 0;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.partners-marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: partnersScroll 25s linear infinite;
+  align-items: center;
+}
+
+.partners-marquee-container:hover .partners-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes partnersScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.partner-logo-card {
+  flex: 0 0 auto;
+  width: 240px;
+  height: 96px;
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 30, 54, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+}
+
+.partner-logo-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 8px 22px rgba(28, 77, 160, 0.14);
+  transform: translateY(-2px);
+}
+
+.partner-logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.partner-logo-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.partner-logo-badge-icon {
+  background: var(--navy);
+  color: var(--white);
+  font-weight: 800;
+  font-size: 0.75rem;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+.partner-logo-text {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--navy);
+}
+
+/* --------------------------------------------------------------------------
+   20. SUPER ADMIN IMAGE CROPPER & POSITIONING CONTROLS
+   -------------------------------------------------------------------------- */
+.crop-tool-btn {
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.crop-tool-btn:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+  border-color: #94A3B8;
+}
+
+.crop-tool-btn.active {
+  background: var(--blue);
+  color: #FFFFFF;
+  border-color: var(--blue);
+}
+
+.crop-aspect-btn {
+  background: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  color: #475569;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.crop-aspect-btn:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+.crop-aspect-btn.active {
+  background: #1C4DA0;
+  color: #FFFFFF;
+  border-color: #1C4DA0;
+  font-weight: 700;
+}
+
+.crop-position-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 34px);
+  grid-template-rows: repeat(3, 34px);
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.crop-pad-btn {
+  width: 34px;
+  height: 34px;
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  border-radius: 5px;
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.crop-pad-btn:hover {
+  background: #1C4DA0;
+  color: #FFFFFF;
+  border-color: #1C4DA0;
+}
+
+.crop-overlay-guide {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 9999px rgba(15, 23, 42, 0.65);
+  pointer-events: none;
+  transition: width 0.2s ease, height 0.2s ease;
+}
+
+/* Rule of Thirds 3x3 Grid Guidelines */
+.crop-overlay-guide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 33.333%;
+  width: 33.333%;
+  height: 100%;
+  border-left: 1px dashed rgba(255, 255, 255, 0.4);
+  border-right: 1px dashed rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+.crop-overlay-guide::after {
+  content: '';
+  position: absolute;
+  top: 33.333%;
+  left: 0;
+  width: 100%;
+  height: 33.333%;
+  border-top: 1px dashed rgba(255, 255, 255, 0.4);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+

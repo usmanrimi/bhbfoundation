@@ -39,20 +39,20 @@ class AdminImageCropper {
       modal.className = 'modal-backdrop';
       modal.id = 'adminImageCropModal';
       modal.innerHTML = `
-        <div class="modal-window" style="background: #FFFFFF; color: #0F172A; max-width: 760px; width: 95%; border-radius: 8px; border: 1px solid #E2E8F0; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); overflow: hidden;">
-          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #E2E8F0; padding: 16px 24px;">
+        <div class="modal-window" style="background: #FFFFFF; color: #0F172A; max-width: 820px; width: 96%; border-radius: 8px; border: 1px solid #E2E8F0; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); overflow: hidden;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #E2E8F0; padding: 16px 24px; background: #F8FAFC;">
             <div>
-              <h3 style="font-size: 1.15rem; font-weight: 800; color: #0F172A; margin: 0;">Crop &amp; Frame Image</h3>
-              <p style="font-size: 0.8rem; color: #64748B; margin: 2px 0 0;">Position, zoom, rotate, and choose an aspect ratio before uploading.</p>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: #0F172A; margin: 0;">Position, Frame &amp; Crop Picture</h3>
+              <p style="font-size: 0.8rem; color: #64748B; margin: 2px 0 0;">Drag the picture, use alignment presets, zoom, or nudge to frame the perfect focal point.</p>
             </div>
             <button onclick="adminCropper.close()" style="background:none; border:none; font-size:1.6rem; color:#64748B; cursor:pointer;">×</button>
           </div>
 
-          <div style="padding: 20px 24px;">
-            <!-- Aspect Ratio Selector -->
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+          <div style="padding: 18px 24px;">
+            <!-- Top Controls: Aspect Ratio & Rotation -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
               <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                <span style="font-size: 0.82rem; font-weight: 700; color: #475569;">Aspect Ratio:</span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: #475569;">Aspect Ratio:</span>
                 <button type="button" class="crop-aspect-btn" data-aspect="3:4" onclick="adminCropper.setAspect('3:4', 3/4)">3:4 Headshot</button>
                 <button type="button" class="crop-aspect-btn" data-aspect="4:5" onclick="adminCropper.setAspect('4:5', 4/5)">4:5 Portrait</button>
                 <button type="button" class="crop-aspect-btn active" data-aspect="16:9" onclick="adminCropper.setAspect('16:9', 16/9)">16:9 Banner</button>
@@ -61,22 +61,49 @@ class AdminImageCropper {
                 <button type="button" class="crop-aspect-btn" data-aspect="free" onclick="adminCropper.setAspect('free', null)">Freeform</button>
               </div>
 
-              <!-- Rotation Buttons -->
+              <!-- Rotation and Reset -->
               <div style="display: flex; gap: 6px;">
-                <button type="button" class="crop-tool-btn" onclick="adminCropper.rotate(-90)" title="Rotate Left">↶ 90°</button>
-                <button type="button" class="crop-tool-btn" onclick="adminCropper.rotate(90)" title="Rotate Right">↷ 90°</button>
-                <button type="button" class="crop-tool-btn" onclick="adminCropper.resetPosition()" title="Reset Position">↺ Reset</button>
+                <button type="button" class="crop-tool-btn" onclick="adminCropper.rotate(-90)" title="Rotate 90° Left">↶ 90°</button>
+                <button type="button" class="crop-tool-btn" onclick="adminCropper.rotate(90)" title="Rotate 90° Right">↷ 90°</button>
+                <button type="button" class="crop-tool-btn" onclick="adminCropper.resetPosition()" title="Reset Position &amp; Zoom">↺ Reset</button>
               </div>
             </div>
 
             <!-- Canvas Viewport -->
-            <div class="crop-canvas-wrapper" style="position: relative; width: 100%; height: 380px; background: #0F172A; border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: grab;">
-              <canvas id="cropCanvasMain" width="700" height="380" style="display: block;"></canvas>
+            <div class="crop-canvas-wrapper" style="position: relative; width: 100%; height: 360px; background: #0F172A; border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: grab;">
+              <canvas id="cropCanvasMain" width="760" height="360" style="display: block;"></canvas>
               <div class="crop-overlay-guide" id="cropOverlayGuide"></div>
+              <div style="position: absolute; bottom: 10px; left: 14px; background: rgba(15, 23, 42, 0.75); color: #E2E8F0; font-size: 0.74rem; padding: 4px 10px; border-radius: 4px; pointer-events: none;">
+                🖱️ Drag picture freely to reposition
+              </div>
+            </div>
+
+            <!-- Picture Positioning & Alignment Bar -->
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 12px 16px; margin-top: 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+              <!-- Quick Alignment Presets -->
+              <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                <span style="font-size: 0.8rem; font-weight: 700; color: #475569;">Position Alignment:</span>
+                <button type="button" class="crop-tool-btn" onclick="adminCropper.align('top')" title="Position to show top of photo (ideal for headshots &amp; faces)">👤 Top / Face</button>
+                <button type="button" class="crop-tool-btn" onclick="adminCropper.align('center')" title="Center the picture in frame">🎯 Center</button>
+                <button type="button" class="crop-tool-btn" onclick="adminCropper.align('bottom')" title="Position to show bottom of photo">⬇️ Bottom</button>
+                <button type="button" class="crop-tool-btn" onclick="adminCropper.align('left')" title="Align left">⬅️ Left</button>
+                <button type="button" class="crop-tool-btn" onclick="adminCropper.align('right')" title="Align right">➡️ Right</button>
+              </div>
+
+              <!-- Directional Nudge Pad -->
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <span style="font-size: 0.78rem; font-weight: 700; color: #64748B; margin-right: 4px;">Nudge:</span>
+                <button type="button" class="crop-pad-btn" onclick="adminCropper.nudge(-20, 0)" title="Nudge Left">◄</button>
+                <div style="display: flex; flex-direction: column; gap: 2px;">
+                  <button type="button" class="crop-pad-btn" style="height: 16px; font-size: 0.7rem;" onclick="adminCropper.nudge(0, -20)" title="Nudge Up">▲</button>
+                  <button type="button" class="crop-pad-btn" style="height: 16px; font-size: 0.7rem;" onclick="adminCropper.nudge(0, 20)" title="Nudge Down">▼</button>
+                </div>
+                <button type="button" class="crop-pad-btn" onclick="adminCropper.nudge(20, 0)" title="Nudge Right">►</button>
+              </div>
             </div>
 
             <!-- Zoom Controls -->
-            <div style="display: flex; align-items: center; gap: 14px; margin-top: 14px;">
+            <div style="display: flex; align-items: center; gap: 14px; margin-top: 12px;">
               <span style="font-size: 0.82rem; font-weight: 700; color: #475569; min-width: 50px;">Zoom:</span>
               <button type="button" class="crop-tool-btn" onclick="adminCropper.stepZoom(-0.15)">-</button>
               <input type="range" id="cropZoomSlider" min="0.2" max="3.5" step="0.05" value="1" style="flex: 1; cursor: pointer;" oninput="adminCropper.onZoomChange(this.value)">
@@ -85,11 +112,11 @@ class AdminImageCropper {
           </div>
 
           <!-- Modal Footer -->
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #F8FAFC; border-top: 1px solid #E2E8F0;">
-            <button type="button" class="btn btn-outline btn-sm" onclick="adminCropper.useOriginal()">Use Original (No Crop)</button>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; background: #F8FAFC; border-top: 1px solid #E2E8F0;">
+            <button type="button" class="btn btn-outline btn-sm" onclick="adminCropper.useOriginal()">Use Full Original</button>
             <div style="display: flex; gap: 10px;">
               <button type="button" class="btn btn-outline btn-sm" onclick="adminCropper.close()">Cancel</button>
-              <button type="button" class="btn btn-primary btn-sm" onclick="adminCropper.applyCrop()">Apply &amp; Save Crop</button>
+              <button type="button" class="btn btn-primary btn-sm" onclick="adminCropper.applyCrop()">Apply &amp; Save Position</button>
             </div>
           </div>
         </div>
@@ -208,6 +235,38 @@ class AdminImageCropper {
 
   close() {
     if (this.modal) this.modal.classList.remove('active');
+  }
+
+  align(type) {
+    if (!this.canvas || !this.image) return;
+    const ih = (this.image.naturalHeight || this.image.height || 300) * this.scale;
+    const iw = (this.image.naturalWidth || this.image.width || 400) * this.scale;
+
+    if (type === 'center') {
+      this.posX = this.canvas.width / 2;
+      this.posY = this.canvas.height / 2;
+    } else if (type === 'top') {
+      // Moves image down so top third/face is in the center frame
+      this.posX = this.canvas.width / 2;
+      this.posY = (this.canvas.height / 2) + (ih * 0.22);
+    } else if (type === 'bottom') {
+      this.posX = this.canvas.width / 2;
+      this.posY = (this.canvas.height / 2) - (ih * 0.22);
+    } else if (type === 'left') {
+      this.posX = (this.canvas.width / 2) + (iw * 0.22);
+      this.posY = this.canvas.height / 2;
+    } else if (type === 'right') {
+      this.posX = (this.canvas.width / 2) - (iw * 0.22);
+      this.posY = this.canvas.height / 2;
+    }
+    this.render();
+  }
+
+  nudge(dx, dy) {
+    if (!this.canvas) return;
+    this.posX += dx;
+    this.posY += dy;
+    this.render();
   }
 
   resetPosition() {

@@ -410,18 +410,6 @@ window.BHB_SEED_DATA = {
       "image": ""
     }
   ],
-  "partners": [
-    {
-      "id": "part-1",
-      "name": "Corporate Affairs Commission (CAC)",
-      "logo": "data:image/svg+xml;utf8,<svg viewBox='0 0 180 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='8' fill='%230F1E36'/><text x='56' y='32' font-family='sans-serif' font-weight='800' font-size='20' fill='%230F1E36'>CAC NIGERIA</text></svg>"
-    },
-    {
-      "id": "part-2",
-      "name": "The Ability First Tech Hub",
-      "logo": "data:image/svg+xml;utf8,<svg viewBox='0 0 190 50' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='5' width='40' height='40' rx='8' fill='%231C4DA0'/><text x='56' y='32' font-family='sans-serif' font-weight='800' font-size='18' fill='%231C4DA0'>ABILITY FIRST</text></svg>"
-    }
-  ],
   "donations": [
     {
       "id": "DON-84920",
@@ -473,56 +461,38 @@ window.BHB_SEED_DATA = {
   "partners": [
     {
       "id": "partner-1",
-      "name": "Federal Ministry of Women Affairs",
-      "abbr": "FMWA",
-      "logo": "",
-      "url": "https://womenaffairs.gov.ng",
+      "name": "Refined Hearts for Women and Girls",
+      "abbr": "Refined Hearts",
+      "logo": "assets/images/partners/refined-hearts.png",
+      "url": "#",
       "order": 1,
       "status": "active"
     },
     {
       "id": "partner-2",
-      "name": "National Primary Health Care Agency",
-      "abbr": "NPHCDA",
-      "logo": "",
-      "url": "https://nphcda.gov.ng",
+      "name": "elevateHER Innovation Space Ltd",
+      "abbr": "elevateHER",
+      "logo": "assets/images/partners/elevate-her.png",
+      "url": "#",
       "order": 2,
       "status": "active"
     },
     {
       "id": "partner-3",
-      "name": "Ability First Tech Hub",
-      "abbr": "AFTH",
-      "logo": "",
-      "url": "https://abilityfirst.org",
+      "name": "Brandor - Your Ultimate Branding Door",
+      "abbr": "Brandor",
+      "logo": "assets/images/partners/brandor.png",
+      "url": "#",
       "order": 3,
       "status": "active"
     },
     {
       "id": "partner-4",
-      "name": "United Nations SDG Partnership Network",
-      "abbr": "UN SDG",
-      "logo": "",
-      "url": "https://sdgs.un.org",
+      "name": "The Ability First Tech Hub",
+      "abbr": "Ability First",
+      "logo": "assets/images/partners/ability-first-tech-hub.png",
+      "url": "#",
       "order": 4,
-      "status": "active"
-    },
-    {
-      "id": "partner-5",
-      "name": "Grassroots Water & Sanitation Alliance",
-      "abbr": "GWSA",
-      "logo": "",
-      "url": "",
-      "order": 5,
-      "status": "active"
-    },
-    {
-      "id": "partner-6",
-      "name": "Inclusive Livelihoods Consortium",
-      "abbr": "ILC",
-      "logo": "",
-      "url": "",
-      "order": 6,
       "status": "active"
     }
   ],

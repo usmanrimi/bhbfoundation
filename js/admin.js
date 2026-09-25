@@ -314,7 +314,7 @@ window.openNewPostModal = function() {
           <div id="postImgPreviewBox" style="display: none; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
             <img id="postImgPreview" src="" style="max-height: 140px; width: auto; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
             <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('postImgPreview', 'postImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Crop / Re-frame</button>
+              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('postImgPreview', 'postImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Position &amp; Crop Picture</button>
               <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('postImageHidden', 'postImgPreviewBox', 'postImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Remove Image</button>
             </div>
           </div>
@@ -396,7 +396,7 @@ window.openEditPostModal = function(id) {
           <div id="postImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
             <img id="postImgPreview" src="${post.image || ''}" style="max-height: 140px; width: auto; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
             <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('postImgPreview', 'postImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Crop / Re-frame</button>
+              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('postImgPreview', 'postImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Position &amp; Crop Picture</button>
               <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('postImageHidden', 'postImgPreviewBox', 'postImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Remove Image</button>
             </div>
           </div>
@@ -549,7 +549,7 @@ window.openNewTeamModal = function() {
           <div id="teamImgPreviewBox" style="display: none; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
             <img id="teamImgPreview" src="" style="width: 100px; height: 120px; object-fit: cover; border-radius: 6px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
             <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('teamImgPreview', 'teamImageHidden', '3:4')" style="font-size: 0.78rem;">📐 Crop / Frame Headshot</button>
+              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('teamImgPreview', 'teamImageHidden', '3:4')" style="font-size: 0.78rem;">📐 Position &amp; Frame Headshot</button>
               <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Clear Photo (Use Monogram)</button>
             </div>
           </div>
@@ -625,7 +625,7 @@ window.openEditTeamModal = function(id) {
           <div id="teamImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
             <img id="teamImgPreview" src="${member.image || ''}" style="width: 100px; height: 120px; object-fit: cover; border-radius: 6px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
             <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('teamImgPreview', 'teamImageHidden', '3:4')" style="font-size: 0.78rem;">📐 Crop / Frame Headshot</button>
+              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('teamImgPreview', 'teamImageHidden', '3:4')" style="font-size: 0.78rem;">📐 Position &amp; Frame Headshot</button>
               <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('teamImageHidden', 'teamImgPreviewBox', 'teamImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Clear Photo (Use Monogram)</button>
             </div>
           </div>
@@ -763,7 +763,7 @@ window.openNewProjectModal = function() {
           <div id="projImgPreviewBox" style="display: none; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
             <img id="projImgPreview" src="" style="max-height: 140px; width: auto; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
             <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('projImgPreview', 'projImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Crop / Re-frame</button>
+              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('projImgPreview', 'projImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Position &amp; Crop Picture</button>
               <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('projImageHidden', 'projImgPreviewBox', 'projImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Remove Image</button>
             </div>
           </div>
@@ -843,7 +843,7 @@ window.openEditProjectModal = function(id) {
           <div id="projImgPreviewBox" style="display: ${hasImg ? 'block' : 'none'}; margin-top: 12px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 6px;">
             <img id="projImgPreview" src="${proj.image || ''}" style="max-height: 140px; width: auto; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1; display: block; margin: 0 auto 10px;">
             <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('projImgPreview', 'projImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Crop / Re-frame</button>
+              <button type="button" class="btn btn-sm btn-outline" onclick="openCropperForCurrent('projImgPreview', 'projImageHidden', '16:9')" style="font-size: 0.78rem;">📐 Position &amp; Crop Picture</button>
               <button type="button" class="btn btn-sm btn-ghost" onclick="clearUploadedImage('projImageHidden', 'projImgPreviewBox', 'projImgPreview')" style="font-size: 0.78rem; color: #DC2626;">Remove Image</button>
             </div>
           </div>
