@@ -728,7 +728,9 @@ window.renderHomepageProjectsHTML = function() {
 
 window.renderProjectsLandscapeHTML = function(filteredProjects) {
   const projects = filteredProjects || (typeof BHBStore !== 'undefined' ? BHBStore.getProjects(true) : []);
-  if (!projects || !projects.length) return '<div style="padding: 40px 0; color: var(--text-muted); text-align: center;">No initiatives match the selected filter.</div>';
+  if (!projects || !projects.length) {
+    return '<div style="padding: 48px 0; color: var(--text-muted); text-align: center; font-size: 1.05rem; font-weight: 500;">No projects available under this category yet.</div>';
+  }
 
   return projects.map(p => {
     const st = (p.status || 'Ongoing').trim();
@@ -896,3 +898,15 @@ window.renderPartnersSectionHTML = function() {
     </div>
   `;
 };
+
+// Bind render helper methods directly to StoreEngine prototype and BHBStore
+StoreEngine.prototype.renderHeroSliderHTML = function() { return window.renderHeroSliderHTML(); };
+StoreEngine.prototype.renderFocusAreasHTML = function() { return window.renderFocusAreasHTML(); };
+StoreEngine.prototype.renderHomepageProjectsHTML = function() { return window.renderHomepageProjectsHTML(); };
+StoreEngine.prototype.renderProjectsLandscapeHTML = function(filtered) { return window.renderProjectsLandscapeHTML(filtered); };
+StoreEngine.prototype.renderHomeBlogGridHTML = function() { return window.renderHomeBlogGridHTML(); };
+StoreEngine.prototype.renderChairmanSpotlightHTML = function() { return window.renderChairmanSpotlightHTML(); };
+StoreEngine.prototype.renderTeamCardsHTML = function() { return window.renderTeamCardsHTML(); };
+StoreEngine.prototype.renderPartnersSectionHTML = function() { return window.renderPartnersSectionHTML(); };
+StoreEngine.prototype.renderReportsHTML = function() { return (typeof window.renderReportsHTML === 'function' ? window.renderReportsHTML() : ''); };
+

@@ -107,9 +107,8 @@
   <!-- Reports & Publications Section -->
   <section class="section-surface" style="background-color: #F8FAFC; border-top: 1px solid var(--border-light); padding: clamp(60px, 8vw, 96px) 0;">
     <div class="container">
-      <div style="max-width: 820px; margin-bottom: 40px;">
-        <span class="section-tag">Transparency &amp; Governance</span>
-        <h2 style="margin-top: 10px; margin-bottom: 14px;">Reports &amp; Publications</h2>
+      <div style="max-width: 820px; margin-bottom: 32px;">
+        <h2 style="margin-bottom: 12px;">Reports &amp; Publications</h2>
         <p class="lead" style="color: var(--text-body);">
           Access official foundation documentation, program summaries, governance frameworks, and field assessment reports.
         </p>
@@ -240,7 +239,7 @@
     let activeCategory = 'All';
 
     window.renderProjectsList = function() {
-      const allProjects = BHBStore.getProjects(true);
+      const allProjects = (typeof BHBStore !== 'undefined') ? BHBStore.getProjects(true) : [];
       let filtered = allProjects;
 
       if (activeStatus !== 'All') {
@@ -254,12 +253,17 @@
         });
       }
       if (activeCategory !== 'All') {
-        filtered = filtered.filter(p => (p.category || '').toLowerCase().includes(activeCategory.toLowerCase()));
+        const catTarget = activeCategory.trim().toLowerCase();
+        filtered = filtered.filter(p => (p.category || '').toLowerCase().includes(catTarget));
       }
 
       const container = document.getElementById('projectsListContainer');
       if (container) {
-        container.innerHTML = BHBStore.renderProjectsLandscapeHTML(filtered);
+        if (typeof window.renderProjectsLandscapeHTML === 'function') {
+          container.innerHTML = window.renderProjectsLandscapeHTML(filtered);
+        } else if (typeof BHBStore !== 'undefined' && typeof BHBStore.renderProjectsLandscapeHTML === 'function') {
+          container.innerHTML = BHBStore.renderProjectsLandscapeHTML(filtered);
+        }
       }
     };
 
@@ -287,14 +291,21 @@
       window.renderProjectsList();
     };
 
+    // Immediate initial execution
+    window.renderProjectsList();
+    window.renderReportsList();
+
     document.addEventListener('DOMContentLoaded', () => {
       window.renderProjectsList();
       window.renderReportsList();
+    });
+
+    if (typeof BHBStore !== 'undefined') {
       BHBStore.subscribe(() => {
         window.renderProjectsList();
         window.renderReportsList();
       });
-    });
+    }
   </script>
 </body>
 </html>
