@@ -239,12 +239,19 @@
     let activeStatus = 'All';
     let activeCategory = 'All';
 
-    function renderProjectsList() {
+    window.renderProjectsList = function() {
       const allProjects = BHBStore.getProjects(true);
       let filtered = allProjects;
 
       if (activeStatus !== 'All') {
-        filtered = filtered.filter(p => (p.status || '').toLowerCase() === activeStatus.toLowerCase());
+        const target = activeStatus.trim().toLowerCase();
+        filtered = filtered.filter(p => {
+          const st = (p.status || 'Ongoing').trim().toLowerCase();
+          if (target === 'ongoing') {
+            return st === 'ongoing' || st === 'active';
+          }
+          return st === target;
+        });
       }
       if (activeCategory !== 'All') {
         filtered = filtered.filter(p => (p.category || '').toLowerCase().includes(activeCategory.toLowerCase()));
@@ -254,37 +261,38 @@
       if (container) {
         container.innerHTML = BHBStore.renderProjectsLandscapeHTML(filtered);
       }
-    }
+    };
 
-    function renderReportsList() {
+    window.renderReportsList = function() {
       const container = document.getElementById('reportsListContainer');
       if (container && typeof window.renderReportsHTML === 'function') {
         container.innerHTML = window.renderReportsHTML();
       }
-    }
+    };
 
-    function filterProjectsByStatus(status) {
+    window.filterProjectsByStatus = function(status) {
       activeStatus = status;
       document.querySelectorAll('.project-filter-btn').forEach(btn => {
-        const isMatch = btn.getAttribute('data-status') === status;
+        const btnStatus = btn.getAttribute('data-status') || '';
+        const isMatch = btnStatus.toLowerCase() === status.toLowerCase();
         btn.classList.toggle('active', isMatch);
         btn.classList.toggle('btn-navy', isMatch);
         btn.classList.toggle('btn-outline', !isMatch);
       });
-      renderProjectsList();
-    }
+      window.renderProjectsList();
+    };
 
-    function filterProjectsByCategory(cat) {
+    window.filterProjectsByCategory = function(cat) {
       activeCategory = cat;
-      renderProjectsList();
-    }
+      window.renderProjectsList();
+    };
 
     document.addEventListener('DOMContentLoaded', () => {
-      renderProjectsList();
-      renderReportsList();
+      window.renderProjectsList();
+      window.renderReportsList();
       BHBStore.subscribe(() => {
-        renderProjectsList();
-        renderReportsList();
+        window.renderProjectsList();
+        window.renderReportsList();
       });
     });
   </script>

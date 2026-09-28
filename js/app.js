@@ -191,10 +191,14 @@ function renderProjects() {
     }
   }
 
-  // B. Projects Page Container
-  const projectsList = document.getElementById('projectsListContainer');
-  if (projectsList && typeof renderProjectsLandscapeHTML === 'function') {
-    projectsList.innerHTML = renderProjectsLandscapeHTML();
+  // B. Projects Page Container (use page-level filter controller if present)
+  if (typeof window.renderProjectsList === 'function') {
+    window.renderProjectsList();
+  } else {
+    const projectsList = document.getElementById('projectsListContainer');
+    if (projectsList && typeof renderProjectsLandscapeHTML === 'function') {
+      projectsList.innerHTML = renderProjectsLandscapeHTML();
+    }
   }
 }
 

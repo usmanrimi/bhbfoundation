@@ -807,7 +807,7 @@ window.openNewProjectModal = function() {
         <div class="form-group">
           <label>Operational Status *</label>
           <select name="proj_status" required>
-            <option value="Ongoing">Ongoing / Active</option>
+            <option value="Ongoing">Ongoing</option>
             <option value="Completed">Completed</option>
             <option value="Upcoming">Upcoming</option>
           </select>
@@ -895,6 +895,7 @@ window.openEditProjectModal = function(id) {
   const hasImg = !!proj.image;
   const currentPos = proj.imagePosition || 'center center';
   const isPublished = proj.published !== false;
+  const curStatus = (proj.status || 'Ongoing').trim();
 
   content.innerHTML = `
     <form class="admin-modal-form" onsubmit="handleSaveProject(event)">
@@ -915,9 +916,9 @@ window.openEditProjectModal = function(id) {
         <div class="form-group">
           <label>Operational Status *</label>
           <select name="proj_status" required>
-            <option value="Ongoing" ${proj.status === 'Ongoing' ? 'selected' : ''}>Ongoing / Active</option>
-            <option value="Completed" ${proj.status === 'Completed' ? 'selected' : ''}>Completed</option>
-            <option value="Upcoming" ${proj.status === 'Upcoming' ? 'selected' : ''}>Upcoming</option>
+            <option value="Ongoing" ${curStatus.toLowerCase() === 'ongoing' || curStatus.toLowerCase() === 'active' ? 'selected' : ''}>Ongoing</option>
+            <option value="Completed" ${curStatus.toLowerCase() === 'completed' ? 'selected' : ''}>Completed</option>
+            <option value="Upcoming" ${curStatus.toLowerCase() === 'upcoming' ? 'selected' : ''}>Upcoming</option>
           </select>
         </div>
       </div>

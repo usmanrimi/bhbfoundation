@@ -268,9 +268,13 @@ class StoreEngine {
   getProjects(publishedOnly = false) {
     let list = this.data.projects || [];
     if (publishedOnly) {
-      list = list.filter(p => p.published !== false && p.status !== 'Draft');
+      list = list.filter(p => p.published !== false && (p.status || '').toLowerCase() !== 'draft');
     }
-    return list.slice().sort((a, b) => (Number(a.order) || 99) - (Number(b.order) || 99));
+    return list.map(p => {
+      let st = (p.status || 'Ongoing').trim();
+      if (st.toLowerCase() === 'active') st = 'Ongoing';
+      return { ...p, status: st };
+    }).sort((a, b) => (Number(a.order) || 99) - (Number(b.order) || 99));
   }
   getPosts() { return this.data.posts || []; }
   getPostById(id) { return (this.data.posts || []).find(p => p.id === id); }
@@ -727,6 +731,8 @@ window.renderProjectsLandscapeHTML = function(filteredProjects) {
   if (!projects || !projects.length) return '<div style="padding: 40px 0; color: var(--text-muted); text-align: center;">No initiatives match the selected filter.</div>';
 
   return projects.map(p => {
+    const st = (p.status || 'Ongoing').trim();
+    const stClass = st.toLowerCase() === 'completed' ? 'completed' : (st.toLowerCase() === 'upcoming' ? 'upcoming' : 'ongoing');
     const imgHTML = p.image
       ? `
         <div class="project-landscape-img-wrap" style="width: 100%; height: 220px; overflow: hidden; border-radius: 6px; margin-bottom: 18px; border: 1px solid var(--border-light); background: #0F172A;">
@@ -742,7 +748,7 @@ window.renderProjectsLandscapeHTML = function(filteredProjects) {
           <div>
             <div class="project-meta-badges">
               <span class="badge-tag">${p.category}</span>
-              <span class="badge-status-pill ${p.status ? p.status.toLowerCase() : 'ongoing'}">${p.status || 'Active'}</span>
+              <span class="badge-status-pill ${stClass}">${st}</span>
             </div>
             <h3 class="project-landscape-title">${p.title}</h3>
             <p class="project-landscape-summary">${p.description}</p>
