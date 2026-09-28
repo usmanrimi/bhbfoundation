@@ -160,13 +160,55 @@ class StoreEngine {
           return JSON.parse(JSON.stringify(window.BHB_SEED_DATA));
         }
         if (!parsed.settings) parsed.settings = DEFAULT_STORE_DATA.settings;
-        parsed.settings.mission = DEFAULT_STORE_DATA.settings.mission;
-        parsed.settings.officeAddress = DEFAULT_STORE_DATA.settings.officeAddress;
         if (!parsed.team || !parsed.team.length) parsed.team = DEFAULT_STORE_DATA.team;
         if (!parsed.heroSlides || !parsed.heroSlides.length) parsed.heroSlides = DEFAULT_STORE_DATA.heroSlides;
         if (!parsed.focusAreas || !parsed.focusAreas.length) parsed.focusAreas = DEFAULT_STORE_DATA.focusAreas;
         if (!parsed.projects || !parsed.projects.length) parsed.projects = DEFAULT_STORE_DATA.projects;
         if (!parsed.posts || !parsed.posts.length) parsed.posts = DEFAULT_STORE_DATA.posts;
+        if (!parsed.reports || !parsed.reports.length) {
+          parsed.reports = (DEFAULT_STORE_DATA && DEFAULT_STORE_DATA.reports && DEFAULT_STORE_DATA.reports.length) ? DEFAULT_STORE_DATA.reports : [
+            {
+              id: 'rep-1',
+              title: 'BHB Foundation Institutional Profile',
+              type: 'Organization Profile',
+              year: '2026',
+              description: 'Comprehensive institutional overview, strategic development pillars, legal governance under CAMA, and field operations.',
+              fileUrl: 'assets/images/bhb-logo.png',
+              published: true,
+              order: 1
+            },
+            {
+              id: 'rep-2',
+              title: 'Annual Community Health & WASH Summary Report',
+              type: 'Program Report',
+              year: '2026',
+              description: 'Operational review of solar borehole installations, menstrual hygiene outreaches, and primary health screenings.',
+              fileUrl: 'assets/images/bhb-logo.png',
+              published: true,
+              order: 2
+            },
+            {
+              id: 'rep-3',
+              title: 'Inclusive Tech for Girls with Disabilities Field Summary',
+              type: 'Project Report',
+              year: '2026',
+              description: 'Documentation of assistive screen-reader literacy, computer hardware disbursements, and vocational mentorship.',
+              fileUrl: 'assets/images/bhb-logo.png',
+              published: true,
+              order: 3
+            },
+            {
+              id: 'rep-4',
+              title: 'Grassroots Livelihoods & Women Empowerment Strategy',
+              type: 'Publication',
+              year: '2026',
+              description: 'Strategic roadmap for seed grants, agro-processing toolkits, and cooperative bookkeeping in underserved settlements.',
+              fileUrl: 'assets/images/bhb-logo.png',
+              published: true,
+              order: 4
+            }
+          ];
+        }
         if (!parsed.donations || !parsed.donations.length) parsed.donations = DEFAULT_STORE_DATA.donations;
         if (!parsed.volunteers || !parsed.volunteers.length) parsed.volunteers = DEFAULT_STORE_DATA.volunteers;
         if (!parsed.inquiries || !parsed.inquiries.length) parsed.inquiries = DEFAULT_STORE_DATA.inquiries;
@@ -232,6 +274,14 @@ class StoreEngine {
   }
   getPosts() { return this.data.posts || []; }
   getPostById(id) { return (this.data.posts || []).find(p => p.id === id); }
+  getReports(publishedOnly = false) {
+    let list = this.data.reports || [];
+    if (publishedOnly) {
+      list = list.filter(r => r.published !== false);
+    }
+    return list.slice().sort((a, b) => (Number(a.order) || 99) - (Number(b.order) || 99));
+  }
+  getReportById(id) { return (this.data.reports || []).find(r => r.id === id); }
   getTeam(publishedOnly = false) {
     let list = this.data.team || [];
     if (publishedOnly) {
@@ -246,6 +296,40 @@ class StoreEngine {
   getAllComments() { return this.data.comments || []; }
   getCommentsByPost(postId) {
     return (this.data.comments || []).filter(c => c.postId === postId && c.status === 'approved');
+  }
+
+  // Reports Mutators
+  saveReport(report) {
+    if (!this.data.reports) this.data.reports = [];
+    if (!report.id) {
+      report.id = `rep-${Date.now()}`;
+      if (report.published === undefined) report.published = true;
+      if (!report.order) report.order = this.data.reports.length + 1;
+      this.data.reports.push(report);
+    } else {
+      const idx = this.data.reports.findIndex(r => r.id === report.id);
+      if (idx !== -1) {
+        this.data.reports[idx] = { ...this.data.reports[idx], ...report };
+      } else {
+        this.data.reports.push(report);
+      }
+    }
+    this.notify();
+  }
+
+  toggleReportPublish(id) {
+    const rep = (this.data.reports || []).find(r => r.id === id);
+    if (rep) {
+      rep.published = rep.published === false ? true : false;
+      this.notify();
+      return rep.published;
+    }
+    return false;
+  }
+
+  deleteReport(id) {
+    this.data.reports = (this.data.reports || []).filter(r => r.id !== id);
+    this.notify();
   }
 
   // Setters / Mutators

@@ -147,6 +147,7 @@ function renderAllSections() {
   renderHeroSlider();
   renderFocusAreas();
   renderProjects();
+  renderReports();
   renderBlogPage();
   renderTeam();
   renderPartners();
@@ -717,15 +718,35 @@ window.toggleThematicAccordion = function(index) {
   const items = document.querySelectorAll('.thematic-accordion-item');
   items.forEach((item, idx) => {
     const icon = item.querySelector('.thematic-toggle-icon');
+    const headerBtn = item.querySelector('.thematic-accordion-header');
     if (idx === index) {
       const isCurrentlyActive = item.classList.contains('active');
       if (isCurrentlyActive) {
         item.classList.remove('active');
         if (icon) icon.textContent = '+';
+        if (headerBtn) headerBtn.setAttribute('aria-expanded', 'false');
       } else {
         item.classList.add('active');
         if (icon) icon.textContent = '−';
+        if (headerBtn) headerBtn.setAttribute('aria-expanded', 'true');
       }
+    }
+  });
+};
+
+window.openThematicAccordion = function(index) {
+  const items = document.querySelectorAll('.thematic-accordion-item');
+  items.forEach((item, idx) => {
+    const icon = item.querySelector('.thematic-toggle-icon');
+    const headerBtn = item.querySelector('.thematic-accordion-header');
+    if (idx === index) {
+      item.classList.add('active');
+      if (icon) icon.textContent = '−';
+      if (headerBtn) headerBtn.setAttribute('aria-expanded', 'true');
+    } else {
+      item.classList.remove('active');
+      if (icon) icon.textContent = '+';
+      if (headerBtn) headerBtn.setAttribute('aria-expanded', 'false');
     }
   });
 };
@@ -753,4 +774,108 @@ window.selectApproachStep = function(stepNum) {
     }
   });
 };
+
+// 14. Reports & Publications Dynamic Renderer & In-Page PDF Viewer
+function renderReports() {
+  const container = document.getElementById('reportsListContainer');
+  if (container && typeof window.renderReportsHTML === 'function') {
+    container.innerHTML = window.renderReportsHTML();
+  }
+}
+
+window.renderReportsHTML = function() {
+  if (typeof BHBStore === 'undefined') return '';
+  const reports = BHBStore.getReports(true);
+  if (!reports || !reports.length) {
+    return '<div style="padding: 40px 0; color: var(--text-muted); text-align: center;">No publications or reports currently published.</div>';
+  }
+
+  return reports.map(r => {
+    const fileUrl = r.fileUrl || 'assets/images/bhb-logo.png';
+    const escapedTitle = (r.title || 'Official Report').replace(/'/g, "\\'");
+    return `
+      <div class="report-doc-row">
+        <div class="report-doc-main">
+          <div class="doc-icon-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          </div>
+          <div class="report-doc-info">
+            <div class="report-doc-tag">${r.type || 'Institutional Report'} • ${r.year || '2026'}</div>
+            <h3 class="report-doc-title">${r.title}</h3>
+            <p class="report-doc-desc">${r.description || ''}</p>
+            <div class="report-doc-meta">PDF Document • Official Foundation Release</div>
+          </div>
+        </div>
+        <div class="doc-actions-group">
+          <button class="btn-doc-action" onclick="openPdfViewer('${fileUrl}', '${escapedTitle}')">View PDF</button>
+          <a href="${fileUrl}" download="${(r.title || 'BHB-Report').replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf" class="btn-doc-action" onclick="downloadPdf('${fileUrl}', '${escapedTitle}', event)">Download</a>
+          <button class="btn-doc-action primary" onclick="copyPdfLink('${fileUrl}', event)">Copy Link</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+};
+
+window.openPdfViewer = function(url, title) {
+  let modal = document.getElementById('pdfViewerModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'pdfViewerModal';
+    modal.className = 'modal-backdrop';
+    modal.innerHTML = `
+      <div class="modal-window-pdf">
+        <div class="pdf-viewer-header">
+          <div class="pdf-viewer-title" id="pdfViewerTitle">Document Viewer</div>
+          <button onclick="closePdfViewer()" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color:#FFFFFF; line-height:1;" aria-label="Close Viewer">×</button>
+        </div>
+        <iframe id="pdfViewerFrame" class="pdf-viewer-frame" src="" title="Document Preview"></iframe>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closePdfViewer();
+    });
+  }
+
+  const titleEl = document.getElementById('pdfViewerTitle');
+  const frameEl = document.getElementById('pdfViewerFrame');
+  if (titleEl) titleEl.textContent = title || 'Document Viewer';
+  if (frameEl) frameEl.src = url || 'about:blank';
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closePdfViewer = function() {
+  const modal = document.getElementById('pdfViewerModal');
+  if (modal) {
+    modal.classList.remove('active');
+    const frameEl = document.getElementById('pdfViewerFrame');
+    if (frameEl) frameEl.src = 'about:blank';
+  }
+  document.body.style.overflow = '';
+};
+
+window.downloadPdf = function(url, title, event) {
+  if (!url || url === '#' || url === 'about:blank') {
+    if (event) event.preventDefault();
+    showToast('Document file is being prepared for release.', 'info');
+    return;
+  }
+  showToast(`Downloading: ${title || 'Document'}`, 'success');
+};
+
+window.copyPdfLink = function(url, event) {
+  if (event) event.preventDefault();
+  const absoluteUrl = url.startsWith('http') ? url : (window.location.origin + '/' + url.replace(/^\//, ''));
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(absoluteUrl).then(() => {
+      showToast('Document link copied to clipboard!', 'success');
+    }).catch(() => {
+      showToast('Copied link: ' + absoluteUrl, 'info');
+    });
+  } else {
+    showToast('Copied link: ' + absoluteUrl, 'info');
+  }
+};
+
 

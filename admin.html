@@ -114,6 +114,12 @@
               </button>
             </li>
             <li class="admin-nav-item">
+              <button data-admin-tab="reports">
+                <span class="nav-item-left">Reports &amp; Pubs</span>
+                <span class="admin-badge-count" id="adminSidebarReportCount">0</span>
+              </button>
+            </li>
+            <li class="admin-nav-item">
               <button data-admin-tab="inquiries">
                 <span class="nav-item-left">Inquiries</span>
                 <span class="admin-badge-count" id="adminSidebarInqCount">0</span>
@@ -315,6 +321,34 @@
                     </tr>
                   </thead>
                   <tbody id="adminProjectsTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: REPORTS & PUBLICATIONS CMS -->
+          <div class="admin-tab-pane" id="adminTab-reports">
+            <div class="admin-table-card">
+              <div class="table-action-bar">
+                <div>
+                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Reports &amp; Publications Manager</h3>
+                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Upload and manage official publications, annual reports, policy briefs, and field assessments.</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openNewReportModal()">+ Add New Report</button>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="admin-data-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 70px;">Order</th>
+                      <th>Report Title &amp; Type</th>
+                      <th>Year &amp; Format</th>
+                      <th>Description / Scope</th>
+                      <th style="width: 120px;">Visibility</th>
+                      <th style="width: 140px;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminReportsTableBody"></tbody>
                 </table>
               </div>
             </div>

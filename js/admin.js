@@ -122,6 +122,7 @@ window.switchAdminTab = function(tabId) {
       blog: 'Blog Articles & News CMS',
       team: 'Leadership & Team CMS',
       projects: 'Projects & Initiatives Manager',
+      reports: 'Reports & Publications Manager',
       inquiries: 'Public & Partner Inquiries Inbox',
       settings: 'Foundation Platform Settings'
     };
@@ -133,6 +134,7 @@ window.switchAdminTab = function(tabId) {
   else if (tabId === 'blog') renderAdminBlogTable();
   else if (tabId === 'team') renderAdminTeamTable();
   else if (tabId === 'projects') renderAdminProjectsTable();
+  else if (tabId === 'reports') renderAdminReportsTable();
   else if (tabId === 'inquiries') renderAdminInquiriesTable();
   else if (tabId === 'settings') renderAdminSettingsForm();
 };
@@ -154,6 +156,7 @@ function renderAdminDashboard() {
   renderAdminBlogTable();
   renderAdminTeamTable();
   renderAdminProjectsTable();
+  renderAdminReportsTable();
   renderAdminInquiriesTable();
   renderAdminSettingsForm();
 }
@@ -167,6 +170,7 @@ function renderAdminOverviewMetrics() {
   const posts = BHBStore.getPosts();
   const team = BHBStore.getTeam(false);
   const projects = BHBStore.getProjects();
+  const reports = BHBStore.getReports(false);
   const inquiries = BHBStore.getInquiries();
 
   // Update KPI counters
@@ -184,11 +188,13 @@ function renderAdminOverviewMetrics() {
   const sbBlog = document.getElementById('adminSidebarBlogCount');
   const sbTeam = document.getElementById('adminSidebarTeamCount');
   const sbProj = document.getElementById('adminSidebarProjectCount');
+  const sbRep = document.getElementById('adminSidebarReportCount');
   const sbInq = document.getElementById('adminSidebarInqCount');
 
   if (sbBlog) sbBlog.textContent = posts.length;
   if (sbTeam) sbTeam.textContent = team.length;
   if (sbProj) sbProj.textContent = projects.length;
+  if (sbRep) sbRep.textContent = reports.length;
   if (sbInq) sbInq.textContent = inquiries.length;
 
   // Recent Inquiries Table
@@ -1021,6 +1027,259 @@ window.deleteProjectAdmin = function(id) {
     renderAdminProjectsTable();
     renderAdminOverviewMetrics();
   }
+};
+
+// =========================================================================
+// 4B. REPORTS & PUBLICATIONS CMS
+// =========================================================================
+function renderAdminReportsTable() {
+  const tbody = document.getElementById('adminReportsTableBody');
+  if (!tbody || typeof BHBStore === 'undefined') return;
+
+  const reports = BHBStore.getReports(false);
+  if (!reports.length) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #64748B; padding: 24px;">No reports registered. Click "+ Add New Report" to create one.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = reports.map(r => {
+    const isPublished = r.published !== false;
+    const pubStatusHTML = `
+      <button class="status-pill ${isPublished ? 'success' : 'pending'}" onclick="toggleReportPublishAdmin('${r.id}')" title="Click to toggle public visibility" style="cursor: pointer;">
+        ${isPublished ? '✓ Published' : '○ Draft'}
+      </button>
+    `;
+
+    return `
+      <tr>
+        <td style="font-weight: 700; color: #64748B;">#${r.order || 1}</td>
+        <td>
+          <b style="color: #0F172A; font-size: 0.95rem;">${r.title}</b>
+          <div style="font-size: 0.76rem; color: #2563EB; font-weight: 700; margin-top: 2px;">${r.type || 'Publication'}</div>
+        </td>
+        <td>
+          <div style="font-weight: 600; color: #1E293B;">${r.year || '2026'}</div>
+          <div style="font-size: 0.76rem; color: #64748B;">PDF Document</div>
+        </td>
+        <td>
+          <p style="font-size: 0.82rem; color: #475569; margin: 0; max-width: 320px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${r.description || ''}</p>
+        </td>
+        <td>${pubStatusHTML}</td>
+        <td>
+          <div class="action-btn-group">
+            <button class="btn-icon-sm" onclick="openEditReportModal('${r.id}')">Edit</button>
+            <button class="btn-icon-sm danger" onclick="deleteReportAdmin('${r.id}')">Delete</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+window.toggleReportPublishAdmin = function(id) {
+  const newState = BHBStore.toggleReportPublish(id);
+  showToast(`Report visibility updated to: ${newState ? 'Published (Live)' : 'Draft (Hidden)'}`, 'info');
+  renderAdminReportsTable();
+  renderAdminOverviewMetrics();
+};
+
+window.openNewReportModal = function() {
+  const content = document.getElementById('adminCrudModalContent');
+  document.getElementById('adminCrudModalTitle').textContent = 'Add Official Report / Publication';
+  if (!content) return;
+
+  content.innerHTML = `
+    <form class="admin-modal-form" onsubmit="handleSaveReport(event)">
+      <input type="hidden" name="rep_id" value="">
+      <input type="hidden" name="rep_file" id="repFileHidden" value="">
+
+      <div class="form-group">
+        <label>Document Title *</label>
+        <input type="text" name="rep_title" required placeholder="e.g. Annual Community Health & WASH Summary Report">
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 14px;">
+        <div class="form-group">
+          <label>Document Category / Type *</label>
+          <select name="rep_type" required>
+            <option value="Organization Profile">Organization Profile</option>
+            <option value="Annual Report">Annual Report</option>
+            <option value="Program Report">Program Report</option>
+            <option value="Project Report">Project Report</option>
+            <option value="Publication">Strategic Publication</option>
+            <option value="Financial Summary">Financial / Audit Summary</option>
+            <option value="Policy Brief">Policy &amp; Framework Brief</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Publication Year *</label>
+          <input type="text" name="rep_year" value="2026" required placeholder="2026">
+        </div>
+        <div class="form-group">
+          <label>Display Priority Order</label>
+          <input type="number" name="rep_order" value="1" min="1" max="99">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>PDF Document Link / URL</label>
+        <input type="text" name="rep_url" id="repUrlInput" placeholder="assets/images/bhb-logo.png or external PDF URL" value="assets/images/bhb-logo.png">
+        <div style="margin-top: 8px;">
+          <label class="btn btn-ghost btn-sm" style="cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+            📁 Upload PDF / Document File
+            <input type="file" accept=".pdf,image/*" onchange="handleSimpleFileUpload(this, 'repFileHidden', 'repUploadStatusLabel')" style="display: none;">
+          </label>
+          <span id="repUploadStatusLabel" style="font-size: 0.8rem; color: #16A34A; margin-left: 10px; font-weight: 600;"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Scope &amp; Overview Description *</label>
+        <textarea name="rep_desc" rows="3" required placeholder="Brief description of findings, audit period, intervention highlights, or governance summary..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="checkbox" name="rep_published" checked style="width: 18px; height: 18px;">
+          <span style="font-weight: 700; color: #0F172A; font-size: 0.9rem;">Publish Live on Public Website</span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-weight: 700; margin-top: 6px;">
+        Save &amp; Publish Document →
+      </button>
+    </form>
+  `;
+
+  openModal('adminCrudModal');
+};
+
+window.openEditReportModal = function(id) {
+  const rep = BHBStore.getReportById(id);
+  if (!rep) return;
+
+  const content = document.getElementById('adminCrudModalContent');
+  document.getElementById('adminCrudModalTitle').textContent = 'Edit Report Details';
+  if (!content) return;
+
+  const isPublished = rep.published !== false;
+
+  content.innerHTML = `
+    <form class="admin-modal-form" onsubmit="handleSaveReport(event)">
+      <input type="hidden" name="rep_id" value="${rep.id}">
+      <input type="hidden" name="rep_file" id="repFileHidden" value="${rep.fileUrl || ''}">
+
+      <div class="form-group">
+        <label>Document Title *</label>
+        <input type="text" name="rep_title" value="${rep.title}" required>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 14px;">
+        <div class="form-group">
+          <label>Document Category / Type *</label>
+          <select name="rep_type" required>
+            <option value="Organization Profile" ${rep.type === 'Organization Profile' ? 'selected' : ''}>Organization Profile</option>
+            <option value="Annual Report" ${rep.type === 'Annual Report' ? 'selected' : ''}>Annual Report</option>
+            <option value="Program Report" ${rep.type === 'Program Report' ? 'selected' : ''}>Program Report</option>
+            <option value="Project Report" ${rep.type === 'Project Report' ? 'selected' : ''}>Project Report</option>
+            <option value="Publication" ${rep.type === 'Publication' ? 'selected' : ''}>Strategic Publication</option>
+            <option value="Financial Summary" ${rep.type === 'Financial Summary' ? 'selected' : ''}>Financial / Audit Summary</option>
+            <option value="Policy Brief" ${rep.type === 'Policy Brief' ? 'selected' : ''}>Policy &amp; Framework Brief</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Publication Year *</label>
+          <input type="text" name="rep_year" value="${rep.year || '2026'}" required>
+        </div>
+        <div class="form-group">
+          <label>Display Priority Order</label>
+          <input type="number" name="rep_order" value="${rep.order || 1}" min="1" max="99">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>PDF Document Link / URL</label>
+        <input type="text" name="rep_url" id="repUrlInput" value="${rep.fileUrl || ''}">
+        <div style="margin-top: 8px;">
+          <label class="btn btn-ghost btn-sm" style="cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+            📁 Replace PDF / Document File
+            <input type="file" accept=".pdf,image/*" onchange="handleSimpleFileUpload(this, 'repFileHidden', 'repUploadStatusLabel')" style="display: none;">
+          </label>
+          <span id="repUploadStatusLabel" style="font-size: 0.8rem; color: #16A34A; margin-left: 10px; font-weight: 600;"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Scope &amp; Overview Description *</label>
+        <textarea name="rep_desc" rows="3" required>${rep.description || ''}</textarea>
+      </div>
+
+      <div class="form-group">
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="checkbox" name="rep_published" ${isPublished ? 'checked' : ''} style="width: 18px; height: 18px;">
+          <span style="font-weight: 700; color: #0F172A; font-size: 0.9rem;">Publish Live on Public Website</span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-weight: 700; margin-top: 6px;">
+        Save Changes →
+      </button>
+    </form>
+  `;
+
+  openModal('adminCrudModal');
+};
+
+window.handleSaveReport = function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const id = form.rep_id.value || `rep-${Date.now()}`;
+  const uploadedFile = form.rep_file ? form.rep_file.value : '';
+  const urlInput = form.rep_url ? form.rep_url.value.trim() : '';
+
+  const reportData = {
+    id,
+    title: form.rep_title.value.trim(),
+    type: form.rep_type.value,
+    year: form.rep_year.value.trim(),
+    order: parseInt(form.rep_order ? form.rep_order.value : '1', 10) || 1,
+    fileUrl: uploadedFile || urlInput || 'assets/images/bhb-logo.png',
+    description: form.rep_desc.value.trim(),
+    published: form.rep_published ? form.rep_published.checked : true
+  };
+
+  BHBStore.saveReport(reportData);
+  closeModal('adminCrudModal');
+  showToast('Report saved successfully and synchronized live!', 'success');
+  renderAdminReportsTable();
+  renderAdminOverviewMetrics();
+};
+
+window.deleteReportAdmin = function(id) {
+  if (confirm('Are you sure you want to remove this publication?')) {
+    BHBStore.deleteReport(id);
+    showToast('Publication removed successfully', 'info');
+    renderAdminReportsTable();
+    renderAdminOverviewMetrics();
+  }
+};
+
+window.handleSimpleFileUpload = function(inputEl, hiddenInputId, statusLabelId) {
+  const file = inputEl.files[0];
+  if (!file) return;
+  if (file.size > 25 * 1024 * 1024) {
+    showToast('File size exceeds 25MB limit.', 'warning');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const hidden = document.getElementById(hiddenInputId);
+    const label = document.getElementById(statusLabelId);
+    if (hidden) hidden.value = e.target.result;
+    if (label) label.textContent = `✓ Loaded: ${file.name} (${(file.size / (1024 * 1024)).toFixed(2)} MB)`;
+    showToast(`Loaded document: ${file.name}`, 'success');
+  };
+  reader.readAsDataURL(file);
 };
 
 // =========================================================================

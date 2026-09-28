@@ -78,13 +78,12 @@
     <div class="container">
       <div class="section-marker-title-wrap" style="margin-bottom: clamp(36px, 5vw, 56px);">
         <h2 class="section-marker-title">Interconnected Areas of Development</h2>
-        <p class="section-marker-subtitle">Click or tap any area to explore our core activities, interventions, and community support.</p>
       </div>
 
       <div class="thematic-accordion-list">
         
         <!-- 01 Health & Well-being -->
-        <div class="thematic-accordion-item active">
+        <div class="thematic-accordion-item active" onmouseenter="openThematicAccordion(0)">
           <button class="thematic-accordion-header" onclick="toggleThematicAccordion(0)" aria-expanded="true">
             <div class="thematic-header-left">
               <span class="thematic-num">01</span>
@@ -114,7 +113,7 @@
         </div>
 
         <!-- 02 Women, Widows & Family Empowerment -->
-        <div class="thematic-accordion-item">
+        <div class="thematic-accordion-item" onmouseenter="openThematicAccordion(1)">
           <button class="thematic-accordion-header" onclick="toggleThematicAccordion(1)" aria-expanded="false">
             <div class="thematic-header-left">
               <span class="thematic-num">02</span>
@@ -148,7 +147,7 @@
         </div>
 
         <!-- 03 Youth Development & Skills -->
-        <div class="thematic-accordion-item">
+        <div class="thematic-accordion-item" onmouseenter="openThematicAccordion(2)">
           <button class="thematic-accordion-header" onclick="toggleThematicAccordion(2)" aria-expanded="false">
             <div class="thematic-header-left">
               <span class="thematic-num">03</span>
@@ -179,7 +178,7 @@
         </div>
 
         <!-- 04 Education & Digital Inclusion -->
-        <div class="thematic-accordion-item">
+        <div class="thematic-accordion-item" onmouseenter="openThematicAccordion(3)">
           <button class="thematic-accordion-header" onclick="toggleThematicAccordion(3)" aria-expanded="false">
             <div class="thematic-header-left">
               <span class="thematic-num">04</span>
@@ -209,7 +208,7 @@
         </div>
 
         <!-- 05 Disability Inclusion -->
-        <div class="thematic-accordion-item">
+        <div class="thematic-accordion-item" onmouseenter="openThematicAccordion(4)">
           <button class="thematic-accordion-header" onclick="toggleThematicAccordion(4)" aria-expanded="false">
             <div class="thematic-header-left">
               <span class="thematic-num">05</span>
@@ -239,7 +238,7 @@
         </div>
 
         <!-- 06 Water, Sanitation & Community Development -->
-        <div class="thematic-accordion-item">
+        <div class="thematic-accordion-item" onmouseenter="openThematicAccordion(5)">
           <button class="thematic-accordion-header" onclick="toggleThematicAccordion(5)" aria-expanded="false">
             <div class="thematic-header-left">
               <span class="thematic-num">06</span>
@@ -282,19 +281,19 @@
 
       <!-- Step Navigation Track -->
       <div class="approach-step-nav" role="tablist" aria-label="Community Development Steps">
-        <button class="approach-step-btn active" onclick="selectApproachStep(1)" role="tab" aria-selected="true">
+        <button class="approach-step-btn active" onmouseenter="selectApproachStep(1)" onclick="selectApproachStep(1)" role="tab" aria-selected="true">
           <span class="step-btn-num">01</span> Listen
         </button>
-        <button class="approach-step-btn" onclick="selectApproachStep(2)" role="tab" aria-selected="false">
+        <button class="approach-step-btn" onmouseenter="selectApproachStep(2)" onclick="selectApproachStep(2)" role="tab" aria-selected="false">
           <span class="step-btn-num">02</span> Assess
         </button>
-        <button class="approach-step-btn" onclick="selectApproachStep(3)" role="tab" aria-selected="false">
+        <button class="approach-step-btn" onmouseenter="selectApproachStep(3)" onclick="selectApproachStep(3)" role="tab" aria-selected="false">
           <span class="step-btn-num">03</span> Empower
         </button>
-        <button class="approach-step-btn" onclick="selectApproachStep(4)" role="tab" aria-selected="false">
+        <button class="approach-step-btn" onmouseenter="selectApproachStep(4)" onclick="selectApproachStep(4)" role="tab" aria-selected="false">
           <span class="step-btn-num">04</span> Connect
         </button>
-        <button class="approach-step-btn" onclick="selectApproachStep(5)" role="tab" aria-selected="false">
+        <button class="approach-step-btn" onmouseenter="selectApproachStep(5)" onclick="selectApproachStep(5)" role="tab" aria-selected="false">
           <span class="step-btn-num">05</span> Follow Up
         </button>
       </div>
