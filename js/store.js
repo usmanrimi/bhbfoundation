@@ -169,11 +169,11 @@ class StoreEngine {
           parsed.reports = (DEFAULT_STORE_DATA && DEFAULT_STORE_DATA.reports && DEFAULT_STORE_DATA.reports.length) ? DEFAULT_STORE_DATA.reports : [
             {
               id: 'rep-1',
-              title: 'BHB Foundation Institutional Profile',
+              title: 'BHB Foundation Organizational Profile',
               type: 'Organization Profile',
               year: '2026',
-              description: 'Comprehensive institutional overview, strategic development pillars, legal governance under CAMA, and field operations.',
-              fileUrl: 'assets/images/bhb-logo.png',
+              description: 'Get a concise overview of BHB Foundation, including our mission, focus areas, programs, partnerships, and commitment to sustainable community impact.',
+              fileUrl: 'assets/documents/BHB_Foundation_Organizational_Profile.pdf',
               published: true,
               order: 1
             },
@@ -183,7 +183,7 @@ class StoreEngine {
               type: 'Program Report',
               year: '2026',
               description: 'Operational review of solar borehole installations, menstrual hygiene outreaches, and primary health screenings.',
-              fileUrl: 'assets/images/bhb-logo.png',
+              fileUrl: 'assets/documents/BHB_Foundation_Organizational_Profile.pdf',
               published: true,
               order: 2
             },
@@ -193,7 +193,7 @@ class StoreEngine {
               type: 'Project Report',
               year: '2026',
               description: 'Documentation of assistive screen-reader literacy, computer hardware disbursements, and vocational mentorship.',
-              fileUrl: 'assets/images/bhb-logo.png',
+              fileUrl: 'assets/documents/BHB_Foundation_Organizational_Profile.pdf',
               published: true,
               order: 3
             },
@@ -203,7 +203,7 @@ class StoreEngine {
               type: 'Publication',
               year: '2026',
               description: 'Strategic roadmap for seed grants, agro-processing toolkits, and cooperative bookkeeping in underserved settlements.',
-              fileUrl: 'assets/images/bhb-logo.png',
+              fileUrl: 'assets/documents/BHB_Foundation_Organizational_Profile.pdf',
               published: true,
               order: 4
             }

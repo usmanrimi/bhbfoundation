@@ -795,8 +795,10 @@ window.renderReportsHTML = function() {
   }
 
   return reports.map(r => {
-    const fileUrl = r.fileUrl || 'assets/images/bhb-logo.png';
+    const fileUrl = r.fileUrl || 'assets/documents/BHB_Foundation_Organizational_Profile.pdf';
     const escapedTitle = (r.title || 'Official Report').replace(/'/g, "\\'");
+    const isProfile = (r.type || '').toLowerCase().includes('profile') || (r.title || '').toLowerCase().includes('profile');
+    const viewBtnText = isProfile ? 'View Profile' : 'View PDF';
     return `
       <div class="report-doc-row">
         <div class="report-doc-main">
@@ -811,8 +813,8 @@ window.renderReportsHTML = function() {
           </div>
         </div>
         <div class="doc-actions-group">
-          <button class="btn-doc-action" onclick="openPdfViewer('${fileUrl}', '${escapedTitle}')">View PDF</button>
-          <a href="${fileUrl}" download="${(r.title || 'BHB-Report').replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf" class="btn-doc-action" onclick="downloadPdf('${fileUrl}', '${escapedTitle}', event)">Download</a>
+          <button class="btn-doc-action" onclick="openPdfViewer('${fileUrl}', '${escapedTitle}')">${viewBtnText}</button>
+          <a href="${fileUrl}" download="${(r.title || 'BHB-Report').replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf" class="btn-doc-action" onclick="downloadPdf('${fileUrl}', '${escapedTitle}', event)">Download PDF</a>
           <button class="btn-doc-action primary" onclick="copyPdfLink('${fileUrl}', event)">Copy Link</button>
         </div>
       </div>
