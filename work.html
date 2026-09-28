@@ -23,23 +23,27 @@
 </head>
 <body>
 
-  <!-- Site Header (Standard 6-Link Navigation) -->
+  <!-- Site Header (Unified Pill Navigation Track) -->
   <header class="site-header">
     <div class="container nav-container">
       <a href="index.html" class="nav-brand">
         <img src="assets/images/bhb-logo.png" alt="BHB Foundation Logo" class="nav-brand-logo">
       </a>
 
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="what-we-do.html" class="active">What We Do</a>
-        <a href="projects.html">Projects</a>
-        <a href="blog.html">Blog &amp; Updates</a>
-        <a href="contact.html">Contact Us</a>
+      <nav class="nav-pill-wrapper" aria-label="Main Navigation">
+        <div class="nav-pill-track">
+          <a href="index.html" class="nav-pill-link">Home</a>
+          <a href="about.html" class="nav-pill-link">About Us</a>
+          <a href="what-we-do.html" class="nav-pill-link active">What We Do</a>
+          <a href="impact.html" class="nav-pill-link">Impact</a>
+          <a href="projects.html" class="nav-pill-link">Projects</a>
+          <a href="blog.html" class="nav-pill-link">Blog &amp; Updates</a>
+          <a href="contact.html" class="nav-pill-link">Contact Us</a>
+        </div>
       </nav>
 
       <div class="nav-actions">
+        <a href="contact.html" class="btn-nav-cta">Partner With Us</a>
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">Menu</button>
       </div>
     </div>
@@ -50,6 +54,7 @@
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="what-we-do.html" class="active">What We Do</a>
+    <a href="impact.html">Impact</a>
     <a href="projects.html">Projects</a>
     <a href="blog.html">Blog &amp; Updates</a>
     <a href="contact.html">Contact Us</a>
@@ -59,133 +64,207 @@
   <section class="hero-editorial-section" style="padding-top: clamp(60px, 8vw, 96px); padding-bottom: clamp(50px, 7vw, 80px);">
     <div class="container">
       <h1 style="color: var(--white); max-width: 960px;">What We Do</h1>
-      <p class="lead" style="color: #CBD5E1; max-width: 880px; margin-top: 14px;">
-        Six strategic pillars designed to address systemic poverty, health inequities, and social barriers across underserved communities.
+      <p class="lead" style="color: #93C5FD; max-width: 880px; margin-top: 14px; font-weight: 700; font-size: clamp(1.2rem, 1.8vw, 1.5rem);">
+        Turning Community Needs into Practical Action
+      </p>
+      <p style="color: #E2E8F0; max-width: 880px; margin-top: 8px; font-size: 1.05rem; line-height: 1.6;">
+        BHB Foundation works across several interconnected areas of development.
       </p>
     </div>
   </section>
 
-  <!-- Section 1: The 6 Strategic Pillars (How We Drive Sustainable Change) -->
-  <section id="pillars-detail">
+  <!-- Section 1: Thematic Areas of Work (Interactive Reveal / Accordion) -->
+  <section id="thematic-areas" style="padding: clamp(60px, 8vw, 96px) 0;">
     <div class="container">
-      <div class="section-header">
-        <h2>How We Drive <span class="text-accent-blue">Sustainable Change</span></h2>
-        <p class="lead">Grounded in verified grassroots assessments and implemented with community ownership.</p>
+      <div class="section-marker-title-wrap" style="margin-bottom: clamp(36px, 5vw, 56px);">
+        <h2 class="section-marker-title">Interconnected Areas of Development</h2>
+        <p class="section-marker-subtitle">Click or tap any area to explore our core activities, interventions, and community support.</p>
       </div>
 
-      <div class="pillar-landscape-list">
+      <div class="thematic-accordion-list">
         
-        <!-- Pillar 01 -->
-        <div class="pillar-landscape-row pillar-row-white interactive-lift">
-          <div class="pillar-row-header">
-            <div class="pillar-num">01</div>
-            <div class="pillar-title-col">
-              <span class="badge-tag" style="margin-bottom: 6px; display: inline-block;">Gender Dignity &amp; Health</span>
-              <h3>Every Girl Deserves Dignity: Menstrual Hygiene Awareness and Sanitary Pad Distribution</h3>
+        <!-- 01 Health & Well-being -->
+        <div class="thematic-accordion-item active">
+          <button class="thematic-accordion-header" onclick="toggleThematicAccordion(0)" aria-expanded="true">
+            <div class="thematic-header-left">
+              <span class="thematic-num">01</span>
+              <h3 class="thematic-title">Health &amp; Well-being</h3>
             </div>
-            <div class="pillar-desc-col">
-              <p>
-                We educate and empower girls in secondary schools on menstrual health and hygiene, while providing sanitary pads and essential hygiene supplies. Our goal is to ensure that every girl can manage her period safely, comfortably, and with dignity, free from shame, stigma, or missing school.
+            <div class="thematic-toggle-icon">−</div>
+          </button>
+          <div class="thematic-accordion-body">
+            <div class="thematic-body-content">
+              <p class="thematic-lead-desc">
+                We support initiatives that improve community awareness and access to essential health services, particularly for vulnerable families, women and children.
               </p>
+              <div class="thematic-activities-title">Our activities may include:</div>
+              <ul class="thematic-activities-grid">
+                <li class="thematic-activity-item">Primary healthcare support</li>
+                <li class="thematic-activity-item">Maternal and child health initiatives</li>
+                <li class="thematic-activity-item">Health awareness campaigns</li>
+                <li class="thematic-activity-item">Community health outreaches</li>
+                <li class="thematic-activity-item">Nutrition awareness</li>
+                <li class="thematic-activity-item">Referrals and community linkages</li>
+              </ul>
+              <div class="thematic-footer-action">
+                <a href="contact.html" class="btn-pillar-brand arrow-hover">Partner on Health Initiatives <span>→</span></a>
+              </div>
             </div>
-          </div>
-          <div class="pillar-bottom-bar">
-            <a href="projects.html" class="arrow-hover">Explore Projects →</a>
           </div>
         </div>
 
-        <!-- Pillar 02 -->
-        <div class="pillar-landscape-row pillar-row-soft interactive-lift">
-          <div class="pillar-row-header">
-            <div class="pillar-num">02</div>
-            <div class="pillar-title-col">
-              <span class="badge-tag" style="margin-bottom: 6px; display: inline-block;">WASH &amp; Infrastructure</span>
-              <h3>Safe Water, Safer Communities: Clean Water Infrastructure &amp; Hygiene Promotion</h3>
+        <!-- 02 Women, Widows & Family Empowerment -->
+        <div class="thematic-accordion-item">
+          <button class="thematic-accordion-header" onclick="toggleThematicAccordion(1)" aria-expanded="false">
+            <div class="thematic-header-left">
+              <span class="thematic-num">02</span>
+              <h3 class="thematic-title">Women, Widows &amp; Family Empowerment</h3>
             </div>
-            <div class="pillar-desc-col">
-              <p>
-                We construct and rehabilitate solar-powered community boreholes, establish community water management committees, and deliver WASH education to eliminate waterborne disease outbreaks in rural settlements.
+            <div class="thematic-toggle-icon">+</div>
+          </button>
+          <div class="thematic-accordion-body">
+            <div class="thematic-body-content">
+              <p class="thematic-lead-desc">
+                We support women, widows and vulnerable households through practical livelihood and empowerment initiatives.
               </p>
+              <div class="thematic-activities-title">Support may include:</div>
+              <ul class="thematic-activities-grid">
+                <li class="thematic-activity-item">Livelihood equipment</li>
+                <li class="thematic-activity-item">Skills development</li>
+                <li class="thematic-activity-item">Small-scale enterprise support</li>
+                <li class="thematic-activity-item">Agricultural support</li>
+                <li class="thematic-activity-item">Financial literacy</li>
+                <li class="thematic-activity-item">Mentorship</li>
+                <li class="thematic-activity-item">Community-based economic initiatives</li>
+              </ul>
+              <p style="font-size: 0.98rem; font-weight: 600; color: var(--navy); margin-top: 14px; margin-bottom: 0;">
+                Our goal is to help families strengthen their income-generating capacity and resilience.
+              </p>
+              <div class="thematic-footer-action">
+                <a href="contact.html" class="btn-pillar-brand arrow-hover">Support Women &amp; Widows <span>→</span></a>
+              </div>
             </div>
-          </div>
-          <div class="pillar-bottom-bar">
-            <a href="projects.html" class="arrow-hover">Explore Projects →</a>
           </div>
         </div>
 
-        <!-- Pillar 03 -->
-        <div class="pillar-landscape-row pillar-row-white interactive-lift">
-          <div class="pillar-row-header">
-            <div class="pillar-num">03</div>
-            <div class="pillar-title-col">
-              <span class="badge-tag" style="margin-bottom: 6px; display: inline-block;">Child Welfare &amp; Nutrition</span>
-              <h3>Protecting the Future: Nutrition, Health, and Social Protection for Vulnerable Children</h3>
+        <!-- 03 Youth Development & Skills -->
+        <div class="thematic-accordion-item">
+          <button class="thematic-accordion-header" onclick="toggleThematicAccordion(2)" aria-expanded="false">
+            <div class="thematic-header-left">
+              <span class="thematic-num">03</span>
+              <h3 class="thematic-title">Youth Development &amp; Skills</h3>
             </div>
-            <div class="pillar-desc-col">
-              <p>
-                Delivering community-based acute malnutrition screenings, emergency nutritional supplements, and educational enrollment toolkits for orphans and vulnerable children across peri-urban settlements.
+            <div class="thematic-toggle-icon">+</div>
+          </button>
+          <div class="thematic-accordion-body">
+            <div class="thematic-body-content">
+              <p class="thematic-lead-desc">
+                Young people need access to skills, mentorship and meaningful opportunities.
               </p>
+              <div class="thematic-activities-title">Our youth-focused activities may include:</div>
+              <ul class="thematic-activities-grid">
+                <li class="thematic-activity-item">Vocational skills</li>
+                <li class="thematic-activity-item">Digital literacy</li>
+                <li class="thematic-activity-item">Technical mentorship</li>
+                <li class="thematic-activity-item">Entrepreneurship support</li>
+                <li class="thematic-activity-item">Career guidance</li>
+                <li class="thematic-activity-item">Skills-based training</li>
+                <li class="thematic-activity-item">Digital inclusion initiatives</li>
+              </ul>
+              <div class="thematic-footer-action">
+                <a href="contact.html" class="btn-pillar-brand arrow-hover">Engage on Youth Programs <span>→</span></a>
+              </div>
             </div>
-          </div>
-          <div class="pillar-bottom-bar">
-            <a href="projects.html" class="arrow-hover">Explore Projects →</a>
           </div>
         </div>
 
-        <!-- Pillar 04 -->
-        <div class="pillar-landscape-row pillar-row-tint interactive-lift">
-          <div class="pillar-row-header">
-            <div class="pillar-num">04</div>
-            <div class="pillar-title-col">
-              <span class="badge-tag" style="margin-bottom: 6px; display: inline-block;">Women Livelihoods</span>
-              <h3>Empowering Widows and Vulnerable Women Through Agro-Enterprise Support</h3>
+        <!-- 04 Education & Digital Inclusion -->
+        <div class="thematic-accordion-item">
+          <button class="thematic-accordion-header" onclick="toggleThematicAccordion(3)" aria-expanded="false">
+            <div class="thematic-header-left">
+              <span class="thematic-num">04</span>
+              <h3 class="thematic-title">Education &amp; Digital Inclusion</h3>
             </div>
-            <div class="pillar-desc-col">
-              <p>
-                Providing direct seed capital, post-harvest agro-processing machinery, cooperative bookkeeping training, and direct market access linkages to widowed mothers and female-headed households.
+            <div class="thematic-toggle-icon">+</div>
+          </button>
+          <div class="thematic-accordion-body">
+            <div class="thematic-body-content">
+              <p class="thematic-lead-desc">
+                Education is an important foundation for individual and community development.
               </p>
+              <div class="thematic-activities-title">We support initiatives that improve access to:</div>
+              <ul class="thematic-activities-grid">
+                <li class="thematic-activity-item">Learning resources</li>
+                <li class="thematic-activity-item">Digital literacy</li>
+                <li class="thematic-activity-item">Technology-enabled learning</li>
+                <li class="thematic-activity-item">Inclusive education</li>
+                <li class="thematic-activity-item">Skills development</li>
+                <li class="thematic-activity-item">Educational support for vulnerable children and young people</li>
+              </ul>
+              <div class="thematic-footer-action">
+                <a href="contact.html" class="btn-pillar-brand arrow-hover">Support Education Initiatives <span>→</span></a>
+              </div>
             </div>
-          </div>
-          <div class="pillar-bottom-bar">
-            <a href="projects.html" class="arrow-hover">Explore Projects →</a>
           </div>
         </div>
 
-        <!-- Pillar 05 -->
-        <div class="pillar-landscape-row pillar-row-white interactive-lift">
-          <div class="pillar-row-header">
-            <div class="pillar-num">05</div>
-            <div class="pillar-title-col">
-              <span class="badge-tag" style="margin-bottom: 6px; display: inline-block;">Digital Inclusion</span>
-              <h3>Inclusive Tech for Girls with Disabilities</h3>
+        <!-- 05 Disability Inclusion -->
+        <div class="thematic-accordion-item">
+          <button class="thematic-accordion-header" onclick="toggleThematicAccordion(4)" aria-expanded="false">
+            <div class="thematic-header-left">
+              <span class="thematic-num">05</span>
+              <h3 class="thematic-title">Disability Inclusion</h3>
             </div>
-            <div class="pillar-desc-col">
-              <p>
-                Delivering intensive digital literacy boot camps, assistive screen-reader computing, and hardware grants for young women living with visual and physical impairments across underserved communities.
+            <div class="thematic-toggle-icon">+</div>
+          </button>
+          <div class="thematic-accordion-body">
+            <div class="thematic-body-content">
+              <p class="thematic-lead-desc">
+                We promote a more inclusive society where people with disabilities can participate meaningfully in education, technology, livelihoods and community life.
               </p>
+              <div class="thematic-activities-title">Our work may include:</div>
+              <ul class="thematic-activities-grid">
+                <li class="thematic-activity-item">Assistive learning resources</li>
+                <li class="thematic-activity-item">Digital accessibility</li>
+                <li class="thematic-activity-item">Screen-reader literacy</li>
+                <li class="thematic-activity-item">Inclusive training</li>
+                <li class="thematic-activity-item">Community awareness</li>
+                <li class="thematic-activity-item">Skills development</li>
+              </ul>
+              <div class="thematic-footer-action">
+                <a href="contact.html" class="btn-pillar-brand arrow-hover">Partner on Disability Inclusion <span>→</span></a>
+              </div>
             </div>
-          </div>
-          <div class="pillar-bottom-bar">
-            <a href="projects.html" class="arrow-hover">Explore Projects →</a>
           </div>
         </div>
 
-        <!-- Pillar 06 -->
-        <div class="pillar-landscape-row pillar-row-soft interactive-lift">
-          <div class="pillar-row-header">
-            <div class="pillar-num">06</div>
-            <div class="pillar-title-col">
-              <span class="badge-tag" style="margin-bottom: 6px; display: inline-block;">Youth Mentorship</span>
-              <h3>Youth Skills Development &amp; Entrepreneurship Support</h3>
+        <!-- 06 Water, Sanitation & Community Development -->
+        <div class="thematic-accordion-item">
+          <button class="thematic-accordion-header" onclick="toggleThematicAccordion(5)" aria-expanded="false">
+            <div class="thematic-header-left">
+              <span class="thematic-num">06</span>
+              <h3 class="thematic-title">Water, Sanitation &amp; Community Development</h3>
             </div>
-            <div class="pillar-desc-col">
-              <p>
-                Vocational apprenticeships in renewable solar installation, electrical diagnostics, tailoring, and digital entrepreneurship equipped with starter equipment toolkits.
+            <div class="thematic-toggle-icon">+</div>
+          </button>
+          <div class="thematic-accordion-body">
+            <div class="thematic-body-content">
+              <p class="thematic-lead-desc">
+                We support practical community initiatives that contribute to healthier and more resilient environments.
               </p>
+              <div class="thematic-activities-title">These may include:</div>
+              <ul class="thematic-activities-grid">
+                <li class="thematic-activity-item">Water access initiatives</li>
+                <li class="thematic-activity-item">Sanitation support</li>
+                <li class="thematic-activity-item">Community infrastructure</li>
+                <li class="thematic-activity-item">Environmental improvement</li>
+                <li class="thematic-activity-item">Solar-powered community facilities</li>
+                <li class="thematic-activity-item">Community development projects</li>
+              </ul>
+              <div class="thematic-footer-action">
+                <a href="contact.html" class="btn-pillar-brand arrow-hover">Support Community WASH &amp; Development <span>→</span></a>
+              </div>
             </div>
-          </div>
-          <div class="pillar-bottom-bar">
-            <a href="projects.html" class="arrow-hover">Explore Projects →</a>
           </div>
         </div>
 
@@ -193,105 +272,96 @@
     </div>
   </section>
 
-  <!-- Section 2: Who Benefits From Our Work -->
-  <section class="bg-off">
+  <!-- Section 2: Five-Step Community Development Approach (How We Create Change) -->
+  <section class="approach-section-wrap">
     <div class="container">
-      <div class="section-header">
-        <h2>Who Benefits <span class="text-accent-blue">From Our Work</span></h2>
-        <p class="lead">Tailored interventions prioritizing marginalized groups facing systemic barriers.</p>
+      <div class="section-marker-title-wrap" style="text-align: center; margin-bottom: 36px;">
+        <h2 class="section-marker-title" style="margin-left: auto; margin-right: auto;">Our Community Development Approach</h2>
+        <p class="section-marker-subtitle" style="margin-left: auto; margin-right: auto;">How We Create Change: A structured 5-step methodology ensuring verified outcomes, relevance, and lasting ownership.</p>
       </div>
 
-      <div class="indexed-editorial-list">
+      <!-- Step Navigation Track -->
+      <div class="approach-step-nav" role="tablist" aria-label="Community Development Steps">
+        <button class="approach-step-btn active" onclick="selectApproachStep(1)" role="tab" aria-selected="true">
+          <span class="step-btn-num">01</span> Listen
+        </button>
+        <button class="approach-step-btn" onclick="selectApproachStep(2)" role="tab" aria-selected="false">
+          <span class="step-btn-num">02</span> Assess
+        </button>
+        <button class="approach-step-btn" onclick="selectApproachStep(3)" role="tab" aria-selected="false">
+          <span class="step-btn-num">03</span> Empower
+        </button>
+        <button class="approach-step-btn" onclick="selectApproachStep(4)" role="tab" aria-selected="false">
+          <span class="step-btn-num">04</span> Connect
+        </button>
+        <button class="approach-step-btn" onclick="selectApproachStep(5)" role="tab" aria-selected="false">
+          <span class="step-btn-num">05</span> Follow Up
+        </button>
+      </div>
+
+      <!-- Step Content Display Panels -->
+      <div class="approach-panels-container">
         
-        <div class="indexed-editorial-row interactive-lift">
-          <div class="indexed-editorial-num">01</div>
-          <div class="indexed-editorial-title">
-            <h3>Children &amp; Young People</h3>
+        <!-- Step 1: Listen -->
+        <div class="approach-panel active" role="tabpanel">
+          <div class="approach-panel-header">
+            <div class="approach-panel-num">01</div>
+            <h3 class="approach-panel-title">Listen</h3>
           </div>
-          <div class="indexed-editorial-desc">
-            <p>Access to acute malnutrition screenings, preventative clinical referrals, school enrollment toolkits, and protective social networks.</p>
-          </div>
+          <p class="approach-panel-desc">
+            We engage communities and identify their priorities, challenges and opportunities.
+          </p>
         </div>
 
-        <div class="indexed-editorial-row interactive-lift">
-          <div class="indexed-editorial-num">02</div>
-          <div class="indexed-editorial-title">
-            <h3>Widows &amp; Vulnerable Women</h3>
+        <!-- Step 2: Assess -->
+        <div class="approach-panel" role="tabpanel">
+          <div class="approach-panel-header">
+            <div class="approach-panel-num">02</div>
+            <h3 class="approach-panel-title">Assess</h3>
           </div>
-          <div class="indexed-editorial-desc">
-            <p>Direct seed grants, agro-processing equipment, cooperative bookkeeping circles, and direct linkages to municipal produce markets.</p>
-          </div>
+          <p class="approach-panel-desc">
+            We assess identified needs and determine where our resources and partnerships can make a meaningful contribution.
+          </p>
         </div>
 
-        <div class="indexed-editorial-row interactive-lift">
-          <div class="indexed-editorial-num">03</div>
-          <div class="indexed-editorial-title">
-            <h3>Persons with Disabilities</h3>
+        <!-- Step 3: Empower -->
+        <div class="approach-panel" role="tabpanel">
+          <div class="approach-panel-header">
+            <div class="approach-panel-num">03</div>
+            <h3 class="approach-panel-title">Empower</h3>
           </div>
-          <div class="indexed-editorial-desc">
-            <p>Accessible assistive computing boot camps, screen-reader software licenses, specialized devices, and vocational coaching.</p>
-          </div>
+          <p class="approach-panel-desc">
+            We provide appropriate support, skills, resources and opportunities based on the needs of the programme.
+          </p>
         </div>
 
-        <div class="indexed-editorial-row interactive-lift">
-          <div class="indexed-editorial-num">04</div>
-          <div class="indexed-editorial-title">
-            <h3>Underserved Rural Communities</h3>
+        <!-- Step 4: Connect -->
+        <div class="approach-panel" role="tabpanel">
+          <div class="approach-panel-header">
+            <div class="approach-panel-num">04</div>
+            <h3 class="approach-panel-title">Connect</h3>
           </div>
-          <div class="indexed-editorial-desc">
-            <p>Potable solar borehole water arrays, community WASH management committees, sanitation toolkits, and primary healthcare outreach.</p>
+          <p class="approach-panel-desc">
+            We connect individuals and communities with relevant institutions, services, partners and opportunities.
+          </p>
+        </div>
+
+        <!-- Step 5: Follow Up -->
+        <div class="approach-panel" role="tabpanel">
+          <div class="approach-panel-header">
+            <div class="approach-panel-num">05</div>
+            <h3 class="approach-panel-title">Follow Up</h3>
           </div>
+          <p class="approach-panel-desc">
+            We monitor programme activities, document progress and gather feedback to understand results and improve future interventions.
+          </p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- Section 3: How We Work (Methodology Process Flow) -->
-  <section>
-    <div class="container">
-      <div class="section-header">
-        <h2>How We <span class="text-accent-blue">Work &amp; Deploy</span></h2>
-        <p class="lead">A rigorous 5-step community lifecycle ensuring verified outcomes and lasting self-reliance.</p>
-      </div>
-
-      <div class="methodology-flow">
-        
-        <div class="methodology-step">
-          <div class="methodology-step-num">01</div>
-          <h4>Listen</h4>
-          <p>Conduct in-person household assessments and community townhalls to identify grassroots priorities.</p>
-        </div>
-
-        <div class="methodology-step">
-          <div class="methodology-step-num">02</div>
-          <h4>Empower</h4>
-          <p>Provide direct tools, seed capital, medical supplies, and assistive technologies directly to verified individuals.</p>
-        </div>
-
-        <div class="methodology-step">
-          <div class="methodology-step-num">03</div>
-          <h4>Connect</h4>
-          <p>Link beneficiaries with cooperative circles, healthcare clinics, and commercial market distribution networks.</p>
-        </div>
-
-        <div class="methodology-step">
-          <div class="methodology-step-num">04</div>
-          <h4>Strengthen</h4>
-          <p>Deliver ongoing coaching, equipment maintenance training, and financial bookkeeping mentorship.</p>
-        </div>
-
-        <div class="methodology-step">
-          <div class="methodology-step-num">05</div>
-          <h4>Sustain</h4>
-          <p>Hand over full operational ownership to democratically elected, self-governing local community committees.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 4: Grassroots Philosophy -->
+  <!-- Section 3: Grassroots Philosophy -->
   <section class="bg-off">
     <div class="container">
       <div class="who-we-are-split">
@@ -299,7 +369,7 @@
         <div class="who-we-are-statement">
           <h2>Active Partners, <span class="text-accent-blue">Not Passive Recipients</span></h2>
           <div style="margin-top: 28px;">
-            <a href="projects.html" class="btn btn-primary">View Active Deployments →</a>
+            <a href="projects.html" class="btn btn-primary">View Active Projects →</a>
           </div>
         </div>
 
@@ -314,7 +384,7 @@
             <blockquote style="font-style: italic; color: var(--navy); margin-bottom: 6px; font-size: 0.98rem; line-height: 1.6;">
               “Development is not something done to a community; it is a capability built within a community.”
             </blockquote>
-            <span style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">The BHB Grassroots Standard</span>
+            <span style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); font-family: var(--font-body);">The BHB Grassroots Standard</span>
           </div>
         </div>
 
@@ -322,7 +392,7 @@
     </div>
   </section>
 
-  <!-- Section 5: Call to Action Banner -->
+  <!-- Section 4: Call to Action Banner -->
   <section class="philosophy-banner-section" style="background-color: var(--blue);">
     <div class="container">
       <div class="philosophy-banner-content">
@@ -358,6 +428,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="what-we-do.html">What We Do</a></li>
+            <li><a href="impact.html">Impact &amp; Verification</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="blog.html">Blog &amp; Updates</a></li>
             <li><a href="contact.html">Contact Us</a></li>
@@ -366,14 +437,14 @@
 
         <!-- Col 3: Focus Areas -->
         <div class="footer-col">
-          <h4>Focus Areas</h4>
+          <h4>Core Pillars</h4>
           <ul class="footer-links">
-            <li><a href="what-we-do.html">Menstrual Hygiene &amp; Health</a></li>
-            <li><a href="what-we-do.html">Safe Water Infrastructure</a></li>
-            <li><a href="what-we-do.html">Child Nutrition &amp; Care</a></li>
-            <li><a href="what-we-do.html">Widows &amp; Women Agro-Fund</a></li>
-            <li><a href="what-we-do.html">Disability &amp; Inclusive Tech</a></li>
-            <li><a href="what-we-do.html">Skills &amp; Livelihoods</a></li>
+            <li><a href="what-we-do.html">Health &amp; Well-being</a></li>
+            <li><a href="what-we-do.html">Women &amp; Widows Empowerment</a></li>
+            <li><a href="what-we-do.html">Youth Skills &amp; Development</a></li>
+            <li><a href="what-we-do.html">Education &amp; Digital Inclusion</a></li>
+            <li><a href="what-we-do.html">Disability Inclusion</a></li>
+            <li><a href="what-we-do.html">WASH &amp; Community Facilities</a></li>
           </ul>
         </div>
 

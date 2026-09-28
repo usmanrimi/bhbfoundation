@@ -711,3 +711,46 @@ window.submitContactForm = function(e) {
   showToast('Thank you for reaching out. The BHB Foundation team will respond promptly.', 'success');
   form.reset();
 };
+
+// 12. Interactive Thematic Areas Accordion (What We Do)
+window.toggleThematicAccordion = function(index) {
+  const items = document.querySelectorAll('.thematic-accordion-item');
+  items.forEach((item, idx) => {
+    const icon = item.querySelector('.thematic-toggle-icon');
+    if (idx === index) {
+      const isCurrentlyActive = item.classList.contains('active');
+      if (isCurrentlyActive) {
+        item.classList.remove('active');
+        if (icon) icon.textContent = '+';
+      } else {
+        item.classList.add('active');
+        if (icon) icon.textContent = '−';
+      }
+    }
+  });
+};
+
+// 13. Five-Step Community Development Approach (How We Create Change)
+window.selectApproachStep = function(stepNum) {
+  const buttons = document.querySelectorAll('.approach-step-btn');
+  const panels = document.querySelectorAll('.approach-panel');
+
+  buttons.forEach((btn, idx) => {
+    if (idx === (stepNum - 1)) {
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+    } else {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-selected', 'false');
+    }
+  });
+
+  panels.forEach((panel, idx) => {
+    if (idx === (stepNum - 1)) {
+      panel.classList.add('active');
+    } else {
+      panel.classList.remove('active');
+    }
+  });
+};
+
