@@ -37,24 +37,29 @@
 
       <form class="admin-login-form" onsubmit="handleAdminLoginSubmit(event)">
         <div class="admin-login-field">
-          <label for="adminEmailInput">Administrator Email</label>
-          <input type="email" id="adminEmailInput" name="email" required placeholder="name@bhborganization.org" autocomplete="username">
+          <label for="adminEmailInput">Email</label>
+          <input type="email" id="adminEmailInput" name="email" required placeholder="Email address" autocomplete="username">
         </div>
 
         <div class="admin-login-field">
-          <label for="adminPasswordInput">Security Password</label>
-          <input type="password" id="adminPasswordInput" name="password" required placeholder="••••••••••••" autocomplete="current-password">
+          <label for="adminPasswordInput">Password</label>
+          <div style="position: relative;">
+            <input type="password" id="adminPasswordInput" name="password" required placeholder="Password" autocomplete="current-password" style="width: 100%; padding-right: 42px;">
+            <button type="button" id="adminTogglePasswordBtn" onclick="toggleAdminPasswordVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #64748B; font-size: 1.1rem; padding: 4px;" aria-label="Toggle password visibility">
+              👁️
+            </button>
+          </div>
         </div>
 
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 0.85rem; color: #64748B;">
           <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; text-transform: none; font-weight: 500;">
-            <input type="checkbox" id="adminRememberMe" checked> Remember this device
+            <input type="checkbox" id="adminRememberMe"> Remember this device
           </label>
           <a href="index.html" style="color: var(--blue); text-decoration: none; font-weight: 600;">← Public Site</a>
         </div>
 
         <button type="submit" class="admin-login-btn">
-          <span>Authenticate &amp; Access Dashboard →</span>
+          <span>Login →</span>
         </button>
       </form>
 
@@ -428,6 +433,31 @@
                       Reset to Factory Foundation Data
                     </button>
                   </div>
+                </div>
+
+                <!-- Card 3: Production Deployment & Live Sync -->
+                <div class="settings-card">
+                  <h3>Production Deployment &amp; Sync</h3>
+                  <p>Trigger live repository updates and cloud deployment when code or asset changes are ready.</p>
+
+                  <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 16px; margin: 16px 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                      <span style="font-size: 0.82rem; font-weight: 700; color: #475569;">DEPLOYMENT STATUS</span>
+                      <span id="deployStatusBadge" class="status-pill success">Ready to Deploy</span>
+                    </div>
+                    <div style="font-size: 0.82rem; color: #64748B;">
+                      Last Deployed: <b id="lastDeployTime" style="color: #0F172A;">Synced with Remote</b>
+                    </div>
+                    <div id="deployCommitRef" style="font-size: 0.78rem; color: #2563EB; font-family: monospace; margin-top: 6px; display: none;"></div>
+                  </div>
+
+                  <button type="button" id="adminDeployBtn" class="btn btn-primary" onclick="triggerWebsiteDeployment()" style="width: 100%; padding: 14px; font-weight: 700; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                    <span>🚀 Push &amp; Deploy Update</span>
+                  </button>
+
+                  <p style="font-size: 0.76rem; color: #64748B; margin-top: 10px; text-align: center;">
+                    🔒 Secure server-side deployment. GitHub credentials remain strictly protected on the backend.
+                  </p>
                 </div>
 
               </div>

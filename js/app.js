@@ -800,27 +800,35 @@ window.renderReportsHTML = function() {
         const fileUrl = r.fileUrl || 'assets/documents/BHB_Foundation_Organizational_Profile.pdf';
         const escapedTitle = (r.title || 'Official Report').replace(/'/g, "\\'");
         const isProfile = (r.type || '').toLowerCase().includes('profile') || (r.title || '').toLowerCase().includes('profile');
-        const viewBtnText = isProfile ? 'View Profile →' : 'Read Document →';
+        const badgeText = (r.type || 'ORGANIZATION PROFILE').toUpperCase();
+        const viewBtnText = isProfile ? 'View Profile' : 'Read Document';
 
         return `
           <div class="publication-doc-card interactive-lift">
-            <div>
-              <div class="pub-card-top">
-                <span class="pub-badge-pill">${r.type || 'Publication'} · PDF</span>
-                <span class="pub-year-tag">${r.year || '2026'}</span>
-              </div>
+            <div class="pub-card-top">
+              <span class="pub-badge-pill">${badgeText}</span>
+              <span class="pub-year-tag">${r.year || '2026'}</span>
+            </div>
+
+            <div class="pub-card-main-content">
               <h3 class="pub-doc-title">${r.title}</h3>
               <p class="pub-doc-desc">${r.description || ''}</p>
             </div>
-            <div>
-              <div class="pub-card-meta-line">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-                <span>Verified Official Institutional Release</span>
-              </div>
+
+            <div class="pub-card-footer">
               <div class="pub-card-actions">
-                <button class="btn btn-navy btn-sm" onclick="openPdfViewer('${fileUrl}', '${escapedTitle}')">${viewBtnText}</button>
-                <a href="${fileUrl}" download="${(r.title || 'BHB-Report').replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf" class="btn btn-outline btn-sm" onclick="downloadPdf('${fileUrl}', '${escapedTitle}', event)">Download</a>
-                <button class="btn btn-ghost btn-sm" onclick="copyPdfLink('${fileUrl}', event)" title="Copy Link">📋 Copy Link</button>
+                <button class="pub-btn-view" onclick="openPdfViewer('${fileUrl}', '${escapedTitle}')">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  <span>${viewBtnText}</span>
+                </button>
+                <a href="${fileUrl}" download="${(r.title || 'BHB-Report').replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf" class="pub-btn-download" onclick="downloadPdf('${fileUrl}', '${escapedTitle}', event)">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>PDF</span>
+                </a>
+                <button class="pub-btn-copy" onclick="copyPdfLink('${fileUrl}', event)" title="Copy Link to Document">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                  <span>Copy Link</span>
+                </button>
               </div>
             </div>
           </div>

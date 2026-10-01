@@ -97,6 +97,22 @@
     </div>
   </section>
 
+  <!-- Reports & Publications Section -->
+  <section class="section-surface" id="reports" style="background-color: #F8FAFC; border-top: 1px solid var(--border-light); padding: clamp(60px, 8vw, 96px) 0;">
+    <div class="container">
+      <div style="max-width: 820px; margin-bottom: 32px;">
+        <h2 style="margin-bottom: 12px;">Reports &amp; Publications</h2>
+        <p class="lead" style="color: var(--text-body);">
+          Access official foundation documentation, strategic frameworks, program summaries, and institutional reports.
+        </p>
+      </div>
+
+      <div id="reportsListContainer">
+        <!-- Rendered dynamically via BHBStore.renderReportsHTML() -->
+      </div>
+    </div>
+  </section>
+
   <!-- Call to Action Banner -->
   <section class="philosophy-banner-section" style="background-color: var(--blue);">
     <div class="container">
@@ -194,6 +210,17 @@
         <button onclick="closeModal('blogReaderModal')" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color: var(--navy); line-height: 1;">×</button>
       </div>
       <div id="blogReaderModalContent"></div>
+    </div>
+  </div>
+
+  <!-- In-Page PDF Document Viewer Modal -->
+  <div class="modal-backdrop" id="pdfViewerModal">
+    <div class="modal-window-pdf">
+      <div class="pdf-viewer-header">
+        <div class="pdf-viewer-title" id="pdfViewerTitle">Document Viewer</div>
+        <button onclick="closePdfViewer()" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color:#FFFFFF; line-height:1;" aria-label="Close Viewer">×</button>
+      </div>
+      <iframe id="pdfViewerFrame" class="pdf-viewer-frame" src="" title="Document Preview"></iframe>
     </div>
   </div>
 

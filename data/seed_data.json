@@ -495,47 +495,18 @@
     }
   ],
   "inquiries": [],
-  "lastUpdated": 1790870430782,
+  "lastUpdated": 1790872764440,
   "reports": [
     {
       "id": "rep-1",
       "title": "BHB Foundation Organizational Profile",
       "type": "Organization Profile",
+      "format": "PDF",
       "year": "2026",
-      "description": "A concise overview of BHB Foundation, including our mission, focus areas, programs, partnerships, and commitment to sustainable community impact.",
+      "description": "Get a concise overview of BHB Foundation, including our mission, focus areas, programs, partnerships, and commitment to sustainable community impact.",
       "fileUrl": "assets/documents/BHB_Foundation_Organizational_Profile.pdf",
       "published": true,
       "order": 1
-    },
-    {
-      "id": "rep-2",
-      "title": "Annual Community Health & WASH Summary Report",
-      "type": "Program Report",
-      "year": "2026",
-      "description": "Operational review of solar borehole installations, menstrual hygiene outreaches, and primary health screenings.",
-      "fileUrl": "assets/documents/BHB_Foundation_Organizational_Profile.pdf",
-      "published": true,
-      "order": 2
-    },
-    {
-      "id": "rep-3",
-      "title": "Inclusive Tech for Girls with Disabilities Field Summary",
-      "type": "Project Report",
-      "year": "2026",
-      "description": "Documentation of assistive screen-reader literacy, computer hardware disbursements, and vocational mentorship.",
-      "fileUrl": "assets/documents/BHB_Foundation_Organizational_Profile.pdf",
-      "published": true,
-      "order": 3
-    },
-    {
-      "id": "rep-4",
-      "title": "Grassroots Livelihoods & Women Empowerment Strategy",
-      "type": "Publication",
-      "year": "2026",
-      "description": "Strategic roadmap for seed grants, agro-processing toolkits, and cooperative bookkeeping in underserved settlements.",
-      "fileUrl": "assets/documents/BHB_Foundation_Organizational_Profile.pdf",
-      "published": true,
-      "order": 4
     }
   ]
 }
