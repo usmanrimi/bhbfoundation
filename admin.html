@@ -108,6 +108,12 @@
               </button>
             </li>
             <li class="admin-nav-item">
+              <button data-admin-tab="programs">
+                <span class="nav-item-left">Programs &amp; Pillars</span>
+                <span class="admin-badge-count" id="adminSidebarProgramCount">6</span>
+              </button>
+            </li>
+            <li class="admin-nav-item">
               <button data-admin-tab="projects">
                 <span class="nav-item-left">Projects</span>
                 <span class="admin-badge-count" id="adminSidebarProjectCount">0</span>
@@ -321,6 +327,32 @@
                     </tr>
                   </thead>
                   <tbody id="adminProjectsTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: PROGRAMS & PILLARS CMS -->
+          <div class="admin-tab-pane" id="adminTab-programs">
+            <div class="admin-table-card">
+              <div class="table-action-bar">
+                <div>
+                  <h3 style="color: #0F172A; font-size: 1.15rem; font-weight: 700;">Programs &amp; Pillars Manager</h3>
+                  <p style="color: #64748B; font-size: 0.85rem; margin-top: 4px;">Manage the 6 strategic development programs, titles, descriptions, and imagery.</p>
+                </div>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="admin-data-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 80px;">Image</th>
+                      <th style="width: 120px;">Pillar</th>
+                      <th>Program Title &amp; Subtitle</th>
+                      <th>Description</th>
+                      <th style="width: 100px;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminProgramsTableBody"></tbody>
                 </table>
               </div>
             </div>

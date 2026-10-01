@@ -302,6 +302,32 @@ class StoreEngine {
     return (this.data.comments || []).filter(c => c.postId === postId && c.status === 'approved');
   }
 
+  getFocusAreaById(id) {
+    return (this.data.focusAreas || []).find(f => f.id === id);
+  }
+
+  saveFocusArea(area) {
+    if (!this.data.focusAreas) this.data.focusAreas = [];
+    if (!area.id) {
+      area.id = `focus-${Date.now()}`;
+      if (!area.order) area.order = this.data.focusAreas.length + 1;
+      this.data.focusAreas.push(area);
+    } else {
+      const idx = this.data.focusAreas.findIndex(f => f.id === area.id);
+      if (idx !== -1) {
+        this.data.focusAreas[idx] = { ...this.data.focusAreas[idx], ...area };
+      } else {
+        this.data.focusAreas.push(area);
+      }
+    }
+    this.notify();
+  }
+
+  deleteFocusArea(id) {
+    this.data.focusAreas = (this.data.focusAreas || []).filter(f => f.id !== id);
+    this.notify();
+  }
+
   // Reports Mutators
   saveReport(report) {
     if (!this.data.reports) this.data.reports = [];
@@ -614,34 +640,53 @@ window.renderHeroSliderHTML = function() {
   `;
 };
 
-// 2. The 6 Pillars Landscape / Editorial List (With Rhythmic Alternating Backgrounds & Bottom Aligned CTA)
+// 2. The 6 Final Programs Cards Grid (Responsive, with Professional Cropping & Strict Text Fidelity)
 window.renderFocusAreasHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
   const areas = BHBStore.getFocusAreas();
   if (!areas || !areas.length) return '';
 
-  return areas.map((a, idx) => {
-    const isBrand = (idx % 2 === 1);
-    const rowClass = isBrand ? 'pillar-row-brand' : 'pillar-row-light';
-    const btnClass = isBrand ? 'btn-pillar-white' : 'btn-pillar-brand';
+  return `
+    <div class="program-grid">
+      ${areas.map((a, idx) => {
+        let imgPos = 'center center';
+        if (a.id === 'focus-1') imgPos = 'center 20%';
+        else if (a.id === 'focus-2') imgPos = 'center 15%';
+        else if (a.id === 'focus-3') imgPos = 'center 20%';
+        else if (a.id === 'focus-4') imgPos = 'center 20%';
+        else if (a.id === 'focus-5') imgPos = 'center 20%';
+        else if (a.id === 'focus-6') imgPos = 'center 20%';
 
-    return `
-      <div class="pillar-landscape-row ${rowClass} interactive-lift">
-        <div class="pillar-row-header">
-          <div class="pillar-num">0${idx + 1}</div>
-          <div class="pillar-title-col">
-            <h3>${a.title}</h3>
+        const pillarLabel = a.pillar || `PILLAR 0${idx + 1}`;
+        const badgeLabel = a.badge || 'Priority Field Program';
+        const subtitleHTML = a.subtitle ? `<div class="program-card-subtitle">${a.subtitle}</div>` : '';
+        const descText = a.description || a.summary || '';
+        const ctaText = a.ctaText || 'Explore Projects';
+        const ctaLink = a.ctaLink || 'projects.html';
+        const imgUrl = a.image || 'assets/images/bhb-logo.png';
+
+        return `
+          <div class="program-card-item interactive-lift">
+            <div class="program-card-img-wrap">
+              <img src="${imgUrl}" alt="${a.title}" class="program-card-img" style="object-position: ${imgPos};" loading="lazy">
+            </div>
+            <div class="program-card-body">
+              <div class="program-card-meta-row">
+                <span class="program-pillar-tag">${pillarLabel}</span>
+                <span class="program-badge-tag">${badgeLabel}</span>
+              </div>
+              <h3 class="program-card-title">${a.title}</h3>
+              ${subtitleHTML}
+              <p class="program-card-desc">${descText}</p>
+              <div class="program-card-footer">
+                <a href="${ctaLink}" class="btn-pillar-brand">${ctaText} <span>→</span></a>
+              </div>
+            </div>
           </div>
-          <div class="pillar-desc-col">
-            <p>${a.summary}</p>
-          </div>
-        </div>
-        <div class="pillar-bottom-bar">
-          <a href="projects.html" class="${btnClass}">Explore Initiatives →</a>
-        </div>
-      </div>
-    `;
-  }).join('');
+        `;
+      }).join('')}
+    </div>
+  `;
 };
 
 // 2b. Sustainable Development Goals (SDGs) Interactive Section Renderer

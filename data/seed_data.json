@@ -58,45 +58,81 @@
   "focusAreas": [
     {
       "id": "focus-1",
-      "title": "Every Girl Deserves Dignity: Menstrual Hygiene Awareness and Sanitary Pad Distribution",
-      "summary": "We educate and empower girls in secondary schools on menstrual health and hygiene, while providing sanitary pads and essential hygiene supplies. Our goal is to ensure that every girl can manage her period safely, comfortably, and with dignity — without shame, stigma, or missing school.",
-      "image": "",
-      "details": "School-based menstrual health education, free sanitary pad distributions, and dignity support kits for adolescent girls."
+      "pillar": "PILLAR 01",
+      "badge": "Priority Field Program",
+      "title": "Support for Widows and Vulnerable Women",
+      "subtitle": "",
+      "description": "We empower widows and vulnerable women through practical sewing training to help them gain skills, build confidence and achieve financial independence. Upon successful completion of the programme, we distribute sewing machines to support them in starting or growing their own businesses.",
+      "summary": "We empower widows and vulnerable women through practical sewing training to help them gain skills, build confidence and achieve financial independence. Upon successful completion of the programme, we distribute sewing machines to support them in starting or growing their own businesses.",
+      "image": "assets/images/programs/program-widows-sewing.jpg",
+      "ctaText": "Explore Projects",
+      "ctaLink": "projects.html",
+      "order": 1
     },
     {
       "id": "focus-2",
-      "title": "Safe Water, Safer Communities: Clean Water Infrastructure & Hygiene Promotion",
-      "summary": "We construct and rehabilitate solar-powered community boreholes, establish community water management committees, and deliver WASH education to eliminate waterborne disease outbreaks in rural settlements.",
-      "image": "",
-      "details": "Solar borehole installations, overhead reservoirs, filtration posts, and localized water management committees."
+      "pillar": "PILLAR 03",
+      "badge": "Priority Field Program",
+      "title": "Disability Inclusion and Support",
+      "subtitle": "",
+      "description": "Assistive devices, tailored digital literacy, accessibility advocacy, and vocational training designed for persons with disabilities.",
+      "summary": "Assistive devices, tailored digital literacy, accessibility advocacy, and vocational training designed for persons with disabilities.",
+      "image": "assets/images/programs/program-disability-inclusion.png",
+      "ctaText": "Explore Projects",
+      "ctaLink": "projects.html",
+      "order": 2
     },
     {
       "id": "focus-3",
-      "title": "Protecting the Future: Nutrition, Health, and Social Protection for Vulnerable Children",
-      "summary": "Delivering community-based acute malnutrition screenings, emergency nutritional supplements, and educational enrollment toolkits for orphans and vulnerable children across peri-urban settlements.",
-      "image": "",
-      "details": "Community malnutrition screenings, supplementary food supplies, and primary health referrals."
+      "pillar": "PILLAR 04",
+      "badge": "Priority Field Program",
+      "title": "Every Girl Deserves Dignity: Menstrual Hygiene Awareness and Sanitary Pad Distribution",
+      "subtitle": "",
+      "description": "We educate and empower girls in secondary schools on menstrual health and hygiene, while providing sanitary pads and essential hygiene supplies. Our goal is to ensure that every girl can manage her period safely and confidently, stay in school, and reach her full potential.",
+      "summary": "We educate and empower girls in secondary schools on menstrual health and hygiene, while providing sanitary pads and essential hygiene supplies. Our goal is to ensure that every girl can manage her period safely and confidently, stay in school, and reach her full potential.",
+      "image": "assets/images/programs/program-menstrual-hygiene.png",
+      "ctaText": "Explore Projects",
+      "ctaLink": "projects.html",
+      "order": 3
     },
     {
       "id": "focus-4",
-      "title": "Empowering Widows and Vulnerable Women Through Agro-Enterprise Support",
-      "summary": "Providing direct seed capital, post-harvest agro-processing machinery, cooperative bookkeeping training, and direct market access linkages to widowed mothers and female-headed households.",
-      "image": "",
-      "details": "Direct seed capital grants, grain milling machinery, cooperative savings circles, and business management mentorship."
+      "pillar": "PILLAR 05",
+      "badge": "Priority Field Program",
+      "title": "Health, Well-being and Humanitarian Support",
+      "subtitle": "",
+      "description": "We work to prevent malaria in pregnant women and children under five through community awareness, distribution of preventive and treatment medications, and linkage to essential maternal and child health services. Our goal is to reduce malaria-related illness and deaths and build healthier, stronger communities.",
+      "summary": "We work to prevent malaria in pregnant women and children under five through community awareness, distribution of preventive and treatment medications, and linkage to essential maternal and child health services. Our goal is to reduce malaria-related illness and deaths and build healthier, stronger communities.",
+      "image": "assets/images/programs/program-health-malaria.jpg",
+      "ctaText": "Explore Projects",
+      "ctaLink": "projects.html",
+      "order": 4
     },
     {
       "id": "focus-5",
-      "title": "Inclusive Tech for Girls with Disabilities",
-      "summary": "Delivering intensive digital literacy boot camps, assistive screen-reader computing, and hardware grants for young women living with visual and physical impairments across Kano State.",
-      "image": "",
-      "details": "Accessible coding courses, screen-reader software (NVDA/JAWS), custom laptops, and tech mentorship."
+      "pillar": "PILLAR 07",
+      "badge": "Priority Field Program",
+      "title": "Safe Water for Stronger Communities",
+      "subtitle": "",
+      "description": "We provide clean and safe water by drilling boreholes and building wells in underserved rural communities. Access to clean water improves health, reduces waterborne diseases, eases the burden on women and children, and creates stronger, healthier communities.",
+      "summary": "We provide clean and safe water by drilling boreholes and building wells in underserved rural communities. Access to clean water improves health, reduces waterborne diseases, eases the burden on women and children, and creates stronger, healthier communities.",
+      "image": "assets/images/programs/program-safe-water-borehole.jpg",
+      "ctaText": "Explore Projects",
+      "ctaLink": "projects.html",
+      "order": 5
     },
     {
       "id": "focus-6",
-      "title": "Youth Skills Development & Entrepreneurship Support",
-      "summary": "Structured vocational apprenticeships in renewable solar installation, electrical diagnostics, tailoring, and digital entrepreneurship equipped with starter toolkits.",
-      "image": "",
-      "details": "Vocational skills training, technical apprenticeships, startup kits, and enterprise mentorship."
+      "pillar": "PILLAR 08",
+      "badge": "Priority Field Program",
+      "title": "Every Child Deserves to Grow",
+      "subtitle": "Child Nutrition & Malnutrition Support",
+      "description": "We support children affected by malnutrition in underserved communities through nutrition screening, caregiver education, nutritious food support, and referral to appropriate healthcare services. Our goal is to help children grow, develop, and thrive in good health.",
+      "summary": "We support children affected by malnutrition in underserved communities through nutrition screening, caregiver education, nutritious food support, and referral to appropriate healthcare services. Our goal is to help children grow, develop, and thrive in good health.",
+      "image": "assets/images/programs/program-child-nutrition.jpg",
+      "ctaText": "Explore Projects",
+      "ctaLink": "projects.html",
+      "order": 6
     }
   ],
   "projects": [
@@ -429,7 +465,7 @@
     }
   ],
   "inquiries": [],
-  "lastUpdated": 1790603629378,
+  "lastUpdated": 1790860711089,
   "reports": [
     {
       "id": "rep-1",
