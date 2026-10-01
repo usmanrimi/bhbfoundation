@@ -121,7 +121,6 @@ window.switchAdminTab = function(tabId) {
       overview: 'Dashboard Overview & Metrics',
       blog: 'Blog Articles & News CMS',
       team: 'Leadership & Team CMS',
-      programs: 'Programs & Strategic Pillars CMS',
       projects: 'Projects & Initiatives Manager',
       reports: 'Reports & Publications Manager',
       inquiries: 'Public & Partner Inquiries Inbox',
@@ -134,7 +133,6 @@ window.switchAdminTab = function(tabId) {
   if (tabId === 'overview') renderAdminOverviewMetrics();
   else if (tabId === 'blog') renderAdminBlogTable();
   else if (tabId === 'team') renderAdminTeamTable();
-  else if (tabId === 'programs') renderAdminProgramsTable();
   else if (tabId === 'projects') renderAdminProjectsTable();
   else if (tabId === 'reports') renderAdminReportsTable();
   else if (tabId === 'inquiries') renderAdminInquiriesTable();
@@ -157,7 +155,6 @@ function renderAdminDashboard() {
   renderAdminOverviewMetrics();
   renderAdminBlogTable();
   renderAdminTeamTable();
-  renderAdminProgramsTable();
   renderAdminProjectsTable();
   renderAdminReportsTable();
   renderAdminInquiriesTable();
@@ -172,7 +169,6 @@ function renderAdminOverviewMetrics() {
 
   const posts = BHBStore.getPosts();
   const team = BHBStore.getTeam(false);
-  const programs = BHBStore.getFocusAreas();
   const projects = BHBStore.getProjects();
   const reports = BHBStore.getReports(false);
   const inquiries = BHBStore.getInquiries();
@@ -191,14 +187,12 @@ function renderAdminOverviewMetrics() {
   // Sidebar badge counts
   const sbBlog = document.getElementById('adminSidebarBlogCount');
   const sbTeam = document.getElementById('adminSidebarTeamCount');
-  const sbProg = document.getElementById('adminSidebarProgramCount');
   const sbProj = document.getElementById('adminSidebarProjectCount');
   const sbRep = document.getElementById('adminSidebarReportCount');
   const sbInq = document.getElementById('adminSidebarInqCount');
 
   if (sbBlog) sbBlog.textContent = posts.length;
   if (sbTeam) sbTeam.textContent = team.length;
-  if (sbProg) sbProg.textContent = programs.length;
   if (sbProj) sbProj.textContent = projects.length;
   if (sbRep) sbRep.textContent = reports.length;
   if (sbInq) sbInq.textContent = inquiries.length;
@@ -1036,143 +1030,7 @@ window.deleteProjectAdmin = function(id) {
   }
 };
 
-// =========================================================================
-// 4A. PROGRAMS & PILLARS CMS
-// =========================================================================
-function renderAdminProgramsTable() {
-  const tbody = document.getElementById('adminProgramsTableBody');
-  if (!tbody || typeof BHBStore === 'undefined') return;
 
-  const programs = BHBStore.getFocusAreas();
-  if (!programs.length) {
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #64748B; padding: 24px;">No programs found.</td></tr>`;
-    return;
-  }
-
-  tbody.innerHTML = programs.map(p => {
-    const subtitleHTML = p.subtitle ? `<div style="font-size: 0.78rem; color: #2563EB; font-weight: 700; margin-top: 2px;">${p.subtitle}</div>` : '';
-    const imgHTML = p.image
-      ? `<img src="${p.image}" alt="${p.title}" style="width: 54px; height: 42px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1;">`
-      : `<div style="width: 54px; height: 42px; background: #E2E8F0; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #64748B;">No img</div>`;
-
-    return `
-      <tr>
-        <td>${imgHTML}</td>
-        <td>
-          <span class="status-pill success" style="font-weight: 800;">${p.pillar || 'PILLAR'}</span>
-          <div style="font-size: 0.72rem; color: #64748B; margin-top: 2px;">${p.badge || 'Priority Field Program'}</div>
-        </td>
-        <td>
-          <b style="color: #0F172A; font-size: 0.95rem;">${p.title}</b>
-          ${subtitleHTML}
-        </td>
-        <td>
-          <p style="font-size: 0.82rem; color: #475569; margin: 0; max-width: 380px; line-height: 1.4; word-break: normal;">${p.description || p.summary || ''}</p>
-        </td>
-        <td>
-          <div class="action-btn-group">
-            <button class="btn-icon-sm" onclick="openEditProgramModal('${p.id}')">Edit</button>
-          </div>
-        </td>
-      </tr>
-    `;
-  }).join('');
-}
-
-window.openEditProgramModal = function(id) {
-  const p = BHBStore.getFocusAreaById(id);
-  if (!p) return;
-
-  const content = document.getElementById('adminCrudModalContent');
-  document.getElementById('adminCrudModalTitle').textContent = `Edit Program: ${p.pillar || p.title}`;
-  if (!content) return;
-
-  content.innerHTML = `
-    <form class="admin-modal-form" onsubmit="handleSaveProgramForm(event)">
-      <input type="hidden" name="prog_id" value="${p.id}">
-      <input type="hidden" name="prog_image" id="progImageHidden" value="${p.image || ''}">
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Pillar Label *</label>
-          <input type="text" name="prog_pillar" required value="${p.pillar || ''}" placeholder="e.g. PILLAR 01">
-        </div>
-        <div class="form-group">
-          <label>Badge Label *</label>
-          <input type="text" name="prog_badge" required value="${p.badge || 'Priority Field Program'}">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Program Title *</label>
-        <input type="text" name="prog_title" required value="${p.title || ''}" placeholder="Program Title">
-      </div>
-
-      <div class="form-group">
-        <label>Subtitle (Optional)</label>
-        <input type="text" name="prog_subtitle" value="${p.subtitle || ''}" placeholder="e.g. Child Nutrition & Malnutrition Support">
-      </div>
-
-      <div class="form-group">
-        <label>Full Program Description *</label>
-        <textarea name="prog_description" rows="4" required style="width: 100%; padding: 10px; border: 1px solid #CBD5E1; border-radius: 6px; font-family: inherit; font-size: 0.9rem;">${p.description || p.summary || ''}</textarea>
-      </div>
-
-      <div class="form-group">
-        <label>Program Photograph</label>
-        <div style="display: flex; gap: 12px; align-items: center; margin-top: 6px;">
-          <img id="progImagePreview" src="${p.image || 'assets/images/bhb-logo.png'}" style="width: 80px; height: 60px; object-fit: cover; border-radius: 4px; border: 1px solid #CBD5E1;">
-          <input type="file" id="progImageFileInput" accept="image/*" onchange="handleProgramImageSelect(this)" style="font-size: 0.85rem;">
-        </div>
-      </div>
-
-      <div class="modal-form-actions">
-        <button type="button" class="btn btn-outline btn-sm" onclick="closeAdminCrudModal()">Cancel</button>
-        <button type="submit" class="btn btn-primary btn-sm">Save Program Changes</button>
-      </div>
-    </form>
-  `;
-
-  openAdminCrudModal();
-};
-
-window.handleProgramImageSelect = function(input) {
-  if (!input.files || !input.files[0]) return;
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const hidden = document.getElementById('progImageHidden');
-    const preview = document.getElementById('progImagePreview');
-    if (hidden) hidden.value = e.target.result;
-    if (preview) preview.src = e.target.result;
-  };
-  reader.readAsDataURL(input.files[0]);
-};
-
-window.handleSaveProgramForm = function(e) {
-  e.preventDefault();
-  const form = e.target;
-  const id = form.prog_id.value;
-  const existing = BHBStore.getFocusAreaById(id) || {};
-
-  const updated = {
-    ...existing,
-    id: id,
-    pillar: form.prog_pillar.value.trim(),
-    badge: form.prog_badge.value.trim(),
-    title: form.prog_title.value.trim(),
-    subtitle: form.prog_subtitle.value.trim(),
-    description: form.prog_description.value.trim(),
-    summary: form.prog_description.value.trim(),
-    image: form.prog_image.value.trim() || existing.image || 'assets/images/bhb-logo.png',
-    ctaText: 'Explore Projects',
-    ctaLink: 'projects.html'
-  };
-
-  BHBStore.saveFocusArea(updated);
-  closeAdminCrudModal();
-  renderAdminProgramsTable();
-  showToast('Program updated successfully!', 'success');
-};
 
 // =========================================================================
 // 4B. REPORTS & PUBLICATIONS CMS

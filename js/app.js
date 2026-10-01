@@ -794,32 +794,40 @@ window.renderReportsHTML = function() {
     return '<div style="padding: 40px 0; color: var(--text-muted); text-align: center;">No publications or reports currently published.</div>';
   }
 
-  return reports.map(r => {
-    const fileUrl = r.fileUrl || 'assets/documents/BHB_Foundation_Organizational_Profile.pdf';
-    const escapedTitle = (r.title || 'Official Report').replace(/'/g, "\\'");
-    const isProfile = (r.type || '').toLowerCase().includes('profile') || (r.title || '').toLowerCase().includes('profile');
-    const viewBtnText = isProfile ? 'View Profile' : 'View PDF';
-    return `
-      <div class="report-doc-row">
-        <div class="report-doc-main">
-          <div class="doc-icon-badge" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+  return `
+    <div class="publications-library-grid">
+      ${reports.map(r => {
+        const fileUrl = r.fileUrl || 'assets/documents/BHB_Foundation_Organizational_Profile.pdf';
+        const escapedTitle = (r.title || 'Official Report').replace(/'/g, "\\'");
+        const isProfile = (r.type || '').toLowerCase().includes('profile') || (r.title || '').toLowerCase().includes('profile');
+        const viewBtnText = isProfile ? 'View Profile →' : 'Read Document →';
+
+        return `
+          <div class="publication-doc-card interactive-lift">
+            <div>
+              <div class="pub-card-top">
+                <span class="pub-badge-pill">${r.type || 'Publication'} · PDF</span>
+                <span class="pub-year-tag">${r.year || '2026'}</span>
+              </div>
+              <h3 class="pub-doc-title">${r.title}</h3>
+              <p class="pub-doc-desc">${r.description || ''}</p>
+            </div>
+            <div>
+              <div class="pub-card-meta-line">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                <span>Verified Official Institutional Release</span>
+              </div>
+              <div class="pub-card-actions">
+                <button class="btn btn-navy btn-sm" onclick="openPdfViewer('${fileUrl}', '${escapedTitle}')">${viewBtnText}</button>
+                <a href="${fileUrl}" download="${(r.title || 'BHB-Report').replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf" class="btn btn-outline btn-sm" onclick="downloadPdf('${fileUrl}', '${escapedTitle}', event)">Download</a>
+                <button class="btn btn-ghost btn-sm" onclick="copyPdfLink('${fileUrl}', event)" title="Copy Link">📋 Copy Link</button>
+              </div>
+            </div>
           </div>
-          <div class="report-doc-info">
-            <div class="report-doc-tag">${r.type || 'Institutional Report'} • ${r.year || '2026'}</div>
-            <h3 class="report-doc-title">${r.title}</h3>
-            <p class="report-doc-desc">${r.description || ''}</p>
-            <div class="report-doc-meta">PDF Document • Official Foundation Release</div>
-          </div>
-        </div>
-        <div class="doc-actions-group">
-          <button class="btn-doc-action" onclick="openPdfViewer('${fileUrl}', '${escapedTitle}')">${viewBtnText}</button>
-          <a href="${fileUrl}" download="${(r.title || 'BHB-Report').replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf" class="btn-doc-action" onclick="downloadPdf('${fileUrl}', '${escapedTitle}', event)">Download PDF</a>
-          <button class="btn-doc-action primary" onclick="copyPdfLink('${fileUrl}', event)">Copy Link</button>
-        </div>
-      </div>
-    `;
-  }).join('');
+        `;
+      }).join('')}
+    </div>
+  `;
 };
 
 window.openPdfViewer = function(url, title) {

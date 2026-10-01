@@ -264,7 +264,7 @@ class StoreEngine {
   // Getters
   getSettings() { return this.data.settings || DEFAULT_STORE_DATA.settings; }
   getHeroSlides() { return this.data.heroSlides || []; }
-  getFocusAreas() { return this.data.focusAreas || []; }
+  getFocusAreas() { return this.getProjects(true).slice(0, 6); }
   getProjects(publishedOnly = false) {
     let list = this.data.projects || [];
     if (publishedOnly) {
@@ -640,43 +640,28 @@ window.renderHeroSliderHTML = function() {
   `;
 };
 
-// 2. The 6 Final Programs Cards Grid (Responsive, with Professional Cropping & Strict Text Fidelity)
+// 2. The 6 Final Programs / Projects Cards Grid (Clean Layout without Pillar/Priority Labels)
 window.renderFocusAreasHTML = function() {
   if (typeof BHBStore === 'undefined') return '';
-  const areas = BHBStore.getFocusAreas();
-  if (!areas || !areas.length) return '';
+  const projects = BHBStore.getProjects(true).slice(0, 6);
+  if (!projects || !projects.length) return '';
 
   return `
     <div class="program-grid">
-      ${areas.map((a, idx) => {
-        let imgPos = 'center center';
-        if (a.id === 'focus-1') imgPos = 'center 20%';
-        else if (a.id === 'focus-2') imgPos = 'center 15%';
-        else if (a.id === 'focus-3') imgPos = 'center 20%';
-        else if (a.id === 'focus-4') imgPos = 'center 20%';
-        else if (a.id === 'focus-5') imgPos = 'center 20%';
-        else if (a.id === 'focus-6') imgPos = 'center 20%';
-
-        const pillarLabel = a.pillar || `PILLAR 0${idx + 1}`;
-        const badgeLabel = a.badge || 'Priority Field Program';
-        const subtitleHTML = a.subtitle ? `<div class="program-card-subtitle">${a.subtitle}</div>` : '';
+      ${projects.map((a) => {
         const descText = a.description || a.summary || '';
-        const ctaText = a.ctaText || 'Explore Projects';
-        const ctaLink = a.ctaLink || 'projects.html';
+        const ctaText = 'Explore Projects';
+        const ctaLink = 'projects.html';
         const imgUrl = a.image || 'assets/images/bhb-logo.png';
+        const pos = a.imagePosition || 'center center';
 
         return `
           <div class="program-card-item interactive-lift">
             <div class="program-card-img-wrap">
-              <img src="${imgUrl}" alt="${a.title}" class="program-card-img" style="object-position: ${imgPos};" loading="lazy">
+              <img src="${imgUrl}" alt="${a.title}" class="program-card-img" style="object-position: ${pos};" loading="lazy">
             </div>
             <div class="program-card-body">
-              <div class="program-card-meta-row">
-                <span class="program-pillar-tag">${pillarLabel}</span>
-                <span class="program-badge-tag">${badgeLabel}</span>
-              </div>
               <h3 class="program-card-title">${a.title}</h3>
-              ${subtitleHTML}
               <p class="program-card-desc">${descText}</p>
               <div class="program-card-footer">
                 <a href="${ctaLink}" class="btn-pillar-brand">${ctaText} <span>→</span></a>
