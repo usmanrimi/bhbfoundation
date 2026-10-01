@@ -6,7 +6,8 @@
   <title>Projects &amp; Initiatives — BHB Family Support and Development Foundation</title>
   
   <meta name="description" content="View active and completed community initiatives by BHB Foundation across healthcare, education, assistive tech, and livelihood creation.">
-  <link rel="icon" type="image/png" href="assets/images/bhb-logo.png">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png">
   
   <!-- Fonts: Manrope (Display) & Inter (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,12 +87,12 @@
         <div>
           <select id="projectCategoryFilter" onchange="filterProjectsByCategory(this.value)" style="padding: 8px 14px; border-radius: var(--radius-xs); border: 1px solid var(--border-light); font-weight: 600; color: var(--navy); background: var(--white); cursor: pointer;">
             <option value="All">All Categories</option>
-            <option value="Gender Dignity & Health">Gender Dignity &amp; Health</option>
-            <option value="WASH & Safe Water">WASH &amp; Safe Water</option>
-            <option value="Child Nutrition & Health">Child Nutrition &amp; Health</option>
-            <option value="Women Livelihoods">Women Livelihoods</option>
-            <option value="Digital Inclusion">Digital Inclusion</option>
-            <option value="Youth Mentorship">Youth Mentorship</option>
+            <option value="Women & Family Empowerment">Women &amp; Family Empowerment</option>
+            <option value="Disability Inclusion">Disability Inclusion</option>
+            <option value="Education & Hygiene">Education &amp; Hygiene</option>
+            <option value="Community Health">Community Health</option>
+            <option value="Water & Sanitation">Water &amp; Sanitation</option>
+            <option value="Child Nutrition & Protection">Child Nutrition &amp; Protection</option>
           </select>
         </div>
       </div>
@@ -224,6 +225,24 @@
     let activeStatus = 'All';
     let activeCategory = 'All';
 
+    window.populateProjectCategories = function() {
+      const select = document.getElementById('projectCategoryFilter');
+      if (!select) return;
+      const allProjects = (typeof BHBStore !== 'undefined') ? BHBStore.getProjects(true) : [];
+      const catsSet = new Set();
+      allProjects.forEach(p => {
+        if (p.category && p.category.trim()) catsSet.add(p.category.trim());
+      });
+      const categories = Array.from(catsSet).sort();
+      
+      let html = '<option value="All">All Categories</option>';
+      categories.forEach(cat => {
+        const selected = (activeCategory.toLowerCase() === cat.toLowerCase()) ? 'selected' : '';
+        html += `<option value="${cat}" ${selected}>${cat}</option>`;
+      });
+      select.innerHTML = html;
+    };
+
     window.renderProjectsList = function() {
       const allProjects = (typeof BHBStore !== 'undefined') ? BHBStore.getProjects(true) : [];
       let filtered = allProjects;
@@ -240,7 +259,7 @@
       }
       if (activeCategory !== 'All') {
         const catTarget = activeCategory.trim().toLowerCase();
-        filtered = filtered.filter(p => (p.category || '').toLowerCase().includes(catTarget));
+        filtered = filtered.filter(p => (p.category || '').trim().toLowerCase() === catTarget);
       }
 
       const container = document.getElementById('projectsListContainer');
@@ -271,14 +290,17 @@
     };
 
     // Immediate initial execution
+    window.populateProjectCategories();
     window.renderProjectsList();
 
     document.addEventListener('DOMContentLoaded', () => {
+      window.populateProjectCategories();
       window.renderProjectsList();
     });
 
     if (typeof BHBStore !== 'undefined') {
       BHBStore.subscribe(() => {
+        window.populateProjectCategories();
         window.renderProjectsList();
       });
     }

@@ -1,4 +1,5 @@
 window.BHB_SEED_DATA = {
+  "lastUpdated": 1790874500000,
   "settings": {
     "foundationName": "BHB Family Support and Development Foundation",
     "shortName": "BHB Foundation",
@@ -225,36 +226,6 @@ window.BHB_SEED_DATA = {
       "imagePosition": "center center",
       "published": true,
       "order": 6
-    },
-    {
-      "id": "proj-7",
-      "title": "Community WASH & Solar Borehole Commissioning (Phase 1)",
-      "subtitle": "",
-      "category": "Water & Sanitation",
-      "status": "Completed",
-      "location": "Gwarzo & Regional Settlements",
-      "beneficiaries": "3,500+ Community Residents",
-      "timeline": "Completed Field Milestone",
-      "description": "Successful drilling, solar installation, and community management committee handover of high-yield clean water boreholes in rural Kano communities.",
-      "image": "assets/images/programs/program-safe-water-borehole.jpg",
-      "imagePosition": "center center",
-      "published": true,
-      "order": 7
-    },
-    {
-      "id": "proj-8",
-      "title": "Advanced Assistive Technology Literacy & Coding Academy",
-      "subtitle": "",
-      "category": "Digital Inclusion",
-      "status": "Upcoming",
-      "location": "State Innovation Hubs",
-      "beneficiaries": "Youth with Disabilities",
-      "timeline": "Upcoming Cohort",
-      "description": "Specialized digital skills academy featuring advanced screen-reader programming, software development, and digital entrepreneurship for youth with disabilities.",
-      "image": "assets/images/programs/program-disability-inclusion.png",
-      "imagePosition": "center 20%",
-      "published": true,
-      "order": 8
     }
   ],
   "posts": [

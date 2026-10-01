@@ -572,6 +572,14 @@ function renderSettingsMetadata() {
     el.textContent = settings.email;
   });
 
+  // Dynamic Approved Project Count
+  const pubProjects = (typeof BHBStore !== 'undefined') ? BHBStore.getProjects(true) : [];
+  const countNum = pubProjects.length;
+  const countStr = countNum < 10 ? `0${countNum}` : `${countNum}`;
+  document.querySelectorAll('[data-bind="projectCount"]').forEach(el => {
+    el.textContent = countStr;
+  });
+
   // Dynamic About Section Feature Image
   const aboutImg = settings.aboutImage || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80";
   document.querySelectorAll('[data-bind-src="aboutImage"], #aboutShowcaseImg, #aboutStoryImg').forEach(el => {

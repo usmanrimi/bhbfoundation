@@ -9,6 +9,7 @@ const ROOT = __dirname;
 
 // Secure Server-Side Admin Authentication Configuration
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'bhbfoundation0@gmail.com';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'bhb_admin_2026';
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
 const SERVER_SECRET = process.env.SERVER_SECRET || 'bhb_sec_' + crypto.randomBytes(16).toString('hex');
 
@@ -110,26 +111,27 @@ const server = http.createServer((req, res) => {
           ? `https://${GITHUB_TOKEN}@github.com/usmanrimi/bhbfoundation.git`
           : 'origin';
 
-        const gitCmd = `git add -A && git commit -m "chore(deploy): live update from Super Admin portal [skip ci]" && git push ${remoteUrl} main`;
+        exec('git add -A && git status --porcelain', { cwd: ROOT }, (errStatus, outStatus) => {
+          const hasChanges = outStatus && outStatus.trim().length > 0;
+          const pushCmd = hasChanges
+            ? `git commit -m "chore(deploy): live update from Super Admin portal [skip ci]" && git push ${remoteUrl} main`
+            : `git push ${remoteUrl} main`;
 
-        exec(gitCmd, { cwd: ROOT }, (err, stdout, stderr) => {
-          let commitHash = 'Synced';
-          if (err) {
-            console.warn('Git push notice:', err.message);
-          }
-          try {
-            const rev = exec('git rev-parse --short HEAD', { cwd: ROOT }, (errRev, outRev) => {
-              if (outRev) commitHash = outRev.trim();
+          exec(pushCmd, { cwd: ROOT }, (errPush, stdoutPush, stderrPush) => {
+            if (errPush) {
+              console.warn('Git push notice:', errPush.message);
+            }
+            exec('git rev-parse --short HEAD', { cwd: ROOT }, (errRev, outRev) => {
+              const commitHash = (outRev && outRev.trim()) ? outRev.trim() : 'Synced';
+              res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+              res.end(JSON.stringify({
+                success: true,
+                message: 'Live deployment triggered successfully to GitHub and production!',
+                commit: commitHash,
+                timestamp: new Date().toISOString()
+              }));
             });
-          } catch (e) {}
-
-          res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
-          res.end(JSON.stringify({
-            success: true,
-            message: 'Live deployment triggered successfully to GitHub and production!',
-            commit: commitHash,
-            timestamp: new Date().toISOString()
-          }));
+          });
         });
       } catch (err) {
         res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });

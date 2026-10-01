@@ -359,7 +359,7 @@ window.openNewPostModal = function() {
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
         <div class="form-group">
-          <label>Category / Pillar *</label>
+          <label>Article Category *</label>
           <select name="post_category" required>
             <option value="Community Welfare">Community Welfare</option>
             <option value="Health & WASH">Health &amp; WASH</option>
@@ -451,7 +451,7 @@ window.openEditPostModal = function(id) {
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
         <div class="form-group">
-          <label>Category / Pillar *</label>
+          <label>Article Category *</label>
           <select name="post_category" required>
             <option value="Community Welfare" ${post.category === 'Community Welfare' ? 'selected' : ''}>Community Welfare</option>
             <option value="Health & WASH" ${post.category === 'Health & WASH' ? 'selected' : ''}>Health &amp; WASH</option>
@@ -871,8 +871,15 @@ window.openNewProjectModal = function() {
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
         <div class="form-group">
-          <label>Category / Pillar *</label>
-          <input type="text" name="proj_category" required placeholder="e.g. Gender Dignity & Health">
+          <label>Project Category *</label>
+          <select name="proj_category" required>
+            <option value="Women & Family Empowerment">Women &amp; Family Empowerment</option>
+            <option value="Disability Inclusion">Disability Inclusion</option>
+            <option value="Education & Hygiene">Education &amp; Hygiene</option>
+            <option value="Community Health">Community Health</option>
+            <option value="Water & Sanitation">Water &amp; Sanitation</option>
+            <option value="Child Nutrition & Protection">Child Nutrition &amp; Protection</option>
+          </select>
         </div>
         <div class="form-group">
           <label>Operational Status *</label>
@@ -980,8 +987,16 @@ window.openEditProjectModal = function(id) {
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
         <div class="form-group">
-          <label>Category / Pillar *</label>
-          <input type="text" name="proj_category" value="${proj.category}" required>
+          <label>Project Category *</label>
+          <select name="proj_category" required>
+            <option value="Women & Family Empowerment" ${proj.category === 'Women & Family Empowerment' ? 'selected' : ''}>Women &amp; Family Empowerment</option>
+            <option value="Disability Inclusion" ${proj.category === 'Disability Inclusion' ? 'selected' : ''}>Disability Inclusion</option>
+            <option value="Education & Hygiene" ${proj.category === 'Education & Hygiene' ? 'selected' : ''}>Education &amp; Hygiene</option>
+            <option value="Community Health" ${proj.category === 'Community Health' ? 'selected' : ''}>Community Health</option>
+            <option value="Water & Sanitation" ${proj.category === 'Water & Sanitation' ? 'selected' : ''}>Water &amp; Sanitation</option>
+            <option value="Child Nutrition & Protection" ${proj.category === 'Child Nutrition & Protection' ? 'selected' : ''}>Child Nutrition &amp; Protection</option>
+            ${!['Women & Family Empowerment', 'Disability Inclusion', 'Education & Hygiene', 'Community Health', 'Water & Sanitation', 'Child Nutrition & Protection'].includes(proj.category) && proj.category ? `<option value="${proj.category}" selected>${proj.category}</option>` : ''}
+          </select>
         </div>
         <div class="form-group">
           <label>Operational Status *</label>

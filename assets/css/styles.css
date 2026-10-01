@@ -2601,9 +2601,16 @@ section {
 }
 
 .footer-logo {
-  height: 44px;
+  height: 48px;
   width: auto;
-  margin-bottom: 18px;
+  max-width: 220px;
+  object-fit: contain;
+  display: inline-block;
+  background: #FFFFFF;
+  padding: 8px 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
 }
 
 .footer-desc {

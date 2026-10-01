@@ -3,7 +3,7 @@
  * CENTRAL DATA STORE & LOCALSTORAGE PERSISTENCE ENGINE
  */
 
-const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V9';
+const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V10';
 
 const RAW_DEFAULT_STORE_DATA = (typeof window !== 'undefined' && window.BHB_SEED_DATA) ? window.BHB_SEED_DATA : {
   settings: {
