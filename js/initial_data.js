@@ -466,18 +466,6 @@ window.BHB_SEED_DATA = {
     }
   ],
   "inquiries": [],
-  "lastUpdated": 1790872764440,
-  "reports": [
-    {
-      "id": "rep-1",
-      "title": "BHB Foundation Organizational Profile",
-      "type": "Organization Profile",
-      "format": "PDF",
-      "year": "2026",
-      "description": "Get a concise overview of BHB Foundation, including our mission, focus areas, programs, partnerships, and commitment to sustainable community impact.",
-      "fileUrl": "assets/documents/BHB_Foundation_Organizational_Profile.pdf",
-      "published": true,
-      "order": 1
-    }
-  ]
+  "lastUpdated": 1790900000000,
+  "reports": []
 };

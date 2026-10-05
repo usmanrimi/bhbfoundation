@@ -3,7 +3,7 @@
  * CENTRAL DATA STORE & LOCALSTORAGE PERSISTENCE ENGINE
  */
 
-const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V10';
+const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V11';
 
 const RAW_DEFAULT_STORE_DATA = (typeof window !== 'undefined' && window.BHB_SEED_DATA) ? window.BHB_SEED_DATA : {
   settings: {
@@ -165,21 +165,7 @@ class StoreEngine {
         if (!parsed.focusAreas || !parsed.focusAreas.length) parsed.focusAreas = DEFAULT_STORE_DATA.focusAreas;
         if (!parsed.projects || !parsed.projects.length) parsed.projects = DEFAULT_STORE_DATA.projects;
         if (!parsed.posts || !parsed.posts.length) parsed.posts = DEFAULT_STORE_DATA.posts;
-        if (!parsed.reports || !parsed.reports.length) {
-          parsed.reports = (DEFAULT_STORE_DATA && DEFAULT_STORE_DATA.reports && DEFAULT_STORE_DATA.reports.length) ? DEFAULT_STORE_DATA.reports : [
-            {
-              id: 'rep-1',
-              title: 'BHB Foundation Organizational Profile',
-              type: 'Organization Profile',
-              format: 'PDF',
-              year: '2026',
-              description: 'Get a concise overview of BHB Foundation, including our mission, focus areas, programs, partnerships, and commitment to sustainable community impact.',
-              fileUrl: 'assets/documents/BHB_Foundation_Organizational_Profile.pdf',
-              published: true,
-              order: 1
-            }
-          ];
-        }
+        if (!parsed.reports) parsed.reports = [];
         if (!parsed.donations || !parsed.donations.length) parsed.donations = DEFAULT_STORE_DATA.donations;
         if (!parsed.volunteers || !parsed.volunteers.length) parsed.volunteers = DEFAULT_STORE_DATA.volunteers;
         if (!parsed.inquiries || !parsed.inquiries.length) parsed.inquiries = DEFAULT_STORE_DATA.inquiries;
