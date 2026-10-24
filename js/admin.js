@@ -304,14 +304,14 @@ function renderAdminBlogTable() {
     const pos = p.imagePosition || 'center center';
     const imgHTML = p.image
       ? `<img src="${p.image}" alt="${p.title}" style="width: 60px; height: 42px; object-fit: cover; object-position: ${pos}; border-radius: 4px; border: 1px solid #E2E8F0;">`
-      : `<div style="width: 60px; height: 42px; background: #0F1E36; color: #93C5FD; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: 700;">NEWS</div>`;
+      : `<div style="width: 60px; height: 42px; background: #0828A4; color: #93C5FD; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: 700;">NEWS</div>`;
 
     return `
       <tr>
         <td>${imgHTML}</td>
         <td>
           <b style="color: #0F172A; font-size: 0.95rem;">${p.title}</b>
-          <div style="font-size: 0.76rem; color: #2563EB; font-weight: 700; margin-top: 2px;">#${p.category || 'General'}</div>
+          <div style="font-size: 0.76rem; color: #2373FC; font-weight: 700; margin-top: 2px;">#${p.category || 'General'}</div>
         </td>
         <td>
           <div style="font-weight: 600; color: #1E293B;">${p.author || 'BHB Communications'}</div>
@@ -563,7 +563,7 @@ function renderAdminTeamTable() {
     const initials = m.name ? m.name.split(' ').map(n => n[0]).join('').substring(0, 2) : 'BH';
     const avatarHTML = m.image
       ? `<img src="${m.image}" alt="${m.name}" style="width: 44px; height: 44px; object-fit: cover; object-position: ${pos}; border-radius: 4px; border: 1px solid #E2E8F0;">`
-      : `<div style="width: 44px; height: 44px; background: #0F1E36; color: #FFFFFF; font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; border-radius: 4px;">${initials}</div>`;
+      : `<div style="width: 44px; height: 44px; background: #0828A4; color: #FFFFFF; font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; border-radius: 4px;">${initials}</div>`;
 
     return `
       <tr>
@@ -807,7 +807,7 @@ function renderAdminProjectsTable() {
     const pos = p.imagePosition || 'center center';
     const imgHTML = p.image
       ? `<img src="${p.image}" alt="${p.title}" style="width: 54px; height: 38px; object-fit: cover; object-position: ${pos}; border-radius: 4px; border: 1px solid #E2E8F0;">`
-      : `<div style="width: 54px; height: 38px; background: #0F1E36; color: #93C5FD; font-size: 0.65rem; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: 700;">PROJ</div>`;
+      : `<div style="width: 54px; height: 38px; background: #0828A4; color: #93C5FD; font-size: 0.65rem; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: 700;">PROJ</div>`;
 
     const isPublished = p.published !== false;
     const pubStatusHTML = `
@@ -821,7 +821,7 @@ function renderAdminProjectsTable() {
         <td>${imgHTML}</td>
         <td>
           <b style="color: #0F172A; font-size: 0.95rem;">${p.title}</b>
-          <div style="font-size: 0.76rem; color: #2563EB; font-weight: 700; margin-top: 2px;">${p.category || 'General'}</div>
+          <div style="font-size: 0.76rem; color: #2373FC; font-weight: 700; margin-top: 2px;">${p.category || 'General'}</div>
         </td>
         <td>
           <div style="font-weight: 600; color: #1E293B;">${p.location || 'Nationwide'}</div>
@@ -1181,7 +1181,7 @@ window.openViewInquiryModal = function(id) {
           </div>
           <div>
             <span style="font-size: 0.76rem; text-transform: uppercase; color: #64748B; font-weight: 700;">Email Address</span>
-            <div><a href="mailto:${inq.email}" style="color: #2563EB; font-weight: 600;">${inq.email}</a></div>
+            <div><a href="mailto:${inq.email}" style="color: #2373FC; font-weight: 600;">${inq.email}</a></div>
           </div>
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
@@ -1396,7 +1396,7 @@ function generatePositionGridHTML(hiddenPosId, previewImgId, currentPos = 'cente
     <div class="position-selector-wrap">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
         <span style="font-size: 0.78rem; font-weight: 700; color: #334155; text-transform: uppercase;">Image Focus / Alignment</span>
-        <span id="${hiddenPosId}_label" style="font-size: 0.75rem; color: #2563EB; font-weight: 700;">${currentPos || 'center center'}</span>
+        <span id="${hiddenPosId}_label" style="font-size: 0.75rem; color: #2373FC; font-weight: 700;">${currentPos || 'center center'}</span>
       </div>
       <div class="position-grid-3x3">
         ${btnsHTML}
@@ -1532,7 +1532,7 @@ window.showToast = function(message, type = 'info') {
   const bgColors = {
     success: '#10B981',
     warning: '#F59E0B',
-    info: '#1C4DA0',
+    info: '#2373FC',
     danger: '#DC2626'
   };
 

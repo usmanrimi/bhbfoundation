@@ -18,7 +18,7 @@ body.admin-body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 50% 10%, #1C4DA0 0%, #0F1E36 100%);
+  background: radial-gradient(circle at 50% 10%, #2373FC 0%, #0828A4 100%);
   padding: 24px;
 }
 
@@ -28,7 +28,7 @@ body.admin-body {
   background: #FFFFFF;
   border-radius: 16px;
   padding: 40px 36px;
-  box-shadow: 0 25px 50px -12px rgba(15, 30, 54, 0.4);
+  box-shadow: 0 25px 50px -12px rgba(8, 40, 164, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
 }
@@ -42,7 +42,7 @@ body.admin-body {
 .admin-login-title {
   font-size: 1.45rem;
   font-weight: 800;
-  color: #0F1E36;
+  color: #0828A4;
   margin: 0 0 6px;
 }
 
@@ -84,15 +84,15 @@ body.admin-body {
 }
 
 .admin-login-field input:focus {
-  border-color: #2563EB;
+  border-color: #2373FC;
   background: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 0 0 3px rgba(35, 115, 252, 0.15);
 }
 
 .admin-login-btn {
   width: 100%;
   padding: 14px;
-  background: #1C4DA0;
+  background: #2373FC;
   color: #FFFFFF;
   border: none;
   border-radius: 8px;
@@ -108,9 +108,9 @@ body.admin-body {
 }
 
 .admin-login-btn:hover {
-  background: #0F1E36;
+  background: #0828A4;
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px -4px rgba(28, 77, 160, 0.4);
+  box-shadow: 0 8px 20px -4px rgba(35, 115, 252, 0.4);
 }
 
 .admin-login-error {
@@ -200,7 +200,7 @@ body.admin-body {
 
 .admin-badge-tag {
   font-size: 0.72rem;
-  color: #2563EB;
+  color: #2373FC;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -237,9 +237,9 @@ body.admin-body {
 }
 
 .admin-nav-item.active button {
-  background: #1E3A8A;
+  background: #0828A4;
   color: #FFFFFF;
-  border-color: #1E3A8A;
+  border-color: #0828A4;
   font-weight: 700;
 }
 
@@ -350,7 +350,7 @@ body.admin-body {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #1E3A8A;
+  background: #0828A4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -562,9 +562,9 @@ body.admin-body {
   transition: all 0.15s ease;
 }
 .btn-icon-sm:hover {
-  background: #1E3A8A;
+  background: #0828A4;
   color: #FFFFFF;
-  border-color: #1E3A8A;
+  border-color: #0828A4;
 }
 .btn-icon-sm.danger {
   color: #DC2626;
@@ -617,8 +617,8 @@ body.admin-body {
 .admin-modal-form input:focus,
 .admin-modal-form select:focus,
 .admin-modal-form textarea:focus {
-  border-color: #2563EB;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  border-color: #2373FC;
+  box-shadow: 0 0 0 3px rgba(35, 115, 252, 0.12);
 }
 
 .admin-dropzone {
@@ -631,7 +631,7 @@ body.admin-body {
   transition: all 0.2s ease;
 }
 .admin-dropzone:hover {
-  border-color: #2563EB;
+  border-color: #2373FC;
   background: #EFF6FF;
 }
 
@@ -705,9 +705,9 @@ body.admin-body {
   color: #0F172A;
 }
 .crop-aspect-btn.active {
-  background: #1E3A8A;
+  background: #0828A4;
   color: #FFFFFF;
-  border-color: #1E3A8A;
+  border-color: #0828A4;
 }
 
 .crop-tool-btn {
@@ -812,14 +812,14 @@ body.admin-body {
 .pos-btn:hover {
   background: #EFF6FF;
   border-color: #93C5FD;
-  color: #1D4ED8;
+  color: #2373FC;
 }
 
 .pos-btn.active {
-  background: #1C4DA0;
-  border-color: #1C4DA0;
+  background: #2373FC;
+  border-color: #2373FC;
   color: #FFFFFF;
-  box-shadow: 0 2px 6px rgba(28, 77, 160, 0.35);
+  box-shadow: 0 2px 6px rgba(35, 115, 252, 0.35);
 }
 
 /* Status Button Toggles in Admin Data Table */

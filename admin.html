@@ -144,7 +144,7 @@
             Dashboard Overview
           </div>
           <div class="admin-topbar-right" style="display: flex; align-items: center; gap: 14px;">
-            <button id="adminSyncGitBtn" onclick="syncAdminChangesToGitHub()" class="btn btn-sm" style="background: #1C4DA0; color: #FFFFFF; font-weight: 800; border: none; padding: 7px 16px; border-radius: 6px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;" title="Save and push changes">
+            <button id="adminSyncGitBtn" onclick="syncAdminChangesToGitHub()" class="btn btn-sm" style="background: #2373FC; color: #FFFFFF; font-weight: 800; border: none; padding: 7px 16px; border-radius: 6px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;" title="Save and push changes">
               <span>Push Changes Live</span>
             </button>
             <div class="admin-user-pill" style="cursor: pointer;" onclick="handleAdminLogout()" title="Click to Sign Out">
@@ -391,7 +391,7 @@
                       Download JSON Database Backup
                     </button>
 
-                    <label class="btn btn-ghost" style="width: 100%; cursor: pointer; text-align: center; padding: 12px; border: 1.5px dashed #CBD5E1; color: #1E3A8A; font-weight: 700;">
+                    <label class="btn btn-ghost" style="width: 100%; cursor: pointer; text-align: center; padding: 12px; border: 1.5px dashed #CBD5E1; color: #0828A4; font-weight: 700;">
                       Restore Database from JSON File
                       <input type="file" accept=".json" onchange="importDatabaseJSON(event)" style="display: none;">
                     </label>
@@ -415,7 +415,7 @@
                     <div style="font-size: 0.82rem; color: #64748B;">
                       Last Deployed: <b id="lastDeployTime" style="color: #0F172A;">Synced with Remote</b>
                     </div>
-                    <div id="deployCommitRef" style="font-size: 0.78rem; color: #2563EB; font-family: monospace; margin-top: 6px; display: none;"></div>
+                    <div id="deployCommitRef" style="font-size: 0.78rem; color: #2373FC; font-family: monospace; margin-top: 6px; display: none;"></div>
                   </div>
 
                   <button type="button" id="adminDeployBtn" class="btn btn-primary" onclick="triggerWebsiteDeployment()" style="width: 100%; padding: 14px; font-weight: 700; display: flex; justify-content: center; align-items: center; gap: 8px;">
