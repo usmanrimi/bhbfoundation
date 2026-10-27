@@ -4,7 +4,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { exec } = require('child_process');
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 const ROOT = __dirname;
 
 // Secure Server-Side Admin Authentication Configuration
@@ -39,7 +39,21 @@ function verifySessionToken(token) {
   return false;
 }
 
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+});
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection:', reason);
+});
+
 const server = http.createServer((req, res) => {
+  req.on('error', (err) => {
+    console.error('Request stream error:', err.message);
+  });
+  res.on('error', (err) => {
+    console.error('Response stream error:', err.message);
+  });
+
   // CORS & Security Headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -81,8 +95,8 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // API Route: POST /api/deploy (and /api/sync-to-git)
-  if (req.method === 'POST' && (req.url === '/api/deploy' || req.url === '/api/sync-to-git')) {
+  // API Route: POST /api/deploy (and /api/sync-to-git, /api/save-cms)
+  if (req.method === 'POST' && (req.url === '/api/deploy' || req.url === '/api/sync-to-git' || req.url === '/api/save-cms')) {
     let body = '';
     req.on('data', chunk => { body += chunk; });
     req.on('end', () => {
@@ -184,7 +198,15 @@ const server = http.createServer((req, res) => {
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
     res.writeHead(200, { 'Content-Type': contentType });
-    fs.createReadStream(filePath).pipe(res);
+    const stream = fs.createReadStream(filePath);
+    stream.on('error', () => {
+      if (!res.headersSent) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.end('Server Error');
+      }
+    });
+    res.on('error', () => {});
+    stream.pipe(res);
   });
 });
 
