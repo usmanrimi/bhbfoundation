@@ -469,39 +469,5 @@ window.BHB_SEED_DATA = {
     }
   ],
   "inquiries": [],
-  "reports": [
-    {
-        "id": "rep-2",
-        "title": "Annual Community Health & WASH Summary Report",
-        "type": "Program Report",
-        "format": "PDF",
-        "year": "2026",
-        "description": "Operational review of solar borehole installations, menstrual hygiene outreaches, and primary health screenings.",
-        "fileUrl": "assets/documents/BHB_Foundation_Organizational_Profile.pdf",
-        "published": true,
-        "order": 1
-    },
-    {
-        "id": "rep-3",
-        "title": "Inclusive Tech for Girls with Disabilities Field Summary",
-        "type": "Project Report",
-        "format": "PDF",
-        "year": "2026",
-        "description": "Documentation of assistive screen-reader literacy, computer hardware disbursements, and vocational mentorship.",
-        "fileUrl": "assets/documents/BHB_Foundation_Organizational_Profile.pdf",
-        "published": true,
-        "order": 2
-    },
-    {
-        "id": "rep-4",
-        "title": "Grassroots Livelihoods & Women Empowerment Strategy",
-        "type": "Publication",
-        "format": "PDF",
-        "year": "2026",
-        "description": "Strategic roadmap for seed grants, agro-processing toolkits, and cooperative bookkeeping in underserved settlements.",
-        "fileUrl": "assets/documents/BHB_Foundation_Organizational_Profile.pdf",
-        "published": true,
-        "order": 3
-    }
-]
+  "reports": []
 };
