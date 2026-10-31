@@ -128,12 +128,18 @@ const server = http.createServer((req, res) => {
         exec('git add -A && git status --porcelain', { cwd: ROOT }, (errStatus, outStatus) => {
           const hasChanges = outStatus && outStatus.trim().length > 0;
           const pushCmd = hasChanges
-            ? `git commit -m "chore(deploy): live update from Super Admin portal [skip ci]" && git push ${remoteUrl} main`
+            ? `git commit -m "chore(cms): live update from Super Admin portal" && git push ${remoteUrl} main`
             : `git push ${remoteUrl} main`;
 
           exec(pushCmd, { cwd: ROOT }, (errPush, stdoutPush, stderrPush) => {
             if (errPush) {
-              console.warn('Git push notice:', errPush.message);
+              console.error('Git push error:', errPush.message, stderrPush);
+              res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+              res.end(JSON.stringify({
+                success: false,
+                error: 'Git push failed: ' + (stderrPush || errPush.message)
+              }));
+              return;
             }
             exec('git rev-parse --short HEAD', { cwd: ROOT }, (errRev, outRev) => {
               const commitHash = (outRev && outRev.trim()) ? outRev.trim() : 'Synced';

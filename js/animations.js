@@ -3,7 +3,7 @@
  * Smooth scroll reveals, dynamic counters, marquee controls, and micro-interactions
  */
 
-// 1. Subtle Eased Number Counter for Impact Section
+// 1. Subtle Eased Number Counter for Impact & Metrics Section
 function animateValue(element, start, end, duration = 1600, prefix = '', suffix = '') {
   let startTimestamp = null;
   const step = (timestamp) => {
@@ -11,11 +11,13 @@ function animateValue(element, start, end, duration = 1600, prefix = '', suffix 
     const progress = Math.min((timestamp - startTimestamp) / duration, 1);
     const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
     const current = Math.floor(easeProgress * (end - start) + start);
-    element.textContent = `${prefix}${current.toLocaleString()}${suffix}`;
+    const formatted = current < 10 && end < 10 && !prefix ? `0${current}` : current.toLocaleString();
+    element.textContent = `${prefix}${formatted}${suffix}`;
     if (progress < 1) {
       window.requestAnimationFrame(step);
     } else {
-      element.textContent = `${prefix}${end.toLocaleString()}${suffix}`;
+      const finalFormatted = end < 10 && !prefix ? `0${end}` : end.toLocaleString();
+      element.textContent = `${prefix}${finalFormatted}${suffix}`;
     }
   };
   window.requestAnimationFrame(step);
@@ -23,7 +25,24 @@ function animateValue(element, start, end, duration = 1600, prefix = '', suffix 
 
 // 2. IntersectionObserver for Dynamic Scroll Reveals
 function initScrollReveals() {
-  const revealSelectors = '.reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-scale, .pastel-card, .focus-area-item, .stat-metric-block, .about-mv-item-card, .director-profile-card, .executive-spotlight-card';
+  const revealSelectors = [
+    'h2',
+    '.section-marker-title-wrap',
+    '.reveal',
+    '.reveal-up',
+    '.reveal-scroll',
+    '.program-card-item',
+    '.blog-card',
+    '.publication-doc-card',
+    '.team-member-card',
+    '.why-bhb-card',
+    '.sdg-module-card',
+    '.indexed-editorial-row',
+    '.principle-connected-pane',
+    '.our-story-image-wrap',
+    '.hero-metric-item'
+  ].join(', ');
+
   const revealElements = document.querySelectorAll(revealSelectors);
   
   if (!('IntersectionObserver' in window)) {
@@ -37,14 +56,17 @@ function initScrollReveals() {
         entry.target.classList.add('in');
         
         // Counter trigger
-        const counters = entry.target.querySelectorAll('[data-counter-end]');
+        const counters = entry.target.querySelectorAll('[data-counter-end], [data-bind="projectCount"]');
         counters.forEach(counter => {
           if (!counter.dataset.animated) {
             counter.dataset.animated = 'true';
-            const target = parseFloat(counter.getAttribute('data-counter-end')) || 0;
+            const rawVal = counter.getAttribute('data-counter-end') || counter.textContent.replace(/[^0-9]/g, '');
+            const target = parseFloat(rawVal) || 0;
             const prefix = counter.getAttribute('data-prefix') || '';
             const suffix = counter.getAttribute('data-suffix') || '';
-            animateValue(counter, 0, target, 1600, prefix, suffix);
+            if (target > 0) {
+              animateValue(counter, 0, target, 1200, prefix, suffix);
+            }
           }
         });
 
@@ -54,15 +76,17 @@ function initScrollReveals() {
           const target = parseFloat(entry.target.getAttribute('data-counter-end')) || 0;
           const prefix = entry.target.getAttribute('data-prefix') || '';
           const suffix = entry.target.getAttribute('data-suffix') || '';
-          animateValue(entry.target, 0, target, 1600, prefix, suffix);
+          if (target > 0) {
+            animateValue(entry.target, 0, target, 1200, prefix, suffix);
+          }
         }
 
         observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.05,
-    rootMargin: '0px 0px 50px 0px'
+    threshold: 0.08,
+    rootMargin: '0px 0px -20px 0px'
   });
 
   revealElements.forEach((el) => {
@@ -80,11 +104,9 @@ window.initScrollReveals = initScrollReveals;
 
 // 3. Interactive Subtle Card Hover Effects
 function initCardInteractions() {
-  const cards = document.querySelectorAll('.pastel-card, .about-mv-item-card, .portfolio-card, .blog-card');
+  const cards = document.querySelectorAll('.program-card-item, .blog-card, .publication-doc-card, .team-member-card, .why-bhb-card');
   cards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease';
-    });
+    card.classList.add('interactive-lift');
   });
 }
 
@@ -114,5 +136,3 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveals();
   initCardInteractions();
 });
-
-

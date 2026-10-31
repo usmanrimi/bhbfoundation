@@ -150,6 +150,7 @@ function renderAllSections() {
   renderBlogPage();
   renderTeam();
   renderPartners();
+  renderReports();
   renderSettingsMetadata();
 
   if (typeof window.initScrollReveals === 'function') {
@@ -794,6 +795,130 @@ window.selectApproachStep = function(stepNum) {
       panel.classList.remove('active');
     }
   });
+};
+
+
+
+
+// 14. Reports & Publications Dynamic Renderer & In-Page PDF Viewer
+function renderReports() {
+  const container = document.getElementById('reportsListContainer');
+  if (container && typeof window.renderReportsHTML === 'function') {
+    container.innerHTML = window.renderReportsHTML();
+  }
+}
+
+window.renderReportsHTML = function() {
+  if (typeof BHBStore === 'undefined') return '';
+  const reports = BHBStore.getReports(true);
+  if (!reports || !reports.length) {
+    return '<div style="padding: 40px 0; color: var(--text-muted); text-align: center;">No publications or reports currently published.</div>';
+  }
+
+  return `
+    <div class="publications-library-grid">
+      ${reports.map(r => {
+        const fileUrl = r.fileUrl || 'assets/documents/BHB_Foundation_Organizational_Profile.pdf';
+        const escapedTitle = (r.title || 'Official Report').replace(/'/g, "\\'");
+        const isProfile = (r.type || '').toLowerCase().includes('profile') || (r.title || '').toLowerCase().includes('profile');
+        const badgeText = (r.type || 'ORGANIZATION PROFILE').toUpperCase();
+        const viewBtnText = isProfile ? 'View Profile' : 'Read Document';
+
+        return `
+          <div class="publication-doc-card interactive-lift">
+            <div class="pub-card-top">
+              <span class="pub-badge-pill">${badgeText}</span>
+              <span class="pub-year-tag">${r.year || '2026'}</span>
+            </div>
+
+            <div class="pub-card-main-content">
+              <h3 class="pub-doc-title">${r.title}</h3>
+              <p class="pub-doc-desc">${r.description || ''}</p>
+            </div>
+
+            <div class="pub-card-footer">
+              <div class="pub-card-actions">
+                <button class="pub-btn-view" onclick="openPdfViewer('${fileUrl}', '${escapedTitle}')">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  <span>${viewBtnText}</span>
+                </button>
+                <a href="${fileUrl}" download="${(r.title || 'BHB-Report').replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf" class="pub-btn-download" onclick="downloadPdf('${fileUrl}', '${escapedTitle}', event)">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>PDF</span>
+                </a>
+                <button class="pub-btn-copy" onclick="copyPdfLink('${fileUrl}', event)" title="Copy Link to Document">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                  <span>Copy Link</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+};
+
+window.openPdfViewer = function(url, title) {
+  let modal = document.getElementById('pdfViewerModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'pdfViewerModal';
+    modal.className = 'modal-backdrop';
+    modal.innerHTML = `
+      <div class="modal-window-pdf">
+        <div class="pdf-viewer-header">
+          <div class="pdf-viewer-title" id="pdfViewerTitle">Document Viewer</div>
+          <button onclick="closePdfViewer()" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color:#FFFFFF; line-height:1;" aria-label="Close Viewer">×</button>
+        </div>
+        <iframe id="pdfViewerFrame" class="pdf-viewer-frame" src="" title="Document Preview"></iframe>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closePdfViewer();
+    });
+  }
+
+  const titleEl = document.getElementById('pdfViewerTitle');
+  const frameEl = document.getElementById('pdfViewerFrame');
+  if (titleEl) titleEl.textContent = title || 'Document Viewer';
+  if (frameEl) frameEl.src = url || 'about:blank';
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closePdfViewer = function() {
+  const modal = document.getElementById('pdfViewerModal');
+  if (modal) {
+    modal.classList.remove('active');
+    const frameEl = document.getElementById('pdfViewerFrame');
+    if (frameEl) frameEl.src = 'about:blank';
+  }
+  document.body.style.overflow = '';
+};
+
+window.downloadPdf = function(url, title, event) {
+  if (!url || url === '#' || url === 'about:blank') {
+    if (event) event.preventDefault();
+    showToast('Document file is being prepared for release.', 'info');
+    return;
+  }
+  showToast(`Downloading: ${title || 'Document'}`, 'success');
+};
+
+window.copyPdfLink = function(url, event) {
+  if (event) event.preventDefault();
+  const absoluteUrl = url.startsWith('http') ? url : (window.location.origin + '/' + url.replace(/^\//, ''));
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(absoluteUrl).then(() => {
+      showToast('Document link copied to clipboard!', 'success');
+    }).catch(() => {
+      showToast('Copied link: ' + absoluteUrl, 'info');
+    });
+  } else {
+    showToast('Copied link: ' + absoluteUrl, 'info');
+  }
 };
 
 
