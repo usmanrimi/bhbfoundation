@@ -32,15 +32,19 @@ function initScrollReveals() {
     '.reveal-up',
     '.reveal-scroll',
     '.program-card-item',
+    '.portfolio-card',
     '.blog-card',
+    '.news-card',
     '.publication-doc-card',
     '.team-member-card',
     '.why-bhb-card',
     '.sdg-module-card',
+    '.thematic-accordion-item',
     '.indexed-editorial-row',
     '.principle-connected-pane',
     '.our-story-image-wrap',
-    '.hero-metric-item'
+    '.hero-metric-item',
+    '.projects-unified-grid > *'
   ].join(', ');
 
   const revealElements = document.querySelectorAll(revealSelectors);
@@ -104,11 +108,13 @@ window.initScrollReveals = initScrollReveals;
 
 // 3. Interactive Subtle Card Hover Effects
 function initCardInteractions() {
-  const cards = document.querySelectorAll('.program-card-item, .blog-card, .publication-doc-card, .team-member-card, .why-bhb-card');
+  const cards = document.querySelectorAll('.program-card-item, .portfolio-card, .blog-card, .news-card, .publication-doc-card, .team-member-card, .why-bhb-card, .thematic-accordion-item');
   cards.forEach(card => {
     card.classList.add('interactive-lift');
   });
 }
+
+window.initCardInteractions = initCardInteractions;
 
 // 4. Toast Notification Helper
 window.showToast = function(message, type = 'info') {

@@ -1,14 +1,17 @@
 /* ==========================================================================
-   BHB FOUNDATION — RESTRAINED MOTION & INTERACTION SYSTEM
-   PREMIUM, INTENTIONAL, PURPOSE-DRIVEN ANIMATIONS
+   BHB FOUNDATION — PREMIUM MOTION, INTERACTION & DEPTH SYSTEM
+   RESTRAINED, INSTITUTIONAL, HIGH-STANDARD ANIMATIONS & HOVER DYNAMICS
    ========================================================================== */
 
-/* Base Scroll Reveal Classes */
+/* --------------------------------------------------------------------------
+   1. SCROLL ENTRANCE & VIEWPORT REVEALS
+   -------------------------------------------------------------------------- */
 .reveal-scroll,
 .reveal-up {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -20,7 +23,7 @@
 
 .reveal-fade {
   opacity: 0;
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity;
 }
 
@@ -28,79 +31,138 @@
   opacity: 1;
 }
 
-/* Stagger Children Utility */
-.stagger-group > *:nth-child(1) { transition-delay: 0.06s; }
-.stagger-group > *:nth-child(2) { transition-delay: 0.12s; }
-.stagger-group > *:nth-child(3) { transition-delay: 0.18s; }
-.stagger-group > *:nth-child(4) { transition-delay: 0.24s; }
-.stagger-group > *:nth-child(5) { transition-delay: 0.30s; }
-.stagger-group > *:nth-child(6) { transition-delay: 0.36s; }
+/* Stagger Groups for Cascading Entrances */
+.stagger-group > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger-group > *:nth-child(2) { transition-delay: 0.10s; }
+.stagger-group > *:nth-child(3) { transition-delay: 0.15s; }
+.stagger-group > *:nth-child(4) { transition-delay: 0.20s; }
+.stagger-group > *:nth-child(5) { transition-delay: 0.25s; }
+.stagger-group > *:nth-child(6) { transition-delay: 0.30s; }
+.stagger-group > *:nth-child(7) { transition-delay: 0.35s; }
+.stagger-group > *:nth-child(8) { transition-delay: 0.40s; }
 
-/* Interactive Hover Lift & Smooth Transitions */
-.interactive-lift {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 0.35s ease;
-  will-change: transform, box-shadow;
-}
-
-.interactive-lift:hover {
-  transform: translateY(-4px);
-}
-
-/* Card Image Zoom on Hover */
-.program-card-img-wrap,
-.blog-card-img-wrap,
-.pub-card-img-wrap,
-.team-photo-wrapper,
-.our-story-image-wrap {
-  overflow: hidden;
-}
-
-.program-card-img-wrap img,
-.blog-card-img-wrap img,
-.team-photo-wrapper img,
-.our-story-image {
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-}
-
-.program-card-item:hover .program-card-img-wrap img,
-.blog-card:hover .blog-card-img-wrap img,
-.team-member-card:hover .team-photo-wrapper img,
-.our-story-image-wrap:hover .our-story-image {
-  transform: scale(1.045);
-}
-
-/* Premium Card Elevation */
+/* --------------------------------------------------------------------------
+   2. CARD ELEVATION, LAYERED SHADOWS & HOVER STATES
+   -------------------------------------------------------------------------- */
+.interactive-lift,
 .program-card-item,
+.portfolio-card,
 .blog-card,
+.news-card,
 .publication-doc-card,
 .team-member-card,
 .why-bhb-card,
 .sdg-module-card,
-.indexed-editorial-row {
+.thematic-accordion-item,
+.indexed-editorial-row,
+.principle-connected-pane {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s ease;
+              border-color 0.35s ease,
+              background-color 0.35s ease;
   will-change: transform, box-shadow;
+  border-radius: var(--radius-md);
+}
+
+/* Primary Program & Portfolio Cards */
+.program-card-item,
+.portfolio-card,
+.blog-card,
+.news-card {
+  box-shadow: 0 4px 14px -2px rgba(8, 40, 164, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(8, 40, 164, 0.10);
+  background: #FFFFFF;
 }
 
 .program-card-item:hover,
+.portfolio-card:hover,
 .blog-card:hover,
-.publication-doc-card:hover,
-.team-member-card:hover {
+.news-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 16px 36px -4px rgba(8, 40, 164, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04);
+  border-color: rgba(35, 115, 252, 0.38);
+  box-shadow: 0 18px 36px -4px rgba(8, 40, 164, 0.14), 0 6px 16px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Publication & Official Documents Cards */
+.publication-doc-card {
+  box-shadow: 0 4px 16px -2px rgba(8, 40, 164, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(8, 40, 164, 0.12);
+}
+
+.publication-doc-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(35, 115, 252, 0.40);
+  box-shadow: 0 16px 32px -4px rgba(8, 40, 164, 0.13), 0 6px 14px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Why BHB & Value Modules */
+.why-bhb-card,
+.sdg-module-card,
+.principle-connected-pane {
+  box-shadow: 0 4px 12px -2px rgba(8, 40, 164, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(8, 40, 164, 0.09);
 }
 
 .why-bhb-card:hover,
-.indexed-editorial-row:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(8, 40, 164, 0.08);
+.sdg-module-card:hover,
+.principle-connected-pane:hover {
+  transform: translateY(-4px);
+  border-color: rgba(35, 115, 252, 0.32);
+  box-shadow: 0 14px 28px -4px rgba(8, 40, 164, 0.11), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
 }
 
-/* Button Micro-Interactions */
+/* Team Member Cards */
+.team-member-card {
+  box-shadow: 0 4px 14px -2px rgba(8, 40, 164, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(8, 40, 164, 0.10);
+  background: #FFFFFF;
+}
+
+.team-member-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(35, 115, 252, 0.35);
+  box-shadow: 0 16px 34px -4px rgba(8, 40, 164, 0.13), 0 6px 14px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* --------------------------------------------------------------------------
+   3. SUBTLE IMAGE ZOOM ON HOVER
+   -------------------------------------------------------------------------- */
+.program-card-img-wrap,
+.portfolio-card-thumb-wrap,
+.blog-card-img-wrap,
+.blog-card-thumb-wrap,
+.pub-card-img-wrap,
+.team-photo-wrapper,
+.our-story-image-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.program-card-img-wrap img,
+.program-card-img,
+.portfolio-card-thumb-wrap img,
+.blog-card-img-wrap img,
+.blog-card-thumb-wrap img,
+.team-photo-wrapper img,
+.our-story-image {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.4s ease;
+  will-change: transform;
+}
+
+.program-card-item:hover .program-card-img-wrap img,
+.program-card-item:hover .program-card-img,
+.portfolio-card:hover .portfolio-card-thumb-wrap img,
+.blog-card:hover img,
+.news-card:hover img,
+.team-member-card:hover .team-photo-wrapper img,
+.our-story-image-wrap:hover .our-story-image {
+  transform: scale(1.038);
+}
+
+/* --------------------------------------------------------------------------
+   4. BUTTON MICRO-INTERACTIONS & FEEDBACK
+   -------------------------------------------------------------------------- */
 .btn,
 .btn-primary,
 .btn-navy,
@@ -109,39 +171,76 @@
 .btn-outline,
 .btn-white,
 .btn-nav-cta {
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s ease,
+              color 0.25s ease,
+              border-color 0.25s ease;
+  will-change: transform, box-shadow;
+  cursor: pointer;
+}
+
+/* Primary / Brand Buttons */
+.btn-primary,
+.btn-pillar-brand,
+.btn-navy,
+.btn-nav-cta {
+  box-shadow: 0 4px 12px rgba(8, 40, 164, 0.18);
 }
 
 .btn:hover,
 .btn-primary:hover,
-.btn-navy:hover,
 .btn-pillar-brand:hover,
+.btn-navy:hover,
 .btn-nav-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(8, 40, 164, 0.22);
+  box-shadow: 0 8px 24px -2px rgba(8, 40, 164, 0.30), 0 4px 12px -2px rgba(35, 115, 252, 0.22);
 }
 
 .btn:active,
 .btn-primary:active,
-.btn-navy:active {
+.btn-pillar-brand:active,
+.btn-navy:active,
+.btn-nav-cta:active {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(8, 40, 164, 0.15);
+  box-shadow: 0 2px 8px rgba(8, 40, 164, 0.20);
 }
 
+/* White / Inverted Buttons */
 .btn-outline-white:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.18);
   transform: translateY(-2px);
   border-color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
 }
 
 .btn-white:hover {
   background: #F8FAFC;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
 }
 
-/* Navigation Links Motion */
+/* Secondary & Outline Buttons */
+.btn-outline:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  border-color: #0828A4;
+  color: #0828A4;
+  box-shadow: 0 6px 16px rgba(8, 40, 164, 0.10);
+}
+
+/* --------------------------------------------------------------------------
+   5. NAVIGATION & HEADER INTERACTIONS
+   -------------------------------------------------------------------------- */
+.nav-brand-logo {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-brand:hover .nav-brand-logo {
+  transform: scale(1.02);
+}
+
 .nav-pill-link {
   transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
@@ -149,40 +248,86 @@
 
 .nav-pill-link:hover {
   color: #0828A4;
-  background: rgba(35, 115, 252, 0.08);
+  background: rgba(35, 115, 252, 0.09);
   transform: translateY(-1px);
 }
 
 .nav-pill-link.active {
   background: #0828A4;
   color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(8, 40, 164, 0.24);
 }
 
-/* Smooth Arrow Movement on Link Hover */
-.arrow-hover {
+/* Smooth Arrow Movement on Links */
+.arrow-hover,
+.arrow {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  transition: gap 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.arrow-hover:hover {
-  gap: 8px;
+a:hover .arrow-hover,
+a:hover .arrow,
+.btn:hover .arrow {
+  transform: translateX(4px);
 }
 
-/* Hero Metrics Subtle Hover Pulse */
+/* Footer Links Hover Nudge */
+.footer-links a {
+  transition: all 0.22s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: #2373FC !important;
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   6. SUBTLE FLOATING & AMBIENT MOTION
+   -------------------------------------------------------------------------- */
+@keyframes floatSubtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3.5px);
+  }
+}
+
+.floating-subtle {
+  animation: floatSubtle 4s ease-in-out infinite;
+}
+
+/* Hero Metrics Subtle Hover Dynamics */
 .hero-metric-item {
-  transition: transform 0.28s ease, background 0.28s ease;
-  border-radius: var(--radius-xs);
-  padding: 8px;
+  transition: transform 0.28s ease, background-color 0.28s ease, border-color 0.28s ease;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
 }
 
 .hero-metric-item:hover {
   transform: translateX(4px);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.06);
 }
 
-/* Reduced Motion Support for Accessibility */
+.hero-metric-item:hover .hero-metric-num {
+  color: #93C5FD;
+}
+
+/* What We Do Thematic Accordion Header Hover */
+.thematic-accordion-header {
+  transition: background-color 0.24s ease, border-color 0.24s ease;
+}
+
+.thematic-accordion-item:hover {
+  border-color: rgba(35, 115, 252, 0.35);
+  box-shadow: 0 8px 24px -2px rgba(8, 40, 164, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   7. ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
@@ -194,12 +339,16 @@
   .reveal-up,
   .reveal-fade,
   .program-card-item,
+  .portfolio-card,
   .blog-card,
+  .news-card,
   .publication-doc-card,
   .team-member-card,
-  .btn {
+  .btn,
+  .floating-subtle {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+    animation: none !important;
   }
 }

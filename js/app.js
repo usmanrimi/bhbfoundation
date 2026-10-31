@@ -156,6 +156,9 @@ function renderAllSections() {
   if (typeof window.initScrollReveals === 'function') {
     window.initScrollReveals();
   }
+  if (typeof window.initCardInteractions === 'function') {
+    window.initCardInteractions();
+  }
 }
 
 // 3. Navigation & Mobile Drawer
@@ -267,11 +270,15 @@ window.filterBlogCategory = function(cat) {
     btn.classList.toggle('active', btn.getAttribute('data-category') === cat);
   });
   renderBlogPage();
+  if (typeof window.initScrollReveals === 'function') window.initScrollReveals();
+  if (typeof window.initCardInteractions === 'function') window.initCardInteractions();
 };
 
 window.handleBlogSearch = function(query) {
   currentBlogSearchQuery = query;
   renderBlogPage();
+  if (typeof window.initScrollReveals === 'function') window.initScrollReveals();
+  if (typeof window.initCardInteractions === 'function') window.initCardInteractions();
 };
 
 // Interactive Blog Post Reader (With Likes, Social Sharing, Comments)
