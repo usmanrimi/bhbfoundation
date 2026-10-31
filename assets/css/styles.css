@@ -4379,63 +4379,150 @@ section {
 }
 
 .principle-connected-pane {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius-md);
   padding: clamp(28px, 3.5vw, 40px);
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(8px);
   transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.38s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.35s ease,
               background-color 0.35s ease;
+  will-change: transform, box-shadow;
 }
 
-.principle-connected-pane:hover {
+/* Light / White card variants (Always dark high-contrast typography) */
+.principle-connected-pane.pane-white,
+.principle-connected-pane.pane-light {
+  background-color: #FFFFFF !important;
+  color: var(--navy) !important;
+  border: 1.5px solid rgba(8, 40, 164, 0.12) !important;
+  box-shadow: 0 6px 20px -2px rgba(0, 0, 0, 0.07);
+}
+
+.principle-connected-pane.pane-white h3,
+.principle-connected-pane.pane-light h3 {
+  color: #0828A4 !important;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.principle-connected-pane.pane-white p,
+.principle-connected-pane.pane-light p {
+  color: #334155 !important;
+  line-height: 1.65;
+  font-size: 0.96rem;
+}
+
+.principle-connected-pane.pane-white .principle-watermark-num,
+.principle-connected-pane.pane-light .principle-watermark-num {
+  color: rgba(8, 40, 164, 0.08) !important;
+}
+
+.principle-connected-pane.pane-white:hover,
+.principle-connected-pane.pane-light:hover {
   transform: translateY(-6px);
-  background: rgba(255, 255, 255, 0.14);
-  border-color: #93C5FD;
-  box-shadow: 0 20px 42px -4px rgba(0, 0, 0, 0.40), 0 0 0 1px rgba(147, 197, 253, 0.45);
+  border-color: #2373FC !important;
+  box-shadow: 0 20px 42px -4px rgba(8, 40, 164, 0.16), 0 0 0 1px rgba(35, 115, 252, 0.25);
 }
 
+.principle-connected-pane.pane-white:hover h3,
+.principle-connected-pane.pane-light:hover h3 {
+  color: #0828A4 !important;
+}
+
+.principle-connected-pane.pane-white:hover p,
+.principle-connected-pane.pane-light:hover p {
+  color: #1E293B !important;
+}
+
+/* Soft Blue Tint Variant (Always dark high-contrast typography) */
+.principle-connected-pane.pane-tint {
+  background-color: #F0F6FE !important;
+  color: var(--navy) !important;
+  border: 1.5px solid rgba(35, 115, 252, 0.18) !important;
+  box-shadow: 0 6px 20px -2px rgba(8, 40, 164, 0.06);
+}
+
+.principle-connected-pane.pane-tint h3 {
+  color: #0828A4 !important;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.principle-connected-pane.pane-tint p {
+  color: #334155 !important;
+  line-height: 1.65;
+  font-size: 0.96rem;
+}
+
+.principle-connected-pane.pane-tint .principle-watermark-num {
+  color: rgba(35, 115, 252, 0.09) !important;
+}
+
+.principle-connected-pane.pane-tint:hover {
+  transform: translateY(-6px);
+  border-color: #2373FC !important;
+  box-shadow: 0 20px 42px -4px rgba(8, 40, 164, 0.15), 0 0 0 1px rgba(35, 115, 252, 0.25);
+}
+
+.principle-connected-pane.pane-tint:hover h3 {
+  color: #0828A4 !important;
+}
+
+.principle-connected-pane.pane-tint:hover p {
+  color: #1E293B !important;
+}
+
+/* Deep Brand Variant (Rich Blue Background with Crisp White Typography) */
+.principle-connected-pane.pane-brand {
+  background: linear-gradient(135deg, #0828A4 0%, #1A4AE6 100%) !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 8px 24px -2px rgba(8, 40, 164, 0.22);
+}
+
+.principle-connected-pane.pane-brand h3 {
+  color: #FFFFFF !important;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.principle-connected-pane.pane-brand p {
+  color: #F1F5F9 !important;
+  line-height: 1.65;
+  font-size: 0.96rem;
+}
+
+.principle-connected-pane.pane-brand .principle-watermark-num {
+  color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.principle-connected-pane.pane-brand:hover {
+  transform: translateY(-6px);
+  border-color: #93C5FD !important;
+  box-shadow: 0 20px 44px -4px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(147, 197, 253, 0.40);
+}
+
+/* Top Animated Gradient Stroke on Hover */
 .principle-connected-pane::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #2373FC, #93C5FD);
+  height: 3.5px;
+  background: linear-gradient(90deg, #0828A4, #2373FC, #93C5FD);
   opacity: 0;
   transform: scaleX(0);
   transform-origin: left;
   transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
 }
 
 .principle-connected-pane:hover::before {
   opacity: 1;
   transform: scaleX(1);
-}
-
-.principle-connected-pane h3 {
-  color: #FFFFFF !important;
-  margin-bottom: 12px;
-  font-size: 1.25rem;
-  font-weight: 800;
-}
-
-.principle-connected-pane p {
-  color: #E2E8F0 !important;
-  line-height: 1.65;
-  font-size: 0.95rem;
-}
-
-.principle-index-tag {
-  color: #93C5FD;
-  font-weight: 800;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
 }
 
 .principle-watermark-num {
@@ -4445,14 +4532,12 @@ section {
   font-family: var(--font-display);
   font-size: 3.5rem;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.08);
   line-height: 1;
   pointer-events: none;
   transition: color 0.35s ease, transform 0.35s ease;
 }
 
 .principle-connected-pane:hover .principle-watermark-num {
-  color: rgba(255, 255, 255, 0.16);
   transform: scale(1.06);
 }
 

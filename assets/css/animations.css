@@ -320,6 +320,133 @@ a:hover .arrow,
   }
 }
 
+
+/* --------------------------------------------------------------------------
+   BELIEF STATEMENT ("Every Individual Deserves a Chance") ENTRANCE
+   -------------------------------------------------------------------------- */
+.belief-statement-container {
+  opacity: 0;
+  transform: translateY(28px) scale(0.99);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+  will-change: opacity, transform;
+}
+
+.belief-statement-container.in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.belief-lead-quote {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.16s,
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.16s;
+  will-change: opacity, transform;
+}
+
+.belief-statement-container.in .belief-lead-quote {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.belief-text-column {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.28s,
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
+  will-change: opacity, transform;
+}
+
+.belief-statement-container.in .belief-text-column {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.belief-action-column {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.40s,
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.40s;
+  will-change: opacity, transform;
+}
+
+.belief-statement-container.in .belief-action-column {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   MISSION & VISION STAGGERED REVEAL SYSTEM
+   -------------------------------------------------------------------------- */
+.mission-contrast-col,
+.vision-contrast-col {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.38s ease;
+  will-change: opacity, transform;
+}
+
+.mission-contrast-col.in {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.08s;
+}
+
+.vision-contrast-col.in {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.24s;
+}
+
+.mission-contrast-col .statement-watermark,
+.vision-contrast-col .statement-watermark {
+  opacity: 0;
+  transform: scale(0.88);
+  transition: opacity 0.9s ease 0.22s,
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.22s;
+}
+
+.mission-contrast-col.in .statement-watermark,
+.vision-contrast-col.in .statement-watermark {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.mission-contrast-col h2,
+.vision-contrast-col h2 {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.20s,
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.20s;
+  will-change: opacity, transform;
+}
+
+.mission-contrast-col.in h2,
+.vision-contrast-col.in h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mission-contrast-col p,
+.vision-contrast-col p {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.34s,
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.34s;
+  will-change: opacity, transform;
+}
+
+.mission-contrast-col.in p,
+.vision-contrast-col.in p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* --------------------------------------------------------------------------
    6. SUBTLE FLOATING & AMBIENT MOTION
    -------------------------------------------------------------------------- */
@@ -383,8 +510,24 @@ a:hover .arrow,
   .team-member-card,
   .btn,
   .floating-subtle,
-  .hero-text-line {
+  .hero-text-line,
+  .belief-statement-container,
+  .belief-lead-quote,
+  .belief-text-column,
+  .belief-action-column,
+  .mission-contrast-col,
+  .vision-contrast-col,
+  .mission-contrast-col h2,
+  .vision-contrast-col h2,
+  .mission-contrast-col p,
+  .vision-contrast-col p,
+  .mission-contrast-col .statement-watermark,
+  .vision-contrast-col .statement-watermark {
     opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .hero-text-line {
     transform: none !important;
     transition: none !important;
     animation: none !important;

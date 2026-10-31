@@ -827,9 +827,8 @@ window.renderReportsHTML = function() {
       ${reports.map(r => {
         const fileUrl = r.fileUrl || 'assets/documents/BHB_Foundation_Organizational_Profile.pdf';
         const escapedTitle = (r.title || 'Official Report').replace(/'/g, "\\'");
-        const isProfile = (r.type || '').toLowerCase().includes('profile') || (r.title || '').toLowerCase().includes('profile');
-        const badgeText = (r.type || 'ORGANIZATION PROFILE').toUpperCase();
-        const viewBtnText = isProfile ? 'View Profile' : 'Read Document';
+        const badgeText = (r.type || 'OFFICIAL REPORT').toUpperCase();
+        const viewBtnText = 'Read Document';
 
         return `
           <div class="publication-doc-card interactive-lift">
