@@ -15,12 +15,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261119b">
+  <link rel="stylesheet" href="assets/css/animations.css?v=20261119b">
 
   <!-- Core Store Synchronous Load for Instant Rendering -->
-  <script src="js/initial_data.js"></script>
-  <script src="js/store.js"></script>
+  <script src="js/initial_data.js?v=20261119b"></script>
+  <script src="js/store.js?v=20261119b"></script>
 </head>
 <body>
 
@@ -79,6 +79,7 @@
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 36px; border-bottom: 1px solid var(--border-light); padding-bottom: 20px;">
         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
           <button class="btn btn-sm btn-navy blog-filter-btn active" data-category="All" onclick="filterBlogCategory('All')">All Articles</button>
+          <button class="btn btn-sm btn-outline blog-filter-btn" data-category="Health & Hygiene" onclick="filterBlogCategory('Health & Hygiene')">Health &amp; Hygiene</button>
           <button class="btn btn-sm btn-outline blog-filter-btn" data-category="Digital Inclusion" onclick="filterBlogCategory('Digital Inclusion')">Digital Inclusion</button>
           <button class="btn btn-sm btn-outline blog-filter-btn" data-category="Mobility & Inclusion" onclick="filterBlogCategory('Mobility & Inclusion')">Mobility &amp; Inclusion</button>
           <button class="btn btn-sm btn-outline blog-filter-btn" data-category="Peace & Community" onclick="filterBlogCategory('Peace & Community')">Peace &amp; Community</button>

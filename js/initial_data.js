@@ -1,5 +1,5 @@
 window.BHB_SEED_DATA = {
-  "lastUpdated": 1795100000000,
+  "lastUpdated": 1795111000000,
   "settings": {
     "foundationName": "BHB Family Support and Development Foundation",
     "shortName": "BHB Foundation",
@@ -97,7 +97,7 @@ window.BHB_SEED_DATA = {
       "ctaText": "Explore Projects",
       "ctaLink": "projects.html",
       "order": 3,
-      "status": "Ongoing"
+      "status": "Completed"
     },
     {
       "id": "proj-4",
@@ -178,7 +178,7 @@ window.BHB_SEED_DATA = {
       "title": "Every Girl Deserves Dignity: Menstrual Hygiene Awareness and Sanitary Pad Distribution",
       "subtitle": "",
       "category": "Education & Hygiene",
-      "status": "Ongoing",
+      "status": "Completed",
       "location": "Secondary Schools Across Kano",
       "beneficiaries": "Adolescent Girls in Schools",
       "timeline": "Active Distribution Outreach",
@@ -236,6 +236,20 @@ window.BHB_SEED_DATA = {
   ],
   "posts": [
     {
+      "id": "post-4",
+      "title": "Every Girl Deserves Dignity: Menstrual Hygiene Awareness and Sanitary Pad Distribution",
+      "slug": "every-girl-deserves-dignity-menstrual-hygiene-awareness-ungogo",
+      "category": "Health & Hygiene",
+      "date": "November 2026",
+      "author": "BHB Field Communications",
+      "readTime": "3 min read",
+      "image": "assets/images/programs/program-menstrual-hygiene.png",
+      "excerpt": "BHB Foundation visited Government Girls Arabic Secondary School, Ungogo, Kano State, for a menstrual hygiene awareness programme under the Every Girl Deserves Dignity initiative.",
+      "content": "<p>BHB Foundation visited Government Girls Arabic Secondary School, Ungogo, Kano State, for a menstrual hygiene awareness programme under the Every Girl Deserves Dignity initiative.</p><p>The programme provided students with menstrual hygiene education and sanitary care packs to support their health, confidence and wellbeing.</p><p>It was a joyful and impactful engagement, with the girls actively participating, learning and appreciating the support received.</p><p>Together, we are promoting dignity, awareness and better health for every girl.</p><p><strong>Location:</strong> Government Girls Arabic Secondary School, Ungogo, Kano State.</p>",
+      "featured": true,
+      "likes": 18
+    },
+    {
       "id": "post-1",
       "title": "Beyond the Programme: Giving Mariam Greater Freedom Through Mobility Support",
       "slug": "giving-mariam-greater-freedom-through-mobility-support",
@@ -246,7 +260,7 @@ window.BHB_SEED_DATA = {
       "image": "assets/images/stories/mariam-wheelchair.jpg",
       "excerpt": "Following our Soma Girls with Disabilities programme, BHB Foundation provided Mariam with a personal wheelchair to enhance her mobility, independence, and everyday dignity.",
       "content": "<p>Mariam is one of the inspiring participants in our Soma Girls with Disabilities programme in Kano State. While skills development and assistive training are foundational, true inclusion requires recognising and addressing the physical mobility barriers that individuals face in their daily lives.</p><p>Following the successful conclusion of the programme, the BHB Family Support and Development Foundation identified Mariam's need for reliable personal mobility and provided her with a brand-new wheelchair. This practical intervention ensures she can move freely between her home, learning environments, and community gatherings with greater autonomy and dignity.</p><p>For BHB Foundation, empowerment is never confined to workshop classrooms. It is anchored in listening with empathy, understanding personal circumstances, and delivering practical solutions that transform daily living. With her new wheelchair, Mariam continues her educational and personal journey with renewed confidence, freedom, and self-reliance.</p>",
-      "featured": true,
+      "featured": false,
       "likes": 42
     },
     {
@@ -291,8 +305,8 @@ window.BHB_SEED_DATA = {
     },
     {
       "id": "comm-2",
-      "postId": "post-2",
-      "postTitle": "Opening Digital Doors: 10 Girls with Disabilities Begin Their Digital Learning Journey",
+      "postId": "post-1",
+      "postTitle": "Breaking Barriers: How 10 Young Girls with Disabilities Mastered Coding in Kano",
       "authorName": "Kabiru Suleiman",
       "authorEmail": "kabiru.s@yahoo.com",
       "content": "Proud to see grassroots organizations in Kano partnering with Ability First. Looking forward to cohort 2 expansion across other communities.",
@@ -396,51 +410,51 @@ window.BHB_SEED_DATA = {
   ],
   "partners": [
     {
-        "id": "partner-1",
-        "name": "Repined Hearts (Refined Hearts for Women and Girls)",
-        "abbr": "Refined Hearts",
-        "logo": "assets/images/partners/refined-hearts.png",
-        "url": "#",
-        "order": 1,
-        "status": "active"
+      "id": "partner-1",
+      "name": "Repined Hearts (Refined Hearts for Women and Girls)",
+      "abbr": "Refined Hearts",
+      "logo": "assets/images/partners/refined-hearts.png",
+      "url": "#",
+      "order": 1,
+      "status": "active"
     },
     {
-        "id": "partner-2",
-        "name": "elevateHER Innovation Space Ltd",
-        "abbr": "elevateHER",
-        "logo": "assets/images/partners/elevate-her.png",
-        "url": "#",
-        "order": 2,
-        "status": "active"
+      "id": "partner-2",
+      "name": "elevateHER Innovation Space Ltd",
+      "abbr": "elevateHER",
+      "logo": "assets/images/partners/elevate-her.png",
+      "url": "#",
+      "order": 2,
+      "status": "active"
     },
     {
-        "id": "partner-3",
-        "name": "Brandor - Your Ultimate Branding Door",
-        "abbr": "Brandor",
-        "logo": "assets/images/partners/brandor.png",
-        "url": "#",
-        "order": 3,
-        "status": "active"
+      "id": "partner-3",
+      "name": "Brandor - Your Ultimate Branding Door",
+      "abbr": "Brandor",
+      "logo": "assets/images/partners/brandor.png",
+      "url": "#",
+      "order": 3,
+      "status": "active"
     },
     {
-        "id": "partner-4",
-        "name": "The Ability First Tech Hub",
-        "abbr": "Ability First",
-        "logo": "assets/images/partners/ability-first-tech-hub.png",
-        "url": "#",
-        "order": 4,
-        "status": "active"
+      "id": "partner-4",
+      "name": "The Ability First Tech Hub",
+      "abbr": "Ability First",
+      "logo": "assets/images/partners/ability-first-tech-hub.png",
+      "url": "#",
+      "order": 4,
+      "status": "active"
     },
     {
-        "id": "partner-5",
-        "name": "Bloom Health Initiative",
-        "abbr": "Bloom Health",
-        "logo": "assets/images/partners/bloom-health-initiative.png",
-        "url": "#",
-        "order": 5,
-        "status": "active"
+      "id": "partner-5",
+      "name": "Bloom Health Initiative",
+      "abbr": "Bloom Health",
+      "logo": "assets/images/partners/bloom-health-initiative.png",
+      "url": "#",
+      "order": 5,
+      "status": "active"
     }
-],
+  ],
   "donations": [
     {
       "id": "DON-84920",

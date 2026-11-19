@@ -15,12 +15,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261119b">
+  <link rel="stylesheet" href="assets/css/animations.css?v=20261119b">
 
   <!-- Core Store Synchronous Load for Instant Rendering -->
-  <script src="js/initial_data.js?v=20261119"></script>
-  <script src="js/store.js?v=20261119"></script>
+  <script src="js/initial_data.js?v=20261119b"></script>
+  <script src="js/store.js?v=20261119b"></script>
 </head>
 <body>
 
@@ -61,74 +61,80 @@
     <a href="contact.html">Contact Us</a>
   </div>
 
-  <!-- Hero Section: Premium Typography & Brand Geometric Motif -->
-  <section class="hero-editorial-section" id="top">
+  <!-- Hero Section: Clean Brand Design with Original BHB Pattern Icon -->
+  <section class="hero-editorial-section hero-home-brand" id="top">
     <div class="container">
-      <div class="hero-editorial-grid">
+      <div class="hero-editorial-grid hero-home-grid">
         
         <!-- Left Headline Column -->
         <div class="hero-statement-col">
-          <h1 class="hero-animated-headline">
-            <span class="hero-text-line">Empowering Families.</span>
-            <span class="hero-text-line">Strengthening Communities.</span>
-            <span class="hero-text-line text-accent-light">Creating Sustainable Futures.</span>
+          <h1 class="hero-animated-headline hero-home-headline">
+            <span class="hero-text-line hero-line-nowrap">Empowering Families.</span>
+            <span class="hero-text-line hero-line-nowrap">Strengthening Communities.</span>
+            <span class="hero-text-line text-accent-light hero-line-balanced">Creating Sustainable Futures.</span>
           </h1>
-          <div class="hero-cta-group" style="margin-top: 24px;">
-            <a href="contact.html" class="btn btn-primary">Partner With Us →</a>
+          <div class="hero-cta-group" style="margin-top: 32px;">
+            <a href="contact.html" class="btn btn-white">Partner With Us →</a>
             <a href="projects.html" class="btn btn-outline-white">Explore Our Projects</a>
           </div>
         </div>
 
-        <!-- Right Motif & Metrics Column -->
-        <div class="hero-motif-col">
-          <div class="hero-metrics-list">
-            <div class="hero-metric-item">
-              <div class="hero-metric-num" data-counter-end="6" data-prefix="" data-suffix="">6</div>
-              <div class="hero-metric-label">Integrated Community Initiatives</div>
-            </div>
-            <div class="hero-metric-item">
-              <div class="hero-metric-num" data-counter-end="10" data-prefix="" data-suffix="+">10+</div>
-              <div class="hero-metric-label">Grassroots Communities Directly Partnered</div>
-            </div>
-            <div class="hero-metric-item">
-              <div class="hero-metric-num" data-counter-end="100" data-prefix="" data-suffix="%">100%</div>
-              <div class="hero-metric-label">Community-Led Verification &amp; Co-Design</div>
-            </div>
+        <!-- Right Visual Column: Official BHB Foundation Pattern Icon -->
+        <div class="hero-brand-icon-col">
+          <div class="hero-brand-icon-stage floating-subtle">
+            <img src="assets/images/bhb-pattern-icon.png" alt="BHB Foundation Pattern Icon" class="hero-brand-pattern-img">
           </div>
         </div>
 
       </div>
+
+      <!-- Bottom Hero Metrics Bar -->
+      <div class="hero-metrics-bar">
+        <div class="hero-metric-item">
+          <div class="hero-metric-num" data-counter-end="6" data-prefix="" data-suffix="">6</div>
+          <div class="hero-metric-label">Integrated Community Initiatives</div>
+        </div>
+        <div class="hero-metric-item">
+          <div class="hero-metric-num" data-counter-end="10" data-prefix="" data-suffix="+">10+</div>
+          <div class="hero-metric-label">Grassroots Communities Directly Partnered</div>
+        </div>
+        <div class="hero-metric-item">
+          <div class="hero-metric-num" data-counter-end="100" data-prefix="" data-suffix="%">100%</div>
+          <div class="hero-metric-label">Community-Led Verification &amp; Co-Design</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Section 1: Belief Statement (Rich Brand Canvas & Clean White Supporting Canvas) -->
-  <section class="belief-statement-section" id="who-we-are" style="padding-top: 0;">
+  <!-- Section 1: Belief Statement (Expanded Editorial Showcase) -->
+  <section class="belief-statement-section belief-redesigned-section" id="who-we-are">
     <div class="container">
-      <div class="belief-statement-container reveal-scroll">
+      <div class="belief-statement-container belief-redesigned-card reveal-scroll">
         
-        <!-- Upper Lead Canvas (Strong Brand Blue) -->
+        <!-- Upper Lead Band -->
         <div class="belief-lead-canvas">
           <div class="belief-lead-quote">
             Every individual deserves the chance to live a healthy, safe, and dignified life.
           </div>
         </div>
 
-        <!-- Lower Connected Supporting Canvas (Clean White Background with Dark Navy Text) -->
+        <!-- Lower Expanded Supporting Content -->
         <div class="belief-supporting-canvas">
-          <div class="belief-supporting-grid">
-            <div class="belief-text-column">
-              <p class="belief-primary-supporting" style="font-weight: 700;">
-                BHB Family Support and Development Foundation is a Nigerian non-governmental organisation committed to improving the well-being, dignity and economic resilience of vulnerable and underserved individuals, families and communities.
-              </p>
+          <div class="belief-expanded-body">
+            <p class="belief-primary-supporting">
+              BHB Family Support and Development Foundation is a Nigerian non-governmental organisation committed to improving the well-being, dignity and economic resilience of vulnerable and underserved individuals, families and communities.
+            </p>
+            <div class="belief-secondary-paragraphs">
               <p class="belief-secondary-supporting">
                 We work with communities to improve access to essential health and social services, education, skills development, livelihood opportunities and inclusive community support.
-                <br><br>
+              </p>
+              <p class="belief-secondary-supporting">
                 Our approach is simple: listen to communities, identify practical needs, deliver appropriate interventions, and measure the results.
               </p>
             </div>
-            <div class="belief-action-column">
-              <a href="about.html" class="btn btn-navy" style="padding: 14px 28px; font-weight: 700; text-align: center;">Learn More About BHB →</a>
-              <a href="projects.html" class="btn btn-outline" style="padding: 14px 28px; font-weight: 700; text-align: center;">Explore Projects</a>
+            <div class="belief-action-row">
+              <a href="about.html" class="btn btn-navy">Learn More About BHB →</a>
+              <a href="projects.html" class="btn btn-outline">Explore Projects</a>
             </div>
           </div>
         </div>
@@ -143,7 +149,6 @@
       
       <!-- Left: Mission (Deep Navy Canvas) -->
       <div class="mission-contrast-col reveal-scroll">
-        <div class="statement-watermark">01</div>
         <div class="contrast-col-content">
           <h2>Our Mission</h2>
           <p>
@@ -154,7 +159,6 @@
 
       <!-- Right: Vision (Soft Neutral Surface) -->
       <div class="vision-contrast-col reveal-scroll">
-        <div class="statement-watermark">02</div>
         <div class="contrast-col-content">
           <h2>Our Vision</h2>
           <p>
