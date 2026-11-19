@@ -430,6 +430,15 @@
       "url": "#",
       "order": 4,
       "status": "active"
+    },
+    {
+      "id": "partner-5",
+      "name": "Bloom Health Initiative",
+      "abbr": "Bloom Health",
+      "logo": "assets/images/partners/bloom-health-initiative.png",
+      "url": "#",
+      "order": 5,
+      "status": "active"
     }
   ],
   "donations": [

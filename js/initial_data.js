@@ -396,42 +396,51 @@ window.BHB_SEED_DATA = {
   ],
   "partners": [
     {
-      "id": "partner-1",
-      "name": "Repined Hearts (Refined Hearts for Women and Girls)",
-      "abbr": "Refined Hearts",
-      "logo": "assets/images/partners/refined-hearts.png",
-      "url": "#",
-      "order": 1,
-      "status": "active"
+        "id": "partner-1",
+        "name": "Repined Hearts (Refined Hearts for Women and Girls)",
+        "abbr": "Refined Hearts",
+        "logo": "assets/images/partners/refined-hearts.png",
+        "url": "#",
+        "order": 1,
+        "status": "active"
     },
     {
-      "id": "partner-2",
-      "name": "elevateHER Innovation Space Ltd",
-      "abbr": "elevateHER",
-      "logo": "assets/images/partners/elevate-her.png",
-      "url": "#",
-      "order": 2,
-      "status": "active"
+        "id": "partner-2",
+        "name": "elevateHER Innovation Space Ltd",
+        "abbr": "elevateHER",
+        "logo": "assets/images/partners/elevate-her.png",
+        "url": "#",
+        "order": 2,
+        "status": "active"
     },
     {
-      "id": "partner-3",
-      "name": "Brandor - Your Ultimate Branding Door",
-      "abbr": "Brandor",
-      "logo": "assets/images/partners/brandor.png",
-      "url": "#",
-      "order": 3,
-      "status": "active"
+        "id": "partner-3",
+        "name": "Brandor - Your Ultimate Branding Door",
+        "abbr": "Brandor",
+        "logo": "assets/images/partners/brandor.png",
+        "url": "#",
+        "order": 3,
+        "status": "active"
     },
     {
-      "id": "partner-4",
-      "name": "The Ability First Tech Hub",
-      "abbr": "Ability First",
-      "logo": "assets/images/partners/ability-first-tech-hub.png",
-      "url": "#",
-      "order": 4,
-      "status": "active"
+        "id": "partner-4",
+        "name": "The Ability First Tech Hub",
+        "abbr": "Ability First",
+        "logo": "assets/images/partners/ability-first-tech-hub.png",
+        "url": "#",
+        "order": 4,
+        "status": "active"
+    },
+    {
+        "id": "partner-5",
+        "name": "Bloom Health Initiative",
+        "abbr": "Bloom Health",
+        "logo": "assets/images/partners/bloom-health-initiative.png",
+        "url": "#",
+        "order": 5,
+        "status": "active"
     }
-  ],
+],
   "donations": [
     {
       "id": "DON-84920",
