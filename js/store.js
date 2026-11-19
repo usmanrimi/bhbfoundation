@@ -6,7 +6,7 @@
 const BHB_STORAGE_KEY = 'BHB_FOUNDATION_STORE_V12';
 
 const RAW_DEFAULT_STORE_DATA = {
-  "lastUpdated": 1793400000000,
+  "lastUpdated": 1795100000000,
   "settings": {
     "foundationName": "BHB Family Support and Development Foundation",
     "shortName": "BHB Foundation",
@@ -613,7 +613,9 @@ class StoreEngine {
 
     if (typeof window !== 'undefined') {
       readFromIDB().then((idbData) => {
-        if (idbData && typeof idbData === 'object' && idbData.settings) {
+        const seedTs = (window.BHB_SEED_DATA && window.BHB_SEED_DATA.lastUpdated) || (this.data && this.data.lastUpdated) || 0;
+        const idbTs = (idbData && idbData.lastUpdated) || 0;
+        if (idbData && typeof idbData === 'object' && idbData.settings && idbTs >= seedTs) {
           this.data = idbData;
           this.notifySubscribersOnly();
         } else {

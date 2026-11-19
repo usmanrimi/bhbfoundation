@@ -1,5 +1,5 @@
 window.BHB_SEED_DATA = {
-  "lastUpdated": 1793456000000,
+  "lastUpdated": 1795100000000,
   "settings": {
     "foundationName": "BHB Family Support and Development Foundation",
     "shortName": "BHB Foundation",
